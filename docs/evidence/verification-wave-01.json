@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "review_wave": "deleg_57126cb7",
+  "status": "blocked",
+  "source_transcripts": [
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_57126cb7/task-0.log",
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_57126cb7/task-1.log",
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_57126cb7/task-2.log"
+  ],
+  "proof": [
+    "env -u PYTHONPATH python -m pytest -q: 52 passed",
+    "Repeated canary artifacts were byte-identical",
+    "Packaging smoke succeeded",
+    "Hostile malformed-input and stale-provenance probes passed"
+  ],
+  "blocking_findings": [
+    "Production extraction/formal APIs do not match the declared canonical stage ports; test-only adapters rewrite records.",
+    "EvidenceSpan and retrieval do not enforce absolute input-size ceilings.",
+    "Generation/injection stage is not implemented and has no policy/tool/scope isolation proof.",
+    "Six clean orchestration worktrees remain untracked because destructive cleanup confirmation timed out."
+  ],
+  "verdict": "HOLD_RELEASE",
+  "next_proof": [
+    "Make production stage ports match the frozen contracts without silent coercion.",
+    "Add bounded source/query/span tests and fail closed.",
+    "Implement generation/injection safety as a separately gated stage or explicitly record it deferred.",
+    "Obtain cleanup approval and remove completed worktrees, then verify clean intended-only diff."
+  ]
+}
