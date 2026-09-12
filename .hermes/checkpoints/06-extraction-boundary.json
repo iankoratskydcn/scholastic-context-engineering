@@ -1,0 +1,33 @@
+{
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "06-extraction-boundary",
+  "phase": "extraction and taxonomy canary",
+  "status": "passed",
+  "contract": "docs/architecture/stage-contracts-v0.1.md",
+  "scope": [
+    "Modus ponens",
+    "Modus tollens",
+    "safe abstention for unsupported text"
+  ],
+  "taxonomy_snapshot_id": "argument-form-taxonomy-c013edcf0fe87670",
+  "taxonomy_candidate_ids": {
+    "modus-ponens": "src.core_initial_pass.003.l9",
+    "modus-tollens": "src.core_initial_pass.004.l10"
+  },
+  "red": {
+    "command": "PYTHONPATH=src python -m pytest tests/extraction/test_extractor.py -q",
+    "result": "failed before implementation (ModuleNotFoundError: scholastic_pipeline.extraction)",
+    "evidence": "tests/extraction/test_extractor.py"
+  },
+  "green": {
+    "command": "PYTHONPATH=src python -m pytest -q",
+    "result": "8 passed",
+    "evidence": [
+      "tests/extraction/test_extractor.py",
+      "fixtures/canary/argument-cases.json"
+    ]
+  },
+  "implementation": "Deterministic local regex extraction only; no LLMs or runtime dependencies; extraction does not claim formal validity.",
+  "reviewer_status": "pending independent verification",
+  "issues": []
+}

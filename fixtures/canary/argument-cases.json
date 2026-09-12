@@ -1,0 +1,15 @@
+{
+  "fixture_version": "0.1",
+  "cases": [
+    {
+      "id": "modus-ponens",
+      "source_id": "canary-mp",
+      "text": "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    },
+    {
+      "id": "modus-tollens",
+      "source_id": "canary-mt",
+      "text": "If the alarm is set, the light is flashing. The light is not flashing. Therefore, the alarm is not set."
+    }
+  ]
+}
