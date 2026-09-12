@@ -1,0 +1,19 @@
+{
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "07-formal-validation",
+  "phase": "formal validation",
+  "status": "passed",
+  "contract": "docs/architecture/stage-contracts-v0.1.md",
+  "scope": ["modus ponens", "modus tollens"],
+  "red": "PYTHONPATH=src python -m pytest tests/formal tests/assembly -q -> collection failed: ModuleNotFoundError for missing formal/assembly modules",
+  "green": "PYTHONPATH=src python -m pytest tests/formal tests/assembly -q -> 12 passed",
+  "full_suite": "PYTHONPATH=src python -m pytest -q -> 17 passed",
+  "properties": [
+    "unsupported forms return UNKNOWN or UNSUPPORTED",
+    "invalid supported structures return INVALID",
+    "missing provenance is rejected",
+    "taxonomy/community/frequency are non-probative",
+    "no solver dependency"
+  ],
+  "reviewer_status": "pending independent review"
+}

@@ -1,0 +1,18 @@
+{
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "08-edge-events",
+  "phase": "assembly",
+  "status": "passed",
+  "contract": "docs/architecture/stage-contracts-v0.1.md",
+  "red": "Assembly tests initially failed during collection because the assembly lane was absent",
+  "green": "PYTHONPATH=src python -m pytest tests/formal tests/assembly -q -> 12 passed",
+  "full_suite": "PYTHONPATH=src python -m pytest -q -> 17 passed",
+  "properties": [
+    "one provenance-bearing edge event per premise",
+    "source revision and half-open spans preserved",
+    "validation status preserved",
+    "missing provenance rejected",
+    "enrichment cannot upgrade proof"
+  ],
+  "reviewer_status": "pending independent review"
+}
