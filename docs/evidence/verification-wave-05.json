@@ -1,0 +1,10 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_210b69f4",
+  "status":"blocked",
+  "proof":["99 tests passed","production direct canary passed","exact spans/taxonomy/provenance compatibility passed for valid inputs","malformed ingestion/retrieval and partial storage rollback probes passed","cross-process reproducibility and wheel integrity passed"],
+  "blocking_findings":["ingestion.to_payload omits required envelope fields","Proposition, TaxonomyMatch, GraphSnapshot, CommunitySnapshot, and ArgumentUnit direct construction accepts empty semantic fields","ExtractionBundle/Formalization can substitute unknown run IDs","malformed storage IDs/events/iterables can raise database or attribute exceptions"],
+  "hygiene_findings":["checkpoint 05 uses old format and counts are stale","14 completed worktrees plus generated build/egg-info residue remain untracked"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["complete direct constructor and serializer validation","make storage boundary fail closed","normalize checkpoints and run a fresh independent verifier"]
+}
