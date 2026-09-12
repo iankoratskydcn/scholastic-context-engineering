@@ -5,7 +5,7 @@ import pytest
 
 from scholastic_pipeline.extraction import extract_argument, extract_structured_document
 from scholastic_pipeline.formal import validate
-from scholastic_pipeline.schema import EvidenceSpan, StructuredDocument, TaxonomySnapshot
+from scholastic_pipeline.schema import EnvelopeError, EvidenceSpan, StructuredDocument, TaxonomySnapshot
 
 
 FIXTURE = Path(__file__).parents[2] / "fixtures" / "canary" / "argument-cases.json"
@@ -131,16 +131,12 @@ def test_malformed_structured_span_abstains_without_constructing_evidence_span()
     assert result.abstention_reason == "malformed_source"
 
 
-def test_structured_block_span_cardinality_mismatch_abstains():
+def test_structured_block_span_cardinality_rejected_at_construction():
     text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
     source = EvidenceSpan("source", 0, len(text), text, revision="rev-14")
-    document = StructuredDocument(document_id="doc", revision="rev-14", bytes_hash="a" * 64,
-                                  spans=(source,), blocks=(), run_id="test-run")
-    result = extract_structured_document(document, TaxonomySnapshot(
-        snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
-        run_id="test-run", provenance=(source,)))
-    assert result.status == "ABSTAINED"
-    assert result.abstention_reason == "malformed_source"
+    with pytest.raises(EnvelopeError, match="cardinality"):
+        StructuredDocument(document_id="doc", revision="rev-14", bytes_hash="a" * 64,
+                           spans=(source,), blocks=(), run_id="test-run")
 
 
 def test_taxonomy_provenance_scope_mismatch_abstains():
@@ -201,8 +197,9 @@ def test_structured_extraction_rejects_taxonomy_provenance_outside_document():
                                   spans=(source,), blocks=(text,), run_id="run-tax")
     taxonomy = TaxonomySnapshot(snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
                                 run_id="run-tax", provenance=(foreign,))
-    with pytest.raises(ValueError, match="taxonomy snapshot provenance"):
-        extract_structured_document(document, taxonomy)
+    result = extract_structured_document(document, taxonomy)
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_taxonomy_provenance"
 
 
 def test_propositions_keep_exact_source_spans_and_stable_identity():
