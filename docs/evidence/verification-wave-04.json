@@ -1,0 +1,10 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_5cf88a43",
+  "status":"blocked",
+  "proof":["90 tests passed","direct production canary passed","exact proposition spans passed","cross-process reproducibility and package integrity passed"],
+  "blocking_findings":["canonical payloads omit required record_id","GraphEdgeEvent direct construction permits empty identity/node/relation fields","forged GraphSnapshot occurrences can raise in retrieval","malformed source_id can raise during ingestion digest","structure_document(None) raises"],
+  "release_verdict":"HOLD_RELEASE",
+  "hygiene_findings":["checkpoint 05 uses an older format and multiple recorded test counts are stale","12 untracked completed orchestration worktrees remain"],
+  "next_proof":["validate canonical payloads against JSON schema including record_id","fail closed for malformed direct constructors and stage inputs","normalize checkpoints and rerun independent verification"]
+}
