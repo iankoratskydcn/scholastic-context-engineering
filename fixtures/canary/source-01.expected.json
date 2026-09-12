@@ -1,0 +1,27 @@
+{
+  "status": "ACCEPTED",
+  "document_id": "doc-da370085024f2bda31116055",
+  "revision": "rev-20261d13e5962c4c8ca1b653",
+  "bytes_hash": "691ec411817ed18e12123a7f4f1f9128a410a557681f192f52c40617c392c6e5",
+  "diagnostics": [],
+  "spans": [
+    {
+      "source_id": "source-01",
+      "start": 0,
+      "end": 14,
+      "text": "Alpha premise.",
+      "revision": "rev-20261d13e5962c4c8ca1b653"
+    },
+    {
+      "source_id": "source-01",
+      "start": 16,
+      "end": 32,
+      "text": "Beta conclusion.",
+      "revision": "rev-20261d13e5962c4c8ca1b653"
+    }
+  ],
+  "blocks": [
+    "Alpha premise.",
+    "Beta conclusion."
+  ]
+}
