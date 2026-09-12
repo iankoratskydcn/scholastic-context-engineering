@@ -120,6 +120,54 @@ def test_oversized_source_abstains_fail_closed():
     assert result.abstention_reason == "malformed_source"
 
 
+def test_malformed_structured_span_abstains_without_constructing_evidence_span():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-13")
+    document = StructuredDocument(document_id="doc", revision="rev-13", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(text,), run_id="test-run")
+    object.__setattr__(source, "text", object())
+    result = extract_argument(document)
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_source"
+
+
+def test_structured_block_span_cardinality_mismatch_abstains():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-14")
+    document = StructuredDocument(document_id="doc", revision="rev-14", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(), run_id="test-run")
+    result = extract_structured_document(document, TaxonomySnapshot(
+        snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+        run_id="test-run", provenance=(source,)))
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_source"
+
+
+def test_taxonomy_provenance_scope_mismatch_abstains():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-15")
+    taxonomy_source = EvidenceSpan("other-source", 0, 1, "T", revision="rev-15")
+    document = StructuredDocument(document_id="doc", revision="rev-15", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(text,), run_id="test-run")
+    result = extract_structured_document(document, TaxonomySnapshot(
+        snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+        run_id="test-run", provenance=(taxonomy_source,)))
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_taxonomy_provenance"
+
+
+def test_taxonomy_run_mismatch_abstains_fail_closed():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-16")
+    document = StructuredDocument(document_id="doc", revision="rev-16", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(text,), run_id="test-run")
+    result = extract_structured_document(document, TaxonomySnapshot(
+        snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+        run_id="other-run", provenance=(source,)))
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_taxonomy_provenance"
+
+
 def test_propositions_have_exact_substring_spans_and_bundle_is_canonical():
     text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
     result = extract_argument(text, source_id="source", source_revision="rev-11", run_id="test-run")

@@ -65,6 +65,13 @@ def test_oversized_source_is_quarantined_without_constructing_span():
     assert "source text exceeds" in " ".join(result.diagnostics).lower()
 
 
+def test_source_that_exceeds_span_ceiling_is_quarantined_before_span_construction():
+    result = ingest_text("source-01", b"x" * 65_537, run_id="run-1")
+    assert result.status == RecordStatus.QUARANTINED.value
+    assert result.spans == ()
+    assert "span" in " ".join(result.diagnostics).lower()
+
+
 def test_imported_text_is_data_not_code(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     document = ingest_text("source-01", "__import__('os').system('touch SHOULD_NOT_EXIST')", run_id="run-1")

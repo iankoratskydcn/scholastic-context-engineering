@@ -10,6 +10,7 @@ from typing import Any, ClassVar
 SCHEMA_VERSION = "0.1"
 MAX_SOURCE_TEXT_BYTES = 1_048_576
 MAX_SPAN_TEXT_BYTES = 65_536
+MAX_RETRIEVAL_QUERY_BYTES = 16_384
 
 
 class EnvelopeError(ValueError):
@@ -233,6 +234,25 @@ class RetrievalRequest(Envelope):
     query: str = ""
     budget: int = 0
     kind: ClassVar[str] = "retrieval_request"
+
+    def __post_init__(self) -> None:
+        # Preserve hostile query data for retrieve() to refuse, while keeping
+        # construction and stable-ID derivation exception-free.
+        invalid = (
+            not isinstance(self.query, str)
+            or any(0xD800 <= ord(char) <= 0xDFFF for char in self.query)
+            or not self.query.strip()
+            or len(self.query.encode("utf-8")) > MAX_RETRIEVAL_QUERY_BYTES
+        )
+        if not invalid:
+            super().__post_init__()
+            return
+        original = self.query
+        object.__setattr__(self, "query", "<invalid retrieval query>")
+        try:
+            super().__post_init__()
+        finally:
+            object.__setattr__(self, "query", original)
 
 
 @dataclass(frozen=True)

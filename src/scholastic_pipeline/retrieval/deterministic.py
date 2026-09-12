@@ -5,14 +5,13 @@ import re
 from collections.abc import Mapping
 
 from scholastic_pipeline.schema import (
-    EvidenceSpan, GraphSnapshot, MAX_SPAN_TEXT_BYTES, RecordStatus, RetrievalContext,
-    RetrievalRequest,
+    EvidenceSpan, GraphSnapshot, MAX_RETRIEVAL_QUERY_BYTES, MAX_SPAN_TEXT_BYTES,
+    RecordStatus, RetrievalContext, RetrievalRequest,
 )
 
 
 _TOKEN = re.compile(r"[\w]+", re.UNICODE)
 MAX_RETRIEVAL_BUDGET = 100
-MAX_RETRIEVAL_QUERY_BYTES = 16_384
 MAX_RETRIEVAL_INPUT_BYTES = 4_194_304
 MAX_RETRIEVAL_OUTPUT_BYTES = 1_048_576
 

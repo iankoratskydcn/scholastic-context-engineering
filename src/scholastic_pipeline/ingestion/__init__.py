@@ -7,7 +7,10 @@ import json
 import re
 from typing import Any
 
-from scholastic_pipeline.schema import EvidenceSpan, IngestedDocument, MAX_SOURCE_TEXT_BYTES, RecordStatus, StructuredDocument
+from scholastic_pipeline.schema import (
+    EvidenceSpan, IngestedDocument, MAX_SOURCE_TEXT_BYTES, MAX_SPAN_TEXT_BYTES,
+    RecordStatus, StructuredDocument,
+)
 
 
 @dataclass(frozen=True)
@@ -55,6 +58,8 @@ def ingest_text(source_id: str, source: str | bytes, *, run_id: str) -> Ingested
         problem = problem or "empty source is not admissible"
     elif len(raw) > MAX_SOURCE_TEXT_BYTES:
         problem = problem or "source text exceeds absolute byte ceiling"
+    elif len(raw) > MAX_SPAN_TEXT_BYTES:
+        problem = problem or "source span exceeds absolute byte ceiling"
     if not source_id:
         problem = problem or "source_id is required"
     if not run_id:

@@ -58,6 +58,12 @@ def test_retrieval_refuses_missing_snapshot_provenance():
     assert result.refusal == "retrieval provenance is missing"
 
 
+def test_retrieval_request_accepts_non_string_query_for_refusal_without_stable_id_error():
+    req = RetrievalRequest(query=object(), budget=2, provenance=(span("query"),), run_id="run-1")
+    result = retrieve(req, snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval query must be a string"
+
+
 def test_retrieval_refuses_non_string_query_without_string_operations():
     req = request()
     object.__setattr__(req, "query", object())
@@ -70,6 +76,18 @@ def test_retrieval_refuses_lone_surrogate_query_without_encoding():
     object.__setattr__(req, "query", "bad\ud800")
     result = retrieve(req, snapshot([edge("a", "alpha")]))
     assert result.refusal == "retrieval query contains an invalid surrogate"
+
+
+def test_retrieval_request_accepts_surrogate_query_for_refusal_without_stable_id_error():
+    req = RetrievalRequest(query="bad\ud800", budget=2, provenance=(span("query"),), run_id="run-1")
+    result = retrieve(req, snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval query contains an invalid surrogate"
+
+
+def test_retrieval_request_accepts_oversized_query_for_refusal_without_stable_id_error():
+    req = RetrievalRequest(query="a" * 16_385, budget=2, provenance=(span("query"),), run_id="run-1")
+    result = retrieve(req, snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval query exceeds absolute byte ceiling"
 
 
 def test_retrieval_refuses_malformed_span_before_string_operations():

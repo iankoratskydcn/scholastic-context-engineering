@@ -102,20 +102,66 @@ def _abstain(reason: str, run_id: str = "") -> ExtractionBundle:
     return ExtractionBundle("ABSTAINED", None, None, reason, 0.0, None, run_id=run_id)
 
 
+def _structured_problem(document: StructuredDocument) -> str | None:
+    try:
+        if document.status != "ACCEPTED" or not isinstance(document.spans, tuple) or not document.spans:
+            return "malformed_source"
+        if not isinstance(document.blocks, tuple) or len(document.blocks) != len(document.spans):
+            return "malformed_source"
+        for block, span in zip(document.blocks, document.spans):
+            if not isinstance(block, str) or any(0xD800 <= ord(char) <= 0xDFFF for char in block):
+                return "malformed_source"
+            if not isinstance(span, EvidenceSpan) or span.revision != document.revision:
+                return "malformed_source"
+            if not isinstance(span.text, str):
+                return "malformed_source"
+            if len(span.text.encode("utf-8")) > 65_536:
+                return "malformed_source"
+            if span.start < 0 or span.end < span.start or span.end - span.start != len(span.text):
+                return "malformed_source"
+    except (AttributeError, TypeError, UnicodeError):
+        return "malformed_source"
+    return None
+
+
+def _provenance_problem(spans: object) -> str | None:
+    try:
+        if not isinstance(spans, tuple) or not spans:
+            return "malformed_taxonomy_provenance"
+        for span in spans:
+            if not isinstance(span, EvidenceSpan):
+                return "malformed_taxonomy_provenance"
+            if not isinstance(span.source_id, str) or not span.source_id:
+                return "malformed_taxonomy_provenance"
+            if not isinstance(span.revision, str) or not span.revision:
+                return "malformed_taxonomy_provenance"
+            if not isinstance(span.text, str) or any(0xD800 <= ord(char) <= 0xDFFF for char in span.text):
+                return "malformed_taxonomy_provenance"
+            if len(span.text.encode("utf-8")) > 65_536:
+                return "malformed_taxonomy_provenance"
+    except (AttributeError, TypeError, UnicodeError):
+        return "malformed_taxonomy_provenance"
+    return None
+
+
 def _input_text(source: object, source_id: str, source_revision: str | None, base_offset: int = 0) -> tuple[str, EvidenceSpan] | None:
     if isinstance(source, StructuredDocument):
-        if not source.spans or any(span.revision != source.revision for span in source.spans):
+        if _structured_problem(source):
             return None
         span = source.spans[0]
-        return span.text, EvidenceSpan(source_id=span.source_id, start=span.start, end=span.end,
-                                       text=span.text, revision=source.revision)
+        return span.text, span
     if not isinstance(source, str) or not isinstance(source_id, str) or not source_id:
         return None
     if not isinstance(source_revision, str) or not source_revision:
         return None
     if len(source) > MAX_SOURCE_CHARS or any(0xD800 <= ord(char) <= 0xDFFF for char in source):
         return None
-    return source, EvidenceSpan(source_id=source_id, start=base_offset, end=base_offset + len(source), text=source, revision=source_revision)
+    try:
+        if len(source.encode("utf-8")) > 65_536:
+            return None
+        return source, EvidenceSpan(source_id=source_id, start=base_offset, end=base_offset + len(source), text=source, revision=source_revision)
+    except (TypeError, ValueError, UnicodeError):
+        return None
 
 
 def extract_argument(source: str | StructuredDocument, *, source_id: str = "source",
@@ -181,7 +227,20 @@ def extract_structured_document(document: StructuredDocument, taxonomy_snapshot:
     if not isinstance(taxonomy_snapshot, TaxonomySnapshot):
         raise TypeError("extraction requires TaxonomySnapshot")
     if taxonomy_snapshot.run_id and taxonomy_snapshot.run_id != document.run_id:
-        raise ValueError("document and taxonomy snapshot run IDs must match")
+        return _abstain("malformed_taxonomy_provenance", document.run_id)
+    if (problem := _structured_problem(document)):
+        return _abstain(problem, document.run_id)
+    if (problem := _provenance_problem(taxonomy_snapshot.provenance)):
+        return ExtractionBundle("ABSTAINED", None, None, problem, 0.0,
+                                document.spans[0], run_id=document.run_id)
+    try:
+        taxonomy_scope = {(span.source_id, span.revision) for span in taxonomy_snapshot.provenance}
+        document_scope = {(span.source_id, span.revision) for span in document.spans}
+        if taxonomy_scope != document_scope:
+            return ExtractionBundle("ABSTAINED", None, None, "malformed_taxonomy_provenance", 0.0,
+                                    document.spans[0], run_id=document.run_id)
+    except (AttributeError, TypeError, UnicodeError):
+        return _abstain("malformed_taxonomy_provenance", document.run_id)
     unsupported_taxonomy = False
     for block, span in zip(document.blocks, document.spans):
         result = extract_argument(block, source_id=span.source_id, run_id=document.run_id,

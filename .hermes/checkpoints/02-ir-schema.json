@@ -6,8 +6,8 @@
   "contract": "docs/architecture/stage-contracts-v0.1.md",
   "schema": "schemas/envelope-0.1.json",
   "tests": [
-    "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py tests/schema/test_resource_bounds_adversarial.py -q: 11 passed",
-    "PYTHONPATH=src python -m pytest -q: 62 passed"
+    "PYTHONPATH=src python3 -m pytest tests/schema/test_contracts.py tests/schema/test_resource_bounds_adversarial.py -q: 11 passed",
+    "PYTHONPATH=src python3 -m pytest -q: 85 passed"
   ],
   "repairs": [
     "TaxonomySnapshot is a canonical immutable provenance-bearing record",
@@ -15,6 +15,7 @@
     "canonical IDs and payloads retain envelope and subclass fields",
     "non-empty string revisions are required for EvidenceSpan and document spans",
     "EvidenceSpan and aggregate source text have canonical UTF-8 byte ceilings",
+    "public retrieval request construction sanitizes invalid query only for ID derivation and preserves it for refusal",
     "ExtractionBundle and Formalization carry schema version, stable record ID, run, confidence, uncertainty, diagnostics, and status",
     "propositions retain exact half-open source substring spans"
   ],
