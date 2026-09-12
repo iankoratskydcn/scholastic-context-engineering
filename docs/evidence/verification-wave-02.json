@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "review_wave": "deleg_f60bd5c2",
+  "status": "blocked",
+  "proof": [
+    "env -u PYTHONPATH python -m pytest -q: 67 passed",
+    "Repeated canary runs byte-identical across processes",
+    "Clean archive wheel packaging passed",
+    "Mixed/stale provenance and partial-generation rollback probes passed"
+  ],
+  "blocking_findings": [
+    "ExtractionBundle and Formalization are not full canonical envelope records.",
+    "Proposition provenance uses the full document span rather than exact proposition spans.",
+    "Formal validation does not enforce required TaxonomyMatch input.",
+    "Structured extraction ignores blocks after the first span.",
+    "Malformed retrieval query/span inputs can raise exceptions.",
+    "Empty ingestion is accepted instead of quarantined.",
+    "Some oversized ingestion inputs raise instead of returning controlled quarantine."
+  ],
+  "release_verdict": "HOLD_RELEASE",
+  "next_proof": [
+    "Make proposition/formalization records canonical and exact-span bound.",
+    "Make malformed and empty source/query inputs fail closed without exceptions.",
+    "Run a fresh independent verifier after repairs."
+  ],
+  "source_transcripts": [
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_f60bd5c2/task-0.log",
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_f60bd5c2/task-1.log",
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_f60bd5c2/task-2.log"
+  ]
+}
