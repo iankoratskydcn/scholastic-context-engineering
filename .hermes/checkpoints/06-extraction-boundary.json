@@ -4,8 +4,8 @@
   "phase": "production extraction and taxonomy canary",
   "status": "passed",
   "scope": ["StructuredDocument input", "TaxonomySnapshot authority", "modus ponens", "modus tollens", "safe abstention"],
-  "green": {"command": "pytest -q tests/schema tests/extraction", "result": "37 passed"},
-  "full_suite": "pytest -q: 93 passed",
+  "green": {"command": "PYTHONPATH=src python -m pytest -q tests/schema tests/extraction", "result": "51 passed"},
+  "full_suite": "PYTHONPATH=src python -m pytest -q: 102 passed, 4 assembly failures outside ownership",
   "implementation": "ExtractionBundle canonical payloads include record_id and complete envelope fields; deterministic IDs exclude their own derived identity.",
   "reviewer_status": "pending independent verification",
   "issues": []

@@ -230,3 +230,9 @@ def test_structured_extraction_scans_all_blocks_in_order():
     result = extract_structured_document(document, taxonomy)
     assert result.status == "ACCEPTED"
     assert result.provenance.start == spans[1].start
+
+
+def test_extraction_bundle_rejects_missing_run_id_instead_of_using_unknown():
+    with pytest.raises(ValueError, match="run_id"):
+        from scholastic_pipeline.extraction import ExtractionBundle
+        ExtractionBundle("ABSTAINED", None, None, "unsupported", 0.0, None)

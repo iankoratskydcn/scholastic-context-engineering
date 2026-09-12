@@ -8,6 +8,8 @@ from scholastic_pipeline.schema import (
     EnvelopeError,
     GraphEdgeEvent,
     IngestedDocument,
+    Proposition,
+    TaxonomyMatch,
     ValidationStatus,
     TaxonomySnapshot,
 )
@@ -106,3 +108,51 @@ def test_graph_edge_event_payload_is_json_loadable_with_record_id():
     assert {"schema_version", "record_id", "run_id", "producer", "status",
             "provenance", "confidence", "uncertainty", "diagnostics"} <= payload.keys()
     assert payload["record_id"] == event.record_id
+
+
+def test_direct_canonical_records_require_nonempty_domain_fields():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    with pytest.raises(EnvelopeError, match="proposition_id"):
+        from scholastic_pipeline.schema import Proposition
+        Proposition(text="A", role="premise", run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="text"):
+        from scholastic_pipeline.schema import Proposition
+        Proposition(proposition_id="p1", text="", role="premise", run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="role"):
+        from scholastic_pipeline.schema import Proposition
+        Proposition(proposition_id="p1", text="A", role="", run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="conclusion"):
+        ArgumentUnit(argument_id="arg-1", premises=(Proposition(proposition_id="p1", text="A", role="premise",
+                     run_id="run-1", provenance=(span,)),), conclusion="", relation="entails",
+                     run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="taxonomy_id"):
+        from scholastic_pipeline.schema import TaxonomyMatch
+        TaxonomyMatch(label="label", run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="label"):
+        from scholastic_pipeline.schema import TaxonomyMatch
+        TaxonomyMatch(taxonomy_id="tax-1", label="", run_id="run-1", provenance=(span,))
+
+
+def test_snapshot_records_require_generation_fields():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    from scholastic_pipeline.schema import CommunitySnapshot, GraphSnapshot
+    with pytest.raises(EnvelopeError, match="generation_id"):
+        GraphSnapshot(run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="graph_generation"):
+        CommunitySnapshot(run_id="run-1", provenance=(span,))
+
+
+def test_every_canonical_payload_has_record_id_without_self_hashing():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    from scholastic_pipeline.schema import Proposition, TaxonomyMatch, GraphSnapshot, CommunitySnapshot
+    records = [
+        Proposition(proposition_id="p1", text="A", role="premise", run_id="run-1", provenance=(span,)),
+        TaxonomyMatch(taxonomy_id="tax-1", label="label", run_id="run-1", provenance=(span,)),
+        GraphSnapshot(generation_id="gen-1", run_id="run-1", provenance=(span,)),
+        CommunitySnapshot(graph_generation="gen-1", run_id="run-1", provenance=(span,)),
+    ]
+    for record in records:
+        payload = record.to_payload()
+        assert payload["record_id"] == record.record_id
+        assert "record_id" not in json.dumps(payload["record_id"])
+        assert json.loads(json.dumps(payload))["record_id"] == record.record_id

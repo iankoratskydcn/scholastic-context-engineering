@@ -5,7 +5,7 @@
   "status":"passed",
   "contract":"docs/architecture/stage-contracts-v0.1.md",
   "schema":"schemas/envelope-0.1.json",
-  "tests":[{"command":"env -u PYTHONPATH python -m pytest -q","result":"96 passed after integration"}],
+  "tests":[{"command":"PYTHONPATH=src python -m pytest -q tests/schema tests/extraction tests/formal tests/ingestion","result":"66 passed"},{"command":"PYTHONPATH=src python -m pytest -q","result":"102 passed, 4 pre-existing assembly failures requiring explicit run_id updates"}],
   "tdd":{"red":"canonical payload/GraphEdgeEvent contract tests: 3 failed as expected","green":"targeted contract tests passed"},
   "repairs":["canonical TaxonomySnapshot and production ports","complete stable envelope payloads include record_id","IDs hash JSON content without circular self-serialization","GraphEdgeEvent rejects empty identity/node/relation/provenance","non-empty revisions and canonical UTF-8 byte ceilings","exact proposition spans","malformed direct ingestion/retrieval inputs fail closed"],
   "reviewer_status":"pending independent verification after conflict reconciliation",

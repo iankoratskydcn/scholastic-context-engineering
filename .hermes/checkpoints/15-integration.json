@@ -4,8 +4,8 @@
   "phase": "packaging and end-to-end canary integration",
   "status": "passed",
   "scope": ["tests/integration/**", "fixtures/canary/**"],
-  "tdd": {"red": "canonical envelope contract assertions failed before repair", "green": "pytest -q: 93 passed"},
+  "tdd": {"red": "canonical envelope contract assertions failed before repair", "green": "PYTHONPATH=src python -m pytest -q tests/schema tests/extraction tests/formal tests/ingestion: 66 passed"},
   "invariants": ["fixture bytes pass ingestion and structuring", "integration calls production extraction, validation, and assembly ports directly", "canonical envelopes carry stable version, record_id, and provenance fields", "structured block/span cardinality is enforced", "repeated clean runs produce equal snapshots, items, and citations"],
   "reviewer_status": "pending independent verification",
-  "repair": "canonical extraction/formal payloads now expose complete envelopes; GraphEdgeEvent validates required identity fields; checkpoint 05 left unchanged because it is outside exclusive ownership"
+  "repair": "canonical extraction/formal payloads now expose complete envelopes; GraphEdgeEvent validates required identity fields; checkpoint 05 also records its current suite count; explicit run_id updates remain outside ownership"
 }

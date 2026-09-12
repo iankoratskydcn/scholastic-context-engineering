@@ -168,6 +168,12 @@ class Proposition(Envelope):
     role: str = ""
     kind: ClassVar[str] = "proposition"
 
+    def __post_init__(self) -> None:
+        _valid_text(self.proposition_id, "proposition_id")
+        _valid_text(self.text, "text")
+        _valid_text(self.role, "role")
+        super().__post_init__()
+
 
 @dataclass(frozen=True)
 class ArgumentUnit(Envelope):
@@ -180,6 +186,10 @@ class ArgumentUnit(Envelope):
     def __post_init__(self) -> None:
         if not self.argument_id or not self.premises or not self.relation:
             raise EnvelopeError("argument requires ID, premise(s), relation, and provenance")
+        if isinstance(self.conclusion, Proposition):
+            _valid_text(self.conclusion.text, "conclusion")
+        else:
+            _valid_text(self.conclusion, "conclusion")
         super().__post_init__()
 
 
@@ -188,6 +198,11 @@ class TaxonomyMatch(Envelope):
     taxonomy_id: str = ""
     label: str = ""
     kind: ClassVar[str] = "taxonomy_match"
+
+    def __post_init__(self) -> None:
+        _valid_text(self.taxonomy_id, "taxonomy_id")
+        _valid_text(self.label, "label")
+        super().__post_init__()
 
 
 @dataclass(frozen=True)
@@ -238,12 +253,20 @@ class GraphSnapshot(Envelope):
     occurrences: tuple[GraphEdgeEvent, ...] = ()
     kind: ClassVar[str] = "graph_snapshot"
 
+    def __post_init__(self) -> None:
+        _valid_text(self.generation_id, "generation_id")
+        super().__post_init__()
+
 
 @dataclass(frozen=True)
 class CommunitySnapshot(Envelope):
     graph_generation: str = ""
     communities: tuple[tuple[str, ...], ...] = ()
     kind: ClassVar[str] = "community_snapshot"
+
+    def __post_init__(self) -> None:
+        _valid_text(self.graph_generation, "graph_generation")
+        super().__post_init__()
 
 
 @dataclass(frozen=True)

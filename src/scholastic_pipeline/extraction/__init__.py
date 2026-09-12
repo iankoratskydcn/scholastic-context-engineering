@@ -38,7 +38,9 @@ class ExtractionBundle:
 
     def __post_init__(self) -> None:
         inferred_run = self.run_id or getattr(self.argument, "run_id", "") or getattr(self.formalization, "run_id", "")
-        object.__setattr__(self, "run_id", inferred_run or "unknown")
+        if not isinstance(inferred_run, str) or not inferred_run:
+            raise ValueError("run_id must be a non-empty string")
+        object.__setattr__(self, "run_id", inferred_run)
         if not isinstance(self.producer, str) or not self.producer:
             raise ValueError("producer must be a non-empty string")
         if self.schema_version != "0.1":
@@ -204,7 +206,8 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
     text, document_span = prepared
     conditional = _CONDITIONAL.search(text)
     if conditional is None:
-        return ExtractionBundle("ABSTAINED", None, None, "unsupported_argument_form", 0.0, document_span)
+        return ExtractionBundle("ABSTAINED", None, None, "unsupported_argument_form", 0.0, document_span,
+                                run_id=run_id)
     offset = document_span.start
     a_start, a_end = _clean_span(text, conditional.start("antecedent"), conditional.end("antecedent"))
     b_start, b_end = _clean_span(text, conditional.start("consequent"), conditional.end("consequent"))
@@ -214,7 +217,8 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
     conclusion_match = re.match(r"\s*Therefore,\s*(?P<conclusion>[^.!?]+)\.",
                                  remainder[premise_match.end():] if premise_match else "", re.IGNORECASE)
     if not premise_match or not conclusion_match:
-        return ExtractionBundle("ABSTAINED", None, None, "unsupported_argument_form", 0.0, document_span)
+        return ExtractionBundle("ABSTAINED", None, None, "unsupported_argument_form", 0.0, document_span,
+                                run_id=run_id)
     p_start = tail_start + premise_match.start("premise")
     p_end = tail_start + premise_match.end("premise")
     c_offset = tail_start + premise_match.end()
@@ -230,7 +234,8 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
     is_mp = _same_polarity(antecedent, premise) and _same_polarity(consequent, conclusion) and not _negated_key(premise)[0]
     is_mt = _opposite_polarity(consequent, premise) and _opposite_polarity(antecedent, conclusion)
     if not (is_mp or is_mt):
-        return ExtractionBundle("ABSTAINED", None, None, "unsupported_argument_form", 0.0, document_span)
+        return ExtractionBundle("ABSTAINED", None, None, "unsupported_argument_form", 0.0, document_span,
+                                run_id=run_id)
     a = _key(antecedent)
     b = _key(consequent)
     normalized = f"{a} -> {b}"

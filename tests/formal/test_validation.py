@@ -20,24 +20,24 @@ def argument(premises, conclusion):
 
 
 def test_modus_ponens_validates_without_solver():
-    result = validate(argument(["A -> B", "A"], "B"), Formalization("A -> B", provenance=(span("A"),)))
+    result = validate(argument(["A -> B", "A"], "B"), Formalization("A -> B", run_id="run-1", provenance=(span("A"),)))
     assert result.validation_status is ValidationStatus.VALID
     assert result.normalized_form == "A -> B"
 
 
 def test_modus_tollens_validates():
-    result = validate(argument(["A -> B", "¬B"], "¬A"), Formalization("A → B", provenance=(span("A"),)))
+    result = validate(argument(["A -> B", "¬B"], "¬A"), Formalization("A → B", run_id="run-1", provenance=(span("A"),)))
     assert result.validation_status is ValidationStatus.VALID
 
 
 def test_malformed_supported_form_is_invalid_not_unknown():
-    result = validate(argument(["A -> B", "A"], "C"), Formalization("A -> B", provenance=(span("A"),)))
+    result = validate(argument(["A -> B", "A"], "C"), Formalization("A -> B", run_id="run-1", provenance=(span("A"),)))
     assert result.validation_status is ValidationStatus.INVALID
 
 
 @pytest.mark.parametrize("expression", ["A", "A | B", "A -> B -> C", "A & B -> C", ""])
 def test_other_forms_are_closed_as_unknown_or_unsupported(expression):
-    result = validate(argument(["A"], "C"), Formalization(expression, provenance=(span("A"),)))
+    result = validate(argument(["A"], "C"), Formalization(expression, run_id="run-1", provenance=(span("A"),)))
     assert result.validation_status in {ValidationStatus.UNKNOWN, ValidationStatus.UNSUPPORTED}
 
 
@@ -47,7 +47,7 @@ def test_validation_rejects_missing_taxonomy_in_canonical_extraction():
     from scholastic_pipeline.extraction import ExtractionBundle
     bundle = ExtractionBundle("ACCEPTED", argument(["A -> B", "A"], "B"), None, None, 1.0, span("A"))
     with pytest.raises(ValueError):
-        validate(bundle, Formalization("A -> B", provenance=(span("A"),)))
+        validate(bundle, Formalization("A -> B", run_id="run-1", provenance=(span("A"),)))
 
 
 def test_bundle_validation_requires_compatible_taxonomy_and_matching_provenance():
@@ -87,7 +87,12 @@ def test_bundle_validation_requires_taxonomy_source_revision_and_run_compatibili
     with pytest.raises(ValueError, match="provenance"):
         validate(bundle, bundle.formalization)
     with pytest.raises(TypeError):
-        validate({"argument": "not-an-extraction"}, Formalization("A -> B", provenance=(span("A"),)))
+        validate({"argument": "not-an-extraction"}, Formalization("A -> B", run_id="run-1", provenance=(span("A"),)))
 
     with pytest.raises(ValueError):
-        validate(argument(["A -> B", "A"], "B"), Formalization("A -> B", provenance=()))
+        validate(argument(["A -> B", "A"], "B"), Formalization("A -> B", run_id="run-1", provenance=()))
+
+
+def test_formalization_rejects_missing_run_id_instead_of_using_unknown():
+    with pytest.raises(ValueError, match="run_id"):
+        Formalization("A -> B", provenance=(span("A"),))

@@ -1,7 +1,7 @@
 """Local, deterministic text ingestion and paragraph structuring."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import hashlib
 import json
 import re
@@ -25,6 +25,16 @@ class QuarantinedDocument:
     revision: str
     bytes_hash: str
     spans: tuple[EvidenceSpan, ...] = ()
+    record_id: str = field(init=False)
+
+    def __post_init__(self) -> None:
+        payload = {
+            "kind": "quarantined_document", "source_id": self.source_id, "run_id": self.run_id,
+            "status": self.status, "diagnostics": list(self.diagnostics), "document_id": self.document_id,
+            "revision": self.revision, "bytes_hash": self.bytes_hash,
+            "spans": [s.record_id for s in self.spans],
+        }
+        object.__setattr__(self, "record_id", "quarantine-" + _digest("quarantined_document", payload))
 
 
 def _digest(kind: str, payload: dict[str, Any]) -> str:
@@ -123,10 +133,26 @@ def structure_document(document: IngestedDocument | QuarantinedDocument) -> Stru
 
 
 def to_payload(record: IngestedDocument | StructuredDocument | QuarantinedDocument) -> dict[str, Any]:
-    """Return JSON-safe fields for fixtures and callers."""
-    result = {"status": record.status, "document_id": record.document_id, "revision": record.revision,
-              "bytes_hash": record.bytes_hash, "diagnostics": list(record.diagnostics) if hasattr(record, "diagnostics") else []}
-    result["spans"] = [{"source_id": s.source_id, "start": s.start, "end": s.end, "text": s.text, "revision": s.revision} for s in record.spans]
-    if hasattr(record, "blocks"):
-        result["blocks"] = list(record.blocks)
+    """Return a complete JSON-safe canonical envelope payload."""
+    if isinstance(record, (IngestedDocument, StructuredDocument)):
+        result = record.to_payload()
+        if hasattr(record, "blocks"):
+            result["blocks"] = list(record.blocks)
+        return result
+    result = {
+        "kind": "quarantined_document", "schema_version": "0.1", "record_id": record.record_id,
+        "run_id": record.run_id, "producer": "scholastic-context-engineering", "status": record.status,
+        "provenance": [
+            {"source_id": s.source_id, "start": s.start, "end": s.end,
+             "text": s.text, "revision": s.revision, "record_id": s.record_id}
+            for s in record.spans
+        ],
+        "confidence": None, "uncertainty": [], "diagnostics": list(record.diagnostics),
+        "document_id": record.document_id, "revision": record.revision, "bytes_hash": record.bytes_hash,
+        "spans": [
+            {"source_id": s.source_id, "start": s.start, "end": s.end,
+             "text": s.text, "revision": s.revision, "record_id": s.record_id}
+            for s in record.spans
+        ],
+    }
     return result

@@ -24,8 +24,8 @@ class Formalization:
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
-        run = self.run_id or ("" if not self.provenance else "unknown")
-        object.__setattr__(self, "run_id", run)
+        if not isinstance(self.run_id, str) or not self.run_id:
+            raise ValueError("run_id must be a non-empty string")
         if not isinstance(self.expression, str):
             raise ValueError("formalization expression is required")
         if not self.provenance:

@@ -94,3 +94,20 @@ def test_imported_text_is_data_not_code(tmp_path, monkeypatch):
 
     assert structure_document(document).blocks == ("__import__('os').system('touch SHOULD_NOT_EXIST')",)
     assert not (tmp_path / "SHOULD_NOT_EXIST").exists()
+
+
+def test_ingestion_payload_contains_complete_envelope_fields():
+    document = ingest_text("source-01", "Alpha", run_id="run-1")
+    payload = __import__("scholastic_pipeline.ingestion", fromlist=["to_payload"]).to_payload(document)
+    assert {"kind", "schema_version", "record_id", "run_id", "producer", "status",
+            "provenance", "confidence", "uncertainty", "diagnostics"} <= payload.keys()
+    assert payload["record_id"] == document.record_id
+    assert payload["run_id"] == "run-1"
+
+
+def test_ingestion_quarantine_payload_contains_complete_envelope_fields():
+    document = ingest_text("", "text", run_id="run-1")
+    payload = __import__("scholastic_pipeline.ingestion", fromlist=["to_payload"]).to_payload(document)
+    assert {"kind", "schema_version", "record_id", "run_id", "producer", "status",
+            "provenance", "confidence", "uncertainty", "diagnostics"} <= payload.keys()
+    assert payload["record_id"]

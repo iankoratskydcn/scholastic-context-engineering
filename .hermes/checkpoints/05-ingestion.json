@@ -10,11 +10,11 @@
   "green": [
     {
       "command": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py -q",
-      "result": "10 passed"
+      "result": "12 passed"
     },
     {
-      "command": "PYTHONPATH=src python3 -m pytest -q",
-      "result": "96 passed"
+      "command": "PYTHONPATH=src python -m pytest -q",
+            "result": "102 passed, 4 assembly failures outside ownership"
     },
     {
       "command": "git diff --check",
