@@ -17,6 +17,7 @@ def extract_structured_document(document: StructuredDocument) -> ExtractionBundl
     bundle = extract_argument(
         "\n\n".join(document.blocks),
         source_id=source.source_id,
+        source_revision=source.revision,
         run_id=document.run_id,
     )
     argument = bundle.argument

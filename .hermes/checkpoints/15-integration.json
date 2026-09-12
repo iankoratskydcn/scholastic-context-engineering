@@ -3,7 +3,11 @@
   "checkpoint_id": "15-integration",
   "phase": "packaging and end-to-end canary integration",
   "status": "passed",
-  "scope": ["pyproject.toml", "tests/integration/**", "fixtures/canary/**"],
+  "scope": [
+    "pyproject.toml",
+    "tests/integration/**",
+    "fixtures/canary/**"
+  ],
   "tdd": {
     "red": "PYTHONPATH=src python3 -m pytest -q tests/integration/test_canary_pipeline.py (collection failed: test-only integration adapter absent)",
     "green": "env -u PYTHONPATH python3 -m pytest -q (31 passed)"
@@ -17,5 +21,8 @@
     "repeated clean runs produce equal snapshots, items, and citations",
     "pytest resolves src package from checkout without PYTHONPATH"
   ],
-  "reviewer_status": "pending independent verification"
+  "reviewer_status": "pending independent verification",
+  "current_main_tests": "52 passed",
+  "repair": "tests/integration/support.py preserves source_id and source_revision",
+  "review_wave_ref": "docs/evidence/review-wave-01.json"
 }

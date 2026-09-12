@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "review_wave": "deleg_d130b0d1",
+  "status": "blocking_findings",
+  "reviewers": ["contract", "security", "test-reproducibility"],
+  "source_transcripts": [
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_d130b0d1/task-0.log",
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_d130b0d1/task-1.log",
+    "/home/ian-koratsky/.hermes/cache/delegation/live/deleg_d130b0d1/task-2.log"
+  ],
+  "blocking_findings": [
+    "Subclass-specific record identity is omitted from canonical IDs.",
+    "Empty source revisions are accepted and extraction emits revision-less spans.",
+    "SQLite round-trip drops envelope fields and can reclassify rejected records.",
+    "Mixed runs/schema versions are not rejected at storage or retrieval boundaries.",
+    "Partial generations can be marked complete without completeness proof.",
+    "Retrieval lacks absolute ceilings and admissibility/status checks.",
+    "Malformed Unicode can crash extraction instead of abstaining.",
+    "Documented python -m pytest command fails without PYTHONPATH.",
+    "No true end-to-end canary test exists; current stage representations are incompatible."
+  ],
+  "disposition": "repair_wave_open; no release or push claim",
+  "next_gate": "independent verification after repairs are integrated"
+}
