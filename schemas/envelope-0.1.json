@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/iankoratskydcn/scholastic-context-engineering/schemas/envelope-0.1.json",
+  "title": "Canonical envelope v0.1",
+  "type": "object",
+  "required": ["schema_version", "record_id", "run_id", "producer", "status", "provenance", "confidence", "uncertainty", "diagnostics"],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "record_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "producer": {"type": "string", "minLength": 1},
+    "status": {"enum": ["ACCEPTED", "QUARANTINED", "REJECTED", "ABSTAINED"]},
+    "provenance": {"type": "array", "minItems": 1},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "uncertainty": {"type": "array", "items": {"type": "string"}},
+    "diagnostics": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

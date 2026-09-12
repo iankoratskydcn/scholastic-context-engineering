@@ -1,0 +1,13 @@
+{
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "02-ir-schema",
+  "phase": "canonical IR and stage contract freeze",
+  "status": "passed",
+  "contract": "docs/architecture/stage-contracts-v0.1.md",
+  "schema": "schemas/envelope-0.1.json",
+  "tests": [
+    "tests/schema/test_contracts.py: 4 passed"
+  ],
+  "reviewer_status": "pending independent review wave",
+  "next_allowed_task": "vertical implementation slice"
+}
