@@ -50,6 +50,22 @@ def test_malformed_identity_is_quarantined():
     assert result.spans == ()
 
 
+def test_malformed_source_id_is_quarantined_before_identity_hashing():
+    for source_id in (object(), "bad\ud800"):
+        result = ingest_text(source_id, "text", run_id="run-1")
+        assert result.status == RecordStatus.QUARANTINED.value
+        assert result.spans == ()
+        assert "source_id" in " ".join(result.diagnostics)
+
+
+def test_structure_document_refuses_none_and_malformed_inputs():
+    for document in (None, object()):
+        result = structure_document(document)
+        assert result.status == RecordStatus.QUARANTINED.value
+        assert result.spans == ()
+        assert "document" in " ".join(result.diagnostics).lower()
+
+
 def test_empty_source_is_quarantined():
     for source in ("", b""):
         result = ingest_text("source-01", source, run_id="run-1")

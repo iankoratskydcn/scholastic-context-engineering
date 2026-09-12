@@ -5,7 +5,7 @@ import re
 from collections.abc import Mapping
 
 from scholastic_pipeline.schema import (
-    EvidenceSpan, GraphSnapshot, MAX_RETRIEVAL_QUERY_BYTES, MAX_SPAN_TEXT_BYTES,
+    EvidenceSpan, GraphEdgeEvent, GraphSnapshot, MAX_RETRIEVAL_QUERY_BYTES, MAX_SPAN_TEXT_BYTES,
     RecordStatus, RetrievalContext, RetrievalRequest,
 )
 
@@ -94,6 +94,23 @@ def _input_bytes(request: RetrievalRequest, snapshot: GraphSnapshot) -> int:
 def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
              current_revisions: Mapping[str, str] | None = None) -> RetrievalContext:
     """Return bounded, admissible matching occurrences in stable order."""
+    if not isinstance(request, RetrievalRequest):
+        return _refusal(request, "retrieval request is malformed")
+    if not isinstance(snapshot, GraphSnapshot):
+        return _refusal(request, "retrieval snapshot is malformed")
+    if not isinstance(request.budget, int) or isinstance(request.budget, bool):
+        return _refusal(request, "retrieval budget is malformed")
+    if type(snapshot.occurrences) is not tuple or any(
+        not isinstance(event, GraphEdgeEvent) for event in snapshot.occurrences
+    ):
+        return _refusal(request, "retrieval snapshot occurrences are malformed")
+    if type(request.provenance) is not tuple or type(snapshot.provenance) is not tuple:
+        return _refusal(request, "retrieval provenance is malformed")
+    for event in snapshot.occurrences:
+        if not isinstance(event.edge_instance_id, str) or not event.edge_instance_id:
+            return _refusal(request, "retrieval snapshot occurrences are malformed")
+        if type(event.provenance) is not tuple:
+            return _refusal(request, "retrieval snapshot occurrences are malformed")
     if request.budget <= 0:
         return _refusal(request, "retrieval budget must be positive")
     if request.budget > MAX_RETRIEVAL_BUDGET:

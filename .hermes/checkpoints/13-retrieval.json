@@ -3,12 +3,28 @@
   "checkpoint_id": "13-retrieval",
   "phase": "bounded deterministic retrieval boundary repair",
   "status": "passed",
-  "scope": ["src/scholastic_pipeline/retrieval/**", "src/scholastic_pipeline/schema/**", "tests/retrieval/**"],
+  "scope": [
+    "src/scholastic_pipeline/retrieval/**",
+    "src/scholastic_pipeline/schema/**",
+    "tests/retrieval/**"
+  ],
   "tdd": {
-    "red": "PYTHONPATH=src python3 -m pytest targeted adversarial tests -q: 6 failed; non-string and surrogate RetrievalRequest construction raised stable-ID serialization errors, malformed structured extraction raised EnvelopeError, cardinality mismatch was silently accepted, taxonomy provenance mismatch was accepted, and oversized ingestion raised EnvelopeError",
-    "green": "PYTHONPATH=src python3 -m pytest tests/retrieval -q: 20 passed"
+    "red": "PYTHONPATH=src python3 -m pytest targeted adversarial tests -q: 6 failed; forged/non-snapshot inputs, forged occurrences, arbitrary request, malformed source_id, and None/malformed document raised uncaught exceptions",
+    "green": "PYTHONPATH=src python3 -m pytest tests/retrieval -q: 24 passed"
   },
-  "invariants": ["absolute budget ceiling enforced", "canonical UTF-8 query, input, output, and span ceilings enforced", "non-string, surrogate, empty, and oversized queries refuse without downstream string operations", "malformed spans refuse before string operations or encoding", "request and snapshot run/schema/status must be admissible", "event envelopes must match snapshot run/schema/provenance scope", "missing or stale provenance refuses", "no-match returns valid empty context", "stable score and edge-ID ordering preserved", "prompt-like text remains inert data", "structured block/span cardinality and taxonomy run/provenance mismatches abstain fail closed"],
-  "evidence": "PYTHONPATH=src python3 -m pytest -q: 85 passed; git diff --check: PASS",
+  "invariants": [
+    "absolute budget ceiling enforced",
+    "canonical UTF-8 query, input, output, and span ceilings enforced",
+    "non-string, surrogate, empty, and oversized queries refuse without downstream string operations",
+    "malformed spans refuse before string operations or encoding",
+    "request and snapshot run/schema/status must be admissible",
+    "forged requests, snapshots, occurrences, and provenance containers refuse before iteration",
+    "event envelopes must match snapshot run/schema/provenance scope",
+    "missing or stale provenance refuses",
+    "no-match returns valid empty context",
+    "stable score and edge-ID ordering preserved",
+    "prompt-like text remains inert data"
+  ],
+  "evidence": "PYTHONPATH=src python3 -m pytest -q: 96 passed; git diff --check: PASS",
   "reviewer_status": "pending independent verification"
 }

@@ -51,8 +51,27 @@ def _source_bytes(source: str | bytes) -> tuple[bytes, str | None]:
     return raw, None
 
 
+def _quarantine(source_id: object, run_id: object, reason: str) -> QuarantinedDocument:
+    """Build a safe quarantine record without interpreting hostile identity data."""
+    safe_source_id = source_id if isinstance(source_id, str) and not any(
+        0xD800 <= ord(char) <= 0xDFFF for char in source_id
+    ) else ""
+    safe_run_id = run_id if isinstance(run_id, str) and not any(
+        0xD800 <= ord(char) <= 0xDFFF for char in run_id
+    ) else ""
+    return QuarantinedDocument(
+        safe_source_id, safe_run_id, RecordStatus.QUARANTINED.value, (reason,),
+        "doc-quarantined", "rev-quarantined", "0" * 64,
+    )
+
+
 def ingest_text(source_id: str, source: str | bytes, *, run_id: str) -> IngestedDocument | QuarantinedDocument:
     """Decode local text strictly and emit one exact source span."""
+    if (not isinstance(source_id, str) or not source_id
+            or any(0xD800 <= ord(char) <= 0xDFFF for char in source_id)):
+        return _quarantine(source_id, run_id, "source_id is malformed")
+    if not isinstance(run_id, str) or not run_id or any(0xD800 <= ord(char) <= 0xDFFF for char in run_id):
+        return _quarantine(source_id, run_id, "run_id is malformed")
     raw, problem = _source_bytes(source)
     if not raw:
         problem = problem or "empty source is not admissible"
@@ -76,9 +95,17 @@ def ingest_text(source_id: str, source: str | bytes, *, run_id: str) -> Ingested
 
 def structure_document(document: IngestedDocument | QuarantinedDocument) -> StructuredDocument | QuarantinedDocument:
     """Split accepted text on blank lines, retaining exact source offsets."""
+    if isinstance(document, QuarantinedDocument):
+        return document
+    if not isinstance(document, IngestedDocument):
+        return _quarantine("", "", "document is malformed")
     if document.status != RecordStatus.ACCEPTED.value:
         return document
+    if not isinstance(document.spans, tuple) or len(document.spans) != 1:
+        return _quarantine(getattr(document, "document_id", ""), document.run_id, "document spans are malformed")
     source = document.spans[0]
+    if not isinstance(source, EvidenceSpan) or not isinstance(source.text, str):
+        return _quarantine(getattr(source, "source_id", ""), document.run_id, "document span is malformed")
     blocks: list[str] = []
     spans: list[EvidenceSpan] = []
     for match in re.finditer(r"[^\n](?:.*?[^\n])?(?=(?:\n[ \t]*\n)|$)", source.text, re.DOTALL):

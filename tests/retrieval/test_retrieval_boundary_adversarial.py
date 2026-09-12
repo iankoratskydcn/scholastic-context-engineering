@@ -97,3 +97,27 @@ def test_retrieval_refuses_malformed_span_before_string_operations():
     object.__setattr__(snap.occurrences[0], "provenance", (evidence,))
     result = retrieve(request(), snap)
     assert result.refusal == "retrieval provenance span is malformed"
+
+
+def test_retrieval_refuses_forged_snapshot_before_iterating_occurrences():
+    snap = snapshot([edge("a", "alpha")])
+    object.__setattr__(snap, "occurrences", object())
+    result = retrieve(request(), snap)
+    assert result.refusal == "retrieval snapshot occurrences are malformed"
+
+
+def test_retrieval_refuses_non_snapshot_without_uncaught_exception():
+    result = retrieve(request(), object())
+    assert result.refusal == "retrieval snapshot is malformed"
+
+
+def test_retrieval_refuses_forged_occurrence_before_iteration():
+    snap = snapshot([edge("a", "alpha")])
+    object.__setattr__(snap, "occurrences", (object(),))
+    result = retrieve(request(), snap)
+    assert result.refusal == "retrieval snapshot occurrences are malformed"
+
+
+def test_retrieval_refuses_arbitrary_request_without_uncaught_exception():
+    result = retrieve(object(), snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval request is malformed"

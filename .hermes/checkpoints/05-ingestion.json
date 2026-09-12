@@ -1,18 +1,20 @@
 {
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "05-ingestion",
   "lane": "ingestion",
   "status": "complete",
   "red": {
-    "command": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py::test_source_that_exceeds_span_ceiling_is_quarantined_before_span_construction -q",
-    "result": "1 failed: source larger than MAX_SPAN_TEXT_BYTES raised EnvelopeError during EvidenceSpan construction"
+    "command": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py::test_malformed_source_id_is_quarantined_before_identity_hashing tests/ingestion/test_text_pipeline.py::test_structure_document_refuses_none_and_malformed_inputs -q",
+    "result": "2 failed: malformed source_id reached identity digest serialization and structure_document(None) raised AttributeError"
   },
   "green": [
     {
       "command": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py -q",
-      "result": "8 passed"
+      "result": "10 passed"
     },
     {
       "command": "PYTHONPATH=src python3 -m pytest -q",
-      "result": "85 passed"
+      "result": "96 passed"
     },
     {
       "command": "git diff --check",
