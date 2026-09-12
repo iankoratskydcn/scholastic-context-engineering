@@ -6,14 +6,16 @@
   "contract": "docs/architecture/stage-contracts-v0.1.md",
   "schema": "schemas/envelope-0.1.json",
   "tests": [
-    "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py -q: 8 passed",
-    "PYTHONPATH=src python -m pytest -q: 57 passed"
+    "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py tests/schema/test_resource_bounds_adversarial.py -q: 11 passed",
+    "PYTHONPATH=src python -m pytest -q: 62 passed"
   ],
   "repairs": [
     "TaxonomySnapshot is a canonical immutable provenance-bearing record",
     "production ports reject wrong record types instead of coercing them",
-    "canonical IDs and payloads retain envelope and subclass fields"
+    "canonical IDs and payloads retain envelope and subclass fields",
+    "non-empty string revisions are required for EvidenceSpan and document spans",
+    "EvidenceSpan and aggregate source text have canonical UTF-8 byte ceilings"
   ],
-  "reviewer_status": "pending independent review wave",
-  "next_allowed_task": "vertical implementation slice"
+  "reviewer_status": "pending independent verification wave after repair integration",
+  "next_allowed_task": "independent verification and generation-stage decision"
 }

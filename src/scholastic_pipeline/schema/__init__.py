@@ -12,6 +12,8 @@ from .models import (
     RetrievalContext,
     RetrievalRequest,
     SCHEMA_VERSION,
+    MAX_SOURCE_TEXT_BYTES,
+    MAX_SPAN_TEXT_BYTES,
     StructuredDocument,
     TaxonomyMatch,
     TaxonomySnapshot,
@@ -23,6 +25,7 @@ __all__ = [
     "ArgumentUnit", "CommunitySnapshot", "Envelope", "EnvelopeError",
     "EvidenceSpan", "GraphEdgeEvent", "GraphSnapshot", "IngestedDocument",
     "Proposition", "RecordStatus", "RetrievalContext", "RetrievalRequest",
-    "SCHEMA_VERSION", "StructuredDocument", "TaxonomyMatch", "TaxonomySnapshot", "ValidationResult",
+    "SCHEMA_VERSION", "MAX_SOURCE_TEXT_BYTES", "MAX_SPAN_TEXT_BYTES",
+    "StructuredDocument", "TaxonomyMatch", "TaxonomySnapshot", "ValidationResult",
     "ValidationStatus",
 ]

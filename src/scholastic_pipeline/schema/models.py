@@ -8,6 +8,8 @@ import json
 from typing import Any, ClassVar
 
 SCHEMA_VERSION = "0.1"
+MAX_SOURCE_TEXT_BYTES = 1_048_576
+MAX_SPAN_TEXT_BYTES = 65_536
 
 
 class EnvelopeError(ValueError):
@@ -70,6 +72,8 @@ class EvidenceSpan:
         _valid_text(self.source_id, "source_id")
         _valid_text(self.revision, "revision")
         _valid_text(self.text, "text", required=False)
+        if len(self.text.encode("utf-8")) > MAX_SPAN_TEXT_BYTES:
+            raise EnvelopeError("text exceeds absolute byte ceiling")
         if not isinstance(self.start, int) or not isinstance(self.end, int):
             raise EnvelopeError("source span bounds must be integers")
         if self.start < 0 or self.end < self.start:
@@ -132,6 +136,8 @@ class IngestedDocument(Envelope):
             raise EnvelopeError("document identity, revision, and SHA-256 hash are required")
         if not self.spans:
             raise EnvelopeError("ingested document requires ordered spans")
+        if sum(len(span.text.encode("utf-8")) for span in self.spans) > MAX_SOURCE_TEXT_BYTES:
+            raise EnvelopeError("source text exceeds absolute byte ceiling")
         if not self.provenance:
             object.__setattr__(self, "provenance", self.spans)
         if any(span.revision != self.revision for span in self.spans):

@@ -4,11 +4,17 @@ from __future__ import annotations
 import re
 from collections.abc import Mapping
 
-from scholastic_pipeline.schema import GraphSnapshot, RecordStatus, RetrievalContext, RetrievalRequest
+from scholastic_pipeline.schema import (
+    GraphSnapshot, MAX_SPAN_TEXT_BYTES, RecordStatus, RetrievalContext,
+    RetrievalRequest,
+)
 
 
 _TOKEN = re.compile(r"[\w]+", re.UNICODE)
 MAX_RETRIEVAL_BUDGET = 100
+MAX_RETRIEVAL_QUERY_BYTES = 16_384
+MAX_RETRIEVAL_INPUT_BYTES = 4_194_304
+MAX_RETRIEVAL_OUTPUT_BYTES = 1_048_576
 
 
 def _tokens(text: str) -> set[str]:
@@ -24,6 +30,20 @@ def _scope(spans) -> frozenset[tuple[str, str]]:
     return frozenset((span.source_id, span.revision) for span in spans)
 
 
+def _span_bytes(spans) -> int:
+    return sum(len(span.text.encode("utf-8")) for span in spans)
+
+
+def _has_oversized_span(spans) -> bool:
+    return any(len(span.text.encode("utf-8")) > MAX_SPAN_TEXT_BYTES for span in spans)
+
+
+def _input_bytes(request: RetrievalRequest, snapshot: GraphSnapshot) -> int:
+    return (len(request.query.encode("utf-8")) + _span_bytes(request.provenance)
+            + _span_bytes(snapshot.provenance)
+            + sum(_span_bytes(event.provenance) for event in snapshot.occurrences))
+
+
 def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
              current_revisions: Mapping[str, str] | None = None) -> RetrievalContext:
     """Return bounded, admissible matching occurrences in stable order."""
@@ -33,6 +53,8 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
         return _refusal(request, "retrieval budget exceeds absolute ceiling")
     if not request.query.strip():
         return _refusal(request, "retrieval query is empty")
+    if len(request.query.encode("utf-8")) > MAX_RETRIEVAL_QUERY_BYTES:
+        return _refusal(request, "retrieval query exceeds absolute byte ceiling")
     if request.status != RecordStatus.ACCEPTED.value or snapshot.status != RecordStatus.ACCEPTED.value:
         return _refusal(request, "retrieval status is not admissible")
     if request.run_id != snapshot.run_id:
@@ -47,6 +69,12 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
     snapshot_scope = _scope(snapshot.provenance)
     if request_scope != snapshot_scope:
         return _refusal(request, "retrieval provenance scope does not match snapshot")
+    all_spans = (*request.provenance, *snapshot.provenance,
+                 *(span for event in snapshot.occurrences for span in event.provenance))
+    if _has_oversized_span(all_spans):
+        return _refusal(request, "retrieval span exceeds absolute byte ceiling")
+    if _input_bytes(request, snapshot) > MAX_RETRIEVAL_INPUT_BYTES:
+        return _refusal(request, "retrieval input exceeds absolute byte ceiling")
     for span in (*request.provenance, *snapshot.provenance):
         if not span.source_id or not span.revision:
             return _refusal(request, "retrieval provenance is incomplete")
@@ -76,6 +104,9 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
 
     ranked.sort(key=lambda row: (row[0], row[1]))
     selected = ranked[:request.budget]
+    output_bytes = sum(len(row[2].encode("utf-8")) for row in selected)
+    if output_bytes > MAX_RETRIEVAL_OUTPUT_BYTES:
+        return _refusal(request, "retrieval output exceeds absolute byte ceiling")
     return RetrievalContext(items=tuple(row[2] for row in selected),
                             citations=tuple(span for row in selected for span in row[3]),
                             provenance=request.provenance, run_id=request.run_id)
