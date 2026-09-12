@@ -3,26 +3,9 @@
   "checkpoint_id": "15-integration",
   "phase": "packaging and end-to-end canary integration",
   "status": "passed",
-  "scope": [
-    "pyproject.toml",
-    "tests/integration/**",
-    "fixtures/canary/**"
-  ],
-  "tdd": {
-    "red": "PYTHONPATH=src python3 -m pytest -q tests/integration/test_canary_pipeline.py (collection failed: test-only integration adapter absent)",
-    "green": "env -u PYTHONPATH python3 -m pytest -q (31 passed)"
-  },
-  "invariants": [
-    "fixture bytes pass ingestion and structuring",
-    "text-only extraction is bridged explicitly in tests/integration/support.py",
-    "formal validation remains VALID without changing production contracts",
-    "SQLite generation and deterministic retrieval complete",
-    "hostile prompt-like text is treated as retrievable untrusted evidence",
-    "repeated clean runs produce equal snapshots, items, and citations",
-    "pytest resolves src package from checkout without PYTHONPATH"
-  ],
+  "scope": ["tests/integration/**", "fixtures/canary/**"],
+  "tdd": {"red": "Integration collection failed because production ports and taxonomy record were absent.", "green": "PYTHONPATH=src python -m pytest -q -> 57 passed"},
+  "invariants": ["fixture bytes pass ingestion and structuring", "integration calls production extraction, validation, and assembly ports directly", "test-only support adapters removed", "SQLite generation and deterministic retrieval complete", "hostile prompt-like text remains untrusted evidence", "repeated clean runs produce equal snapshots, items, and citations"],
   "reviewer_status": "pending independent verification",
-  "current_main_tests": "52 passed",
-  "repair": "tests/integration/support.py preserves source_id and source_revision",
-  "review_wave_ref": "docs/evidence/review-wave-01.json"
+  "repair": "tests/integration/support.py removed; canonical TaxonomySnapshot is supplied explicitly"
 }

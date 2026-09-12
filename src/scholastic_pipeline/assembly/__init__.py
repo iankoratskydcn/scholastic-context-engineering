@@ -8,6 +8,18 @@ from typing import Iterable
 from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, GraphEdgeEvent, ValidationResult, RecordStatus
 
 
+def assemble_extraction(extraction: object, validation: ValidationResult) -> tuple[GraphEdgeEvent, ...]:
+    """Production assembly port consuming the canonical extraction bundle."""
+    from scholastic_pipeline.extraction import ExtractionBundle
+    if not isinstance(extraction, ExtractionBundle):
+        raise TypeError("assembly requires ExtractionBundle")
+    if not isinstance(validation, ValidationResult):
+        raise TypeError("assembly requires ValidationResult")
+    if extraction.argument is None or extraction.taxonomy is None or extraction.provenance is None:
+        raise ValueError("assembly requires an accepted extraction with taxonomy")
+    return assemble_edge_events(extraction.argument, validation, provenance=(extraction.provenance,))
+
+
 def _node_id(value: object) -> str:
     return value.proposition_id if hasattr(value, "proposition_id") else str(value)
 
@@ -67,6 +79,6 @@ def assemble_edge_events(
         for premise in argument.premises
     )
 
-assemble = assemble_edge_events
+assemble = assemble_extraction
 
-__all__ = ["assemble", "assemble_edge_events"]
+__all__ = ["assemble", "assemble_edge_events", "assemble_extraction"]

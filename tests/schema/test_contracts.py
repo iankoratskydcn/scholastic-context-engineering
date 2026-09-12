@@ -6,6 +6,7 @@ from scholastic_pipeline.schema import (
     EnvelopeError,
     IngestedDocument,
     ValidationStatus,
+    TaxonomySnapshot,
 )
 
 def test_envelope_requires_stable_ids_and_provenance():
@@ -32,6 +33,13 @@ def test_evidence_span_requires_non_empty_string_revision():
     for revision in ("", None, 42):
         with pytest.raises(EnvelopeError):
             EvidenceSpan("source-1", 0, 1, "A", revision=revision)
+
+
+def test_taxonomy_snapshot_is_canonical_and_requires_supported_ids():
+    snapshot = TaxonomySnapshot(snapshot_id="taxonomy-1", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+                                run_id="run-1", provenance=(EvidenceSpan("taxonomy", 0, 1, "T", "rev-1"),))
+    assert snapshot.record_id
+    assert snapshot.supported_taxonomy_ids == ("src.core_initial_pass.003.l9",)
 
 
 def test_record_id_changes_with_subclass_content_and_identity():

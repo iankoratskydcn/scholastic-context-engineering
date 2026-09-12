@@ -1,7 +1,12 @@
 import pytest
 
+from dataclasses import replace
+
 from scholastic_pipeline.formal import Formalization, validate
-from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, Proposition, ValidationStatus
+from scholastic_pipeline.extraction import ExtractionBundle
+from scholastic_pipeline.schema import (
+    ArgumentUnit, EvidenceSpan, Proposition, StructuredDocument, TaxonomyMatch, TaxonomySnapshot, ValidationStatus,
+)
 
 
 def span(text="A", start=0):
@@ -36,6 +41,18 @@ def test_other_forms_are_closed_as_unknown_or_unsupported(expression):
     assert result.validation_status in {ValidationStatus.UNKNOWN, ValidationStatus.UNSUPPORTED}
 
 
-def test_missing_formalization_provenance_is_rejected():
+
+
+def test_validation_rejects_missing_taxonomy_in_canonical_extraction():
+    from scholastic_pipeline.extraction import ExtractionBundle
+    bundle = ExtractionBundle("ACCEPTED", argument(["A -> B", "A"], "B"), None, None, 1.0, span("A"))
+    with pytest.raises(ValueError):
+        validate(bundle, Formalization("A -> B", provenance=(span("A"),)))
+
+
+def test_validation_rejects_wrong_canonical_input_type():
+    with pytest.raises(TypeError):
+        validate({"argument": "not-an-extraction"}, Formalization("A -> B", provenance=(span("A"),)))
+
     with pytest.raises(ValueError):
         validate(argument(["A -> B", "A"], "B"), Formalization("A -> B", provenance=()))

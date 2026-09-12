@@ -2,13 +2,13 @@ from pathlib import Path
 
 import pytest
 
-from scholastic_pipeline.assembly import assemble_edge_events
+from scholastic_pipeline.assembly import assemble_extraction
 from scholastic_pipeline.backends.reference import ReferenceSQLiteBackend
+from scholastic_pipeline.extraction import extract_structured_document
 from scholastic_pipeline.formal import Formalization, validate
 from scholastic_pipeline.ingestion import ingest_text, structure_document
 from scholastic_pipeline.retrieval import retrieve
-from scholastic_pipeline.schema import EvidenceSpan, RecordStatus, RetrievalRequest, StructuredDocument, ValidationStatus
-from integration.support import extract_structured_document, formal_argument
+from scholastic_pipeline.schema import EvidenceSpan, RecordStatus, RetrievalRequest, StructuredDocument, TaxonomySnapshot, ValidationStatus
 
 
 FIXTURE = Path(__file__).parents[2] / "fixtures" / "canary" / "canary.txt"
@@ -22,28 +22,27 @@ def run_canary(path: Path):
     assert ingested.status == RecordStatus.ACCEPTED.value
     structured = structure_document(ingested)
     assert isinstance(structured, StructuredDocument)
-    extracted = extract_structured_document(structured)
+    source = structured.spans[0]
+    taxonomy = TaxonomySnapshot(
+        snapshot_id="argument-form-taxonomy-c013edcf0fe87670",
+        supported_taxonomy_ids=("src.core_initial_pass.003.l9", "src.core_initial_pass.004.l10"),
+        run_id=RUN_ID, provenance=(source,),
+    )
+    extracted = extract_structured_document(structured, taxonomy)
     assert extracted.status == RecordStatus.ACCEPTED.value
     assert extracted.argument is not None
     assert extracted.taxonomy is not None
 
-    formal = Formalization(
-        "the archive is indexed -> retrieval is deterministic",
-        provenance=extracted.argument.provenance,
-    )
     validation = validate(
-        formal_argument(extracted.argument, "the archive is indexed -> retrieval is deterministic"),
-        formal,
-        extracted.taxonomy,
+        extracted,
+        Formalization(
+            "the archive is indexed -> retrieval is deterministic",
+            provenance=extracted.argument.provenance,
+        ),
     )
     assert validation.validation_status is ValidationStatus.VALID
 
-    events = assemble_edge_events(
-        extracted.argument,
-        validation,
-        provenance=(extracted.provenance,),
-        taxonomy_label=extracted.taxonomy.label,
-    )
+    events = assemble_extraction(extracted, validation)
     backend = ReferenceSQLiteBackend(current_revisions={SOURCE_ID: ingested.revision})
     try:
         snapshot = backend.write_generation("canary-generation", events)

@@ -175,6 +175,22 @@ class TaxonomyMatch(Envelope):
 
 
 @dataclass(frozen=True)
+class TaxonomySnapshot(Envelope):
+    """Immutable taxonomy authority supplied to production extraction."""
+    snapshot_id: str = ""
+    supported_taxonomy_ids: tuple[str, ...] = ()
+    kind: ClassVar[str] = "taxonomy_snapshot"
+
+    def __post_init__(self) -> None:
+        _valid_text(self.snapshot_id, "snapshot_id")
+        if not self.supported_taxonomy_ids or any(
+            not isinstance(value, str) or not value for value in self.supported_taxonomy_ids
+        ):
+            raise EnvelopeError("taxonomy snapshot requires supported taxonomy IDs")
+        super().__post_init__()
+
+
+@dataclass(frozen=True)
 class ValidationResult(Envelope):
     validation_status: ValidationStatus = ValidationStatus.UNKNOWN
     normalized_form: str = ""

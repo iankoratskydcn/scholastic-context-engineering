@@ -1,35 +1,22 @@
 {
   "checkpoint_schema_version": "0.1",
   "checkpoint_id": "06-extraction-boundary",
-  "phase": "extraction and taxonomy canary",
+  "phase": "production extraction and taxonomy canary",
   "status": "passed",
   "contract": "docs/architecture/stage-contracts-v0.1.md",
-  "scope": [
-    "Modus ponens",
-    "Modus tollens",
-    "safe abstention for unsupported and malformed text",
-    "revision-preserving structured input"
-  ],
-  "taxonomy_snapshot_id": "argument-form-taxonomy-c013edcf0fe87670",
-  "taxonomy_candidate_ids": {
-    "modus-ponens": "src.core_initial_pass.003.l9",
-    "modus-tollens": "src.core_initial_pass.004.l10"
-  },
+  "scope": ["StructuredDocument input", "TaxonomySnapshot authority", "modus ponens", "modus tollens", "safe abstention"],
   "red": {
     "command": "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py tests/extraction/test_extractor.py -q",
-    "result": "12 failed, 4 passed before implementation",
-    "evidence": "revision keyword unsupported, malformed inputs raised TypeError, IDs collided, and payload omitted envelope/subclass fields"
+    "result": "collection failed before implementation",
+    "evidence": "TaxonomySnapshot and extract_structured_document production ports were absent"
   },
   "green": {
-    "command": "PYTHONPATH=src python -m pytest -q",
-    "result": "39 passed",
-    "evidence": [
-      "tests/schema/test_contracts.py",
-      "tests/extraction/test_extractor.py",
-      "tests/formal/test_validation.py"
-    ]
+    "command": "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py tests/extraction/test_extractor.py -q",
+    "result": "21 passed"
   },
-  "implementation": "Deterministic extraction accepts StructuredDocument or text plus explicit source_revision; every emitted span carries that revision. Formal-ready representation stores normalized implication as premise zero and exposes Formalization on ExtractionBundle.",
+  "taxonomy_snapshot_id": "argument-form-taxonomy-c013edcf0fe87670",
+  "taxonomy_candidate_ids": {"modus-ponens": "src.core_initial_pass.003.l9", "modus-tollens": "src.core_initial_pass.004.l10"},
+  "implementation": "extract_structured_document consumes only StructuredDocument plus TaxonomySnapshot, preserves source spans/revisions, and abstains for unsupported taxonomy.",
   "reviewer_status": "pending independent verification",
   "issues": []
 }

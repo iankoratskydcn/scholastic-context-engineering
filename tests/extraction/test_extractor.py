@@ -3,12 +3,45 @@ from pathlib import Path
 
 import pytest
 
-from scholastic_pipeline.extraction import extract_argument
+from scholastic_pipeline.extraction import extract_argument, extract_structured_document
 from scholastic_pipeline.formal import validate
-from scholastic_pipeline.schema import EvidenceSpan, StructuredDocument
+from scholastic_pipeline.schema import EvidenceSpan, StructuredDocument, TaxonomySnapshot
 
 
 FIXTURE = Path(__file__).parents[2] / "fixtures" / "canary" / "argument-cases.json"
+
+
+def test_production_extraction_requires_structured_document_and_snapshot():
+    with pytest.raises(TypeError):
+        extract_structured_document("text", None)
+
+
+def test_production_extraction_abstains_for_unsupported_taxonomy_and_preserves_identity():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-9")
+    document = StructuredDocument(document_id="doc", revision="rev-9", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(text,), run_id="test-run")
+    taxonomy = TaxonomySnapshot(snapshot_id="taxonomy", supported_taxonomy_ids=("unknown",),
+                                run_id="test-run", provenance=(source,))
+    result = extract_structured_document(document, taxonomy)
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "unsupported_taxonomy"
+    assert result.provenance == source
+
+
+def test_production_extraction_preserves_exact_document_span_and_revision():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-10")
+    document = StructuredDocument(document_id="doc", revision="rev-10", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(text,), run_id="test-run")
+    taxonomy = TaxonomySnapshot(snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+                                run_id="test-run", provenance=(source,))
+    result = extract_structured_document(document, taxonomy)
+    assert result.status == "ACCEPTED"
+    assert result.provenance == source
+    assert result.argument.provenance == (source,)
+    assert result.taxonomy.provenance == (source,)
+
 
 
 def test_canary_modus_ponens_preserves_spans_roles_and_taxonomy_id():

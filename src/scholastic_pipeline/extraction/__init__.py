@@ -12,7 +12,7 @@ import hashlib
 import re
 from typing import Any
 
-from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, Proposition, StructuredDocument, TaxonomyMatch
+from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, Proposition, StructuredDocument, TaxonomyMatch, TaxonomySnapshot
 
 MAX_SOURCE_CHARS = 1_000_000
 _MP_ID = "src.core_initial_pass.003.l9"
@@ -145,5 +145,21 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
     return ExtractionBundle("ACCEPTED", argument, taxonomy, None, 1.0, document_span, formalization)
 
 
-extract = extract_argument
-__all__ = ["ExtractionBundle", "MAX_SOURCE_CHARS", "extract", "extract_argument"]
+def extract_structured_document(document: StructuredDocument, taxonomy_snapshot: TaxonomySnapshot) -> ExtractionBundle:
+    """Production extraction port: typed document plus explicit taxonomy authority."""
+    if not isinstance(document, StructuredDocument):
+        raise TypeError("extraction requires StructuredDocument")
+    if not isinstance(taxonomy_snapshot, TaxonomySnapshot):
+        raise TypeError("extraction requires TaxonomySnapshot")
+    if taxonomy_snapshot.run_id and taxonomy_snapshot.run_id != document.run_id:
+        raise ValueError("document and taxonomy snapshot run IDs must match")
+    result = extract_argument(document, run_id=document.run_id)
+    if result.status != "ACCEPTED":
+        return result
+    if result.taxonomy is None or result.taxonomy.taxonomy_id not in taxonomy_snapshot.supported_taxonomy_ids:
+        return ExtractionBundle("ABSTAINED", None, None, "unsupported_taxonomy", 0.0, result.provenance)
+    return result
+
+
+extract = extract_structured_document
+__all__ = ["ExtractionBundle", "MAX_SOURCE_CHARS", "extract", "extract_argument", "extract_structured_document"]
