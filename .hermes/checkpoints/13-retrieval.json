@@ -1,0 +1,13 @@
+{
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "13-retrieval",
+  "phase": "bounded deterministic retrieval",
+  "status": "passed",
+  "scope": ["src/scholastic_pipeline/retrieval/**", "tests/retrieval/**"],
+  "tdd": {
+    "red": "PYTHONPATH=src python -m pytest tests/retrieval/test_deterministic.py -q (collection failed: retrieval module absent)",
+    "green": "PYTHONPATH=src python -m pytest tests/retrieval/test_deterministic.py -q (2 passed)"
+  },
+  "invariants": ["stable score and edge-ID tie ordering", "budget bound", "missing provenance refuses", "stale provenance refuses"],
+  "reviewer_status": "pending independent verification"
+}
