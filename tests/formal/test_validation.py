@@ -50,6 +50,20 @@ def test_validation_rejects_missing_taxonomy_in_canonical_extraction():
         validate(bundle, Formalization("A -> B", provenance=(span("A"),)))
 
 
+def test_bundle_validation_requires_compatible_taxonomy_and_matching_provenance():
+    arg = argument(["A -> B", "A"], "B")
+    taxonomy = TaxonomyMatch(taxonomy_id="tax", label="modus", run_id="run-1", provenance=(span("A"),))
+    bundle = ExtractionBundle("ACCEPTED", arg, taxonomy, None, 1.0, span("A"),
+                             Formalization("A -> B", run_id="run-1", provenance=(span("A"),)))
+    assert validate(bundle, bundle.formalization).validation_status is ValidationStatus.VALID
+    wrong = TaxonomyMatch(taxonomy_id="other", label="modus", run_id="run-1", provenance=(span("A"),))
+    with pytest.raises(ValueError):
+        validate(bundle, bundle.formalization, wrong)
+    wrong_run = Formalization("A -> B", run_id="other", provenance=(span("A"),))
+    with pytest.raises(ValueError):
+        validate(bundle, wrong_run)
+
+
 def test_validation_rejects_wrong_canonical_input_type():
     with pytest.raises(TypeError):
         validate({"argument": "not-an-extraction"}, Formalization("A -> B", provenance=(span("A"),)))

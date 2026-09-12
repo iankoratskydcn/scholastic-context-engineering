@@ -35,10 +35,7 @@ def run_canary(path: Path):
 
     validation = validate(
         extracted,
-        Formalization(
-            "the archive is indexed -> retrieval is deterministic",
-            provenance=extracted.argument.provenance,
-        ),
+        extracted.formalization,
     )
     assert validation.validation_status is ValidationStatus.VALID
 

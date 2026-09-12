@@ -118,3 +118,31 @@ def test_oversized_source_abstains_fail_closed():
     result = extract_argument("x" * 1_000_001, source_id="source", source_revision="rev-1", run_id="test-run")
     assert result.status == "ABSTAINED"
     assert result.abstention_reason == "malformed_source"
+
+
+def test_propositions_have_exact_substring_spans_and_bundle_is_canonical():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    result = extract_argument(text, source_id="source", source_revision="rev-11", run_id="test-run")
+    assert result.record_id
+    assert result.schema_version
+    assert result.run_id == "test-run"
+    for proposition in (*result.argument.premises, result.argument.conclusion):
+        span = proposition.provenance[0]
+        assert text[span.start:span.end] == span.text
+        assert span.text != text
+        assert span.revision == "rev-11"
+
+
+def test_structured_extraction_scans_all_blocks_in_order():
+    first = "Background only."
+    second = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    text = first + "\\n\\n" + second
+    spans = (EvidenceSpan("source", 0, len(text), text, revision="rev-12"),
+             EvidenceSpan("source", len(first) + 2, len(first) + 2 + len(second), second, revision="rev-12"))
+    document = StructuredDocument(document_id="doc", revision="rev-12", bytes_hash="a" * 64,
+                                  spans=spans, blocks=(first, second), run_id="test-run")
+    taxonomy = TaxonomySnapshot(snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+                                run_id="test-run", provenance=(spans[0],))
+    result = extract_structured_document(document, taxonomy)
+    assert result.status == "ACCEPTED"
+    assert result.provenance.start == spans[1].start

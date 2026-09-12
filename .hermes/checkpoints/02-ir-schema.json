@@ -14,7 +14,9 @@
     "production ports reject wrong record types instead of coercing them",
     "canonical IDs and payloads retain envelope and subclass fields",
     "non-empty string revisions are required for EvidenceSpan and document spans",
-    "EvidenceSpan and aggregate source text have canonical UTF-8 byte ceilings"
+    "EvidenceSpan and aggregate source text have canonical UTF-8 byte ceilings",
+    "ExtractionBundle and Formalization carry schema version, stable record ID, run, confidence, uncertainty, diagnostics, and status",
+    "propositions retain exact half-open source substring spans"
   ],
   "reviewer_status": "pending independent verification wave after repair integration",
   "next_allowed_task": "independent verification and generation-stage decision"

@@ -36,6 +36,17 @@ def test_assembly_rejects_missing_provenance():
         assemble_edge_events(arg, bad, provenance=())
 
 
+def test_assembly_rejects_mismatched_provenance_and_ids_include_content():
+    arg = make_argument()
+    result = validate(arg, Formalization("A -> C", provenance=(arg.provenance[0],)))
+    with pytest.raises(ValueError):
+        assemble_edge_events(arg, result, provenance=(EvidenceSpan("source-1", 0, 1, "A", revision="other"),))
+    events = assemble_edge_events(arg, result)
+    assert arg.provenance[0].record_id in events[0].edge_instance_id or events[0].edge_instance_id != assemble_edge_events(
+        arg, result, provenance=(arg.provenance[0],),
+    )[0].edge_instance_id
+
+
 def test_assembly_does_not_use_taxonomy_or_frequency_as_proof():
     arg = make_argument()
     result = validate(arg, Formalization("A", provenance=(arg.provenance[0],)))

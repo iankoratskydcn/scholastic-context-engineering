@@ -7,5 +7,5 @@
   "tdd": {"red": "Integration collection failed because production ports and taxonomy record were absent.", "green": "PYTHONPATH=src python -m pytest -q -> 57 passed"},
   "invariants": ["fixture bytes pass ingestion and structuring", "integration calls production extraction, validation, and assembly ports directly", "test-only support adapters removed", "SQLite generation and deterministic retrieval complete", "hostile prompt-like text remains untrusted evidence", "repeated clean runs produce equal snapshots, items, and citations"],
   "reviewer_status": "pending independent verification",
-  "repair": "tests/integration/support.py removed; canonical TaxonomySnapshot is supplied explicitly"
+  "repair": "tests/integration/support.py removed; canonical TaxonomySnapshot and production ExtractionBundle.formalization are supplied directly"
 }

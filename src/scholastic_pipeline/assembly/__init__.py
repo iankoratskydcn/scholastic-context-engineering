@@ -34,8 +34,10 @@ def _unique(spans: Iterable[EvidenceSpan]) -> tuple[EvidenceSpan, ...]:
     return tuple(result)
 
 
-def _edge_id(argument_id: str, source: str, target: str, result: ValidationResult) -> str:
-    payload = [argument_id, source, target, result.record_id, result.validation_status.value]
+def _edge_id(argument_id: str, source: str, target: str, result: ValidationResult,
+             provenance: tuple[EvidenceSpan, ...]) -> str:
+    payload = [argument_id, source, target, result.record_id, result.validation_status.value,
+               [(s.source_id, s.revision, s.start, s.end, s.text) for s in provenance]]
     digest = hashlib.sha256(json.dumps(payload, separators=(",", ":")).encode()).hexdigest()[:24]
     return f"edge-{digest}"
 
@@ -54,6 +56,9 @@ def assemble_edge_events(
     spans = _unique(provenance if provenance is not None else argument.provenance + validation.provenance)
     if not spans:
         raise ValueError("assembly requires provenance")
+    expected = {s.record_id for s in argument.provenance + validation.provenance}
+    if any(s.record_id not in expected for s in spans):
+        raise ValueError("assembly provenance does not match argument and validation")
     if argument.run_id != validation.run_id:
         raise ValueError("argument and validation run IDs must match")
     record_status = {
@@ -69,7 +74,7 @@ def assemble_edge_events(
             run_id=argument.run_id,
             status=record_status,
             provenance=spans,
-            edge_instance_id=_edge_id(argument.argument_id, premise.proposition_id, target, validation),
+            edge_instance_id=_edge_id(argument.argument_id, premise.proposition_id, target, validation, spans),
             source_node_id=premise.proposition_id,
             target_node_id=target,
             relation=argument.relation,

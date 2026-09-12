@@ -7,6 +7,6 @@
   "red": "Canonical ExtractionBundle validation port was absent; new contract tests failed at collection.",
   "green": "PYTHONPATH=src python -m pytest tests/formal tests/assembly -q -> 13 passed",
   "full_suite": "PYTHONPATH=src python -m pytest -q -> 57 passed",
-  "properties": ["validation consumes ExtractionBundle without premise reconstruction", "missing taxonomy is rejected", "wrong input types are rejected", "provenance is preserved", "taxonomy enrichment is non-probative", "no solver dependency"],
+  "properties": ["validation consumes canonical ExtractionBundle and its production Formalization without premise reconstruction", "compatible TaxonomyMatch is required", "source/revision/run provenance must match", "missing taxonomy is rejected", "wrong input types are rejected", "provenance is preserved", "taxonomy enrichment is non-probative", "no solver dependency"],
   "reviewer_status": "pending independent review"
 }

@@ -7,7 +7,7 @@ bundle's Formalization directly to ``formal.validate`` without reconstruction.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import hashlib
 import re
 from typing import Any
@@ -28,6 +28,30 @@ class ExtractionBundle:
     confidence: float
     provenance: EvidenceSpan | None
     formalization: Any = None
+    run_id: str = ""
+    uncertainty: tuple[str, ...] = ()
+    diagnostics: tuple[str, ...] = ()
+    schema_version: str = "0.1"
+    record_id: str = field(init=False)
+
+    def __post_init__(self) -> None:
+        inferred_run = self.run_id or getattr(self.argument, "run_id", "") or getattr(self.formalization, "run_id", "")
+        object.__setattr__(self, "run_id", inferred_run or "unknown")
+        if self.schema_version != "0.1":
+            raise ValueError("unsupported schema version")
+        if self.status not in {"ACCEPTED", "ABSTAINED", "REJECTED", "QUARANTINED"}:
+            raise ValueError("unknown extraction status")
+        if not 0 <= self.confidence <= 1:
+            raise ValueError("confidence must be between 0 and 1")
+        if self.provenance is None and self.status != "ABSTAINED":
+            raise ValueError("extraction bundle requires provenance")
+        payload = {"status": self.status, "argument": self.argument, "taxonomy": self.taxonomy,
+                   "abstention_reason": self.abstention_reason, "confidence": self.confidence,
+                   "provenance": self.provenance, "formalization": self.formalization,
+                   "run_id": self.run_id, "uncertainty": self.uncertainty,
+                   "diagnostics": self.diagnostics, "schema_version": self.schema_version}
+        encoded = repr(payload).encode("utf-8")
+        object.__setattr__(self, "record_id", "extraction-" + hashlib.sha256(encoded).hexdigest()[:24])
 
 
 _CONDITIONAL = re.compile(
@@ -74,11 +98,11 @@ def _proposition(text: str, role: str, run_id: str, evidence: EvidenceSpan) -> P
                        provenance=(evidence,), run_id=run_id, confidence=1.0)
 
 
-def _abstain(reason: str) -> ExtractionBundle:
-    return ExtractionBundle("ABSTAINED", None, None, reason, 0.0, None)
+def _abstain(reason: str, run_id: str = "") -> ExtractionBundle:
+    return ExtractionBundle("ABSTAINED", None, None, reason, 0.0, None, run_id=run_id)
 
 
-def _input_text(source: object, source_id: str, source_revision: str | None) -> tuple[str, EvidenceSpan] | None:
+def _input_text(source: object, source_id: str, source_revision: str | None, base_offset: int = 0) -> tuple[str, EvidenceSpan] | None:
     if isinstance(source, StructuredDocument):
         if not source.spans or any(span.revision != source.revision for span in source.spans):
             return None
@@ -91,21 +115,22 @@ def _input_text(source: object, source_id: str, source_revision: str | None) -> 
         return None
     if len(source) > MAX_SOURCE_CHARS or any(0xD800 <= ord(char) <= 0xDFFF for char in source):
         return None
-    return source, EvidenceSpan(source_id=source_id, start=0, end=len(source), text=source, revision=source_revision)
+    return source, EvidenceSpan(source_id=source_id, start=base_offset, end=base_offset + len(source), text=source, revision=source_revision)
 
 
 def extract_argument(source: str | StructuredDocument, *, source_id: str = "source",
-                     run_id: str = "run", source_revision: str | None = None) -> ExtractionBundle:
+                     run_id: str = "run", source_revision: str | None = None, base_offset: int = 0) -> ExtractionBundle:
     """Extract one canary argument, abstaining on malformed or revisionless input."""
     if not isinstance(run_id, str) or not run_id:
-        return _abstain("malformed_source")
-    prepared = _input_text(source, source_id, source_revision)
+        return _abstain("malformed_source", run_id)
+    prepared = _input_text(source, source_id, source_revision, base_offset)
     if prepared is None:
-        return _abstain("malformed_source")
+        return _abstain("malformed_source", run_id)
     text, document_span = prepared
     conditional = _CONDITIONAL.search(text)
     if conditional is None:
         return ExtractionBundle("ABSTAINED", None, None, "unsupported_argument_form", 0.0, document_span)
+    offset = document_span.start
     a_start, a_end = _clean_span(text, conditional.start("antecedent"), conditional.end("antecedent"))
     b_start, b_end = _clean_span(text, conditional.start("consequent"), conditional.end("consequent"))
     tail_start = conditional.end()
@@ -123,6 +148,10 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
     c_start, c_end = _clean_span(text, c_start, c_end)
     antecedent, consequent = text[a_start:a_end], text[b_start:b_end]
     premise, conclusion = text[p_start:p_end], text[c_start:c_end]
+    conditional_span = EvidenceSpan(document_span.source_id, offset + conditional.start(), offset + conditional.end(),
+                                    text[conditional.start():conditional.end()], document_span.revision)
+    premise_span = EvidenceSpan(document_span.source_id, offset + p_start, offset + p_end, premise, document_span.revision)
+    conclusion_span = EvidenceSpan(document_span.source_id, offset + c_start, offset + c_end, conclusion, document_span.revision)
     is_mp = _same_polarity(antecedent, premise) and _same_polarity(consequent, conclusion) and not _negated_key(premise)[0]
     is_mt = _opposite_polarity(consequent, premise) and _opposite_polarity(antecedent, conclusion)
     if not (is_mp or is_mt):
@@ -132,16 +161,16 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
     normalized = f"{a} -> {b}"
     second_text = a if is_mp else f"¬{b}"
     conclusion_text = b if is_mp else f"¬{a}"
-    first = _proposition(normalized, "premise", run_id, document_span)
-    second = _proposition(second_text, "premise", run_id, document_span)
-    conclusion_prop = _proposition(conclusion_text, "conclusion", run_id, document_span)
+    first = _proposition(normalized, "premise", run_id, conditional_span)
+    second = _proposition(second_text, "premise", run_id, premise_span)
+    conclusion_prop = _proposition(conclusion_text, "conclusion", run_id, conclusion_span)
     argument = ArgumentUnit(argument_id="arg-" + hashlib.sha256(document_span.record_id.encode()).hexdigest()[:24],
                             premises=(first, second), conclusion=conclusion_prop, relation="entails",
                             provenance=(document_span,), run_id=run_id, confidence=1.0)
     taxonomy_id, label = (_MP_ID, "Modus ponens") if is_mp else (_MT_ID, "Modus tollens")
     taxonomy = TaxonomyMatch(taxonomy_id=taxonomy_id, label=label, provenance=(document_span,), run_id=run_id, confidence=1.0)
     from scholastic_pipeline.formal import Formalization
-    formalization = Formalization(normalized, provenance=(document_span,))
+    formalization = Formalization(normalized, provenance=(document_span,), run_id=run_id)
     return ExtractionBundle("ACCEPTED", argument, taxonomy, None, 1.0, document_span, formalization)
 
 
@@ -153,12 +182,20 @@ def extract_structured_document(document: StructuredDocument, taxonomy_snapshot:
         raise TypeError("extraction requires TaxonomySnapshot")
     if taxonomy_snapshot.run_id and taxonomy_snapshot.run_id != document.run_id:
         raise ValueError("document and taxonomy snapshot run IDs must match")
-    result = extract_argument(document, run_id=document.run_id)
-    if result.status != "ACCEPTED":
+    unsupported_taxonomy = False
+    for block, span in zip(document.blocks, document.spans):
+        result = extract_argument(block, source_id=span.source_id, run_id=document.run_id,
+                                  source_revision=document.revision, base_offset=span.start)
+        if result.status != "ACCEPTED":
+            continue
+        if result.taxonomy is None or result.taxonomy.taxonomy_id not in taxonomy_snapshot.supported_taxonomy_ids:
+            unsupported_taxonomy = True
+            continue
         return result
-    if result.taxonomy is None or result.taxonomy.taxonomy_id not in taxonomy_snapshot.supported_taxonomy_ids:
-        return ExtractionBundle("ABSTAINED", None, None, "unsupported_taxonomy", 0.0, result.provenance)
-    return result
+    return ExtractionBundle("ABSTAINED", None, None,
+                            "unsupported_taxonomy" if unsupported_taxonomy else "unsupported_argument_form", 0.0,
+                            document.spans[0], run_id=document.run_id,
+                            diagnostics=("all structured blocks scanned in source order",))
 
 
 extract = extract_structured_document
