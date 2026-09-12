@@ -5,10 +5,10 @@
   "status": "passed",
   "scope": ["src/scholastic_pipeline/retrieval/**", "tests/retrieval/**"],
   "tdd": {
-    "red": "PYTHONPATH=src python -m pytest tests/schema/test_resource_bounds_adversarial.py tests/retrieval/test_retrieval_resource_bounds_adversarial.py -q (5 failed, 4 passed; missing canonical source/span and retrieval byte ceilings were reproduced)",
-    "green": "PYTHONPATH=src python -m pytest tests/retrieval -q (13 passed)"
+    "red": "PYTHONPATH=src python3 -m pytest tests/retrieval/test_retrieval_boundary_adversarial.py tests/retrieval/test_retrieval_resource_bounds_adversarial.py -q (3 new boundary tests failed: non-string query raised AttributeError, surrogate query raised UnicodeEncodeError at envelope construction, malformed span raised TypeError during snapshot construction)",
+    "green": "PYTHONPATH=src python3 -m pytest tests/retrieval -q (17 passed)"
   },
-  "invariants": ["absolute budget ceiling enforced", "canonical UTF-8 query, input, output, and span ceilings enforced", "request and snapshot run/schema/status must be admissible", "event envelopes must match snapshot run/schema/provenance scope", "missing or stale provenance refuses", "empty query refuses", "no-match returns valid empty context", "stable score and edge-ID ordering preserved"],
-  "evidence": "PYTHONPATH=src python -m pytest -q (62 passed); git diff --check (passed)",
+  "invariants": ["absolute budget ceiling enforced", "canonical UTF-8 query, input, output, and span ceilings enforced", "non-string, surrogate, empty, and oversized queries refuse without downstream string operations", "malformed spans refuse before string operations or encoding", "request and snapshot run/schema/status must be admissible", "event envelopes must match snapshot run/schema/provenance scope", "missing or stale provenance refuses", "no-match returns valid empty context", "stable score and edge-ID ordering preserved", "prompt-like text remains inert data"],
+  "evidence": "PYTHONPATH=src python3 -m pytest -q (73 passed); git diff --check (passed)",
   "reviewer_status": "pending independent verification"
 }

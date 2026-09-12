@@ -42,6 +42,12 @@ def test_retrieval_rejects_query_one_utf8_byte_over_ceiling():
     assert result.refusal == "retrieval query exceeds absolute byte ceiling"
 
 
+def test_retrieval_refuses_empty_query_variants_before_string_operations():
+    for query in ("", "   "):
+        result = retrieve(request(query), snapshot([edge("a", "alpha")]))
+        assert result.refusal == "retrieval query is empty"
+
+
 def test_retrieval_accepts_query_at_exact_byte_ceiling():
     query = "a" * MAX_RETRIEVAL_QUERY_BYTES
     result = retrieve(request(query), snapshot([edge("a", "alpha")]))

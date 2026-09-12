@@ -3,7 +3,7 @@ import hashlib
 import pytest
 
 from scholastic_pipeline.ingestion import ingest_text, structure_document
-from scholastic_pipeline.schema import RecordStatus
+from scholastic_pipeline.schema import MAX_SOURCE_TEXT_BYTES, RecordStatus
 
 
 def test_ingest_uses_exact_utf8_bytes_and_deterministic_identity():
@@ -48,6 +48,21 @@ def test_malformed_identity_is_quarantined():
 
     assert result.status == RecordStatus.QUARANTINED.value
     assert result.spans == ()
+
+
+def test_empty_source_is_quarantined():
+    for source in ("", b""):
+        result = ingest_text("source-01", source, run_id="run-1")
+        assert result.status == RecordStatus.QUARANTINED.value
+        assert result.spans == ()
+        assert "empty source" in " ".join(result.diagnostics).lower()
+
+
+def test_oversized_source_is_quarantined_without_constructing_span():
+    result = ingest_text("source-01", b"x" * (MAX_SOURCE_TEXT_BYTES + 1), run_id="run-1")
+    assert result.status == RecordStatus.QUARANTINED.value
+    assert result.spans == ()
+    assert "source text exceeds" in " ".join(result.diagnostics).lower()
 
 
 def test_imported_text_is_data_not_code(tmp_path, monkeypatch):

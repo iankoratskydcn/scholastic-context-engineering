@@ -7,7 +7,7 @@ import json
 import re
 from typing import Any
 
-from scholastic_pipeline.schema import EvidenceSpan, IngestedDocument, RecordStatus, StructuredDocument
+from scholastic_pipeline.schema import EvidenceSpan, IngestedDocument, MAX_SOURCE_TEXT_BYTES, RecordStatus, StructuredDocument
 
 
 @dataclass(frozen=True)
@@ -51,6 +51,10 @@ def _source_bytes(source: str | bytes) -> tuple[bytes, str | None]:
 def ingest_text(source_id: str, source: str | bytes, *, run_id: str) -> IngestedDocument | QuarantinedDocument:
     """Decode local text strictly and emit one exact source span."""
     raw, problem = _source_bytes(source)
+    if not raw:
+        problem = problem or "empty source is not admissible"
+    elif len(raw) > MAX_SOURCE_TEXT_BYTES:
+        problem = problem or "source text exceeds absolute byte ceiling"
     if not source_id:
         problem = problem or "source_id is required"
     if not run_id:

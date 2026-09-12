@@ -56,3 +56,26 @@ def test_retrieval_refuses_missing_snapshot_provenance():
     object.__setattr__(snap, "provenance", ())
     result = retrieve(request(), snap)
     assert result.refusal == "retrieval provenance is missing"
+
+
+def test_retrieval_refuses_non_string_query_without_string_operations():
+    req = request()
+    object.__setattr__(req, "query", object())
+    result = retrieve(req, snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval query must be a string"
+
+
+def test_retrieval_refuses_lone_surrogate_query_without_encoding():
+    req = request()
+    object.__setattr__(req, "query", "bad\ud800")
+    result = retrieve(req, snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval query contains an invalid surrogate"
+
+
+def test_retrieval_refuses_malformed_span_before_string_operations():
+    evidence = span("alpha")
+    object.__setattr__(evidence, "text", object())
+    snap = snapshot([edge("a", "alpha")])
+    object.__setattr__(snap.occurrences[0], "provenance", (evidence,))
+    result = retrieve(request(), snap)
+    assert result.refusal == "retrieval provenance span is malformed"

@@ -5,7 +5,7 @@ import re
 from collections.abc import Mapping
 
 from scholastic_pipeline.schema import (
-    GraphSnapshot, MAX_SPAN_TEXT_BYTES, RecordStatus, RetrievalContext,
+    EvidenceSpan, GraphSnapshot, MAX_SPAN_TEXT_BYTES, RecordStatus, RetrievalContext,
     RetrievalRequest,
 )
 
@@ -22,8 +22,56 @@ def _tokens(text: str) -> set[str]:
 
 
 def _refusal(request: RetrievalRequest, reason: str) -> RetrievalContext:
-    return RetrievalContext(items=(), citations=(), refusal=reason,
-                            provenance=request.provenance, run_id=request.run_id)
+    try:
+        return RetrievalContext(items=(), citations=(), refusal=reason,
+                                provenance=request.provenance, run_id=request.run_id)
+    except Exception:
+        # Hostile envelopes must not turn a refusal into another exception.
+        context = object.__new__(RetrievalContext)
+        object.__setattr__(context, "items", ())
+        object.__setattr__(context, "citations", ())
+        object.__setattr__(context, "refusal", reason)
+        object.__setattr__(context, "provenance", ())
+        object.__setattr__(context, "run_id", getattr(request, "run_id", ""))
+        object.__setattr__(context, "record_id", "")
+        return context
+
+
+def _span_problem(spans) -> str | None:
+    try:
+        for span in spans:
+            if not isinstance(span, EvidenceSpan):
+                return "retrieval provenance span is malformed"
+            if (not isinstance(span.source_id, str) or not span.source_id
+                    or not isinstance(span.revision, str) or not span.revision
+                    or not isinstance(span.text, str)):
+                return "retrieval provenance span is malformed"
+            if any(0xD800 <= ord(char) <= 0xDFFF for char in span.source_id + span.revision + span.text):
+                return "retrieval provenance span is malformed"
+            if len(span.text.encode("utf-8")) > MAX_SPAN_TEXT_BYTES:
+                return "retrieval span exceeds absolute byte ceiling"
+            if (not isinstance(span.start, int) or not isinstance(span.end, int)
+                    or span.start < 0 or span.end < span.start
+                    or span.end - span.start != len(span.text)):
+                return "retrieval provenance span is malformed"
+    except (TypeError, AttributeError, UnicodeError):
+        return "retrieval provenance span is malformed"
+    return None
+
+
+def _query_problem(query) -> str | None:
+    if not isinstance(query, str):
+        return "retrieval query must be a string"
+    if any(0xD800 <= ord(char) <= 0xDFFF for char in query):
+        return "retrieval query contains an invalid surrogate"
+    if not query.strip():
+        return "retrieval query is empty"
+    try:
+        if len(query.encode("utf-8")) > MAX_RETRIEVAL_QUERY_BYTES:
+            return "retrieval query exceeds absolute byte ceiling"
+    except UnicodeError:
+        return "retrieval query contains an invalid surrogate"
+    return None
 
 
 def _scope(spans) -> frozenset[tuple[str, str]]:
@@ -51,10 +99,8 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
         return _refusal(request, "retrieval budget must be positive")
     if request.budget > MAX_RETRIEVAL_BUDGET:
         return _refusal(request, "retrieval budget exceeds absolute ceiling")
-    if not request.query.strip():
-        return _refusal(request, "retrieval query is empty")
-    if len(request.query.encode("utf-8")) > MAX_RETRIEVAL_QUERY_BYTES:
-        return _refusal(request, "retrieval query exceeds absolute byte ceiling")
+    if (problem := _query_problem(getattr(request, "query", None))):
+        return _refusal(request, problem)
     if request.status != RecordStatus.ACCEPTED.value or snapshot.status != RecordStatus.ACCEPTED.value:
         return _refusal(request, "retrieval status is not admissible")
     if request.run_id != snapshot.run_id:
@@ -64,6 +110,10 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
     if not request.provenance or not snapshot.provenance:
         return _refusal(request, "retrieval provenance is missing")
 
+    for spans in (request.provenance, snapshot.provenance,
+                  *(event.provenance for event in snapshot.occurrences)):
+        if (problem := _span_problem(spans)):
+            return _refusal(request, problem)
     revisions = current_revisions or {}
     request_scope = _scope(request.provenance)
     snapshot_scope = _scope(snapshot.provenance)
