@@ -1,0 +1,65 @@
+import pytest
+
+from scholastic_pipeline.backends.reference import (
+    IncompleteGenerationError,
+    ProvenanceError,
+    ReferenceSQLiteBackend,
+    StorageError,
+)
+from scholastic_pipeline.schema import EvidenceSpan, GraphEdgeEvent, ValidationStatus
+
+
+def span(source="book", revision="r1", text="alpha", start=0):
+    return EvidenceSpan(source_id=source, revision=revision, start=start,
+                        end=start + len(text), text=text)
+
+
+def envelope_edge(edge_id="occ-1", **kwargs):
+    values = dict(
+        edge_instance_id=edge_id, source_node_id="a", target_node_id="b",
+        relation="supports", validation_status=ValidationStatus.VALID,
+        provenance=(span(text="alpha"),), run_id="run-1", producer="producer-x",
+        confidence=0.37, uncertainty=("u",), diagnostics=("d",),
+    )
+    values.update(kwargs)
+    return GraphEdgeEvent(**values)
+
+
+def test_sqlite_round_trip_preserves_complete_edge_envelope():
+    backend = ReferenceSQLiteBackend()
+    event = envelope_edge()
+    restored = backend.write_generation("g1", [event]).occurrences[0]
+    assert restored == event
+    assert restored.record_id == event.record_id
+
+
+def test_generation_rejects_mixed_run_schema_and_provenance_scope():
+    backend = ReferenceSQLiteBackend()
+    with pytest.raises(StorageError):
+        backend.write_generation("g1", [envelope_edge(), envelope_edge("occ-2", run_id="run-2")])
+    with pytest.raises(StorageError):
+        backend.write_generation("g2", [envelope_edge(), envelope_edge("occ-2", provenance=(span(source="other"),))])
+
+
+def test_expected_count_and_manifest_are_required_for_completion():
+    backend = ReferenceSQLiteBackend()
+    with pytest.raises(IncompleteGenerationError):
+        backend.write_generation("g1", [envelope_edge()], expected_count=2)
+    with pytest.raises(IncompleteGenerationError):
+        backend.write_generation("g2", [envelope_edge()], expected_count=1, manifest=("wrong",))
+
+
+def test_failed_generation_is_atomic_and_retry_can_start_clean():
+    backend = ReferenceSQLiteBackend(current_revisions={"book": "r1"})
+    with pytest.raises(ProvenanceError):
+        backend.write_generation("g1", [envelope_edge(), envelope_edge("bad", provenance=(span(revision="r2"),))])
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+    assert backend.write_generation("g1", [envelope_edge()]).occurrences[0].edge_instance_id == "occ-1"
+
+
+def test_completed_generation_cannot_accept_new_occurrence():
+    backend = ReferenceSQLiteBackend()
+    backend.write_generation("g1", [envelope_edge()])
+    with pytest.raises(StorageError):
+        backend.append("g1", envelope_edge("occ-2"))

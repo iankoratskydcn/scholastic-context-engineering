@@ -1,0 +1,58 @@
+import pytest
+
+from scholastic_pipeline.retrieval.deterministic import retrieve
+from scholastic_pipeline.schema import EvidenceSpan, GraphEdgeEvent, GraphSnapshot, RetrievalRequest, ValidationStatus, RecordStatus
+
+MAX_RETRIEVAL_BUDGET = 100
+
+
+def span(text, source="book", start=0, revision="r1"):
+    return EvidenceSpan(source_id=source, revision=revision, start=start, end=start + len(text), text=text)
+
+
+def edge(edge_id, text, run_id="run-1", status=RecordStatus.ACCEPTED.value, source="book"):
+    return GraphEdgeEvent(
+        edge_instance_id=edge_id, source_node_id="node-a", target_node_id="node-b",
+        relation="supports", validation_status=ValidationStatus.VALID,
+        provenance=(span(text, source=source),), run_id=run_id, status=status,
+    )
+
+
+def snapshot(edges, generation="g1", run_id="run-1", status=RecordStatus.ACCEPTED.value):
+    return GraphSnapshot(generation_id=generation, occurrences=tuple(edges),
+                         provenance=edges[0].provenance, run_id=run_id, status=status)
+
+
+def request(query="alpha", budget=2, run_id="run-1", provenance=None, status=RecordStatus.ACCEPTED.value):
+    return RetrievalRequest(query=query, budget=budget,
+                            provenance=provenance or (span("query"),), run_id=run_id, status=status)
+
+
+def test_retrieval_refuses_budget_above_absolute_ceiling():
+    result = retrieve(request(budget=MAX_RETRIEVAL_BUDGET + 1), snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval budget exceeds absolute ceiling"
+
+
+@pytest.mark.parametrize("run_id", ["wrong"])
+def test_retrieval_refuses_mismatched_run_id(run_id):
+    assert retrieve(request(run_id=run_id), snapshot([edge("a", "alpha")])).refusal
+
+
+def test_retrieval_refuses_non_admissible_status_and_mixed_provenance_scope():
+    assert retrieve(request(), snapshot([edge("a", "alpha", status=RecordStatus.QUARANTINED.value)])).refusal
+    mixed = snapshot([edge("a", "alpha"), edge("b", "alpha", source="other")])
+    assert retrieve(request(), mixed).refusal
+
+
+def test_retrieval_no_match_is_a_valid_empty_context():
+    result = retrieve(request(query="absent"), snapshot([edge("a", "alpha")]))
+    assert result.refusal is None
+    assert result.items == ()
+    assert result.citations == ()
+
+
+def test_retrieval_refuses_missing_snapshot_provenance():
+    snap = snapshot([edge("a", "alpha")])
+    object.__setattr__(snap, "provenance", ())
+    result = retrieve(request(), snap)
+    assert result.refusal == "retrieval provenance is missing"

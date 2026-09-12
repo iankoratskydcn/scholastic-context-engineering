@@ -1,13 +1,14 @@
 {
   "checkpoint_schema_version": "0.1",
   "checkpoint_id": "13-retrieval",
-  "phase": "bounded deterministic retrieval",
+  "phase": "bounded deterministic retrieval boundary repair",
   "status": "passed",
   "scope": ["src/scholastic_pipeline/retrieval/**", "tests/retrieval/**"],
   "tdd": {
-    "red": "PYTHONPATH=src python -m pytest tests/retrieval/test_deterministic.py -q (collection failed: retrieval module absent)",
-    "green": "PYTHONPATH=src python -m pytest tests/retrieval/test_deterministic.py -q (2 passed)"
+    "red": "PYTHONPATH=src python -m pytest tests/retrieval/test_retrieval_boundary_adversarial.py -q (4 failed, 1 passed; absolute ceiling, run/status/scope admissibility, and missing provenance behavior were reproduced)",
+    "green": "PYTHONPATH=src python -m pytest tests/retrieval -q (7 passed)"
   },
-  "invariants": ["stable score and edge-ID tie ordering", "budget bound", "missing provenance refuses", "stale provenance refuses"],
+  "invariants": ["absolute budget ceiling enforced", "request and snapshot run/schema/status must be admissible", "event envelopes must match snapshot run/schema/provenance scope", "missing or stale provenance refuses", "empty query refuses", "no-match returns valid empty context", "stable score and edge-ID ordering preserved"],
+  "evidence": "PYTHONPATH=src python -m pytest -q (22 passed); git diff --check (passed)",
   "reviewer_status": "pending independent verification"
 }

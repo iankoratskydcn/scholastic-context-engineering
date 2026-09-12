@@ -1,13 +1,14 @@
 {
   "checkpoint_schema_version": "0.1",
   "checkpoint_id": "09-reference-backend",
-  "phase": "reference SQLite occurrence-preserving storage",
+  "phase": "reference SQLite occurrence-preserving storage boundary repair",
   "status": "passed",
   "scope": ["src/scholastic_pipeline/backends/**", "tests/backends/**"],
   "tdd": {
-    "red": "PYTHONPATH=src python -m pytest tests/backends/test_reference_backend.py -q (collection failed: backend module absent)",
-    "green": "PYTHONPATH=src python -m pytest tests/backends/test_reference_backend.py -q (3 passed)"
+    "red": "PYTHONPATH=src python -m pytest tests/backends/test_storage_boundary_adversarial.py -q (4 failed, 1 passed; omitted envelope fields, mixed envelopes, missing completion bounds, and non-atomic failure were reproduced)",
+    "green": "PYTHONPATH=src python -m pytest tests/backends -q (10 passed)"
   },
-  "invariants": ["retry idempotent", "distinct occurrences preserved", "incomplete generations unreadable", "stale and missing provenance rejected"],
+  "invariants": ["complete GraphEdgeEvent envelope survives SQLite round-trip", "mixed run IDs/schema versions/provenance scopes rejected", "manifest and expected count bind completion", "failed writes roll back and partial generations are unreadable", "retries are idempotent and completed generations immutable", "stale and missing provenance rejected"],
+  "evidence": "PYTHONPATH=src python -m pytest -q (22 passed); git diff --check (passed)",
   "reviewer_status": "pending independent verification"
 }
