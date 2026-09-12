@@ -1,0 +1,13 @@
+{
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "09-reference-backend",
+  "phase": "reference SQLite occurrence-preserving storage",
+  "status": "passed",
+  "scope": ["src/scholastic_pipeline/backends/**", "tests/backends/**"],
+  "tdd": {
+    "red": "PYTHONPATH=src python -m pytest tests/backends/test_reference_backend.py -q (collection failed: backend module absent)",
+    "green": "PYTHONPATH=src python -m pytest tests/backends/test_reference_backend.py -q (3 passed)"
+  },
+  "invariants": ["retry idempotent", "distinct occurrences preserved", "incomplete generations unreadable", "stale and missing provenance rejected"],
+  "reviewer_status": "pending independent verification"
+}
