@@ -24,7 +24,8 @@ class Formalization:
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
-        if not isinstance(self.run_id, str) or not self.run_id:
+        if (not isinstance(self.run_id, str) or not self.run_id or
+                any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id)):
             raise ValueError("run_id must be a non-empty string")
         if not isinstance(self.expression, str):
             raise ValueError("formalization expression is required")
@@ -46,7 +47,8 @@ class Formalization:
     def to_payload(self) -> dict:
         payload = {"kind": "formalization", "expression": self.expression,
                 "provenance": [{"source_id": s.source_id, "start": s.start, "end": s.end,
-                                "text": s.text, "revision": s.revision} for s in self.provenance],
+                                "text": s.text, "revision": s.revision, "record_id": s.record_id}
+                               for s in self.provenance],
                 "run_id": self.run_id, "confidence": self.confidence,
                 "uncertainty": list(self.uncertainty), "diagnostics": list(self.diagnostics),
                 "status": self.status, "schema_version": self.schema_version,
@@ -114,7 +116,7 @@ def validate(argument: object, formalization: Formalization | str, taxonomy_matc
             raise TypeError("taxonomy_match must be TaxonomyMatch")
         if taxonomy_match.run_id != argument.run_id or not {(s.source_id, s.revision) for s in taxonomy_match.provenance} <= {(s.source_id, s.revision) for s in argument.provenance}:
             raise ValueError("taxonomy and argument provenance must match")
-    if form.run_id not in ("", "unknown") and form.run_id != argument.run_id:
+    if form.run_id != argument.run_id:
         raise ValueError("formalization and argument run IDs must match")
     if not argument.provenance or not form.provenance:
         raise ValueError("formal validation requires provenance on argument and formalization")

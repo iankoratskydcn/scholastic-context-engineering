@@ -45,7 +45,7 @@ def test_other_forms_are_closed_as_unknown_or_unsupported(expression):
 
 def test_validation_rejects_missing_taxonomy_in_canonical_extraction():
     from scholastic_pipeline.extraction import ExtractionBundle
-    bundle = ExtractionBundle("ACCEPTED", argument(["A -> B", "A"], "B"), None, None, 1.0, span("A"))
+    bundle = ExtractionBundle("ACCEPTED", argument(["A -> B", "A"], "B"), None, None, 1.0, span("A"), run_id="run-1")
     with pytest.raises(ValueError):
         validate(bundle, Formalization("A -> B", run_id="run-1", provenance=(span("A"),)))
 
@@ -54,7 +54,8 @@ def test_bundle_validation_requires_compatible_taxonomy_and_matching_provenance(
     arg = argument(["A -> B", "A"], "B")
     taxonomy = TaxonomyMatch(taxonomy_id="tax", label="modus", run_id="run-1", provenance=(span("A"),))
     bundle = ExtractionBundle("ACCEPTED", arg, taxonomy, None, 1.0, span("A"),
-                             Formalization("A -> B", run_id="run-1", provenance=(span("A"),)))
+                             formalization=Formalization("A -> B", run_id="run-1", provenance=(span("A"),)),
+                             run_id="run-1")
     assert validate(bundle, bundle.formalization).validation_status is ValidationStatus.VALID
     wrong = TaxonomyMatch(taxonomy_id="other", label="modus", run_id="run-1", provenance=(span("A"),))
     with pytest.raises(ValueError):
@@ -71,7 +72,8 @@ def test_bundle_validation_rejects_formalization_with_different_span_identity():
     source = span("A")
     taxonomy = TaxonomyMatch(taxonomy_id="tax", label="modus", run_id="run-1", provenance=(source,))
     bundle = ExtractionBundle("ACCEPTED", arg, taxonomy, None, 1.0, source,
-                             Formalization("A -> B", run_id="run-1", provenance=(source,)))
+                             formalization=Formalization("A -> B", run_id="run-1", provenance=(source,)),
+                             run_id="run-1")
     different_revision = EvidenceSpan("source-1", 0, 1, "A", revision="other-revision")
     with pytest.raises(ValueError, match="provenance"):
         validate(bundle, Formalization("A -> B", run_id="run-1", provenance=(different_revision,)))
@@ -83,7 +85,8 @@ def test_bundle_validation_requires_taxonomy_source_revision_and_run_compatibili
     foreign_taxonomy = TaxonomyMatch(taxonomy_id="tax", label="modus", run_id="run-1",
                                      provenance=(EvidenceSpan("other-source", 0, 1, "A", "rev-2"),))
     bundle = ExtractionBundle("ACCEPTED", arg, foreign_taxonomy, None, 1.0, source,
-                             Formalization("A -> B", run_id="run-1", provenance=(source,)))
+                             formalization=Formalization("A -> B", run_id="run-1", provenance=(source,)),
+                             run_id="run-1")
     with pytest.raises(ValueError, match="provenance"):
         validate(bundle, bundle.formalization)
     with pytest.raises(TypeError):
@@ -96,3 +99,8 @@ def test_bundle_validation_requires_taxonomy_source_revision_and_run_compatibili
 def test_formalization_rejects_missing_run_id_instead_of_using_unknown():
     with pytest.raises(ValueError, match="run_id"):
         Formalization("A -> B", provenance=(span("A"),))
+
+
+def test_formalization_rejects_malformed_run_id():
+    with pytest.raises(ValueError, match="run_id"):
+        Formalization("A -> B", run_id="bad\ud800", provenance=(span("A"),))

@@ -47,6 +47,23 @@ def _canonical(value: Any) -> Any:
     return value
 
 
+def _payload(value: Any) -> Any:
+    """Encode records with identities; hashing uses ``_canonical``."""
+    if isinstance(value, Enum):
+        return value.value
+    if is_dataclass(value):
+        result = {item.name: _payload(getattr(value, item.name))
+                  for item in fields(value) if item.name != "record_id"}
+        if hasattr(value, "record_id"):
+            result["record_id"] = value.record_id
+        return result
+    if isinstance(value, (tuple, list)):
+        return [_payload(item) for item in value]
+    if isinstance(value, dict):
+        return {str(key): _payload(item) for key, item in value.items()}
+    return value
+
+
 def _stable_id(kind: str, payload: Any) -> str:
     encoded = json.dumps({"kind": kind, "payload": _canonical(payload)},
                          sort_keys=True, separators=(",", ":"), ensure_ascii=False)
@@ -117,7 +134,7 @@ class Envelope:
 
     def to_payload(self) -> dict[str, Any]:
         """Return the complete JSON-safe canonical payload."""
-        payload = _canonical(self)
+        payload = _payload(self)
         payload["kind"] = self.kind
         if hasattr(self, "record_id"):
             payload["record_id"] = self.record_id
@@ -186,6 +203,8 @@ class ArgumentUnit(Envelope):
     def __post_init__(self) -> None:
         if not self.argument_id or not self.premises or not self.relation:
             raise EnvelopeError("argument requires ID, premise(s), relation, and provenance")
+        if any(not isinstance(premise, Proposition) for premise in self.premises):
+            raise EnvelopeError("argument premises must be propositions")
         if isinstance(self.conclusion, Proposition):
             _valid_text(self.conclusion.text, "conclusion")
         else:
@@ -255,6 +274,8 @@ class GraphSnapshot(Envelope):
 
     def __post_init__(self) -> None:
         _valid_text(self.generation_id, "generation_id")
+        if not self.occurrences or any(not isinstance(item, GraphEdgeEvent) for item in self.occurrences):
+            raise EnvelopeError("graph snapshot requires non-empty occurrences")
         super().__post_init__()
 
 
@@ -266,6 +287,10 @@ class CommunitySnapshot(Envelope):
 
     def __post_init__(self) -> None:
         _valid_text(self.graph_generation, "graph_generation")
+        if (not self.communities or
+                any(not community or any(not isinstance(node, str) or not node for node in community)
+                    for community in self.communities)):
+            raise EnvelopeError("community snapshot requires non-empty communities")
         super().__post_init__()
 
 

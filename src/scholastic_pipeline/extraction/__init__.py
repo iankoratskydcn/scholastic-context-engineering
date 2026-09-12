@@ -37,10 +37,9 @@ class ExtractionBundle:
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
-        inferred_run = self.run_id or getattr(self.argument, "run_id", "") or getattr(self.formalization, "run_id", "")
-        if not isinstance(inferred_run, str) or not inferred_run:
+        if (not isinstance(self.run_id, str) or not self.run_id or
+                any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id)):
             raise ValueError("run_id must be a non-empty string")
-        object.__setattr__(self, "run_id", inferred_run)
         if not isinstance(self.producer, str) or not self.producer:
             raise ValueError("producer must be a non-empty string")
         if self.schema_version != "0.1":
@@ -63,10 +62,14 @@ class ExtractionBundle:
         def encode(value: Any) -> Any:
             if hasattr(value, "value") and not isinstance(value, (str, bytes)):
                 return value.value
-            if hasattr(value, "__dataclass_fields__"):
-                return {name: encode(getattr(value, name)) for name in value.__dataclass_fields__ if name != "record_id"}
             if hasattr(value, "to_payload"):
                 return value.to_payload()
+            if hasattr(value, "__dataclass_fields__"):
+                result = {name: encode(getattr(value, name))
+                          for name in value.__dataclass_fields__ if name != "record_id"}
+                if hasattr(value, "record_id"):
+                    result["record_id"] = value.record_id
+                return result
             if isinstance(value, tuple):
                 return [encode(item) for item in value]
             if isinstance(value, list):
@@ -198,7 +201,8 @@ def _input_text(source: object, source_id: str, source_revision: str | None, bas
 def extract_argument(source: str | StructuredDocument, *, source_id: str = "source",
                      run_id: str = "run", source_revision: str | None = None, base_offset: int = 0) -> ExtractionBundle:
     """Extract one canary argument, abstaining on malformed or revisionless input."""
-    if not isinstance(run_id, str) or not run_id:
+    if (not isinstance(run_id, str) or not run_id or
+            any(0xD800 <= ord(char) <= 0xDFFF for char in run_id)):
         return _abstain("malformed_source", run_id)
     prepared = _input_text(source, source_id, source_revision, base_offset)
     if prepared is None:
@@ -251,7 +255,8 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
     taxonomy = TaxonomyMatch(taxonomy_id=taxonomy_id, label=label, provenance=(document_span,), run_id=run_id, confidence=1.0)
     from scholastic_pipeline.formal import Formalization
     formalization = Formalization(normalized, provenance=(document_span,), run_id=run_id)
-    return ExtractionBundle("ACCEPTED", argument, taxonomy, None, 1.0, document_span, formalization)
+    return ExtractionBundle("ACCEPTED", argument, taxonomy, None, 1.0, document_span,
+                            formalization, run_id=run_id)
 
 
 def extract_structured_document(document: StructuredDocument, taxonomy_snapshot: TaxonomySnapshot) -> ExtractionBundle:
@@ -268,9 +273,9 @@ def extract_structured_document(document: StructuredDocument, taxonomy_snapshot:
         return ExtractionBundle("ABSTAINED", None, None, problem, 0.0,
                                 document.spans[0], run_id=document.run_id)
     try:
-        taxonomy_scope = {(span.source_id, span.revision) for span in taxonomy_snapshot.provenance}
-        document_scope = {(span.source_id, span.revision) for span in document.spans}
-        if taxonomy_scope != document_scope:
+        taxonomy_scope = {span.record_id for span in taxonomy_snapshot.provenance}
+        document_scope = {span.record_id for span in document.spans}
+        if not taxonomy_scope <= document_scope:
             return ExtractionBundle("ABSTAINED", None, None, "malformed_taxonomy_provenance", 0.0,
                                     document.spans[0], run_id=document.run_id)
     except (AttributeError, TypeError, UnicodeError):

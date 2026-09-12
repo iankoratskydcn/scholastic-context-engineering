@@ -142,14 +142,27 @@ def test_snapshot_records_require_generation_fields():
         CommunitySnapshot(run_id="run-1", provenance=(span,))
 
 
+def test_snapshot_records_reject_empty_semantic_collections():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    from scholastic_pipeline.schema import CommunitySnapshot, GraphSnapshot
+    with pytest.raises(EnvelopeError, match="occurrences"):
+        GraphSnapshot(generation_id="gen-1", occurrences=(), run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="communities"):
+        CommunitySnapshot(graph_generation="gen-1", communities=(), run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="communities"):
+        CommunitySnapshot(graph_generation="gen-1", communities=((),), run_id="run-1", provenance=(span,))
+
+
 def test_every_canonical_payload_has_record_id_without_self_hashing():
     span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
     from scholastic_pipeline.schema import Proposition, TaxonomyMatch, GraphSnapshot, CommunitySnapshot
     records = [
         Proposition(proposition_id="p1", text="A", role="premise", run_id="run-1", provenance=(span,)),
         TaxonomyMatch(taxonomy_id="tax-1", label="label", run_id="run-1", provenance=(span,)),
-        GraphSnapshot(generation_id="gen-1", run_id="run-1", provenance=(span,)),
-        CommunitySnapshot(graph_generation="gen-1", run_id="run-1", provenance=(span,)),
+        GraphSnapshot(generation_id="gen-1", occurrences=(GraphEdgeEvent(
+            edge_instance_id="e1", source_node_id="s", target_node_id="t", relation="r",
+            run_id="run-1", provenance=(span,)),), run_id="run-1", provenance=(span,)),
+        CommunitySnapshot(graph_generation="gen-1", communities=(("s",),), run_id="run-1", provenance=(span,)),
     ]
     for record in records:
         payload = record.to_payload()

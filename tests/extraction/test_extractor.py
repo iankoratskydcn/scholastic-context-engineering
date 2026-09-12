@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from scholastic_pipeline.extraction import extract_argument, extract_structured_document
+from scholastic_pipeline.extraction import ExtractionBundle, extract_argument, extract_structured_document
 from scholastic_pipeline.formal import validate
 from scholastic_pipeline.schema import EnvelopeError, EvidenceSpan, StructuredDocument, TaxonomySnapshot
 
@@ -164,6 +164,19 @@ def test_taxonomy_run_mismatch_abstains_fail_closed():
     assert result.abstention_reason == "malformed_taxonomy_provenance"
 
 
+def test_taxonomy_provenance_requires_exact_span_identity_not_just_scope():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-exact")
+    same_scope_different_span = EvidenceSpan("source", 0, 1, "I", revision="rev-exact")
+    document = StructuredDocument(document_id="doc", revision="rev-exact", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(text,), run_id="run-exact")
+    result = extract_structured_document(document, TaxonomySnapshot(
+        snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+        run_id="run-exact", provenance=(same_scope_different_span,)))
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_taxonomy_provenance"
+
+
 def test_propositions_have_exact_substring_spans_and_bundle_is_canonical():
     text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
     result = extract_argument(text, source_id="source", source_revision="rev-11", run_id="test-run")
@@ -193,6 +206,9 @@ def test_canonical_bundle_and_formalization_expose_complete_stable_envelopes():
     assert bundle_payload["record_id"] == result.record_id
     assert formal_payload["record_id"] == result.formalization.record_id
     assert formal_payload["expression"] == "it rains -> the ground is wet"
+    assert bundle_payload["argument"]["record_id"] == result.argument.record_id
+    assert bundle_payload["provenance"]["record_id"] == result.provenance.record_id
+    assert formal_payload["provenance"][0]["record_id"] == result.formalization.provenance[0].record_id
 
 
 def test_structured_extraction_rejects_taxonomy_provenance_outside_document():
@@ -236,3 +252,15 @@ def test_extraction_bundle_rejects_missing_run_id_instead_of_using_unknown():
     with pytest.raises(ValueError, match="run_id"):
         from scholastic_pipeline.extraction import ExtractionBundle
         ExtractionBundle("ABSTAINED", None, None, "unsupported", 0.0, None)
+
+
+def test_extraction_bundle_does_not_infer_missing_run_id_from_nested_records():
+    source = EvidenceSpan("source", 0, 1, "A", revision="rev-1")
+    with pytest.raises(ValueError, match="run_id"):
+        ExtractionBundle("ABSTAINED", None, None, "unsupported", 0.0, source,
+                         formalization=type("FormalizationStub", (), {"run_id": "nested-run"})())
+
+
+def test_malformed_run_id_abstains_fail_closed():
+    with pytest.raises(ValueError, match="run_id"):
+        extract_argument("Birds fly.", source_id="source", source_revision="rev-1", run_id="bad\ud800")
