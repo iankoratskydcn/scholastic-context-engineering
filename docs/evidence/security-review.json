@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-09-12T20:48:37.644107+00:00",
+  "scope": "candidate metadata and local target bootstrap",
+  "reviewer": "supervisor-independent-recon",
+  "verdict": "HOLD",
+  "candidates_reviewed": 15,
+  "checks": {
+    "slop_squatting": "not cleared; canonical owner identity observed only",
+    "typosquatting": "not cleared",
+    "install_scripts_hooks": "not inspected at pinned tree",
+    "workflows_egress_credentials_filesystem_process": "not inspected at pinned tree",
+    "MCP_browser_surfaces": "not inspected",
+    "update_paths": "not inspected",
+    "transitive_dependencies": "not inspected",
+    "license_obligations": "license metadata observed, NOTICE obligations not inspected"
+  },
+  "approved_for_vendor": [],
+  "approved_runtime_dependencies": [],
+  "blockers": [
+    "source-tree security review required before any code adoption",
+    "metadata existence is not working-code proof",
+    "no candidate may be executed or installed from this evidence"
+  ],
+  "residual_risk": "All external candidates remain HOLD."
+}

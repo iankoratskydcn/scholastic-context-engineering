@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-09-12T20:48:37.644107+00:00",
+  "target_repository": "/home/ian-koratsky/Development/scholastic-context-engineering",
+  "status": "complete",
+  "inspected_roots": [
+    "/home/ian-koratsky",
+    "/home/ian-koratsky/Development/hermes-agent",
+    "/home/ian-koratsky/csail_decoupled_parsing_module",
+    "/home/ian-koratsky/projects",
+    "/home/ian-koratsky/.hermes/skills",
+    "/home/ian-koratsky/.hermes/plugins",
+    "/home/ian-koratsky/.hermes/desktop-plugins"
+  ],
+  "repositories": {
+    "target": "new repository; no prior files",
+    "hermes-agent": "existing unrelated authority; no Scholastic implementation found",
+    "csail_decoupled_parsing_module": "existing unrelated parsing authority; no Scholastic implementation found"
+  },
+  "capability_map": {
+    "canonical_ir": "missing",
+    "local_text_ingestion": "partial_elsewhere_not_reusable",
+    "argument_extraction": "missing",
+    "formal_validation": "missing",
+    "provenance_graph": "missing",
+    "retrieval": "missing",
+    "Hermes_extension_surface": "covered_but_out_of_scope_for_first_slice",
+    "taxonomy_source": "covered_external_attachment"
+  },
+  "unsafe_to_reuse": [
+    "csail_decoupled_parsing_module as pipeline authority",
+    "Hermes core as first implementation target",
+    "unreviewed external runtime dependencies"
+  ],
+  "unknown": [
+    "owner taxonomy disposition policy",
+    "formal semantic tier",
+    "model/data policy",
+    "storage authority beyond reference baseline"
+  ],
+  "active_worktree_note": "csail_decoupled_parsing_module has 30+ active worktrees; target is isolated from them."
+}

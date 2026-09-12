@@ -1,0 +1,379 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-09-12T20:48:37.644107+00:00",
+  "target_repository": "/home/ian-koratsky/Development/scholastic-context-engineering",
+  "status": "complete_with_holds",
+  "local_inventory_ref": "docs/evidence/local-inventory.json",
+  "candidates": [
+    {
+      "candidate_id": "docling-project/docling",
+      "canonical_url": "https://github.com/docling-project/docling",
+      "identity_status": "observed",
+      "revision": "5ea6490ffdc57b2fd7de5cc436f2d0a22f2214d4",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-09-11T15:42:22Z",
+        "updated_at": "2026-09-12T20:29:24Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/docling-project/docling",
+        "https://api.github.com/repos/docling-project/docling/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "Get your documents ready for gen AI",
+      "language": "Python",
+      "stars": 66311,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "run-llama/llama-parse-py",
+      "canonical_url": "https://github.com/run-llama/llama-parse-py",
+      "identity_status": "observed",
+      "revision": "51a85e3b33cbe074e1a49414aaffde1a860ce91f",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-09-11T21:43:07Z",
+        "updated_at": "2026-09-09T22:31:57Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/run-llama/llama-parse-py",
+        "https://api.github.com/repos/run-llama/llama-parse-py/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "Python SDK for OCR and document parsing in the cloud with LlamaParse",
+      "language": "Python",
+      "stars": 61,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "stevereiner/flexible-graphrag",
+      "canonical_url": "https://github.com/stevereiner/flexible-graphrag",
+      "identity_status": "observed",
+      "revision": "94282abd2730aa0bad38352d856b940e3c3ffb15",
+      "license_status": "Apache-2.0",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-08-30T02:49:01Z",
+        "updated_at": "2026-09-08T09:49:09Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/stevereiner/flexible-graphrag",
+        "https://api.github.com/repos/stevereiner/flexible-graphrag/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "Python, LlamaIndex, LangChain, 15 Property Graph, 4 RDF , 10 Vector, OpenSearch, Elasticsearch, Alfresco, Nuxeo DBs. 14 data sources (10 auto-sync), KG auto-building, Ontologies, LLMs, Docling, LlamaParse, LiteParse, GraphRAG, RAG, Hybrid Search, AI Chat. TypeScript React, Vue, Angular frontends, REST, MCP Server. Options: Langflow, CocoIndex",
+      "language": "Python",
+      "stars": 184,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "langchain-ai/langchain-experimental",
+      "canonical_url": "https://github.com/langchain-ai/langchain-experimental",
+      "identity_status": "observed",
+      "revision": "f10d5c3247fb102d4d45d29a35a0266760288542",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": true,
+        "pushed_at": "2026-05-22T20:38:55Z",
+        "updated_at": "2026-06-30T16:47:40Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/langchain-ai/langchain-experimental",
+        "https://api.github.com/repos/langchain-ai/langchain-experimental/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "\u26a0\ufe0f No longer maintained, see linked issue",
+      "language": "Python",
+      "stars": 104,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "teacherpeterpan/Logic-LLM",
+      "canonical_url": "https://github.com/teacherpeterpan/Logic-LLM",
+      "identity_status": "observed",
+      "revision": "d29f1e5e7203e8826cb9c41ba3003e43dc0b9d34",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2024-06-13T20:31:59Z",
+        "updated_at": "2026-09-10T19:59:26Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/teacherpeterpan/Logic-LLM",
+        "https://api.github.com/repos/teacherpeterpan/Logic-LLM/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "The project page for \"LOGIC-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning\"",
+      "language": "C",
+      "stars": 409,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "lovishchopra/NL2FOL",
+      "canonical_url": "https://github.com/lovishchopra/NL2FOL",
+      "identity_status": "observed",
+      "revision": "67fd36454b7bb19db3cce594a2ffa66fa80eb177",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2025-04-29T15:58:13Z",
+        "updated_at": "2026-08-25T02:14:20Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/lovishchopra/NL2FOL",
+        "https://api.github.com/repos/lovishchopra/NL2FOL/commits/main"
+      ],
+      "default_branch": "main",
+      "description": null,
+      "language": "SMT",
+      "stars": 49,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "thinktwise/ArgumentMining",
+      "canonical_url": "https://github.com/thinktwise/ArgumentMining",
+      "identity_status": "observed",
+      "revision": "7d29c31470542efcfeacebe112a4ae5605bdc275",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2021-09-21T09:26:48Z",
+        "updated_at": "2023-01-11T13:40:32Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/thinktwise/ArgumentMining",
+        "https://api.github.com/repos/thinktwise/ArgumentMining/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "ArgumentMining allows you to explore argumentation in texts, by detecting argument components as well as the relations between them.",
+      "language": "Python",
+      "stars": 4,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "UKPLab/acl2019-BERT-argument-classification-and-clustering",
+      "canonical_url": "https://github.com/UKPLab/acl2019-BERT-argument-classification-and-clustering",
+      "identity_status": "observed",
+      "revision": "72f643b06a06b9ba82a25df2c134664fc26f84f3",
+      "license_status": "Apache-2.0",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2020-12-15T08:39:04Z",
+        "updated_at": "2025-12-29T14:17:32Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/UKPLab/acl2019-BERT-argument-classification-and-clustering",
+        "https://api.github.com/repos/UKPLab/acl2019-BERT-argument-classification-and-clustering/commits/master"
+      ],
+      "default_branch": "master",
+      "description": null,
+      "language": "Python",
+      "stars": 85,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "neo4j/neo4j",
+      "canonical_url": "https://github.com/neo4j/neo4j",
+      "identity_status": "observed",
+      "revision": "f213380f812b820a1b312e2ea52cb3d8f1931ccc",
+      "license_status": "GPL-3.0",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-09-10T17:24:46Z",
+        "updated_at": "2026-09-12T19:37:14Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/neo4j/neo4j",
+        "https://api.github.com/repos/neo4j/neo4j/commits/2026.07"
+      ],
+      "default_branch": "2026.07",
+      "description": "Graphs for Everyone",
+      "language": "Java",
+      "stars": 17225,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "run-llama/llama_index",
+      "canonical_url": "https://github.com/run-llama/llama_index",
+      "identity_status": "observed",
+      "revision": "7169bcd0dca2e16aecc8e0247f34e50079d9c0d5",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-09-11T18:09:01Z",
+        "updated_at": "2026-09-12T20:22:45Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/run-llama/llama_index",
+        "https://api.github.com/repos/run-llama/llama_index/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "LlamaIndex is the document processing platform for AI",
+      "language": "Python",
+      "stars": 52135,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "networkx/networkx",
+      "canonical_url": "https://github.com/networkx/networkx",
+      "identity_status": "observed",
+      "revision": "4e74880b0da01977da79915167c64e5c2af38b47",
+      "license_status": "NOASSERTION",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-09-12T01:50:33Z",
+        "updated_at": "2026-09-12T11:22:38Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/networkx/networkx",
+        "https://api.github.com/repos/networkx/networkx/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "Network Analysis in Python",
+      "language": "Python",
+      "stars": 17256,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "microsoft/graspologic",
+      "canonical_url": "https://github.com/microsoft/graspologic",
+      "identity_status": "observed",
+      "revision": "ccf1458bd73b25cb1e7a779c098a54943647bfa1",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-06-18T23:46:40Z",
+        "updated_at": "2026-08-27T16:58:02Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/microsoft/graspologic",
+        "https://api.github.com/repos/microsoft/graspologic/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "Python package for graph statistics",
+      "language": "Python",
+      "stars": 1009,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "microsoft/graphrag",
+      "canonical_url": "https://github.com/microsoft/graphrag",
+      "identity_status": "observed",
+      "revision": "f40e9a26ce62ba0b3fef8837d24aafdcc6e6c704",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-09-08T18:54:12Z",
+        "updated_at": "2026-09-12T18:19:37Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/microsoft/graphrag",
+        "https://api.github.com/repos/microsoft/graphrag/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "A modular graph-based Retrieval-Augmented Generation (RAG) system",
+      "language": "Python",
+      "stars": 35952,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "neo4j-contrib/ms-graphrag-neo4j",
+      "canonical_url": "https://github.com/neo4j-contrib/ms-graphrag-neo4j",
+      "identity_status": "observed",
+      "revision": "772da05d392c2a76b5530e1bb945c379adde86aa",
+      "license_status": "MIT",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2025-10-27T11:46:06Z",
+        "updated_at": "2026-07-26T07:00:43Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/neo4j-contrib/ms-graphrag-neo4j",
+        "https://api.github.com/repos/neo4j-contrib/ms-graphrag-neo4j/commits/main"
+      ],
+      "default_branch": "main",
+      "description": null,
+      "language": "Python",
+      "stars": 89,
+      "revision_status": "observed"
+    },
+    {
+      "candidate_id": "ksachdeva/langchain-graphrag",
+      "canonical_url": "https://github.com/ksachdeva/langchain-graphrag",
+      "identity_status": "observed",
+      "revision": "482e1097e9bba450f1ad1f1b1b20c7b1335652b3",
+      "license_status": "Apache-2.0",
+      "maintenance_status": {
+        "archived": false,
+        "pushed_at": "2026-03-31T02:00:43Z",
+        "updated_at": "2026-09-09T05:00:37Z"
+      },
+      "entry_points_status": "unverified",
+      "tests_status": "unverified",
+      "classification": "unverified",
+      "evidence_urls": [
+        "https://api.github.com/repos/ksachdeva/langchain-graphrag",
+        "https://api.github.com/repos/ksachdeva/langchain-graphrag/commits/main"
+      ],
+      "default_branch": "main",
+      "description": "GraphRAG / From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
+      "language": "Python",
+      "stars": 173,
+      "revision_status": "observed"
+    }
+  ],
+  "candidate_count": 15,
+  "classification_totals": {
+    "unverified": 15
+  },
+  "smoke_policy": "No installers, clones, builds, credentials, networked execution, or runtime dependency additions performed. Metadata inspection only.",
+  "blockers": [
+    "entry points/tests/smallest reusable components require pinned-source inspection",
+    "security clearance is separate and not granted",
+    "no candidate is authorized for adoption"
+  ]
+}

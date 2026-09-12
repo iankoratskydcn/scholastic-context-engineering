@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-09-12T20:48:37.644107+00:00",
+  "claims": [
+    {
+      "claim_id": "claim.local.001",
+      "claim": "The new standalone repository is the pipeline authority.",
+      "status": "proven",
+      "evidence": [
+        "docs/evidence/local-inventory.json"
+      ]
+    },
+    {
+      "claim_id": "claim.taxonomy.001",
+      "claim": "Taxonomy snapshot identity and source hash match the supplied manifest.",
+      "status": "proven",
+      "evidence": [
+        "/home/ian-koratsky/.hermes/attachments/argument-form-taxonomy.manifest.json"
+      ]
+    },
+    {
+      "claim_id": "claim.external.001",
+      "claim": "Named external repositories exist and expose observed default-branch metadata.",
+      "status": "provisional",
+      "evidence": [
+        "docs/evidence/repository-verification-log.jsonl"
+      ]
+    },
+    {
+      "claim_id": "claim.external.002",
+      "claim": "Any candidate is safe to vendor or use as a runtime dependency.",
+      "status": "blocked",
+      "evidence": [
+        "docs/evidence/security-review.json"
+      ]
+    },
+    {
+      "claim_id": "claim.impl.001",
+      "claim": "The pipeline is implemented.",
+      "status": "deferred",
+      "evidence": [],
+      "reason": "Mandatory decision and contract gates precede implementation."
+    }
+  ]
+}
