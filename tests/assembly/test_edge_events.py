@@ -16,7 +16,7 @@ def make_argument():
 
 def test_assembly_emits_provenance_and_validation_status():
     arg = make_argument()
-    result = validate(arg, Formalization("A -> C", provenance=(arg.provenance[0],)))
+    result = validate(arg, Formalization("A -> C", provenance=(arg.provenance[0],), run_id=arg.run_id))
     events = assemble_edge_events(arg, result)
     assert len(events) == 2
     event = events[0]
@@ -33,14 +33,14 @@ def test_assembly_emits_provenance_and_validation_status():
 
 def test_assembly_rejects_missing_provenance():
     arg = make_argument()
-    bad = result = validate(arg, Formalization("A -> C", provenance=(arg.provenance[0],)))
+    bad = result = validate(arg, Formalization("A -> C", provenance=(arg.provenance[0],), run_id=arg.run_id))
     with pytest.raises(ValueError):
         assemble_edge_events(arg, bad, provenance=())
 
 
 def test_assembly_rejects_mismatched_provenance_and_ids_include_content():
     arg = make_argument()
-    result = validate(arg, Formalization("A -> C", provenance=(arg.provenance[0],)))
+    result = validate(arg, Formalization("A -> C", provenance=(arg.provenance[0],), run_id=arg.run_id))
     with pytest.raises(ValueError):
         assemble_edge_events(arg, result, provenance=(EvidenceSpan("source-1", 0, 1, "A", revision="other"),))
     events = assemble_edge_events(arg, result)
@@ -51,6 +51,6 @@ def test_assembly_rejects_mismatched_provenance_and_ids_include_content():
 
 def test_assembly_does_not_use_taxonomy_or_frequency_as_proof():
     arg = make_argument()
-    result = validate(arg, Formalization("A", provenance=(arg.provenance[0],)))
+    result = validate(arg, Formalization("A", provenance=(arg.provenance[0],), run_id=arg.run_id))
     event = assemble_edge_events(arg, result, taxonomy_label="causal", frequency=99)[0]
     assert event.validation_status is ValidationStatus.UNKNOWN
