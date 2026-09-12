@@ -181,6 +181,39 @@ def test_propositions_have_exact_substring_spans_and_bundle_is_canonical():
         assert span.revision == "rev-11"
 
 
+def test_canonical_bundle_and_formalization_expose_complete_stable_envelopes():
+    result = extract_argument("If it rains, the ground is wet. It rains. Therefore, the ground is wet.",
+                              source_id="source", source_revision="rev-envelope", run_id="run-envelope")
+    assert result.to_payload()["schema_version"] == "0.1"
+    assert result.to_payload()["producer"] == "scholastic-context-engineering"
+    assert result.record_id
+    assert result.formalization.record_id
+    formal_payload = result.formalization.to_payload()
+    assert set(("producer", "run_id", "status", "confidence", "uncertainty", "diagnostics",
+                "schema_version", "provenance", "expression")) <= set(formal_payload)
+
+
+def test_structured_extraction_rejects_taxonomy_provenance_outside_document():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    source = EvidenceSpan("source", 0, len(text), text, revision="rev-tax")
+    foreign = EvidenceSpan("foreign", 0, 1, "I", revision="rev-tax")
+    document = StructuredDocument(document_id="doc", revision="rev-tax", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(text,), run_id="run-tax")
+    taxonomy = TaxonomySnapshot(snapshot_id="taxonomy", supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+                                run_id="run-tax", provenance=(foreign,))
+    with pytest.raises(ValueError, match="taxonomy snapshot provenance"):
+        extract_structured_document(document, taxonomy)
+
+
+def test_propositions_keep_exact_source_spans_and_stable_identity():
+    text = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."
+    first = extract_argument(text, source_id="source", source_revision="rev-id", run_id="run-id")
+    second = extract_argument(text, source_id="source", source_revision="rev-id", run_id="run-id")
+    assert first.record_id == second.record_id
+    assert [p.provenance[0].record_id for p in first.argument.premises] == [
+        p.provenance[0].record_id for p in second.argument.premises]
+
+
 def test_structured_extraction_scans_all_blocks_in_order():
     first = "Background only."
     second = "If it rains, the ground is wet. It rains. Therefore, the ground is wet."

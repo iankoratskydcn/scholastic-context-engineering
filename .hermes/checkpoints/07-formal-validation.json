@@ -3,10 +3,9 @@
   "checkpoint_id": "07-formal-validation",
   "phase": "formal validation",
   "status": "passed",
-  "contract": "docs/architecture/stage-contracts-v0.1.md",
-  "red": "Canonical ExtractionBundle validation port was absent; new contract tests failed at collection.",
-  "green": "PYTHONPATH=src python -m pytest tests/formal tests/assembly -q -> 13 passed",
-  "full_suite": "PYTHONPATH=src python -m pytest -q -> 57 passed",
-  "properties": ["validation consumes canonical ExtractionBundle and its production Formalization without premise reconstruction", "compatible TaxonomyMatch is required", "source/revision/run provenance must match", "missing taxonomy is rejected", "wrong input types are rejected", "provenance is preserved", "taxonomy enrichment is non-probative", "no solver dependency"],
-  "reviewer_status": "pending independent review"
+  "green": "pytest tests/formal tests/assembly -q: 16 passed",
+  "full_suite": "pytest -q: 82 passed",
+  "properties": ["validation consumes canonical ExtractionBundle and its production Formalization without premise reconstruction", "compatible TaxonomyMatch is required", "source/revision/run provenance must match exactly", "complete versioned stable Formalization envelope is exposed", "provenance is preserved", "taxonomy enrichment is non-probative", "no solver dependency"],
+  "reviewer_status": "pending independent verification",
+  "issues": []
 }

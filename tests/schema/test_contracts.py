@@ -42,6 +42,14 @@ def test_taxonomy_snapshot_is_canonical_and_requires_supported_ids():
     assert snapshot.supported_taxonomy_ids == ("src.core_initial_pass.003.l9",)
 
 
+def test_structured_document_rejects_block_span_cardinality_mismatch():
+    source = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    with pytest.raises(EnvelopeError, match="blocks and spans"):
+        from scholastic_pipeline.schema import StructuredDocument
+        StructuredDocument(document_id="doc-1", revision="r1", bytes_hash="a" * 64,
+                           spans=(source,), blocks=("A", "extra"), run_id="run-1")
+
+
 def test_record_id_changes_with_subclass_content_and_identity():
     span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
     first = IngestedDocument(document_id="doc-1", revision="r1", bytes_hash="a" * 64, spans=(span,), run_id="run-1")

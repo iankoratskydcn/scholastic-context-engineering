@@ -3,20 +3,13 @@
   "checkpoint_id": "06-extraction-boundary",
   "phase": "production extraction and taxonomy canary",
   "status": "passed",
-  "contract": "docs/architecture/stage-contracts-v0.1.md",
   "scope": ["StructuredDocument input", "TaxonomySnapshot authority", "modus ponens", "modus tollens", "safe abstention"],
-  "red": {
-    "command": "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py tests/extraction/test_extractor.py -q",
-    "result": "collection failed before implementation",
-    "evidence": "TaxonomySnapshot and extract_structured_document production ports were absent"
-  },
   "green": {
-    "command": "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py tests/extraction/test_extractor.py -q",
-    "result": "21 passed"
+    "command": "pytest tests/extraction -q",
+    "result": "17 passed"
   },
-  "taxonomy_snapshot_id": "argument-form-taxonomy-c013edcf0fe87670",
-  "taxonomy_candidate_ids": {"modus-ponens": "src.core_initial_pass.003.l9", "modus-tollens": "src.core_initial_pass.004.l10"},
-  "implementation": "extract_structured_document consumes only StructuredDocument plus TaxonomySnapshot, scans every structured block in source order, preserves exact proposition spans/revisions/run provenance, and abstains for unsupported taxonomy.",
+  "full_suite": "pytest -q: 82 passed",
+  "implementation": "Typed production extraction validates taxonomy provenance against the structured document, rejects cardinality-invalid documents, scans blocks in source order, and preserves exact proposition spans/revisions/run provenance.",
   "reviewer_status": "pending independent verification",
   "issues": []
 }

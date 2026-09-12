@@ -19,6 +19,7 @@ class Formalization:
     diagnostics: tuple[str, ...] = ()
     status: str = "ACCEPTED"
     schema_version: str = "0.1"
+    producer: str = "scholastic-context-engineering"
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
@@ -28,11 +29,25 @@ class Formalization:
             raise ValueError("formalization expression is required")
         if not self.provenance:
             raise ValueError("formalization requires provenance")
+        if any(not isinstance(span, EvidenceSpan) for span in self.provenance):
+            raise ValueError("formalization provenance must contain evidence spans")
+        if not isinstance(self.producer, str) or not self.producer:
+            raise ValueError("producer must be a non-empty string")
+        if self.status not in {"ACCEPTED", "ABSTAINED", "REJECTED", "QUARANTINED"}:
+            raise ValueError("unknown formalization status")
         if not 0 <= self.confidence <= 1 or self.schema_version != "0.1":
             raise ValueError("invalid formalization envelope")
-        payload = (self.expression, self.provenance, self.run_id, self.confidence,
-                   self.uncertainty, self.diagnostics, self.status, self.schema_version)
+        payload = self.to_payload()
         object.__setattr__(self, "record_id", "formalization-" + hashlib.sha256(repr(payload).encode()).hexdigest()[:24])
+
+    def to_payload(self) -> dict:
+        return {"kind": "formalization", "expression": self.expression,
+                "provenance": [{"source_id": s.source_id, "start": s.start, "end": s.end,
+                                "text": s.text, "revision": s.revision} for s in self.provenance],
+                "run_id": self.run_id, "confidence": self.confidence,
+                "uncertainty": list(self.uncertainty), "diagnostics": list(self.diagnostics),
+                "status": self.status, "schema_version": self.schema_version,
+                "producer": self.producer}
 
 
 _ATOM = r"[^&|→¬\-]+"
@@ -81,11 +96,13 @@ def validate(argument: object, formalization: Formalization | str, taxonomy_matc
     if bundle is not None:
         if form.run_id != bundle.run_id:
             raise ValueError("formalization and extraction run IDs must match")
-        expected = {(s.source_id, s.revision) for s in bundle.argument.provenance}
-        actual = {(s.source_id, s.revision) for s in form.provenance}
-        taxonomy_sources = {(s.source_id, s.revision) for s in bundle.taxonomy.provenance}
-        if not actual <= expected or taxonomy_sources != expected:
+        expected = {s.record_id for s in bundle.argument.provenance}
+        actual = {s.record_id for s in form.provenance}
+        taxonomy_sources = {s.record_id for s in bundle.taxonomy.provenance}
+        if actual != expected or taxonomy_sources != expected:
             raise ValueError("formalization, taxonomy, and extraction provenance must match")
+        if form.run_id != bundle.taxonomy.run_id or form.run_id != bundle.argument.run_id:
+            raise ValueError("formalization, taxonomy, and extraction run IDs must match")
     elif taxonomy_match is not None:
         if not isinstance(taxonomy_match, TaxonomyMatch):
             raise TypeError("taxonomy_match must be TaxonomyMatch")

@@ -151,6 +151,13 @@ class StructuredDocument(IngestedDocument):
     blocks: tuple[str, ...] = ()
     kind: ClassVar[str] = "structured_document"
 
+    def __post_init__(self) -> None:
+        if len(self.blocks) != len(self.spans):
+            raise EnvelopeError("structured document blocks and spans must have matching cardinality")
+        if any(not isinstance(block, str) for block in self.blocks):
+            raise EnvelopeError("structured document blocks must be strings")
+        super().__post_init__()
+
 
 @dataclass(frozen=True)
 class Proposition(Envelope):

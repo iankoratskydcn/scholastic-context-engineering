@@ -64,7 +64,28 @@ def test_bundle_validation_requires_compatible_taxonomy_and_matching_provenance(
         validate(bundle, wrong_run)
 
 
-def test_validation_rejects_wrong_canonical_input_type():
+
+
+def test_bundle_validation_rejects_formalization_with_different_span_identity():
+    arg = argument(["A -> B", "A"], "B")
+    source = span("A")
+    taxonomy = TaxonomyMatch(taxonomy_id="tax", label="modus", run_id="run-1", provenance=(source,))
+    bundle = ExtractionBundle("ACCEPTED", arg, taxonomy, None, 1.0, source,
+                             Formalization("A -> B", run_id="run-1", provenance=(source,)))
+    different_revision = EvidenceSpan("source-1", 0, 1, "A", revision="other-revision")
+    with pytest.raises(ValueError, match="provenance"):
+        validate(bundle, Formalization("A -> B", run_id="run-1", provenance=(different_revision,)))
+
+
+def test_bundle_validation_requires_taxonomy_source_revision_and_run_compatibility():
+    arg = argument(["A -> B", "A"], "B")
+    source = span("A")
+    foreign_taxonomy = TaxonomyMatch(taxonomy_id="tax", label="modus", run_id="run-1",
+                                     provenance=(EvidenceSpan("other-source", 0, 1, "A", "rev-2"),))
+    bundle = ExtractionBundle("ACCEPTED", arg, foreign_taxonomy, None, 1.0, source,
+                             Formalization("A -> B", run_id="run-1", provenance=(source,)))
+    with pytest.raises(ValueError, match="provenance"):
+        validate(bundle, bundle.formalization)
     with pytest.raises(TypeError):
         validate({"argument": "not-an-extraction"}, Formalization("A -> B", provenance=(span("A"),)))
 

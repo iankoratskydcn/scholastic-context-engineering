@@ -32,11 +32,14 @@ class ExtractionBundle:
     uncertainty: tuple[str, ...] = ()
     diagnostics: tuple[str, ...] = ()
     schema_version: str = "0.1"
+    producer: str = "scholastic-context-engineering"
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
         inferred_run = self.run_id or getattr(self.argument, "run_id", "") or getattr(self.formalization, "run_id", "")
         object.__setattr__(self, "run_id", inferred_run or "unknown")
+        if not isinstance(self.producer, str) or not self.producer:
+            raise ValueError("producer must be a non-empty string")
         if self.schema_version != "0.1":
             raise ValueError("unsupported schema version")
         if self.status not in {"ACCEPTED", "ABSTAINED", "REJECTED", "QUARANTINED"}:
@@ -45,13 +48,34 @@ class ExtractionBundle:
             raise ValueError("confidence must be between 0 and 1")
         if self.provenance is None and self.status != "ABSTAINED":
             raise ValueError("extraction bundle requires provenance")
-        payload = {"status": self.status, "argument": self.argument, "taxonomy": self.taxonomy,
-                   "abstention_reason": self.abstention_reason, "confidence": self.confidence,
-                   "provenance": self.provenance, "formalization": self.formalization,
-                   "run_id": self.run_id, "uncertainty": self.uncertainty,
-                   "diagnostics": self.diagnostics, "schema_version": self.schema_version}
+        if self.provenance is not None and not isinstance(self.provenance, EvidenceSpan):
+            raise ValueError("extraction provenance must be an evidence span")
+        payload = self.to_payload()
         encoded = repr(payload).encode("utf-8")
         object.__setattr__(self, "record_id", "extraction-" + hashlib.sha256(encoded).hexdigest()[:24])
+
+    def to_payload(self) -> dict[str, Any]:
+        """Return the complete stable JSON-safe envelope and result payload."""
+        def encode(value: Any) -> Any:
+            if hasattr(value, "value") and not isinstance(value, (str, bytes)):
+                return value.value
+            if hasattr(value, "to_payload"):
+                return value.to_payload()
+            if hasattr(value, "__dataclass_fields__"):
+                return {name: encode(getattr(value, name)) for name in value.__dataclass_fields__ if name != "record_id"}
+            if isinstance(value, tuple):
+                return [encode(item) for item in value]
+            if isinstance(value, list):
+                return [encode(item) for item in value]
+            if isinstance(value, dict):
+                return {str(key): encode(item) for key, item in value.items()}
+            return value
+        return {"kind": "extraction_bundle", "status": self.status, "argument": encode(self.argument),
+                "taxonomy": encode(self.taxonomy), "abstention_reason": self.abstention_reason,
+                "confidence": self.confidence, "provenance": encode(self.provenance),
+                "formalization": encode(self.formalization), "run_id": self.run_id,
+                "uncertainty": encode(self.uncertainty), "diagnostics": encode(self.diagnostics),
+                "schema_version": self.schema_version, "producer": self.producer}
 
 
 _CONDITIONAL = re.compile(

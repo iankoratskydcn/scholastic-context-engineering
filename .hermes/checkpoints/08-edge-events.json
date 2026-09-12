@@ -3,10 +3,9 @@
   "checkpoint_id": "08-edge-events",
   "phase": "production assembly",
   "status": "passed",
-  "contract": "docs/architecture/stage-contracts-v0.1.md",
-  "red": "Production ExtractionBundle plus ValidationResult assembly port was absent.",
-  "green": "PYTHONPATH=src python -m pytest tests/formal tests/assembly -q -> 13 passed",
-  "full_suite": "PYTHONPATH=src python -m pytest -q -> 57 passed",
+  "green": "pytest tests/formal tests/assembly -q: 16 passed",
+  "full_suite": "pytest -q: 82 passed",
   "properties": ["one provenance-bearing edge event per premise", "source revision and half-open spans preserved", "edge IDs include provenance content", "mismatched provenance rejected", "validation status preserved", "wrong contract types rejected", "enrichment cannot upgrade proof"],
-  "reviewer_status": "pending independent review"
+  "reviewer_status": "pending independent verification",
+  "issues": []
 }
