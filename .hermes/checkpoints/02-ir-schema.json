@@ -6,7 +6,13 @@
   "contract": "docs/architecture/stage-contracts-v0.1.md",
   "schema": "schemas/envelope-0.1.json",
   "tests": [
-    "tests/schema/test_contracts.py: 4 passed"
+    "PYTHONPATH=src python -m pytest tests/schema/test_contracts.py -q: 7 passed",
+    "PYTHONPATH=src python -m pytest -q: 39 passed"
+  ],
+  "repairs": [
+    "non-empty string revisions are required for EvidenceSpan and document spans",
+    "canonical IDs include complete subclass payloads",
+    "to_payload preserves all envelope and subclass fields"
   ],
   "reviewer_status": "pending independent review wave",
   "next_allowed_task": "vertical implementation slice"

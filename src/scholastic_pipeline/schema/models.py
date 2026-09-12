@@ -1,7 +1,7 @@
 """Canonical, dependency-free records shared by all pipeline stages."""
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields, is_dataclass
 from enum import Enum
 import hashlib
 import json
@@ -29,9 +29,32 @@ class ValidationStatus(str, Enum):
     ILL_POSED = "ILL_POSED"
 
 
+def _canonical(value: Any) -> Any:
+    if isinstance(value, Enum):
+        return value.value
+    if is_dataclass(value):
+        return {item.name: _canonical(getattr(value, item.name))
+                for item in fields(value) if item.name != "record_id"}
+    if isinstance(value, tuple):
+        return [_canonical(item) for item in value]
+    if isinstance(value, list):
+        return [_canonical(item) for item in value]
+    if isinstance(value, dict):
+        return {str(key): _canonical(item) for key, item in value.items()}
+    return value
+
+
 def _stable_id(kind: str, payload: Any) -> str:
-    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    encoded = json.dumps({"kind": kind, "payload": _canonical(payload)},
+                         sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return f"{kind}-{hashlib.sha256(encoded.encode('utf-8')).hexdigest()[:24]}"
+
+
+def _valid_text(value: object, label: str, *, required: bool = True) -> None:
+    if not isinstance(value, str) or (required and not value):
+        raise EnvelopeError(f"{label} must be a non-empty string")
+    if any(0xD800 <= ord(char) <= 0xDFFF for char in value):
+        raise EnvelopeError(f"{label} contains an invalid surrogate")
 
 
 @dataclass(frozen=True)
@@ -40,20 +63,20 @@ class EvidenceSpan:
     start: int
     end: int
     text: str
-    revision: str = ""
+    revision: str
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
-        if not self.source_id or not self.revision and self.revision is None:
-            raise EnvelopeError("source_id and revision identity are required")
+        _valid_text(self.source_id, "source_id")
+        _valid_text(self.revision, "revision")
+        _valid_text(self.text, "text", required=False)
+        if not isinstance(self.start, int) or not isinstance(self.end, int):
+            raise EnvelopeError("source span bounds must be integers")
         if self.start < 0 or self.end < self.start:
             raise EnvelopeError("source span bounds are invalid")
         if self.end - self.start != len(self.text):
             raise EnvelopeError("source span length must equal text length")
-        object.__setattr__(self, "record_id", _stable_id("span", {
-            "source_id": self.source_id, "revision": self.revision,
-            "start": self.start, "end": self.end, "text": self.text,
-        }))
+        object.__setattr__(self, "record_id", _stable_id("span", self))
 
 
 @dataclass(frozen=True)
@@ -71,22 +94,27 @@ class Envelope:
     kind: ClassVar[str] = "record"
 
     def __post_init__(self) -> None:
+        _valid_text(self.producer, "producer")
+        _valid_text(self.run_id, "run_id")
         if self.schema_version != SCHEMA_VERSION:
             raise EnvelopeError(f"unsupported schema version: {self.schema_version}")
-        if not self.producer or not self.run_id:
-            raise EnvelopeError("producer and run_id are required")
         if self.status not in {s.value for s in RecordStatus}:
             raise EnvelopeError(f"unknown record status: {self.status}")
+        if self.confidence is not None and not isinstance(self.confidence, (int, float)):
+            raise EnvelopeError("confidence must be numeric or null")
         if self.confidence is not None and not 0 <= self.confidence <= 1:
             raise EnvelopeError("confidence must be between 0 and 1")
         if not self.provenance:
             raise EnvelopeError("at least one provenance span is required")
+        if any(not isinstance(span, EvidenceSpan) for span in self.provenance):
+            raise EnvelopeError("provenance must contain evidence spans")
         object.__setattr__(self, "record_id", _stable_id(self.kind, self.to_payload()))
 
     def to_payload(self) -> dict[str, Any]:
-        return {"kind": self.kind, "schema_version": self.schema_version,
-                "run_id": self.run_id, "status": self.status,
-                "provenance": [s.record_id for s in self.provenance]}
+        """Return the complete JSON-safe canonical payload, excluding derived ID."""
+        payload = _canonical(self)
+        payload["kind"] = self.kind
+        return payload
 
 
 @dataclass(frozen=True)
@@ -98,12 +126,16 @@ class IngestedDocument(Envelope):
     kind: ClassVar[str] = "ingested_document"
 
     def __post_init__(self) -> None:
-        if not self.document_id or not self.revision or len(self.bytes_hash) != 64:
+        _valid_text(self.document_id, "document_id")
+        _valid_text(self.revision, "revision")
+        if not isinstance(self.bytes_hash, str) or len(self.bytes_hash) != 64:
             raise EnvelopeError("document identity, revision, and SHA-256 hash are required")
         if not self.spans:
             raise EnvelopeError("ingested document requires ordered spans")
         if not self.provenance:
             object.__setattr__(self, "provenance", self.spans)
+        if any(span.revision != self.revision for span in self.spans):
+            raise EnvelopeError("document spans must use document revision")
         super().__post_init__()
 
 
