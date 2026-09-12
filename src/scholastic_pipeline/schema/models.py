@@ -116,9 +116,11 @@ class Envelope:
         object.__setattr__(self, "record_id", _stable_id(self.kind, self.to_payload()))
 
     def to_payload(self) -> dict[str, Any]:
-        """Return the complete JSON-safe canonical payload, excluding derived ID."""
+        """Return the complete JSON-safe canonical payload."""
         payload = _canonical(self)
         payload["kind"] = self.kind
+        if hasattr(self, "record_id"):
+            payload["record_id"] = self.record_id
         return payload
 
 
@@ -220,6 +222,14 @@ class GraphEdgeEvent(Envelope):
     relation: str = ""
     validation_status: ValidationStatus = ValidationStatus.UNKNOWN
     kind: ClassVar[str] = "graph_edge_event"
+
+    def __post_init__(self) -> None:
+        for value, label in ((self.edge_instance_id, "edge_instance_id"),
+                             (self.source_node_id, "source_node_id"),
+                             (self.target_node_id, "target_node_id"),
+                             (self.relation, "relation")):
+            _valid_text(value, label)
+        super().__post_init__()
 
 
 @dataclass(frozen=True)

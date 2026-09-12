@@ -1,9 +1,12 @@
+import json
+
 import pytest
 
 from scholastic_pipeline.schema import (
     ArgumentUnit,
     EvidenceSpan,
     EnvelopeError,
+    GraphEdgeEvent,
     IngestedDocument,
     ValidationStatus,
     TaxonomySnapshot,
@@ -71,3 +74,35 @@ def test_canonical_payload_preserves_envelope_and_subclass_fields():
     assert payload["revision"] == "r1"
     assert payload["bytes_hash"] == "a" * 64
     assert payload["spans"][0]["revision"] == "r1"
+
+
+def test_graph_edge_event_rejects_empty_required_identity_fields():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    values = {
+        "edge_instance_id": "edge-1",
+        "source_node_id": "source-1",
+        "target_node_id": "target-1",
+        "relation": "entails",
+    }
+    for field_name in values:
+        invalid = {**values, field_name: ""}
+        with pytest.raises(EnvelopeError, match=field_name):
+            GraphEdgeEvent(**invalid, run_id="run-1", provenance=(span,))
+
+
+def test_graph_edge_event_rejects_empty_provenance():
+    with pytest.raises(EnvelopeError, match="provenance"):
+        GraphEdgeEvent(edge_instance_id="edge-1", source_node_id="source-1",
+                       target_node_id="target-1", relation="entails", run_id="run-1",
+                       provenance=())
+
+
+def test_graph_edge_event_payload_is_json_loadable_with_record_id():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    event = GraphEdgeEvent(edge_instance_id="edge-1", source_node_id="source-1",
+                           target_node_id="target-1", relation="entails",
+                           run_id="run-1", provenance=(span,))
+    payload = json.loads(json.dumps(event.to_payload()))
+    assert {"schema_version", "record_id", "run_id", "producer", "status",
+            "provenance", "confidence", "uncertainty", "diagnostics"} <= payload.keys()
+    assert payload["record_id"] == event.record_id

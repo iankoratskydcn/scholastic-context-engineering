@@ -3,9 +3,9 @@
   "checkpoint_id": "07-formal-validation",
   "phase": "formal validation",
   "status": "passed",
-  "green": "pytest tests/formal tests/assembly -q: 16 passed",
-  "full_suite": "pytest -q: 82 passed",
-  "properties": ["validation consumes canonical ExtractionBundle and its production Formalization without premise reconstruction", "compatible TaxonomyMatch is required", "source/revision/run provenance must match exactly", "complete versioned stable Formalization envelope is exposed", "provenance is preserved", "taxonomy enrichment is non-probative", "no solver dependency"],
+  "tdd": {"red": "formal/extraction canonical envelope assertions failed before repair", "green": "pytest -q tests/formal tests/assembly: 16 passed"},
+  "full_suite": "pytest -q: 93 passed",
+  "properties": ["validation consumes canonical ExtractionBundle and its production Formalization without premise reconstruction", "compatible TaxonomyMatch is required", "source/revision/run provenance must match exactly", "Formalization payload includes record_id and complete envelope", "provenance is preserved", "taxonomy enrichment is non-probative", "no solver dependency"],
   "reviewer_status": "pending independent verification",
   "issues": []
 }

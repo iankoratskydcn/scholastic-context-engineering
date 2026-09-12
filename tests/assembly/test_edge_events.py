@@ -24,6 +24,8 @@ def test_assembly_emits_provenance_and_validation_status():
     assert event.target_node_id == "c"
     assert events[1].source_node_id == "q"
     assert event.validation_status is ValidationStatus.VALID
+    assert event.record_id
+    assert events[0].edge_instance_id != events[1].edge_instance_id
     assert {(s.source_id, s.revision, s.start, s.end) for s in event.provenance} == {
         ("source-1", "rev-2", 0, 1), ("source-1", "rev-2", 4, 5)
     }

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 import hashlib
+import json
 import re
 from typing import Any
 
@@ -51,18 +52,19 @@ class ExtractionBundle:
         if self.provenance is not None and not isinstance(self.provenance, EvidenceSpan):
             raise ValueError("extraction provenance must be an evidence span")
         payload = self.to_payload()
-        encoded = repr(payload).encode("utf-8")
-        object.__setattr__(self, "record_id", "extraction-" + hashlib.sha256(encoded).hexdigest()[:24])
+        object.__setattr__(self, "record_id", "extraction-" + hashlib.sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+        ).hexdigest()[:24])
 
     def to_payload(self) -> dict[str, Any]:
         """Return the complete stable JSON-safe envelope and result payload."""
         def encode(value: Any) -> Any:
             if hasattr(value, "value") and not isinstance(value, (str, bytes)):
                 return value.value
-            if hasattr(value, "to_payload"):
-                return value.to_payload()
             if hasattr(value, "__dataclass_fields__"):
                 return {name: encode(getattr(value, name)) for name in value.__dataclass_fields__ if name != "record_id"}
+            if hasattr(value, "to_payload"):
+                return value.to_payload()
             if isinstance(value, tuple):
                 return [encode(item) for item in value]
             if isinstance(value, list):
@@ -70,12 +72,15 @@ class ExtractionBundle:
             if isinstance(value, dict):
                 return {str(key): encode(item) for key, item in value.items()}
             return value
-        return {"kind": "extraction_bundle", "status": self.status, "argument": encode(self.argument),
+        payload = {"kind": "extraction_bundle", "status": self.status, "argument": encode(self.argument),
                 "taxonomy": encode(self.taxonomy), "abstention_reason": self.abstention_reason,
                 "confidence": self.confidence, "provenance": encode(self.provenance),
                 "formalization": encode(self.formalization), "run_id": self.run_id,
                 "uncertainty": encode(self.uncertainty), "diagnostics": encode(self.diagnostics),
                 "schema_version": self.schema_version, "producer": self.producer}
+        if hasattr(self, "record_id"):
+            payload["record_id"] = self.record_id
+        return payload
 
 
 _CONDITIONAL = re.compile(

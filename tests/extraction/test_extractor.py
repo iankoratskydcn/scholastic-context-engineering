@@ -184,9 +184,15 @@ def test_canonical_bundle_and_formalization_expose_complete_stable_envelopes():
     assert result.to_payload()["producer"] == "scholastic-context-engineering"
     assert result.record_id
     assert result.formalization.record_id
-    formal_payload = result.formalization.to_payload()
-    assert set(("producer", "run_id", "status", "confidence", "uncertainty", "diagnostics",
-                "schema_version", "provenance", "expression")) <= set(formal_payload)
+    bundle_payload = json.loads(json.dumps(result.to_payload()))
+    formal_payload = json.loads(json.dumps(result.formalization.to_payload()))
+    required = {"producer", "run_id", "status", "confidence", "uncertainty", "diagnostics",
+                "schema_version", "provenance", "record_id"}
+    assert required <= bundle_payload.keys()
+    assert required <= formal_payload.keys()
+    assert bundle_payload["record_id"] == result.record_id
+    assert formal_payload["record_id"] == result.formalization.record_id
+    assert formal_payload["expression"] == "it rains -> the ground is wet"
 
 
 def test_structured_extraction_rejects_taxonomy_provenance_outside_document():

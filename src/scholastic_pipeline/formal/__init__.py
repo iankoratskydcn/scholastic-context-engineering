@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 import hashlib
+import json
 import re
 
 from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, TaxonomyMatch, ValidationResult, ValidationStatus
@@ -38,16 +39,21 @@ class Formalization:
         if not 0 <= self.confidence <= 1 or self.schema_version != "0.1":
             raise ValueError("invalid formalization envelope")
         payload = self.to_payload()
-        object.__setattr__(self, "record_id", "formalization-" + hashlib.sha256(repr(payload).encode()).hexdigest()[:24])
+        object.__setattr__(self, "record_id", "formalization-" + hashlib.sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+        ).hexdigest()[:24])
 
     def to_payload(self) -> dict:
-        return {"kind": "formalization", "expression": self.expression,
+        payload = {"kind": "formalization", "expression": self.expression,
                 "provenance": [{"source_id": s.source_id, "start": s.start, "end": s.end,
                                 "text": s.text, "revision": s.revision} for s in self.provenance],
                 "run_id": self.run_id, "confidence": self.confidence,
                 "uncertainty": list(self.uncertainty), "diagnostics": list(self.diagnostics),
                 "status": self.status, "schema_version": self.schema_version,
                 "producer": self.producer}
+        if hasattr(self, "record_id"):
+            payload["record_id"] = self.record_id
+        return payload
 
 
 _ATOM = r"[^&|→¬\-]+"

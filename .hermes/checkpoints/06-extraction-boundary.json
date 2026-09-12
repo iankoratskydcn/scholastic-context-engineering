@@ -4,12 +4,9 @@
   "phase": "production extraction and taxonomy canary",
   "status": "passed",
   "scope": ["StructuredDocument input", "TaxonomySnapshot authority", "modus ponens", "modus tollens", "safe abstention"],
-  "green": {
-    "command": "pytest tests/extraction -q",
-    "result": "17 passed"
-  },
-  "full_suite": "pytest -q: 82 passed",
-  "implementation": "Typed production extraction validates taxonomy provenance against the structured document, rejects cardinality-invalid documents, scans blocks in source order, and preserves exact proposition spans/revisions/run provenance.",
+  "green": {"command": "pytest -q tests/schema tests/extraction", "result": "37 passed"},
+  "full_suite": "pytest -q: 93 passed",
+  "implementation": "ExtractionBundle canonical payloads include record_id and complete envelope fields; deterministic IDs exclude their own derived identity.",
   "reviewer_status": "pending independent verification",
   "issues": []
 }

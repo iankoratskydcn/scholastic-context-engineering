@@ -3,9 +3,9 @@
   "checkpoint_id": "08-edge-events",
   "phase": "production assembly",
   "status": "passed",
-  "green": "pytest tests/formal tests/assembly -q: 16 passed",
-  "full_suite": "pytest -q: 82 passed",
-  "properties": ["one provenance-bearing edge event per premise", "source revision and half-open spans preserved", "edge IDs include provenance content", "mismatched provenance rejected", "validation status preserved", "wrong contract types rejected", "enrichment cannot upgrade proof"],
+  "tdd": {"red": "GraphEdgeEvent direct-construction and payload assertions failed before repair", "green": "pytest -q tests/formal tests/assembly: 16 passed"},
+  "full_suite": "pytest -q: 93 passed",
+  "properties": ["one provenance-bearing edge event per premise", "source revision and half-open spans preserved", "edge IDs include provenance content and remain distinct per premise", "mismatched provenance rejected", "validation status preserved", "direct GraphEdgeEvent construction rejects empty required fields", "wrong contract types rejected", "enrichment cannot upgrade proof"],
   "reviewer_status": "pending independent verification",
   "issues": []
 }
