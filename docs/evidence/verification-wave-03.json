@@ -1,0 +1,9 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_0380fdf3",
+  "status":"blocked",
+  "proof":["77 tests passed","direct production canary passed","exact proposition spans passed","stale/mixed provenance and partial generation probes passed","cross-process canary reproducibility passed"],
+  "blocking_findings":["ingestion and extraction raise EnvelopeError for source lengths above span ceiling","malformed RetrievalRequest construction can raise during stable-ID serialization","ExtractionBundle/Formalization are still not canonical Envelope subclasses","taxonomy snapshot provenance mismatch and malformed structured block cardinality are not rejected","checkpoint 05 uses an older schema and several checkpoint test counts are stale","untracked completed worktree residue remains"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["fail closed at public boundaries without exceptions","complete canonical record envelopes and structured input validation","refresh all checkpoints against current main","obtain cleanup authorization and verify intended-only diff"]
+}
