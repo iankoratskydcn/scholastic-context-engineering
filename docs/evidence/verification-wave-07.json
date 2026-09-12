@@ -1,0 +1,10 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_75dc6756",
+  "status":"conditional_blocked",
+  "proof":["123 tests passed","canonical payload/direct canary passed","malformed source/extraction/retrieval/storage probes mostly fail closed","cross-process canary deterministic","three wheel builds byte-identical with SOURCE_DATE_EPOCH=0"],
+  "blocking_findings":["truthy malformed current_revisions can raise","empty forged snapshot accepted as no-match","malformed expected_count can raise or persist invalid values","malformed manifest contents accepted","append invalid event leaves durable writing generation"],
+  "hygiene_findings":["checkpoint test counts stale","18 untracked completed worktrees and ignored generated residue remain"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["repair retrieval/storage malformed boundaries and invalid side effects","refresh checkpoint counts","fresh independent verification"]
+}
