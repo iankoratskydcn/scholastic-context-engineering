@@ -59,6 +59,12 @@ def _scope(event: GraphEdgeEvent) -> frozenset[tuple[str, str]]:
     return frozenset((span.source_id, span.revision) for span in event.provenance)
 
 
+def _validate_generation_id(generation_id: object) -> str:
+    if not isinstance(generation_id, str) or not generation_id:
+        raise StorageError("generation ID is required")
+    return generation_id
+
+
 class ReferenceSQLiteBackend:
     """Transactional reference store; each edge ID denotes one occurrence."""
 
@@ -83,32 +89,38 @@ class ReferenceSQLiteBackend:
         self._db.close()
 
     def _validate(self, events: Iterable[GraphEdgeEvent]) -> tuple[GraphEdgeEvent, ...]:
-        events = tuple(events)
-        if not events:
-            raise IncompleteGenerationError("empty generation is unreadable")
-        first = events[0]
-        expected_scope = _scope(first)
-        for event in events:
-            if not event.provenance or not event.edge_instance_id:
-                raise ProvenanceError("accepted edge occurrences require provenance and identity")
-            if event.run_id != first.run_id:
-                raise StorageError("mixed run IDs are not admissible")
-            if event.schema_version != first.schema_version:
-                raise StorageError("mixed schema versions are not admissible")
-            if _scope(event) != expected_scope:
-                raise ProvenanceError("mixed provenance scopes are not admissible")
-            for span in event.provenance:
-                if not span.source_id or not span.revision:
-                    raise ProvenanceError("provenance source and revision are required")
-                expected = self.current_revisions.get(span.source_id)
-                if expected is not None and expected != span.revision:
-                    raise ProvenanceError("stale provenance revision")
-        return events
+        try:
+            events = tuple(events)
+            if not events:
+                raise IncompleteGenerationError("empty generation is unreadable")
+            if any(not isinstance(event, GraphEdgeEvent) for event in events):
+                raise StorageError("event is invalid")
+            first = events[0]
+            expected_scope = _scope(first)
+            for event in events:
+                if not event.provenance or not event.edge_instance_id:
+                    raise ProvenanceError("accepted edge occurrences require provenance and identity")
+                if event.run_id != first.run_id:
+                    raise StorageError("mixed run IDs are not admissible")
+                if event.schema_version != first.schema_version:
+                    raise StorageError("mixed schema versions are not admissible")
+                if _scope(event) != expected_scope:
+                    raise ProvenanceError("mixed provenance scopes are not admissible")
+                for span in event.provenance:
+                    if not span.source_id or not span.revision:
+                        raise ProvenanceError("provenance source and revision are required")
+                    expected = self.current_revisions.get(span.source_id)
+                    if expected is not None and expected != span.revision:
+                        raise ProvenanceError("stale provenance revision")
+            return events
+        except StorageError:
+            raise
+        except Exception as exc:
+            raise StorageError("events are invalid") from exc
 
     def begin_generation(self, generation_id: str, expected_count: int | None = None,
                          manifest: Sequence[str] | None = None) -> None:
-        if not generation_id:
-            raise StorageError("generation ID is required")
+        generation_id = _validate_generation_id(generation_id)
         if expected_count is not None and expected_count < 0:
             raise StorageError("expected count must not be negative")
         if manifest is not None and expected_count is not None and len(manifest) != expected_count:
@@ -136,6 +148,7 @@ class ReferenceSQLiteBackend:
                          (generation_id, event.edge_instance_id, ordinal, encoded))
 
     def append(self, generation_id: str, event: GraphEdgeEvent) -> None:
+        generation_id = _validate_generation_id(generation_id)
         self.begin_generation(generation_id)
         existing = tuple(_edge_from_payload(json.loads(row[0])) for row in self._db.execute(
             "SELECT payload FROM occurrences WHERE generation_id=? ORDER BY ordinal", (generation_id,)))
@@ -144,6 +157,7 @@ class ReferenceSQLiteBackend:
         self._db.commit()
 
     def complete_generation(self, generation_id: str) -> None:
+        generation_id = _validate_generation_id(generation_id)
         row = self._db.execute("SELECT status, expected_count, manifest FROM generations WHERE generation_id=?", (generation_id,)).fetchone()
         if row is None:
             raise StorageError("unknown generation")
@@ -161,6 +175,7 @@ class ReferenceSQLiteBackend:
 
     def write_generation(self, generation_id: str, events: Iterable[GraphEdgeEvent],
                          expected_count: int | None = None, manifest: Sequence[str] | None = None) -> GraphSnapshot:
+        generation_id = _validate_generation_id(generation_id)
         events = self._validate(events)
         existing = self._db.execute("SELECT status FROM generations WHERE generation_id=?", (generation_id,)).fetchone()
         if existing is not None and existing[0] == "complete":
@@ -188,6 +203,7 @@ class ReferenceSQLiteBackend:
         return self.read_generation(generation_id)
 
     def read_generation(self, generation_id: str) -> GraphSnapshot:
+        generation_id = _validate_generation_id(generation_id)
         row = self._db.execute("SELECT status FROM generations WHERE generation_id=?", (generation_id,)).fetchone()
         if row is None or row[0] != "complete":
             raise IncompleteGenerationError("generation is incomplete or missing")

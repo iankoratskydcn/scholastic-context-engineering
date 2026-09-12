@@ -63,3 +63,51 @@ def test_completed_generation_cannot_accept_new_occurrence():
     backend.write_generation("g1", [envelope_edge()])
     with pytest.raises(StorageError):
         backend.append("g1", envelope_edge("occ-2"))
+
+
+@pytest.mark.parametrize("generation_id", [None, 42, object(), ""])
+def test_public_methods_reject_malformed_generation_ids_with_storage_error(generation_id):
+    backend = ReferenceSQLiteBackend()
+    event = envelope_edge()
+    for operation in (
+        lambda: backend.begin_generation(generation_id),
+        lambda: backend.append(generation_id, event),
+        lambda: backend.complete_generation(generation_id),
+        lambda: backend.write_generation(generation_id, [event]),
+        lambda: backend.read_generation(generation_id),
+    ):
+        with pytest.raises(StorageError):
+            operation()
+
+
+@pytest.mark.parametrize("events", [None, 42])
+def test_write_generation_rejects_non_iterable_events_with_storage_error(events):
+    with pytest.raises(StorageError):
+        ReferenceSQLiteBackend().write_generation("g1", events)
+
+
+@pytest.mark.parametrize("event", [None, object(), {"edge_instance_id": "occ-1"}])
+def test_append_rejects_malformed_events_with_storage_error(event):
+    with pytest.raises(StorageError):
+        ReferenceSQLiteBackend().append("g1", event)
+
+
+def test_write_generation_wraps_generator_failures_and_rolls_back():
+    backend = ReferenceSQLiteBackend()
+
+    def failing_events():
+        yield envelope_edge()
+        raise RuntimeError("boom")
+
+    with pytest.raises(StorageError):
+        backend.write_generation("g1", failing_events())
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
+def test_write_generation_wraps_malformed_event_attributes_with_storage_error():
+    class BrokenEvent:
+        edge_instance_id = "occ-1"
+
+    with pytest.raises(StorageError):
+        ReferenceSQLiteBackend().write_generation("g1", [BrokenEvent()])

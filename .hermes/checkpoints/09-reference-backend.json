@@ -5,10 +5,11 @@
   "status": "passed",
   "scope": ["src/scholastic_pipeline/backends/**", "tests/backends/**"],
   "tdd": {
-    "red": "PYTHONPATH=src python -m pytest tests/backends/test_storage_boundary_adversarial.py -q (4 failed, 1 passed; omitted envelope fields, mixed envelopes, missing completion bounds, and non-atomic failure were reproduced)",
-    "green": "PYTHONPATH=src python -m pytest tests/backends -q (10 passed)"
+    "red": "PYTHONPATH=src python -m pytest tests/backends/test_storage_boundary_adversarial.py -q (11 failed, 5 passed; malformed IDs, non-iterable collections, malformed events, and generator failures reproduced)",
+    "green": "PYTHONPATH=src python -m pytest tests/backends/test_storage_boundary_adversarial.py -q (16 passed)"
   },
-  "invariants": ["complete GraphEdgeEvent envelope survives SQLite round-trip", "mixed run IDs/schema versions/provenance scopes rejected", "manifest and expected count bind completion", "failed writes roll back and partial generations are unreadable", "retries are idempotent and completed generations immutable", "stale and missing provenance rejected"],
-  "evidence": "PYTHONPATH=src python -m pytest -q (22 passed); git diff --check (passed)",
-  "reviewer_status": "pending independent verification"
+  "invariants": ["complete GraphEdgeEvent envelope survives SQLite round-trip", "mixed run IDs/schema versions/provenance scopes rejected", "manifest and expected count bind completion", "failed writes roll back and partial generations are unreadable", "retries are idempotent and completed generations immutable", "stale and missing provenance rejected", "malformed public inputs fail only with StorageError or its documented subclasses"],
+  "evidence": "PYTHONPATH=src python -m pytest -q (110 passed); git diff --check (passed)",
+  "reviewer_status": "pending independent verification",
+  "issues": []
 }
