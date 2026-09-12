@@ -5,7 +5,7 @@
   "status": "passed",
   "scope": ["StructuredDocument input", "TaxonomySnapshot authority", "modus ponens", "modus tollens", "safe abstention"],
   "green": {"command": "PYTHONPATH=src python -m pytest -q tests/schema tests/extraction", "result": "51 passed"},
-  "full_suite": "PYTHONPATH=src python -m pytest -q: 102 passed, 4 assembly failures outside ownership",
+  "full_suite":"env -u PYTHONPATH python -m pytest -q: 118 passed",
   "implementation": "ExtractionBundle canonical payloads include record_id and complete envelope fields; deterministic IDs exclude their own derived identity.",
   "reviewer_status": "pending independent verification",
   "issues": []

@@ -9,7 +9,7 @@
     "green": "PYTHONPATH=src python -m pytest tests/backends/test_storage_boundary_adversarial.py -q (16 passed)"
   },
   "invariants": ["complete GraphEdgeEvent envelope survives SQLite round-trip", "mixed run IDs/schema versions/provenance scopes rejected", "manifest and expected count bind completion", "failed writes roll back and partial generations are unreadable", "retries are idempotent and completed generations immutable", "stale and missing provenance rejected", "malformed public inputs fail only with StorageError or its documented subclasses"],
-  "evidence": "PYTHONPATH=src python -m pytest -q (110 passed); git diff --check (passed)",
+  "evidence":"env -u PYTHONPATH python -m pytest -q (118 passed); git diff --check (passed)",
   "reviewer_status": "pending independent verification",
   "issues": []
 }

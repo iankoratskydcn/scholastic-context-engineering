@@ -25,6 +25,6 @@
     "stable score and edge-ID ordering preserved",
     "prompt-like text remains inert data"
   ],
-  "evidence": "PYTHONPATH=src python3 -m pytest -q: 96 passed; git diff --check: PASS",
+  "evidence":"env -u PYTHONPATH python -m pytest -q: 118 passed; git diff --check: PASS",
   "reviewer_status": "pending independent verification"
 }

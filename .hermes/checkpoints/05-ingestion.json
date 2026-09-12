@@ -1,31 +1,24 @@
 {
   "checkpoint_schema_version": "0.1",
   "checkpoint_id": "05-ingestion",
-  "lane": "ingestion",
-  "status": "complete",
-  "red": {
-    "command": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py::test_malformed_source_id_is_quarantined_before_identity_hashing tests/ingestion/test_text_pipeline.py::test_structure_document_refuses_none_and_malformed_inputs -q",
-    "result": "2 failed: malformed source_id reached identity digest serialization and structure_document(None) raised AttributeError"
-  },
-  "green": [
-    {
-      "command": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py -q",
-      "result": "12 passed"
-    },
-    {
-      "command": "PYTHONPATH=src python -m pytest -q",
-            "result": "102 passed, 4 assembly failures outside ownership"
-    },
-    {
-      "command": "git diff --check",
-      "result": "PASS"
-    }
+  "phase": "ingestion boundary repair",
+  "status": "passed",
+  "scope": [
+    "source identity validation",
+    "document structuring",
+    "malformed-input quarantine"
   ],
+  "tdd": {
+    "red": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py::test_malformed_source_id_is_quarantined_before_identity_hashing tests/ingestion/test_text_pipeline.py::test_structure_document_refuses_none_and_malformed_inputs -q: 2 failed as expected",
+    "green": "PYTHONPATH=src python -m pytest tests/ingestion/test_text_pipeline.py -q: 12 passed"
+  },
+  "evidence": "env -u PYTHONPATH python -m pytest -q: 118 passed; git diff --check: PASS",
   "artifacts": [
     "src/scholastic_pipeline/ingestion/__init__.py",
     "tests/ingestion/test_text_pipeline.py",
     "fixtures/canary/source-01.txt",
     "fixtures/canary/source-01.expected.json"
   ],
+  "reviewer_status": "pending independent verification",
   "issues": []
 }

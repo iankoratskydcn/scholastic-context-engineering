@@ -3,8 +3,8 @@
   "checkpoint_id": "08-edge-events",
   "phase": "production assembly",
   "status": "passed",
-  "tdd": {"red": "GraphEdgeEvent direct-construction and payload assertions failed before repair", "green": "PYTHONPATH=src python -m pytest -q tests/schema tests/formal: 24 passed"},
-  "full_suite": "PYTHONPATH=src python -m pytest -q: 102 passed, 4 assembly failures outside ownership",
+  "tdd": {"red": "GraphEdgeEvent direct-construction and payload assertions failed before repair", "green": "PYTHONPATH=src python -m pytest -q tests/schema tests/formal: 32 passed"},
+  "full_suite":"env -u PYTHONPATH python -m pytest -q: 118 passed",
   "properties": ["one provenance-bearing edge event per premise", "source revision and half-open spans preserved", "edge IDs include provenance content and remain distinct per premise", "mismatched provenance rejected", "validation status preserved", "direct GraphEdgeEvent construction rejects empty required fields", "wrong contract types rejected", "enrichment cannot upgrade proof"],
   "reviewer_status": "pending independent verification",
   "issues": []

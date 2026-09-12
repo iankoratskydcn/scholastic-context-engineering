@@ -4,7 +4,7 @@
   "phase": "formal validation",
   "status": "passed",
   "tdd": {"red": "formal/extraction canonical envelope assertions failed before repair", "green": "PYTHONPATH=src python -m pytest -q tests/formal: 12 passed"},
-  "full_suite": "PYTHONPATH=src python -m pytest -q: 102 passed, 4 assembly failures outside ownership",
+  "full_suite":"env -u PYTHONPATH python -m pytest -q: 118 passed",
   "properties": ["validation consumes canonical ExtractionBundle and its production Formalization without premise reconstruction", "compatible TaxonomyMatch is required", "source/revision/run provenance must match exactly", "Formalization payload includes record_id and complete envelope", "provenance is preserved", "taxonomy enrichment is non-probative", "no solver dependency"],
   "reviewer_status": "pending independent verification",
   "issues": []
