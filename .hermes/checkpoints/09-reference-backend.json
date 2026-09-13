@@ -8,12 +8,13 @@
     "tests/backends/**"
   ],
   "tdd": {
-    "red": "focused adversarial tests failed as expected for malformed IDs, non-iterable collections, malformed events, generator failures, and invalid append side effects",
-    "green": "backend adversarial suite passed"
+    "red": "focused adversarial manifest-integrity tests failed as expected: duplicate manifest IDs and reordered manifest were accepted before repair",
+    "green": "backend adversarial suite and full suite passed after minimal repair"
   },
   "invariants": [
     "complete GraphEdgeEvent envelope survives SQLite round-trip",
     "mixed run IDs/schema versions/provenance scopes rejected",
+    "manifest IDs are unique and match occurrence cardinality and ordinal order",
     "manifest and expected count bind completion",
     "failed writes roll back and partial generations are unreadable",
     "retries are idempotent and completed generations immutable",
@@ -31,6 +32,6 @@
   "next_allowed_task": "fresh independent verification",
   "current_full_suite": {
     "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "154 passed"
+    "result": "157 passed"
   }
 }

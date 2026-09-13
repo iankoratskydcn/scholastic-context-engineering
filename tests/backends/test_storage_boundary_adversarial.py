@@ -50,6 +50,32 @@ def test_expected_count_and_manifest_are_required_for_completion():
         backend.write_generation("g2", [envelope_edge()], expected_count=1, manifest=("wrong",))
 
 
+def test_manifest_rejects_duplicate_ids_before_storage():
+    backend = ReferenceSQLiteBackend()
+    with pytest.raises(StorageError):
+        backend.begin_generation("g1", expected_count=2, manifest=("occ-1", "occ-1"))
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
+def test_manifest_matching_preserves_occurrence_order_and_cardinality():
+    backend = ReferenceSQLiteBackend()
+    events = [envelope_edge("occ-1"), envelope_edge("occ-2")]
+    with pytest.raises(IncompleteGenerationError):
+        backend.write_generation("g1", events, expected_count=2, manifest=("occ-2", "occ-1"))
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
+def test_duplicate_event_ids_are_rejected_without_partial_generation():
+    backend = ReferenceSQLiteBackend()
+    events = [envelope_edge("occ-1"), envelope_edge("occ-1")]
+    with pytest.raises(StorageError):
+        backend.write_generation("g1", events, expected_count=2)
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
 def test_failed_generation_is_atomic_and_retry_can_start_clean():
     backend = ReferenceSQLiteBackend(current_revisions={"book": "r1"})
     with pytest.raises(ProvenanceError):

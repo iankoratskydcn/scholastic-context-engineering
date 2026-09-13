@@ -109,6 +109,8 @@ def _validate_generation_options(expected_count: object, manifest: object) -> tu
            or any(0xD800 <= ord(char) <= 0xDFFF for char in edge_id)
            for edge_id in manifest):
         raise StorageError("manifest must contain valid strings")
+    if len(manifest) != len(set(manifest)):
+        raise StorageError("manifest must contain unique edge instance IDs")
     if expected_count is not None and len(manifest) != expected_count:
         raise StorageError("manifest and expected count disagree")
     return expected_count, manifest
@@ -148,6 +150,9 @@ class ReferenceSQLiteBackend:
                 raise StorageError("event is invalid")
             first = events[0]
             expected_scope = _scope(first)
+            event_ids = tuple(event.edge_instance_id for event in events)
+            if len(event_ids) != len(set(event_ids)):
+                raise StorageError("generation must contain unique edge instance IDs")
             for event in events:
                 if not event.provenance or not event.edge_instance_id:
                     raise ProvenanceError("accepted edge occurrences require provenance and identity")
@@ -226,10 +231,12 @@ class ReferenceSQLiteBackend:
             raise StorageError("unknown generation")
         if row[0] == "complete":
             return
-        ids = [r[0] for r in self._db.execute("SELECT edge_instance_id FROM occurrences WHERE generation_id=?", (generation_id,))]
+        ids = [r[0] for r in self._db.execute(
+            "SELECT edge_instance_id FROM occurrences WHERE generation_id=? ORDER BY ordinal", (generation_id,)
+        )]
         if row[1] is not None and len(ids) != row[1]:
             raise IncompleteGenerationError("generation does not meet expected count")
-        if row[2] is not None and set(ids) != set(json.loads(row[2])):
+        if row[2] is not None and tuple(ids) != tuple(json.loads(row[2])):
             raise IncompleteGenerationError("generation does not match manifest")
         if not ids:
             raise IncompleteGenerationError("empty generation is unreadable")
@@ -249,7 +256,7 @@ class ReferenceSQLiteBackend:
             raise StorageError("completed generation is immutable")
         if expected_count is not None and len(events) != expected_count:
             raise IncompleteGenerationError("generation does not meet expected count")
-        if manifest is not None and set(event.edge_instance_id for event in events) != set(manifest):
+        if manifest is not None and tuple(event.edge_instance_id for event in events) != manifest:
             raise IncompleteGenerationError("generation does not match manifest")
         try:
             self._db.execute("BEGIN")
