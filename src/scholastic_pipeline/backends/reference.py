@@ -3,8 +3,9 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Iterable
 
 from scholastic_pipeline.schema import EvidenceSpan, GraphEdgeEvent, GraphSnapshot, RecordStatus
 
@@ -19,6 +20,9 @@ class IncompleteGenerationError(StorageError):
 
 class ProvenanceError(StorageError):
     pass
+
+
+MAX_MANIFEST_ENTRIES = 100_000
 
 
 def _span_payload(span: EvidenceSpan) -> dict:
@@ -65,10 +69,38 @@ def _validate_generation_id(generation_id: object) -> str:
     return generation_id
 
 
+def _validate_generation_options(expected_count: object, manifest: object) -> tuple[int | None, tuple[str, ...] | None]:
+    if expected_count is not None and (not isinstance(expected_count, int) or isinstance(expected_count, bool)):
+        raise StorageError("expected count must be an integer")
+    if expected_count is not None and expected_count < 0:
+        raise StorageError("expected count must not be negative")
+    if manifest is None:
+        return expected_count, None
+    if isinstance(manifest, (str, bytes, bytearray)) or not isinstance(manifest, Sequence):
+        raise StorageError("manifest must be a bounded sequence of strings")
+    try:
+        if len(manifest) > MAX_MANIFEST_ENTRIES:
+            raise StorageError("manifest exceeds absolute entry ceiling")
+        manifest = tuple(manifest)
+    except StorageError:
+        raise
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise StorageError("manifest must be a bounded sequence of strings") from exc
+    if any(not isinstance(edge_id, str) or not edge_id
+           or any(0xD800 <= ord(char) <= 0xDFFF for char in edge_id)
+           for edge_id in manifest):
+        raise StorageError("manifest must contain valid strings")
+    if expected_count is not None and len(manifest) != expected_count:
+        raise StorageError("manifest and expected count disagree")
+    return expected_count, manifest
+
+
 class ReferenceSQLiteBackend:
     """Transactional reference store; each edge ID denotes one occurrence."""
 
-    def __init__(self, path: str | Path = ":memory:", current_revisions: dict[str, str] | None = None):
+    def __init__(self, path: str | Path = ":memory:", current_revisions: Mapping[str, str] | None = None):
+        if current_revisions is not None and not isinstance(current_revisions, Mapping):
+            raise StorageError("current revisions must be a mapping")
         self.current_revisions = current_revisions or {}
         self._db = sqlite3.connect(str(path))
         self._db.execute("PRAGMA foreign_keys = ON")
@@ -121,10 +153,7 @@ class ReferenceSQLiteBackend:
     def begin_generation(self, generation_id: str, expected_count: int | None = None,
                          manifest: Sequence[str] | None = None) -> None:
         generation_id = _validate_generation_id(generation_id)
-        if expected_count is not None and expected_count < 0:
-            raise StorageError("expected count must not be negative")
-        if manifest is not None and expected_count is not None and len(manifest) != expected_count:
-            raise StorageError("manifest and expected count disagree")
+        expected_count, manifest = _validate_generation_options(expected_count, manifest)
         self._db.execute(
             "INSERT OR IGNORE INTO generations VALUES (?, 'writing', ?, ?)",
             (generation_id, expected_count, json.dumps(list(manifest)) if manifest is not None else None),
@@ -149,6 +178,7 @@ class ReferenceSQLiteBackend:
 
     def append(self, generation_id: str, event: GraphEdgeEvent) -> None:
         generation_id = _validate_generation_id(generation_id)
+        self._validate((event,))
         self.begin_generation(generation_id)
         existing = tuple(_edge_from_payload(json.loads(row[0])) for row in self._db.execute(
             "SELECT payload FROM occurrences WHERE generation_id=? ORDER BY ordinal", (generation_id,)))
@@ -176,6 +206,7 @@ class ReferenceSQLiteBackend:
     def write_generation(self, generation_id: str, events: Iterable[GraphEdgeEvent],
                          expected_count: int | None = None, manifest: Sequence[str] | None = None) -> GraphSnapshot:
         generation_id = _validate_generation_id(generation_id)
+        expected_count, manifest = _validate_generation_options(expected_count, manifest)
         events = self._validate(events)
         existing = self._db.execute("SELECT status FROM generations WHERE generation_id=?", (generation_id,)).fetchone()
         if existing is not None and existing[0] == "complete":

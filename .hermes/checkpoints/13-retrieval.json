@@ -9,8 +9,8 @@
     "tests/retrieval/**"
   ],
   "tdd": {
-    "red": "PYTHONPATH=src python3 -m pytest targeted adversarial tests -q: 6 failed; forged/non-snapshot inputs, forged occurrences, arbitrary request, malformed source_id, and None/malformed document raised uncaught exceptions",
-    "green": "PYTHONPATH=src python3 -m pytest tests/retrieval -q: 24 passed"
+    "red": "python -m pytest focused adversarial additions -q: 2 failed; non-mapping current_revisions raised and forged empty snapshot returned no-match",
+    "green": "python -m pytest -q tests/retrieval: 26 passed"
   },
   "invariants": [
     "absolute budget ceiling enforced",
@@ -18,13 +18,14 @@
     "non-string, surrogate, empty, and oversized queries refuse without downstream string operations",
     "malformed spans refuse before string operations or encoding",
     "request and snapshot run/schema/status must be admissible",
-    "forged requests, snapshots, occurrences, and provenance containers refuse before iteration",
+    "forged requests, snapshots, occurrences, empty snapshots, and provenance containers refuse before iteration",
+    "current_revisions must be a Mapping before revision lookup",
     "event envelopes must match snapshot run/schema/provenance scope",
     "missing or stale provenance refuses",
     "no-match returns valid empty context",
     "stable score and edge-ID ordering preserved",
     "prompt-like text remains inert data"
   ],
-  "evidence":"env -u PYTHONPATH python -m pytest -q: 118 passed; git diff --check: PASS",
+  "evidence":"python -m pytest -q: 139 passed; git diff --check: PASS",
   "reviewer_status": "pending independent verification"
 }

@@ -5,11 +5,11 @@
   "status": "passed",
   "scope": ["src/scholastic_pipeline/backends/**", "tests/backends/**"],
   "tdd": {
-    "red": "PYTHONPATH=src python -m pytest tests/backends/test_storage_boundary_adversarial.py -q (11 failed, 5 passed; malformed IDs, non-iterable collections, malformed events, and generator failures reproduced)",
-    "green": "PYTHONPATH=src python -m pytest tests/backends/test_storage_boundary_adversarial.py -q (16 passed)"
+    "red": "python -m pytest focused adversarial additions -q (15 failed; non-mapping revisions, malformed generation options, and append side effects reproduced)",
+    "green": "python -m pytest -q tests/backends/test_storage_boundary_adversarial.py (30 passed)"
   },
   "invariants": ["complete GraphEdgeEvent envelope survives SQLite round-trip", "mixed run IDs/schema versions/provenance scopes rejected", "manifest and expected count bind completion", "failed writes roll back and partial generations are unreadable", "retries are idempotent and completed generations immutable", "stale and missing provenance rejected", "malformed public inputs fail only with StorageError or its documented subclasses"],
-  "evidence":"env -u PYTHONPATH python -m pytest -q (118 passed); git diff --check (passed)",
+  "evidence":"python -m pytest -q (139 passed); git diff --check (passed)",
   "reviewer_status": "pending independent verification",
   "issues": []
 }

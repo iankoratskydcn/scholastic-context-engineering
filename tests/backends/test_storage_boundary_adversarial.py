@@ -111,3 +111,43 @@ def test_write_generation_wraps_malformed_event_attributes_with_storage_error():
 
     with pytest.raises(StorageError):
         ReferenceSQLiteBackend().write_generation("g1", [BrokenEvent()])
+
+
+@pytest.mark.parametrize("revisions", [[], object(), "book:r1"])
+def test_backend_rejects_non_mapping_current_revisions(revisions):
+    with pytest.raises(StorageError):
+        ReferenceSQLiteBackend(current_revisions=revisions)
+
+
+@pytest.mark.parametrize("expected_count", [True, False, 1.0, "1", object()])
+def test_generation_options_reject_non_integer_expected_count_before_storage(expected_count):
+    backend = ReferenceSQLiteBackend()
+    with pytest.raises(StorageError):
+        backend.begin_generation("g1", expected_count=expected_count)
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
+@pytest.mark.parametrize("manifest", ["occ-1", ["occ-1", 2], [""], object()])
+def test_generation_options_reject_malformed_manifest_before_storage(manifest):
+    backend = ReferenceSQLiteBackend()
+    with pytest.raises(StorageError):
+        backend.begin_generation("g1", manifest=manifest)
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
+def test_generation_options_reject_manifest_over_bound_before_storage():
+    backend = ReferenceSQLiteBackend()
+    with pytest.raises(StorageError):
+        backend.begin_generation("g1", manifest=["occ"] * 100_001)
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
+def test_append_validates_event_before_creating_generation():
+    backend = ReferenceSQLiteBackend()
+    with pytest.raises(StorageError):
+        backend.append("g1", None)
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")

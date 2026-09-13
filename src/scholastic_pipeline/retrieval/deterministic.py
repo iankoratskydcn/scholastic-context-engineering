@@ -104,6 +104,8 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
         not isinstance(event, GraphEdgeEvent) for event in snapshot.occurrences
     ):
         return _refusal(request, "retrieval snapshot occurrences are malformed")
+    if not snapshot.occurrences:
+        return _refusal(request, "retrieval snapshot occurrences are empty")
     if type(request.provenance) is not tuple or type(snapshot.provenance) is not tuple:
         return _refusal(request, "retrieval provenance is malformed")
     for event in snapshot.occurrences:
@@ -130,6 +132,8 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
                   *(event.provenance for event in snapshot.occurrences)):
         if (problem := _span_problem(spans)):
             return _refusal(request, problem)
+    if current_revisions is not None and not isinstance(current_revisions, Mapping):
+        return _refusal(request, "retrieval current revisions are malformed")
     revisions = current_revisions or {}
     request_scope = _scope(request.provenance)
     snapshot_scope = _scope(snapshot.provenance)
