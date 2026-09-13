@@ -134,3 +134,16 @@ class BadStr(str):
 def test_formalization_rejects_encode_overriding_expression_subclass():
     with pytest.raises(ValueError, match="expression"):
         Formalization(BadStr("A -> B"), run_id="run-1", provenance=(span("A"),))
+
+
+class HostileConfidence:
+    def __le__(self, other):
+        raise RuntimeError("hostile comparison")
+
+    def __ge__(self, other):
+        raise RuntimeError("hostile comparison")
+
+
+def test_formalization_rejects_hostile_confidence_without_comparison():
+    with pytest.raises(ValueError, match="confidence"):
+        Formalization("A -> B", run_id="run-1", provenance=(span("A"),), confidence=HostileConfidence())

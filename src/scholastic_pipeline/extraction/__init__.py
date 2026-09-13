@@ -50,7 +50,7 @@ class ExtractionBundle:
             raise ValueError("unsupported schema version")
         if self.status not in {"ACCEPTED", "ABSTAINED", "REJECTED", "QUARANTINED"}:
             raise ValueError("unknown extraction status")
-        if not 0 <= self.confidence <= 1:
+        if type(self.confidence) not in (int, float) or not 0 <= self.confidence <= 1:
             raise ValueError("confidence must be between 0 and 1")
         if self.provenance is None and self.status != "ABSTAINED":
             raise ValueError("extraction bundle requires provenance")

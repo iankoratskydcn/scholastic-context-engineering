@@ -99,6 +99,20 @@ def test_retrieval_request_accepts_oversized_query_for_refusal_without_stable_id
     assert result.refusal == "retrieval query exceeds absolute byte ceiling"
 
 
+def test_retrieval_request_accepts_arbitrary_budget_for_typed_refusal_before_id_serialization():
+    class HostileBudget:
+        def __int__(self):
+            raise RuntimeError("hostile int")
+
+        def __lt__(self, other):
+            raise RuntimeError("hostile comparison")
+
+    req = RetrievalRequest(query="alpha", budget=HostileBudget(),
+                           provenance=(span("query"),), run_id="run-1")
+    result = retrieve(req, snapshot([edge("a", "alpha")]))
+    assert result.refusal == "retrieval budget is malformed"
+
+
 def test_retrieval_refuses_malformed_span_before_string_operations():
     evidence = span("alpha")
     object.__setattr__(evidence, "text", object())

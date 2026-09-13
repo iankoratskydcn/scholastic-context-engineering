@@ -154,3 +154,14 @@ def test_quarantine_bounds_identity_fields_but_keeps_diagnostic():
         assert not any(0xD800 <= ord(char) <= 0xDFFF for char in value)
         assert len(value.encode("utf-8")) <= MAX_IDENTIFIER_BYTES
     assert json.loads(json.dumps(payload))["diagnostics"] == ["source_id is malformed"]
+
+
+def test_str_subclass_source_id_is_quarantined_without_overridden_encode():
+    class HostileStr(str):
+        def encode(self, *args, **kwargs):
+            raise RuntimeError("hostile encode")
+
+    result = ingest_text(HostileStr("source-01"), "text", run_id="run-1")
+    assert result.status == RecordStatus.QUARANTINED.value
+    assert result.spans == ()
+    assert result.diagnostics == ("source_id is malformed",)

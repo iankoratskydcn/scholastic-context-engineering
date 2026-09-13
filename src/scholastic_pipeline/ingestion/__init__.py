@@ -32,7 +32,7 @@ class QuarantinedDocument:
 
     def __post_init__(self) -> None:
         try:
-            valid_run_id = (isinstance(self.run_id, str) and bool(self.run_id)
+            valid_run_id = (type(self.run_id) is str and bool(self.run_id)
                             and not any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id)
                             and len(self.run_id.encode("utf-8")) <= MAX_IDENTIFIER_BYTES)
         except UnicodeError:
@@ -44,7 +44,7 @@ class QuarantinedDocument:
                                ("producer", "scholastic-context-engineering")):
             value = getattr(self, name)
             try:
-                valid = isinstance(value, str) and bool(value) and not any(0xD800 <= ord(c) <= 0xDFFF for c in value)
+                valid = type(value) is str and bool(value) and not any(0xD800 <= ord(c) <= 0xDFFF for c in value)
                 valid = valid and len(value.encode("utf-8")) <= MAX_IDENTIFIER_BYTES
             except UnicodeError:
                 valid = False
@@ -90,10 +90,10 @@ def _source_bytes(source: str | bytes) -> tuple[bytes, str | None]:
 
 def _quarantine(source_id: object, run_id: object, reason: str) -> QuarantinedDocument:
     """Build a safe quarantine record without interpreting hostile identity data."""
-    safe_source_id = source_id if isinstance(source_id, str) and source_id and not any(
+    safe_source_id = source_id if type(source_id) is str and source_id and not any(
         0xD800 <= ord(char) <= 0xDFFF for char in source_id
     ) and len(source_id.encode("utf-8")) <= MAX_IDENTIFIER_BYTES else "diagnostic://quarantine"
-    safe_run_id = run_id if isinstance(run_id, str) and run_id and not any(
+    safe_run_id = run_id if type(run_id) is str and run_id and not any(
         0xD800 <= ord(char) <= 0xDFFF for char in run_id
     ) and len(run_id.encode("utf-8")) <= MAX_IDENTIFIER_BYTES else "diagnostic-run"
     return QuarantinedDocument(
@@ -104,11 +104,11 @@ def _quarantine(source_id: object, run_id: object, reason: str) -> QuarantinedDo
 
 def ingest_text(source_id: str, source: str | bytes, *, run_id: str) -> IngestedDocument | QuarantinedDocument:
     """Decode local text strictly and emit one exact source span."""
-    if (not isinstance(source_id, str) or not source_id
+    if (type(source_id) is not str or not source_id
             or any(0xD800 <= ord(char) <= 0xDFFF for char in source_id)
             or len(source_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES):
         return _quarantine(source_id, run_id, "source_id is malformed")
-    if (not isinstance(run_id, str) or not run_id
+    if (type(run_id) is not str or not run_id
             or any(0xD800 <= ord(char) <= 0xDFFF for char in run_id)
             or len(run_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES):
         return _quarantine(source_id, run_id, "run_id is malformed")

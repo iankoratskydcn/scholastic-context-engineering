@@ -47,8 +47,9 @@ class Formalization:
         _identity_text(self.producer, "producer")
         if self.status not in {"ACCEPTED", "ABSTAINED", "REJECTED", "QUARANTINED"}:
             raise ValueError("unknown formalization status")
-        if not 0 <= self.confidence <= 1 or self.schema_version != "0.1":
-            raise ValueError("invalid formalization envelope")
+        if (type(self.confidence) not in (int, float) or
+                not 0 <= self.confidence <= 1 or self.schema_version != "0.1"):
+            raise ValueError("confidence must be numeric and between 0 and 1")
         payload = self.to_payload()
         object.__setattr__(self, "record_id", "formalization-" + hashlib.sha256(
             json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")

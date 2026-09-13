@@ -126,7 +126,7 @@ class Envelope:
             raise EnvelopeError(f"unsupported schema version: {self.schema_version}")
         if self.status not in {s.value for s in RecordStatus}:
             raise EnvelopeError(f"unknown record status: {self.status}")
-        if self.confidence is not None and not isinstance(self.confidence, (int, float)):
+        if self.confidence is not None and type(self.confidence) not in (int, float):
             raise EnvelopeError("confidence must be numeric or null")
         if self.confidence is not None and not 0 <= self.confidence <= 1:
             raise EnvelopeError("confidence must be between 0 and 1")
@@ -331,15 +331,21 @@ class RetrievalRequest(Envelope):
             or not self.query.strip()
             or len(self.query.encode("utf-8")) > MAX_RETRIEVAL_QUERY_BYTES
         )
-        if not invalid:
+        invalid_budget = type(self.budget) is not int
+        if not invalid and not invalid_budget:
             super().__post_init__()
             return
         original = self.query
+        original_budget = self.budget
         object.__setattr__(self, "query", "<invalid retrieval query>")
+        if not invalid:
+            object.__setattr__(self, "query", original)
+        object.__setattr__(self, "budget", 0)
         try:
             super().__post_init__()
         finally:
             object.__setattr__(self, "query", original)
+            object.__setattr__(self, "budget", original_budget)
 
 
 @dataclass(frozen=True)
