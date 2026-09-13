@@ -1,0 +1,10 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_f6f6684e",
+  "status":"functional_pass_security_blocked",
+  "proof":["154 tests passed in clean archive and working tree","all canonical payloads schema-valid","direct production canary passed","cross-process canary deterministic","three reproducible wheels passed","all checkpoint schemas/current_full_suite fields valid","tracked and untracked status clean"],
+  "blocking_findings":["Formalization lone-surrogate expression raises UnicodeEncodeError","quarantine retains oversized identifiers beyond canonical bound","Formalization and ExtractionBundle direct IDs lack canonical byte bounds","duplicate manifest IDs can be accepted by set comparison"],
+  "notes":["ignored generated residue may be recreated by verification","origin/main remains at earlier pushed commit; push waits for final gate"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["close surrogate/identifier/manifest integrity defects","fresh independent security verification","push only after final gate"]
+}
