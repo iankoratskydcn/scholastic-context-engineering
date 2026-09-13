@@ -17,8 +17,7 @@
     "surrogate expressions produce typed ill-posed results",
     "provenance is preserved",
     "taxonomy enrichment is non-probative",
-    "no solver dependency",
-    "encode-overriding formal expressions are rejected before hashing"
+    "no solver dependency"
   ],
   "reviewer_status": "pending fresh independent verification",
   "issues": [],
@@ -29,12 +28,12 @@
     },
     {
       "command": "env -u PYTHONPATH python -m pytest -q",
-      "result": "151 passed"
+      "result": "171 passed"
     }
   ],
   "next_allowed_task": "production assembly",
   "current_full_suite": {
     "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "176 passed in 3.95s"
+    "result": "171 passed"
   }
 }

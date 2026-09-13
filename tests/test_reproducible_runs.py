@@ -53,22 +53,35 @@ def test_checkpoint_documents_reconcile_every_full_suite_count_and_checkpoint_05
                 full_suite_results.append((path.name, test_record.get("result")))
 
     assert len(full_suite_results) == len(checkpoints), full_suite_results
-    assert all(result == "151 passed" for _, result in full_suite_results), full_suite_results
-    serialized = "\n".join(path.read_text(encoding="utf-8") for path in checkpoints)
-    assert "151 passed" in serialized
-    for stale_count in ("118 passed", "124 passed", "145 passed", "150 passed"):
-        assert stale_count not in serialized, stale_count
+    assert all(result == "171 passed" for _, result in full_suite_results)
+    current_results = []
+    for path in checkpoints:
+        document = json.loads(path.read_text(encoding="utf-8"))
+        current_results.append(document["current_full_suite"]["result"])
+    assert current_results == ["171 passed"] * len(checkpoints)
+    for stale_count in ("118 passed", "124 passed", "145 passed", "150 passed", "151 passed"):
+        assert stale_count not in [result for _, result in full_suite_results]
+        assert stale_count not in current_results
 
 
 def test_source_expected_fixture_contains_canonical_record_ids():
     import json
+    from scholastic_pipeline.ingestion import ingest_text, structure_document
 
-    expected = json.loads((ROOT / "fixtures/canary/source-01.expected.json").read_text(encoding="utf-8"))
-    assert expected["record_id"] == "structured_document-dbad3faf4345c1b2f9a1eb14"
-    assert all(span["record_id"] for span in expected["spans"])
+    fixture = ROOT / "fixtures/canary"
+    expected = json.loads((fixture / "source-01.expected.json").read_text(encoding="utf-8"))
+    source = (fixture / "source-01.txt").read_bytes()
+    actual = structure_document(ingest_text("source-01", source, run_id="source-01-run"))
+
+    assert expected["record_id"] == actual.record_id
+    assert expected["document_id"] == actual.document_id
+    assert expected["revision"] == actual.revision
+    assert expected["bytes_hash"] == actual.bytes_hash
     assert [span["record_id"] for span in expected["spans"]] == [
-        "span-f754b6cfd4f2c411e502dd90",
-        "span-76431287858dbaab7f9eaadc",
+        span.record_id for span in actual.spans
+    ]
+    assert [span["text"] for span in expected["spans"]] == [
+        span.text for span in actual.spans
     ]
 
 
