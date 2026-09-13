@@ -11,6 +11,7 @@ SCHEMA_VERSION = "0.1"
 MAX_SOURCE_TEXT_BYTES = 1_048_576
 MAX_SPAN_TEXT_BYTES = 65_536
 MAX_RETRIEVAL_QUERY_BYTES = 16_384
+MAX_FORMALIZATION_EXPRESSION_BYTES = 16_384
 MAX_IDENTIFIER_BYTES = 4_096
 
 
@@ -159,6 +160,8 @@ class IngestedDocument(Envelope):
             raise EnvelopeError("document identity, revision, and SHA-256 hash are required")
         if not self.spans:
             raise EnvelopeError("ingested document requires ordered spans")
+        if not isinstance(self.spans, tuple) or any(not isinstance(span, EvidenceSpan) for span in self.spans):
+            raise EnvelopeError("spans must contain evidence spans")
         if sum(len(span.text.encode("utf-8")) for span in self.spans) > MAX_SOURCE_TEXT_BYTES:
             raise EnvelopeError("source text exceeds absolute byte ceiling")
         if not self.provenance:
@@ -204,7 +207,9 @@ class ArgumentUnit(Envelope):
     kind: ClassVar[str] = "argument_unit"
 
     def __post_init__(self) -> None:
-        if not self.argument_id or not self.premises or not self.relation:
+        _valid_text(self.argument_id, "argument_id")
+        _valid_text(self.relation, "relation")
+        if not self.premises:
             raise EnvelopeError("argument requires ID, premise(s), relation, and provenance")
         if any(not isinstance(premise, Proposition) for premise in self.premises):
             raise EnvelopeError("argument premises must be propositions")
@@ -249,6 +254,18 @@ class ValidationResult(Envelope):
     normalized_form: str = ""
     proof_obligations: tuple[str, ...] = ()
     kind: ClassVar[str] = "validation_result"
+
+    def __post_init__(self) -> None:
+        if type(self.validation_status) is not ValidationStatus:
+            raise EnvelopeError("validation_status must be a ValidationStatus")
+        _valid_text(self.normalized_form, "normalized_form", required=False)
+        if not isinstance(self.proof_obligations, tuple) or not self.proof_obligations:
+            raise EnvelopeError("proof_obligations must be a non-empty tuple")
+        if any(not isinstance(item, str) or not item for item in self.proof_obligations):
+            raise EnvelopeError("proof_obligations must contain non-empty strings")
+        if self.validation_status in {ValidationStatus.VALID, ValidationStatus.INVALID} and not self.normalized_form:
+            raise EnvelopeError("normalized_form is required for a decided validation")
+        super().__post_init__()
 
 
 @dataclass(frozen=True)

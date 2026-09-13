@@ -188,3 +188,32 @@ def test_every_canonical_payload_has_record_id_without_self_hashing():
         assert payload["record_id"] == record.record_id
         assert "record_id" not in json.dumps(payload["record_id"])
         assert json.loads(json.dumps(payload))["record_id"] == record.record_id
+
+
+def test_ingested_document_rejects_malformed_span_element_before_access():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    with pytest.raises(EnvelopeError, match="spans"):
+        IngestedDocument(document_id="doc-1", revision="r1", bytes_hash="a" * 64,
+                         spans=(span, object()), run_id="run-1")
+
+
+def test_validation_result_requires_canonical_status_and_semantic_fields():
+    from scholastic_pipeline.schema import ValidationResult
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    kwargs = dict(run_id="run-1", provenance=(span,), validation_status=ValidationStatus.VALID,
+                  normalized_form="A -> B", proof_obligations=("check",))
+    with pytest.raises(EnvelopeError, match="validation_status"):
+        ValidationResult(**{**kwargs, "validation_status": "VALID"})
+    with pytest.raises(EnvelopeError, match="normalized_form"):
+        ValidationResult(**{**kwargs, "normalized_form": ""})
+    with pytest.raises(EnvelopeError, match="proof_obligations"):
+        ValidationResult(**{**kwargs, "proof_obligations": ()})
+
+
+def test_direct_argument_identifier_obeys_utf8_byte_ceiling():
+    span = EvidenceSpan("source-1", 0, 1, "A", revision="r1")
+    proposition = Proposition(proposition_id="p1", text="A", role="premise",
+                              run_id="run-1", provenance=(span,))
+    with pytest.raises(EnvelopeError, match="argument_id"):
+        ArgumentUnit(argument_id="é" * (4096 // 2 + 1), premises=(proposition,),
+                     conclusion="A", relation="entails", run_id="run-1", provenance=(span,))

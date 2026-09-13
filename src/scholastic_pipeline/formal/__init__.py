@@ -6,7 +6,8 @@ import hashlib
 import json
 import re
 
-from scholastic_pipeline.schema import (ArgumentUnit, EvidenceSpan, MAX_IDENTIFIER_BYTES,
+from scholastic_pipeline.schema import (ArgumentUnit, EvidenceSpan, MAX_FORMALIZATION_EXPRESSION_BYTES,
+                                        MAX_IDENTIFIER_BYTES,
                                         TaxonomyMatch, ValidationResult, ValidationStatus)
 
 
@@ -31,6 +32,12 @@ class Formalization:
         _identity_text(self.run_id, "run_id")
         if not isinstance(self.expression, str):
             raise ValueError("formalization expression is required")
+        try:
+            expression_bytes = len(self.expression.encode("utf-8"))
+        except UnicodeEncodeError:
+            expression_bytes = None
+        if expression_bytes is not None and expression_bytes > MAX_FORMALIZATION_EXPRESSION_BYTES:
+            raise ValueError("formalization expression exceeds absolute byte ceiling")
         if not self.provenance:
             raise ValueError("formalization requires provenance")
         if any(not isinstance(span, EvidenceSpan) for span in self.provenance):
