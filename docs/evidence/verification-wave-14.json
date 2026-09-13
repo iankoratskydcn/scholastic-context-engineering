@@ -1,0 +1,9 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_4b8727c1",
+  "status":"generation_security_blocked",
+  "proof":["203 full tests passed on implementation commit","24 generation/security tests passed","clean archive, deterministic canary, and reproducible wheels passed"],
+  "blocking_findings":["stale extra provenance can be accepted","malformed nested citation fields can raise","generation tests still have exact-citation/stale/evidence-preservation coverage gaps","checkpoint 14 and all current suite counts stale after generation","uv.lock generated residue may appear"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["strengthen independent generation tests","repair production generation boundary","normalize checkpoint 14 and rerun independent verification"]
+}
