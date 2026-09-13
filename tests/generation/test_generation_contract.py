@@ -14,6 +14,7 @@ import pytest
 from scholastic_pipeline.schema import EvidenceSpan, RecordStatus, RetrievalContext
 
 from scholastic_pipeline.generation import (  # type: ignore[import-not-found]
+    Claim,
     ClaimStatus,
     Citation,
     GenerationRequest,
@@ -47,6 +48,20 @@ def _claims(result):
     return getattr(result, "claims", ())
 
 
+def _malformed_context(*, items, citations, provenance):
+    """Make a boundary-shaped record without constructor normalization."""
+    context = object.__new__(RetrievalContext)
+    for name, value in {
+        "items": items,
+        "citations": citations,
+        "provenance": provenance,
+        "refusal": None,
+        "run_id": "run-1",
+    }.items():
+        object.__setattr__(context, name, value)
+    return context
+
+
 def test_generation_boundary_is_typed_immutable_and_refuses_untyped_inputs():
     assert is_dataclass(GenerationRequest) and is_dataclass(GenerationResult)
     assert is_dataclass(Citation)
@@ -73,6 +88,19 @@ def test_supported_claims_carry_resolvable_exact_citations():
             assert citation.text == context.citations[0].text
 
 
+def test_unrelated_citation_refuses_instead_of_becoming_claim_provenance():
+    context = _context()
+    unrelated = _span("An unrelated claim.", source_id="book-1", start=100)
+    context = RetrievalContext(items=context.items,
+                               citations=(context.citations[0], unrelated),
+                               provenance=(context.provenance[0],), run_id="run-1")
+
+    result = generate(_request(), context)
+
+    assert result.refusal == "citation is missing, stale, or out of scope"
+    assert result.claims == ()
+
+
 @pytest.mark.parametrize("mutation", ["missing", "stale", "out-of-scope"])
 def test_missing_stale_or_out_of_scope_citation_refuses(mutation):
     context = _context()
@@ -89,27 +117,51 @@ def test_missing_stale_or_out_of_scope_citation_refuses(mutation):
 
 def test_unsupported_claim_is_explicitly_unverified_or_refused():
     result = generate(_request(prompt="Assert that the moon is made of glass."), _context())
-    assert result.refusal or all(
-        claim.status is ClaimStatus.UNVERIFIED for claim in _claims(result)
-    )
-    assert not any(claim.status is ClaimStatus.SUPPORTED for claim in _claims(result))
+    assert result.refusal == "claim is unsupported by retrieval evidence"
+    assert result.claims == ()
 
 
 def test_evidence_is_not_silently_truncated():
     full = "The library opened in 1850; its archive moved in 1901."
-    result = generate(_request(prompt="Repeat every detail exactly."), _context(full))
-    assert result.refusal or full in " ".join(
+    result = generate(_request(prompt="State the library archive details."), _context(full))
+    assert result.refusal is None
+    assert full in " ".join(
         citation.text for claim in _claims(result) for citation in claim.citations
     )
 
 
 def test_claim_and_context_budgets_are_hard_bounds():
-    context = _context("alpha. beta. gamma. delta.")
+    context = _context("The library supports alpha facts.")
     assert generate(_request(claim_budget=0), context).refusal
     bounded = generate(_request(claim_budget=1), context)
-    assert bounded.refusal or len(_claims(bounded)) <= 1
+    assert bounded.refusal is None
+    assert len(_claims(bounded)) == 1
     tiny = generate(_request(context_budget_bytes=1), context)
     assert tiny.refusal
+
+
+def test_nonempty_allowed_tools_are_rejected_at_generation_boundary():
+    result = generate(_request(allowed_tools=("shell",)), _context())
+
+    assert result.refusal == "generation request is malformed"
+    assert result.claims == ()
+    assert result.tools_used == ()
+
+
+def test_provenance_text_bytes_count_toward_context_budget():
+    context = _context("The library opened in 1850.")
+    provenance = _span("P" * 200, source_id="book-1")
+    context = RetrievalContext(items=context.items, citations=context.citations,
+                               provenance=(provenance,), run_id="run-1")
+    item_and_citation_bytes = sum(len(value.text.encode("utf-8"))
+                                  for value in context.citations) + sum(
+                                      len(item.encode("utf-8")) for item in context.items
+                                  )
+
+    result = generate(_request(context_budget_bytes=item_and_citation_bytes), context)
+
+    assert result.refusal == "context budget exceeded"
+    assert result.claims == ()
 
 
 def test_retrieval_refusal_cannot_become_generated_evidence():
@@ -132,3 +184,52 @@ def test_result_rejects_claims_without_exact_provenance_at_boundary():
     # A verifier may not expose an accepted result whose claim is uncited.
     with pytest.raises((ValueError, TypeError)):
         GenerationResult(claims=("uncited",), run_id="run-1")
+
+
+def test_unverified_claim_semantics_are_explicit_and_uncited():
+    result = GenerationResult(
+        claims=(Claim("not established", ClaimStatus.UNVERIFIED, ()),),
+        run_id="run-1",
+    )
+
+    assert result.refusal is None
+    assert len(result.claims) == 1
+    assert result.claims[0].status is ClaimStatus.UNVERIFIED
+    assert result.claims[0].citations == ()
+
+
+def test_refusal_results_cannot_expose_claims():
+    citation = Citation("book-1", 0, 5, "alpha", "rev-1")
+    claim = Claim("alpha", ClaimStatus.SUPPORTED, (citation,))
+
+    with pytest.raises(ValueError):
+        GenerationResult(claims=(claim,), run_id="run-1", refusal="unsupported")
+
+
+def test_nested_claims_and_citations_are_immutable():
+    result = generate(_request(), _context())
+    claim = result.claims[0]
+    citation = claim.citations[0]
+
+    with pytest.raises(FrozenInstanceError):
+        claim.text = "changed"  # type: ignore[misc]
+    with pytest.raises(FrozenInstanceError):
+        citation.text = "changed"  # type: ignore[misc]
+    with pytest.raises(TypeError):
+        claim.citations[0] = citation  # type: ignore[index]
+
+
+@pytest.mark.parametrize("field", ["items", "citations", "provenance"])
+def test_malformed_context_members_refuse_without_exceptions(field):
+    valid = _context()
+    values = {
+        "items": valid.items,
+        "citations": valid.citations,
+        "provenance": valid.provenance,
+    }
+    values[field] = (object(),)
+
+    result = generate(_request(), _malformed_context(**values))
+
+    assert result.refusal == "retrieval context is malformed"
+    assert result.claims == ()

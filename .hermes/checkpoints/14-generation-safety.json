@@ -10,8 +10,8 @@
     "fixtures/generation/**"
   ],
   "tdd": {
-    "red": "base commit had no scholastic_pipeline.generation module; targeted acceptance collection failed",
-    "green": "9 generation/injection tests passed; direct typed verifier checks passed for supported, unsupported, injection, stale, and hard context-budget paths"
+    "red": "24 focused generation/injection tests collected; 17 passed and 7 failed against the current implementation on unrelated citations, allowed tools, provenance-byte budgets, refusal-with-claims, and malformed context members",
+    "green": "pending separate implementation"
   },
   "invariants": [
     "GenerationRequest and GenerationResult are typed immutable boundary records",
@@ -22,16 +22,23 @@
     "retrieved imperative text cannot change policy, tools, or scope",
     "claim and context budgets are hard bounds",
     "refused retrieval cannot become generated evidence",
-    "identical typed inputs produce identical output"
+    "identical typed inputs produce identical output",
+    "unsupported generation uses explicit refusal and UNVERIFIED records remain explicit",
+    "zero-width and punctuation-shaped retrieved instructions remain inert data",
+    "refusal results contain no claims",
+    "malformed context members refuse without exceptions",
+    "nonempty allowed tools are rejected",
+    "provenance text bytes count toward context budget",
+    "nested claim and citation records remain immutable"
   ],
   "tests": [
     {
       "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q tests/generation tests/security/test_generation_injection.py",
-      "result": "9 passed, 4 failed before generation assertions because committed test helper passes duplicate keyword arguments and constructs an invalid empty-provenance RetrievalContext"
+      "result": "17 passed, 7 failed; expected RED failures are unrelated citation acceptance, nonempty allowed_tools acceptance, provenance bytes omitted from budget, refusal results carrying claims, and exceptions for malformed items/citations/provenance"
     },
     {
       "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q",
-      "result": "186 passed, 6 failed; the same 4 committed generation test setup failures, missing jsonschema environment dependency, and pre-existing checkpoint-count reconciliation failure"
+      "result": "not run; focused RED evidence is the required verification for this test-only checkpoint"
     },
     {
       "command": "git diff --check",
