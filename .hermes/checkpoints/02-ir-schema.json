@@ -8,11 +8,11 @@
   "tests": [
     {
       "command": "PYTHONPATH=src python -m pytest -q tests/schema tests/extraction tests/formal tests/ingestion",
-      "result": "93 passed; 1 blocked by unavailable jsonschema"
+      "result": "71 passed"
     },
     {
       "command": "env -u PYTHONPATH python -m pytest -q",
-      "result": "177 passed; 2 blocked by unavailable jsonschema/build tooling"
+      "result": "176 passed"
     }
   ],
   "tdd": {
@@ -36,6 +36,6 @@
   "next_allowed_task": "fresh independent verification",
   "current_full_suite": {
     "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "177 passed; 2 blocked by unavailable jsonschema/build tooling"
+    "result": "176 passed"
   }
 }

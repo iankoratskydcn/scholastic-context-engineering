@@ -27,12 +27,12 @@
     },
     {
       "command": "env -u PYTHONPATH python -m pytest -q",
-      "result": "171 passed"
+      "result": "176 passed"
     }
   ],
   "next_allowed_task": "final independent verification",
   "current_full_suite": {
     "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "171 passed"
+    "result": "176 passed"
   }
 }
