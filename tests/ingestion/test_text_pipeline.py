@@ -4,7 +4,7 @@ import json
 import pytest
 
 from scholastic_pipeline.ingestion import ingest_text, structure_document
-from scholastic_pipeline.schema import MAX_SOURCE_TEXT_BYTES, RecordStatus
+from scholastic_pipeline.schema import MAX_IDENTIFIER_BYTES, MAX_SOURCE_TEXT_BYTES, RecordStatus
 
 
 def test_ingest_uses_exact_utf8_bytes_and_deterministic_identity():
@@ -57,6 +57,14 @@ def test_malformed_source_id_is_quarantined_before_identity_hashing():
         assert result.status == RecordStatus.QUARANTINED.value
         assert result.spans == ()
         assert "source_id" in " ".join(result.diagnostics)
+
+
+def test_oversized_source_id_or_run_id_is_quarantined_without_exception():
+    oversized = "x" * (MAX_IDENTIFIER_BYTES + 1)
+    for source_id, run_id in ((oversized, "run-1"), ("source", oversized)):
+        result = ingest_text(source_id, "text", run_id=run_id)
+        assert result.status == RecordStatus.QUARANTINED.value
+        assert result.spans == ()
 
 
 def test_structure_document_refuses_none_and_malformed_inputs():

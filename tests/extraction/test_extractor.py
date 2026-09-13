@@ -5,7 +5,7 @@ import pytest
 
 from scholastic_pipeline.extraction import ExtractionBundle, extract_argument, extract_structured_document
 from scholastic_pipeline.formal import validate
-from scholastic_pipeline.schema import EnvelopeError, EvidenceSpan, StructuredDocument, TaxonomySnapshot
+from scholastic_pipeline.schema import EnvelopeError, EvidenceSpan, MAX_IDENTIFIER_BYTES, StructuredDocument, TaxonomySnapshot
 
 
 FIXTURE = Path(__file__).parents[2] / "fixtures" / "canary" / "argument-cases.json"
@@ -283,4 +283,12 @@ def test_extraction_bundle_does_not_infer_missing_run_id_from_nested_records():
 def test_malformed_run_id_abstains_fail_closed():
     result = extract_argument("Birds fly.", source_id="source", source_revision="rev-1", run_id="bad\ud800")
     assert result.status == "ABSTAINED"
+    assert result.run_id == "diagnostic-run"
+
+
+def test_oversized_run_id_abstains_with_diagnostic_run_id():
+    result = extract_argument("Birds fly.", source_id="source", source_revision="rev-1",
+                              run_id="x" * (MAX_IDENTIFIER_BYTES + 1))
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_source"
     assert result.run_id == "diagnostic-run"

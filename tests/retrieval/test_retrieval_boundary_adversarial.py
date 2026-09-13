@@ -59,6 +59,14 @@ def test_retrieval_refuses_missing_snapshot_provenance():
     assert result.refusal == "retrieval provenance is missing"
 
 
+def test_retrieval_refuses_forged_snapshot_missing_generation_id_before_iteration():
+    snap = snapshot([edge("a", "alpha")])
+    object.__setattr__(snap, "generation_id", "")
+    object.__setattr__(snap, "occurrences", object())
+    result = retrieve(request(), snap)
+    assert result.refusal == "retrieval snapshot generation ID is missing"
+
+
 def test_retrieval_request_accepts_non_string_query_for_refusal_without_stable_id_error():
     req = RetrievalRequest(query=object(), budget=2, provenance=(span("query"),), run_id="run-1")
     result = retrieve(req, snapshot([edge("a", "alpha")]))

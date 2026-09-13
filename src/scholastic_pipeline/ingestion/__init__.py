@@ -8,7 +8,7 @@ import re
 from typing import Any
 
 from scholastic_pipeline.schema import (
-    EvidenceSpan, IngestedDocument, MAX_SOURCE_TEXT_BYTES, MAX_SPAN_TEXT_BYTES,
+    EvidenceSpan, IngestedDocument, MAX_IDENTIFIER_BYTES, MAX_SOURCE_TEXT_BYTES, MAX_SPAN_TEXT_BYTES,
     RecordStatus, StructuredDocument,
 )
 
@@ -88,9 +88,12 @@ def _quarantine(source_id: object, run_id: object, reason: str) -> QuarantinedDo
 def ingest_text(source_id: str, source: str | bytes, *, run_id: str) -> IngestedDocument | QuarantinedDocument:
     """Decode local text strictly and emit one exact source span."""
     if (not isinstance(source_id, str) or not source_id
-            or any(0xD800 <= ord(char) <= 0xDFFF for char in source_id)):
+            or any(0xD800 <= ord(char) <= 0xDFFF for char in source_id)
+            or len(source_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES):
         return _quarantine(source_id, run_id, "source_id is malformed")
-    if not isinstance(run_id, str) or not run_id or any(0xD800 <= ord(char) <= 0xDFFF for char in run_id):
+    if (not isinstance(run_id, str) or not run_id
+            or any(0xD800 <= ord(char) <= 0xDFFF for char in run_id)
+            or len(run_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES):
         return _quarantine(source_id, run_id, "run_id is malformed")
     raw, problem = _source_bytes(source)
     if not raw:

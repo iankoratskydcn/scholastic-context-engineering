@@ -13,7 +13,8 @@ import json
 import re
 from typing import Any
 
-from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, Proposition, StructuredDocument, TaxonomyMatch, TaxonomySnapshot
+from scholastic_pipeline.schema import (ArgumentUnit, EvidenceSpan, MAX_IDENTIFIER_BYTES, Proposition,
+                                        StructuredDocument, TaxonomyMatch, TaxonomySnapshot)
 
 MAX_SOURCE_CHARS = 1_000_000
 _DIAGNOSTIC_RUN_ID = "diagnostic-run"
@@ -138,7 +139,10 @@ def _proposition(text: str, role: str, run_id: str, evidence: EvidenceSpan) -> P
 
 
 def _abstain(reason: str, run_id: str = "") -> ExtractionBundle:
-    safe_run_id = run_id if isinstance(run_id, str) and run_id and not any(0xD800 <= ord(char) <= 0xDFFF for char in run_id) else _DIAGNOSTIC_RUN_ID
+    safe_run_id = (run_id if isinstance(run_id, str) and run_id
+                   and not any(0xD800 <= ord(char) <= 0xDFFF for char in run_id)
+                   and len(run_id.encode("utf-8")) <= MAX_IDENTIFIER_BYTES
+                   else _DIAGNOSTIC_RUN_ID)
     return ExtractionBundle("ABSTAINED", None, None, reason, 0.0, None, run_id=safe_run_id)
 
 
@@ -208,7 +212,8 @@ def extract_argument(source: str | StructuredDocument, *, source_id: str = "sour
                      run_id: str = "run", source_revision: str | None = None, base_offset: int = 0) -> ExtractionBundle:
     """Extract one canary argument, abstaining on malformed or revisionless input."""
     if (not isinstance(run_id, str) or not run_id or
-            any(0xD800 <= ord(char) <= 0xDFFF for char in run_id)):
+            any(0xD800 <= ord(char) <= 0xDFFF for char in run_id)
+            or len(run_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES):
         return _abstain("malformed_source", run_id)
     prepared = _input_text(source, source_id, source_revision, base_offset)
     if prepared is None:

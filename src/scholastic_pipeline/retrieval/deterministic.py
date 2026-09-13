@@ -99,6 +99,13 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
         return _refusal(request, "retrieval request is malformed")
     if not isinstance(snapshot, GraphSnapshot):
         return _refusal(request, "retrieval snapshot is malformed")
+    if not isinstance(snapshot.generation_id, str) or not snapshot.generation_id:
+        return _refusal(request, "retrieval snapshot generation ID is missing")
+    try:
+        if len(snapshot.generation_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
+            return _refusal(request, "retrieval snapshot generation ID exceeds absolute ceiling")
+    except UnicodeError:
+        return _refusal(request, "retrieval snapshot generation ID is malformed")
     if not isinstance(request.budget, int) or isinstance(request.budget, bool):
         return _refusal(request, "retrieval budget is malformed")
     if type(snapshot.occurrences) is not tuple or any(
