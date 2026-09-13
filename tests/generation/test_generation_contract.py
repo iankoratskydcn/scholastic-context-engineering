@@ -35,11 +35,12 @@ def _context(text="The library opened in 1850.", **kwargs):
 
 
 def _request(**kwargs):
-    return GenerationRequest(
+    values = dict(
         prompt="State the supported fact.", run_id="run-1", scope=("book-1",),
         claim_budget=4, context_budget_bytes=4096, allowed_tools=(),
-        **kwargs,
     )
+    values.update(kwargs)
+    return GenerationRequest(**values)
 
 
 def _claims(result):
@@ -112,7 +113,9 @@ def test_claim_and_context_budgets_are_hard_bounds():
 
 
 def test_retrieval_refusal_cannot_become_generated_evidence():
-    refused = RetrievalContext(items=(), citations=(), provenance=(), refusal="stale", run_id="run-1")
+    refused = _context()
+    refused = RetrievalContext(items=(), citations=(), provenance=refused.provenance,
+                               refusal="stale", run_id="run-1")
     result = generate(_request(), refused)
     assert result.refusal
     assert not _claims(result)
