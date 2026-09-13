@@ -62,6 +62,14 @@ def _malformed_context(*, items, citations, provenance):
     return context
 
 
+def _forged_span(**values):
+    """Forge a boundary-shaped span to exercise nested validation."""
+    span = object.__new__(EvidenceSpan)
+    for name, value in values.items():
+        object.__setattr__(span, name, value)
+    return span
+
+
 def test_generation_boundary_is_typed_immutable_and_refuses_untyped_inputs():
     assert is_dataclass(GenerationRequest) and is_dataclass(GenerationResult)
     assert is_dataclass(Citation)
@@ -101,6 +109,22 @@ def test_unrelated_citation_refuses_instead_of_becoming_claim_provenance():
     assert result.claims == ()
 
 
+def test_extra_provenance_with_non_sentinel_revision_mismatch_refuses():
+    context = _context()
+    extra = _span(context.citations[0].text, source_id="book-1", revision="rev-2")
+    context = RetrievalContext(
+        items=context.items,
+        citations=context.citations,
+        provenance=(context.provenance[0], extra),
+        run_id="run-1",
+    )
+
+    result = generate(_request(), context)
+
+    assert result.refusal == "retrieval provenance is stale or mismatched"
+    assert result.claims == ()
+
+
 @pytest.mark.parametrize("mutation", ["missing", "stale", "out-of-scope"])
 def test_missing_stale_or_out_of_scope_citation_refuses(mutation):
     context = _context()
@@ -128,6 +152,40 @@ def test_evidence_is_not_silently_truncated():
     assert full in " ".join(
         citation.text for claim in _claims(result) for citation in claim.citations
     )
+
+
+def test_misaligned_citation_offsets_refuse_even_when_text_matches_claim():
+    text = "The library opened in 1850."
+    misaligned = _span(text, start=1)
+    context = RetrievalContext(
+        items=(text,), citations=(misaligned,), provenance=(misaligned,), run_id="run-1"
+    )
+
+    result = generate(_request(), context)
+
+    assert result.refusal == "citation span does not align to retrieved text"
+    assert result.claims == ()
+
+
+def test_multiple_supported_evidence_items_are_preserved_in_one_claim():
+    text = "The library opened in 1850."
+    first = _span(text, source_id="book-1")
+    second = _span(text, source_id="book-2")
+    context = RetrievalContext(
+        items=(text, text),
+        citations=(first, second),
+        provenance=(first, second),
+        run_id="run-1",
+    )
+    result = generate(_request(scope=("book-1", "book-2")), context)
+
+    assert result.refusal is None
+    assert len(result.claims) == 1
+    assert result.claims[0].text == text
+    assert len(result.claims[0].citations) == 2
+    assert {citation.source_id for citation in result.claims[0].citations} == {
+        "book-1", "book-2"
+    }
 
 
 def test_claim_and_context_budgets_are_hard_bounds():
@@ -219,6 +277,18 @@ def test_nested_claims_and_citations_are_immutable():
         claim.citations[0] = citation  # type: ignore[index]
 
 
+def test_claim_citations_require_a_typed_immutable_tuple():
+    citation = Citation("book-1", 0, 5, "alpha", "rev-1")
+
+    with pytest.raises(TypeError):
+        Claim("alpha", ClaimStatus.SUPPORTED, [citation])  # type: ignore[arg-type]
+
+    claim = Claim("alpha", ClaimStatus.SUPPORTED, (citation,))
+    assert type(claim.citations) is tuple
+    with pytest.raises(FrozenInstanceError):
+        claim.citations = ()  # type: ignore[misc]
+
+
 @pytest.mark.parametrize("field", ["items", "citations", "provenance"])
 def test_malformed_context_members_refuse_without_exceptions(field):
     valid = _context()
@@ -228,6 +298,29 @@ def test_malformed_context_members_refuse_without_exceptions(field):
         "provenance": valid.provenance,
     }
     values[field] = (object(),)
+
+    result = generate(_request(), _malformed_context(**values))
+
+    assert result.refusal == "retrieval context is malformed"
+    assert result.claims == ()
+
+
+@pytest.mark.parametrize("member", ["citations", "provenance"])
+def test_malformed_nested_span_members_refuse_without_exceptions(member):
+    valid = _context()
+    malformed = _forged_span(
+        source_id="book-1",
+        start=0,
+        end=len(valid.citations[0].text),
+        text=valid.citations[0].text,
+        revision=object(),
+    )
+    values = {
+        "items": valid.items,
+        "citations": valid.citations,
+        "provenance": valid.provenance,
+    }
+    values[member] = (malformed,)
 
     result = generate(_request(), _malformed_context(**values))
 

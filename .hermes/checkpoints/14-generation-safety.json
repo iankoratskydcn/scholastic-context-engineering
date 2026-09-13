@@ -10,13 +10,17 @@
     "fixtures/generation/**"
   ],
   "tdd": {
-    "red": "24 focused generation/injection tests collected; 17 passed and 7 failed against the current implementation on unrelated citations, allowed tools, provenance-byte budgets, refusal-with-claims, and malformed context members",
-    "green": "24 focused generation/injection tests passed; full suite passed 203 tests"
+    "red": "30 focused generation/injection tests collected; 26 passed and 4 failed against the current implementation on non-sentinel provenance revision mismatch, citation offset alignment, and malformed nested span members",
+    "green": "30 focused generation/injection tests passed after the generation implementation is repaired; current full-suite count is derived by rerunning the command below"
   },
   "invariants": [
     "GenerationRequest and GenerationResult are typed immutable boundary records",
     "accepted claims require exact resolvable Citation provenance",
+    "claim citation text and offsets align exactly to retrieved evidence",
+    "extra provenance revisions must match the accepted evidence revision",
     "missing, stale, and out-of-scope citations refuse",
+    "multiple evidence items are preserved or explicitly refused, never silently collapsed",
+    "Claim citations use a typed immutable tuple",
     "unsupported claims refuse",
     "evidence is preserved rather than silently truncated",
     "retrieved imperative text cannot change policy, tools, or scope",
