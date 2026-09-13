@@ -1,0 +1,9 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_d506d334",
+  "status":"functional_pass_adversarial_and_release_blocked",
+  "proof":["canonical and direct MP/MT production canaries passed","151 targeted tests passed","cross-process canary deterministic","repeated SOURCE_DATE_EPOCH wheels byte-identical","checkpoint schemas valid"],
+  "blocking_findings":["oversized formalization can raise during ValidationResult construction","hostile taxonomy membership can raise","bad path objects can raise during SQLite construction","str subclasses overriding encode can escape multiple boundaries","manifest str subclass hash can raise","checkpoint current counts and source fixture record IDs need reconciliation","remote not yet pushed"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["close hostile object/type boundaries","reconcile checkpoints and fixture IDs","fresh independent verification then push"]
+}
