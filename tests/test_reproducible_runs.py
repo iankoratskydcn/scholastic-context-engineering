@@ -53,12 +53,12 @@ def test_checkpoint_documents_reconcile_every_full_suite_count_and_checkpoint_05
                 full_suite_results.append((path.name, test_record.get("result")))
 
     assert len(full_suite_results) == len(checkpoints), full_suite_results
-    assert all(result == "176 passed" for _, result in full_suite_results)
+    assert all(result == "179 passed" for _, result in full_suite_results)
     current_results = []
     for path in checkpoints:
         document = json.loads(path.read_text(encoding="utf-8"))
         current_results.append(document["current_full_suite"]["result"])
-    assert current_results == ["176 passed"] * len(checkpoints)
+    assert current_results == ["179 passed"] * len(checkpoints)
     for stale_count in ("118 passed", "124 passed", "145 passed", "150 passed", "151 passed"):
         assert stale_count not in [result for _, result in full_suite_results]
         assert stale_count not in current_results

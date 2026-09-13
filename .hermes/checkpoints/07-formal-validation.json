@@ -28,7 +28,7 @@
     },
     {
       "command": "env -u PYTHONPATH python -m pytest -q",
-      "result": "176 passed"
+      "result": "179 passed"
     }
   ],
   "next_allowed_task": "production assembly",
