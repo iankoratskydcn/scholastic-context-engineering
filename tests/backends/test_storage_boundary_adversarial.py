@@ -67,6 +67,34 @@ def test_manifest_matching_preserves_occurrence_order_and_cardinality():
         backend.read_generation("g1")
 
 
+def test_repeated_begin_rejects_conflicting_options_without_mutating_declaration():
+    backend = ReferenceSQLiteBackend()
+    backend.begin_generation("g1", expected_count=1, manifest=("occ-1",))
+    with pytest.raises(StorageError):
+        backend.begin_generation("g1", expected_count=1, manifest=("occ-2",))
+    with pytest.raises(StorageError):
+        backend.begin_generation("g1", expected_count=2, manifest=("occ-1", "occ-2"))
+    backend.append("g1", envelope_edge("occ-1"))
+    backend.complete_generation("g1")
+    assert backend.read_generation("g1").occurrences[0].edge_instance_id == "occ-1"
+
+
+def test_repeated_begin_with_same_options_is_idempotent_for_completed_generation():
+    backend = ReferenceSQLiteBackend()
+    backend.write_generation("g1", [envelope_edge("occ-1")], expected_count=1, manifest=("occ-1",))
+    backend.begin_generation("g1", expected_count=1, manifest=("occ-1",))
+    assert backend.read_generation("g1").occurrences[0].edge_instance_id == "occ-1"
+
+
+def test_manifest_entry_identifier_obeys_canonical_byte_ceiling():
+    backend = ReferenceSQLiteBackend()
+    oversized_id = "é" * (MAX_IDENTIFIER_BYTES // 2 + 1)
+    with pytest.raises(StorageError):
+        backend.begin_generation("g1", expected_count=1, manifest=(oversized_id,))
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
 def test_duplicate_event_ids_are_rejected_without_partial_generation():
     backend = ReferenceSQLiteBackend()
     events = [envelope_edge("occ-1"), envelope_edge("occ-1")]

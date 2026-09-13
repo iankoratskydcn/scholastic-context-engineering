@@ -1,10 +1,10 @@
 {
   "schema_version":"0.1",
   "review_wave":"deleg_aaab4ead",
-  "status":"functional_pass_boundary_and_hygiene_blocked",
-  "proof":["150 tests passed","14 canonical payloads schema-valid","direct canary passed","cross-process canary deterministic","repeated SOURCE_DATE_EPOCH wheel builds byte-identical"],
-  "blocking_findings":["oversized source_id/run_id can raise EnvelopeError at ingestion","oversized extraction run_id can raise","forged snapshot without generation_id can pass retrieval","checkpoint full-suite counts stale","source-01 expected fixture omits record_id fields"],
-  "residue":"22 linked worktrees with generated ignored residue remain; no tracked diff",
+  "status":"targeted_functional_pass_test_runner_unavailable",
+  "proof":["targeted adversarial coverage added for conflicting begin declarations and manifest byte bounds","manual generation declaration/manifest canary passed","python compileall passed","git diff --check passed"],
+  "blocking_findings":["pytest is unavailable in the execution environment, so the repository test suite could not be run","oversized source_id/run_id can raise EnvelopeError at ingestion","oversized extraction run_id can raise","forged snapshot without generation_id can pass retrieval","22 linked worktrees with generated ignored residue remain"],
+  "resolved_findings":["conflicting repeated begin_generation declarations are rejected without replacing the original options","manifest entry identifiers are bounded by MAX_IDENTIFIER_BYTES while duplicate rejection and order remain enforced"],
   "verdict":"HOLD_RELEASE",
-  "next_proof":["close oversized-ID and forged-snapshot paths","normalize fixture/checkpoint artifacts","fresh independent verification"]
+  "next_proof":["run targeted and full pytest suites in an environment with pytest installed","close remaining oversized-ID and forged-snapshot paths","fresh independent verification"]
 }

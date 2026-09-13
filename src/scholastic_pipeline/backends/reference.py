@@ -105,10 +105,8 @@ def _validate_generation_options(expected_count: object, manifest: object) -> tu
         raise
     except (TypeError, ValueError, OverflowError) as exc:
         raise StorageError("manifest must be a bounded sequence of strings") from exc
-    if any(not isinstance(edge_id, str) or not edge_id
-           or any(0xD800 <= ord(char) <= 0xDFFF for char in edge_id)
-           for edge_id in manifest):
-        raise StorageError("manifest must contain valid strings")
+    for edge_id in manifest:
+        _validate_identifier(edge_id, "manifest entry ID")
     if len(manifest) != len(set(manifest)):
         raise StorageError("manifest must contain unique edge instance IDs")
     if expected_count is not None and len(manifest) != expected_count:
@@ -184,9 +182,18 @@ class ReferenceSQLiteBackend:
                          manifest: Sequence[str] | None = None) -> None:
         generation_id = _validate_generation_id(generation_id)
         expected_count, manifest = _validate_generation_options(expected_count, manifest)
+        encoded_manifest = json.dumps(list(manifest)) if manifest is not None else None
+        existing = self._db.execute(
+            "SELECT expected_count, manifest FROM generations WHERE generation_id=?", (generation_id,)
+        ).fetchone()
+        if existing is not None:
+            existing_manifest = tuple(json.loads(existing[1])) if existing[1] is not None else None
+            if (existing[0], existing_manifest) != (expected_count, manifest):
+                raise StorageError("conflicting generation declaration")
+            return
         self._db.execute(
-            "INSERT OR IGNORE INTO generations VALUES (?, 'writing', ?, ?)",
-            (generation_id, expected_count, json.dumps(list(manifest)) if manifest is not None else None),
+            "INSERT INTO generations VALUES (?, 'writing', ?, ?)",
+            (generation_id, expected_count, encoded_manifest),
         )
         self._db.commit()
 
