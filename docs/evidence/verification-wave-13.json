@@ -1,0 +1,9 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_5fadd2ab",
+  "status":"functional_pass_security_and_hygiene_blocked",
+  "proof":["canonical verification passed","production MP/MT canaries and retrieval passed","cross-process canary and wheels deterministic","fixtures/checkpoint schemas structurally valid"],
+  "blocking_findings":["arbitrary budget object can raise during RetrievalRequest ID derivation","hostile confidence object can raise during Formalization validation","str subclass source_id can raise from overridden encode","checkpoint counts stale at 171 versus current 176","uv.lock may be generated residue"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["reject hostile custom types at direct boundaries","normalize checkpoint counts to merged suite","remove generated uv.lock if present","fresh independent verification then push"]
+}
