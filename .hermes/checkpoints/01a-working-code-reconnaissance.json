@@ -1,32 +1,36 @@
 {
-    "checkpoint_schema_version": "0.1",
-    "checkpoint_id": "01a-working-code-reconnaissance",
-    "phase": "mandatory reconnaissance",
-    "status": "passed",
-    "target_repository": "/home/ian-koratsky/Development/scholastic-context-engineering",
-    "source_snapshot": {
-        "taxonomy_snapshot_id": "argument-form-taxonomy-c013edcf0fe87670",
-        "taxonomy_sha256": "c013edcf0fe87670cd79e27689ffbc793d7640dc0cdfb24dedcc5d5b428ce134",
-        "raw_bullet_count": 277,
-        "raw_fallacy_bullet_count": 141
-    },
-    "artifacts": [
-        "docs/evidence/local-inventory.json",
-        "docs/evidence/working-code-inventory.json",
-        "docs/evidence/repository-verification-log.jsonl",
-        "docs/evidence/security-review.json",
-        "docs/evidence/claim-register.json",
-        ".hermes/checkpoints/01a-working-code-reconnaissance.json"
-    ],
-    "tests": [
-        "tests/test_repository_bootstrap.py::test_repository_bootstrap_declares_canonical_authority (RED: expected FileNotFoundError before bootstrap docs)",
-        {
-            "command": "env -u PYTHONPATH python -m pytest -q",
-            "result": "151 passed"
-        }
-    ],
-    "reviewer_status": "independent security review HOLD",
-    "unresolved_blockers": [],
-    "next_allowed_task": "freeze canonical typed stage contracts",
-    "owner_decisions": "docs/decision-register.md"
+  "checkpoint_schema_version": "0.1",
+  "checkpoint_id": "01a-working-code-reconnaissance",
+  "phase": "mandatory reconnaissance",
+  "status": "passed",
+  "target_repository": "/home/ian-koratsky/Development/scholastic-context-engineering",
+  "source_snapshot": {
+    "taxonomy_snapshot_id": "argument-form-taxonomy-c013edcf0fe87670",
+    "taxonomy_sha256": "c013edcf0fe87670cd79e27689ffbc793d7640dc0cdfb24dedcc5d5b428ce134",
+    "raw_bullet_count": 277,
+    "raw_fallacy_bullet_count": 141
+  },
+  "artifacts": [
+    "docs/evidence/local-inventory.json",
+    "docs/evidence/working-code-inventory.json",
+    "docs/evidence/repository-verification-log.jsonl",
+    "docs/evidence/security-review.json",
+    "docs/evidence/claim-register.json",
+    ".hermes/checkpoints/01a-working-code-reconnaissance.json"
+  ],
+  "tests": [
+    "tests/test_repository_bootstrap.py::test_repository_bootstrap_declares_canonical_authority (RED: expected FileNotFoundError before bootstrap docs)",
+    {
+      "command": "env -u PYTHONPATH python -m pytest -q",
+      "result": "151 passed"
+    }
+  ],
+  "reviewer_status": "pending fresh independent verification",
+  "unresolved_blockers": [],
+  "next_allowed_task": "freeze canonical typed stage contracts",
+  "owner_decisions": "docs/decision-register.md",
+  "current_full_suite": {
+    "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
+    "result": "154 passed"
+  }
 }
