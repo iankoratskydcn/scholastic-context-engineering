@@ -16,6 +16,7 @@ from typing import Any
 from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, Proposition, StructuredDocument, TaxonomyMatch, TaxonomySnapshot
 
 MAX_SOURCE_CHARS = 1_000_000
+_DIAGNOSTIC_RUN_ID = "diagnostic-run"
 _MP_ID = "src.core_initial_pass.003.l9"
 _MT_ID = "src.core_initial_pass.004.l10"
 
@@ -50,6 +51,10 @@ class ExtractionBundle:
             raise ValueError("confidence must be between 0 and 1")
         if self.provenance is None and self.status != "ABSTAINED":
             raise ValueError("extraction bundle requires provenance")
+        if self.provenance is None:
+            reason = self.abstention_reason or "abstained extraction"
+            text = f"[diagnostic: {reason}; no source evidence]"
+            object.__setattr__(self, "provenance", EvidenceSpan("diagnostic://extraction", 0, len(text), text, "diagnostic"))
         if self.provenance is not None and not isinstance(self.provenance, EvidenceSpan):
             raise ValueError("extraction provenance must be an evidence span")
         payload = self.to_payload()
@@ -79,7 +84,7 @@ class ExtractionBundle:
             return value
         payload = {"kind": "extraction_bundle", "status": self.status, "argument": encode(self.argument),
                 "taxonomy": encode(self.taxonomy), "abstention_reason": self.abstention_reason,
-                "confidence": self.confidence, "provenance": encode(self.provenance),
+                "confidence": self.confidence, "provenance": [encode(self.provenance)],
                 "formalization": encode(self.formalization), "run_id": self.run_id,
                 "uncertainty": encode(self.uncertainty), "diagnostics": encode(self.diagnostics),
                 "schema_version": self.schema_version, "producer": self.producer}
@@ -133,7 +138,8 @@ def _proposition(text: str, role: str, run_id: str, evidence: EvidenceSpan) -> P
 
 
 def _abstain(reason: str, run_id: str = "") -> ExtractionBundle:
-    return ExtractionBundle("ABSTAINED", None, None, reason, 0.0, None, run_id=run_id)
+    safe_run_id = run_id if isinstance(run_id, str) and run_id and not any(0xD800 <= ord(char) <= 0xDFFF for char in run_id) else _DIAGNOSTIC_RUN_ID
+    return ExtractionBundle("ABSTAINED", None, None, reason, 0.0, None, run_id=safe_run_id)
 
 
 def _structured_problem(document: StructuredDocument) -> str | None:

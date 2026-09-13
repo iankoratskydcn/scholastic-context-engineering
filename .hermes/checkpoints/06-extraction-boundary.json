@@ -14,7 +14,11 @@
         "command": "PYTHONPATH=src python -m pytest -q tests/schema tests/extraction",
         "result": "51 passed"
     },
-    "full_suite": "env -u PYTHONPATH python -m pytest -q: 118 passed",
+    "full_suite": "pytest -q: 145 passed",
+    "envelope_repair": {
+        "red": "pytest -q tests/extraction/test_extractor.py::test_malformed_run_id_abstains_without_exception_and_serializes_diagnostic_span tests/extraction/test_extractor.py::test_direct_abstained_bundle_emits_canonical_diagnostic_envelope: 2 failed as expected",
+        "green": "pytest -q tests/ingestion tests/extraction tests/formal tests/schema: 75 passed"
+    },
     "implementation": "ExtractionBundle canonical payloads include record_id and complete envelope fields; deterministic IDs exclude their own derived identity.",
     "reviewer_status": "pending independent verification",
     "issues": [],

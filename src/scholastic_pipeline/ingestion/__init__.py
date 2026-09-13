@@ -25,14 +25,24 @@ class QuarantinedDocument:
     revision: str
     bytes_hash: str
     spans: tuple[EvidenceSpan, ...] = ()
+    provenance: tuple[EvidenceSpan, ...] = ()
+    producer: str = "scholastic-context-engineering"
+    schema_version: str = "0.1"
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
+        if not self.run_id or not isinstance(self.run_id, str) or any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id):
+            object.__setattr__(self, "run_id", "diagnostic-run")
+        if not self.provenance:
+            reason = self.diagnostics[0] if self.diagnostics else "quarantined source"
+            text = f"[diagnostic: {reason}; no source evidence]"
+            object.__setattr__(self, "provenance", (EvidenceSpan("diagnostic://quarantine", 0, len(text), text, "diagnostic"),))
         payload = {
             "kind": "quarantined_document", "source_id": self.source_id, "run_id": self.run_id,
             "status": self.status, "diagnostics": list(self.diagnostics), "document_id": self.document_id,
             "revision": self.revision, "bytes_hash": self.bytes_hash,
             "spans": [s.record_id for s in self.spans],
+            "provenance": [s.record_id for s in self.provenance],
         }
         object.__setattr__(self, "record_id", "quarantine-" + _digest("quarantined_document", payload))
 
@@ -145,7 +155,7 @@ def to_payload(record: IngestedDocument | StructuredDocument | QuarantinedDocume
         "provenance": [
             {"source_id": s.source_id, "start": s.start, "end": s.end,
              "text": s.text, "revision": s.revision, "record_id": s.record_id}
-            for s in record.spans
+            for s in record.provenance
         ],
         "confidence": None, "uncertainty": [], "diagnostics": list(record.diagnostics),
         "document_id": record.document_id, "revision": record.revision, "bytes_hash": record.bytes_hash,

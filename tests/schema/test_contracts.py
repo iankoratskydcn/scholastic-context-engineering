@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pytest
 
@@ -13,6 +14,24 @@ from scholastic_pipeline.schema import (
     ValidationStatus,
     TaxonomySnapshot,
 )
+
+def test_emitted_accepted_quarantine_and_abstention_payloads_match_envelope_schema():
+    from jsonschema import Draft202012Validator
+    from scholastic_pipeline.extraction import extract_argument
+    from scholastic_pipeline.ingestion import ingest_text, to_payload
+
+    schema = json.loads((Path(__file__).parents[2] / "schemas" / "envelope-0.1.json").read_text())
+    validator = Draft202012Validator(schema)
+    records = [
+        ingest_text("source", "Alpha", run_id="run-1"),
+        ingest_text("", "Alpha", run_id="run-1"),
+        extract_argument("Birds fly.", source_id="source", source_revision="rev-1", run_id="run-1"),
+        extract_argument("Birds fly.", source_id="source", source_revision="rev-1", run_id="bad\ud800"),
+    ]
+    for record in records:
+        payload = to_payload(record) if hasattr(record, "bytes_hash") else record.to_payload()
+        validator.validate(json.loads(json.dumps(payload)))
+
 
 def test_envelope_requires_stable_ids_and_provenance():
     span = EvidenceSpan(source_id="source-1", start=0, end=4, text="Prem", revision="r1")

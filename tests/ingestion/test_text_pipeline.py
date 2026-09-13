@@ -1,4 +1,5 @@
 import hashlib
+import json
 
 import pytest
 
@@ -111,3 +112,24 @@ def test_ingestion_quarantine_payload_contains_complete_envelope_fields():
     assert {"kind", "schema_version", "record_id", "run_id", "producer", "status",
             "provenance", "confidence", "uncertainty", "diagnostics"} <= payload.keys()
     assert payload["record_id"]
+
+
+def test_quarantine_payload_has_non_source_diagnostic_provenance():
+    document = ingest_text("", "text", run_id="run-1")
+    payload = __import__("scholastic_pipeline.ingestion", fromlist=["to_payload"]).to_payload(document)
+    assert payload["provenance"]
+    diagnostic = payload["provenance"][0]
+    assert diagnostic["source_id"].startswith("diagnostic://")
+    assert diagnostic["revision"] == "diagnostic"
+    assert "no source evidence" in diagnostic["text"]
+    assert diagnostic["end"] - diagnostic["start"] == len(diagnostic["text"])
+    assert payload["run_id"] == "run-1"
+    assert payload["status"] == "QUARANTINED"
+
+
+def test_quarantine_with_malformed_run_id_is_serializable_and_nonempty_envelope():
+    document = ingest_text("source", "text", run_id="bad\ud800")
+    payload = __import__("scholastic_pipeline.ingestion", fromlist=["to_payload"]).to_payload(document)
+    assert payload["status"] == "QUARANTINED"
+    assert payload["run_id"]
+    assert json.loads(json.dumps(payload))["provenance"]

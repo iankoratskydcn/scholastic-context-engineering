@@ -114,6 +114,25 @@ def test_malformed_source_abstains_fail_closed(bad):
     assert result.abstention_reason == "malformed_source"
 
 
+def test_malformed_run_id_abstains_without_exception_and_serializes_diagnostic_span():
+    result = extract_argument("Birds fly.", source_id="source", source_revision="rev-1", run_id="bad\ud800")
+    assert result.status == "ABSTAINED"
+    assert result.argument is None
+    assert result.provenance is not None
+    payload = json.loads(json.dumps(result.to_payload()))
+    assert payload["run_id"]
+    assert payload["provenance"][0]["source_id"].startswith("diagnostic://")
+    assert "no source evidence" in payload["provenance"][0]["text"]
+
+
+def test_direct_abstained_bundle_emits_canonical_diagnostic_envelope():
+    result = ExtractionBundle("ABSTAINED", None, None, "unsupported", 0.0, None, run_id="run-1")
+    payload = json.loads(json.dumps(result.to_payload()))
+    assert payload["status"] == "ABSTAINED"
+    assert payload["provenance"][0]["source_id"].startswith("diagnostic://")
+    assert payload["run_id"] == "run-1"
+
+
 def test_oversized_source_abstains_fail_closed():
     result = extract_argument("x" * 1_000_001, source_id="source", source_revision="rev-1", run_id="test-run")
     assert result.status == "ABSTAINED"
@@ -207,7 +226,7 @@ def test_canonical_bundle_and_formalization_expose_complete_stable_envelopes():
     assert formal_payload["record_id"] == result.formalization.record_id
     assert formal_payload["expression"] == "it rains -> the ground is wet"
     assert bundle_payload["argument"]["record_id"] == result.argument.record_id
-    assert bundle_payload["provenance"]["record_id"] == result.provenance.record_id
+    assert bundle_payload["provenance"][0]["record_id"] == result.provenance.record_id
     assert formal_payload["provenance"][0]["record_id"] == result.formalization.provenance[0].record_id
 
 
@@ -262,5 +281,6 @@ def test_extraction_bundle_does_not_infer_missing_run_id_from_nested_records():
 
 
 def test_malformed_run_id_abstains_fail_closed():
-    with pytest.raises(ValueError, match="run_id"):
-        extract_argument("Birds fly.", source_id="source", source_revision="rev-1", run_id="bad\ud800")
+    result = extract_argument("Birds fly.", source_id="source", source_revision="rev-1", run_id="bad\ud800")
+    assert result.status == "ABSTAINED"
+    assert result.run_id == "diagnostic-run"
