@@ -1,0 +1,10 @@
+{
+  "schema_version":"0.1",
+  "review_wave":"deleg_012b1d99",
+  "status":"blocked",
+  "proof":["canonical verifier passed payloads and production canaries","security probes exposed remaining defects","hygiene verifier confirmed deterministic canary and wheels"],
+  "blocking_findings":["Formalization accepts oversized expressions and can process them","manifest entry IDs lack byte bounds","IngestedDocument malformed span elements raise AttributeError","ValidationResult accepts arbitrary validation_status","conflicting begin_generation declarations are silently ignored"],
+  "hygiene_findings":["uv.lock was generated untracked during offline uv verification; no runtime lockfile is required by current project","checkpoint historical test entries need reconciliation to current suite"],
+  "verdict":"HOLD_RELEASE",
+  "next_proof":["repair remaining direct boundaries and conflicting declarations","remove generated uv.lock after confirmation","fresh independent verification"]
+}
