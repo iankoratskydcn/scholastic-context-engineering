@@ -165,27 +165,42 @@ def _refusal(request: Any, reason: str) -> GenerationResult:
     )
 
 
-def _exact_span(span: EvidenceSpan, context: RetrievalContext, scope: tuple[str, ...]) -> bool:
-    return (
-        isinstance(span, EvidenceSpan)
-        and span.source_id in scope
-        and any(
-            span.source_id == candidate.source_id
-            and span.revision == candidate.revision
-            and span.start == candidate.start
-            and span.end == candidate.end
-            and span.text == candidate.text
-            for candidate in context.citations
-        )
-    )
-
-
 def _encodable(value: str) -> bool:
     try:
         value.encode("utf-8")
     except (UnicodeError, AttributeError):
         return False
     return True
+
+
+def _span_fields(span: EvidenceSpan) -> tuple[str, int, int, str, str] | None:
+    """Read and validate every field before any comparison or encoding."""
+    if not isinstance(span, EvidenceSpan):
+        return None
+    try:
+        source_id = getattr(span, "source_id")
+        start = getattr(span, "start")
+        end = getattr(span, "end")
+        text = getattr(span, "text")
+        revision = getattr(span, "revision")
+    except Exception:
+        return None
+    if (type(source_id) is not str or not source_id
+            or type(revision) is not str or not revision
+            or type(text) is not str
+            or type(start) is not int or isinstance(start, bool)
+            or type(end) is not int or isinstance(end, bool)
+            or start < 0 or end < start or end - start != len(text)):
+        return None
+    if not all(_encodable(value) for value in (source_id, revision, text)):
+        return None
+    return source_id, start, end, text, revision
+
+
+def _same_span(left: tuple[str, int, int, str, str],
+               right: tuple[str, int, int, str, str]) -> bool:
+    """Compare validated primitive fields, never forged dataclass equality."""
+    return left == right
 
 
 def _valid_context(context: RetrievalContext) -> bool:
@@ -198,15 +213,27 @@ def _valid_context(context: RetrievalContext) -> bool:
         run_id = getattr(context, "run_id")
     except Exception:
         return False
-    return (
-        type(items) is tuple and all(
-            type(item) is str and _encodable(item) for item in items
-        )
-        and type(citations) is tuple and all(isinstance(item, EvidenceSpan) for item in citations)
-        and type(provenance) is tuple and all(isinstance(item, EvidenceSpan) for item in provenance)
-        and (refusal is None or type(refusal) is str)
-        and type(run_id) is str
-    )
+    if (type(items) is not tuple or type(citations) is not tuple
+            or type(provenance) is not tuple
+            or (refusal is not None and type(refusal) is not str)
+            or type(run_id) is not str):
+        return False
+    if any(type(item) is not str or not _encodable(item) for item in items):
+        return False
+    return all(_span_fields(span) is not None for span in (*citations, *provenance))
+
+
+def _exact_span(span_fields: tuple[str, int, int, str, str],
+                candidates: tuple[tuple[str, int, int, str, str], ...],
+                scope: tuple[str, ...]) -> bool:
+    source_id = span_fields[0]
+    return source_id in scope and any(_same_span(span_fields, candidate) for candidate in candidates)
+
+
+def _aligns_to_item(span_fields: tuple[str, int, int, str, str], items: tuple[str, ...]) -> bool:
+    """Require citation offsets and text to describe a complete evidence item."""
+    _, start, end, text, _ = span_fields
+    return any(start == 0 and end == len(item) and text == item for item in items)
 
 
 def generate(request: GenerationRequest, context: RetrievalContext) -> GenerationResult:
@@ -240,30 +267,42 @@ def generate(request: GenerationRequest, context: RetrievalContext) -> Generatio
     if not context.items or not context.citations or not context.provenance:
         return _refusal(request, "retrieval evidence is missing")
 
+    citation_fields = tuple(_span_fields(span) for span in context.citations)
+    provenance_fields = tuple(_span_fields(span) for span in context.provenance)
+    # _valid_context established these records, but keep the narrowing local so
+    # later checks never dereference or compare a forged nested member.
+    if any(fields is None for fields in (*citation_fields, *provenance_fields)):
+        return _refusal(request, "retrieval context is malformed")
+    citations = tuple(fields for fields in citation_fields if fields is not None)
+    provenance = tuple(fields for fields in provenance_fields if fields is not None)
+
     evidence_bytes = sum(len(item.encode("utf-8")) for item in context.items)
-    evidence_bytes += sum(len(span.text.encode("utf-8")) for span in context.citations)
-    evidence_bytes += sum(len(span.text.encode("utf-8")) for span in context.provenance)
+    evidence_bytes += sum(len(fields[3].encode("utf-8")) for fields in citations)
+    evidence_bytes += sum(len(fields[3].encode("utf-8")) for fields in provenance)
     if evidence_bytes > request.context_budget_bytes:
         return _refusal(request, "context budget exceeded")
     if any(marker in item.lower() for item in context.items for marker in _INJECTION_MARKERS):
         return _refusal(request, "retrieved instructions are untrusted data")
     if any(term in request.prompt.lower() for term in ("moon", "glass")):
         return _refusal(request, "claim is unsupported by retrieval evidence")
-    if any(not _exact_span(span, context, request.scope) for span in context.citations):
+    if any(not _exact_span(span, provenance, request.scope) for span in citations):
         return _refusal(request, "citation is missing, stale, or out of scope")
-    if any(span.source_id not in request.scope for span in context.provenance):
+    if any(span[0] not in request.scope for span in provenance):
         return _refusal(request, "retrieval provenance is out of scope")
     if any(
-        not any(span == candidate for candidate in context.provenance)
-        for span in context.citations
+        not any(span[0] == candidate[0] and span[4] == candidate[4]
+                for candidate in citations)
+        for span in provenance
     ):
-        return _refusal(request, "citation is missing, stale, or out of scope")
-    if any(span.revision == "old-rev" for span in context.citations):
+        return _refusal(request, "retrieval provenance is stale or mismatched")
+
+    if any(span[4] == "old-rev" for span in citations):
         return _refusal(request, "citation is stale")
 
-    # Evidence itself is the only claim text; no prompt-derived instruction is executed.
     claim_text = context.items[0]
-    if any(span.text != claim_text for span in context.citations):
+    if any(not _aligns_to_item(span, context.items) for span in citations):
+        return _refusal(request, "citation span does not align to retrieved text")
+    if any(span[3] != claim_text for span in citations):
         return _refusal(request, "citation text does not match claim")
     prompt_words = {word.strip(".,?!:;").lower() for word in request.prompt.split()}
     evidence_words = {word.strip(".,?!:;").lower() for word in claim_text.split()}

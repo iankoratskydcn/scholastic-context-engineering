@@ -11,7 +11,7 @@
   ],
   "tdd": {
     "red": "30 focused generation/injection tests collected; 26 passed and 4 failed against the current implementation on non-sentinel provenance revision mismatch, citation offset alignment, and malformed nested span members",
-    "green": "30 focused generation/injection tests passed after the generation implementation is repaired; current full-suite count is derived by rerunning the command below"
+    "green": "30 focused generation/injection tests passed after repairing the generation boundary; full suite passed with 209 tests"
   },
   "invariants": [
     "GenerationRequest and GenerationResult are typed immutable boundary records",
@@ -38,11 +38,11 @@
   "tests": [
     {
       "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q tests/generation tests/security/test_generation_injection.py",
-      "result": "24 passed"
+      "result": "30 passed"
     },
     {
       "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q",
-      "result": "203 passed"
+      "result": "209 passed"
     },
     {
       "command": "git diff --check",
@@ -51,7 +51,7 @@
   ],
   "current_full_suite": {
     "command": "/home/ian-koratsky/.hermes/bin/uv run --offline --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "179 passed"
+    "result": "209 passed"
   },
   "reviewer_status": "pending independent verification",
   "issues": [],
