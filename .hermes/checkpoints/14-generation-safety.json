@@ -2,7 +2,7 @@
   "checkpoint_schema_version": "0.1",
   "checkpoint_id": "14-generation-safety",
   "phase": "generation and injection acceptance tests",
-  "status": "blocked",
+  "status": "implemented",
   "scope": [
     "src/scholastic_pipeline/generation/**",
     "tests/generation/**",
@@ -11,7 +11,7 @@
   ],
   "tdd": {
     "red": "24 focused generation/injection tests collected; 17 passed and 7 failed against the current implementation on unrelated citations, allowed tools, provenance-byte budgets, refusal-with-claims, and malformed context members",
-    "green": "pending separate implementation"
+    "green": "24 focused generation/injection tests passed; full suite passed 203 tests"
   },
   "invariants": [
     "GenerationRequest and GenerationResult are typed immutable boundary records",
@@ -34,11 +34,11 @@
   "tests": [
     {
       "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q tests/generation tests/security/test_generation_injection.py",
-      "result": "17 passed, 7 failed; expected RED failures are unrelated citation acceptance, nonempty allowed_tools acceptance, provenance bytes omitted from budget, refusal results carrying claims, and exceptions for malformed items/citations/provenance"
+      "result": "24 passed"
     },
     {
       "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q",
-      "result": "not run; focused RED evidence is the required verification for this test-only checkpoint"
+      "result": "203 passed"
     },
     {
       "command": "git diff --check",
