@@ -292,3 +292,17 @@ def test_oversized_run_id_abstains_with_diagnostic_run_id():
     assert result.status == "ABSTAINED"
     assert result.abstention_reason == "malformed_source"
     assert result.run_id == "diagnostic-run"
+
+
+@pytest.mark.parametrize("field", ["run_id", "producer"])
+def test_direct_bundle_identity_fields_reject_invalid_or_oversized_text(field):
+    values = {"run_id": "run-1", "producer": "producer-1"}
+    values[field] = "é" * 4097
+    with pytest.raises(ValueError, match=field):
+        ExtractionBundle("ABSTAINED", None, None, "unsupported", 0.0, None, **values)
+
+
+def test_direct_bundle_rejects_surrogate_producer_without_unicode_error():
+    with pytest.raises(ValueError, match="producer"):
+        ExtractionBundle("ABSTAINED", None, None, "unsupported", 0.0, None,
+                         run_id="run-1", producer="bad\ud800")

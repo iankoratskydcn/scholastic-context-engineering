@@ -31,8 +31,25 @@ class QuarantinedDocument:
     record_id: str = field(init=False)
 
     def __post_init__(self) -> None:
-        if not self.run_id or not isinstance(self.run_id, str) or any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id):
+        try:
+            valid_run_id = (isinstance(self.run_id, str) and bool(self.run_id)
+                            and not any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id)
+                            and len(self.run_id.encode("utf-8")) <= MAX_IDENTIFIER_BYTES)
+        except UnicodeError:
+            valid_run_id = False
+        if not valid_run_id:
             object.__setattr__(self, "run_id", "diagnostic-run")
+        for name, fallback in (("source_id", "diagnostic://quarantine"),
+                               ("document_id", "doc-quarantined"), ("revision", "rev-quarantined"),
+                               ("producer", "scholastic-context-engineering")):
+            value = getattr(self, name)
+            try:
+                valid = isinstance(value, str) and bool(value) and not any(0xD800 <= ord(c) <= 0xDFFF for c in value)
+                valid = valid and len(value.encode("utf-8")) <= MAX_IDENTIFIER_BYTES
+            except UnicodeError:
+                valid = False
+            if not valid:
+                object.__setattr__(self, name, fallback)
         if not self.provenance:
             reason = self.diagnostics[0] if self.diagnostics else "quarantined source"
             text = f"[diagnostic: {reason}; no source evidence]"
@@ -73,12 +90,12 @@ def _source_bytes(source: str | bytes) -> tuple[bytes, str | None]:
 
 def _quarantine(source_id: object, run_id: object, reason: str) -> QuarantinedDocument:
     """Build a safe quarantine record without interpreting hostile identity data."""
-    safe_source_id = source_id if isinstance(source_id, str) and not any(
+    safe_source_id = source_id if isinstance(source_id, str) and source_id and not any(
         0xD800 <= ord(char) <= 0xDFFF for char in source_id
-    ) else ""
-    safe_run_id = run_id if isinstance(run_id, str) and not any(
+    ) and len(source_id.encode("utf-8")) <= MAX_IDENTIFIER_BYTES else "diagnostic://quarantine"
+    safe_run_id = run_id if isinstance(run_id, str) and run_id and not any(
         0xD800 <= ord(char) <= 0xDFFF for char in run_id
-    ) else ""
+    ) and len(run_id.encode("utf-8")) <= MAX_IDENTIFIER_BYTES else "diagnostic-run"
     return QuarantinedDocument(
         safe_source_id, safe_run_id, RecordStatus.QUARANTINED.value, (reason,),
         "doc-quarantined", "rev-quarantined", "0" * 64,
@@ -154,7 +171,7 @@ def to_payload(record: IngestedDocument | StructuredDocument | QuarantinedDocume
         return result
     result = {
         "kind": "quarantined_document", "schema_version": "0.1", "record_id": record.record_id,
-        "run_id": record.run_id, "producer": "scholastic-context-engineering", "status": record.status,
+        "source_id": record.source_id, "run_id": record.run_id, "producer": record.producer, "status": record.status,
         "provenance": [
             {"source_id": s.source_id, "start": s.start, "end": s.end,
              "text": s.text, "revision": s.revision, "record_id": s.record_id}

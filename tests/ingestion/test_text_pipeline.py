@@ -141,3 +141,16 @@ def test_quarantine_with_malformed_run_id_is_serializable_and_nonempty_envelope(
     assert payload["status"] == "QUARANTINED"
     assert payload["run_id"]
     assert json.loads(json.dumps(payload))["provenance"]
+
+
+def test_quarantine_bounds_identity_fields_but_keeps_diagnostic():
+    result = ingest_text("é" * (MAX_IDENTIFIER_BYTES + 1), "text", run_id="bad\ud800")
+    payload = __import__("scholastic_pipeline.ingestion", fromlist=["to_payload"]).to_payload(result)
+    assert result.status == RecordStatus.QUARANTINED.value
+    assert payload["diagnostics"] == ["source_id is malformed"]
+    for field in ("source_id", "run_id", "producer", "document_id", "revision"):
+        value = payload.get(field)
+        assert isinstance(value, str)
+        assert not any(0xD800 <= ord(char) <= 0xDFFF for char in value)
+        assert len(value.encode("utf-8")) <= MAX_IDENTIFIER_BYTES
+    assert json.loads(json.dumps(payload))["diagnostics"] == ["source_id is malformed"]

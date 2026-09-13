@@ -6,7 +6,8 @@ import hashlib
 import json
 import re
 
-from scholastic_pipeline.schema import ArgumentUnit, EvidenceSpan, TaxonomyMatch, ValidationResult, ValidationStatus
+from scholastic_pipeline.schema import (ArgumentUnit, EvidenceSpan, MAX_IDENTIFIER_BYTES,
+                                        TaxonomyMatch, ValidationResult, ValidationStatus)
 
 
 @dataclass(frozen=True)
@@ -27,6 +28,7 @@ class Formalization:
         if (not isinstance(self.run_id, str) or not self.run_id or
                 any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id)):
             raise ValueError("run_id must be a non-empty string")
+        _identity_text(self.run_id, "run_id")
         if not isinstance(self.expression, str):
             raise ValueError("formalization expression is required")
         if not self.provenance:
@@ -35,6 +37,7 @@ class Formalization:
             raise ValueError("formalization provenance must contain evidence spans")
         if not isinstance(self.producer, str) or not self.producer:
             raise ValueError("producer must be a non-empty string")
+        _identity_text(self.producer, "producer")
         if self.status not in {"ACCEPTED", "ABSTAINED", "REJECTED", "QUARANTINED"}:
             raise ValueError("unknown formalization status")
         if not 0 <= self.confidence <= 1 or self.schema_version != "0.1":
@@ -45,7 +48,7 @@ class Formalization:
         ).hexdigest()[:24])
 
     def to_payload(self) -> dict:
-        payload = {"kind": "formalization", "expression": self.expression,
+        payload = {"kind": "formalization", "expression": _safe_text(self.expression),
                 "provenance": [{"source_id": s.source_id, "start": s.start, "end": s.end,
                                 "text": s.text, "revision": s.revision, "record_id": s.record_id}
                                for s in self.provenance],
@@ -64,6 +67,25 @@ _IMPLICATION = re.compile(rf"^\s*({_ATOM.strip()})\s*(?:->|→)\s*({_ATOM.strip(
 
 def _clean(value: str) -> str:
     return " ".join(value.strip().split())
+
+
+def _identity_text(value: object, label: str) -> None:
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{label} must be a non-empty string")
+    if any(0xD800 <= ord(char) <= 0xDFFF for char in value):
+        raise ValueError(f"{label} contains an invalid surrogate")
+    try:
+        size = len(value.encode("utf-8"))
+    except UnicodeEncodeError as exc:
+        raise ValueError(f"{label} must be valid UTF-8") from exc
+    if size > MAX_IDENTIFIER_BYTES:
+        raise ValueError(f"{label} exceeds absolute byte ceiling")
+
+
+def _safe_text(value: object) -> str:
+    if not isinstance(value, str) or any(0xD800 <= ord(char) <= 0xDFFF for char in value):
+        return "<invalid formal expression>"
+    return value
 
 
 def _parse(expression: str) -> tuple[str, str, str] | None:
@@ -120,6 +142,14 @@ def validate(argument: object, formalization: Formalization | str, taxonomy_matc
         raise ValueError("formalization and argument run IDs must match")
     if not argument.provenance or not form.provenance:
         raise ValueError("formal validation requires provenance on argument and formalization")
+    if not isinstance(form.expression, str) or any(0xD800 <= ord(char) <= 0xDFFF for char in form.expression):
+        return ValidationResult(
+            run_id=argument.run_id, provenance=tuple(dict.fromkeys(argument.provenance + form.provenance)),
+            validation_status=ValidationStatus.ILL_POSED,
+            normalized_form=_safe_text(form.expression),
+            proof_obligations=("formalization must be valid Unicode text",),
+            diagnostics=("formalization expression is not valid UTF-8",),
+        )
     parsed = _parse(form.expression)
     provenance = tuple(dict.fromkeys(argument.provenance + form.provenance))
     if parsed is None:

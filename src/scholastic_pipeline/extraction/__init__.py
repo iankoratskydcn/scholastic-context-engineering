@@ -42,8 +42,10 @@ class ExtractionBundle:
         if (not isinstance(self.run_id, str) or not self.run_id or
                 any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id)):
             raise ValueError("run_id must be a non-empty string")
+        _identity_text(self.run_id, "run_id")
         if not isinstance(self.producer, str) or not self.producer:
             raise ValueError("producer must be a non-empty string")
+        _identity_text(self.producer, "producer")
         if self.schema_version != "0.1":
             raise ValueError("unsupported schema version")
         if self.status not in {"ACCEPTED", "ABSTAINED", "REJECTED", "QUARANTINED"}:
@@ -92,6 +94,19 @@ class ExtractionBundle:
         if hasattr(self, "record_id"):
             payload["record_id"] = self.record_id
         return payload
+
+
+def _identity_text(value: object, label: str) -> None:
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{label} must be a non-empty string")
+    if any(0xD800 <= ord(char) <= 0xDFFF for char in value):
+        raise ValueError(f"{label} contains an invalid surrogate")
+    try:
+        size = len(value.encode("utf-8"))
+    except UnicodeEncodeError as exc:
+        raise ValueError(f"{label} must be valid UTF-8") from exc
+    if size > MAX_IDENTIFIER_BYTES:
+        raise ValueError(f"{label} exceeds absolute byte ceiling")
 
 
 _CONDITIONAL = re.compile(

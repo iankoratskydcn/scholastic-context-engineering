@@ -104,3 +104,18 @@ def test_formalization_rejects_missing_run_id_instead_of_using_unknown():
 def test_formalization_rejects_malformed_run_id():
     with pytest.raises(ValueError, match="run_id"):
         Formalization("A -> B", run_id="bad\ud800", provenance=(span("A"),))
+
+
+def test_lone_surrogate_expression_returns_typed_ill_posed_validation():
+    formal = Formalization("A -> \ud800", run_id="run-1", provenance=(span("A"),))
+    result = validate(argument(["A -> B", "A"], "B"), formal)
+    assert result.validation_status is ValidationStatus.ILL_POSED
+    assert result.diagnostics
+
+
+@pytest.mark.parametrize("field", ["run_id", "producer"])
+def test_formalization_identity_fields_reject_oversized_utf8(field):
+    kwargs = {"run_id": "run-1", "provenance": (span("A"),), "producer": "producer-1"}
+    kwargs[field] = "é" * 4097
+    with pytest.raises(ValueError, match=field):
+        Formalization("A -> B", **kwargs)
