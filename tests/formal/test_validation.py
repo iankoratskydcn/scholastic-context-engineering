@@ -124,3 +124,13 @@ def test_formalization_identity_fields_reject_oversized_utf8(field):
 def test_formalization_rejects_oversized_expression_before_processing():
     with pytest.raises(ValueError, match="expression"):
         Formalization("é" * 8193, run_id="run-1", provenance=(span("A"),))
+
+
+class BadStr(str):
+    def encode(self, *args, **kwargs):
+        raise RuntimeError("hostile encode")
+
+
+def test_formalization_rejects_encode_overriding_expression_subclass():
+    with pytest.raises(ValueError, match="expression"):
+        Formalization(BadStr("A -> B"), run_id="run-1", provenance=(span("A"),))

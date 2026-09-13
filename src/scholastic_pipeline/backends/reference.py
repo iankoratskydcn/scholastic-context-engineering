@@ -65,7 +65,7 @@ def _scope(event: GraphEdgeEvent) -> frozenset[tuple[str, str]]:
 
 
 def _validate_generation_id(generation_id: object) -> str:
-    if (not isinstance(generation_id, str) or not generation_id
+    if (type(generation_id) is not str or not generation_id
             or any(0xD800 <= ord(char) <= 0xDFFF for char in generation_id)):
         raise StorageError("generation ID is required")
     try:
@@ -77,7 +77,7 @@ def _validate_generation_id(generation_id: object) -> str:
 
 
 def _validate_identifier(value: object, label: str) -> None:
-    if not isinstance(value, str) or not value:
+    if type(value) is not str or not value:
         raise StorageError(f"{label} is invalid")
     try:
         if len(value.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
@@ -95,7 +95,7 @@ def _validate_generation_options(expected_count: object, manifest: object) -> tu
         raise StorageError("expected count exceeds absolute occurrence ceiling")
     if manifest is None:
         return expected_count, None
-    if isinstance(manifest, (str, bytes, bytearray)) or not isinstance(manifest, Sequence):
+    if type(manifest) not in (tuple, list):
         raise StorageError("manifest must be a bounded sequence of strings")
     try:
         if len(manifest) > MAX_MANIFEST_ENTRIES:
@@ -118,10 +118,15 @@ class ReferenceSQLiteBackend:
     """Transactional reference store; each edge ID denotes one occurrence."""
 
     def __init__(self, path: str | Path = ":memory:", current_revisions: Mapping[str, str] | None = None):
+        if type(path) not in (str, Path):
+            raise StorageError("backend path is invalid")
         if current_revisions is not None and not isinstance(current_revisions, Mapping):
             raise StorageError("current revisions must be a mapping")
         self.current_revisions = current_revisions if current_revisions is not None else {}
-        self._db = sqlite3.connect(str(path))
+        try:
+            self._db = sqlite3.connect(path if type(path) is str else str(path))
+        except (OSError, sqlite3.Error, TypeError, ValueError, RuntimeError) as exc:
+            raise StorageError("backend path is invalid") from exc
         self._db.execute("PRAGMA foreign_keys = ON")
         self._db.executescript("""
             CREATE TABLE IF NOT EXISTS generations (

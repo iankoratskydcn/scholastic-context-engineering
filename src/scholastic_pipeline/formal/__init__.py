@@ -30,7 +30,7 @@ class Formalization:
                 any(0xD800 <= ord(char) <= 0xDFFF for char in self.run_id)):
             raise ValueError("run_id must be a non-empty string")
         _identity_text(self.run_id, "run_id")
-        if not isinstance(self.expression, str):
+        if type(self.expression) is not str:
             raise ValueError("formalization expression is required")
         try:
             expression_bytes = len(self.expression.encode("utf-8"))
@@ -77,7 +77,7 @@ def _clean(value: str) -> str:
 
 
 def _identity_text(value: object, label: str) -> None:
-    if not isinstance(value, str) or not value:
+    if type(value) is not str or not value:
         raise ValueError(f"{label} must be a non-empty string")
     if any(0xD800 <= ord(char) <= 0xDFFF for char in value):
         raise ValueError(f"{label} contains an invalid surrogate")
@@ -90,7 +90,7 @@ def _identity_text(value: object, label: str) -> None:
 
 
 def _safe_text(value: object) -> str:
-    if not isinstance(value, str) or any(0xD800 <= ord(char) <= 0xDFFF for char in value):
+    if type(value) is not str or any(0xD800 <= ord(char) <= 0xDFFF for char in value):
         return "<invalid formal expression>"
     return value
 

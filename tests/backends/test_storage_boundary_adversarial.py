@@ -234,3 +234,23 @@ def test_append_rolls_back_when_existing_scope_rejects_event():
     with pytest.raises(StorageError):
         backend.append("g1", envelope_edge("occ-2", run_id="other"))
     assert backend._db.execute("SELECT COUNT(*) FROM occurrences WHERE generation_id='g1'").fetchone()[0] == 1
+
+
+class BadPath(str):
+    def __str__(self):
+        raise RuntimeError("hostile path")
+
+
+def test_backend_converts_hostile_path_to_storage_error():
+    with pytest.raises(StorageError, match="path"):
+        ReferenceSQLiteBackend(BadPath(":memory:"))
+
+
+class BadHashStr(str):
+    def __hash__(self):
+        raise RuntimeError("hostile hash")
+
+
+def test_manifest_rejects_hash_overriding_string_subclass():
+    with pytest.raises(StorageError, match="manifest"):
+        ReferenceSQLiteBackend().begin_generation("g1", manifest=(BadHashStr("occ-1"),))

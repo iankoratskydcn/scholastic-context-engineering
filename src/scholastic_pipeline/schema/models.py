@@ -73,7 +73,7 @@ def _stable_id(kind: str, payload: Any) -> str:
 
 
 def _valid_text(value: object, label: str, *, required: bool = True) -> None:
-    if not isinstance(value, str) or (required and not value):
+    if type(value) is not str or (required and not value):
         raise EnvelopeError(f"{label} must be a non-empty string")
     if any(0xD800 <= ord(char) <= 0xDFFF for char in value):
         raise EnvelopeError(f"{label} contains an invalid surrogate")
@@ -241,9 +241,11 @@ class TaxonomySnapshot(Envelope):
 
     def __post_init__(self) -> None:
         _valid_text(self.snapshot_id, "snapshot_id")
-        if not self.supported_taxonomy_ids or any(
-            not isinstance(value, str) or not value for value in self.supported_taxonomy_ids
-        ):
+        if (type(self.supported_taxonomy_ids) is not tuple or
+                not self.supported_taxonomy_ids or any(
+                    type(value) is not str or not value
+                    for value in self.supported_taxonomy_ids
+                )):
             raise EnvelopeError("taxonomy snapshot requires supported taxonomy IDs")
         super().__post_init__()
 
@@ -324,7 +326,7 @@ class RetrievalRequest(Envelope):
         # Preserve hostile query data for retrieve() to refuse, while keeping
         # construction and stable-ID derivation exception-free.
         invalid = (
-            not isinstance(self.query, str)
+            type(self.query) is not str
             or any(0xD800 <= ord(char) <= 0xDFFF for char in self.query)
             or not self.query.strip()
             or len(self.query.encode("utf-8")) > MAX_RETRIEVAL_QUERY_BYTES

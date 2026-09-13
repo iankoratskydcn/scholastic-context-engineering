@@ -306,3 +306,23 @@ def test_direct_bundle_rejects_surrogate_producer_without_unicode_error():
     with pytest.raises(ValueError, match="producer"):
         ExtractionBundle("ABSTAINED", None, None, "unsupported", 0.0, None,
                          run_id="run-1", producer="bad\ud800")
+
+
+class HostileTaxonomyIDs(tuple):
+    def __contains__(self, value):
+        raise RuntimeError("hostile membership")
+
+
+def test_extraction_abstains_on_hostile_taxonomy_membership():
+    from scholastic_pipeline.extraction import extract_structured_document
+    source_text = "If A, B. A. Therefore, B."
+    source = EvidenceSpan("source-hostile", 0, len(source_text), source_text, "r1")
+    document = StructuredDocument(document_id="doc-hostile", revision="r1", bytes_hash="a" * 64,
+                                  spans=(source,), blocks=(source.text,), run_id="run-1")
+    taxonomy = TaxonomySnapshot(snapshot_id="taxonomy-hostile",
+                                supported_taxonomy_ids=("src.core_initial_pass.003.l9",),
+                                run_id="run-1", provenance=(source,))
+    object.__setattr__(taxonomy, "supported_taxonomy_ids", HostileTaxonomyIDs(taxonomy.supported_taxonomy_ids))
+    result = extract_structured_document(document, taxonomy)
+    assert result.status == "ABSTAINED"
+    assert result.abstention_reason == "malformed_taxonomy"

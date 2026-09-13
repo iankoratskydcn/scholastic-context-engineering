@@ -209,9 +209,9 @@ def _input_text(source: object, source_id: str, source_revision: str | None, bas
             return None
         span = source.spans[0]
         return span.text, span
-    if not isinstance(source, str) or not isinstance(source_id, str) or not source_id:
+    if type(source) is not str or type(source_id) is not str or not source_id:
         return None
-    if not isinstance(source_revision, str) or not source_revision:
+    if type(source_revision) is not str or not source_revision:
         return None
     if len(source) > MAX_SOURCE_CHARS or any(0xD800 <= ord(char) <= 0xDFFF for char in source):
         return None
@@ -226,7 +226,7 @@ def _input_text(source: object, source_id: str, source_revision: str | None, bas
 def extract_argument(source: str | StructuredDocument, *, source_id: str = "source",
                      run_id: str = "run", source_revision: str | None = None, base_offset: int = 0) -> ExtractionBundle:
     """Extract one canary argument, abstaining on malformed or revisionless input."""
-    if (not isinstance(run_id, str) or not run_id or
+    if (type(run_id) is not str or not run_id or
             any(0xD800 <= ord(char) <= 0xDFFF for char in run_id)
             or len(run_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES):
         return _abstain("malformed_source", run_id)
@@ -312,7 +312,16 @@ def extract_structured_document(document: StructuredDocument, taxonomy_snapshot:
                                   source_revision=document.revision, base_offset=span.start)
         if result.status != "ACCEPTED":
             continue
-        if result.taxonomy is None or result.taxonomy.taxonomy_id not in taxonomy_snapshot.supported_taxonomy_ids:
+        try:
+            taxonomy_ids = taxonomy_snapshot.supported_taxonomy_ids
+            if (type(taxonomy_ids) is not tuple or
+                    any(type(value) is not str for value in taxonomy_ids)):
+                return _abstain("malformed_taxonomy", document.run_id)
+            supported = (result.taxonomy is not None and
+                         result.taxonomy.taxonomy_id in taxonomy_ids)
+        except (AttributeError, TypeError, UnicodeError, ValueError, RuntimeError):
+            return _abstain("malformed_taxonomy", document.run_id)
+        if not supported:
             unsupported_taxonomy = True
             continue
         return result

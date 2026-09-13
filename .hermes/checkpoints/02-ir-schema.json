@@ -30,12 +30,13 @@
     "identifier byte ceiling enforced by canonical schema",
     "malformed IngestedDocument spans rejected before element access",
     "ValidationResult requires canonical status and semantic fields",
-    "direct argument identifiers enforce UTF-8 byte ceiling"
+    "direct argument identifiers enforce UTF-8 byte ceiling",
+    "exact builtin text and tuple boundaries prevent hostile overrides"
   ],
   "reviewer_status": "pending fresh independent verification",
   "next_allowed_task": "fresh independent verification",
   "current_full_suite": {
     "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "168 passed"
+    "result": "176 passed in 3.95s"
   }
 }

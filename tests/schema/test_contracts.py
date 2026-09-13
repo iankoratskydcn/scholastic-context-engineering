@@ -217,3 +217,13 @@ def test_direct_argument_identifier_obeys_utf8_byte_ceiling():
     with pytest.raises(EnvelopeError, match="argument_id"):
         ArgumentUnit(argument_id="é" * (4096 // 2 + 1), premises=(proposition,),
                      conclusion="A", relation="entails", run_id="run-1", provenance=(span,))
+
+
+class BadEncodeStr(str):
+    def encode(self, *args, **kwargs):
+        raise RuntimeError("hostile encode")
+
+
+def test_schema_rejects_encode_overriding_string_subclass_at_boundary():
+    with pytest.raises(EnvelopeError, match="source_id"):
+        EvidenceSpan(BadEncodeStr("source"), 0, 1, "A", "rev-1")

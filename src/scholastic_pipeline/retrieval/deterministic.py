@@ -60,7 +60,7 @@ def _span_problem(spans) -> str | None:
 
 
 def _query_problem(query) -> str | None:
-    if not isinstance(query, str):
+    if type(query) is not str:
         return "retrieval query must be a string"
     if any(0xD800 <= ord(char) <= 0xDFFF for char in query):
         return "retrieval query contains an invalid surrogate"
@@ -99,7 +99,7 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
         return _refusal(request, "retrieval request is malformed")
     if not isinstance(snapshot, GraphSnapshot):
         return _refusal(request, "retrieval snapshot is malformed")
-    if not isinstance(snapshot.generation_id, str) or not snapshot.generation_id:
+    if type(snapshot.generation_id) is not str or not snapshot.generation_id:
         return _refusal(request, "retrieval snapshot generation ID is missing")
     try:
         if len(snapshot.generation_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
@@ -119,7 +119,7 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
     if type(request.provenance) is not tuple or type(snapshot.provenance) is not tuple:
         return _refusal(request, "retrieval provenance is malformed")
     for event in snapshot.occurrences:
-        if not isinstance(event.edge_instance_id, str) or not event.edge_instance_id:
+        if type(event.edge_instance_id) is not str or not event.edge_instance_id:
             return _refusal(request, "retrieval snapshot occurrences are malformed")
         try:
             if len(event.edge_instance_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
