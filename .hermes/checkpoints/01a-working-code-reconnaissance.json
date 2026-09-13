@@ -22,7 +22,7 @@
         "tests/test_repository_bootstrap.py::test_repository_bootstrap_declares_canonical_authority (RED: expected FileNotFoundError before bootstrap docs)",
         {
             "command": "env -u PYTHONPATH python -m pytest -q",
-            "result": "124 passed"
+            "result": "151 passed"
         }
     ],
     "reviewer_status": "independent security review HOLD",

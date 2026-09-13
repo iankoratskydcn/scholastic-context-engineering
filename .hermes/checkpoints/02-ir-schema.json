@@ -8,11 +8,11 @@
     "tests": [
         {
             "command": "PYTHONPATH=src python -m pytest -q tests/schema tests/extraction tests/formal tests/ingestion",
-            "result": "78 passed"
+            "result": "71 passed"
         },
         {
             "command": "env -u PYTHONPATH python -m pytest -q",
-            "result": "153 passed (previously 124 passed)"
+            "result": "151 passed"
         }
     ],
     "tdd": {

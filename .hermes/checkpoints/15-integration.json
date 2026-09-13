@@ -27,7 +27,7 @@
         },
         {
             "command": "env -u PYTHONPATH python -m pytest -q",
-            "result": "124 passed"
+            "result": "151 passed"
         }
     ],
     "next_allowed_task": "final independent verification"

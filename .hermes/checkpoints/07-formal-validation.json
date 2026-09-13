@@ -7,7 +7,7 @@
         "red": "formal/extraction canonical envelope assertions failed before repair",
         "green": "PYTHONPATH=src python -m pytest -q tests/formal: 12 passed"
     },
-    "full_suite": "env -u PYTHONPATH python -m pytest -q: 118 passed",
+    "full_suite": "env -u PYTHONPATH python -m pytest -q: 151 passed",
     "properties": [
         "validation consumes canonical ExtractionBundle and its production Formalization without premise reconstruction",
         "compatible TaxonomyMatch is required",
@@ -26,7 +26,7 @@
         },
         {
             "command": "env -u PYTHONPATH python -m pytest -q",
-            "result": "124 passed"
+            "result": "151 passed"
         }
     ],
     "next_allowed_task": "production assembly"

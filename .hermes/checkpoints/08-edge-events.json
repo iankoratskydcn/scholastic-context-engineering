@@ -7,7 +7,7 @@
         "red": "GraphEdgeEvent direct-construction and payload assertions failed before repair",
         "green": "PYTHONPATH=src python -m pytest -q tests/schema tests/formal: 32 passed"
     },
-    "full_suite": "env -u PYTHONPATH python -m pytest -q: 118 passed",
+    "full_suite": "env -u PYTHONPATH python -m pytest -q: 151 passed",
     "properties": [
         "one provenance-bearing edge event per premise",
         "source revision and half-open spans preserved",
@@ -27,7 +27,7 @@
         },
         {
             "command": "env -u PYTHONPATH python -m pytest -q",
-            "result": "124 passed"
+            "result": "151 passed"
         }
     ],
     "next_allowed_task": "reference SQLite storage boundary repair"

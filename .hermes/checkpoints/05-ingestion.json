@@ -10,12 +10,12 @@
     ],
     "tdd": {
         "red": "PYTHONPATH=src python3 -m pytest tests/ingestion/test_text_pipeline.py::test_malformed_source_id_is_quarantined_before_identity_hashing tests/ingestion/test_text_pipeline.py::test_structure_document_refuses_none_and_malformed_inputs -q: 2 failed as expected",
-        "green": "PYTHONPATH=src python -m pytest tests/ingestion/test_text_pipeline.py -q: 15 passed"
+        "green": "PYTHONPATH=src python -m pytest tests/ingestion/test_text_pipeline.py -q: 12 passed"
     },
-    "evidence": "pytest -q: 153 passed; git diff --check: PASS",
+    "evidence": "pytest -q: 151 passed; git diff --check: PASS",
     "envelope_repair": {
         "red": "pytest -q tests/ingestion/test_text_pipeline.py::test_quarantine_payload_has_non_source_diagnostic_provenance tests/ingestion/test_text_pipeline.py::test_quarantine_with_malformed_run_id_is_serializable_and_nonempty_envelope tests/extraction/test_extractor.py::test_malformed_run_id_abstains_without_exception_and_serializes_diagnostic_span tests/extraction/test_extractor.py::test_direct_abstained_bundle_emits_canonical_diagnostic_envelope: 2 failed, 2 passed as expected",
-        "green": "pytest -q tests/ingestion tests/extraction tests/formal tests/schema: 78 passed"
+        "green": "pytest -q tests/ingestion tests/extraction tests/formal tests/schema: 75 passed"
     },
     "artifacts": [
         "src/scholastic_pipeline/ingestion/__init__.py",
@@ -28,7 +28,7 @@
     "tests": [
         {
             "command": "env -u PYTHONPATH python -m pytest -q",
-            "result": "153 passed (previously 124 passed)"
+            "result": "151 passed"
         }
     ],
     "next_allowed_task": "fresh independent verification"
