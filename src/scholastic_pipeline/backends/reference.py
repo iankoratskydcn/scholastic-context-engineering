@@ -7,7 +7,7 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Iterable
 
-from scholastic_pipeline.schema import EvidenceSpan, GraphEdgeEvent, GraphSnapshot, RecordStatus
+from scholastic_pipeline.schema import EvidenceSpan, GraphEdgeEvent, GraphSnapshot, RecordStatus, MAX_IDENTIFIER_BYTES
 
 
 class StorageError(ValueError):
@@ -23,6 +23,7 @@ class ProvenanceError(StorageError):
 
 
 MAX_MANIFEST_ENTRIES = 100_000
+MAX_OCCURRENCES = 100_000
 
 
 def _span_payload(span: EvidenceSpan) -> dict:
@@ -64,9 +65,25 @@ def _scope(event: GraphEdgeEvent) -> frozenset[tuple[str, str]]:
 
 
 def _validate_generation_id(generation_id: object) -> str:
-    if not isinstance(generation_id, str) or not generation_id:
+    if (not isinstance(generation_id, str) or not generation_id
+            or any(0xD800 <= ord(char) <= 0xDFFF for char in generation_id)):
         raise StorageError("generation ID is required")
+    try:
+        if len(generation_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
+            raise StorageError("generation ID exceeds absolute byte ceiling")
+    except UnicodeError as exc:
+        raise StorageError("generation ID is invalid") from exc
     return generation_id
+
+
+def _validate_identifier(value: object, label: str) -> None:
+    if not isinstance(value, str) or not value:
+        raise StorageError(f"{label} is invalid")
+    try:
+        if len(value.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
+            raise StorageError(f"{label} exceeds absolute byte ceiling")
+    except UnicodeError as exc:
+        raise StorageError(f"{label} is invalid") from exc
 
 
 def _validate_generation_options(expected_count: object, manifest: object) -> tuple[int | None, tuple[str, ...] | None]:
@@ -74,6 +91,8 @@ def _validate_generation_options(expected_count: object, manifest: object) -> tu
         raise StorageError("expected count must be an integer")
     if expected_count is not None and expected_count < 0:
         raise StorageError("expected count must not be negative")
+    if expected_count is not None and expected_count > MAX_OCCURRENCES:
+        raise StorageError("expected count exceeds absolute occurrence ceiling")
     if manifest is None:
         return expected_count, None
     if isinstance(manifest, (str, bytes, bytearray)) or not isinstance(manifest, Sequence):
@@ -101,7 +120,7 @@ class ReferenceSQLiteBackend:
     def __init__(self, path: str | Path = ":memory:", current_revisions: Mapping[str, str] | None = None):
         if current_revisions is not None and not isinstance(current_revisions, Mapping):
             raise StorageError("current revisions must be a mapping")
-        self.current_revisions = current_revisions or {}
+        self.current_revisions = current_revisions if current_revisions is not None else {}
         self._db = sqlite3.connect(str(path))
         self._db.execute("PRAGMA foreign_keys = ON")
         self._db.executescript("""
@@ -132,6 +151,9 @@ class ReferenceSQLiteBackend:
             for event in events:
                 if not event.provenance or not event.edge_instance_id:
                     raise ProvenanceError("accepted edge occurrences require provenance and identity")
+                _validate_identifier(event.edge_instance_id, "edge instance ID")
+                _validate_identifier(event.source_node_id, "source node ID")
+                _validate_identifier(event.target_node_id, "target node ID")
                 if event.run_id != first.run_id:
                     raise StorageError("mixed run IDs are not admissible")
                 if event.schema_version != first.schema_version:
@@ -141,7 +163,10 @@ class ReferenceSQLiteBackend:
                 for span in event.provenance:
                     if not span.source_id or not span.revision:
                         raise ProvenanceError("provenance source and revision are required")
-                    expected = self.current_revisions.get(span.source_id)
+                    try:
+                        expected = self.current_revisions.get(span.source_id)
+                    except Exception as exc:
+                        raise StorageError("current revisions are invalid") from exc
                     if expected is not None and expected != span.revision:
                         raise ProvenanceError("stale provenance revision")
             return events
@@ -171,6 +196,9 @@ class ReferenceSQLiteBackend:
             return
         if status == "complete":
             raise StorageError("completed generation is immutable")
+        count = self._db.execute("SELECT COUNT(*) FROM occurrences WHERE generation_id=?", (generation_id,)).fetchone()[0]
+        if count >= MAX_OCCURRENCES:
+            raise StorageError("generation exceeds absolute occurrence ceiling")
         ordinal = self._db.execute("SELECT COALESCE(MAX(ordinal), -1)+1 FROM occurrences WHERE generation_id=?",
                                    (generation_id,)).fetchone()[0]
         self._db.execute("INSERT INTO occurrences VALUES (?, ?, ?, ?)",
@@ -179,12 +207,17 @@ class ReferenceSQLiteBackend:
     def append(self, generation_id: str, event: GraphEdgeEvent) -> None:
         generation_id = _validate_generation_id(generation_id)
         self._validate((event,))
-        self.begin_generation(generation_id)
-        existing = tuple(_edge_from_payload(json.loads(row[0])) for row in self._db.execute(
-            "SELECT payload FROM occurrences WHERE generation_id=? ORDER BY ordinal", (generation_id,)))
-        self._validate((*existing, event))
-        self._append(generation_id, event)
-        self._db.commit()
+        try:
+            self._db.execute("BEGIN")
+            self._db.execute("INSERT OR IGNORE INTO generations VALUES (?, 'writing', NULL, NULL)", (generation_id,))
+            existing = tuple(_edge_from_payload(json.loads(row[0])) for row in self._db.execute(
+                "SELECT payload FROM occurrences WHERE generation_id=? ORDER BY ordinal", (generation_id,)))
+            self._validate((*existing, event))
+            self._append(generation_id, event)
+            self._db.commit()
+        except Exception:
+            self._db.rollback()
+            raise
 
     def complete_generation(self, generation_id: str) -> None:
         generation_id = _validate_generation_id(generation_id)

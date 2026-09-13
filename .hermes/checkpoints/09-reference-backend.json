@@ -6,7 +6,7 @@
   "scope":["src/scholastic_pipeline/backends/**","tests/backends/**"],
   "tdd":{"red":"focused adversarial tests failed as expected for malformed IDs, non-iterable collections, malformed events, generator failures, and invalid append side effects","green":"backend adversarial suite passed"},
   "invariants":["complete GraphEdgeEvent envelope survives SQLite round-trip","mixed run IDs/schema versions/provenance scopes rejected","manifest and expected count bind completion","failed writes roll back and partial generations are unreadable","retries are idempotent and completed generations immutable","stale and missing provenance rejected","malformed public inputs fail only with StorageError or documented subclasses"],
-  "tests":[{"command":"env -u PYTHONPATH python -m pytest -q","result":"pending post-merge run"}],
+  "tests":[{"command":"env -u PYTHONPATH python -m pytest -q","result":"145 passed"}],
   "reviewer_status":"pending independent verification after merge",
   "issues":[],
   "next_allowed_task":"fresh independent verification"

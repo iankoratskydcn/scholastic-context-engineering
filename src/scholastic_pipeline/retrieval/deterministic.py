@@ -6,7 +6,7 @@ from collections.abc import Mapping
 
 from scholastic_pipeline.schema import (
     EvidenceSpan, GraphEdgeEvent, GraphSnapshot, MAX_RETRIEVAL_QUERY_BYTES, MAX_SPAN_TEXT_BYTES,
-    RecordStatus, RetrievalContext, RetrievalRequest,
+    MAX_IDENTIFIER_BYTES, RecordStatus, RetrievalContext, RetrievalRequest,
 )
 
 
@@ -14,6 +14,7 @@ _TOKEN = re.compile(r"[\w]+", re.UNICODE)
 MAX_RETRIEVAL_BUDGET = 100
 MAX_RETRIEVAL_INPUT_BYTES = 4_194_304
 MAX_RETRIEVAL_OUTPUT_BYTES = 1_048_576
+MAX_RETRIEVAL_OCCURRENCES = 100_000
 
 
 def _tokens(text: str) -> set[str]:
@@ -106,10 +107,17 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
         return _refusal(request, "retrieval snapshot occurrences are malformed")
     if not snapshot.occurrences:
         return _refusal(request, "retrieval snapshot occurrences are empty")
+    if len(snapshot.occurrences) > MAX_RETRIEVAL_OCCURRENCES:
+        return _refusal(request, "retrieval snapshot occurrences exceed absolute ceiling")
     if type(request.provenance) is not tuple or type(snapshot.provenance) is not tuple:
         return _refusal(request, "retrieval provenance is malformed")
     for event in snapshot.occurrences:
         if not isinstance(event.edge_instance_id, str) or not event.edge_instance_id:
+            return _refusal(request, "retrieval snapshot occurrences are malformed")
+        try:
+            if len(event.edge_instance_id.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
+                return _refusal(request, "retrieval snapshot occurrence identifier exceeds absolute ceiling")
+        except UnicodeError:
             return _refusal(request, "retrieval snapshot occurrences are malformed")
         if type(event.provenance) is not tuple:
             return _refusal(request, "retrieval snapshot occurrences are malformed")
@@ -134,7 +142,7 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
             return _refusal(request, problem)
     if current_revisions is not None and not isinstance(current_revisions, Mapping):
         return _refusal(request, "retrieval current revisions are malformed")
-    revisions = current_revisions or {}
+    revisions = current_revisions if current_revisions is not None else {}
     request_scope = _scope(request.provenance)
     snapshot_scope = _scope(snapshot.provenance)
     if request_scope != snapshot_scope:
@@ -148,7 +156,11 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
     for span in (*request.provenance, *snapshot.provenance):
         if not span.source_id or not span.revision:
             return _refusal(request, "retrieval provenance is incomplete")
-        if revisions.get(span.source_id) not in (None, span.revision):
+        try:
+            revision = revisions.get(span.source_id)
+        except Exception:
+            return _refusal(request, "retrieval current revisions are malformed")
+        if revision not in (None, span.revision):
             return _refusal(request, "retrieval provenance is stale")
 
     query_tokens = _tokens(request.query)
@@ -165,7 +177,11 @@ def retrieve(request: RetrievalRequest, snapshot: GraphSnapshot,
         for span in event.provenance:
             if not span.source_id or not span.revision:
                 return _refusal(request, "edge occurrence provenance is incomplete")
-            if revisions.get(span.source_id) not in (None, span.revision):
+            try:
+                revision = revisions.get(span.source_id)
+            except Exception:
+                return _refusal(request, "retrieval current revisions are malformed")
+            if revision not in (None, span.revision):
                 return _refusal(request, "edge occurrence provenance is stale")
         text = " ".join(span.text for span in event.provenance)
         score = len(query_tokens & _tokens(text))

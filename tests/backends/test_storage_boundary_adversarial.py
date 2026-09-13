@@ -5,6 +5,7 @@ from scholastic_pipeline.backends.reference import (
     ProvenanceError,
     ReferenceSQLiteBackend,
     StorageError,
+    MAX_IDENTIFIER_BYTES,
 )
 from scholastic_pipeline.schema import EvidenceSpan, GraphEdgeEvent, ValidationStatus
 
@@ -151,3 +152,31 @@ def test_append_validates_event_before_creating_generation():
         backend.append("g1", None)
     with pytest.raises(IncompleteGenerationError):
         backend.read_generation("g1")
+
+
+def test_storage_rejects_huge_generation_and_occurrence_identifiers():
+    backend = ReferenceSQLiteBackend()
+    event = envelope_edge()
+    object.__setattr__(event, "edge_instance_id", "x" * (MAX_IDENTIFIER_BYTES + 1))
+    with pytest.raises(StorageError):
+        backend.begin_generation("g" * (MAX_IDENTIFIER_BYTES + 1))
+    with pytest.raises(StorageError):
+        backend.write_generation("g1", [event])
+
+
+def test_append_rolls_back_when_internal_storage_step_fails(monkeypatch):
+    backend = ReferenceSQLiteBackend()
+    monkeypatch.setattr(backend, "_append", lambda *_: (_ for _ in ()).throw(RuntimeError("boom")))
+    with pytest.raises(RuntimeError, match="boom"):
+        backend.append("g1", envelope_edge())
+    with pytest.raises(IncompleteGenerationError):
+        backend.read_generation("g1")
+
+
+def test_append_rolls_back_when_existing_scope_rejects_event():
+    backend = ReferenceSQLiteBackend()
+    backend.begin_generation("g1")
+    backend.append("g1", envelope_edge())
+    with pytest.raises(StorageError):
+        backend.append("g1", envelope_edge("occ-2", run_id="other"))
+    assert backend._db.execute("SELECT COUNT(*) FROM occurrences WHERE generation_id='g1'").fetchone()[0] == 1

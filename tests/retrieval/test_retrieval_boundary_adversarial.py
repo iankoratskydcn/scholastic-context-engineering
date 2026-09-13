@@ -1,6 +1,7 @@
 import pytest
 
 from scholastic_pipeline.retrieval.deterministic import retrieve
+from scholastic_pipeline.retrieval.deterministic import MAX_RETRIEVAL_OCCURRENCES
 from scholastic_pipeline.schema import EvidenceSpan, GraphEdgeEvent, GraphSnapshot, RetrievalRequest, ValidationStatus, RecordStatus
 
 MAX_RETRIEVAL_BUDGET = 100
@@ -133,3 +134,19 @@ def test_retrieval_refuses_forged_empty_snapshot_before_no_match_result():
     object.__setattr__(snap, "occurrences", ())
     result = retrieve(request(query="absent"), snap)
     assert result.refusal == "retrieval snapshot occurrences are empty"
+
+
+def test_retrieval_refuses_snapshot_occurrence_count_above_ceiling():
+    snap = snapshot([edge("a", "alpha")])
+    object.__setattr__(snap, "occurrences", (snap.occurrences[0],) * (MAX_RETRIEVAL_OCCURRENCES + 1))
+    result = retrieve(request(), snap)
+    assert result.refusal == "retrieval snapshot occurrences exceed absolute ceiling"
+
+
+def test_retrieval_refuses_hostile_revision_mapping_get():
+    class HostileMapping(dict):
+        def get(self, *_args, **_kwargs):
+            raise RuntimeError("hostile get")
+
+    result = retrieve(request(), snapshot([edge("a", "alpha")]), HostileMapping())
+    assert result.refusal == "retrieval current revisions are malformed"

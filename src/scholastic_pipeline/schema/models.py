@@ -11,6 +11,7 @@ SCHEMA_VERSION = "0.1"
 MAX_SOURCE_TEXT_BYTES = 1_048_576
 MAX_SPAN_TEXT_BYTES = 65_536
 MAX_RETRIEVAL_QUERY_BYTES = 16_384
+MAX_IDENTIFIER_BYTES = 4_096
 
 
 class EnvelopeError(ValueError):
@@ -75,6 +76,8 @@ def _valid_text(value: object, label: str, *, required: bool = True) -> None:
         raise EnvelopeError(f"{label} must be a non-empty string")
     if any(0xD800 <= ord(char) <= 0xDFFF for char in value):
         raise EnvelopeError(f"{label} contains an invalid surrogate")
+    if label != "text" and len(value.encode("utf-8")) > MAX_IDENTIFIER_BYTES:
+        raise EnvelopeError(f"{label} exceeds absolute byte ceiling")
 
 
 @dataclass(frozen=True)
