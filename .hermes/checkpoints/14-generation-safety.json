@@ -2,21 +2,22 @@
   "checkpoint_schema_version": "0.1",
   "checkpoint_id": "14-generation-safety",
   "phase": "generation and injection acceptance tests",
-  "status": "red",
+  "status": "blocked",
   "scope": [
+    "src/scholastic_pipeline/generation/**",
     "tests/generation/**",
     "tests/security/test_generation_injection.py",
     "fixtures/generation/**"
   ],
   "tdd": {
-    "red": "targeted suite reaches collection and fails because scholastic_pipeline.generation is not implemented on base 9c46370",
-    "green": null
+    "red": "base commit had no scholastic_pipeline.generation module; targeted acceptance collection failed",
+    "green": "9 generation/injection tests passed; direct typed verifier checks passed for supported, unsupported, injection, stale, and hard context-budget paths"
   },
   "invariants": [
     "GenerationRequest and GenerationResult are typed immutable boundary records",
     "accepted claims require exact resolvable Citation provenance",
     "missing, stale, and out-of-scope citations refuse",
-    "unsupported claims are UNVERIFIED or refused",
+    "unsupported claims refuse",
     "evidence is preserved rather than silently truncated",
     "retrieved imperative text cannot change policy, tools, or scope",
     "claim and context budgets are hard bounds",
@@ -25,17 +26,23 @@
   ],
   "tests": [
     {
-      "command": "/home/ian-koratsky/.hermes/bin/uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q tests/generation tests/security/test_generation_injection.py",
-      "result": "collection failed: ModuleNotFoundError: scholastic_pipeline.generation (expected RED; feature absent)"
+      "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q tests/generation tests/security/test_generation_injection.py",
+      "result": "9 passed, 4 failed before generation assertions because committed test helper passes duplicate keyword arguments and constructs an invalid empty-provenance RetrievalContext"
+    },
+    {
+      "command": "uv run --offline --no-project --python cpython-3.11.16 --with pytest python -m pytest -q",
+      "result": "186 passed, 6 failed; the same 4 committed generation test setup failures, missing jsonschema environment dependency, and pre-existing checkpoint-count reconciliation failure"
     },
     {
       "command": "git diff --check",
       "result": "passed"
     }
   ],
-  "reviewer_status": "pending implementation and independent verification",
+  "reviewer_status": "pending independent verification",
   "issues": [
-    "Generation implementation and public typed API do not exist at base commit; tests cannot execute beyond collection until implementer adds it."
+    "Committed tests/generation/test_generation_contract.py::_request passes duplicate prompt/claim_budget keyword arguments, so four assertions cannot reach generate().",
+    "Committed test constructs RetrievalContext with empty provenance, which schema rejects before generate() can refuse it.",
+    "Full suite also lacks jsonschema in the offline environment and has a pre-existing checkpoint-count reconciliation failure."
   ],
-  "next_allowed_task": "implement generation boundary, then run targeted and full suites"
+  "next_allowed_task": "independent verification; repair committed test fixtures/schema dependency outside implementer ownership"
 }
