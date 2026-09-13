@@ -18,7 +18,7 @@
     "structured block/span cardinality is enforced",
     "repeated clean runs produce equal snapshots, items, and citations"
   ],
-  "reviewer_status": "pending fresh independent verification",
+  "reviewer_status": "pending final independent verification",
   "repair": "canonical extraction/formal payloads now expose complete envelopes; GraphEdgeEvent validates required identity fields; checkpoint 05 also records its current suite count; explicit run_id updates remain outside ownership",
   "tests": [
     {
@@ -32,7 +32,7 @@
   ],
   "next_allowed_task": "final independent verification",
   "current_full_suite": {
-    "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "176 passed"
+    "command": "/home/ian-koratsky/.hermes/bin/uv run --offline --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
+    "result": "179 passed"
   }
 }

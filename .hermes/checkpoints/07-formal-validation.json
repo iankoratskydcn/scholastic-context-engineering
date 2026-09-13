@@ -19,7 +19,7 @@
     "taxonomy enrichment is non-probative",
     "no solver dependency"
   ],
-  "reviewer_status": "pending fresh independent verification",
+  "reviewer_status": "pending final independent verification",
   "issues": [],
   "tests": [
     {
@@ -33,7 +33,7 @@
   ],
   "next_allowed_task": "production assembly",
   "current_full_suite": {
-    "command": "uv run --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "176 passed"
+    "command": "/home/ian-koratsky/.hermes/bin/uv run --offline --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
+    "result": "179 passed"
   }
 }
