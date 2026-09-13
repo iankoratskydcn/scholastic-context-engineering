@@ -1,13 +1,33 @@
 {
-  "checkpoint_schema_version":"0.1",
-  "checkpoint_id":"02-ir-schema",
-  "phase":"canonical IR and stage contract freeze",
-  "status":"passed",
-  "contract":"docs/architecture/stage-contracts-v0.1.md",
-  "schema":"schemas/envelope-0.1.json",
-  "tests":[{"command":"PYTHONPATH=src python -m pytest -q tests/schema tests/extraction tests/formal tests/ingestion","result":"66 passed"},{"command":"env -u PYTHONPATH python -m pytest -q","result":"118 passed"}],
-  "tdd":{"red":"canonical payload/GraphEdgeEvent contract tests: 3 failed as expected","green":"targeted contract tests passed"},
-  "repairs":["canonical TaxonomySnapshot and production ports","complete stable envelope payloads include record_id","IDs hash JSON content without circular self-serialization","GraphEdgeEvent rejects empty identity/node/relation/provenance","non-empty revisions and canonical UTF-8 byte ceilings","exact proposition spans","malformed direct ingestion/retrieval inputs fail closed"],
-  "reviewer_status":"pending independent verification after conflict reconciliation",
-  "next_allowed_task":"fresh independent verification"
+    "checkpoint_schema_version": "0.1",
+    "checkpoint_id": "02-ir-schema",
+    "phase": "canonical IR and stage contract freeze",
+    "status": "passed",
+    "contract": "docs/architecture/stage-contracts-v0.1.md",
+    "schema": "schemas/envelope-0.1.json",
+    "tests": [
+        {
+            "command": "PYTHONPATH=src python -m pytest -q tests/schema tests/extraction tests/formal tests/ingestion",
+            "result": "71 passed"
+        },
+        {
+            "command": "env -u PYTHONPATH python -m pytest -q",
+            "result": "124 passed"
+        }
+    ],
+    "tdd": {
+        "red": "canonical payload/GraphEdgeEvent contract tests: 3 failed as expected",
+        "green": "targeted contract tests passed"
+    },
+    "repairs": [
+        "canonical TaxonomySnapshot and production ports",
+        "complete stable envelope payloads include record_id",
+        "IDs hash JSON content without circular self-serialization",
+        "GraphEdgeEvent rejects empty identity/node/relation/provenance",
+        "non-empty revisions and canonical UTF-8 byte ceilings",
+        "exact proposition spans",
+        "malformed direct ingestion/retrieval inputs fail closed"
+    ],
+    "reviewer_status": "pending independent verification after conflict reconciliation",
+    "next_allowed_task": "fresh independent verification"
 }

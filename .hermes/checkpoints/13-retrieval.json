@@ -1,31 +1,13 @@
 {
-  "checkpoint_schema_version": "0.1",
-  "checkpoint_id": "13-retrieval",
-  "phase": "bounded deterministic retrieval boundary repair",
-  "status": "passed",
-  "scope": [
-    "src/scholastic_pipeline/retrieval/**",
-    "src/scholastic_pipeline/schema/**",
-    "tests/retrieval/**"
-  ],
-  "tdd": {
-    "red": "python -m pytest focused adversarial additions -q: 2 failed; non-mapping current_revisions raised and forged empty snapshot returned no-match",
-    "green": "python -m pytest -q tests/retrieval: 26 passed"
-  },
-  "invariants": [
-    "absolute budget ceiling enforced",
-    "canonical UTF-8 query, input, output, and span ceilings enforced",
-    "non-string, surrogate, empty, and oversized queries refuse without downstream string operations",
-    "malformed spans refuse before string operations or encoding",
-    "request and snapshot run/schema/status must be admissible",
-    "forged requests, snapshots, occurrences, empty snapshots, and provenance containers refuse before iteration",
-    "current_revisions must be a Mapping before revision lookup",
-    "event envelopes must match snapshot run/schema/provenance scope",
-    "missing or stale provenance refuses",
-    "no-match returns valid empty context",
-    "stable score and edge-ID ordering preserved",
-    "prompt-like text remains inert data"
-  ],
-  "evidence":"python -m pytest -q: 139 passed; git diff --check: PASS",
-  "reviewer_status": "pending independent verification"
+  "checkpoint_schema_version":"0.1",
+  "checkpoint_id":"13-retrieval",
+  "phase":"bounded deterministic retrieval boundary repair",
+  "status":"passed",
+  "scope":["src/scholastic_pipeline/retrieval/**","src/scholastic_pipeline/schema/**","tests/retrieval/**"],
+  "tdd":{"red":"focused adversarial tests failed as expected for forged/non-snapshot inputs, invalid revisions, malformed requests, and empty snapshots","green":"retrieval adversarial suite passed"},
+  "invariants":["absolute budget ceiling enforced","canonical UTF-8 query/input/output/span ceilings enforced","non-string, surrogate, empty, and oversized queries refuse without downstream string operations","malformed spans refuse before encoding","request and snapshot run/schema/status must be admissible","forged requests, snapshots, occurrences, empty snapshots, and provenance containers refuse before iteration","current_revisions must be a Mapping before revision lookup","event envelopes match snapshot run/schema/provenance scope","missing or stale provenance refuses","no-match returns valid empty context","stable score and edge-ID ordering preserved","prompt-like text remains inert data"],
+  "tests":[{"command":"env -u PYTHONPATH python -m pytest -q","result":"pending post-merge run"}],
+  "reviewer_status":"pending independent verification after merge",
+  "issues":[],
+  "next_allowed_task":"fresh independent verification"
 }
