@@ -295,6 +295,3 @@ class ReferenceSQLiteBackend:
         return GraphSnapshot(generation_id=generation_id, occurrences=events,
                              provenance=events[0].provenance, run_id=events[0].run_id)
 
-
-SQLiteReferenceBackend = ReferenceSQLiteBackend
-InMemoryReferenceBackend = ReferenceSQLiteBackend
