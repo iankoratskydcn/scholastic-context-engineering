@@ -16,4 +16,4 @@ testpaths = ["tests"]
 pythonpath = ["src"]
 
 [project.optional-dependencies]
-dev = ["pytest", "jsonschema", "pip"]
+dev = ["pytest", "jsonschema", "pip", "setuptools", "wheel"]
