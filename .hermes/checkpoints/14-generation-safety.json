@@ -47,6 +47,10 @@
     {
       "command": "git diff --check",
       "result": "passed"
+    },
+    {
+      "command": "env -u PYTHONPATH python -m pytest -q",
+      "result": "209 passed"
     }
   ],
   "current_full_suite": {

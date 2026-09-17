@@ -22,7 +22,7 @@
     "tests/test_repository_bootstrap.py::test_repository_bootstrap_declares_canonical_authority (RED: expected FileNotFoundError before bootstrap docs)",
     {
       "command": "env -u PYTHONPATH python -m pytest -q",
-      "result": "179 passed"
+      "result": "209 passed"
     }
   ],
   "reviewer_status": "pending final independent verification",
@@ -31,6 +31,6 @@
   "owner_decisions": "docs/decision-register.md",
   "current_full_suite": {
     "command": "/home/ian-koratsky/.hermes/bin/uv run --offline --no-project --python cpython-3.11.16 --with pytest,jsonschema python -m pytest -q",
-    "result": "179 passed"
+    "result": "209 passed"
   }
 }
