@@ -18,7 +18,7 @@
     "structured block/span cardinality is enforced",
     "repeated clean runs produce equal snapshots, items, and citations"
   ],
-  "reviewer_status": "pending final independent verification",
+  "reviewer_status": "verified 2026-09-17: fresh clone, uv sync --extra dev + uv run pytest -q -> 209 passed, 0 failed; docs/decision-register.md checked against current code, no drift",
   "repair": "canonical extraction/formal payloads now expose complete envelopes; GraphEdgeEvent validates required identity fields; checkpoint 05 also records its current suite count; explicit run_id updates remain outside ownership",
   "tests": [
     {
