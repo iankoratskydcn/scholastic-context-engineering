@@ -8,6 +8,9 @@ version = "0.1.0"
 description = "Evidence-first argument extraction and retrieval pipeline"
 requires-python = ">=3.11"
 
+[project.optional-dependencies]
+dev = ["pytest", "jsonschema", "pip"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
