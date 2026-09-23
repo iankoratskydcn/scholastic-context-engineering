@@ -1,0 +1,198 @@
+DRAFTS — NOT SENT. Fill in [bracketed] fields, review, then send manually (or ask me to send once Gmail is connected).
+
+============================================================
+1. UKP Sentential Argument Mining Corpus — request-a-copy
+   Route: web form, not email — https://tudatalib.ulb.tu-darmstadt.de/items/18c6544d-fa61-4505-ae8f-1304352c06e6/request-a-copy?bitstream=90a1de18-7a2e-4706-89e6-cf8108cfd3e9
+============================================================
+Message field text (paste into the TUdatalib request-a-copy form):
+
+Subject: Request for access — UKP Sentential Argument Mining Corpus
+
+Hello,
+
+I'm [your name], [your role] at [your institution/affiliation]. I'm building
+an evaluation suite for argument-mining systems and would like to request
+access to the UKP Sentential Argument Mining Corpus (25,492 sentences across
+eight controversial topics, labeled supporting/attacking/non-argument).
+
+Intended use: research/testing of argument classification systems, not
+redistribution or commercial use.
+
+Could you also clarify whether the CC BY-NC annotation layer can be released
+independently of the source sentences, in case source-text redistribution is
+restricted?
+
+Thank you,
+[your name]
+[your email]
+[your affiliation]
+
+
+============================================================
+2. DARIUS (German learner-essay argumentation corpus)
+   To: [corresponding author email — find via https://aclanthology.org/2024.lrec-main.389/]
+============================================================
+Subject: Availability of the DARIUS corpus (LREC-COLING 2024)
+
+Hello [Author name],
+
+I'm [your name], [your role] at [your institution/affiliation]. I came across
+your LREC-COLING 2024 paper introducing the DARIUS corpus (4,589 German
+secondary-school essays with fine-grained argumentation annotations).
+
+I noticed the OSF project (https://osf.io/3t2w8/) currently lists only the
+paper PDF. I'd like to ask:
+
+1. Is the corpus available now, or is a release still pending?
+2. If pending, is a pre-release copy available for research/testing use?
+3. What license/terms would apply to the released data?
+
+I'm building an evaluation suite for argument-mining systems and this corpus
+would be a strong fit for German learner-essay testing.
+
+Thank you,
+[your name]
+[your email]
+[your affiliation]
+
+
+============================================================
+3. Twitter Arguments, Facts and Sources (AFS) — Grexit/Brexit tweets
+   To: [corresponding author email — find via https://aclanthology.org/D17-1245/]
+============================================================
+Subject: Request for the Twitter Arguments, Facts and Sources annotated dataset
+
+Hello [Author name],
+
+I'm [your name], [your role] at [your institution/affiliation]. Your EMNLP
+2017 paper "Determining Relative Argument Specificity and Stance for
+Complex Argumentative Structures" (or the associated AFS resource covering
+#Grexit/#Brexit tweets) states that annotated data is available upon
+request.
+
+I'd like to request:
+1. Tweet IDs for the 987-tweet #Grexit subset and the #Brexit collection
+2. The argument/factuality/source annotations
+3. Any legally redistributable tweet text
+4. Preprocessing or versioning notes, if applicable
+
+Intended use: research/testing of social-media argument and factuality
+classification systems.
+
+I understand tweet-ID hydration will be incomplete due to deletions/
+suspensions, and will handle that accordingly.
+
+Thank you,
+[your name]
+[your email]
+[your affiliation]
+
+
+============================================================
+4. Real-world undercut corpus / QuoraAM
+   To: [corresponding author email — find via https://aclanthology.org/2024.argmining-1.6/]
+============================================================
+Subject: Request for the QuoraAM real-world undercut dataset (ArgMining 2024)
+
+Hello [Author name],
+
+I'm [your name], [your role] at [your institution/affiliation]. I read your
+ArgMining 2024 paper introducing a real-world dataset of naturally occurring
+undercutting attacks (400 arguments, 326 annotated undercuts, derived from
+Quora).
+
+I could not find a public data or code release for this dataset. Would you
+be willing to share it for research/testing use? I'm building an evaluation
+suite specifically targeting argument-attack/undercut detection and this
+would be a strong fit.
+
+Thank you,
+[your name]
+[your email]
+[your affiliation]
+
+
+============================================================
+5. PerspectiveArg2024
+   To: andreas.waldis@live.com, neele.falk@ims.uni-stuttgart.de
+============================================================
+Subject: Data access request — PerspectiveArg2024 shared task
+
+Hello Andreas and Neele,
+
+I'm [your name], [your role] at [your institution/affiliation]. I'd like to
+request access to the PerspectiveArg2024 dataset for research/testing use
+in an argument-mining evaluation suite.
+
+Intended use: non-commercial research testing of perspective-aware argument
+retrieval systems. I confirm this use will not involve identity inference,
+vote manipulation, or any attempt to re-identify individuals, consistent
+with the CC BY-NC 4.0 terms and SmartVote attribution requirements noted in
+your repository.
+
+Please let me know if you need any further information about the intended
+use before sharing access.
+
+Thank you,
+[your name]
+[your email]
+[your affiliation]
+
+
+============================================================
+6. GAQCorpus (Grammarly) — two-step request
+   Step A: request Yahoo L6, IAC v2, and Yelp Open Dataset directly from
+   their providers (not drafted here — separate per-provider process).
+   Step B: To: peng.wang@grammarly.com
+============================================================
+Subject: GAQCorpus access request
+
+Hello,
+
+I'm [your name], [your role] at [your institution/affiliation]. I'm building
+an evaluation suite for argument-quality assessment systems and would like
+to request access to GAQCorpus.
+
+I have obtained (or am in the process of obtaining) the required underlying
+corpora:
+- Yahoo L6 [status: pending/obtained]
+- IAC v2 [status: pending/obtained]
+- Yelp Open Dataset [status: pending/obtained]
+
+Intended use: non-commercial research testing of theory-based argument-
+quality assessment models.
+
+Please let me know what confirmation of underlying-corpus access you need
+from me, and the next steps for obtaining GAQCorpus.
+
+Thank you,
+[your name]
+[your email]
+[your affiliation]
+
+
+============================================================
+7. Twitter Planned Parenthood Corpus — recovery attempt, fallback request
+   Step A: check Wayback Machine for https://joonsuk.org/ (no email needed)
+   Step B (if not recoverable), To: [corresponding author — find via
+   https://aclanthology.org/2021.argmining-1.1/]
+============================================================
+Subject: Availability of the Planned Parenthood Twitter dataset (ArgMining 2021)
+
+Hello [Author name],
+
+I'm [your name], [your role] at [your institution/affiliation]. Your
+ArgMining 2021 paper describes a corpus of 24,100 tweets containing
+#StandWithPP or #DefundPP, labeled for support/reason, and notes that tweet
+IDs and labels are available at joonsuk.org. I was unable to locate the
+file on the current live site (or in web archives).
+
+Would you be able to share the tweet-ID/label file directly, or point me to
+its current location? I'm building an evaluation suite for argument-mining
+systems and this corpus is a strong fit for issue-centered premise
+classification.
+
+Thank you,
+[your name]
+[your email]
+[your affiliation]
