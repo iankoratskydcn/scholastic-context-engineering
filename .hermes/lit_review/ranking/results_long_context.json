@@ -1,0 +1,109 @@
+{
+  "reviewer_slug": "long_context",
+  "viewpoint": "long-context and context-rot stress relevant to proof/argument preservation",
+  "input": "benchmark_studies.csv",
+  "rows": 80,
+  "category_count": 19,
+  "top_global": [
+    {
+      "rank": 1,
+      "paper_id": "S03P10",
+      "benchmark_name": "LongPiBench",
+      "score": 99
+    },
+    {
+      "rank": 2,
+      "paper_id": "S03P09",
+      "benchmark_name": "NoLiMa",
+      "score": 98
+    },
+    {
+      "rank": 3,
+      "paper_id": "S03P08",
+      "benchmark_name": "RULER",
+      "score": 96
+    },
+    {
+      "rank": 4,
+      "paper_id": "S03P05",
+      "benchmark_name": "LongBench",
+      "score": 92
+    },
+    {
+      "rank": 5,
+      "paper_id": "S03P06",
+      "benchmark_name": "∞Bench",
+      "score": 91
+    },
+    {
+      "rank": 6,
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score": 90
+    },
+    {
+      "rank": 7,
+      "paper_id": "S07P08",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 88
+    },
+    {
+      "rank": 8,
+      "paper_id": "S08P04",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 88
+    },
+    {
+      "rank": 9,
+      "paper_id": "19_12",
+      "benchmark_name": "AnaloBench",
+      "score": 86
+    },
+    {
+      "rank": 10,
+      "paper_id": "S03P03",
+      "benchmark_name": "Long Range Arena (LRA)",
+      "score": 84
+    },
+    {
+      "rank": 11,
+      "paper_id": "S08P05",
+      "benchmark_name": "Isabelle proof-state/relevant-premise pairs",
+      "score": 84
+    },
+    {
+      "rank": 12,
+      "paper_id": "19_09",
+      "benchmark_name": "ANALOGICAL",
+      "score": 82
+    },
+    {
+      "rank": 13,
+      "paper_id": "S05P09",
+      "benchmark_name": "MultiHop-RAG",
+      "score": 80
+    },
+    {
+      "rank": 14,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 78
+    },
+    {
+      "rank": 15,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 78
+    }
+  ],
+  "distinctions": [
+    "generic long-context QA/retrieval vs dependency-aware proof/context selection",
+    "direct benchmark stress vs adjacent reasoning/grounding",
+    "synthetic logical benchmark vs authentic scholarly text"
+  ],
+  "files": [
+    "benchmark_review_long_context_category.csv",
+    "benchmark_review_long_context_global.csv",
+    "benchmark_review_long_context_notes.md"
+  ]
+}

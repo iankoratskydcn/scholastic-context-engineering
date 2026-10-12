@@ -1,0 +1,127 @@
+{
+  "perspective": "Adversarial verification of change requests, amendments, termination, permissions, and audit history against all three interview transcripts and derived Markdown artifacts.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "CR-01",
+      "claim": "Late changes can include job code, hours, and hourly rate changes after the original appointment is complete.",
+      "status": "confirmed",
+      "evidence": [
+        {"source": "HR App (1).docx", "lines": "780-787", "quote": "change ... one's going to be 10 hours TA, 10 hours RA and the other one's switching to 20 hours RA"},
+        {"source": "HR App (1).docx", "lines": "850-860", "quote": "I need to issue a new offer letter ... change ... hourly rate, increase it ... initiate it"},
+        {"source": "Call with Mayra Morfin (1).docx", "lines": "214-225", "quote": "asking for like a change in their job code ... only certain users would need to have the feature to overwrite"}
+      ],
+      "risk": "A single mutable appointment row can erase the original terms and obscure which fields changed.",
+      "recommendation": "Represent each amendment as a distinct request/event with old value, new value, requester, timestamp, rationale, and affected assignment; do not overwrite history."
+    },
+    {
+      "id": "CR-02",
+      "claim": "The operational submitter for student changes is Mayra, while HR/Finance execute their respective downstream work; faculty may still send requests directly, creating an intake exception.",
+      "status": "confirmed_with_boundary",
+      "evidence": [
+        {"source": "HR App (1).docx", "lines": "792-805", "quote": "10% sent it to me and Daisy and Jamie ... if this was done in the apps, Mayra got this change request"},
+        {"source": "HR App (1).docx", "lines": "1092-1096", "quote": "all the students go through Mayra ... she should be submitting the request to me ... If it's there, I do it"},
+        {"source": "Call with Mayra Morfin (1).docx", "lines": "214-225", "quote": "faculty ... asking for like a change in their job code ... restrict that to particular people"}
+      ],
+      "risk": "Derived artifacts can incorrectly model faculty as the formal change-request owner while the interview says Mayra is the intended intake owner.",
+      "recommendation": "Separate requester (faculty/supervisor), submitter/intake owner (Mayra for student requests), executor (Laura or Finance), and approver if any. Preserve direct-email exceptions as intake evidence, not as the normal authorization path."
+    },
+    {
+      "id": "CR-03",
+      "claim": "An amendment repeats the offer-letter and Oracle amendment work; re-running foreign-principal screening is not established.",
+      "status": "contradiction_found",
+      "evidence": [
+        {"source": "HR App (1).docx", "lines": "850-860", "quote": "I need to issue a new offer letter ... amend them because they've already been [appointed]"},
+        {"source": "HR App (1).docx", "lines": "970-987", "quote": "RA to TA ... foreign principle, letter, enter, make the change actually"},
+        {"source": "student_hiring_pipeline.md", "lines": "43-44", "quote": "Change request ... Laura issues a new letter, may redo the screening, amends Oracle"}
+      ],
+      "risk": "The derived phrase 'may redo the screening' is not supported by the transcript and could cause unnecessary or incorrect screening behavior.",
+      "recommendation": "Treat new offer-letter issuance and Oracle amendment as confirmed for relevant changes. Mark screening repeat as unresolved unless an owner specifies field/change conditions that require it; do not implement it from the summary alone."
+    },
+    {
+      "id": "CR-04",
+      "claim": "Funding/chartfield changes are visible to Finance and trigger costing rework, but the exact approval gate is not a generic request-approval step.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        {"source": "HR App (1).docx", "lines": "1023-1039", "quote": "changes to the funding ... Daisy and Jamie can see funding, the new funding, to then obviously do the costing"},
+        {"source": "Call with Daisy Matos.docx", "lines": "1035-1049", "quote": "If we need to change the chart field, we'll go in here and change it ... once it's entered, I change it ... put the date and the initials"},
+        {"source": "daisy_finance_stage.md", "lines": "17-27", "quote": "Finance verifies the chartfield ... No money ... update the worksheet, re-verify ... Enter costing in Oracle"},
+        {"source": "HR App (1).docx", "lines": "1062-1081", "quote": "not for approvals ... there's not really an approval as such"}
+      ],
+      "risk": "A generic approval workflow would misrepresent the stated process; funding changes may require verification, new account resolution, and costing rather than an app approval.",
+      "recommendation": "Model Finance verification/re-verification and costing as explicit work states. Do not infer a separate approval gate from the change-request concept."
+    },
+    {
+      "id": "CR-05",
+      "claim": "Termination requests are expected to be recorded in the app, normally submitted through Mayra for student appointments; Finance may terminate an ended appointment in its worksheet after confirmation.",
+      "status": "confirmed_with_role_boundary",
+      "evidence": [
+        {"source": "HR App (1).docx", "lines": "1045-1053", "quote": "Mayra had asked me to appoint ... we ended it ... having something in one place ... Mayra would go in and just say ... terminate this person"},
+        {"source": "HR App (1).docx", "lines": "1087-1096", "quote": "Mayra could have went in and said, please terminate this employee ... all the student requests should be going through Mayra"},
+        {"source": "Call with Daisy Matos.docx", "lines": "892-905", "quote": "anybody that's left, I terminate them here and it removes them from this summary"},
+        {"source": "daisy_finance_stage.md", "lines": "29-31", "quote": "Ended -> terminate in the worksheet"}
+      ],
+      "risk": "If termination is modeled as an unrestricted edit, an executor can remove an active appointment without preserving the request, reason, effective date, or confirmation.",
+      "recommendation": "Use a termination-request record with requester, confirmer/authority, reason, effective date, and execution status. Keep the active appointment history; mark it ended rather than deleting it. Enforce Mayra intake for student requests and Finance execution only for the finance active-summary/worksheet behavior unless policy is clarified."
+    },
+    {
+      "id": "CR-06",
+      "claim": "Permissions are field/workflow-specific, not simply global read/write; users need broad visibility but only designated users may edit certain stages.",
+      "status": "confirmed_but_underspecified",
+      "evidence": [
+        {"source": "HR App (1).docx", "lines": "836-848", "quote": "Mayra ... edit ... requested changes ... sent over to you"},
+        {"source": "HR App (1).docx", "lines": "887-901", "quote": "gate changes behind certain people ... everybody view access ... permissions ... each role"},
+        {"source": "Call with Mayra Morfin (1).docx", "lines": "339-352", "quote": "those statuses only applied to her ... only certain people have access to edit certain screens ... no reason for me to ... change any of her statuses"},
+        {"source": "Call with Daisy Matos.docx", "lines": "516-536", "quote": "sensitive information ... Finance team has access ... only some people should be able to edit particular things"}
+      ],
+      "risk": "A broad 'anybody can see anything' implementation could expose sensitive finance data, while unrestricted edits could bypass HR/Finance ownership.",
+      "recommendation": "Define permissions by actor, entity/field, action, and lifecycle state. Treat Ian's proposed broad visibility as design proposal, not confirmed policy; explicitly resolve Finance data visibility and amendment execution rights."
+    },
+    {
+      "id": "CR-07",
+      "claim": "Audit/history is a mandatory requirement: preserve original requests and amendment/termination actions rather than overwriting the row.",
+      "status": "confirmed",
+      "evidence": [
+        {"source": "HR App (1).docx", "lines": "696-701", "quote": "they just overwrite the spreadsheet ... no trail as a request ... concern ... duplicating"},
+        {"source": "HR App (1).docx", "lines": "754-760", "quote": "notes text box for each action ... tracking what's done"},
+        {"source": "HR App (1).docx", "lines": "1045-1058", "quote": "find evidence for the auditors ... history of the request ... all in the one place"},
+        {"source": "Call with Mayra Morfin (1).docx", "lines": "188-196", "quote": "log system or ... History of changes and note-taking"},
+        {"source": "Call with Daisy Matos.docx", "lines": "1035-1049", "quote": "status ... date and the initials"}
+      ],
+      "risk": "Without immutable history, audit reconstruction depends on email/Teams searches and cannot prove who requested, changed, verified, or terminated an appointment.",
+      "recommendation": "Require append-only audit events for create, submit, edit/amend, status transition, verification, costing, termination, and permission-sensitive actions. Capture actor identity, timestamp, field-level before/after values, source/request text, and linked assignment/request IDs."
+    },
+    {
+      "id": "CR-08",
+      "claim": "The derived pipeline's D4 loop and entry-point model are too strong: they encode a faculty-owned change request and return directly to Mayra's log step, while the transcripts establish multiple intake routes and do not settle exact routing for every amendment.",
+      "status": "contradiction_found",
+      "evidence": [
+        {"source": "student_hiring_pipeline.md", "lines": "43-44, 81-99, 116", "quote": "Change request ... owner faculty ... change_request -> log_request"},
+        {"source": "HR App (1).docx", "lines": "792-805", "quote": "request ... sent to me and Daisy and Jamie ... if ... apps, Mayra got this change request"},
+        {"source": "HR App (1).docx", "lines": "1087-1096", "quote": "all the student requests should be going through Mayra"},
+        {"source": "mayra_student_hiring_flow.md", "lines": "23-31", "quote": "Does a late change go back to Mayra, or only to Laura ... open questions"}
+      ],
+      "risk": "A hard-coded loop can route amendments to the wrong owner or imply that direct faculty requests are authorized edits.",
+      "recommendation": "Replace the single D4 loop with an explicit intake/request entity and routing rules per change type. Keep the route unresolved until owners define whether job-code/hour/rate/funding/termination requests each follow the same path."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Whether foreign-principal screening repeats for any amendment, and which field changes trigger it.",
+    "Whether hiring-authority signature is required again for each amendment, versus only a new student offer or selected changes.",
+    "Whether student termination requires Laura/HR approval, faculty confirmation, Finance confirmation, or only Mayra submission plus Laura execution.",
+    "Whether Finance may directly edit chartfields in the canonical appointment record or must submit a change to another owner.",
+    "The exact permission matrix for Mayra, Laura/HR colleague, hiring authorities, Daisy/Finance, faculty, and students.",
+    "Whether audit history must be immutable/append-only and whether amendment snapshots must include field-level before/after values; the need for history is confirmed but the technical retention policy is not.",
+    "The exact status/state machine for requested, approved/accepted, in-progress, executed, rejected, superseded, and terminated amendments.",
+    "Whether a late change creates a new assignment/version or mutates the existing assignment's effective-dated record."
+  ],
+  "source_coverage": [
+    {"source": "HR App (1).docx", "role": "Primary Laura/HR transcript", "covered": true, "lines_used": "696-708, 754-760, 780-860, 970-1039, 1045-1117"},
+    {"source": "Call with Mayra Morfin (1).docx", "role": "Primary Mayra transcript", "covered": true, "lines_used": "188-225, 339-352"},
+    {"source": "Call with Daisy Matos.docx", "role": "Primary Daisy/Finance transcript", "covered": true, "lines_used": "516-536, 892-905, 920-931, 1035-1049"},
+    {"source": "student_hiring_pipeline.md", "role": "Provisional derived summary", "covered": true, "lines_used": "17-45, 48-63, 75-124"},
+    {"source": "mayra_student_hiring_flow.md", "role": "Provisional derived Mayra summary", "covered": true, "lines_used": "8-31, 47-80"},
+    {"source": "daisy_finance_stage.md", "role": "Provisional derived Finance summary", "covered": true, "lines_used": "15-31, 56-107"}
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/change_requests.json"
+}

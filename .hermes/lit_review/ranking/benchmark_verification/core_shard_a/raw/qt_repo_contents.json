@@ -1,0 +1,82 @@
+[
+  {
+    "name": "LLM",
+    "path": "LLM",
+    "sha": "7602a36b21728c8e473ef419dc53bdea98cc6994",
+    "size": 0,
+    "url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/LLM?ref=main",
+    "html_url": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/LLM",
+    "git_url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/7602a36b21728c8e473ef419dc53bdea98cc6994",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/LLM?ref=main",
+      "git": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/7602a36b21728c8e473ef419dc53bdea98cc6994",
+      "html": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/LLM"
+    }
+  },
+  {
+    "name": "QT-Schemes",
+    "path": "QT-Schemes",
+    "sha": "3d301ea7005a968a05774f83466a55fefded7743",
+    "size": 0,
+    "url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/QT-Schemes?ref=main",
+    "html_url": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/QT-Schemes",
+    "git_url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/3d301ea7005a968a05774f83466a55fefded7743",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/QT-Schemes?ref=main",
+      "git": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/3d301ea7005a968a05774f83466a55fefded7743",
+      "html": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/QT-Schemes"
+    }
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "f4f16ba5a1f2c64ab7bfbe46808429b9871fe230",
+    "size": 838,
+    "url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/README.md?ref=main",
+    "html_url": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/blob/main/README.md",
+    "git_url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/blobs/f4f16ba5a1f2c64ab7bfbe46808429b9871fe230",
+    "download_url": "https://raw.githubusercontent.com/raruidol/ACL25-ArgumentationSchemeMining/main/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/README.md?ref=main",
+      "git": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/blobs/f4f16ba5a1f2c64ab7bfbe46808429b9871fe230",
+      "html": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/blob/main/README.md"
+    }
+  },
+  {
+    "name": "RoBERTa",
+    "path": "RoBERTa",
+    "sha": "e1031d33b112fa0351a0e378149d3578f3bd4b79",
+    "size": 0,
+    "url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/RoBERTa?ref=main",
+    "html_url": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/RoBERTa",
+    "git_url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/e1031d33b112fa0351a0e378149d3578f3bd4b79",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/RoBERTa?ref=main",
+      "git": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/e1031d33b112fa0351a0e378149d3578f3bd4b79",
+      "html": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/RoBERTa"
+    }
+  },
+  {
+    "name": "Scheme-Detection-AIF",
+    "path": "Scheme-Detection-AIF",
+    "sha": "f24661b7b629e731ad7930e3b61f9ebd56298b4d",
+    "size": 0,
+    "url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/Scheme-Detection-AIF?ref=main",
+    "html_url": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/Scheme-Detection-AIF",
+    "git_url": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/f24661b7b629e731ad7930e3b61f9ebd56298b4d",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/contents/Scheme-Detection-AIF?ref=main",
+      "git": "https://api.github.com/repos/raruidol/ACL25-ArgumentationSchemeMining/git/trees/f24661b7b629e731ad7930e3b61f9ebd56298b4d",
+      "html": "https://github.com/raruidol/ACL25-ArgumentationSchemeMining/tree/main/Scheme-Detection-AIF"
+    }
+  }
+]

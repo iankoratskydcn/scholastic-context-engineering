@@ -1,0 +1,113 @@
+{
+  "reviewer_slug": "premise_negation_robustness",
+  "viewpoint": "implicit-premise, negation, contradiction, false-premise, and logical-error robustness for philosophical reasoning",
+  "benchmark_universe": "benchmark_studies.csv",
+  "rows": 80,
+  "diagnostic_definition": [
+    "implicit-premise recovery",
+    "explicit negation and quantifier handling",
+    "false-premise rejection/correction",
+    "contradiction and inconsistency detection",
+    "logical-error/fallacy diagnosis",
+    "separation of premise failure from answer failure"
+  ],
+  "top_15": [
+    {
+      "rank": 1,
+      "paper_id": "S02P07",
+      "benchmark_name": "PCBench",
+      "score_0_100": 99
+    },
+    {
+      "rank": 2,
+      "paper_id": "S02P05",
+      "benchmark_name": "FalseQA",
+      "score_0_100": 97
+    },
+    {
+      "rank": 3,
+      "paper_id": "S02P06",
+      "benchmark_name": "KG-FPQ",
+      "score_0_100": 95
+    },
+    {
+      "rank": 4,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score_0_100": 94
+    },
+    {
+      "rank": 5,
+      "paper_id": "12-05",
+      "benchmark_name": "LogicNLI",
+      "score_0_100": 93
+    },
+    {
+      "rank": 6,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 92
+    },
+    {
+      "rank": 7,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 91
+    },
+    {
+      "rank": 8,
+      "paper_id": "11-12",
+      "benchmark_name": "SMARTYPAT-BENCH",
+      "score_0_100": 90
+    },
+    {
+      "rank": 9,
+      "paper_id": "12-03",
+      "benchmark_name": "RuleTaker",
+      "score_0_100": 89
+    },
+    {
+      "rank": 10,
+      "paper_id": "12-11",
+      "benchmark_name": "SylloBase",
+      "score_0_100": 87
+    },
+    {
+      "rank": 11,
+      "paper_id": "12-15",
+      "benchmark_name": "abductive syllogism dataset",
+      "score_0_100": 86
+    },
+    {
+      "rank": 12,
+      "paper_id": "11-05",
+      "benchmark_name": "LOGICOM",
+      "score_0_100": 85
+    },
+    {
+      "rank": 13,
+      "paper_id": "S06P06",
+      "benchmark_name": "Counterfactual reasoning task suite",
+      "score_0_100": 84
+    },
+    {
+      "rank": 14,
+      "paper_id": "12-07",
+      "benchmark_name": "PrOntoQA",
+      "score_0_100": 83
+    },
+    {
+      "rank": 15,
+      "paper_id": "12-12",
+      "benchmark_name": "NeuBAROCO",
+      "score_0_100": 81
+    }
+  ],
+  "bands": {
+    "direct_high": 16,
+    "weak_or_unrelated": 20,
+    "adjacent": 26,
+    "direct_or_structural": 18
+  },
+  "interpretation": "False-premise and premise-critique benchmarks rank highest because they directly manipulate premise truth and error type. Formal NLI/proof benchmarks follow because labels, proof traces, and true/false/unknown controls isolate contradiction and negation. Generic cultural, retrieval, long-context, OCR, and QA resources are capped when premise robustness is not the measured object."
+}

@@ -1,0 +1,102 @@
+{
+  "perspective": "Adversarial verification of Laura Hemphill's Oracle entry, reappointment/additional-assignment, pending-worker, approval-queue, offer-letter attachment, disappearance, and verification workflow against all three interviews and derived artifacts.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "oracle-01",
+      "claim": "Reappointments use the existing Oracle person/assignment data; Laura changes the assignment or adds a separate assignment record when needed.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "HR App (1).docx:561-563 — Laura says she changes an existing assignment end date, and that Add Assignment creates a second record assignment number for students with multiple assignments.",
+        "HR App (1).docx:568-578 — Laura says reappointments already have the information in Oracle, while new hires require pending-worker entry and additional identity fields.",
+        "student_hiring_pipeline.md:40,45,123 — D1 distinguishes new hires from reappointments; D6 states the unit of work is an assignment and additional assignments create a second Oracle assignment record."
+      ],
+      "risk": "A student can have multiple assignment records; modeling only one student row would collapse distinct Oracle work units.",
+      "recommendation": "Represent appointment/assignment identity separately from student identity and preserve the Oracle assignment number for additional assignments."
+    },
+    {
+      "id": "oracle-02",
+      "claim": "New hires are entered as pending workers and require Banner-sourced address, date of birth, gender, and phone data before the appointment details are completed.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "HR App (1).docx:568-578 — Laura explicitly contrasts reappointments with new hires, says new hires require Add Pending Worker, and identifies position number, address from Banner, date of birth, gender, and phone number.",
+        "student_hiring_pipeline.md:40-41,92 — D1/D2 summarize pending-worker and pre-boarding paths, with status check for new hires."
+      ],
+      "risk": "The derived artifact is more specific than the transcript about exact status transitions and can be mistaken for an implemented contract.",
+      "recommendation": "Treat the required fields as confirmed interview requirements, but independently define and test pending-worker/pre-boarding statuses before implementation."
+    },
+    {
+      "id": "oracle-03",
+      "claim": "The signed offer letter is attached during Oracle entry, and the entry is submitted into an HR approval queue.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "HR App (1).docx:541-548 — after the student signs, the appointment is ready for Oracle input and Laura identifies verification as her last step.",
+        "HR App (1).docx:561-563 — for an assignment change, Laura says she changes the assignment end date, uploads the offer letter, submits it, and it goes into a queue for HR approval.",
+        "HR App (1).docx:585-587 — for a new pending worker, Laura says appointment details are entered, the offer letter is attached, and it goes to someone for approval.",
+        "student_hiring_pipeline.md:28-31,90-91 — derived flow records Oracle entry with offer-letter attachment, HR approval queue, and later verification."
+      ],
+      "risk": "Transcript evidence confirms the action but not the attachment's durable retention, filename, or read-back visibility after approval.",
+      "recommendation": "Require a verification check that the submitted Oracle record retains the expected offer-letter attachment and links it to the correct assignment."
+    },
+    {
+      "id": "oracle-04",
+      "claim": "Oracle entries can remain in the HR approval queue for weeks and have historically disappeared; Laura checks Oracle again and marks the item verified only after confirming the record and details are present/correct.",
+      "status": "directly_confirmed_with_caveat",
+      "evidence": [
+        "HR App (1).docx:120-123 — Laura says entries await HR approval for weeks depending on effective date, records have disappeared, and she always checks that they are still present and correct before marking verified.",
+        "HR App (1).docx:101-109 — Laura filters records ready for entry, enters them, changes status to entered, and uses blue as a visual marker that they are in Oracle.",
+        "HR App (1).docx:115-130 — Laura distinguishes to do/entered/verified/check and says new hires marked check require pre-boarding before she moves them to verified.",
+        "student_hiring_pipeline.md:29-31,39,110-113 — derived artifact models the approval queue, disappearance loop, and verification/pre-boarding branches."
+      ],
+      "risk": "The transcript confirms disappearance and re-checking, but does not explicitly state that every disappearance is re-entered; the derived artifact's 're-enter' loop is an inference.",
+      "recommendation": "Do not encode automatic re-entry as confirmed behavior. Record disappearance as an exception requiring explicit reconciliation: search, compare, and only then re-enter under controlled audit evidence."
+    },
+    {
+      "id": "oracle-05",
+      "claim": "Verified Oracle records are the handoff condition for Daisy's costing work.",
+      "status": "directly_confirmed_and_corroborated",
+      "evidence": [
+        "HR App (1).docx:121-130 — Laura says Daisy's team filters for verified records and performs costing; new hires reach verified after pre-boarding is completed and checked.",
+        "daisy_finance_stage.md:17-28 — Daisy's derived finance flow starts from the Mayra/Laura worksheet handoff and proceeds to chartfield verification and Oracle costing.",
+        "student_hiring_pipeline.md:31,114 — derived flow makes verified the condition for costing."
+      ],
+      "risk": "Daisy's interview primarily demonstrates faculty/staff finance examples, not a direct student appointment Oracle read-back, so student-specific costing behavior remains partly second-hand.",
+      "recommendation": "Keep the verified-to-costing handoff, but validate it with a student appointment example and explicit ownership of the handoff status."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "The transcript does not prove that a disappeared Oracle record is always re-entered; it proves re-checking and historical disappearance.",
+    "No evidence specifies how Oracle approval status is read, how long Laura waits before escalation, or who owns recovery when a record disappears.",
+    "Offer-letter attachment is confirmed as an entry action, but retention, attachment identity, and post-approval read-back are unverified.",
+    "The exact meaning of spreadsheet status 'check' versus Oracle pending-worker/pre-boarding state is described by Laura but not formalized as a system contract.",
+    "No direct evidence establishes whether verification checks assignment number, effective dates, salary, attachment, approval state, and pending-worker completion as a complete checklist.",
+    "Derived artifacts call the approval-queue disappearance a loop and say 're-enter'; that is a design/inference layer and must not be treated as direct interview evidence."
+  ],
+  "source_coverage": [
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/HR App (1).docx",
+      "coverage": "Primary source read in full; direct evidence for reappointments, additional assignments, pending workers, Banner fields, offer-letter attachment, HR approval queue, disappearance, statuses, and verification."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx",
+      "coverage": "Primary source read in full; corroborates renewal confirmation, restricted overwrites, and the existence of Laura's work-status boundary, but does not independently verify Oracle mechanics."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx",
+      "coverage": "Primary source read in full; corroborates the downstream finance handoff and active-appointment monitoring, but does not independently verify Oracle entry or approval mechanics."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md",
+      "coverage": "Derived artifact read in full; used only as provisional synthesis and explicitly separated from transcript evidence."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md",
+      "coverage": "Derived artifact read in full; used for corroborating boundaries and identifying assumptions, not as primary proof of Oracle behavior."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md",
+      "coverage": "Derived artifact read in full; used for downstream costing context and open ambiguities."
+    }
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/oracle_hr.json"
+}

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		The Index Thomisticus as a Big Data Project
+							| Umanistica Digitale
+			</title>
+
+	
+<link rel="icon" href="https://umanisticadigitale.unibo.it/public/journals/27/favicon_en_US">
+<meta name="generator" content="Open Journal Systems 3.3.0.20">
+<meta name="gs_meta_revision" content="1.1"/>
+<meta name="citation_journal_title" content="Umanistica Digitale"/>
+<meta name="citation_journal_abbrev" content="Um. Dig."/>
+<meta name="citation_issn" content="2532-8816"/> 
+<meta name="citation_author" content="Geoffrey Rockwell"/>
+<meta name="citation_author_institution" content="University of Alberta, Canada"/>
+<meta name="citation_author" content="Marco Passarotti"/>
+<meta name="citation_author_institution" content="Università Cattolica del Sacro Cuore, Milano"/>
+<meta name="citation_title" content="The Index Thomisticus as a Big Data Project"/>
+<meta name="citation_language" content="en"/>
+<meta name="citation_date" content="2019/05/27"/>
+<meta name="citation_issue" content="5"/>
+<meta name="citation_doi" content="10.6092/issn.2532-8816/8575"/>
+<meta name="citation_abstract_html_url" content="https://umanisticadigitale.unibo.it/article/view/8575"/>
+<meta name="citation_keywords" xml:lang="en" content="Digital Humanities"/>
+<meta name="citation_keywords" xml:lang="en" content="Infrastructure"/>
+<meta name="citation_keywords" xml:lang="en" content="Busa"/>
+<meta name="citation_keywords" xml:lang="en" content="Concordance"/>
+<meta name="citation_keywords" xml:lang="en" content="Index Thomisticus"/>
+<meta name="citation_keywords" xml:lang="en" content="Project Management"/>
+<meta name="citation_keywords" xml:lang="en" content="History of DH"/>
+<meta name="citation_pdf_url" content="https://umanisticadigitale.unibo.it/article/download/8575/9248"/>
+<meta name="citation_fulltext_html_url" content="https://umanisticadigitale.unibo.it/article/view/8575/9233"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Creator.PersonalName" content="Geoffrey Rockwell"/>
+<meta name="DC.Creator.PersonalName" content="Marco Passarotti"/>
+<meta name="DC.Date.created" scheme="ISO8601" content="2019-05-27"/>
+<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2018-09-27"/>
+<meta name="DC.Date.issued" scheme="ISO8601" content="2019-05-27"/>
+<meta name="DC.Date.modified" scheme="ISO8601" content="2020-05-19"/>
+<meta name="DC.Description" xml:lang="en" content="The Digital Humanities (DH), as Rob Kitchin reminds us, have always been interested in the building of infrastructure for research (Kitchin 2014, Loc. 222 of 6164). Imagining how emerging technologies could first be applied to Humanities problems and then scaled up to infrastructure for others to use has been one of the defining features of the field, by which we mean the field has evolved through projects that experimented with the application of new computing technologies to the difficult problems of the Humanities. Such experimentation began with Father Busaís Index Thomisticus (IT) project (Busa 1980; Winter 1999; Busa 1974-1980) which is why many genetic descriptions of the field returns to the Index. The Index Thomisticus (IT) project was not only the first, but also one of the largest Digital Humanities projects of all time, even though the outcome might, by today’s standards be considered “small”. The project lasted 34 years and at its peak (1962) involved a staff of as many as 70 persons all housed in a large ex-textile factory in Gallarate. For that time they were dealing with big data, we might even say really big data, and the infrastructure they had to build was unlike any ever built before. If we want to understand what is involved in scaling up to big infrastructure we should look back to the beginnings of the field and the emergence of big projects like the Index. This paper will therefore look at the Busa’s project as a way to think through big projects by first discussing the historiography of the IT project and DH projects in general. We will ask how can we study projects as bearers of ideas? What resources do we need/have? Then we will look at specific aspects of the project that shed light on DH projects in general. In particular we will look at how the project was communicated, conceived, and the data processing innovations. Finally, we will reflect on what lessons the IT project has for us at a time when big data has become an end in itself. What can we learn from Busa’s attention to data in the face of the temptations of automatically gathered data?"/>
+<meta name="DC.Description" xml:lang="it" content="Come Rob Kitchin ricorda, le Digital Humanities (DH) hanno sempre dimostrato interesse nei confronti della costruzione di infrastrutture di ricerca (Kitchin 2014, Loc. 222 of 6164). Immaginare come tecnologie emergenti potessero venire prima applicate a questioni di area umanistica e, quindi, estese ad altri usi a livello infrastrutturale ha rappresentato uno dei tratti distintivi del settore, che si è sviluppato attraverso progetti che hanno messo alla prova dei fatti l&#039;applicazione di nuove tecnologie computazionali a problemi di area umanistica. Siffatta sperimentazione iniziò con il progetto dell&#039;Index Thomisticus (IT) di padre Busa (Busa 1980; Winter 1999; Busa 1974-1980). Quello dell&#039;Index Thomisticus fu non solo il primo, ma anche uno dei più grandi progetti di sempre nell&#039;area delle DH, benchè esso possa essere considerato “piccolo” alla luce degli standard attuali. Il progetto durò 34 anni e al proprio picco (1962) includeva nello staff 70 persone, tutte ospitate presso una ex fabbrica tessile di Gallarate. Per quei tempi, costoro si trovavano a lavorare su “big data” (di veramente notevole dimensione) e l&#039;infrastruttura che miravano a costruire non aveva precendenti. Se si vuole comprendere a fondo cosa significhi avere a che fare oggi con grosse infrastrutture, è necessario guardare agli inizi del settore e all&#039;emergere di progetti come l&#039;Index Thomisticus. Questo articolo studia il progetto di Busa intendendolo come un mezzo utile a riflettere sui grandi progetti e sulle infrastrutture nelle DH. L&#039;articolo discute brevemente la storia del progetto dell’IT e, più in generale, dei progetti di DH. Ci chiediamo come si possano indagare i progetti di ricerca quali portatori di idee. Quindi, l&#039;articolo tratta aspetti particolari del progetto dell&#039;IT che riguardano i progetti di DH in generale. Nello specifico, ci concentriamo su come il progetto fu comunicato e concepito, oltre che sulle innovazioni che esso portò nel campo del trattamento automatico dei dati. Infine, l&#039;articolo riflette in merito alle lezioni che il progetto dell&#039;IT ancora oggi può insegnare, in un momento in cui i “big data” sono divenuti una sorta di fine in sè stesso. Ci domandiamo cosa possiamo imparare dall&#039;attenzione minuziosa per i dati dimostrata da Busa, alla luce delle tentazioni odierne sollevate dall&#039;acquisizione automatica dei dati."/>
+<meta name="DC.Format" scheme="IMT" content="application/pdf"/>
+<meta name="DC.Format" scheme="IMT" content="text/html"/>
+<meta name="DC.Identifier" content="8575"/>
+<meta name="DC.Identifier.DOI" content="10.6092/issn.2532-8816/8575"/>
+<meta name="DC.Identifier.URI" content="https://umanisticadigitale.unibo.it/article/view/8575"/>
+<meta name="DC.Language" scheme="ISO639-1" content="en"/>
+<meta name="DC.Rights" content="Copyright (c) 2019 Geoffrey Rockwell, Marco Passarotti"/>
+<meta name="DC.Rights" content=""/>
+<meta name="DC.Source" content="Umanistica Digitale"/>
+<meta name="DC.Source.ISSN" content="2532-8816"/>
+<meta name="DC.Source.Issue" content="5"/>
+<meta name="DC.Source.URI" content="https://umanisticadigitale.unibo.it/"/>
+<meta name="DC.Subject" xml:lang="en" content="Digital Humanities"/>
+<meta name="DC.Subject" xml:lang="en" content="Infrastructure"/>
+<meta name="DC.Subject" xml:lang="en" content="Busa"/>
+<meta name="DC.Subject" xml:lang="en" content="Concordance"/>
+<meta name="DC.Subject" xml:lang="en" content="Index Thomisticus"/>
+<meta name="DC.Subject" xml:lang="en" content="Project Management"/>
+<meta name="DC.Subject" xml:lang="en" content="History of DH"/>
+<meta name="DC.Title" content="The Index Thomisticus as a Big Data Project"/>
+<meta name="DC.Title.Alternative" xml:lang="it" content="The Index Thomisticus as a Big Data Project"/>
+<meta name="DC.Type" content="Text.Serial.Journal"/>
+<meta name="DC.Type.articleType" content="Articles"/>
+
+	<link rel="stylesheet" href="https://umanisticadigitale.unibo.it/$$$call$$$/page/page/css?name=stylesheet" type="text/css" /><link rel="stylesheet" href="https://umanisticadigitale.unibo.it/$$$call$$$/page/page/css?name=font" type="text/css" /><link rel="stylesheet" href="https://umanisticadigitale.unibo.it/lib/pkp/styles/fontawesome/fontawesome.css?v=3.3.0.20" type="text/css" /><link rel="stylesheet" href="https://umanisticadigitale.unibo.it/public/journals/27/styleSheet.css?d=2026-05-13+15%3A56%3A04" type="text/css" /><link rel="stylesheet" href="https://umanisticadigitale.unibo.it/public/site/styleSheet.css?v=3.3.0.20" type="text/css" />
+</head>
+<body class="pkp_page_article pkp_op_view has_site_logo" dir="ltr">
+
+	<div class="pkp_structure_page">
+
+				<header class="pkp_structure_head" id="headerNavigationContainer" role="banner">
+						
+ <nav class="cmp_skip_to_content" aria-label="Jump to content links">
+	<a href="#pkp_content_main">Skip to main content</a>
+	<a href="#siteNav">Skip to main navigation menu</a>
+		<a href="#pkp_content_footer">Skip to site footer</a>
+</nav>
+
+			<div class="pkp_head_wrapper">
+
+				<div class="pkp_site_name_wrapper">
+					<button class="pkp_site_nav_toggle">
+						<span>Open Menu</span>
+					</button>
+										<div class="pkp_site_name">
+																<a href="						https://umanisticadigitale.unibo.it/index
+					" class="is_img">
+							<img src="https://umanisticadigitale.unibo.it/public/journals/27/pageHeaderLogoImage_en_US" width="2583" height="938" alt="Umanistica Digitale" />
+						</a>
+										</div>
+				</div>
+
+				
+				<nav class="pkp_site_nav_menu" aria-label="Site Navigation">
+					<a id="siteNav"></a>
+					<div class="pkp_navigation_primary_row">
+						<div class="pkp_navigation_primary_wrapper">
+																				<ul id="navigationPrimary" class="pkp_navigation_primary pkp_nav_list">
+								<li class="">
+				<a href="https://umanisticadigitale.unibo.it/issue/current">
+					Current
+				</a>
+							</li>
+								<li class="">
+				<a href="https://umanisticadigitale.unibo.it/issue/archive">
+					Archives
+				</a>
+							</li>
+								<li class="">
+				<a href="https://umanisticadigitale.unibo.it/pages/boa">
+					Quaderni
+				</a>
+							</li>
+								<li class="">
+				<a href="https://umanisticadigitale.unibo.it/announcement">
+					Announcements
+				</a>
+							</li>
+								<li class="">
+				<a href="https://umanisticadigitale.unibo.it/about">
+					About
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://umanisticadigitale.unibo.it/about">
+										About the Journal
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://umanisticadigitale.unibo.it/about/submissions">
+										Submissions
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://umanisticadigitale.unibo.it/about/editorialTeam">
+										Editorial Team
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://umanisticadigitale.unibo.it/about/scientificcommittee">
+										Scientific Committee
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://umanisticadigitale.unibo.it/about/privacy">
+										Privacy Statement
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://umanisticadigitale.unibo.it/about/contact">
+										Contact
+									</a>
+								</li>
+																		</ul>
+							</li>
+			</ul>
+
+				
+
+																						<div class="pkp_navigation_search_wrapper">
+									<a href="https://umanisticadigitale.unibo.it/search" class="pkp_search pkp_search_desktop">
+										<span class="fa fa-search" aria-hidden="true"></span>
+										Search
+									</a>
+								</div>
+													</div>
+					</div>
+					<div class="pkp_navigation_user_wrapper" id="navigationUserWrapper">
+							<ul id="navigationUser" class="pkp_navigation_user pkp_nav_list">
+								<li class="profile">
+				<a href="https://umanisticadigitale.unibo.it/user/register">
+					Register
+				</a>
+							</li>
+								<li class="profile">
+				<a href="https://umanisticadigitale.unibo.it/login">
+					Login
+				</a>
+							</li>
+										</ul>
+
+					</div>
+				</nav>
+			</div><!-- .pkp_head_wrapper -->
+		</header><!-- .pkp_structure_head -->
+
+						<div class="pkp_structure_content has_sidebar">
+			<div class="pkp_structure_main" role="main">
+				<a id="pkp_content_main"></a>
+
+<div class="page page_article">
+			<nav class="cmp_breadcrumbs" role="navigation" aria-label="You are here:">
+	<ol>
+		<li>
+			<a href="https://umanisticadigitale.unibo.it/index">
+				Home
+			</a>
+			<span class="separator">/</span>
+		</li>
+		<li>
+			<a href="https://umanisticadigitale.unibo.it/issue/archive">
+				Archives
+			</a>
+			<span class="separator">/</span>
+		</li>
+					<li>
+				<a href="https://umanisticadigitale.unibo.it/issue/view/761">
+					No. 5 (2019)
+				</a>
+				<span class="separator">/</span>
+			</li>
+				<li class="current" aria-current="page">
+			<span aria-current="page">
+									Articles
+							</span>
+		</li>
+	</ol>
+</nav>
+	
+		  	 <article class="obj_article_details">
+
+		
+	<h1 class="page_title">
+		The Index Thomisticus as a Big Data Project
+	</h1>
+
+	
+	<div class="row">
+		<div class="main_entry">
+
+							<section class="item authors">
+					<h2 class="pkp_screen_reader">Authors</h2>
+					<ul class="authors">
+											<li>
+															<span class="name button_exp" id="button-0" aria-label="Click to expand author biography" tabindex="0">
+									Geoffrey Rockwell <i class="fa fa-info-circle" aria-hidden="true"></i>
+								</span>
+																						<span class="affiliation">
+									University of Alberta, Canada
+																	</span>
+																													<div class="author_bio expandable" id="exp-0">
+									<p>Dr. Geoffrey Martin Rockwell is a Professor of Philosophy and Digital Humanities at the University of Alberta. He has published on videogames, textual visualization and analysis, ethics of big data, and computing in the humanities including a recent book from the MIT Press, <em>Hermeneutica: Computer-Assisted Interpretation in the Humanities</em>. He is the project lead of the Text Analysis Portal for Research &lt;tapor.ca&gt; and co-developer of Voyant Tools &lt;voyant-tools.org&gt;, a suite of text analysis tools, for which he and his co-developer were awarded the CSDH/SCHN 2017 Outstanding Contribution Award. He is currently the Director of the Kule Institute for Advanced Study and co-chair of the AI, People &amp; Society platform of the ATB AI Lab.</p>
+								</div>
+													</li>
+											<li>
+															<span class="name">
+									Marco Passarotti
+								</span>
+																						<span class="affiliation">
+									Università Cattolica del Sacro Cuore, Milano
+																	</span>
+																											</li>
+										</ul>
+				</section>
+			
+																												<section class="item doi">
+						<h2 class="label">
+														DOI:
+						</h2>
+						<span class="value">
+							<a href="https://doi.org/10.6092/issn.2532-8816/8575">
+								https://doi.org/10.6092/issn.2532-8816/8575
+							</a>
+						</span>
+					</section>
+							
+									<section class="item keywords">
+				<h2 class="label">
+										Keywords:
+				</h2>
+				<span class="value">
+											Digital Humanities, 											Infrastructure, 											Busa, 											Concordance, 											Index Thomisticus, 											Project Management, 											History of DH									</span>
+			</section>
+			
+										<section class="item abstract">
+					<h2 class="label">Abstract</h2>
+					<p>The Digital Humanities (DH), as Rob Kitchin reminds us, have always been interested in the building of infrastructure for research (Kitchin 2014, Loc. 222 of 6164). Imagining how emerging technologies could first be applied to Humanities problems and then scaled up to infrastructure for others to use has been one of the defining features of the field, by which we mean the field has evolved through projects that experimented with the application of new computing technologies to the difficult problems of the Humanities. Such experimentation began with Father Busaís Index Thomisticus (IT) project (Busa 1980; Winter 1999; Busa 1974-1980) which is why many genetic descriptions of the field returns to the Index. The Index Thomisticus (IT) project was not only the first, but also one of the largest Digital Humanities projects of all time, even though the outcome might, by today’s standards be considered “small”. The project lasted 34 years and at its peak (1962) involved a staff of as many as 70 persons all housed in a large ex-textile factory in Gallarate. For that time they were dealing with big data, we might even say really big data, and the infrastructure they had to build was unlike any ever built before. If we want to understand what is involved in scaling up to big infrastructure we should look back to the beginnings of the field and the emergence of big projects like the Index. This paper will therefore look at the Busa’s project as a way to think through big projects by first discussing the historiography of the IT project and DH projects in general. We will ask how can we study projects as bearers of ideas? What resources do we need/have? Then we will look at specific aspects of the project that shed light on DH projects in general. In particular we will look at how the project was communicated, conceived, and the data processing innovations. Finally, we will reflect on what lessons the IT project has for us at a time when big data has become an end in itself. What can we learn from Busa’s attention to data in the face of the temptations of automatically gathered data?</p>
+				</section>
+			
+			
+
+						
+		</div><!-- .main_entry -->
+
+		<div class="entry_details">
+
+						
+										<div class="item galleys">
+					<h2 class="pkp_screen_reader">
+						Downloads
+					</h2>
+					<ul class="value galleys_links">
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link pdf" href="https://umanisticadigitale.unibo.it/article/view/8575/9248">
+
+		
+	PDF
+
+	</a>
+							</li>
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link file" href="https://umanisticadigitale.unibo.it/article/view/8575/9233">
+
+		
+	HTML
+
+	</a>
+							</li>
+											</ul>
+				</div>
+						
+						<div class="item published">
+				<section class="sub_item">
+					<h2 class="label">
+						Published
+					</h2>
+					<div class="value">
+																			<span>2019-05-27</span>
+																	</div>
+				</section>
+							</div>
+			
+										<div class="item citation">
+					<section class="sub_item citation_display">
+						<h2 class="label">
+							How to Cite
+						</h2>
+						<div class="value">
+							<div id="citationOutput" role="region" aria-live="polite">
+								<div class="csl-bib-body">
+  <div class="csl-entry">Rockwell, G., &#38; Passarotti, M. (2019). The Index Thomisticus as a Big Data Project. <i>Umanistica Digitale</i>, <i>3</i>(5). https://doi.org/10.6092/issn.2532-8816/8575</div>
+</div>
+							</div>
+							<div class="citation_formats">
+								<button class="cmp_button citation_formats_button" aria-controls="cslCitationFormats" aria-expanded="false" data-csl-dropdown="true">
+									More Citation Formats
+								</button>
+								<div id="cslCitationFormats" class="citation_formats_list" aria-hidden="true">
+									<ul class="citation_formats_styles">
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/acm-sig-proceedings?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/acm-sig-proceedings?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													ACM
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/acs-nano?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/acs-nano?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													ACS
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/apa?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/apa?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													APA
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													ABNT
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/chicago-author-date?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/chicago-author-date?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													Chicago
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/harvard-cite-them-right?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/harvard-cite-them-right?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													Harvard
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/ieee?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/ieee?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													IEEE
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/modern-language-association?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/modern-language-association?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													MLA
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													Turabian
+												</a>
+											</li>
+																					<li>
+												<a
+													aria-controls="citationOutput"
+													href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/vancouver?submissionId=8575&amp;publicationId=7237"
+													data-load-citation
+													data-json-href="https://umanisticadigitale.unibo.it/citationstylelanguage/get/vancouver?submissionId=8575&amp;publicationId=7237&amp;return=json"
+												>
+													Vancouver
+												</a>
+											</li>
+																			</ul>
+																			<div class="label">
+											Download Citation
+										</div>
+										<ul class="citation_formats_styles">
+																							<li>
+													<a href="https://umanisticadigitale.unibo.it/citationstylelanguage/download/ris?submissionId=8575&amp;publicationId=7237">
+														<span class="fa fa-download"></span>
+														Endnote/Zotero/Mendeley (RIS)
+													</a>
+												</li>
+																							<li>
+													<a href="https://umanisticadigitale.unibo.it/citationstylelanguage/download/bibtex?submissionId=8575&amp;publicationId=7237">
+														<span class="fa fa-download"></span>
+														BibTeX
+													</a>
+												</li>
+																					</ul>
+																	</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			
+										<div class="item issue">
+
+											<section class="sub_item">
+							<h2 class="label">
+								Issue
+							</h2>
+							<div class="value">
+								<a class="title" href="https://umanisticadigitale.unibo.it/issue/view/761">
+									No. 5 (2019)
+								</a>
+							</div>
+						</section>
+					
+											<section class="sub_item">
+							<h2 class="label">
+								Section
+							</h2>
+							<div class="value">
+								Articles
+							</div>
+						</section>
+					
+									</div>
+			
+															
+										<div class="item copyright">
+					<h2 class="label">
+						License
+					</h2>
+																		<p>Copyright (c) 2019 Geoffrey Rockwell, Marco Passarotti</p>
+												<p>The copyrights and publishing rights of all articles in this journal belong to the respective authors without restrictions.</p><p><a href="http://creativecommons.org/licenses/by/4.0/" rel="license"> <img src="https://licensebuttons.net/l/by/4.0/88x31.png" alt="Creative Commons License" /></a></p><p>This journal is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International</a> (<a href="http://creativecommons.org/licenses/by/4.0/legalcode">full legal code</a>). <br /> See also our <a href="/about/editorialPolicies#openAccessPolicy">Open Access Policy</a>.</p>
+									</div>
+			
+			
+
+		</div><!-- .entry_details -->
+	</div><!-- .row -->
+
+</article>
+
+	
+
+</div><!-- .page -->
+
+	</div><!-- pkp_structure_main -->
+
+									<div class="pkp_structure_sidebar left" role="complementary" aria-label="Sidebar">
+				<div class="pkp_block block_language">
+	<h2 class="title">
+		Language
+	</h2>
+
+	<div class="content">
+		<ul>
+							<li class="locale_en_US current" lang="en-US">
+					<a href="https://umanisticadigitale.unibo.it/user/setLocale/en_US?source=%2Farticle%2Fview%2F8575">
+						English
+					</a>
+				</li>
+							<li class="locale_it_IT" lang="it-IT">
+					<a href="https://umanisticadigitale.unibo.it/user/setLocale/it_IT?source=%2Farticle%2Fview%2F8575">
+						Italiano
+					</a>
+				</li>
+					</ul>
+	</div>
+</div><!-- .block_language -->
+<div class="pkp_block block_make_submission">
+	<h2 class="pkp_screen_reader">
+		Make a Submission
+	</h2>
+
+	<div class="content">
+		<a class="block_make_submission_link" href="https://umanisticadigitale.unibo.it/about/submissions">
+			Make a Submission
+		</a>
+	</div>
+</div>
+<div class="pkp_block block_web_feed">
+	<h2 class="title">Current Issue</h2>
+	<div class="content">
+		<ul>
+			<li>
+				<a href="https://umanisticadigitale.unibo.it/gateway/plugin/WebFeedGatewayPlugin/atom">
+					<img src="https://umanisticadigitale.unibo.it/lib/pkp/templates/images/atom.svg" alt="Atom logo">
+				</a>
+			</li>
+			<li>
+				<a href="https://umanisticadigitale.unibo.it/gateway/plugin/WebFeedGatewayPlugin/rss2">
+					<img src="https://umanisticadigitale.unibo.it/lib/pkp/templates/images/rss20_logo.svg" alt="RSS2 logo">
+				</a>
+			</li>
+			<li>
+				<a href="https://umanisticadigitale.unibo.it/gateway/plugin/WebFeedGatewayPlugin/rss">
+					<img src="https://umanisticadigitale.unibo.it/lib/pkp/templates/images/rss10_logo.svg" alt="RSS1 logo">
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+			</div><!-- pkp_sidebar.left -->
+			</div><!-- pkp_structure_content -->
+
+<button role="presentation" focusable="false" class="backToTopBtn">↑<span class="backToTopBtnText">&nbsp;Back to top</span></button>
+
+<div class="pkp_structure_footer_wrapper" role="contentinfo">
+	<a id="pkp_content_footer"></a>
+
+	<div class="pkp_structure_footer">
+
+					<div class="pkp_footer_content">
+				<div class="footer-custom">
+<div class="foot-main">
+<div class="foot-journal"><span class="foot-title">Umanistica Digitale (UD)</span> – ISSN 2532-8816</div>
+<!--journal-->
+<div class="foot-publisher"><a href="https://umanisticadigitale.unibo.it/about#publisher"> Dipartimento di Filologia Classica e Italianistica – Alma Mater Studiorum – Università di Bologna<br />Associazione per l’Informatica Umanistica e le Culture Digitali – AIUCD </a></div>
+<!--publisher--></div>
+<!--main-->
+<div class="foot-almadl">
+<div class="foot-host">The journal is hosted and mantained by <a href="https://sba.unibo.it/it/almadl/">AlmaDL</a></div>
+<div class="foot-journals">See <a href="https://journals.unibo.it/"><em>AlmaDL Journals</em> Collection</a></div>
+</div>
+<!--almadl--></div>
+			</div>
+		
+		<div class="pkp_brand_footer" role="complementary">
+			<a href="https://umanisticadigitale.unibo.it/about/aboutThisPublishingSystem">
+				<img alt="More information about the publishing system, Platform and Workflow by OJS/PKP." src="https://umanisticadigitale.unibo.it/templates/images/ojs_brand.png">
+			</a>
+		</div>
+	</div>
+</div><!-- pkp_structure_footer_wrapper -->
+
+</div><!-- pkp_structure_page -->
+
+<script src="https://umanisticadigitale.unibo.it/lib/pkp/lib/vendor/components/jquery/jquery.min.js?v=3.3.0.20" type="text/javascript"></script><script src="https://umanisticadigitale.unibo.it/lib/pkp/lib/vendor/components/jqueryui/jquery-ui.min.js?v=3.3.0.20" type="text/javascript"></script><script src="https://umanisticadigitale.unibo.it/plugins/themes/default/js/lib/popper/popper.js?v=3.3.0.20" type="text/javascript"></script><script src="https://umanisticadigitale.unibo.it/plugins/themes/default/js/lib/bootstrap/util.js?v=3.3.0.20" type="text/javascript"></script><script src="https://umanisticadigitale.unibo.it/plugins/themes/default/js/lib/bootstrap/dropdown.js?v=3.3.0.20" type="text/javascript"></script><script src="https://umanisticadigitale.unibo.it/plugins/themes/default/js/main.js?v=3.3.0.20" type="text/javascript"></script><script src="https://umanisticadigitale.unibo.it/plugins/themes/almadlDefault/js/main.js?v=3.3.0.20" type="text/javascript"></script><script src="https://umanisticadigitale.unibo.it/plugins/generic/citationStyleLanguage/js/articleCitation.js?v=3.3.0.20" type="text/javascript"></script>
+
+<script src="https://www.unibo.it/cookies/cookies.js" type="text/javascript" async="async" deferi="defer"></script>
+</body>
+</html>

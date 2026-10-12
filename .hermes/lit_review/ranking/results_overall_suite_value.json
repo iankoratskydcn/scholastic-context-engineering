@@ -1,0 +1,184 @@
+{
+  "reviewer_slug": "overall_suite_value",
+  "viewpoint": "Overall test-suite value and battery selection",
+  "benchmark_universe": "benchmark_studies.csv",
+  "rows": 80,
+  "scoring_dimensions": [
+    "pipeline coverage",
+    "complementarity",
+    "novelty-threat detection",
+    "failure diagnosis",
+    "scholarly relevance",
+    "minimal-battery utility"
+  ],
+  "top_15": [
+    {
+      "rank": 1,
+      "paper_id": "S09P08",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 96
+    },
+    {
+      "rank": 2,
+      "paper_id": "S25P13",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 96
+    },
+    {
+      "rank": 3,
+      "paper_id": "S10P07",
+      "benchmark_name": "US2016G1tvWALTON corpus",
+      "score": 94
+    },
+    {
+      "rank": 4,
+      "paper_id": "S10P09",
+      "benchmark_name": "EthiX",
+      "score": 93
+    },
+    {
+      "rank": 5,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 93
+    },
+    {
+      "rank": 6,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 92
+    },
+    {
+      "rank": 7,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 92
+    },
+    {
+      "rank": 8,
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score": 91
+    },
+    {
+      "rank": 9,
+      "paper_id": "S07P08",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 89
+    },
+    {
+      "rank": 10,
+      "paper_id": "S08P04",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 89
+    },
+    {
+      "rank": 11,
+      "paper_id": "11-08",
+      "benchmark_name": "MISSCI PLUS",
+      "score": 88
+    },
+    {
+      "rank": 12,
+      "paper_id": "S23P12",
+      "benchmark_name": "741-topic argument-tree corpus",
+      "score": 87
+    },
+    {
+      "rank": 13,
+      "paper_id": "18_10",
+      "benchmark_name": "Deep argumentative structures corpus",
+      "score": 86
+    },
+    {
+      "rank": 14,
+      "paper_id": "12-05",
+      "benchmark_name": "LogicNLI",
+      "score": 85
+    },
+    {
+      "rank": 15,
+      "paper_id": "18_11",
+      "benchmark_name": "implicit-reasoning causal-link materials",
+      "score": 85
+    }
+  ],
+  "recommended_minimal_battery": [
+    {
+      "benchmark_family": "QT-SCHEMES",
+      "records": [
+        "S09P08",
+        "S25P13"
+      ],
+      "role": "authentic argument-scheme recovery"
+    },
+    {
+      "benchmark_family": "FOLIO",
+      "records": [
+        "12-06"
+      ],
+      "role": "human-authored grounded FOL reasoning"
+    },
+    {
+      "benchmark_family": "ProofWriter",
+      "records": [
+        "S07P01",
+        "12-04"
+      ],
+      "role": "controlled proof depth and abduction"
+    },
+    {
+      "benchmark_family": "LeanDojo/ReProver",
+      "records": [
+        "14-08",
+        "S07P08",
+        "S08P04"
+      ],
+      "role": "premise selection and exact proof acceptance"
+    },
+    {
+      "benchmark_family": "MISSCI PLUS",
+      "records": [
+        "11-08"
+      ],
+      "role": "scholarly evidence grounding and fallacy reconstruction"
+    },
+    {
+      "benchmark_family": "LongPiBench",
+      "records": [
+        "S03P10"
+      ],
+      "role": "multi-piece positional/context stress"
+    },
+    {
+      "benchmark_family": "RULER or NoLiMa",
+      "records": [
+        "S03P08",
+        "S03P09"
+      ],
+      "role": "generic long-context control; choose one by budget"
+    }
+  ],
+  "interpretation": "No single benchmark covers the pipeline. Minimal battery must combine authentic argument structure, human-authored/formal reasoning, exact premise selection, grounded scholarly evidence, and context-position stress. Shared benchmark families are retained as separate source records but should be run once per artifact family.",
+  "category_counts": {
+    "2": 3,
+    "3": 6,
+    "5": 3,
+    "6": 2,
+    "7": 2,
+    "8": 3,
+    "9": 1,
+    "10": 4,
+    "11": 6,
+    "12": 9,
+    "14": 1,
+    "15": 4,
+    "17": 13,
+    "18": 2,
+    "19": 8,
+    "22": 3,
+    "23": 3,
+    "24": 4,
+    "25": 3
+  }
+}

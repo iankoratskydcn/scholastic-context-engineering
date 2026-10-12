@@ -1,0 +1,870 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.13.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>OpenITI - al-Raqmiyyāt</title>
+<meta name="description" content="The written Arabic heritage is as vast as it is understudied and underrepresented in the digital humanities. The sheer volume and diversity of the surviving works produced in Arabic in the premodern period makes this body of texts ideal for computational forms of analysis. Efforts to utilize these new digital forms of analysis, however, have been stymied by the lack of a reliable corpus. Started as OpenArabic, an effort within the Alexander von Humboldt Chair for Digital Humanities (Leipzig University) to create the first machine-actionable scholarly corpus of premodern Arabic texts, OpenITI is the next stage of development of the corpus of not only Arabic texts, but also texts in other languages of the Islamic world.">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="al-Raqmiyyāt">
+<meta property="og:title" content="OpenITI">
+<meta property="og:url" content="https://maximromanov.github.io/OpenITI/">
+
+
+  <meta property="og:description" content="The written Arabic heritage is as vast as it is understudied and underrepresented in the digital humanities. The sheer volume and diversity of the surviving works produced in Arabic in the premodern period makes this body of texts ideal for computational forms of analysis. Efforts to utilize these new digital forms of analysis, however, have been stymied by the lack of a reliable corpus. Started as OpenArabic, an effort within the Alexander von Humboldt Chair for Digital Humanities (Leipzig University) to create the first machine-actionable scholarly corpus of premodern Arabic texts, OpenITI is the next stage of development of the corpus of not only Arabic texts, but also texts in other languages of the Islamic world.">
+
+
+
+  <meta property="og:image" content="https://maximromanov.github.io/images/covers/14759u.jpg">
+
+
+
+  <meta name="twitter:site" content="@maximromanov">
+  <meta name="twitter:title" content="OpenITI">
+  <meta name="twitter:description" content="The written Arabic heritage is as vast as it is understudied and underrepresented in the digital humanities. The sheer volume and diversity of the surviving works produced in Arabic in the premodern period makes this body of texts ideal for computational forms of analysis. Efforts to utilize these new digital forms of analysis, however, have been stymied by the lack of a reliable corpus. Started as OpenArabic, an effort within the Alexander von Humboldt Chair for Digital Humanities (Leipzig University) to create the first machine-actionable scholarly corpus of premodern Arabic texts, OpenITI is the next stage of development of the corpus of not only Arabic texts, but also texts in other languages of the Islamic world.">
+  <meta name="twitter:url" content="https://maximromanov.github.io/OpenITI/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://maximromanov.github.io/images/covers/14759u.jpg">
+  
+
+  
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://maximromanov.github.io/OpenITI/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Maxim Romanov",
+      "url": "https://maximromanov.github.io",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="al-Raqmiyyāt Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<style>
+
+@font-face {
+    font-family: "Brill";
+    src: url("/fonts/BrillBold.woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Brill";
+    src: url("/fonts/BrillItalic.woff");
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: "Brill";
+    src: url("/fonts/BrillBoldItalic.woff");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Brill";
+    src: url("/fonts/BrillRoman.woff");
+}
+
+@font-face {
+    font-family: "Brill";
+    src: url("/fonts/Baskerville.ttc");
+}
+
+@import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+
+.arabic{
+  font-family: 'Amiri', 'Geeza Pro', 'Courier New', 'Arial', 'LateefRegular';
+  line-height: 1.5;
+  margin: 30px 0;
+  direction: rtl;
+}
+
+</style>
+
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">al-Raqmiyyāt</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/index.html" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://eis1600.github.io/" >EIS1600</a>
+            </li><li class="masthead__menu-item">
+              <a href="/althurayya/" ><i>al-Ṯurayyā</i></a>
+            </li><li class="masthead__menu-item">
+              <a href="/OpenITI/" >OpenITI</a>
+            </li><li class="masthead__menu-item">
+              <a href="http://kitab-project.org/" >KITAB</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/covers/14759u.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          OpenITI
+
+        
+      </h1>
+      
+        <p class="page__lead">The written Arabic heritage is as vast as it is understudied and underrepresented in the digital humanities. The sheer volume and diversity of the surviving works produced in Arabic in the premodern period makes this body of texts ideal for computational forms of analysis. Efforts to utilize these new digital forms of analysis, however, have been stymied by the lack of a reliable corpus. Started as <strong>OpenArabic</strong>, an effort within the Alexander von Humboldt Chair for Digital Humanities (Leipzig University) to create the first machine-actionable scholarly corpus of premodern Arabic texts, <strong>OpenITI</strong> is the next stage of development of the corpus of not only Arabic texts, but also texts in other languages of the Islamic world.
+</p>
+      
+      
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption"><strong>Photo credit</strong>: Egyptian camel transport passing over Olivet, 1918. <em>Library of Congress</em>, <a href="http://hdl.loc.gov/loc.pnp/matpc.14759"><em>LC-DIG-matpc-14759</em></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/personal/RM_600.png" alt="Maxim Romanov" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Maxim Romanov</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Maxim Romanov’s research focuses on the social history of the premodern Islamic world, the history of the Arabic written tradition, and computational methods and approaches relevant for Islamicate studies. Until recently, he held a joint position as a senior research fellow at the KITAB Project (AKU-ISMC, London) and as a Universitätsassistent of Digital Humanities (University of Vienna). Currently, at the University of Hamburg, he is leading a research project titled “The Evolution of Islamic Societies (c.600-1600 CE): Algorithmic Analysis into Social History”, which is funded by the German Research Foundation (DFG) within the framework of the Emmy Noether Program.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Hamburg, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:romanov.maxim@gmail.com"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://alraqmiyyat.github.io"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+            <li><a href="https://twitter.com/maximromanov"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/maximromanov/"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="OpenITI">
+    <meta itemprop="description" content="The written Arabic heritage is as vast as it is understudied and underrepresented in the digital humanities. The sheer volume and diversity of the surviving works produced in Arabic in the premodern period makes this body of texts ideal for computational forms of analysis. Efforts to utilize these new digital forms of analysis, however, have been stymied by the lack of a reliable corpus. Started as OpenArabic, an effort within the Alexander von Humboldt Chair for Digital Humanities (Leipzig University) to create the first machine-actionable scholarly corpus of premodern Arabic texts, OpenITI is the next stage of development of the corpus of not only Arabic texts, but also texts in other languages of the Islamic world.">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fas fa-gears"></i> Table of Contents</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#general-description" id="markdown-toc-general-description">General Description</a></li>
+  <li><a href="#the-overall-organization-of-openiti" id="markdown-toc-the-overall-organization-of-openiti">The overall organization of <strong>OpenITI</strong></a>    <ul>
+      <li><a href="#repositories-and-folder-structure" id="markdown-toc-repositories-and-folder-structure">Repositories and Folder Structure</a></li>
+      <li><a href="#cts-compliant-naming-pattern" id="markdown-toc-cts-compliant-naming-pattern">CTS-compliant naming pattern</a></li>
+      <li><a href="#a-note-on-the-principles-of-assigning-human-readable-uris" id="markdown-toc-a-note-on-the-principles-of-assigning-human-readable-uris">A note on the principles of assigning human-readable <code class="language-plaintext highlighter-rouge">URIs</code></a></li>
+      <li><a href="#file-extensions" id="markdown-toc-file-extensions">File extensions</a></li>
+    </ul>
+  </li>
+  <li><a href="#machine-readable-metadata-files-yml" id="markdown-toc-machine-readable-metadata-files-yml">Machine-readable metadata files (<code class="language-plaintext highlighter-rouge">*.yml</code>)</a></li>
+  <li><a href="#statistics-on-the-corpus" id="markdown-toc-statistics-on-the-corpus">Statistics on the corpus</a></li>
+  <li><a href="#lengths-of-texts" id="markdown-toc-lengths-of-texts">Lengths of texts</a></li>
+  <li><a href="#chronological-distribution-of-texts" id="markdown-toc-chronological-distribution-of-texts">Chronological Distribution of Texts</a></li>
+  <li><a href="#detailed-lists" id="markdown-toc-detailed-lists">Detailed Lists</a></li>
+  <li><a href="#preliminary-analysis-of-categories-of-texts" id="markdown-toc-preliminary-analysis-of-categories-of-texts">Preliminary Analysis of Categories of Texts</a></li>
+</ul>
+
+  </nav>
+</aside>
+
+<p><strong>Important</strong>: You can find the most recent information on both the OpenITI and the OpenITI mARkdown at the website of the KITAB project: <a href="http://kitab-project.org/corpus-and-data">http://kitab-project.org/corpus-and-data</a>. Information below is of value mainly as a record on the history of the OpenITI initiative.</p>
+
+<ul>
+  <li>Description of the OpenITI: <a href="https://maximromanov.github.io/OpenITI/">https://maximromanov.github.io/OpenITI/</a></li>
+  <li>Description of the OpenITI mARkdown (the earliest stable version): <a href="https://maximromanov.github.io/mARkdown/">https://maximromanov.github.io/mARkdown/</a></li>
+</ul>
+
+<p><em>Open Islamicate Texts Initiative</em> (<strong>OpenITI</strong>) is a multi-institutional effort to construct the first machine-actionable scholarly corpus of premodern Islamicate texts. Led by researchers at the Aga Khan University (AKU), University of Vienna/Leipzig University (LU), and the Roshan Institute for Persian Studies at the University of Maryland (College Park) and an interdisciplinary advisory board of leading digital humanists and Islamic, Persian, and Arabic studies scholars, <strong>OpenITI</strong> aims to provide the essential textual infrastructure in Persian and Arabic for new forms of macro textual analysis and digital scholarship. In the process, <strong>OpenITI</strong> will enable new synergies between Digital Humanities and the inter-related Islamicate fields of Islamic, Persian, and Arabic Studies.</p>
+
+<p>Currently, <strong>OpenITI</strong> contains almost exclusively Arabic texts, which were put together into a corpus within the <strong>OpenArabic</strong> project, which was developed first at Tufts University (at <em>The Perseus Project</em>, 2013–2015) and then at Leipzig University (at the Alexander von Humboldt Chair for Digital Humanities, 2015–2017), in both cased with the support and under the patronage of Prof. Gregory Crane.</p>
+
+<h2 id="general-description">General Description</h2>
+
+<p>The goal of OpenArabic is to build a machine-actionable corpus of premodern texts in Arabic to encourage computational analysis of the Arabic literary tradition.  Most of the texts have been collected from open-access online collections of premodern and modern Arabic texts such as <a href="http://shamela.ws/">http://shamela.ws/</a> and <a href="http://shiaonlinelibrary.com/">http://shiaonlinelibrary.com/</a> (These texts have <code class="language-plaintext highlighter-rouge">Shamela+NUMBER</code> and <code class="language-plaintext highlighter-rouge">Shia+NUMBER</code>; some texts are coming from <em>al-Jāmiʿ al-kabīr</em>, which has been published on an external HDD and is not available online (<code class="language-plaintext highlighter-rouge">JK+NUMBER</code>). Initial metadata from these collections is preserved at the beginning of each file.</p>
+
+<p>Currently uploaded texts have been automatically converted  into the <code class="language-plaintext highlighter-rouge">OpenITI mARkdown</code> format—a flavor of <code class="language-plaintext highlighter-rouge">markdown</code> that was developed for tagging premodern Arabic text. All of our texts require further editing to properly tag their structures. A detailed description of the <code class="language-plaintext highlighter-rouge">mARkdown</code> scheme and the tagging workflow can be found in the <a href="../mARkdown/"><strong>OpenITI mARkdown section</strong></a>. When manual tagging is complete the texts will be converted into a CTS-compliant XML format.</p>
+
+<p>For the list of books currently included in the corpus, see below.</p>
+
+<h1 id="the-overall-organization-of-openiti">The overall organization of <strong>OpenITI</strong></h1>
+
+<p>The corpus is available on GitHub (<a href="https://github.com/OpenITI">https://github.com/OpenITI</a>). <code class="language-plaintext highlighter-rouge">Books</code> are grouped into <code class="language-plaintext highlighter-rouge">authors</code>. All authors are grouped into 25 AH periods, based on the year of their death. These repositories are the main working loci—if any modifications are to be added or made to texts or metadata, all has to be done in files in these folders.</p>
+
+<p>There are three types of text repositories:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">RAWrabicaXXXXXX</code> repositories include <em>raw</em> texts as they were collected from various open-access online repositories and libraries. These texts are in their initial (<em>raw</em>) format and require reformatting and further integration into OpenITI. The overall current number of text files is over 40,000; slightly over 7,000 have been integrated into OpenITI.</li>
+  <li><code class="language-plaintext highlighter-rouge">XXXXAH</code> are the main working folders that include integrated texts (all coming from collections included into <code class="language-plaintext highlighter-rouge">RAWrabicaXXXXXX</code> repositories).</li>
+  <li><code class="language-plaintext highlighter-rouge">i.xxxxx</code> repositories are <em>instantiations</em> of the OpenITI corpus adapted for specific forms of analysis. At the moment, these include the following instantiations  (<em>in progress</em>):
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">i.cex</code> with all texts split mechanically into 300 word units, converted into <code class="language-plaintext highlighter-rouge">cex</code> format.</li>
+      <li><code class="language-plaintext highlighter-rouge">i.mech</code> with all texts split mechanically into 300 word units.</li>
+      <li><code class="language-plaintext highlighter-rouge">i.logic</code> with all texts split into logical units (chapters, sections, etc.); only tagged texts are included here (~130 texts at the moment).</li>
+      <li><code class="language-plaintext highlighter-rouge">i.passim_new_mech</code> with all texts split mechanically into 300 word units, converted for the use with new <code class="language-plaintext highlighter-rouge">passim</code> (JSON).</li>
+      <li>[<em>not created yet</em>] <code class="language-plaintext highlighter-rouge">i.passim_new_mech_cluster</code> with all text split mechanically into 900 word units (3 milestones) with 300 word overlap; converted for the use with new <code class="language-plaintext highlighter-rouge">passim</code> (JSON).</li>
+      <li><code class="language-plaintext highlighter-rouge">i.passim_old_mech</code> with all texts split mechanically into 300 word units, converted for the use with old <code class="language-plaintext highlighter-rouge">passim</code> (XML, gzipped).</li>
+      <li><code class="language-plaintext highlighter-rouge">i.stylo</code> includes all texts from OpenITI (duplicates excluded) that are renamed and slightly reformatted (Arabic orthography is simplified) for the use with <code class="language-plaintext highlighter-rouge">stylo</code> R-package.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="repositories-and-folder-structure">Repositories and Folder Structure</h2>
+
+<p><strong>OpenITI</strong> corpus is organized in compliance with CTS guidelines as they are implemented in the <em>CapiTainS Suite</em>, developed by Bridget Almas and Thibault Clérice at Tufts University and Leipzig University (<a href="http://capitains.org/">http://capitains.org/</a>), although the conversion into TEI XML is yet to be implemented. The entire corpus is divided into a series of repositories. Each repository covers a chronological period of 25AH lunar years: 1) the main folder within each repository is <code class="language-plaintext highlighter-rouge">data</code>, which contains subfolders for each author who died within a given period; 2) each author’s subfolder includes subfolders for this author’s books (often in multiple versions). For example, the repository <code class="language-plaintext highlighter-rouge">0525AH</code> includes authors whose death dates fall in the range of 501–525 AH). Below is an example of how al-Ġazālī’s <em>Iḥyāʾ ʿulūm al-dīn</em> fits into the corpus.</p>
+
+<figure class="fit">
+	<a href="https://maximromanov.github.io/images/mARkdown/mARkdown00c.png" title="">
+	<img src="https://maximromanov.github.io/images/mARkdown/mARkdown00c.png" />
+	</a>
+	<figcaption>
+		<b>CTS-Compliant Folder Structure:</b> Versions of al-Ġazālī’s <i>Iḥyāʾ ʿulūm al-dīn</i> incorporated into the repository <i>0525AH</i> within <i>OpenITI</i>.
+	</figcaption>
+</figure>
+
+<p>From this example, you can see that the repository <code class="language-plaintext highlighter-rouge">0525AH</code> includes a subfolder <code class="language-plaintext highlighter-rouge">data</code>, which includes a subfolder with al-Ġazālī’s URI, <code class="language-plaintext highlighter-rouge">0505Ghazali</code>, which then includes a subfolder with <em>Iḥyāʾ ʿulūm al-dīn</em> URI (<em>uniform resource identifier</em>), <code class="language-plaintext highlighter-rouge">0505Ghazali.IhyaCulumDin</code>, which then includes all the relevant files. <em>NB:</em> <code class="language-plaintext highlighter-rouge">README.md</code> files contain some technical descriptions for a relevant level; <code class="language-plaintext highlighter-rouge">*.yml</code> files contain machine-readable metadata (On these metadata files see below).</p>
+
+<h2 id="cts-compliant-naming-pattern">CTS-compliant naming pattern</h2>
+
+<figure class="fit">
+	<a href="https://maximromanov.github.io/images/mARkdown/mARkdown00a.png" title="">
+	<img src="https://maximromanov.github.io/images/mARkdown/mARkdown00a.png" />
+	</a>
+	<figcaption>
+		<b>CTS URN Structure</b>.
+	</figcaption>
+</figure>
+
+<p><em>Canonical Text Services</em>, or <em>CTS</em>, offer a powerful mechanism for building expandable and interoperable corpora. The power of the CTS lies in the <code class="language-plaintext highlighter-rouge">URN</code>, a <em>uniform resource name</em> (also <code class="language-plaintext highlighter-rouge">URI</code>, <em>unique resource identifier</em>), which <em>provide the permanent canonical references to texts or passages of text, and are used by Canonical Text Services (CTS) to identify or retrieve passages of text</em> (For an overview, see <a href="http://www.homermultitext.org/hmt-doc/cite/texts/ctsoverview.html"><em>CTS Overview</em></a>). The example of the CTS URN structure is provided above.</p>
+
+<figure class="fit">
+	<a href="https://maximromanov.github.io/images/mARkdown/mARkdown00b.png" title="">
+	<img src="https://maximromanov.github.io/images/mARkdown/mARkdown00b.png" />
+	</a>
+	<figcaption>
+		<b>CTS URN Structure:</b> al-Ḏahabī’s <i>Taʾrīḫ al-islām</i>.
+	</figcaption>
+</figure>
+
+<p>To make this example more understandable in the context of <strong>OpenITI</strong>, let’s take a look at a practical example of al-Ḏahabī’s <em>Taʾrīḫ al-islām</em> above.  In the example above we have the following:</p>
+
+<ul>
+  <li><strong>1:</strong> <em>Namespaces</em> are standard technical parameters from the CTS URN structure which, among other things, allow building and maintaining multilingual corpora.</li>
+  <li><strong>2:</strong> <em>AuthorID</em> is the unique identifier for an author, In our case,  <code class="language-plaintext highlighter-rouge">0748Dhahabi</code> is the identifier for Šams al-dīn al-Ḏahabī, a famous Damascene <em>muḥaddiṯ</em> and historian, who died in 748/1347.</li>
+  <li><strong>3:</strong> <em>BookID</em> is an element that identifies a book (<em>book title</em>). Combined with the preceding elements, it becomes <strong>7:</strong> <em>Unique Work Identifier</em>.</li>
+  <li><strong>4:</strong> <em>VersionID</em> points to the origins of the specific version of a text and allows accommodating multiple versions of the same text; Combined with the preceding elements it becomes <strong>8:</strong> <em>Unique Edition Identifier</em>.</li>
+  <li><strong>5:</strong> <em>Lang</em> indicates the main language of the text (these are <code class="language-plaintext highlighter-rouge">ISO 639-2</code> codes, see <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php"><em>Codes for the Representation of Names of Languages</em></a> at the LOC website). <code class="language-plaintext highlighter-rouge">Lang</code> also allows to accommodate translations of a specific version of a text. For example, the URI <code class="language-plaintext highlighter-rouge">0748Dhahabi.TarikhIslam.Shamela0035100-eng1</code> would indicate an English translation of al-Ḏahabī’s <em>Taʾrīḫ al-islām</em>, which is based on the text represented with the URI in the example—<code class="language-plaintext highlighter-rouge">0748Dhahabi.TarikhIslam.Shamela0035100-ara1</code>; the number that follows the three-letter language code also allows to accommodate additional versioning. For example, the URI <code class="language-plaintext highlighter-rouge">0748Dhahabi.TarikhIslam.Shamela0035100-eng2</code> would represent another translation of <code class="language-plaintext highlighter-rouge">0748Dhahabi.TarikhIslam.Shamela0035100-ara1</code>. Combined with the preceding elements, it becomes <strong>9:</strong> <em>Unique Version Identifier</em>.</li>
+  <li><strong>6:</strong> <em>Passage</em> is the ID of a specific text unit (like a chapter, a biography, a paragraph, etc.). Combined with the preceding elements, it becomes <strong>10:</strong> <em>Unique Passage Identifier</em>.</li>
+</ul>
+
+<h2 id="a-note-on-the-principles-of-assigning-human-readable-uris">A note on the principles of assigning human-readable <code class="language-plaintext highlighter-rouge">URIs</code></h2>
+
+<p>Unlike conventional URIs, <strong>OpenITI</strong> URIs are human-readable and though some would argue that such naming conventions may cause issues, the advantages of having human-readable URIs—at least at this stage of the development of <strong>OpenITI</strong>—significantly overweight any potential issues. The following principles were followed during the assignment of human-readable <code class="language-plaintext highlighter-rouge">URIs</code> (only elements <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, and <code class="language-plaintext highlighter-rouge">4</code>):</p>
+
+<ul>
+  <li>
+    <p><strong>[2]</strong> As a rule, <em>AuthorID</em> is formed by combining (a) the <em>hijrī</em> year of death  formatted into a 4-digit number (prepended with <code class="language-plaintext highlighter-rouge">0</code>s, if necessary) and (b) the <em>šuhraŧ</em> of the author, since this is usually the most recognizable element of any author’s name. The year of death in the <em>AuthorID</em> does not have to be exact, if any controversy exists. Even an approximate date will suffice, since it will allow to arrange texts chronologically. Any issues regarding the year death can described in the metadata files (<code class="language-plaintext highlighter-rouge">*.yml</code>).</p>
+  </li>
+  <li>
+    <p><strong>[3]</strong> The <em>BookID</em> is usually formed from one or two recognizable keywords from the title.</p>
+  </li>
+  <li>
+    <p><strong>[4]</strong> The <em>VersionID</em> is formed by combining the <code class="language-plaintext highlighter-rouge">name</code> of a digital library or collection from which the text originates with the unique number of this text in that collection. In cases when texts are provided by individuals or projects, the last name of the provider or the name of the project is used as <code class="language-plaintext highlighter-rouge">name</code>, while texts are numbers sequentially within the provided batch.</p>
+  </li>
+</ul>
+
+<p>Additionally, the following rules for coding names and book titles were followed:</p>
+
+<ul>
+  <li>The Library of Congress scheme is followed in its simplified version, omitting all diacritics so that only ASCII characters are used. Two most problematic Arabic letters are dealt with in the following manner: 1) <em>hamza</em>s are omitted to avoid using non-letter characters; 2) <em>ʿayn</em>s are transliterated with <code class="language-plaintext highlighter-rouge">c</code>, which is capitalized when appropriate (ʿAlī &gt; <code class="language-plaintext highlighter-rouge">Cali</code>; <em>Aʿyān al-šīʿaŧ</em> &gt; <code class="language-plaintext highlighter-rouge">AcyanShica</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">b.</code> part of a name is written in full and capitalized: ʿAlī b. Abī Ṭālib &gt; <code class="language-plaintext highlighter-rouge">CaliIbnAbiTalib</code>.</li>
+  <li>Although an effort was made to use <em>šuhra</em>s for <em>AuthorID</em>s, in cases when it was not possible, the following formula was followed: <em>Ibn</em> + <em>Ism Abī-hi</em> + <em>Nisbaŧ</em> (these were the onomastic elements most commonly available in the metadata).</li>
+  <li>The word <em>kitāb</em> is dropped from the titles, unless it is the major keyword, like in the case of, for example,  Sibawayhi’s <em>Kitāb</em>, whose unique identifier is <code class="language-plaintext highlighter-rouge">0180Sibawayh.KitabSibawayh</code>.</li>
+  <li>Definite articles are dropped everywhere: <em>Tārīḫ al-islām</em> &gt; <code class="language-plaintext highlighter-rouge">TarikhIslam</code>.</li>
+  <li>Parts of the same entities are written together, in camelcase. In other words, there are no spaces between words, but each word is capitalized: <code class="language-plaintext highlighter-rouge">al-Nāsiḫ wa-l-Mansūḫ</code> &gt; <code class="language-plaintext highlighter-rouge">NasikhWaMansukh</code>.</li>
+  <li><strong>NB:</strong> In the beginning, <em>tāʾ marbūṭaŧ</em>s were dropped throughout, but later transliterated only in <em>iḍāfa</em>s; still fixing that issue…</li>
+</ul>
+
+<h2 id="file-extensions">File extensions</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">[no extension]</code> : This is a RAW file, automatically converted from its initial format to be as close to the <strong>OpenITI mARkdown</strong> format as possible. <strong>NB:</strong> Since the corpus is work in progress and many texts have not yet been manually edited, tags that may appear in texts do not necessarily correspond to proper <strong>OpenITI mARkdown</strong> tags!</li>
+  <li><code class="language-plaintext highlighter-rouge">*.inProgress</code> :  The file has been selected to be fully converted into <strong>OpenITI mARkdown</strong> and is currently <code class="language-plaintext highlighter-rouge">in progress</code> of being converted (<code class="language-plaintext highlighter-rouge">github</code> log contains the username of the person who is working on the file).</li>
+  <li><code class="language-plaintext highlighter-rouge">*.completed</code> : The conversion of the file is completed, but the file still requires final verification and vetting.</li>
+  <li><code class="language-plaintext highlighter-rouge">*.mARkdown</code> : The file has been verified and vetted. This version should also have expanded tags and numeric IDs assigned to each logical unit.</li>
+</ul>
+
+<p>In the long run we are envisioning the entire corpus to be converted into <code class="language-plaintext highlighter-rouge">TEI XML</code> and becoming available as a library for researchers through some XML-based library framework.</p>
+
+<h1 id="machine-readable-metadata-files-yml">Machine-readable metadata files (<code class="language-plaintext highlighter-rouge">*.yml</code>)</h1>
+
+<p><em>Description to be added…</em></p>
+
+<h1 id="statistics-on-the-corpus">Statistics on the corpus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"><strong>Category</strong></th>
+      <th style="text-align: right"><strong>Stats</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Number of text files</td>
+      <td style="text-align: right">7071</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Number of books</td>
+      <td style="text-align: right">4286</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Number of authors</td>
+      <td style="text-align: right">1857</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Length in words (all)</td>
+      <td style="text-align: right">1,346,418,237</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Length in pages (300 w/p)</td>
+      <td style="text-align: right">4,488,060</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Length in words (unique)</td>
+      <td style="text-align: right">745,390,461</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Length in pages (300 w/p)</td>
+      <td style="text-align: right">2,484,634</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="lengths-of-texts">Lengths of texts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: right">Words</th>
+      <th style="text-align: right">Pages (300 w/p)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><em>Min.</em></td>
+      <td style="text-align: right">150</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>1st Qu.</em></td>
+      <td style="text-align: right">32,700</td>
+      <td style="text-align: right">109</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>Median</em></td>
+      <td style="text-align: right">105,300</td>
+      <td style="text-align: right">351</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>Mean</em></td>
+      <td style="text-align: right">306,700</td>
+      <td style="text-align: right">1,022</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>3rd Qu.</em></td>
+      <td style="text-align: right">266,700</td>
+      <td style="text-align: right">889</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><em>Max.</em></td>
+      <td style="text-align: right">10,410,000</td>
+      <td style="text-align: right">34,700</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="chronological-distribution-of-texts">Chronological Distribution of Texts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: right">Century CE</th>
+      <th style="text-align: right">Titles</th>
+      <th style="text-align: right">Words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[</code></td>
+      <td style="text-align: right"><em>7th century</em></td>
+      <td style="text-align: right">33 titles</td>
+      <td style="text-align: right">670,7 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][]</code></td>
+      <td style="text-align: right"><em>8th century</em></td>
+      <td style="text-align: right">87 titles</td>
+      <td style="text-align: right">6,1 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][]</code></td>
+      <td style="text-align: right"><em>9th century</em></td>
+      <td style="text-align: right">509 titles</td>
+      <td style="text-align: right">31,7 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][][][]</code></td>
+      <td style="text-align: right"><em>10th century</em></td>
+      <td style="text-align: right">674 titles</td>
+      <td style="text-align: right">60,0 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][][][][][][</code></td>
+      <td style="text-align: right"><em>11th century</em></td>
+      <td style="text-align: right">691 titles</td>
+      <td style="text-align: right">71,2 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][]</code></td>
+      <td style="text-align: right"><em>12th century</em></td>
+      <td style="text-align: right">464 titles</td>
+      <td style="text-align: right">53,2 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][][][]</code></td>
+      <td style="text-align: right"><em>13th century</em></td>
+      <td style="text-align: right">448 titles</td>
+      <td style="text-align: right">59,7 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][][][][][][][][][][][][]</code></td>
+      <td style="text-align: right"><em>14th century</em></td>
+      <td style="text-align: right">578 titles</td>
+      <td style="text-align: right">96,8 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][][][][][][][</code></td>
+      <td style="text-align: right"><em>15th century</em></td>
+      <td style="text-align: right">328 titles</td>
+      <td style="text-align: right">72,9 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][][][]</code></td>
+      <td style="text-align: right"><em>16th century</em></td>
+      <td style="text-align: right">251 titles</td>
+      <td style="text-align: right">59,9 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][]</code></td>
+      <td style="text-align: right"><em>17th century</em></td>
+      <td style="text-align: right">160 titles</td>
+      <td style="text-align: right">53,5 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][</code></td>
+      <td style="text-align: right"><em>18th century</em></td>
+      <td style="text-align: right">151 titles</td>
+      <td style="text-align: right">33,8 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][][][][][][][][][][][][</code></td>
+      <td style="text-align: right"><em>19th century</em></td>
+      <td style="text-align: right">202 titles</td>
+      <td style="text-align: right">61,2 mln. words</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[][][][][</code></td>
+      <td style="text-align: right"><em>20th century</em></td>
+      <td style="text-align: right">129 titles</td>
+      <td style="text-align: right">16,8 mln. words</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="detailed-lists">Detailed Lists</h1>
+
+<ul>
+  <li><a href="../OpenITI_books_by_centuries/">The list of books by centuries</a></li>
+  <li><a href="../OpenITI_books_by_length/">The list of books by lengths</a></li>
+  <li><a href="../OpenITI_books_by_tags/">Forms, Themes, Genres (provisional assessment)</a></li>
+</ul>
+
+<h1 id="preliminary-analysis-of-categories-of-texts">Preliminary Analysis of Categories of Texts</h1>
+
+<p>The following is based on temporary tags derived from <em>The Coverage of the Arabic Collection</em>, in Sections: “Chronological Distribution of Texts” and <a href="../OpenITI_books_by_tags/">“Forms, Themes, Genres (provisional assessment)”</a>. Descriptive statistics numbers for “Forms, Themes, Genres (provisional assessment)” are overlapping as most books belong to multiple forms/genres/categories, and often cover multiple themes. At the moment we have almost 4,300 unique Arabic texts in the corpus. This selection of texts covers most thoroughly the period from the 9th till 16th century CE (250–700 titles and 30–90 million words per century), but also offers a decent coverage of 7th–8th and 17th–early 20th centuries. Based on our provisional assessment of this collection using metadata that we were able to gather together with texts, the thematic coverage is quite broad broad and includes all major genres that flourished in the Arabic-Islamic written tradition:</p>
+
+<ul>
+  <li>The broad category of “fine literature”/belles-lettres (<em>adab</em>) includes ca. 600 texts, with over 50 million words; its subcategories—also quite broadly defined—cover such areas as “ethics,” (<em>aḫlāq</em>)—204 titles, with 12 million words; rhetoric (<em>balāġaŧ</em>)—357 texts, with 33,3 million words; poetic theory, or “science of versification” (<em>ʿarūḍ</em>)—9 texts, with 1,9 million words; poetic collections (<em>šiʿr</em>)—196 texts with 8,6 million words (collections of poetry, <em>dīwān</em>s, cover all major historical periods/regions: pre-Islamic, early Islamic, Umayyad, ʿAbbāsid, Andalusi, ʿUṯmānī/Ottoman); collections of sayings and proverbs (<em>amṯāl</em>)—15 texts, with 1,3 million words;</li>
+  <li>Geographical texts and travelogues: general geographies (<em>buldān</em>/<em>juġrafīyaŧ</em>)—152 texts, with 32,7 million words; travelogues (<em>riḥlāt</em>)—70 texts, 7,9 million words;</li>
+  <li>Historical texts and chronicles (<em>tawāriḫ</em>)—310 texts, 74,4 million words;</li>
+  <li>Biographical texts and collections of biographies (<em>siyar</em>, <em>tarājim</em> and <em>ṭabaqāt</em>)—768 texts, with 151 million words;</li>
+  <li>Administrative practice (<em>ṣināʿaŧ al-kitābaŧ</em>)—9 texts, 1,9 million words; and governance (<em>siyāsaŧ</em>)—66 texts, with 5,2 million words;</li>
+  <li>Genealogical texts (<em>ansāb</em>)—36 texts, with 5,7 million words;</li>
+  <li><em>Islamic religious texts I.</em> The Qurʾān and Qurʾānic sciences, which include: exegesis (<em>tafsīr</em>)—207 texts, 84 million words; <em>qiraʾāt</em>, recitations—29 texts, 2,4 million words; <em>tajwīd</em>, “art of recitation”—16 texts, 1,4 million words;</li>
+  <li><em>Islamic religious texts II.</em>—Tradition and traditionalist sciences (<em>ḥadīṯ</em>); collections of <em>ḥadīṯs</em>—1,970 texts, 226 million words; collections of reliable transmitters (<em>ṯiqāt</em>)—13 texts, 3,3 million words; “analysis of sources” (<em>taḫrīj</em>)—77 texts, 25,3 million words;</li>
+  <li><em>Islamic religious texts IIIa.</em> Islamic law and legal sciences: legal theory (<em>fiqh</em>)—776 texts, with 255 million words; collections of legal decisions (<em>fatāwá</em>)—31 text, with 6,7 million words; <em>IIIb.</em> Teachings of different legal schools: Ḥanafīs—52 texts, 28 million words; Mālikīs—44 texts, 25 million words; Šāfiʿīs—67 texts, 46,3 words; Ḥanbalīs—55 texts, 19 million words; Jaʿfarīs (“Twelvers”)—…; Ẓāhirīs—1 text, 1,5 million words; Zaydīs—3 texts, 1,5 million words;</li>
+  <li><em>Islamic religious texts IV.</em> Theological treatises and dogmatics (<em>ʿaqāʾid</em>): 519 texts, 28,2 million words;</li>
+  <li>Doxographical texts: “religious communities” (<em>milal</em>)—230 texts, 12,7 million words; “religious divisions” (<em>firaq</em>)—19 texts, 2 million words; refutations (<em>rudūd</em>)—65 texts, 4,1 million words;</li>
+  <li>Medical texts (<em>ṭibb</em>), including both Greek and Islamic traditions—77 texts, with 5,2 million words; (<strong>NB</strong>: Including a collection of texts prepared by Professor Peter Pormann and his team at U Manchester within the “Arabic Commentaries on the Hippocratic Aphorisms” project—64 texts, with <em>ca.</em> 1 million words);</li>
+  <li>Texts by smaller religious communities: Twelver Shiʿites—448 texts, 107 million words; Zaydī Shiʿites—5 texts, <em>ca.</em> 85,000 words); Ṣūfī texts—9 texts, 2,4 million words;</li>
+  <li>Greek/Hellenistic tradition—altogether 150 texts, with 2,4 million words, including philosophical (<em>falsafaŧ</em>) and natural sciences texts—93 texts, 4,9 million words (<strong>NB</strong>: Including texts from “A Digital Corpus for Graeco-Arabic Studies” (<a href="http://www.graeco-arabic-studies.org/">http://www.graeco-arabic-studies.org/</a>), whose Arabic section includes 77 texts, with <em>ca.</em> 1 million words);</li>
+  <li>Bibliographical texts and collections (<em>fahāris</em>)—54 texts, with 8,2 million words;</li>
+  <li>Arabic language: grammar (<em>naḥw</em>)—143 texts, with 19 million words; morphology (<em>ṣarf</em>)—143 texts, 19 million words; lexicons of rare words (<em>ġarīb</em>)—126 texts, with 28 million words;</li>
+  <li>Early modern journals (<em>majallaŧ</em>): 8 texts, 9,9 million words;</li>
+  <li>Memoires (<em>muḏakkarāt</em>)—11 texts, <em>ca.</em> 1 million words;</li>
+  <li>Reference books of different kind: technical terminology of various disciplines (<em>muṣṭalaḥāt</em>)—224 texts, 31,9 million words;</li>
+</ul>
+
+<p><strong>NB</strong>: These categories based on the currently available metadata; creating detailed metadata on authors and their books, by the end of the project we will provide a very detailed and precise description of the coverage of this collection.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Maxim Romanov. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://maximromanov.github.io/OpenITI/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = ""; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://alraqmiyyat.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+  </body>
+</html>

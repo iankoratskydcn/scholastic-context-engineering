@@ -1,0 +1,123 @@
+{
+  "perspective": "Adversarial verification of role-based visibility, edit authority, and sensitive-data boundaries across Mayra, Laura/HR, Finance/Daisy, faculty, students, Box, FAST, Oracle, and derived workflow proposals.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "AB-01",
+      "claim": "Finance reconciliation data is restricted to Finance; Mayra and Laura do not currently have access.",
+      "status": "interview_fact",
+      "evidence": ["Call with Daisy Matos.docx:517-524", "daisy_finance_stage.md:12-14"],
+      "risk": "High: the proposed app cannot expose reconciliation, active-grant, startup, or distribution data to all users without violating the stated sensitivity boundary.",
+      "recommendation": "Make Finance data a separately authorized scope; default-deny Mayra/Laura and require explicit Finance grants for each sensitive dataset."
+    },
+    {
+      "id": "AB-02",
+      "claim": "The proposal that everybody can see everything while only some users can edit conflicts with the interview-stated Finance restriction.",
+      "status": "contradiction_between_design_proposal_and_interview_fact",
+      "evidence": ["Call with Daisy Matos.docx:529-539", "Call with Daisy Matos.docx:517-524"],
+      "risk": "Critical: read access alone would disclose sensitive reconciliation, grant, salary-distribution, and startup information.",
+      "recommendation": "Reject universal visibility. Define field- and dataset-level read scopes before implementation; edit controls are insufficient."
+    },
+    {
+      "id": "AB-03",
+      "claim": "Mayra owns intake/new-entry work, but should not edit Laura's HR/Oracle workflow statuses; Laura explicitly needs to see and act on those statuses.",
+      "status": "corroborated_interview_fact",
+      "evidence": ["Call with Mayra Morfin (1).docx:207-226", "Call with Mayra Morfin (1).docx:337-352", "HR App (1).docx:96-103", "HR App (1).docx:1092-1117"],
+      "risk": "High: unrestricted status editing could falsely signal screening, signature, Oracle entry, approval, or verification completion.",
+      "recommendation": "Permit Mayra to create/prepare intake and submit change requests; restrict Laura/authorized HR users to HR workflow and Oracle-status mutations; preserve append-only history."
+    },
+    {
+      "id": "AB-04",
+      "claim": "Laura and an HR colleague currently share operational visibility and can perform overlapping HR tracking work, but the exact delegated edit boundary is not specified.",
+      "status": "partially_proven",
+      "evidence": ["HR App (1).docx:89-103", "HR App (1).docx:180-186"],
+      "risk": "Medium: two-person collaboration without named permissions, actor attribution, or separation of duties weakens auditability.",
+      "recommendation": "Model named HR roles, record actor/time/reason for every transition, and specify whether the colleague may initiate screening, send DocuSign, enter Oracle, verify, or only assist."
+    },
+    {
+      "id": "AB-05",
+      "claim": "Students' address, date of birth, gender, and phone are required for new-hire pending-worker processing, but transcript evidence does not establish who may view or edit those fields in the app.",
+      "status": "missing_boundary",
+      "evidence": ["HR App (1).docx:405-427", "HR App (1).docx:569-578", "mayra_student_hiring_flow.md:56-57"],
+      "risk": "Critical: unnecessary exposure of student PII to Mayra, Finance, faculty, or broad app users; unclear source-of-truth and correction authority.",
+      "recommendation": "Define least-privilege PII fields and masking, restrict raw PII to authorized HR/pending-worker handlers, and keep Finance/faculty views to required derived fields."
+    },
+    {
+      "id": "AB-06",
+      "claim": "Oracle edit and verification authority is held by Laura/HR in the described workflow; Mayra expressly lacks Oracle access. Finance Oracle costing authority is described but not mapped to named users.",
+      "status": "partially_proven",
+      "evidence": ["HR App (1).docx:561-587", "Call with Mayra Morfin (1).docx:337-352", "daisy_finance_stage.md:23-28", "Call with Daisy Matos.docx:1025-1049"],
+      "risk": "High: combining appointment edits, HR verification, and Finance costing could permit unauthorized payroll-impacting changes.",
+      "recommendation": "Separate appointment/HR mutations from Finance chartfield and costing mutations; document Oracle roles, approval gates, and whether app writes are authoritative or merely staging."
+    },
+    {
+      "id": "AB-07",
+      "claim": "FAST/Box access and integration are not established as current system capabilities; Daisy identifies Finance-owned Box data and possible FAST retrieval, while integration is discussed as future work.",
+      "status": "design_proposal_not_current_fact",
+      "evidence": ["Call with Daisy Matos.docx:294-311", "Call with Daisy Matos.docx:343-357", "daisy_finance_stage.md:12-14"],
+      "risk": "High: treating proposed connectors or shared folders as existing authorization could bypass Box/FAST controls or create unauthorized copies.",
+      "recommendation": "Do not claim or implement access until the data owner, connector identity, scopes, write/read direction, audit logging, and revocation process are approved."
+    },
+    {
+      "id": "AB-08",
+      "claim": "Finance needs selected HR offer-letter/startup information, but the proposed attachment-sharing boundary is unresolved.",
+      "status": "owner_decision_missing",
+      "evidence": ["Call with Daisy Matos.docx:546-585", "Call with Daisy Matos.docx:595-626"],
+      "risk": "High: offer letters contain salary and startup-package details; broad attachment access would disclose sensitive faculty compensation and financial commitments.",
+      "recommendation": "Define a Finance-specific projection or redacted attachment view; do not expose whole HR folders or unrestricted offer-letter files."
+    },
+    {
+      "id": "AB-09",
+      "claim": "Faculty/student requests may arrive through email, Teams, or directly to Laura/Daisy, but the stated operating rule is that Laura acts only on records in the spreadsheet/app; direct requester permissions are unresolved.",
+      "status": "interview_fact_with_unresolved_policy",
+      "evidence": ["HR App (1).docx:697-707", "HR App (1).docx:1092-1117", "student_hiring_pipeline.md:56-61"],
+      "risk": "Medium: bypass channels can cause unauthorized or unaudited changes, while forcing faculty into a future form is explicitly not current policy.",
+      "recommendation": "Keep faculty as request submitters, not direct editors of authoritative appointment records; route requests to Mayra/authorized HR and retain source correspondence or structured attestations."
+    },
+    {
+      "id": "AB-10",
+      "claim": "Mayra's confirmation is evidence for renewal/chartfield intent, but it is not established as authority to edit Finance reconciliation or approve payroll costing.",
+      "status": "boundary_required",
+      "evidence": ["Call with Mayra Morfin (1).docx:64-86", "Call with Mayra Morfin (1).docx:443-462", "daisy_finance_stage.md:17-28"],
+      "risk": "High: conflating intake confirmation with Finance approval could silently authorize wrong accounts or funded distributions.",
+      "recommendation": "Treat Mayra's entry/confirmation as intake provenance only; require Finance verification and explicit Finance mutation for chartfield, distribution, fringe, and costing fields."
+    },
+    {
+      "id": "AB-11",
+      "claim": "Cross-domain reporting for tenure/promotion and workforce data is requested by Daisy, but the allowed audience and field-level visibility are not defined.",
+      "status": "missing_boundary",
+      "evidence": ["Call with Daisy Matos.docx:607-620", "Call with Daisy Matos.docx:631-680", "Call with Daisy Matos.docx:821-850"],
+      "risk": "High: reports could expose faculty employment history, salary, status, or promotion data beyond business need.",
+      "recommendation": "Define report-specific audiences, row/column security, export restrictions, and whether historical HR data is visible to Finance, HR, faculty, or administrators."
+    },
+    {
+      "id": "AB-12",
+      "claim": "The derived pipeline correctly identifies role owners for major steps, but it must not be treated as proof of complete authorization policy; several ownership claims are marked assumed or second-hand.",
+      "status": "provisional_summary",
+      "evidence": ["student_hiring_pipeline.md:1-15", "student_hiring_pipeline.md:65-69", "mayra_student_hiring_flow.md:23-31", "daisy_finance_stage.md:101-106"],
+      "risk": "Medium: implementing permissions from provisional summaries could turn assumptions into production access rules.",
+      "recommendation": "Use transcripts as authority, preserve confirmed/assumed labels, and require owner approval for unresolved role, delegation, and system-access decisions."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "No authoritative role matrix names who may view/edit each field or dataset.",
+    "No confirmed app identity, authentication mechanism, group-to-role mapping, or revocation process.",
+    "No field-level classification for student PII, faculty compensation, startup packages, chartfields, distributions, or reconciliation data.",
+    "No proof that Box, FAST, Oracle, Banner, or the USF lookup site can be connected under approved service/user scopes.",
+    "No precise separation between staging edits in the app and authoritative writes in Oracle, FAST, Box, or Banner.",
+    "No exact Finance delegation: which Finance users can edit chartfields, distributions, statuses, active appointments, or Oracle costing.",
+    "No exact HR delegation for Laura's colleague or other HR users.",
+    "No policy for faculty/student visibility, direct editing, exports, downloads, email automation, or attachments.",
+    "No owner decision on whether Finance receives whole offer letters or only redacted/projection data.",
+    "No retention, audit-log immutability, correction, or break-glass access policy established in the evidence."
+  ],
+  "source_coverage": [
+    "HR App (1).docx, Laura Hemphill interview, Aug 11 2026: lines 46-50, 68-130, 180-186, 405-427, 561-587, 697-708, 779-887, 1025-1117.",
+    "Call with Mayra Morfin (1).docx, Mayra Morfin interview, Aug 13 2026: lines 64-86, 153-181, 188-226, 337-352, 443-462.",
+    "Call with Daisy Matos.docx, Daisy Matos interview, Aug 20 2026: lines 214-311, 343-357, 517-585, 595-680, 821-850, 1025-1049.",
+    "student_hiring_pipeline.md: lines 1-15, 17-31, 48-69, 71-124.",
+    "mayra_student_hiring_flow.md: lines 1-31, 47-80, 85-90.",
+    "daisy_finance_stage.md: lines 1-14, 15-31, 56-117."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/access_boundaries.json"
+}

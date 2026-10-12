@@ -1,0 +1,484 @@
+{
+  "run_date": "2026-10-12",
+  "selection_csv": ".hermes/lit_review/ranking/finalized_v1_1/final_verification_selection_shard_3.csv",
+  "results": [
+    {
+      "paper_id": "18_06",
+      "source_url": "https://doi.org/10.1016/j.artint.2007.04.010",
+      "final_url": "https://linkinghub.elsevier.com/retrieve/pii/S0004370207000677",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.1016/j.artint.2007.04.010",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://linkinghub.elsevier.com/retrieve/pii/S0004370207000677",
+          "content_type": "text/html;charset=UTF-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 2667,
+      "sha256": "83cff8ac6c86a03fbf4e64a6fd8ee820f49deffab797cec80fb385e96e41b28d",
+      "evidence_file": "evidence/18_06.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S23P01",
+      "source_url": "https://doi.org/10.1007/s10503-012-9266-7",
+      "final_url": "https://link.springer.com/article/10.1007/s10503-012-9266-7?error=cookies_not_supported&code=fb50e249-22b1-4a38-9f9a-b1c661043bb4",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.1007/s10503-012-9266-7",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://link.springer.com/article/10.1007/s10503-012-9266-7?error=cookies_not_supported&code=fb50e249-22b1-4a38-9f9a-b1c661043bb4",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 438694,
+      "sha256": "d74d9564eb432dbcd36fc063f5e8992231806e6118292c7f8181f47196c688fd",
+      "evidence_file": "evidence/S23P01.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "18_09",
+      "source_url": "https://aclanthology.org/W15-0507/",
+      "final_url": "https://aclanthology.org/W15-0507/",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/W15-0507/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://aclanthology.org/W15-0507/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 34162,
+      "sha256": "c2f8e70f9d471548324dd4647209f2959c6b84e4e704c0dfc6a9d984fd698275",
+      "evidence_file": "evidence/18_09.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S10P05",
+      "source_url": "https://aclanthology.org/W19-4012/",
+      "final_url": "https://aclanthology.org/W19-4012/",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/W19-4012/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://aclanthology.org/W19-4012/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 38397,
+      "sha256": "a8b9c33ef4ba063be23f872e382ccf904d70c7ead97bec092e7eef85d205d707",
+      "evidence_file": "evidence/S10P05.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "18_13",
+      "source_url": "https://api.crossref.org/works/10.3233/AAC-200543",
+      "final_url": "https://api.crossref.org/works/10.3233/AAC-200543",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.3233/AAC-200543",
+          "ok": false,
+          "error": "HTTP 403",
+          "status": 403,
+          "final_url": "https://journals.sagepub.com/doi/10.3233/AAC-200543",
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://api.crossref.org/works/10.3233/AAC-200543",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://api.crossref.org/works/10.3233/AAC-200543",
+          "content_type": "application/json"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 20233,
+      "sha256": "caf0e08915b2397d3bbf3c689908829bbebf8c67e198e7e1cffd4b171e818f8c",
+      "evidence_file": "evidence/18_13.json",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S10P02",
+      "source_url": "https://api.crossref.org/works/10.1080/19462166.2015.1123772",
+      "final_url": "https://api.crossref.org/works/10.1080/19462166.2015.1123772",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.1080/19462166.2015.1123772",
+          "ok": false,
+          "error": "HTTP 403",
+          "status": 403,
+          "final_url": "https://content.iospress.com/doi/1080/19462166.2015.1123772",
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1080/19462166.2015.1123772",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://api.crossref.org/works/10.1080/19462166.2015.1123772",
+          "content_type": "application/json"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "application/json",
+      "bytes": 8955,
+      "sha256": "9adac81ca311a6e68dac35965b3111f506b4f1a3e7050dd8c546d39b502c6528",
+      "evidence_file": "evidence/S10P02.json",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S02P09",
+      "source_url": "https://aclanthology.org/2026.acl-long.286/",
+      "final_url": "https://aclanthology.org/2026.acl-long.286/",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/2026.acl-long.286/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://aclanthology.org/2026.acl-long.286/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 48123,
+      "sha256": "1395b644226f1e223adf2a1ca386a9a39cb4d0ac353bc1d6ce03a08e4804b427",
+      "evidence_file": "evidence/S02P09.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S04P02",
+      "source_url": "https://aclanthology.org/2024.acl-long.91/",
+      "final_url": "https://aclanthology.org/2024.acl-long.91/",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/2024.acl-long.91/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://aclanthology.org/2024.acl-long.91/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43490,
+      "sha256": "288bc7b5c4fd11d6a76d96c2db82c060f435450d3e0a8e36befb6c66413f4af2",
+      "evidence_file": "evidence/S04P02.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S04P01",
+      "source_url": "https://aclanthology.org/2023.emnlp-main.825/",
+      "final_url": "https://aclanthology.org/2023.emnlp-main.825/",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/2023.emnlp-main.825/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://aclanthology.org/2023.emnlp-main.825/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41958,
+      "sha256": "e01f6b751fa71e2a646c32c6f506600e5b87fdd7e14ef6efbce5138a1795cf27",
+      "evidence_file": "evidence/S04P01.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S09P04",
+      "source_url": "https://aclanthology.org/J19-4006/",
+      "final_url": "https://aclanthology.org/J19-4006/",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/J19-4006/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://aclanthology.org/J19-4006/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 35705,
+      "sha256": "b9d9aab20a5e6a2b5be55d2301efb2c8d4a86c0a76b70ad36bc564185bd362b7",
+      "evidence_file": "evidence/S09P04.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S02P08",
+      "source_url": "https://arxiv.org/abs/2502.04352",
+      "final_url": "https://arxiv.org/abs/2502.04352",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/abs/2502.04352",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://arxiv.org/abs/2502.04352",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41642,
+      "sha256": "b3714d56d0530b691246a89ba843045e6054e0005eb2ad23235b1118f5f36962",
+      "evidence_file": "evidence/S02P08.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S22P14",
+      "source_url": "https://doi.org/10.1007/978-1-4020-5853-0",
+      "final_url": "https://link.springer.com/book/10.1007/978-1-4020-5853-0?error=cookies_not_supported&code=ac8c23eb-3f92-4742-87eb-93caab28dfbf",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.1007/978-1-4020-5853-0",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://link.springer.com/book/10.1007/978-1-4020-5853-0?error=cookies_not_supported&code=ac8c23eb-3f92-4742-87eb-93caab28dfbf",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 266940,
+      "sha256": "ac35ae31fa0b567aabaf66748fd33443f05c08cc24656954a752c3657c482bdc",
+      "evidence_file": "evidence/S22P14.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S22P07",
+      "source_url": "https://publicatt.unicatt.it/handle/10807/210702",
+      "final_url": "https://publicatt.unicatt.it/handle/10807/210702",
+      "retrieval_trail": [
+        {
+          "url": "https://publicatt.unicatt.it/handle/10807/210702",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://publicatt.unicatt.it/handle/10807/210702",
+          "content_type": "text/html;charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 58673,
+      "sha256": "a73492fc74a6e41a9ddd93ed6c3cd520643151023d191ac9c46556b6e0246178",
+      "evidence_file": "evidence/S22P07.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S22P09",
+      "source_url": "https://www.corpusthomisticum.org/",
+      "final_url": "https://www.corpusthomisticum.org/",
+      "retrieval_trail": [
+        {
+          "url": "https://www.corpusthomisticum.org/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://www.corpusthomisticum.org/",
+          "content_type": "text/html"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 8190,
+      "sha256": "f9768ca3a958ede33e45300f664cec0be3e7fa2a9bacf2f2f2207b4ab91443f1",
+      "evidence_file": "evidence/S22P09.html",
+      "status": "identity_failed"
+    },
+    {
+      "paper_id": "16_02",
+      "source_url": "",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://search.worldcat.org/title/ancient-logic-and-its-modern-interpretations/oclc/1020378",
+          "ok": false,
+          "error": "HTTP 403",
+          "status": 403,
+          "final_url": "https://search.worldcat.org/title/ancient-logic-and-its-modern-interpretations/oclc/1020378",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "http_status": null,
+      "content_type": "",
+      "bytes": 0,
+      "sha256": "",
+      "evidence_file": "",
+      "status": "blocked"
+    },
+    {
+      "paper_id": "16_01",
+      "source_url": "",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0053",
+          "ok": false,
+          "error": "HTTP 503",
+          "status": 503,
+          "final_url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0053",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": null,
+      "content_type": "",
+      "bytes": 0,
+      "sha256": "",
+      "evidence_file": "",
+      "status": "blocked"
+    },
+    {
+      "paper_id": "S22P12",
+      "source_url": "https://www.uni-wuerzburg.de/en/zpd/projects/",
+      "final_url": "https://www.uni-wuerzburg.de/en/zpd/projects/",
+      "retrieval_trail": [
+        {
+          "url": "https://www.uni-wuerzburg.de/en/zpd/projects/",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://www.uni-wuerzburg.de/en/zpd/projects/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 121030,
+      "sha256": "8bd4cddd963bc5f18bba83715391e6883b57c6c87733fb7f9fa437ae593f38b0",
+      "evidence_file": "evidence/S22P12.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "20_11",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/37337480/",
+      "final_url": "https://pubmed.ncbi.nlm.nih.gov/37337480/",
+      "retrieval_trail": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37337480/",
+          "ok": true,
+          "error": null,
+          "status": 203,
+          "final_url": "https://pubmed.ncbi.nlm.nih.gov/37337480/",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 203,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 5590,
+      "sha256": "38b43a97ef039b38d5cdad21bf6b1026f8b6904806e21ad80a9166af9ee9bc74",
+      "evidence_file": "evidence/20_11.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S22P15",
+      "source_url": "https://openhumanitiesdata.metajnl.com/collections/historyofideas",
+      "final_url": "https://openhumanitiesdata.metajnl.com/collections/historyofideas",
+      "retrieval_trail": [
+        {
+          "url": "https://openhumanitiesdata.metajnl.com/collections/historyofideas",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://openhumanitiesdata.metajnl.com/collections/historyofideas",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 408596,
+      "sha256": "9ea65c8bf8e93b9b18a6728f42c2f65349f245559e443c30ee31b81c91532f03",
+      "evidence_file": "evidence/S22P15.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "S21P01",
+      "source_url": "https://arxiv.org/abs/2208.06133",
+      "final_url": "https://arxiv.org/abs/2208.06133",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/abs/2208.06133",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://arxiv.org/abs/2208.06133",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43691,
+      "sha256": "f562be6b46552f114e5d493c4b429ee39c08bf57f23200dd5807fd0ea2972811",
+      "evidence_file": "evidence/S21P01.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "20_09",
+      "source_url": "https://arxiv.org/abs/2302.01339",
+      "final_url": "https://arxiv.org/abs/2302.01339",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/abs/2302.01339",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://arxiv.org/abs/2302.01339",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41201,
+      "sha256": "8af60db49b5d5a66b54071f8e119ca47df69aad47eb8caab34c65d2a11c1d68e",
+      "evidence_file": "evidence/20_09.html",
+      "status": "downloaded"
+    },
+    {
+      "paper_id": "20_13",
+      "source_url": "https://doi.org/10.1007/s13347-024-00809-w",
+      "final_url": "https://link.springer.com/article/10.1007/s13347-024-00809-w?error=cookies_not_supported&code=157178d1-c718-4aab-b33e-8d303019b73d",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.1007/s13347-024-00809-w",
+          "ok": true,
+          "error": null,
+          "status": 200,
+          "final_url": "https://link.springer.com/article/10.1007/s13347-024-00809-w?error=cookies_not_supported&code=157178d1-c718-4aab-b33e-8d303019b73d",
+          "content_type": "text/html; charset=utf-8"
+        }
+      ],
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 450460,
+      "sha256": "52b2d622f4a02dd3b4fe2533d9f663e84a97914fb4b0db426a84752b12980093",
+      "evidence_file": "evidence/20_13.html",
+      "status": "downloaded"
+    }
+  ]
+}

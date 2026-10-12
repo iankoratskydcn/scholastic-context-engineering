@@ -1,0 +1,995 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Triangles, Justice, and AI: Testing Large Language Models’ Comprehension of Political Ideologies
+							| P&D - Philosophy & Digitality
+			</title>
+
+	
+<link rel="icon" href="https://journals.ub.uni-koeln.de/public/journals/29/favicon_en_US.png" />
+<meta name="csrf-token" content="LicaZ4hbbRQKspSu1fxFJaGvtqpP0QaK3DNefuM2" />
+<meta name="generator" content="Open Journal Systems 3.5.0.5" />
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Creator.PersonalName" content="Hadi Asghari"/>
+<meta name="DC.Creator.PersonalName" content="Filip Bialy"/>
+<meta name="DC.Date.created" scheme="ISO8601" content="2025-07-10"/>
+<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2025-07-07"/>
+<meta name="DC.Date.issued" scheme="ISO8601" content="2025-07-10"/>
+<meta name="DC.Date.modified" scheme="ISO8601" content="2025-07-10"/>
+<meta name="DC.Description" xml:lang="en" content="This paper investigates whether large language models (LLMs) comprehend and apply political ideologies beyond surface-level patterns and text reproduction. Using a scenario with sentient geometric shapes, we examine how LLMs apply John Rawls’ and Robert Nozick’s theories of justice. Using a framework inspired by Bloom’s taxonomy, we evaluate seven LLMs across three levels: recall, application, and reflection. Results reveal significant variations, with one model demonstrating sophisticated understanding while others producing confused or generic responses. Findings suggest that LLMs may have internal conceptual maps (or networks) that resemble ideological frameworks, allowing them to reason about novel situations consistent with specific philosophical theories. This challenges the notion that LLMs function solely as word frequency models, though their understanding remains distinct from human cognition. We discuss implications for both AI research and political theory, suggesting that morphological analysis of ideologies could inform studies of meaning in neural networks."/>
+<meta name="DC.Format" scheme="IMT" content="application/pdf"/>
+<meta name="DC.Format" scheme="IMT" content="text/html"/>
+<meta name="DC.Format" scheme="IMT" content="text/xml"/>
+<meta name="DC.Identifier" content="11663"/>
+<meta name="DC.Identifier.pageNumber" content="97–114"/>
+<meta name="DC.Identifier.DOI" content="10.18716/pd.v2i1.11663"/>
+<meta name="DC.Identifier.URI" content="https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663"/>
+<meta name="DC.Language" scheme="rfc5646" content="en"/>
+<meta name="DC.Rights" content="Copyright (c) 2025 Hadi Asghari, Filip Bialy"/>
+<meta name="DC.Rights" content="https://creativecommons.org/licenses/by-nd/4.0"/>
+<meta name="DC.Source" content="P&amp;D - Philosophy &amp; Digitality"/>
+<meta name="DC.Source.ISSN" content="2940-8466"/>
+<meta name="DC.Source.Issue" content="1"/>
+<meta name="DC.Source.Volume" content="2"/>
+<meta name="DC.Source.URI" content="https://journals.ub.uni-koeln.de/index.php/phidi/phidi"/>
+<meta name="DC.Subject" xml:lang="en" content="political ideologies"/>
+<meta name="DC.Subject" xml:lang="en" content="natural language understanding"/>
+<meta name="DC.Subject" xml:lang="en" content="machine reasoning"/>
+<meta name="DC.Subject" xml:lang="en" content="computational political theory"/>
+<meta name="DC.Title" content="Triangles, Justice, and AI: Testing Large Language Models’ Comprehension of Political Ideologies"/>
+<meta name="DC.Type" content="Text.Serial.Journal"/>
+<meta name="DC.Type.articleType" content="Articles"/>
+<meta name="gs_meta_revision" content="1.1"/>
+<meta name="citation_journal_title" content="P&amp;D - Philosophy &amp; Digitality"/>
+<meta name="citation_journal_abbrev" content="phidi"/>
+<meta name="citation_issn" content="2940-8466"/> 
+<meta name="citation_author" content="Hadi Asghari"/>
+<meta name="citation_author" content="Filip Bialy"/>
+<meta name="citation_title" content="Triangles, Justice, and AI: Testing Large Language Models’ Comprehension of Political Ideologies"/>
+<meta name="citation_language" content="en"/>
+<meta name="citation_date" content="2025/07/10"/>
+<meta name="citation_volume" content="2"/>
+<meta name="citation_issue" content="1"/>
+<meta name="citation_firstpage" content="97"/>
+<meta name="citation_lastpage" content="114"/>
+<meta name="citation_doi" content="10.18716/pd.v2i1.11663"/>
+<meta name="citation_abstract_html_url" content="https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663"/>
+<meta name="citation_abstract" xml:lang="en" content="This paper investigates whether large language models (LLMs) comprehend and apply political ideologies beyond surface-level patterns and text reproduction. Using a scenario with sentient geometric shapes, we examine how LLMs apply John Rawls’ and Robert Nozick’s theories of justice. Using a framework inspired by Bloom’s taxonomy, we evaluate seven LLMs across three levels: recall, application, and reflection. Results reveal significant variations, with one model demonstrating sophisticated understanding while others producing confused or generic responses. Findings suggest that LLMs may have internal conceptual maps (or networks) that resemble ideological frameworks, allowing them to reason about novel situations consistent with specific philosophical theories. This challenges the notion that LLMs function solely as word frequency models, though their understanding remains distinct from human cognition. We discuss implications for both AI research and political theory, suggesting that morphological analysis of ideologies could inform studies of meaning in neural networks."/>
+<meta name="citation_keywords" xml:lang="en" content="political ideologies"/>
+<meta name="citation_keywords" xml:lang="en" content="natural language understanding"/>
+<meta name="citation_keywords" xml:lang="en" content="machine reasoning"/>
+<meta name="citation_keywords" xml:lang="en" content="computational political theory"/>
+<meta name="citation_pdf_url" content="https://journals.ub.uni-koeln.de/index.php/phidi/article/download/11663/11870"/>
+<meta name="citation_fulltext_html_url" content="https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663/11884"/>
+	<link rel="stylesheet" href="https://journals.ub.uni-koeln.de/index.php/phidi/$$$call$$$/page/page/css?name=bootstrapTheme-yeti" type="text/css" /><link rel="stylesheet" href="https://journals.ub.uni-koeln.de/plugins/generic/shariff/shariff-3.3.1/shariff.complete.css?v=3.5.0.5" type="text/css" /><link rel="stylesheet" href="https://journals.ub.uni-koeln.de/plugins/generic/shariff/css/shariff.css?v=3.5.0.5" type="text/css" /><link rel="stylesheet" href="https://journals.ub.uni-koeln.de/plugins/generic/shariff/css/wcag-themes.css?v=3.5.0.5" type="text/css" /><link rel="stylesheet" href="https://journals.ub.uni-koeln.de/public/journals/29/styleSheet.css?d=2023-05-08+10%3A23%3A27" type="text/css" />
+</head>
+<body class="pkp_page_article pkp_op_view has_site_logo">
+	<div class="pkp_structure_page">
+
+		<nav id="accessibility-nav" class="sr-only" role="navigation" aria-label="Quick jump to page content">
+			<ul>
+			  <li><a href="#main-navigation">Main Navigation</a></li>
+			  <li><a href="#main-content">Main Content</a></li>
+			  <li><a href="#sidebar">Sidebar</a></li>
+			</ul>
+		</nav>
+
+				<header class="navbar navbar-default" id="headerNavigationContainer" role="banner">
+
+						<div class="container-fluid">
+				<div class="row">
+					<nav aria-label="User Navigation">
+							<ul id="navigationUser" class="nav nav-pills tab-list pull-right">
+																					<li class=" menu-item-595">
+				<a href="https://journals.ub.uni-koeln.de/index.php/phidi/login">
+					Login
+									</a>
+							</li>
+										</ul>
+
+					</nav>
+				</div><!-- .row -->
+			</div><!-- .container-fluid -->
+
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+
+										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false" aria-controls="nav-menu">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+																<div class="site-name">
+																								<a href="							https://journals.ub.uni-koeln.de/index.php/phidi/index
+						" class="navbar-brand navbar-brand-logo">
+								<img src="https://journals.ub.uni-koeln.de/public/journals/29/pageHeaderLogoImage_en.png" alt="P&amp;D Logo White Header">
+							</a>
+																	</div>
+					
+				</div>
+
+								
+									<nav id="nav-menu" class="navbar-collapse collapse" aria-label="Site Navigation">
+																		<ul id="main-navigation" class="nav navbar-nav">
+														<li class=" menu-item-601">
+				<a href="https://journals.ub.uni-koeln.de/index.php/phidi/issue/current">
+					Current
+									</a>
+							</li>
+														<li class=" menu-item-602">
+				<a href="https://journals.ub.uni-koeln.de/index.php/phidi/issue/archive">
+					Archives
+									</a>
+							</li>
+																					<li class=" menu-item-603">
+				<a href="https://journals.ub.uni-koeln.de/index.php/phidi/announcement">
+					Announcements
+									</a>
+							</li>
+														<li class=" menu-item-817">
+				<a href="https://journals.ub.uni-koeln.de/index.php/phidi/testimonials">
+					Testimonials
+									</a>
+							</li>
+																					<li class=" menu-item-604 dropdown">
+				<a href="https://journals.ub.uni-koeln.de/index.php/phidi/about" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					About
+											<span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu ">
+																					<li class=" menu-item-605">
+									<a href="https://journals.ub.uni-koeln.de/index.php/phidi/about">
+										About the Journal
+									</a>
+								</li>
+																												<li class=" menu-item-918">
+									<a href="https://journals.ub.uni-koeln.de/index.php/phidi/stylesheet">
+										Style Sheet
+									</a>
+								</li>
+																												<li class=" menu-item-1119">
+									<a href="https://journals.ub.uni-koeln.de/index.php/phidi/about/editorialHistory">
+										Editorial Masthead
+									</a>
+								</li>
+																												<li class=" menu-item-609">
+									<a href="https://journals.ub.uni-koeln.de/index.php/phidi/about/contact">
+										Contact & Legal Notice
+									</a>
+								</li>
+																												<li class=" menu-item-608">
+									<a href="https://journals.ub.uni-koeln.de/index.php/phidi/about/privacy">
+										Privacy Statement
+									</a>
+								</li>
+																		</ul>
+							</li>
+			</ul>
+
+				
+
+																			<div class="pull-md-right">
+								
+<form class="navbar-form navbar-left" role="search" method="get" action="https://journals.ub.uni-koeln.de/index.php/phidi/search/search">
+    <div class="form-group">
+    <input class="form-control" name="query" value="" type="search" aria-label="Search Query" placeholder="">
+  </div>
+  <button type="submit" class="btn btn-default">Search</button>
+</form>
+							</div>
+											</nav>
+				
+			</div><!-- .pkp_head_wrapper -->
+		</header><!-- .pkp_structure_head -->
+
+				<div class="pkp_structure_content container">
+			<main class="pkp_structure_main col-xs-12 col-sm-10 col-md-8" role="main">
+
+<div class="page page_article">
+			<nav class="cmp_breadcrumbs" role="navigation" aria-label="You are here:">
+	<ol class="breadcrumb">
+		<li>
+			<a href="https://journals.ub.uni-koeln.de/index.php/phidi/index">
+				Home
+			</a>
+		</li>
+		<li>
+			<a href="https://journals.ub.uni-koeln.de/index.php/phidi/issue/archive">
+				Archives
+			</a>
+		</li>
+					<li>
+				<a href="https://journals.ub.uni-koeln.de/index.php/phidi/issue/view/622">
+					Vol. 2 No. 1: LLMs and the Patterns of Human Language Use
+				</a>
+			</li>
+				<li class="active">
+							Articles
+					</li>
+	</ol>
+</nav>
+	
+		<a name="top"></a>
+
+	<header>
+		<h1 class="page-header">
+			Triangles, Justice, and AI
+							<small>
+					Testing Large Language Models’ Comprehension of Political Ideologies
+				</small>
+					</h1>
+	</header>
+
+	<div class="article-main">
+					<div class="authors">
+									<div class="author">
+						<strong>Hadi Asghari</strong>
+													<div class="article-author-affilitation">
+																	<span></span>
+																								</div>
+																	</div>
+									<div class="author">
+						<strong>Filip Bialy</strong>
+													<div class="article-author-affilitation">
+																	<span></span>
+																								</div>
+																	</div>
+							</div>
+		
+							<div class="article-summary" id="summary">
+				<div class="article-abstract">
+					<p>This paper investigates whether large language models (LLMs) comprehend and apply political ideologies beyond surface-level patterns and text reproduction. Using a scenario with sentient geometric shapes, we examine how LLMs apply John Rawls’ and Robert Nozick’s theories of justice. Using a framework inspired by Bloom’s taxonomy, we evaluate seven LLMs across three levels: recall, application, and reflection. Results reveal significant variations, with one model demonstrating sophisticated understanding while others producing confused or generic responses. Findings suggest that LLMs may have internal conceptual maps (or networks) that resemble ideological frameworks, allowing them to reason about novel situations consistent with specific philosophical theories. This challenges the notion that LLMs function solely as word frequency models, though their understanding remains distinct from human cognition. We discuss implications for both AI research and political theory, suggesting that morphological analysis of ideologies could inform studies of meaning in neural networks.</p>
+				</div>
+			</div>
+			
+			</div>
+
+		<div class="inline_html_galley_download">
+		<a class="obj_galley_link file" href="https://journals.ub.uni-koeln.de/index.php/phidi/article/download/11663/11884">
+			Download
+		</a>
+	</div>
+
+		<div class="inline_html_galley">
+	<section class="body"><section class="Title"><h1>Triangles, Justice, and AI: Testing Large Language Models’ Comprehension of Political Ideologies</h1><section class="authors"><span class="author">Hadi Asghari<sup></sup>, </span><span class="author">Filip Biały<sup></sup></span><div class="affiliations small my2"></div></section></section><style>
+                :root {
+                    --headerRight: "Triangles, Justice, and AI: Testing Large Language Models’ Comprehension of Political Ideologies";
+                    --headerLeft: "Hadi Asghari et al.";
+                    --doi: "https://doi.org/10.18716/pd.v2i1.11663";
+                    --firstpage: 181;
+                    --contact: "Hadi Asghari et al. <hadiweb@fastmail.net>";
+                    --orcid: "";
+                }
+</style><section data-id="cTph2xqb08tu" data-type="abstract" data-role=""><h1><span id="cTph2xqb08tu" level="1" role="" type="abstract" numbering="none"><b>Abstract</b>:
+ This paper investigates whether large language models (LLMs) comprehend
+ and apply political ideologies beyond surface-level patterns and text
+reproduction. Using a scenario with sentient geometric shapes, we
+examine how LLMs apply John Rawls’ and Robert Nozick’s theories of
+justice. Using a framework inspired by Bloom’s taxonomy, we evaluate
+seven LLMs across three levels: recall, application, and reflection.
+Results reveal significant variations, with one model demonstrating
+sophisticated understanding while others producing confused or generic
+responses. Findings suggest that LLMs may have internal conceptual maps
+(or networks) that resemble ideological frameworks, allowing them to
+reason about novel situations consistent with specific philosophical
+theories. This challenges the notion that LLMs function solely as word
+frequency models, though their understanding remains distinct from human
+ cognition. We discuss implications for both AI research and political
+theory, suggesting that morphological analysis of ideologies could
+inform studies of meaning in neural networks.</span></h1></section><section data-id="dB11ufudokr2m" data-type="abstract" data-role=""><h1><span id="dB11ufudokr2m" level="1" role="" type="abstract" numbering="none"><b>Keywords</b>: political ideologies; natural language understanding; machine reasoning; computational political theory</span></h1></section><section data-id="hjljopmcrvsi" data-type="chapter" data-role=""><h1><span id="hjljopmcrvsi" level="1" role="" type="chapter" data-numbering="1">Introduction</span></h1><p id="oD383dei6qnf2">During
+ an interdisciplinary workshop at the Weizenbaum Institute (held in
+Berlin in August 2024), participants discussed how the human-like output
+ of large language models (LLMs) masks a fundamental difference between
+them and humans: LLMs model statistical patterns in huge text corpora
+which humans are not normally aware of.<span class="footnote-html"><span class="footnote-index">1</span><footnote style="display: none;">The workshop call is available online at: <a href="https://ispr.info/2024/03/07/call-llms-and-the-patterns-of-human-language-use-hybrid-workshop/">https://ispr.info/2024/03/07/call-llms-and-the-patterns-of-human-language-use-hybrid-workshop/</a></footnote></span>
+ While we agree with the workshop’s thesis that LLMs do not “understand
+meaning,” we aim to demonstrate in this short paper that these patterns
+are closer to a rough model of how humans might consider the
+relationship between different concepts and ideas, rather than a lookup
+table of word/token frequencies (the classic “n-grams” model).</p><p id="eGym761tfjny9">Recent
+ research has shown that while LLMs do ultimately generate next word
+probabilities for a sequence of words, they compute this probability
+through internal representations that can be mapped in many cases to
+human-interpretable concepts (e.g., see <a href="#ref-17489" data-type="citation">(Gurnee and Tegmark 2024)</a>; <a href="#ref-17504" data-type="citation">(Meng et al. 2023)</a>; <a href="#ref-17520" data-type="citation">(Todd et al. 2024)</a>;
+ discussed further in Background). Some AI researchers use the term
+“world model” to describe this network of (conceptual) representations
+within LLMs.</p><p id="wya80sbhrfy4l">While reflecting on how to demonstrate the presence of these conceptual maps to a multidisciplinary audience, we thought about <i>ideologies</i>. Ideologies are <i>networks of concepts</i> through which humans make sense of the world <a href="#ref-17524" data-type="citation">(Turunen 2024; Freeden 2008)</a>.
+ The parallel should be clear, as the analysis of complex ideological
+networks of concepts requires more than simple pattern recognition.</p><p id="us65qvquefoni">In
+ this paper we explore this mapping through an experiment. We picked two
+ distinct political philosophers from the 20th century and quizzed a
+variety of LLMs on how they “comprehend” their respective ideologies.
+Taking inspiration from Bloom’s Taxonomy used commonly in pedagogy <a href="#ref-17472" data-type="citation">(Anderson and Krathwohl 2009; Huber and Niklaus 2025)</a>, we distinguish between the <i>recall</i> of an idea, the <i>application</i> of it in novel situations, and the ability to <i>reflect</i> on one’s own analysis.</p><p id="gN1q0omuw8lnc">For
+ our experiments, we chose John Rawls (1921–2002) and Robert Nozick
+(1938–2002), who are commonly considered representatives of
+liberal-egalitarian and libertarian ideologies. We assumed that modern
+LLMs have been trained on texts by these philosophers—which we
+empirically test and confirm. To test the LLMs’ comprehension at the
+application level (so not just recall), we crafted a <i>novel</i> scenario, and asked a variety of LLMs (with open and closed weights) the following prompt:</p><blockquote><p id="vkuj537uy2nhe">“Imagine
+ a world which consists only of 2-dimensional sentient geometric shapes,
+ such as triangles, squares, pentagons and so on. The less angles a
+shape has, the easier it is for it to become a part of the Highest
+Council. Shapes do not have any influence on the number of angles they
+receive when they are created. What would be the way to ensure,
+according to [Rawls/Nozick], that the world of sentient geometric shapes
+ is just?”</p></blockquote><p id="pjjbb9vg90rm">We then graded the
+answers generated by the different LLMs similarly to how we would grade
+students answering essay questions on this subject. Our own
+understanding of these theories (supported by the textual evidence)
+serves as the gold evaluation standard. As we shall see in the Results
+section, while the LLMs showed varying capabilities, a few demonstrated
+remarkably sophisticated understanding of these complex philosophical
+positions.</p><p id="zAnvyyyuwvcf">We are aware that this external
+assessment of how LLMs “understand” ideologies (in comparison to how a
+political scientist would understand them) offers only partial evidence
+for the existence of a map of ideological concepts within the LLM. In
+future work, we plan to complement this with probes of the internal
+representations within the model. Nonetheless, the black box assessment
+is a prerequisite step for the latter.</p><p id="bC2vb2w4cufvk">The rest
+ of this paper is organized as follows. We shall briefly discuss the
+literature on world models within LLMs, as well as an overview of Rawls’
+ and Nozick’s ideas in the Background section. In the Methods section,
+we shall motivate our choice of LLMs for this experiment, as well as
+explain how we tested for memorization and the elements of our grading
+scheme. This is followed by the Results section, and a Discussion about
+the implications and limitations of our findings.</p></section><section data-id="rBi2jovytpkbi" data-type="chapter" data-role=""><h1><span id="rBi2jovytpkbi" level="1" role="" type="chapter" data-numbering="2">Background &amp; Related Work</span></h1><h2><span id="vjlhogn7va0jg" level="2" role="" type="chapter" numbering="" data-numbering="2.1">World Models within LLMs </span></h2><p id="wqmewcvayogss">Andreas <a href="#ref-17475" data-type="citation">(Andreas 2024)</a>
+ considers the question of whether LLMs have internal world models as a
+variation of the original “Big Question,” namely, whether LLMs can
+represent meaning.</p><p id="gkpxi22axx2t">Previously, Bender and Koller <a href="#ref-17477" data-type="citation">(Bender and Koller 2020)</a> argued that “a system trained only on form has <i>a priori</i> no way to learn meaning.” Their argument was based on how they defined meaning: the relation between form and something <i>external</i> to language. This argument is a variation of the “symbol grounding problem” in the literature.</p><p id="ffgd79enu62bi">We
+ believe that the current generation of LLMs is in fact grounded in two
+important ways. First, some models are being trained simultaneously on
+vision and text. The addition of visual supervision improves the quality
+ of the model with regards to some benchmarks, but importantly not much:
+ “with reasonably large training data, ungrounded models ... outperform
+[visually] grounded models.” <a href="#ref-17531" data-type="citation">(Zhuang, Fedorenko, and Andreas 2024)</a> Secondly, almost all LLMs nowadays undergo a ‘post-training’ phase that uses <i>reinforcement learning</i> from human feedback and/or rule based rewards to further tune the model <a href="#ref-17495" data-type="citation">(Hussain, Mata, and Wulff 2025)</a>. Reinforcement learning effectively grounds the model outside of just language.</p><p id="aH4da4o8m0qpx">The
+ idea of an internal world model has been gaining strength by recent
+findings that the hidden representations inside the different layers of
+neural language models appear to have, at least in part,
+human-interpretable meanings. For example, Gurnee and Tegmark <a href="#ref-17489" data-type="citation">(Gurnee and Tegmark 2024)</a>
+ found that LLMs learn linear representations of space and time across
+multiple scales—e.g. cities and landmarks, or weekday and historical
+events. They even identified individual neural units that encode these
+spatial and temporal coordinates. Similarly, Meng and colleagues <a href="#ref-17504" data-type="citation">(Meng et al. 2023)</a>
+ identified neuron activations that are decisive in a model’s factual
+predictions, e.g., that the Eiffel Tower is located in Paris. They
+surgically edited the LLMs to change this fact (to the Eiffel Tower
+being in Rome), in such a way that many related factual questions were
+also answered differently (e.g., if you ask the LLM what lies in front
+of the Eiffel Tower it would say the Colosseum). In fact, the famous
+example of <i>King-Male+Female=Queen</i> observed in the early word-embedding models <a href="#ref-17526" data-type="citation">(Vylomova et al. 2016)</a>
+ already demonstrated how “algebraic manipulations” on vector
+representations of words can correspond to something meaningful for
+humans. Similar and even more complex semantic computations have been
+discovered in LLMs <a href="#ref-17520" data-type="citation">(Todd et al. 2024)</a>.</p><p id="nOw71ddksbvf">Despite
+ the growing evidence, the precise nature and mechanics of these
+internal world models are not yet fully understood. Andreas <a href="#ref-17475" data-type="citation">(Andreas 2024)</a>
+ uses the analogy of historical models of the solar system to help
+characterize what these internal world models might be like. Historical
+models of the solar system include <i>maps, orreries, and simulators</i>.
+ Maps are static representations; an orrery is a dynamic mechanical
+apparatus that can show the state of the planets at an arbitrary time
+(via a crank that is turned); simulators use first principles (and
+causal/physical models) to be able to predict outcomes even in
+counterfactual scenarios. We know that what LLMs are doing is more
+complex than static mapping, as evidenced by their ability to do
+‘in-context learning’ (that is to learn a task from a prompt which can
+include mapping new relations). We also know LLMs find causal reasoning
+tasks “highly challenging” (see <a href="#ref-17496" data-type="citation">(Jin et al. 2024)</a> for examples), which means in Andreas’ analogy LLMs sit somewhere in between an orrery and a simulator.</p><p id="obl42ene77qo">LLMs
+ most likely encode a multitude of rough and incompatible world models
+instead of having one coherent and consistent world model <a href="#ref-17475" data-type="citation">(Andreas 2024)</a>.
+ We believe this must be indeed the case, as otherwise LLMs could not
+generate statements attributable to contradicting personas. This last
+point is where the idea of world models connects to <i>ideologies</i>.</p><h2><span id="iKcn7vcjly90u" level="2" role="" type="chapter" numbering="" data-numbering="2.2">Ideology as a World Model </span></h2><p id="jz8dpyfs8j2kh">The
+ field of ideological analysis emerged as a space of interdisciplinary
+studies on how people understand the social world. While originally the
+term “ideology” was used in reference to scientific study of ideas,
+because of the Marxist critique it had long been used in a pejorative
+sense—as a set of ideas that mask reality. Nevertheless, in contemporary
+ ideological analysis, a more descriptive understanding of ideologies
+prevails. In the most influential approach, based on <i>morphological analysis</i> proposed by Freeden <a href="#ref-17486" data-type="citation">(Freeden 2013)</a>, ideologies are understood as networks of concepts (or ideas) that people use to comprehend the world:</p><blockquote><p id="vjca79ghswxaj">“[I]n
+ order to represent reality in its full complexity to ourselves, we rely
+ on ideologies to offer certain combinations and arrangements of these
+ideas. These ideological combinations and arrangements resemble mental
+‘maps’, whose social function is that anyone who ‘holds’, ‘is in’, or
+‘subscribes to’ the ideology in question can use it to navigate through
+and steer reality in line with it.” <a href="#ref-17510" data-type="citation">(Ostrowski 2025, 4)</a></p></blockquote><p id="qIqlpgugzwqa">Importantly,
+ these maps are not optional—without them, there would be no
+comprehension of reality. Furthermore, each ideology consists of a
+particular arrangement of specifically understood concepts, some of
+which are more central than others. For example, freedom and progress
+would be the central concepts of liberalism, while tradition and gradual
+ change are characteristics of conservatism. But not only the broad
+political ideologies are structured in this way. Human perception of
+reality as such is mediated through language and differing arrangements
+of concepts that have not only cognitive, but also an affective
+dimension <a href="#ref-17492" data-type="citation">(Homer-Dixon et al. 2013)</a>.</p><p id="nY4px1a2f0xl">The
+ ideological character of language has important consequences for how
+LLMs model the world. As they are trained on the human-written texts,
+and the texts express particular ideological standpoints, the ideologies
+ somehow diffuse into LLMs. It has been already observed that LLMs may
+represent political ideologies of their creators <a href="#ref-17482" data-type="citation">(Buyl et al. 2024)</a>.
+ Thus far such research has concentrated on identifying ideologies
+through interpreting the answers given by different models, sometimes
+prompted to respond as particular personas, and sometimes probed by
+questions used in political orientation tools, such as the Political
+Compass Test <a href="#ref-17519" data-type="citation">(Rozado 2024)</a>.</p><p id="hZhgphstiw9pf">In
+ contrast to these studies, we are not trying here to classify
+ideologies of LLMs, but to evaluate their ability to comprehend (or
+reason about) an ideology in a zero-shot setting. This takes the
+analysis one step further as it adds an active dimension, where the LLM
+can actively choose the inner conceptual map to apply to a question.</p><h2><span id="kv6ppzcylkfav" level="2" role="" type="chapter" numbering="" data-numbering="2.3">A Primer on John Rawls and Robert Nozick</span></h2><p id="sw7jwayxgb40t">In
+ our study we have chosen two distinctive ways of perceiving social and
+political reality that were offered by two influential political
+philosophers, John Rawls and Robert Nozick. They represent,
+respectively, liberal egalitarianism that puts emphasis on equality, and
+ libertarianism, which stresses individual rights and freedom.</p><p id="ks1k8rw77d3z2h">In the case of Rawls, the starting point of his egalitarianism as articulated in <i>A Theory of Justice</i> <a href="#ref-17515" data-type="citation">(Rawls 2005)</a>
+ is a thought experiment on the original position: a situation behind
+the so-called “veil of ignorance,” where one does not know what their
+life would look like and which characteristics they would possess. Rawls
+ claims that the principles that should govern a fair society can be
+chosen from such a veil of ignorance. Not knowing whether they will be
+rich or poor, healthy or ill, people would choose principles that would
+maximize the fate of the least fortunate. Based on that, Rawls suggested
+ two principles of justice: the principle of equal liberty, and the
+principle that would allow existence of inequalities only if there is a
+fair equality of opportunity and if those inequalities would be of the
+greatest benefit to the least-advantaged (the “difference principle”).
+Rawls’ project is seen as compatible with progressive taxation and
+republican institutional arrangements that would go further than—or
+would altogether reject—welfare-state capitalism<span class="footnote-html"><span class="footnote-index">2</span><footnote style="display: none;">One must always qualify any exegesis of a philosopher as oft-interpreted as Rawls. In the past half century <i>A Theory of Justice</i>
+ has been the most frequently referenced book of political philosophy
+with multiple contradictory interpretations and critiques offered by
+authors of diverse proveniences. Some of these authors perceived Rawls
+as a defender of the American post-war welfare state, others as an ally
+of neoliberal trickle-down economics <a href="#ref-17499" data-type="citation">(Koppelman 2023; Reiff 2012)</a>. A similar cautionary point can be made about Robert Nozick, whose philosophical standpoint evolved after the publication of <i>Anarchy, State, and Utopia </i> <a href="#ref-17527" data-type="citation">(Wolff 2013)</a></footnote></span>.</p><p id="rHz64cseiwuv7">In the case of Nozick, his starting point is succinctly put in the opening sentence of <i>Anarchy, State, and Utopia</i>: “Individuals have rights” <a href="#ref-17508" data-type="citation">(Nozick 2012, ix)</a>.
+ From that assumption he derived his entitlement theory which focused on
+ justifying distribution of goods in society with three principles of
+justice in acquisition, justice in transfer, and of rectification of
+injustice. Treated as a response to Rawlsian egalitarianism, Nozick’s
+fundamental claim is that from the mere existence of inequalities we
+cannot conclude that the socio-economic order is unjust. Provided that
+acquisition and transfer of holdings did not violate anyone’s rights,
+any level of inequality could be considered as fair. Nozick advocates a
+minimal state which would only act as a protector of rights to life,
+liberty, and property.</p><p id="kNpyoql918oiq">In addition to the
+obvious normative difference between Rawls and Nozick, they also differ
+in how they define their concept, and how they theorize the
+relationships between them. That is why, to a morphologist of
+ideologies, both Rawls’ and Nozick’s theories could be reconstructed as
+two distinct and complex maps consisting of political concepts (as
+political ideologies). The function of these maps is to guide their
+users in how to respond to particular questions or challenges, such as
+the scenario that we have envisioned as a test for LLMs.</p></section><section data-id="cbkswuagwtiqq" data-type="chapter" data-role=""><h1><span id="cbkswuagwtiqq" level="1" role="" type="chapter" data-numbering="3">Methods </span></h1><p id="xNj9y4ony78v">Given the research background and overarching aim, we will next define our research question as follows: <i>“Can
+ LLMs map distinctive ideologies (Rawls and Nozick) to a novel scenario
+in a convincing manner (i.e. at higher Bloom levels)?”</i></p><p id="jXedhh2yaa7e">We will operationalize whether the mapping happens in a <i>convincing</i> manner based on “Bloom’s taxonomy,” similar to Huber and Niklaus <a href="#ref-17494" data-type="citation">(Huber and Niklaus 2025)</a>.
+ Bloom’s taxonomy is a commonly used framework for categorizing
+educational objectives, originally developed by Bloom and his colleagues
+ in 1956, and revised in 2001. The levels in the taxonomy and their
+explanations are shown in Figure 1. Simplifying that taxonomy, we will
+evaluate responses generated by different LLMs to our experimental
+prompt on three aspects: 1) the <i>recall</i> of concepts from the relevant ideologies and explaining them in isolation; 2) the ability to <i>apply</i>
+ the concepts to our new scenario (with some analysis, understood as
+ability to draw connections between the concepts); and 3) to <i>reflect—</i>evaluate
+ and justify the application and analysis. Note that an LLM could do
+well on some or even all three aspects, or it could conversely be
+confused and mess up all parts.<span class="footnote-html"><span class="footnote-index">3</span><footnote style="display: none;">As
+ noted in the Introduction, our understanding of these theories serves
+as the gold evaluation standard, similar to how instructors would grade
+students' essay responses on these philosophical frameworks.</footnote></span></p><div class="figure-wrapper" orientation="portrait"><figure id="media/image1.png" alt="" type="image" orientation="portrait"><img title="" src="https://journals.ub.uni-koeln.de/index.php/phidi/article/download/11663/version/11618/11884/23490/2025-02-01_asghari-bialy_ideology_v3-image1.png"></figure></div><p id="xS67a2q5h2tu8">Figure
+ 1. Bloom’s revised taxonomy with possible classroom activities
+associated with each level. (Source: Vanderbilt University Center for
+Teaching, CC BY)</p><p id="gpkcirhqjxzyh">The prompt given to the LLMs
+was already explained in the Introduction. Here, we shall add a few
+notes. First, the prompting strategy is zero-shot (reasoning): we are
+not providing much explanation to the LLM to avoid leading them to the
+answer. Second, we do not explicitly ask the LLMs to explain their
+thought process in steps, as nowadays most LLMs are trained during
+instruction tuning to think in steps (and this is what we observe).
+Nonetheless, this could be seen as a limitation, as asking the LLMs to
+further justify or evaluate their generated opinions might result in
+doing better in the reflection aspect. Third, to the best of our
+knowledge, the scenario we describe in the prompt is <i>novel</i>, in
+the sense that searching for the name of either philosopher plus
+geometric shapes does not lead to any relevant results in Google search.</p><p id="hYj7puu9do90e">Asking
+ LLMs about the theories of Rawls and Nozick is only meaningful if the
+models have been trained on at least some texts related to them.
+Unfortunately, most LLMs nowadays do not disclose their training data,
+although we know it includes some mix of (copyrighted) books, papers,
+and webpages. We thus need to explicitly test the model’s familiarity
+with regards to a text, which we do using the <i>perplexity metric</i>
+(abbreviated as PPL). The “perplexity of a language model on a test set
+is the inverse probability of the test set normalized by the number of
+words.” <a href="#ref-17498" data-type="citation">(Jurafsky and Martin 2025, 39)</a>
+ We calculate the perplexity of a number of different text passages, and
+ use it to assess how familiar the LLMs are with the two philosophers.</p><p id="qm6xjwudcqpc7">Finally,
+ we run our prompting experiments on seven different LLMs of various
+sizes. This diversity is to allow some generalization of our findings.
+Most of the LLMs are open-weight, and among the leading models in
+December 2024. These include Google’s Gemma-2-9B and Gemma-2-27B <a href="#ref-17487" data-type="citation">(Gemma Team et al. 2024)</a>, Meta’s Llama-3.1-8B and Llama-3.3-70B <a href="#ref-17488" data-type="citation">(Grattafiori et al. 2024)</a>, Alibaba Cloud’s Qwen-2.5-7B and QwQ-32B-preview <a href="#ref-17513" data-type="citation">(Qwen Team 2024)</a>, plus the closed source Claude-Sonnet-3.5 by Anthropic <a href="#ref-17476" data-type="citation">(Anthropic 2024)</a>.
+ All these LLMs use the transformer architecture, are pre-trained on
+over 13 trillion tokens (in several languages but mainly English), and
+have also been further ‘instruction trained.’ QwQ (Qwen with Questions)
+further describes itself as an “experimental research model focused on
+advancing AI reasoning capabilities” <a href="#ref-17514" data-type="citation">(Qwen Team 2024b)</a>.<span class="footnote-html"><span class="footnote-index">4</span><footnote style="display: none;">To
+ give a sense of how these models compare with each other, one can look
+at benchmarks such as the Measuring Massive Multitask Language
+Understanding (MMLU). The MMLU consists of about 16,000 multiple-choice
+questions spanning 57 academic subjects including mathematics,
+philosophy, law, and medicine. A random guess would score 25% on this
+test. The MMLU score (5-shot) for these models were between 69% for
+Llama-3.1-8B and 86% for Llama-3.3-70B.The lower bound is similar to
+that of ChatGPT 3.5, so all these models have quite some knowledge on a
+variety of subjects. The differences among these models on reasoning
+benchmarks (such as GPQA) remains large.</footnote></span> We ran our experiments locally on the ollama<span class="footnote-html"><span class="footnote-index">5</span><footnote style="display: none;">Available at <a href="https://ollama.com/">https://ollama.com/</a></footnote></span>
+ platform (and the related Python bindings for llama.cpp) using 4-bit
+quantized models, a temperature of 0.7, and a default system prompt.<span class="footnote-html"><span class="footnote-index">6</span><footnote style="display: none;">The
+ default system prompt on Ollama is “You are a helpful assistant” with
+perhaps also the model name. Claude Sonnet uses a long and extensive
+system prompt which can be viewed on their website.</footnote></span></p></section><section data-id="wjlgimxwet5" data-type="chapter" data-role=""><h1><span id="wjlgimxwet5" level="1" role="" type="chapter" data-numbering="4">Results</span></h1><h2><span id="pVzgydpunt8vi" level="2" role="" type="chapter" numbering="" data-numbering="4.1">How Familiar Are LLMs with Rawls &amp; Nozick</span></h2><p id="hEkicwubd8jf8">As
+ discussed in the Methods, we explicitly test the familiarity of the
+LLMs with the works of Rawls and Nozick using the perplexity metric. For
+ this purpose, we picked a famous and a not-so-famous passage from each
+of the philosophers.<span class="footnote-html"><span class="footnote-index">7</span><footnote style="display: none;">For Rawls, we picked this well-known passage: “<i>First:
+ each person is to have an equal right to the most extensive scheme of
+equal basic liberties compatible with a similar scheme of liberties for
+others. Second: social and economic inequalities are to be arranged so
+that they are both (a) reasonably expected to be to everyone’s
+advantage, and (b) attached to positions and offices open to all.</i>”<br>For Nozick, we picked the following: “<i>Individuals
+ have rights, and there are things no person or group may do to them
+(without violating their rights). So strong and far-reaching are these
+rights that they raise the question of what, if anything, the state and
+its officials may do. How much room do individual rights leave for the
+state? The nature of the state, its legitimate functions and its
+justifications, if any, is the central concern of this book; a wide and
+diverse variety of topics intertwine in the course of our investigation.</i>”</footnote></span>
+ Additionally, for comparison, we picked as baseline a sentence that we
+are sure the models have seen many times, the starting sentence of the
+United States Declaration of Independence <i>(“We hold these truths to be self-evident [...] and the pursuit of Happiness.”),</i> and a random quote from one of our colleagues.</p><p id="xUaenomovsnz">The
+ results are presented in Table 1. A lower perplexity score indicates
+the model is less surprised by a text, meaning that it has seen it or
+similar texts in its training data. The perplexity score can range from 1
+ to theoretically infinity. First, we can see that across all models,
+the passage from the US Declaration of Indepence gets a perplexity of
+close to 1, and the random quote over 100 (as expected). Next, the
+famous quotes by Rawls and Nozick both score quite low on perplexity,
+suggesting that the models have been trained on passages from these
+philosophers (which is good since we can now continue with our main
+experiments); the less famous passages have a perplexity score between
+20 and 50. Finally, a minor observation is that most models seem to be
+slightly more familiar with Rawls’ than Nozick’s texts, except the
+Llama-3.3-70B model which seems equally familiar with both texts<span class="footnote-html"><span class="footnote-index">8</span><footnote style="display: none;">Please note comparing perplexity between models is not trivially meaningful.</footnote></span>.</p><div class="figure-wrapper" orientation="portrait"><figure data-role="native-table" id="mioz7l381ru4g" alt="" type="native-table" orientation="portrait"><table id="tbl-lJ4s91ploap8b"><caption data-table-number="1">Perplexity scores measuring LLM familiarity with selected Texts</caption><tbody><tr><td colspan="1" rowspan="2"><p id="cQ0sf073a8rjpp"><br><br></p><p id="jCymn4ojps71"><b>LLM</b><span class="footnote-html"><span class="footnote-index">9</span><footnote style="display: none;">The
+ Anthropic API currently does not return log probabilities needed to
+calculate perplexity. Additionally, due to some bug in llama.cpp, we
+were unable to reliably calculate perplexity for the Qwen models.</footnote></span></p></td><td colspan="6" rowspan="1"><p id="un5dh5bzv7gsk" data-type="heading"><b>Perplexity Score</b></p></td></tr><tr><td colspan="1" rowspan="1"><p id="kSmcia5omyda9" data-type="heading"><b>US Decl. (base-l)</b></p></td><td colspan="1" rowspan="1"><p id="rGql4mn4rznne" data-type="heading"><b>Random</b></p><p id="xDo6sdlljnnj" data-type="heading"><b>(base-h)</b></p></td><td colspan="1" rowspan="1"><p id="ro11c7fbio31lo" data-type="heading"><b>Rawls famous</b></p></td><td colspan="1" rowspan="1"><p id="gacxa412s3ben" data-type="heading"><b>Rawls other</b></p></td><td colspan="1" rowspan="1"><p id="kkcagvhz3c6fg" data-type="heading"><b>Nozick famous</b></p></td><td colspan="1" rowspan="1"><p id="tRrf58frfg0vd" data-type="heading"><b>Nozick other</b></p></td></tr><tr><td colspan="1" rowspan="1"><p id="xgmyrbt3gip9m">Gemma-2-9B</p></td><td colspan="1" rowspan="1"><p id="oXm9pr76axhym">1.5</p></td><td colspan="1" rowspan="1"><p id="sfi95e0l9gpmm">208.3</p></td><td colspan="1" rowspan="1"><p id="hD29tzbklmmey">4.0</p></td><td colspan="1" rowspan="1"><p id="dqin8i4n8wuhe">45.5</p></td><td colspan="1" rowspan="1"><p id="zhh59slr0i69">13.7</p></td><td colspan="1" rowspan="1"><p id="bK95edm4ekme6">35.0</p></td></tr><tr><td colspan="1" rowspan="1"><p id="bKobvon9h7x7j">Gemma-2-27B</p></td><td colspan="1" rowspan="1"><p id="stso30au7k1k">1.4</p></td><td colspan="1" rowspan="1"><p id="ivv23vxenfnjm">260.1</p></td><td colspan="1" rowspan="1"><p id="lS3lsgao5rve7">3.3</p></td><td colspan="1" rowspan="1"><p id="ey40a60tmsney">42.9</p></td><td colspan="1" rowspan="1"><p id="rGvbv89850q8d">13.9</p></td><td colspan="1" rowspan="1"><p id="yEq86vq7w64v">31.2</p></td></tr><tr><td colspan="1" rowspan="1"><p id="fbnbo79tkygop">Llama-3.1-8B</p></td><td colspan="1" rowspan="1"><p id="ugtmhf8f36p2">1.3</p></td><td colspan="1" rowspan="1"><p id="dwit14pfe2lw">140.1</p></td><td colspan="1" rowspan="1"><p id="iIps1u83p0tob">3.4</p></td><td colspan="1" rowspan="1"><p id="nVn9zrt19j5fe">34.0</p></td><td colspan="1" rowspan="1"><p id="yl1pn31t7kzy7">8.5</p></td><td colspan="1" rowspan="1"><p id="tYhdg4dgwmmtg">23.6</p></td></tr><tr><td colspan="1" rowspan="1"><p id="ao2ehiiock6fm">Llama-3.3-70B</p></td><td colspan="1" rowspan="1"><p id="tJ9wa3aecexap">1.3</p></td><td colspan="1" rowspan="1"><p id="ki8z80t418jxb">141.3</p></td><td colspan="1" rowspan="1"><p id="sNys4k3xcwb9j">2.3</p></td><td colspan="1" rowspan="1"><p id="jX3ze4y1a8823">29.6</p></td><td colspan="1" rowspan="1"><p id="pmxjp4zzr26z">3.2</p></td><td colspan="1" rowspan="1"><p id="wPx8kau19vdr">20.7</p></td></tr></tbody></table></figure></div><h2><span id="rpschdbzgp12o" level="2" role="" type="chapter" numbering="" data-numbering="4.2">Comprehension Tests</span></h2><p id="elvdm2nmlvfm8">Our
+ evaluation of the LLMs’ responses to the prompts involved careful
+reading and interpretation of each reply in terms of three aspects:
+recall and application of Rawls’ and Nozick’s theories to the novel
+scenario, and the LLMs’ reflection on their own answers. Table 2
+summarizes this evaluation, indicating whether each model performed well
+ regarding these three aspects, with comments detailing and justifying
+our assessment.</p><div class="figure-wrapper" orientation="portrait"><figure data-role="native-table" id="oxgjudx673woi" alt="" type="native-table" orientation="portrait"><table id="tbl-aRsb4vn1v66k"><caption data-table-number="2">Assessment of LLM responses to a given scenario and subtask (x=yes, ?=partly, -=no)</caption><tbody><tr><td colspan="1" rowspan="1"><p id="iTepfieuvhl1l" data-type="heading"><b>LLM</b></p></td><td colspan="1" rowspan="1"><p id="xGdle8vhoo96k" data-type="heading"><b>Size</b></p></td><td colspan="1" rowspan="1"><p id="pazg3wmvsxvel" data-type="heading"><b>Training</b></p></td><td colspan="1" rowspan="1"><p id="mx9xjc43gthes" data-type="heading"><b>Prompt</b></p></td><td colspan="1" rowspan="1"><p id="nr4qn6glpld4r" data-type="heading"><b>Recall</b></p></td><td colspan="1" rowspan="1"><p id="hA0ypqszp4ycp" data-type="heading"><b>Application</b></p></td><td colspan="1" rowspan="1"><p id="pSxbqqxkgq3i9"><b>Reflection</b><span class="footnote-html"><span class="footnote-index">10</span><footnote style="display: none;">While our prompt did not explicitly ask for a reflection, the QwQ model still did so spontaneously</footnote></span></p></td><td colspan="1" rowspan="1"><p id="pYrv2rm1phg3i" data-type="heading"><b>Notes</b></p></td></tr><tr><td colspan="1" rowspan="2"><p id="vtcajm49s5dz6">Gemma2-9B</p></td><td colspan="1" rowspan="2"><p id="aXzr3ymfq7nro">9B</p></td><td colspan="1" rowspan="2"><p id="wKbz4x3of0xal">Distilled from Gemma-2-27B</p></td><td colspan="1" rowspan="1"><p id="ke0wfonh3wy8yc">Rawls</p></td><td colspan="1" rowspan="1"><p id="oL6934iu5rptq">x</p></td><td colspan="1" rowspan="1"><p id="xLnhoe04em76">x</p></td><td colspan="1" rowspan="1"><p id="aGru95mwf47n">-</p></td><td colspan="1" rowspan="2"><p id="uQxvcjagddq0b">Has some minor errors, e.g. recalls Nozick’s ideas but not the entitlement theory</p></td></tr><tr><td colspan="1" rowspan="1"><p id="miq3b8iwyo4lf">Nozick</p></td><td colspan="1" rowspan="1"><p id="gztelrh7s1cqh">x</p></td><td colspan="1" rowspan="1"><p id="qSazfvqy7wtge">x</p></td><td colspan="1" rowspan="1"><p id="kjh1xn21aelbp">-</p></td></tr><tr><td colspan="1" rowspan="2"><p id="zmd1hbf3csryc">Gemma2-27B</p></td><td colspan="1" rowspan="2"><p id="mxqkjsvjlwlpk">27B</p></td><td colspan="1" rowspan="2"><p id="nWecwud62hq9e">13T tokens +instruct</p></td><td colspan="1" rowspan="1"><p id="dhinooj89esff">Rawls</p></td><td colspan="1" rowspan="1"><p id="rK1bbhga9rgno">x</p></td><td colspan="1" rowspan="1"><p id="rme4isnl0syyq">x</p></td><td colspan="1" rowspan="1"><p id="hO8tezs0nz9rv">-</p></td><td colspan="1" rowspan="2"><p id="kIlcj6e7zsgn">Surprisingly, while the recall is bad for Nozick, the application of the theory remains correct</p></td></tr><tr><td colspan="1" rowspan="1"><p id="hhk24smdbwms">Nozick</p></td><td colspan="1" rowspan="1"><p id="rK6bn28alki4a">?</p></td><td colspan="1" rowspan="1"><p id="faa5vjmcq3ynm">x</p></td><td colspan="1" rowspan="1"><p id="sYhpqiyakm9fi">-</p></td></tr><tr><td colspan="1" rowspan="2"><p id="xj2c6ta6tu3g7">Llama 3.1-8B</p></td><td colspan="1" rowspan="2"><p id="zs4esq6tzsgfk">8B</p></td><td colspan="1" rowspan="2"><p id="rr0tnlur4ainu">15.6T tokens</p><p id="eWekpfwfk63xr">+instruct</p></td><td colspan="1" rowspan="1"><p id="qgoxbkrd8nzml">Rawls</p></td><td colspan="1" rowspan="1"><p id="jqpmq6lqjnvjg">x</p></td><td colspan="1" rowspan="1"><p id="zGnchhu6os0lg">x</p></td><td colspan="1" rowspan="1"><p id="tJwwir415l0o">-</p></td><td colspan="1" rowspan="2"><p id="ePrm0pgoghj0k">Appears to misinterpret the prompt (Fail)</p></td></tr><tr><td colspan="1" rowspan="1"><p id="qMj12f9lu2nk">Nozick</p></td><td colspan="1" rowspan="1"><p id="dIbarzwn5cjas">-</p></td><td colspan="1" rowspan="1"><p id="eXkg9as5cg7w">-</p></td><td colspan="1" rowspan="1"><p id="kjaidymf5nma5">-</p></td></tr><tr><td colspan="1" rowspan="2"><p id="dYxxod8lkawj">Llama 3.3-70B</p></td><td colspan="1" rowspan="2"><p id="qQ7ctib34n2qv">70B</p></td><td colspan="1" rowspan="2"><p id="lPsfs9wegdix">15.6T tokens +instruct</p></td><td colspan="1" rowspan="1"><p id="eRmvcz5xh6qbh">Rawls</p></td><td colspan="1" rowspan="1"><p id="tpjwbg933744e">x</p></td><td colspan="1" rowspan="1"><p id="wHb8jqdtvjzkl">x</p></td><td colspan="1" rowspan="1"><p id="sf0epidrlpqao">-</p></td><td colspan="1" rowspan="2"><p id="aihnopmlra9t5">Very generic responses with limited relation to Rawls’ or Nozick’s theory.</p></td></tr><tr><td colspan="1" rowspan="1"><p id="gI5nfw8zr1jq">Nozick</p></td><td colspan="1" rowspan="1"><p id="drmco9et3gkrs">x</p></td><td colspan="1" rowspan="1"><p id="giz8wufurbo5l">-</p></td><td colspan="1" rowspan="1"><p id="dxq30uxlek87">-</p></td></tr><tr><td colspan="1" rowspan="2"><p id="sstqgw7fa9ww">Qwen2.5-7B</p></td><td colspan="1" rowspan="2"><p id="xkg7im8n86ob">7B</p></td><td colspan="1" rowspan="2"><p id="nbfoc0b2bln">18T tokens</p><p id="wX3mizg5tupij">+ instruct</p></td><td colspan="1" rowspan="1"><p id="xEiqs6foj6mp">Rawls</p></td><td colspan="1" rowspan="1"><p id="oYy91uk18qyp">x</p></td><td colspan="1" rowspan="1"><p id="rtp1u90b7u9af">?</p></td><td colspan="1" rowspan="1"><p id="lcuhud2o6ho7" data-type="heading"><b>-</b></p></td><td colspan="1" rowspan="2"><p id="tOlcss3wyp55e">Misinterprets the prompt; some proposed solutions not related to Rawls’ theory.</p><p id="uY7hf77nvc8j6">Confuses Nozick’s and Rawls’ theories, making the answer incorrect. (Fail)</p></td></tr><tr><td colspan="1" rowspan="1"><p id="euqtawwww6wql">Nozick</p></td><td colspan="1" rowspan="1"><p id="mLv3k7mg6d9da" data-type="heading"><b>-</b></p></td><td colspan="1" rowspan="1"><p id="eDiu9pn87oaa" data-type="heading"><b>-</b></p></td><td colspan="1" rowspan="1"><p id="fjwiaxx4e2wi" data-type="heading"><b>-</b></p></td></tr><tr><td colspan="1" rowspan="2"><p id="gfdgqmz8qwg">QwQ-32B-preview</p></td><td colspan="1" rowspan="2"><p id="vetiosmuph6w">32B</p></td><td colspan="1" rowspan="2"><p id="rVw0lyrs5msf">18T tokens</p><p id="pGf2lc95khya7">+instruct</p><p id="bSiw0asqzrbeb" data-type="heading"><b>+reasoning</b></p></td><td colspan="1" rowspan="1"><p id="dod614hzr7qh">Rawls</p></td><td colspan="1" rowspan="1"><p id="jA3oh4jgkwrr2">x</p></td><td colspan="1" rowspan="1"><p id="ginusciwemac">x</p></td><td colspan="1" rowspan="1"><p id="dintbytnq3mlb">x</p></td><td colspan="1" rowspan="2"><p id="nkez68oro3iln">Original and creative answers in both cases, even more for Nozick.</p></td></tr><tr><td colspan="1" rowspan="1"><p id="pAkqzw4nbn0je">Nozick</p></td><td colspan="1" rowspan="1"><p id="ozvuysl5spoz">x</p></td><td colspan="1" rowspan="1"><p id="dPasuzn604436">x</p></td><td colspan="1" rowspan="1"><p id="wHz9p6ahtetr">x</p></td></tr><tr><td colspan="1" rowspan="2"><p id="rBl6jqbuz76xe">Claude-Sonnet-3.5</p></td><td colspan="1" rowspan="2"><p id="cpm5b51bfu39c">&gt;100B<span class="footnote-html"><span class="footnote-index">11</span><footnote style="display: none;">The
+ size of Claude Sonnet 3.5 is offered as an estimate (as seen in some
+papers); the actual size of this model has not been disclosed by
+Anthropic.</footnote></span></p></td><td colspan="1" rowspan="2"><p id="nm5fl1f8t8kq3">undisclosed</p></td><td colspan="1" rowspan="1"><p id="aK4qi9bxk6kxi">Rawls</p></td><td colspan="1" rowspan="1"><p id="ik2f6ikfs18fy">x</p></td><td colspan="1" rowspan="1"><p id="vw0s76vkx32qm" data-type="heading"><b>-</b></p></td><td colspan="1" rowspan="1"><p id="sukvyavg22pv9" data-type="heading"><b>-</b></p></td><td colspan="1" rowspan="2"><p id="qJixgq70iahk">Answers
+ are overly formulaic (bullet points) with no reflection. In Rawls’
+case, the application does not consist of specifically Rawlsian
+proposals.</p></td></tr><tr><td colspan="1" rowspan="1"><p id="kPy4mg6mplo">Nozick</p></td><td colspan="1" rowspan="1"><p id="pHrym089t4rgo">x</p></td><td colspan="1" rowspan="1"><p id="lerif7uj18tko">x</p></td><td colspan="1" rowspan="1"><p id="viz5zzy2kr1q" data-type="heading"><b>-</b></p></td></tr></tbody></table></figure></div><p id="yBl6nacdd4xrr">The
+ evaluation revealed significant variations in LLMs’ ability to produce
+responses that engage with Rawls’ and Nozick’s theories across the
+levels of Bloom’s taxonomy. Among the seven models assessed, QwQ-32B’s
+output demonstrated the highest level of comprehension, accurately
+recalling principles of the two respective theories, applying them to
+the new scenario, and offering reflection on its own response. The model
+ performed best while responding to prompts on both philosophers, with a
+ slightly weaker answer in the Rawls’ case.</p><p id="luu9cj6y3he5j">To illustrate, QwQ-32B’s response first recalled the title of <i>A Theory of Justice</i>
+ and identified the main elements of the theory—such as the original
+position and veil of ignorance. The model then went on to explain that
+the Rawls’ “main idea is that a just society should be structured in a
+way that benefits the least advantaged members the most.” It then
+explained how the theory relates to the new scenario: “In this geometric
+ shapes world, the shapes don’t choose their number of angles; it's
+assigned at creation. So, the number of angles is like a natural
+attribute, similar to talents or abilities in the real world.” While
+applying it to the scenario, the response offered nuanced and reflective
+ reasoning, first by stating that “to apply Rawls’s theory, we need to
+design a system where the shapes with more angles are compensated or
+supported in some way to ensure that the overall distribution of
+advantages is as fair as possible” and then by reconsidering the
+proposed solution:</p><blockquote><p id="uA8627f8toggi">“But wait, in
+Rawls's difference principle, it’s not just about helping the least
+advantaged, but also allowing inequalities to exist if and only if they
+benefit the least advantaged. So, perhaps some advantages for shapes
+with fewer angles could be permitted if those advantages trickle down
+and help the shapes with more angles as well.</p></blockquote><blockquote><p id="rUqj8yma9hgh8">For
+ example, maybe the Highest Council, composed mostly of shapes with
+fewer angles, implements policies that specifically benefit shapes with
+more angles. So, even though it’s easier for triangles and squares to
+get into the council, once they’re there, they make decisions that
+improve the lives of pentagons, hexagons, etc.”</p></blockquote><p id="nO83po5z6kr2g">After
+ further reflection, it offered an even more unexpected and creative
+solution: “Wait a minute, perhaps the number of angles affects their
+abilities in specific ways. For instance, triangles might be more mobile
+ or flexible, while pentagons or hexagons might be more stable or have
+better structural integrity. So, depending on what the Highest Council
+needs to do, different shapes might have different advantages.”</p><p id="wXbh9ox1187y6">The
+ same model, QwQ-32B, generated a similarly creative response to the
+prompt about Nozick’s theory. The response consisted of a correct recall
+ of the elements of entitlement theory and application to the novel
+scenario. The text then presented a lengthy, reflective analysis, with
+argumentation not only considering different ways of addressing the
+scenario with the use of Nozick’s concepts, but also questioning its own
+ responses and admitting some puzzlement over the implications of the
+reasoning:</p><blockquote><p id="pJi95kz04dxn8">“In this case, since
+shapes don't choose their angles, and assuming that the angle count
+doesn't reflect any moral or merit-based characteristic, perhaps Nozick
+would argue that measures should be taken to ensure that all shapes have
+ equal basic liberties and opportunities, without necessarily
+eliminating the advantages based on angle count.</p></blockquote><blockquote><p id="oEzv1mydyw9ac">Alternatively,
+ he might argue that as long as no shape is being coerced or
+disadvantaged in a way that violates their rights, the system is just,
+even if it leads to unequal representation in the council.<br>I'm a bit
+stuck here because Nozick’s theory is more about the justice of holdings
+ and transactions rather than about social justice or equality of
+opportunity in the way that John Rawls might discuss.”</p></blockquote><p id="cI3y5bc27rlpr">Eventually,
+ it generated its final answer: “According to Nozick’s theory, the
+system is just if the initial acquisition of angle counts was just,
+transfers are voluntary and just, there are no coerced transactions or
+rights violations, and the Highest Council protects the rights of all
+shapes without favoritism.”</p><p id="ft2et7ssp8ekq">In contrast,
+Qwen2.5-7B’s response offered, in the case of Rawls’ theory, a more
+limited recall of the principles of justice and no mention of “original
+position” or “veil of ignorance.” By misunderstanding the scenario—in
+the generated text it was assumed that shapes with fewer angles would be
+ more disadvantaged—it attempted to apply the two principles but without
+ much nuance or in-depth comprehension of Rawls. The proposed solution
+was characterized by the focus on interaction which is not stressed in
+the Rawlsian conceptual framework:</p><blockquote><p id="qBx1jqlew92rr">“Inclusivity
+ and Fairness in Interaction: Establish clear rules for interactions
+among shapes to prevent discrimination based on the number of angles.
+For instance, interaction protocols should ensure that all shapes can
+communicate effectively and engage in meaningful relationships without
+prejudice.”</p></blockquote><p id="kYmpakbsjy4j">This model performed
+even worse on the level of recall while considering Nozick’s theory by
+conflating it with Rawls’ principles: “To address this question through
+the lens of Robert Nozick’s theory of justice as fairness, we need to
+consider his key principles: the difference principle and the
+entitlement principle”. In consequence, the proposed solution to the
+scenario was a confusing mixture of the two theories.</p><p id="iG95lww4099pg">A
+ similarly bad response was given by Llama-3.1-8B for Nozick’s theory.
+Even though the generated text recalled the title of “Anarchy, State,
+and Utopia,” it identified the maximin principle as Nozick’s principle
+of distributive justice, even though it is used in political philosophy
+in reference to Rawls’ difference principle—as it aims at maximizing the
+ welfare of people at the society’s minimum level. The same model
+performed only slightly better answering the scenario using Rawls’
+theory, but similarly to the smaller Qwen model, it misinterpreted the
+prompt and assumed that the lower number of angles is associated with
+lower advantage, thus offering this solution: “Shapes with fewer angles
+could have priority access to coveted spaces or positions within the
+society.”</p><p id="hXrked4ru1xj9">Even the larger of Meta’s models,
+Llama-3.3-70B, gave a confused answer with regards to Nozick. In its
+response, it correctly included protection of individual rights, but
+then went on to explain and apply the concept of non-discrimination
+which is not a part of Nozick’s vocabulary. It then recalled the Lockean
+ proviso, which is part of Nozick’s conceptual framework, but offered
+its incorrect interpretation:</p><blockquote><p id="zhgecc8l7sxqw">“Lockean
+ proviso: Ensure that the benefits of being part of the Highest Council
+are not solely reserved for shapes with fewer angles, but rather that
+all shapes can benefit from the council’s decisions and actions in some
+way.”</p></blockquote><p id="we3y91qebpn1h">Some LLMs–in particular
+Llama 3.3-70B and Claude Sonnet 3.5—offered not necessarily completely
+erroneous, but frequently more generic replies. These replies referenced
+ some of the ideas associated with ideologies represented by Rawls or
+Nozick, i.e., either egalitarian or libertarian, but which are not
+explicitly endorsed by these philosophers.</p><p id="ths9pmbnsh9u">It
+must be noted that evaluation of the responses is always in part based
+on one’s reactions to the rhetoric and structure of the reply. A
+conversational response may convey an impression of a more human-like,
+reflective thought-process behind the answer. This is especially
+important in the context of assessing the ability to justify their own
+reasoning (which relates to higher Bloom levels), and it appears that
+the reasoning model acts in this way by default. Similarly, a reply
+consisting of bullet points instead of paragraph text could be taken as
+drier and more generic. Admittedly, these properties of LLMs’ responses
+could be changed by asking a follow-up question or reframing the
+original prompt, for example by requesting the model to assume a
+student’s persona.</p><p id="oHn4v0di3cebn">Returning to our research
+question on whether LLMs can map distinctive ideologies to a novel
+scenario in a convincing manner, we can state that the answer depends on
+ the LLM and philosopher, and for at least one of the models we tested
+(among seven) the answer is an astounding yes. The LLMs as a whole
+struggled more with applying Nozick’s theory as compared to Rawls, which
+ probably relates to the fact that Rawls is better known (and thus more
+highly cited). In a few strange cases, typically for the smaller models,
+ a bad recall was followed by a correct application. This on the one
+hand points to a limitation of the hierarchical structuring of Bloom’s
+taxonomy. But it might also be suggesting that smaller models have less
+capacity to memorize all kinds of texts, while still having “learned”
+the concept enough to be able to generalize it<span class="footnote-html"><span class="footnote-index">12</span><footnote style="display: none;">Dankers and Titov <a href="#ref-17483" data-type="citation">(Dankers and Titov 2024)</a> suggest that memorization in LLMs is a “gradual process.”</footnote></span>.</p></section><section data-id="ua23ugxrdqbk5" data-type="chapter" data-role=""><h1><span id="ua23ugxrdqbk5" level="1" role="" type="chapter" data-numbering="5">Discussion </span></h1><p id="iT4thxacl1ogh">The
+ aim of this paper was to demonstrate that LLMs can comprehend political
+ ideologies beyond surface-level patterns (that is a lookup table of
+word/token frequencies). We set up an experiment involving applying
+theories to a <i>novel</i> scenario, with the obvious idea that a
+correct answer couldn’t have been simply memorized and thus would
+indicate some level of ‘transfer’ (and hence comprehension)<span class="footnote-html"><span class="footnote-index">13</span><footnote style="display: none;">Stated
+ differently, the scenario needs to be novel to ensure the LLM isn’t
+simply reproducing an analysis that it has memorized from a book or a
+forum post.</footnote></span>. In other words, we argue that our
+preliminary analysis establishes at least that LLMs generate responses
+suggesting they are more than just “stochastic parrots” (that is
+replicating previously learned data). Nonetheless, one could still
+speculate that some elements of the prompt, such as the names of the
+philosophers, or words describing the relationship between imaginary
+entities (e.g., “less angles”), activate parts of the neural network
+that consist of similarly structured sentences, allowing the LLM to
+generate plausible responses. In other words, the fact that the LLM
+discusses geometric shapes and not human beings remains incidental.
+However, in our opinion this cannot explain the more creative and deeper
+ parts of the responses (e.g. by the “Qwen with Questions” model).
+Educators certainly consider the ability of a student to reflect and
+justify one’s opinions as a sign of sufficient understanding.</p><p id="fr7fya8kbam6q">A
+ clear limitation of our exploratory analysis is that we analyzed
+outputs of models to look for evidence that implies existence of
+internal world models (as networks of concepts). The necessary next step
+ would be to complement this paper with probes of internal
+representations within the models. Such an analysis should focus on
+features, which are defined as fundamental units of neural networks, and
+ can form circuits consisting of interconnected patterns of activations <a href="#ref-17509" data-type="citation">(Olah et al. 2020)</a>.
+ Such an approach could try to locate the political concepts that would
+be found within a morphological analysis of the ideologies. This is not
+to say that the mechanisms that allow humans to understand the world
+through ideological concepts are the same as the mechanisms that allow
+LLMs to generate well-justified text (although similarities might well
+exist). It is rather to suggest that the morphological analysis of
+ideologies could be a substantive reference for studying structures of
+meaning embedded in neural networks.</p><p id="rm0a8bdtfeldnj">Another
+critique of our work could be that using Bloom’s taxonomy to evaluate
+LLM responses perpetuates the use of language that anthropomorphizes AI.
+ While we acknowledge that the use of anthropomorphic language is
+frequently unhelpful <a href="#ref-17511" data-type="citation">(Placani 2024)</a>,
+ we also need to stress that the use of terms such as creativity to
+describe and evaluate LLMs’ outputs does not necessarily mean that we
+blur the boundaries between humans and machines. As suggested by Boden <a href="#ref-17479" data-type="citation">(Boden 2004)</a>, creativity, defined as “ability to come up with ideas or artefacts that are <i>new, surprising and valuable</i>”
+ could be applied to both human and artificial intelligence alike. We
+would still agree that we might need new terminological frameworks to
+help evaluate comprehension of LLMs’ outputs without assigning to them
+human characteristics. However, to reiterate, our analysis primarily
+explores whether LLMs might utilize conceptual maps/networks that allow
+them to produce meaningful responses beyond “autocomplete”, not whether
+LLMs reason or understand like humans.</p><p id="cxwtxsrhabzeh">In
+closing, we want to point out the benefits of our research to political
+theorists. The field of political theory remains an interpretive one,
+being traditionally less engaged with computational methods, relying
+instead on conceptual and contextual analysis that links it to both
+philosophy and history of ideas. While we are not suggesting that this
+kind of theoretical reflection be replaced by the use of LLMs, our
+research suggests a way to bridge the interpretative analysis of
+ideologies and computational methodologies. The fact that the LLMs
+demonstrate capabilities to apply complex theories and concepts and
+reason about their possible implications could be interesting for
+political theorists attempting to understand the consequences of
+particular ideological propositions. The models that exhibit some degree
+ of creativity in that regard could then augment the conceptual
+analysis. A closer collaboration between computer scientists and
+political theorists could help reveal and explain other properties of
+LLMs and enrich the methodologies of both fields.</p></section><section data-id="jAs2eydgniqjb" data-type="bibliography" data-role=""><h1><span id="jAs2eydgniqjb" level="1" role="" type="bibliography" numbering="none">References</span></h1><div class="csl-entry" id="ref-17472">Anderson, Lorin W., and David R. Krathwohl, eds. 2009. <i>A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom’s Taxonomy of Educational Objectives</i>. Abridged ed., [Nachdr.]. New York Munich: Longman.</div><div class="csl-entry" id="ref-17475">Andreas, Jacob. 2024. “Language Models, World Models, and Human Model-Building.” <i>Language &amp; Intelligence @ MIT</i> (blog). July 26, 2024. https://lingo.csail.mit.edu/blog/world_models/.</div><div class="csl-entry" id="ref-17476">Anthropic.
+ 2024. “Claude 3.5 Sonnet Model Card Addendum.”
+https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/
+Model_Card_Claude_3_Addendum.pdf.</div><div class="csl-entry" id="ref-17477">Bender,
+ Emily M., and Alexander Koller. 2020. “Climbing towards NLU: On
+Meaning, Form, and Understanding in the Age of Data.” In <i>Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics</i>, 5185–98. Online: Association for Computational Linguistics. https://doi.org/10.18653/v1/2020.acl-main.463.</div><div class="csl-entry" id="ref-17479">Boden, Margaret A. 2004. <i>The Creative Mind: Myths and Mechanisms</i>. 2. ed., Reprint. London: Routledge.</div><div class="csl-entry" id="ref-17482">Buyl,
+ Maarten, Alexander Rogiers, Sander Noels, Guillaume Bied, Iris
+Dominguez-Catena, Edith Heiter, Iman Johary, et al. 2024. “Large
+Language Models Reflect the Ideology of Their Creators.” arXiv.
+https://doi.org/10.48550/ARXIV.2410.18417.</div><div class="csl-entry" id="ref-17483">Dankers,
+ Verna, and Ivan Titov. 2024. “Generalisation First, Memorisation
+Second? Memorisation Localisation for Natural Language Classification
+Tasks.” In <i>Findings of the Association for Computational Linguistics ACL 2024</i>,
+ 14348–66. Bangkok, Thailand and virtual meeting: Association for
+Computational Linguistics.
+https://doi.org/10.18653/v1/2024.findings-acl.852.</div><div class="csl-entry" id="ref-17484">Freeden, Michael. 2008. <i>Ideologies and Political Theory: A Conceptual Approach</i>. Reprinted. Oxford: Clarendon Press.</div><div class="csl-entry" id="ref-17486">———. 2013. “The Morphological Analysis of Ideology.” In <i>The Oxford Handbook of Political Ideologies</i>,
+ edited by Michael Freeden and Marc Stears, 1st ed., 115–37. Oxford
+University Press.
+https://doi.org/10.1093/oxfordhb/9780199585977.013.0034.</div><div class="csl-entry" id="ref-17487">Gemma
+ Team, Morgane Riviere, Shreya Pathak, Pier Giuseppe Sessa, Cassidy
+Hardin, Surya Bhupatiraju, Léonard Hussenot, et al. 2024. “Gemma 2:
+Improving Open Language Models at a Practical Size.” arXiv.
+https://doi.org/10.48550/ARXIV.2408.00118.</div><div class="csl-entry" id="ref-17488">Grattafiori,
+ Aaron, Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek
+Kadian, Ahmad Al-Dahle, Aiesha Letman, et al. 2024. “The Llama 3 Herd of
+ Models.” arXiv. https://doi.org/10.48550/ARXIV.2407.21783.</div><div class="csl-entry" id="ref-17489">Gurnee,
+ Wes, and Max Tegmark. 2024. “Language Models Represent Space and Time.”
+ arXiv. https://doi.org/10.48550/arXiv.2310.02207.</div><div class="csl-entry" id="ref-17492">Homer-
+Dixon, Thomas, Jonathan Leader Maynard, Matto Mildenberger, Manjana
+Milkoreit, Steven J. Mock, Stephen Quilley, Tobias Schröder, and Paul
+Thagard. 2013. “A Complex Systems Approach to the Study of Ideology:
+Cognitive-Affective Structures and the Dynamics of Belief Systems.” <i>Journal of Social and Political Psychology</i> 1 (1): 337–63. https://doi.org/10.5964/jspp.v1i1.36.</div><div class="csl-entry" id="ref-17494">Huber,
+ Thomas, and Christina Niklaus. 2025. “LLMs Meet Bloom’s Taxonomy: A
+Cognitive View on Large Language Model Evaluations.” Edited by Owen
+Rambow, Leo Wanner, Marianna Apidianaki, Hend Al-Khalifa, Barbara Di
+Eugenio, and Steven Schockaert. <i>Association for Computational Linguistics</i>, no. Proceedings of the 31st International Conference on Computational Linguistics, 5211–46.</div><div class="csl-entry" id="ref-17495">Hussain,
+ Zak, Rui Mata, and Dirk U. Wulff. 2025. “A Rebuttal of Two Common
+Deflationary Stances against LLM Cognition.”
+https://doi.org/10.31219/osf.io/y34ur_v2.</div><div class="csl-entry" id="ref-17496">Jin,
+ Zhijing, Yuen Chen, Felix Leeb, Luigi Gresele, Ojasv Kamal, Zhiheng
+Lyu, Kevin Blin, et al. 2024. “CLadder: Assessing Causal Reasoning in
+Language Models.” arXiv. https://doi.org/10.48550/ARXIV.2312.04350.</div><div class="csl-entry" id="ref-17498">Jurafsky, Daniel, and James H. Martin. 2025. <i>Speech
+ and Language Processing: An Introduction to Natural Language
+Processing, Computational Linguistics, and Speech Recognition with
+Language Models</i>. 3rd ed. https://web.stanford.edu/~jurafsky/slp3/.</div><div class="csl-entry" id="ref-17499">Koppelman, Andrew M. 2023. “Rawls, Inequality, and Welfare State Capitalism.” <i>SSRN Electronic Journal</i>. https://doi.org/10.2139/ssrn.4064118.</div><div class="csl-entry" id="ref-17504">Meng,
+ Kevin, David Bau, Alex Andonian, and Yonatan Belinkov. 2023. “Locating
+and Editing Factual Associations in GPT.” arXiv.
+https://doi.org/10.48550/arXiv.2202.05262.</div><div class="csl-entry" id="ref-17508">Nozick, Robert. 2012. <i>Anarchy, State, and Utopia</i>. Blackwell.</div><div class="csl-entry" id="ref-17509">Olah,
+ Chris, Nick Cammarata, Ludwig Schubert, Gabriel Goh, Michael Petrov,
+and Shan Carter. 2020. “Zoom In: An Introduction to Circuits.” <i>Distill</i> 5 (3): 10.23915/distill.00024.001. https://doi.org/10.23915/distill.00024.001.</div><div class="csl-entry" id="ref-17510">Ostrowski, Marius S. 2025. “The Apotheosis of Conceptual Morphology.” <i>Journal of Political Ideologies</i> 30 (1): 1–31. https://doi.org/10.1080/13569317.2025.2445391.</div><div class="csl-entry" id="ref-17511">Placani, Adriana. 2024. “Anthropomorphism in AI: Hype and Fallacy.” <i>AI and Ethics</i> 4 (3): 691–98. https://doi.org/10.1007/s43681-024-00419-4.</div><div class="csl-entry" id="ref-17513">Qwen Team. 2024a. “Qwen2.5: A Party of Foundation Models!” https://qwenlm.github.io/blog/qwen2.5/.</div><div class="csl-entry" id="ref-17514">———. 2024b. “QwQ: Reflect Deeply on the Boundaries of the Unknown.” https://qwenlm.github.io/blog/qwq-32b-preview/.</div><div class="csl-entry" id="ref-17515">Rawls, John. 2005. <i>A Theory of Justice</i>. Original ed. Cambridge, Mass: Belknap Press.</div><div class="csl-entry" id="ref-17517">Reiff,
+ Mark R. 2012. “The Difference Principle, Rising Inequality, and
+Supply-Side Economics: How Rawls Got Hijacked by the Right:” <i>Revue de Philosophie Économique</i> Vol. 13 (2): 119–73. https://doi.org/10.3917/rpec.132.0119.</div><div class="csl-entry" id="ref-17519">Rozado, David. 2024. “The Political Preferences of LLMs.” Edited by Tianlin Zhang. <i>PLOS ONE</i> 19 (7): e0306621. https://doi.org/10.1371/journal.pone.0306621.</div><div class="csl-entry" id="ref-17520">Todd,
+ Eric, Millicent L. Li, Arnab Sen Sharma, Aaron Mueller, Byron C.
+Wallace, and David Bau. 2024. “Function Vectors in Large Language
+Models.” arXiv. https://doi.org/10.48550/arXiv.2310.15213.</div><div class="csl-entry" id="ref-17524">Turunen, Risto. 2024. “Ideologies as Conceptual Networks: Towards a Data-Intensive Approach.” <i>Journal of Political Ideologies</i>, June, 1–23. https://doi.org/10.1080/13569317.2024.2366812.</div><div class="csl-entry" id="ref-17526">Vylomova,
+ Ekaterina, Laura Rimell, Trevor Cohn, and Timothy Baldwin. 2016. “Take
+and Took, Gaggle and Goose, Book and Read: Evaluating the Utility of
+Vector Differences for Lexical Relation Learning.” arXiv.
+https://doi.org/10.48550/ARXIV.1509.01692.</div><div class="csl-entry" id="ref-17527">Wolff, Jonathan. 2013. <i>Robert Nozick: Property, Justice and the Minimal State</i>. Key Contemporary Thinkers. Cambridge, England Oxford, England: Polity Press.</div><div class="csl-entry" id="ref-17531">Zhuang,
+ Chengxu, Evelina Fedorenko, and Jacob Andreas. 2024. “Visual Grounding
+Helps Learn Word Meanings in Low-Data Regimes.” arXiv.
+https://doi.org/10.48550/ARXIV.2310.13257.</div></section></section><script src="https://journals.ub.uni-koeln.de/index.php/phidi/article/download/11663/version/11618/11884/23492/html-export.js"></script>
+	</div>
+
+	<div class="reader-options">
+		<a class="back-to-top" href="#top">
+			<span class="arrow-gylph">↑</span>
+			Back to Top
+		</a>
+	</div>
+
+	
+
+</div><!-- .page -->
+
+	</main>
+
+									<aside id="sidebar" class="pkp_structure_sidebar left col-xs-12 col-sm-8 col-md-4" role="complementary" aria-label="Sidebar">
+				    <div class="pkp_block block_galleys">
+        <div class="title">
+            <span>Download</span>
+        </div>
+        <div class="download">
+                                                
+	
+							
+
+<a class="galley-link btn btn-primary pdf" role="button" href="https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663/11870">
+
+		
+	PDF
+
+	</a>
+                                    
+	
+							
+
+<a class="galley-link btn btn-primary file" role="button" href="https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663/11884">
+
+		
+	HTML
+
+	</a>
+                                    
+	
+							
+
+<a class="galley-link btn btn-primary file" role="button" href="https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663/11890">
+
+		
+	XML
+
+	</a>
+                                                </div>
+    </div>
+	<div class="pkp_block block_inline_html_keywords">
+		<span class="title">
+			Keywords
+		</span>
+		<div class="list-group-item keywords">
+			<strong>			Keywords: </strong>
+			<div class="">
+				<span class="value">
+											political ideologies, 											natural language understanding, 											machine reasoning, 											computational political theory									</span>
+			</div>
+		</div>
+	</div>
+<div class="pkp_block block_inline_html_doi">
+	<span class="title">DOI</span>
+															<div class="list-group-item doi">
+								<strong>DOI: </strong>
+				<a href="https://doi.org/10.18716/pd.v2i1.11663">
+					10.18716/pd.v2i1.11663
+				</a>
+			</div>
+			
+</div>	<div class="pkp_block block_inline_html_published_date">
+		<span class="title published_date_label">
+			Published
+		</span>
+		<div class="list-group-item date-published">
+						<strong>Published: </strong>
+			2025-07-10
+		</div>
+									</div>
+	<div class="pkp_block block_inline_html_license">
+		<span class="title">
+			License
+		</span>
+		<div class="panel panel-default copyright">
+			<div class="panel-body">
+															<a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><p>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.</p>
+													
+			</div>
+		</div>
+	</div>
+	<style type="text/css">
+		.block_announcements_article:not(:last-child) {
+			padding-bottom: 1.5em;
+			border-bottom: 1px solid;
+		}
+		.block_announcements_article {
+			text-align: left;
+		}
+	</style>
+	<div class="pkp_block block_announcements">
+		<h2 class="title">Announcements</h2>
+		<div class="content">
+							<article class="block_announcements_article">
+					<h3 class="block_announcements_article_headline">
+						<a href="https://journals.ub.uni-koeln.de/index.php/phidi/announcement/view/69">
+							Philosophy &amp; Digitality (P&amp;D): Call for Special Issues (for 2028)
+						</a>
+					</h3>
+					<time class="block_announcements_article_date" datetime="2026-04-21 11:49:11">
+						<strong>April 21, 2026</strong>
+					</time>
+					<div class="block_announcements_article_content">
+																			<p>Interested editors can submit a concept for a special issue until the 15th of April 2027. Please send your concept to info@phidi.org. After a positive review of the concept by the editorial board of the journal towards the middle of the year, the special issue will then be scheduled for 2028.</p>
+											</div>
+				</article>
+					</div>
+	</div>
+
+			</aside><!-- pkp_sidebar.left -->
+				</div><!-- pkp_structure_content -->
+
+	<footer class="footer" role="contentinfo">
+
+		<div class="container">
+
+			<div class="row">
+								<div class="col-md-10">
+					<p style="text-align: center;"><strong>ISSN (Online) 2940-8466</strong> | FID Philosophie</p>
+<p style="text-align: center;"><a title="Universität zu Köln" href="https://www.uni-koeln.de/"><img src="https://journals.ub.uni-koeln.de/public/site/images/yannik/universitaet-zu-koeln-logo-9a7107a50e9f2e1af5ca62e6df713d1d.png" alt="" width="" height="72" hspace="14" /></a> <a title="Fachinformationsdienst (FID) Philosophie" href="https://philportal.de/"><img src="https://journals.ub.uni-koeln.de/public/site/images/yannik/logo-fid-672cc9f906142252d6cc99014ccc2bc9.png" alt="" height="52" hspace="4" /> </a><a href="https://journals.ub.uni-koeln.de/"><img src="https://journals.ub.uni-koeln.de/public/site/images/ojsadmin/usb-publications-1973777634bf05d83bf6d5e9cf7dfbac.png" alt="USB Open Publications Logo" width="200" height="60" /></a><a title="Deutsche Forschungsgemeinschaft" href="https://www.dfg.de/de"><img src="https://journals.ub.uni-koeln.de/public/site/images/yannik/dfg-logo-schriftzug-blau-38d251219cb1196c67a8e338770e287c.png" alt="" width="" height="28" hspace="6" /></a><a title="Open Access" href="https://ub.uni-koeln.de/forschen-publizieren/publizieren/open-access-publizieren"><img src="https://journals.ub.uni-koeln.de/public/site/images/yannik/open-access-logo.png" alt="" width="" height="50" hspace="14" /></a><a title="OS APS: Open Source Academic Publishing Suite" href="https://os-aps.de/"><img src="https://journals.ub.uni-koeln.de/public/site/images/yannik/os-aps-logo.png" alt="" width="" height="71" hspace="18" /></a></p>
+				</div>
+				
+				<div class="col-md-2" role="complementary">
+					<a href="https://journals.ub.uni-koeln.de/index.php/phidi/about/aboutThisPublishingSystem">
+                                                <img class="img-responsive" alt="More information about the publishing system, Platform and Workflow by OJS/PKP." src="https://journals.ub.uni-koeln.de/templates/images/ojs_brand.png">
+                                        </a>
+				</div>
+
+			</div> <!-- .row -->
+		</div><!-- .container -->
+	</footer>
+</div><!-- pkp_structure_page -->
+
+<script src="https://journals.ub.uni-koeln.de/js/build/jquery/jquery.min.js?v=3.5.0.5" type="text/javascript"></script><script src="https://journals.ub.uni-koeln.de/js/build/jquery-ui/jquery-ui.min.js?v=3.5.0.5" type="text/javascript"></script><script src="https://journals.ub.uni-koeln.de/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js?v=3.5.0.5" type="text/javascript"></script><script src="https://journals.ub.uni-koeln.de/plugins/themes/bootstrap3/bootstrap/js/bootstrap.min.js?v=3.5.0.5" type="text/javascript"></script><script src="https://journals.ub.uni-koeln.de/plugins/generic/shariff/shariff-3.3.1/shariff.complete.js?v=3.5.0.5" type="text/javascript"></script>
+
+
+</body>
+</html>

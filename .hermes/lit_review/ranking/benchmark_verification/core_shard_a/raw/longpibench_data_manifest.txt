@@ -1,0 +1,13 @@
+Archive:  .hermes/lit_review/ranking/benchmark_verification/core_shard_a/artifacts/LongPiBench_data.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  10-15-2024 11:33   data/
+483556718  10-15-2024 11:33   data/table_sql_relative.json
+757027359  10-15-2024 11:32   data/history_reorder_absolute.json
+     6148  10-15-2024 11:32   data/.DS_Store
+483528903  10-15-2024 11:33   data/table_sql_absolute.json
+756421523  10-15-2024 11:33   data/history_reorder_relative.json
+339014827  10-15-2024 11:32   data/equation_solution_relative.json
+339014827  10-15-2024 11:33   data/equation_solution_absolute.json
+---------                     -------
+3158570305                     8 files

@@ -1,0 +1,154 @@
+{
+  "perspective": "Adversarial verification of Daisy Finance chartfield, account, funding, costing, monitoring, and access workflow against all three interview transcripts and all three derived Markdown artifacts.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "F-01",
+      "claim": "The Finance handoff is an appointment already processed by HR/Laura, with salary and chartfield data in the shared appointment worksheet; Finance then acts on verified appointments.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Laura Hemphill (1).docx:123-130 — Laura says she verifies Oracle and Daisy's team filters for verified records to do costing.",
+        "Call with Daisy Matos.docx:1028-1049 — Daisy describes Finance checking the chartfield, then recording status/date/initials in the worksheet.",
+        "daisy_finance_stage.md:15-18, 67-68 — derived handoff model.",
+        "student_hiring_pipeline.md:27-31, 89-94, 109-114 — Laura verification precedes Daisy costing."
+      ],
+      "risk": "The worksheet is acting as the operational handoff, but no authoritative record/version or handoff acknowledgement is established.",
+      "recommendation": "Treat the worksheet handoff as observed current behavior only; require an explicit record identity, revision/history, and handoff timestamp before automation."
+    },
+    {
+      "id": "F-02",
+      "claim": "Finance verifies the chartfield and checks/obtains confirmation from the faculty member or PI before costing.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:1028-1049 — Finance enters/checks the chartfield, verifies it with the faculty member, and changes the row status after entry.",
+        "Call with Mayra Morfin (1).docx:79-86 — Mayra says faculty confirmation is required because funding may change and protects against a defaulted account.",
+        "daisy_finance_stage.md:17-22, 101-106 — derived workflow says verify with faculty/PI and flags whether confirmation is always required."
+      ],
+      "risk": "The transcripts do not establish whether Finance reconfirms every chartfield or only confirms when something is missing, changed, or suspect; 'faculty/PI' is also not defined as an authority rule.",
+      "recommendation": "Do not encode universal auto-confirmation. Record confirmation actor, date, source, and scope; leave the always-versus-exception policy open."
+    },
+    {
+      "id": "F-03",
+      "claim": "Missing or unfunded chartfields loop back through faculty contact, worksheet update, and re-verification.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:42-44 — Daisy describes requesting an account when the chartfield was not provided.",
+        "Call with Daisy Matos.docx:1028-1049 — Finance verifies the chartfield; if there is no money, the team discusses it with the faculty member and changes the chartfield.",
+        "daisy_finance_stage.md:19-22, 37-44, 85-89 — missing and no-money branches return through worksheet update to verification.",
+        "mayra_student_hiring_flow.md:79-80, 85-90 — defaulted-account handling refers back to the faculty confirmation record."
+      ],
+      "risk": "The evidence does not define a terminal state for no response, no valid account, or repeated failed funding checks.",
+      "recommendation": "Add bounded exception states and escalation/stop rules; retain each rejected or superseded funding value rather than overwriting it."
+    },
+    {
+      "id": "F-04",
+      "claim": "Finance maintains an account list organized by departmental accounts, active grants, startup accounts, and accountable officer/PI; Box is the working file and FAST is a related source/query plane.",
+      "status": "confirmed_with_source_caveat",
+      "evidence": [
+        "Call with Daisy Matos.docx:214-257 — Daisy describes the college account list, active grants, departmental/auxiliary accounts, PI-associated chartfields, and frequent cleanup/updates.",
+        "Call with Daisy Matos.docx:263-279 — department accounts/active grants are accounts; Research Foundation and foundation pages are funds and may have convenience chartfields.",
+        "Call with Daisy Matos.docx:294-311 — Daisy says the information is in FAST but may require Matt/Eric; until then a manually updated spreadsheet is usable.",
+        "Call with Daisy Matos.docx:343-355 — the reconciliation/account files are stored in Box under Daisy's folder.",
+        "daisy_finance_stage.md:11-13, 56-80 — derived account/source model."
+      ],
+      "risk": "Box, the local spreadsheet, and FAST are not assigned explicit authority, synchronization direction, freshness guarantees, or conflict resolution.",
+      "recommendation": "Declare one system of record for account validity/funding and label Box/worksheet/FAST as source, mirror, or working projection with refresh and conflict rules."
+    },
+    {
+      "id": "F-05",
+      "claim": "Multi-account costing requires a per-pay-period distribution whose percentages total 100%; fringe and pay-period calendars are lookup/configuration inputs that change over time.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:87-101, 167-189 — distributions are calculated per biweekly pay period, entered in Oracle, and must account for multiple accounts.",
+        "Call with Daisy Matos.docx:376-397 — Daisy describes the distribution formula and the requirement to calculate it manually/consistently.",
+        "Call with Daisy Matos.docx:413-450 — fringe rates are lookup-driven and change by category/year.",
+        "Call with Daisy Matos.docx:454-472 — pay periods/check dates are maintained annually and costing must be changed in Oracle by the relevant deadline.",
+        "daisy_finance_stage.md:23-26, 73-76 — derived distribution and Oracle steps."
+      ],
+      "risk": "The evidence proves the calculation inputs exist but not validation behavior, rounding/tolerance, effective-date handling, or whether all appointment classes use the same fringe/distribution rules.",
+      "recommendation": "Require effective-dated rate/calendar tables, deterministic total validation, rounding policy, and class-specific rule confirmation before implementation."
+    },
+    {
+      "id": "F-06",
+      "claim": "Finance enters costing in Oracle and monitors active appointments, including stale/ended appointments and termination.",
+      "status": "confirmed_with_gaps",
+      "evidence": [
+        "Call with Daisy Matos.docx:472-482 — RSA checks and Oracle costing deadlines matter.",
+        "Call with Daisy Matos.docx:892-931 — Daisy manually summarizes active appointments across action tabs, questions stale records with Mayra/Laura/faculty, and wants an active-appointment summary.",
+        "Call with Daisy Matos.docx:1021-1049 — Finance marks worksheet status/date/initials and monitors active appointments.",
+        "daisy_finance_stage.md:26-31, 49-53, 77-80 — derived Oracle, monitoring, stale/ended, and termination flow."
+      ],
+      "risk": "The exact Oracle deadline, monitoring cadence, termination authority, and meaning of the post-green status are unresolved.",
+      "recommendation": "Do not infer 'page' as 'paid' or any other terminal status; capture exact statuses, deadline owner, cadence, and termination transition from Finance."
+    },
+    {
+      "id": "F-07",
+      "claim": "Finance reconciliation data is sensitive and access is intended to be role-limited, while some cross-team visibility is useful.",
+      "status": "contradiction",
+      "evidence": [
+        "Call with Daisy Matos.docx:516-524 — Daisy says Finance has access to sensitive reconciliation data while Mayra and Laura do not; a dedicated Box folder and explicit access list are acceptable.",
+        "Call with Daisy Matos.docx:529-539 — Ian proposes that everybody can see anything while only selected users can edit.",
+        "Call with Mayra Morfin (1).docx:209-226, 340-352 — Mayra asks for restricted creation/edit access and says she should view Laura's screen but not edit HR statuses because she lacks Oracle access.",
+        "daisy_finance_stage.md:11-13 — derived artifact preserves the sensitive Finance boundary."
+      ],
+      "risk": "A broad read-all model conflicts with the stated sensitivity and least-privilege boundary. No field-level visibility, role matrix, or access audit behavior is established.",
+      "recommendation": "Block security-sensitive implementation until roles, field/record scopes, edit authorities, Box sharing, and audit logging are explicitly defined; default to least privilege, not universal visibility."
+    },
+    {
+      "id": "F-08",
+      "claim": "The current process has an audit marker (status plus date/initials), but it is not yet a complete audit trail.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:1035-1049 — row status is changed and date/initials are recorded after Finance entry.",
+        "Call with Laura Hemphill (1).docx:697-708, 1045-1058 — overwriting spreadsheet rows loses prior requests and audit evidence.",
+        "student_hiring_pipeline.md:56-60 — derived artifact identifies the missing audit trail."
+      ],
+      "risk": "Status/date/initials do not preserve prior chartfields, funding decisions, rejected values, confirmations, or Oracle reconciliation evidence.",
+      "recommendation": "Preserve append-only change events or equivalent history for chartfield, funding, distribution, confirmation, Oracle entry, and termination actions."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Exact Finance row statuses after the green in-progress state; transcript rendering says 'page' and the derived artifact says probably 'paid' (daisy_finance_stage.md:27, 101-106).",
+    "Whether faculty/PI confirmation is mandatory for every record or only for changed, missing, or suspect chartfields (daisy_finance_stage.md:104-106).",
+    "Which source is authoritative among FAST, Box account spreadsheets, appointment worksheet, Oracle, and any Power BI projection; no sync/freshness/conflict policy is stated.",
+    "Exact Oracle costing deadlines, responsible Finance role, and monitoring cadence (daisy_finance_stage.md:102-104).",
+    "Whether graduate-student appointments receive fringe or multi-account distributions, versus the faculty/staff examples Daisy demonstrated (daisy_finance_stage.md:104-106).",
+    "Termination authority and exact state transition when an appointment is stale, superseded, or ended.",
+    "No-response and no-valid-account escalation/terminal behavior in the missing/unfunded loops.",
+    "Role/field-level access matrix, including whether Finance users may see HR data and whether HR users may see any Finance reconciliation details; current proposal conflicts with stated sensitivity.",
+    "Whether the Finance workflow is a single shared system or a projection over Box/FAST/Oracle; Daisy explicitly leaves that architecture unresolved (Call with Daisy Matos.docx:1091-1109)."
+  ],
+  "source_coverage": [
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx",
+      "type": "primary transcript",
+      "coverage": "Full 1128 lines read; primary evidence for Finance handoff, chartfield/account verification, funding loops, distributions, fringe/pay-period inputs, Oracle costing, monitoring, Box/FAST, and access boundaries."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/HR App (1).docx",
+      "type": "primary transcript",
+      "coverage": "Full 1158 lines read; corroborates Laura-to-Finance verified handoff, change/funding coordination, audit gaps, and role workflow."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx",
+      "type": "primary transcript",
+      "coverage": "Full 650 lines read; corroborates faculty confirmation, chartfield lookup/prepopulation, restricted edit access, and Finance visibility needs."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md",
+      "type": "derived artifact",
+      "coverage": "Full 117 lines read; used as provisional structured summary and explicitly checked against Daisy transcript."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md",
+      "type": "derived artifact",
+      "coverage": "Full 153 lines read; used to corroborate Laura-to-Daisy sequencing, statuses, change loops, and audit gaps."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md",
+      "type": "derived artifact",
+      "coverage": "Full 128 lines read; used to corroborate Mayra's faculty-confirmation/defaulted-account path and distinguish second-hand claims."
+    }
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/finance_accounts.json"
+}

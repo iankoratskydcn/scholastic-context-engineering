@@ -1,0 +1,134 @@
+{
+  "perspective": "Adversarial verification of reporting, querying, filtering, summary-view, and export requirements; current practice is separated from future system proposals.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "reporting-001",
+      "claim": "An active-appointments summary is a confirmed operational need: Finance currently assembles it across action tabs and removes terminated appointments.",
+      "status": "current_behavior_confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:885-931 — Daisy describes querying all active appointments across action tabs, manually identifying continuing appointments, terminating ended ones, and needing one summary.",
+        "daisy_finance_stage.md:27-31 — derived flow records manual active monitoring and termination from the active summary."
+      ],
+      "risk": "The transcript does not define the authoritative active predicate, effective-date rules, supersession handling, or whether active is per student, assignment, or appointment period.",
+      "recommendation": "Implement a read-only summary at assignment grain, with explicit active predicate, effective dates, supersession/termination fields, source timestamp, and drill-through to the underlying record."
+    },
+    {
+      "id": "reporting-002",
+      "claim": "Account projections, payroll projections, and expense projections are existing Finance practices in reconciliation workbooks, not yet proven requirements of the proposed application.",
+      "status": "current_external_workbook_plus_future_desire",
+      "evidence": [
+        "Call with Daisy Matos.docx:565-585 — Daisy describes startup reconciliation by year, budget, payroll projection, and expense projection in existing worksheets.",
+        "daisy_finance_stage.md:27-28 — derived summary records project payroll and expenses per account in the Box reconciliation file.",
+        "Call with Daisy Matos.docx:594-620 — Daisy says whether to merge this into the system is still an open question."
+      ],
+      "risk": "A system report could be mistaken for the Finance reconciliation source of truth without defining budget version, actuals source, forecast method, period grain, and variance semantics.",
+      "recommendation": "Treat in-app projections as future scope unless the reconciliation workbook/FAST authority and calculation contract are explicitly integrated; preserve source, version, period, and actual-versus-projected labels."
+    },
+    {
+      "id": "reporting-003",
+      "claim": "Payroll/expense reconciliation is needed for Finance analysis, but the evidence proves workbook/query practice rather than a finalized report specification.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:214-257 — Finance maintains account lists, active grants, departmental accounts, and regularly updates them.",
+        "Call with Daisy Matos.docx:778-807 — Daisy uses editable FAST queries, exports to Excel, and analyzes expenditures for the college.",
+        "Call with Daisy Matos.docx:821-850 — workforce and financial analyses are assembled ad hoc from reports and queries."
+      ],
+      "risk": "No canonical joins, reconciliation keys, refresh cadence, accounting period, or discrepancy workflow is specified; totals could appear authoritative while omitting external accounts or adjustments.",
+      "recommendation": "Define report contracts before implementation: source systems, refresh time, account/assignment keys, period boundaries, inclusion/exclusion rules, reconciliation status, and drill-down evidence."
+    },
+    {
+      "id": "reporting-004",
+      "claim": "Tenure/promotion fields are a confirmed future reporting need: title, hire date, prior rank/start date, promotion date, and current rank are needed for provost-style reports.",
+      "status": "future_requirement_confirmed_not_current_system",
+      "evidence": [
+        "Call with Daisy Matos.docx:631-680 — Daisy describes tracking title, hire date, assistant-professor start date, associate-professor start date, and promotion/tenure history for reporting.",
+        "Call with Daisy Matos.docx:606-620 — Daisy cites a requested breakdown of tenured, tenure-track, and non-tenured faculty and asks for shared access."
+      ],
+      "risk": "The interview does not establish authoritative HR ownership, full rank-history model, effective-date semantics, tenure decision versus promotion distinction, or source-system synchronization.",
+      "recommendation": "Keep as future HR/reporting scope; model immutable effective-dated rank events separately from current rank and identify the authoritative HR source before exposing counts."
+    },
+    {
+      "id": "reporting-005",
+      "claim": "Workforce reports are an existing external reporting input used to build organizational and financial analyses, not evidence that the new app currently provides workforce reporting.",
+      "status": "current_external_report_confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:821-850 — Daisy says she pulled an HR workforce report to construct an organizational-chart analysis and notes Oracle/Power BI queries would need to be built.",
+        "Call with Daisy Matos.docx:849-862 — Daisy says the desired data warehouse/query capability is down the road, while Ian narrows current focus to appointments and chartfields."
+      ],
+      "risk": "Calling a future app view a workforce report could overstate coverage, especially for organizational hierarchy, vacancy rate, tenure status, and current employment status.",
+      "recommendation": "Label workforce reporting as external/current plus future integration; do not claim parity until the report schema, refresh, row-level security, and reconciliation to HR are verified."
+    },
+    {
+      "id": "query-006",
+      "claim": "Filtering and query-driven views are directly confirmed as high-value current workflows for Laura, Mayra, and Daisy.",
+      "status": "current_behavior_confirmed_and_corroborated",
+      "evidence": [
+        "HR App (1).docx:78-87,115-136,252-260 — Laura filters screening, stage, Oracle state, and unsigned records to determine next actions and chase people.",
+        "Call with Mayra Morfin (1).docx:496-504,531-542 — Mayra requests filtering by job code/type, professor, supervisor, cost code, and active appointments.",
+        "Call with Daisy Matos.docx:727-807,885-931 — Daisy uses queries for analysis and needs filtered active-appointment summaries."
+      ],
+      "risk": "The evidence does not define filter operators, multi-filter logic, saved views, null behavior, date timezone, pagination, or whether filters apply before or after security trimming.",
+      "recommendation": "Treat filtering as MVP, with explicit field dictionary, AND/OR semantics, date boundaries, null handling, saved-view ownership, result counts, and security tests."
+    },
+    {
+      "id": "export-007",
+      "claim": "CSV/Excel export is a future proposal for filtered appointment/report data, while Excel export from current external queries is already practiced.",
+      "status": "split_current_vs_future",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:531-542 — Ian proposes filtered appointment reports and Excel/CSV export; this is a design proposal, not implemented evidence.",
+        "Call with Mayra Morfin (1).docx:359-362,467-468 — CSV/Excel upload/download is proposed for open positions and chartfield configuration.",
+        "Call with Daisy Matos.docx:778-807 — Daisy currently exports a FAST query to Excel for analysis."
+      ],
+      "risk": "Export requirements lack column contract, authorization/redaction, snapshot timestamp, formula/value behavior, row limits, encoding, and audit logging; exports may leak sensitive Finance/HR data.",
+      "recommendation": "Specify export per report: authorized columns, filters echoed in metadata, generated-at/source version, stable assignment identifiers, CSV encoding, Excel limits, and audit trail. Keep upload and export as separate capabilities."
+    },
+    {
+      "id": "summary-008",
+      "claim": "Summary views and drill-down are desired future UX patterns, but only the active-appointment summary is directly operationally grounded.",
+      "status": "partially_confirmed_design_dependent",
+      "evidence": [
+        "HR App (1).docx:189-206 — Laura wants filtered work queues and possibly stage graphs that can be clicked into underlying records.",
+        "Call with Mayra Morfin (1).docx:236-267,337-380 — proposed dashboards, status filters, position/e-mail tracking, and scheduled journeys are discussed.",
+        "Call with Daisy Matos.docx:727-774,885-937 — Daisy wants quick query output and an active-appointment summary; Ian proposes separate role-specific query menus."
+      ],
+      "risk": "Charts, percentages, Kanban stages, and scheduled summaries are Ian's proposals and could encode unvalidated states or counts; no aggregation grain or refresh contract is defined.",
+      "recommendation": "Start with tabular, filterable, drillable summaries grounded in verified assignment data. Add charts/Kanban only after status vocabulary, aggregation grain, permissions, and count reconciliation are approved."
+    },
+    {
+      "id": "scope-009",
+      "claim": "The current evidence supports appointment/work-queue reporting and chartfield/account lookup; broad data-warehouse, workforce, tenure/promotion, and full reconciliation reporting remain future desired system scope.",
+      "status": "current_vs_future_boundary_confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:849-875 — data warehouse/query capability is described as down the road; current focus is appointments, chartfields, and related payment tracking.",
+        "Call with Mayra Morfin (1).docx:531-542 — appointment reports and filters are proposed in the design discussion.",
+        "Call with Daisy Matos.docx:594-620,1084-1099 — integration/merging of Finance reconciliation and future grant/chartfield management remain unresolved."
+      ],
+      "risk": "A single 'reporting' requirement could hide multiple authority, privacy, refresh, and calculation contracts across HR, Finance, Oracle, FAST, Box, and workforce systems.",
+      "recommendation": "Maintain separate report specifications and readiness labels: current external report, MVP in-app operational view, future integration, and unresolved owner decision."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative definition of an active appointment, including assignment grain, effective dates, supersession, termination, and future-dated appointments.",
+    "Canonical source and refresh contract for Oracle, FAST, workforce reports, Box reconciliation workbooks, and any Dataverse store.",
+    "Payroll/expense projection formulas, budget versions, actuals, variance rules, fiscal/payroll period boundaries, and reconciliation ownership.",
+    "Tenure/promotion authority, rank-event schema, tenure versus promotion semantics, and effective-date/history rules.",
+    "Workforce report fields, hierarchy/vacancy definitions, security scope, and reconciliation to HR/Oracle.",
+    "Filter semantics: operators, AND/OR behavior, saved views, nulls, date/timezone handling, pagination, and security trimming.",
+    "Export contract: allowed columns, sensitive-field redaction, stable identifiers, filter metadata, timestamps, encoding, row limits, and audit logging.",
+    "Whether charts, Kanban, scheduled reports, and e-mail journeys are MVP requirements or future proposals.",
+    "Whether report totals must reconcile to source systems at a stated refresh timestamp and how stale/failed source data is surfaced.",
+    "No implementation or live-system evidence was supplied; conclusions are requirements verification, not proof that any proposed report/export exists."
+  ],
+  "source_coverage": [
+    "/Users/iankoratsky/.hermes/hr_pipeline_verification/evidence_pack.md:3-17,19-33,35-46 — authority, source precedence, and output contract reviewed.",
+    "/Users/iankoratsky/.hermes/attachments/HR App (1).docx:78-136,189-206,252-260,691-708,962-1003 — Laura's filters, work queues, stage views, active/change tracking, and current-vs-future boundary reviewed.",
+    "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:236-267,337-380,496-542,562-590 — query/filter views, appointment reports, CSV/Excel proposals, and configuration/report fields reviewed.",
+    "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx:565-620,727-862,885-1050,1084-1099 — projections, reconciliation, workforce/tenure reporting, queries, active summary, and future integration boundaries reviewed.",
+    "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md:17-31,48-64,118-124 — provisional statuses, handoff, and current pain points reviewed.",
+    "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md:8-31,47-80 — provisional intake, chartfield, renewal, and reporting-context assumptions reviewed.",
+    "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md:15-31,56-117 — provisional Finance monitoring, reconciliation, projection, and open-question summary reviewed.",
+    "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/finance_costing.json, oracle_hr.json, renewals.json — prior adversarial findings cross-checked; no prior report/export contract treated as authoritative."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/reporting_queries.json"
+}

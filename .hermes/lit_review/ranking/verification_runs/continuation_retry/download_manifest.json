@@ -1,0 +1,36 @@
+{
+  "run_dir": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/verification_runs/continuation_retry",
+  "retrieved_at": "2026-10-12",
+  "items": [
+    {
+      "paper_id": "S21P09",
+      "evidence_file": "evidence/S21P09.pdf",
+      "sha256": "62ec077e9c7fccf43d6e037e2d26cbc5b5469eb3bf6dde2778d11dfbb88f3008",
+      "size_bytes": 560831,
+      "content_type": "application/pdf",
+      "final_url": "https://uwindsor.scholaris.ca/server/api/core/bitstreams/c44a704c-99c0-4ded-a16e-457a72b52440/content",
+      "retrieval_trail_json": "retrieval_trail.json",
+      "raw_identity_evidence": ["evidence/S21P09_doi.html", "evidence/S21P09_crossref.json"]
+    },
+    {
+      "paper_id": "S03P01",
+      "evidence_file": "evidence/S03P01.pdf",
+      "sha256": "f37f6fabe0fe0d8c73b67579cd115dbf14e282cfb7b7af655ae8109638402c9b",
+      "size_bytes": 2609413,
+      "content_type": "application/pdf",
+      "final_url": "https://aclanthology.org/2024.tacl-1.9.pdf",
+      "retrieval_trail_json": "retrieval_trail.json",
+      "raw_identity_evidence": ["evidence/S03P01.html", "evidence/S03P01_arxiv.html", "evidence/S03P01_crossref.json"]
+    }
+  ],
+  "raw_evidence_files": [
+    "retrieval_trail.json",
+    "evidence/S21P09.pdf",
+    "evidence/S21P09_doi.html",
+    "evidence/S21P09_crossref.json",
+    "evidence/S03P01.pdf",
+    "evidence/S03P01.html",
+    "evidence/S03P01_arxiv.html",
+    "evidence/S03P01_crossref.json"
+  ]
+}

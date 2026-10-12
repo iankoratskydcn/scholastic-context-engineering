@@ -1,0 +1,83 @@
+{
+  "reviewer_slug": "hallucination_detection",
+  "viewpoint": "hallucination and invalid-inference detection",
+  "input_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/benchmark_studies.csv",
+  "rows": 80,
+  "score_range": [
+    20,
+    100
+  ],
+  "top_10": [
+    {
+      "global_rank": 1,
+      "paper_id": "S02P07",
+      "benchmark_name": "PCBench",
+      "score": 100
+    },
+    {
+      "global_rank": 2,
+      "paper_id": "S02P05",
+      "benchmark_name": "FalseQA",
+      "score": 98
+    },
+    {
+      "global_rank": 3,
+      "paper_id": "S02P06",
+      "benchmark_name": "KG-FPQ",
+      "score": 96
+    },
+    {
+      "global_rank": 4,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 95
+    },
+    {
+      "global_rank": 5,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 95
+    },
+    {
+      "global_rank": 6,
+      "paper_id": "12-03",
+      "benchmark_name": "RuleTaker",
+      "score": 94
+    },
+    {
+      "global_rank": 7,
+      "paper_id": "11-12",
+      "benchmark_name": "SMARTYPAT-BENCH",
+      "score": 93
+    },
+    {
+      "global_rank": 8,
+      "paper_id": "12-05",
+      "benchmark_name": "LogicNLI",
+      "score": 92
+    },
+    {
+      "global_rank": 9,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 91
+    },
+    {
+      "global_rank": 10,
+      "paper_id": "12-11",
+      "benchmark_name": "SylloBase",
+      "score": 89
+    }
+  ],
+  "counts_by_confidence": {
+    "high": 15,
+    "low": 31,
+    "medium": 34
+  },
+  "method": "Direct-fit ranking. Highest scores require explicit false-premise, entailment, proof, fallacy, or trajectory-faithfulness labels/oracles. Generic QA, retrieval, cultural knowledge, and corpus resources penalized.",
+  "validation": {
+    "all_input_ids_once": true,
+    "category_ranks_contiguous": true,
+    "global_ranks_1_to_80": true
+  }
+}

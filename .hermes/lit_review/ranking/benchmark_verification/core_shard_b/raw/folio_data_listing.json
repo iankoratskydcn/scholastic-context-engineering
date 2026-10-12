@@ -1,0 +1,18 @@
+[
+  {
+    "name": "v0.0",
+    "path": "data/v0.0",
+    "sha": "5628a7bb6d7646279312d637537d98faedc909ea",
+    "size": 0,
+    "url": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0?ref=main",
+    "html_url": "https://github.com/Yale-LILY/FOLIO/tree/main/data/v0.0",
+    "git_url": "https://api.github.com/repos/Yale-LILY/FOLIO/git/trees/5628a7bb6d7646279312d637537d98faedc909ea",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0?ref=main",
+      "git": "https://api.github.com/repos/Yale-LILY/FOLIO/git/trees/5628a7bb6d7646279312d637537d98faedc909ea",
+      "html": "https://github.com/Yale-LILY/FOLIO/tree/main/data/v0.0"
+    }
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "folio-train.jsonl",
+    "path": "data/v0.0/folio-train.jsonl",
+    "sha": "6b199ee52af24a6e74fda22f87760a8647c9dbbd",
+    "size": 787496,
+    "url": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-train.jsonl?ref=main",
+    "html_url": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-train.jsonl",
+    "git_url": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/6b199ee52af24a6e74fda22f87760a8647c9dbbd",
+    "download_url": "https://raw.githubusercontent.com/Yale-LILY/FOLIO/main/data/v0.0/folio-train.jsonl",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-train.jsonl?ref=main",
+      "git": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/6b199ee52af24a6e74fda22f87760a8647c9dbbd",
+      "html": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-train.jsonl"
+    }
+  },
+  {
+    "name": "folio-train.txt",
+    "path": "data/v0.0/folio-train.txt",
+    "sha": "1cab9a7bd00c22751797435cb9cf20d92bc3dd84",
+    "size": 686075,
+    "url": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-train.txt?ref=main",
+    "html_url": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-train.txt",
+    "git_url": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/1cab9a7bd00c22751797435cb9cf20d92bc3dd84",
+    "download_url": "https://raw.githubusercontent.com/Yale-LILY/FOLIO/main/data/v0.0/folio-train.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-train.txt?ref=main",
+      "git": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/1cab9a7bd00c22751797435cb9cf20d92bc3dd84",
+      "html": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-train.txt"
+    }
+  },
+  {
+    "name": "folio-validation.jsonl",
+    "path": "data/v0.0/folio-validation.jsonl",
+    "sha": "06244bd10b37eac73cba7aca6c336e96011ace58",
+    "size": 173456,
+    "url": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-validation.jsonl?ref=main",
+    "html_url": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-validation.jsonl",
+    "git_url": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/06244bd10b37eac73cba7aca6c336e96011ace58",
+    "download_url": "https://raw.githubusercontent.com/Yale-LILY/FOLIO/main/data/v0.0/folio-validation.jsonl",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-validation.jsonl?ref=main",
+      "git": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/06244bd10b37eac73cba7aca6c336e96011ace58",
+      "html": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-validation.jsonl"
+    }
+  },
+  {
+    "name": "folio-validation.txt",
+    "path": "data/v0.0/folio-validation.txt",
+    "sha": "ccb397f33c3be3f5fd7ad7682744d2ed23ad7b00",
+    "size": 148915,
+    "url": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-validation.txt?ref=main",
+    "html_url": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-validation.txt",
+    "git_url": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/ccb397f33c3be3f5fd7ad7682744d2ed23ad7b00",
+    "download_url": "https://raw.githubusercontent.com/Yale-LILY/FOLIO/main/data/v0.0/folio-validation.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/Yale-LILY/FOLIO/contents/data/v0.0/folio-validation.txt?ref=main",
+      "git": "https://api.github.com/repos/Yale-LILY/FOLIO/git/blobs/ccb397f33c3be3f5fd7ad7682744d2ed23ad7b00",
+      "html": "https://github.com/Yale-LILY/FOLIO/blob/main/data/v0.0/folio-validation.txt"
+    }
+  }
+]

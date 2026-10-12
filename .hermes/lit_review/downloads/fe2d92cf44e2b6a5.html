@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Formalizing Informal Logic
+							| Informal Logic
+			</title>
+
+	
+<link rel="icon" href="https://ojs.uwindsor.ca/public/journals/6/favicon_en_US.png" />
+<meta name="generator" content="Open Journal Systems 3.3.0.21" />
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Creator.PersonalName" content="Douglas Walton"/>
+<meta name="DC.Creator.PersonalName" content="Thomas F. Gordon"/>
+<meta name="DC.Date.created" scheme="ISO8601" content="2015-12-11"/>
+<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2015-03-02"/>
+<meta name="DC.Date.issued" scheme="ISO8601" content="2015-12-11"/>
+<meta name="DC.Date.modified" scheme="ISO8601" content="2017-03-28"/>
+<meta name="DC.Description" xml:lang="en" content="This paper presents a formalization of informal logic using the Carneades Argumentation System (CAS), a formal, computational model of argument that consists of a formal model of argument graphs and audiences. Conflicts between pro and con arguments are resolved using proof standards, such as preponderance of the evidence. CAS also formalizes argumentation schemes. Schemes can be used to check whether a given argument instantiates the types of argument deemed normatively appropriate for the type of dialogue."/>
+<meta name="DC.Format" scheme="IMT" content="application/pdf"/>
+<meta name="DC.Identifier" content="4335"/>
+<meta name="DC.Identifier.pageNumber" content="508-538"/>
+<meta name="DC.Identifier.DOI" content="10.22329/il.v35i4.4335"/>
+<meta name="DC.Identifier.URI" content="https://informallogic.ca/index.php/informal_logic/article/view/4335"/>
+<meta name="DC.Language" scheme="ISO639-1" content="en"/>
+<meta name="DC.Rights" content="Copyright (c) 2015 Informal Logic"/>
+<meta name="DC.Rights" content=""/>
+<meta name="DC.Source" content="Informal Logic"/>
+<meta name="DC.Source.ISSN" content="2293-734X"/>
+<meta name="DC.Source.Issue" content="4"/>
+<meta name="DC.Source.Volume" content="35"/>
+<meta name="DC.Source.URI" content="https://informallogic.ca/index.php/informal_logic"/>
+<meta name="DC.Subject" xml:lang="en" content="informal logic"/>
+<meta name="DC.Subject" xml:lang="en" content="formal argumentation systems"/>
+<meta name="DC.Subject" xml:lang="en" content="real arguments"/>
+<meta name="DC.Subject" xml:lang="en" content="premise acceptability"/>
+<meta name="DC.Subject" xml:lang="en" content="conductive argument"/>
+<meta name="DC.Subject" xml:lang="en" content="RSA triangle"/>
+<meta name="DC.Subject" xml:lang="en" content="relevance"/>
+<meta name="DC.Subject" xml:lang="en" content="sufficiency."/>
+<meta name="DC.Title" content="Formalizing Informal Logic"/>
+<meta name="DC.Type" content="Text.Serial.Journal"/>
+<meta name="DC.Type" xml:lang="en" content="theory development"/>
+<meta name="DC.Type.articleType" content="Articles"/>
+<meta name="gs_meta_revision" content="1.1"/>
+<meta name="citation_journal_title" content="Informal Logic"/>
+<meta name="citation_journal_abbrev" content="IL"/>
+<meta name="citation_issn" content="2293-734X"/> 
+<meta name="citation_author" content="Douglas Walton"/>
+<meta name="citation_author_institution" content="University of Windsor"/>
+<meta name="citation_author" content="Thomas F. Gordon"/>
+<meta name="citation_title" content="Formalizing Informal Logic"/>
+<meta name="citation_language" content="en"/>
+<meta name="citation_date" content="2015/12/11"/>
+<meta name="citation_volume" content="35"/>
+<meta name="citation_issue" content="4"/>
+<meta name="citation_firstpage" content="508"/>
+<meta name="citation_lastpage" content="538"/>
+<meta name="citation_doi" content="10.22329/il.v35i4.4335"/>
+<meta name="citation_abstract_html_url" content="https://informallogic.ca/index.php/informal_logic/article/view/4335"/>
+<meta name="citation_keywords" xml:lang="en" content="informal logic"/>
+<meta name="citation_keywords" xml:lang="en" content="formal argumentation systems"/>
+<meta name="citation_keywords" xml:lang="en" content="real arguments"/>
+<meta name="citation_keywords" xml:lang="en" content="premise acceptability"/>
+<meta name="citation_keywords" xml:lang="en" content="conductive argument"/>
+<meta name="citation_keywords" xml:lang="en" content="RSA triangle"/>
+<meta name="citation_keywords" xml:lang="en" content="relevance"/>
+<meta name="citation_keywords" xml:lang="en" content="sufficiency."/>
+<meta name="citation_pdf_url" content="https://informallogic.ca/index.php/informal_logic/article/download/4335/3711"/>
+<link rel="alternate" type="application/atom+xml" href="https://informallogic.ca/index.php/informal_logic/gateway/plugin/WebFeedGatewayPlugin/atom">
+<link rel="alternate" type="application/rdf+xml" href="https://informallogic.ca/index.php/informal_logic/gateway/plugin/WebFeedGatewayPlugin/rss">
+<link rel="alternate" type="application/rss+xml" href="https://informallogic.ca/index.php/informal_logic/gateway/plugin/WebFeedGatewayPlugin/rss2">
+<link rel="preload" href="https://ojs.uwindsor.ca/plugins/generic/pflPlugin/pfl/locale/en.json" as="fetch" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://informallogic.ca/index.php/informal_logic/$$$call$$$/page/page/css?name=stylesheet" type="text/css" /><link rel="stylesheet" href="https://informallogic.ca/index.php/informal_logic/$$$call$$$/page/page/css?name=font" type="text/css" /><link rel="stylesheet" href="https://ojs.uwindsor.ca/lib/pkp/styles/fontawesome/fontawesome.css?v=3.3.0.21" type="text/css" /><link rel="stylesheet" href="https://informallogic.ca/index.php/informal_logic/$$$call$$$/page/page/css?name=informal_logic" type="text/css" /><link rel="stylesheet" href="https://ojs.uwindsor.ca/plugins/generic/orcidProfile/css/orcidProfile.css?v=3.3.0.21" type="text/css" /><link rel="stylesheet" href="https://ojs.uwindsor.ca/public/site/styleSheet.css?v=3.3.0.21" type="text/css" /><style type="text/css">    @font-face {
+        font-family: "PFL Noto Sans";
+        src: url(https://ojs.uwindsor.ca/plugins/generic/pflPlugin/pfl/font/NotoSans-VariableFont_wdthwght.woff2) format("woff2");
+        font-weight: 100 900;
+    }
+
+    #funding-data:target,
+    #author-list:target {
+        animation: pflflash 1s 1;
+        -webkit-animation: pflflash 1s 1; /* Safari and Chrome */
+    }
+
+    @keyframes pflflash {
+        0% {
+            background: yellow;
+        }
+    }
+
+    @-webkit-keyframes pflflash /* Safari and Chrome */ {
+        0% {
+            background: yellow;
+        }
+    }
+</style>
+</head>
+<body class="pkp_page_article pkp_op_view has_site_logo" dir="ltr">
+
+	<div class="pkp_structure_page">
+
+				<header class="pkp_structure_head" id="headerNavigationContainer" role="banner">
+						
+ <nav class="cmp_skip_to_content" aria-label="Jump to content links">
+	<a href="#pkp_content_main">Skip to main content</a>
+	<a href="#siteNav">Skip to main navigation menu</a>
+		<a href="#pkp_content_footer">Skip to site footer</a>
+</nav>
+
+			<div class="pkp_head_wrapper">
+
+				<div class="pkp_site_name_wrapper">
+					<button class="pkp_site_nav_toggle">
+						<span>Open Menu</span>
+					</button>
+										<div class="pkp_site_name">
+																<a href="						https://informallogic.ca/index.php/informal_logic/index
+					" class="is_img">
+							<img src="https://ojs.uwindsor.ca/public/journals/6/pageHeaderLogoImage_en_US.jpg" width="900" height="125" alt="Informal Logic Logo" />
+						</a>
+										</div>
+				</div>
+
+				
+				<nav class="pkp_site_nav_menu" aria-label="Site Navigation">
+					<a id="siteNav"></a>
+					<div class="pkp_navigation_primary_row">
+						<div class="pkp_navigation_primary_wrapper">
+																				<ul id="navigationPrimary" class="pkp_navigation_primary pkp_nav_list">
+								<li class="">
+				<a href="https://informallogic.ca/index.php/informal_logic/issue/current">
+					Current
+				</a>
+							</li>
+								<li class="">
+				<a href="https://informallogic.ca/index.php/informal_logic/issue/archive">
+					Archives
+				</a>
+							</li>
+								<li class="">
+				<a href="https://informallogic.ca/index.php/informal_logic/about/submissions">
+					Submissions
+				</a>
+							</li>
+								<li class="">
+				<a href="https://informallogic.ca/index.php/informal_logic/multimodal-si">
+					CFP: Special Issue - Multimodal Argumentation
+				</a>
+							</li>
+								<li class="">
+				<a href="https://informallogic.ca/index.php/informal_logic/announcement">
+					Announcements
+				</a>
+							</li>
+								<li class="">
+				<a href="https://informallogic.ca/index.php/informal_logic/about">
+					About
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://informallogic.ca/index.php/informal_logic/about">
+										About the Journal
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://informallogic.ca/index.php/informal_logic/about/editorialTeam">
+										Editorial Team
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://informallogic.ca/index.php/informal_logic/about/contact">
+										Contact
+									</a>
+								</li>
+																		</ul>
+							</li>
+			</ul>
+
+				
+
+																						<div class="pkp_navigation_search_wrapper">
+									<a href="https://informallogic.ca/index.php/informal_logic/search" class="pkp_search pkp_search_desktop">
+										<span class="fa fa-search" aria-hidden="true"></span>
+										Search
+									</a>
+								</div>
+													</div>
+					</div>
+					<div class="pkp_navigation_user_wrapper" id="navigationUserWrapper">
+							<ul id="navigationUser" class="pkp_navigation_user pkp_nav_list">
+								<li class="profile">
+				<a href="https://informallogic.ca/index.php/informal_logic/user/register">
+					Register
+				</a>
+							</li>
+								<li class="profile">
+				<a href="https://informallogic.ca/index.php/informal_logic/login">
+					Login
+				</a>
+							</li>
+										</ul>
+
+					</div>
+				</nav>
+			</div><!-- .pkp_head_wrapper -->
+		</header><!-- .pkp_structure_head -->
+
+						<div class="pkp_structure_content has_sidebar">
+			<div class="pkp_structure_main" role="main">
+				<a id="pkp_content_main"></a>
+
+<div class="page page_article">
+			<nav class="cmp_breadcrumbs" role="navigation" aria-label="You are here:">
+	<ol>
+		<li>
+			<a href="https://informallogic.ca/index.php/informal_logic/index">
+				Home
+			</a>
+			<span class="separator">/</span>
+		</li>
+		<li>
+			<a href="https://informallogic.ca/index.php/informal_logic/issue/archive">
+				Archives
+			</a>
+			<span class="separator">/</span>
+		</li>
+					<li>
+				<a href="https://informallogic.ca/index.php/informal_logic/issue/view/437">
+					Vol. 35 No. 4 (2015)
+				</a>
+				<span class="separator">/</span>
+			</li>
+				<li class="current" aria-current="page">
+			<span aria-current="page">
+									Articles
+							</span>
+		</li>
+	</ol>
+</nav>
+	
+		  	 <article class="obj_article_details">
+
+		
+	<h1 class="page_title">
+		Formalizing Informal Logic
+	</h1>
+
+	
+	<div class="row">
+		<div class="main_entry">
+
+							<section class="item authors">
+					<h2 class="pkp_screen_reader">Authors</h2>
+					<ul id="author-list" class="authors">
+											<li>
+							<span class="name">
+								Douglas Walton
+							</span>
+															<span class="affiliation">
+									University of Windsor
+																	</span>
+																				</li>
+											<li>
+							<span class="name">
+								Thomas F. Gordon
+							</span>
+																				</li>
+										</ul>
+				</section>
+			
+																												<section class="item doi">
+						<h2 class="label">
+														DOI:
+						</h2>
+						<span class="value">
+							<a href="https://doi.org/10.22329/il.v35i4.4335">
+								https://doi.org/10.22329/il.v35i4.4335
+							</a>
+						</span>
+					</section>
+							
+									<section class="item keywords">
+				<h2 class="label">
+										Keywords:
+				</h2>
+				<span class="value">
+											informal logic, 											formal argumentation systems, 											real arguments, 											premise acceptability, 											conductive argument, 											RSA triangle, 											relevance, 											sufficiency.									</span>
+			</section>
+			
+										<section class="item abstract">
+					<h2 class="label">Abstract</h2>
+					This paper presents a formalization of informal logic using the Carneades Argumentation System (CAS), a formal, computational model of argument that consists of a formal model of argument graphs and audiences. Conflicts between pro and con arguments are resolved using proof standards, such as preponderance of the evidence. CAS also formalizes argumentation schemes. Schemes can be used to check whether a given argument instantiates the types of argument deemed normatively appropriate for the type of dialogue.
+				</section>
+			
+			
+
+																																							<section class="item author_bios">
+					<h2 class="label">
+													Author Biography
+											</h2>
+																		<section class="sub_item">
+								<h3 class="label">
+																																							Douglas Walton, <span class="affiliation">University of Windsor</span>
+																	</h3>
+								<div class="value">
+									CRRAR
+								</div>
+							</section>
+																										</section>
+			
+						
+		</div><!-- .main_entry -->
+
+		<div class="entry_details">
+
+						
+										<div class="item galleys">
+					<h2 class="pkp_screen_reader">
+						Downloads
+					</h2>
+					<ul class="value galleys_links">
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link pdf" href="https://informallogic.ca/index.php/informal_logic/article/view/4335/3711">
+
+		
+	PDF
+
+	</a>
+							</li>
+											</ul>
+				</div>
+						
+						<div class="item published">
+				<section class="sub_item">
+					<h2 class="label">
+						Published
+					</h2>
+					<div class="value">
+																			<span>2015-12-11</span>
+																	</div>
+				</section>
+							</div>
+			
+						
+										<div class="item issue">
+
+											<section class="sub_item">
+							<h2 class="label">
+								Issue
+							</h2>
+							<div class="value">
+								<a class="title" href="https://informallogic.ca/index.php/informal_logic/issue/view/437">
+									Vol. 35 No. 4 (2015)
+								</a>
+							</div>
+						</section>
+					
+											<section class="sub_item">
+							<h2 class="label">
+								Section
+							</h2>
+							<div class="value">
+								Articles
+							</div>
+						</section>
+					
+									</div>
+			
+															
+										<div class="item copyright">
+					<h2 class="label">
+						License
+					</h2>
+										Copyright for each article published in <em>Informal Logic</em> belongs to its author(s). <em>Informal Logic</em> has the right of first publication. Permission to reprint any article that appears in <em>Informal Logic</em> MUST be obtained in writing from the author(s). In addition to any form of acknowledgement required by the author(s), the following notice must be added to the statement of copyright permission made in the reprint (with the appropriate numbers replacing the ellipses): [Article Title] was originally published in <em>Informal Logic,</em> [year], Volume ..., Number ..., pp. ...-... .
+				</div>
+			
+			<section class="item pflPlugin">
+
+<publication-facts-label></publication-facts-label>
+<script>
+
+window.addEventListener("DOMContentLoaded", () => {
+  var pflData = {"baseUrl":"https:\/\/ojs.uwindsor.ca\/plugins\/generic\/pflPlugin\/pfl","locale":"en","values":{"pflReviewerCount":2,"pflReviewerCountClass":3.2,"pflDataAvailabilityValue":"NA","pflDataAvailabilityValueUrl":null,"pflDataAvailabilityPercentClass":"16%","pflFundersValue":"NA","pflFundersCount":null,"pflNumHaveFundersClass":"32%","pflCompetingInterestsValue":"NA","pflCompetingInterestsValueUrl":null,"pflCompetingInterestsPercentClass":"11%","pflAcceptedPercent":"47%","pflNumAcceptedClass":"33%","pflDaysToPublication":"283","pflDaysToPublicationClass":33,"pflIndexList":[],"editorialTeamUrl":"https:\/\/informallogic.ca\/index.php\/informal_logic\/about\/editorialTeam","pflAcademicSociety":"NA","pflAcademicSocietyUrl":null,"pflPublisherName":"University of Windsor","pflPublisherUrl":"https:\/\/www.uwindsor.ca\/crrar\/","pflInfoUrl":"https:\/\/pkp.sfu.ca\/information-on-pfl\/"}};
+  
+
+  const localeUrl = pflData.baseUrl + '/locale/' + pflData.locale + '.json';
+  fetch(localeUrl)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(labels) {
+      var pfl = document.querySelector('publication-facts-label');
+      pfl.data = Object.assign({}, pflData, {labels: labels});
+    })
+    .catch(function(err) {
+      console.warn('PFL: failed to load translations', err);
+    });
+  
+
+  });
+
+</script>
+
+</section>
+
+
+		</div><!-- .entry_details -->
+	</div><!-- .row -->
+
+</article>
+
+	
+
+</div><!-- .page -->
+
+	</div><!-- pkp_structure_main -->
+
+									<div class="pkp_structure_sidebar left" role="complementary" aria-label="Sidebar">
+				<div class="pkp_block block_developed_by">
+	<h2 class="pkp_screen_reader">
+		Developed By
+	</h2>
+
+	<div class="content">
+		<a href="http://pkp.sfu.ca/ojs/">
+			Open Journal Systems
+		</a>
+	</div>
+</div>
+<div class="pkp_block block_language">
+	<h2 class="title">
+		Language
+	</h2>
+
+	<div class="content">
+		<ul>
+							<li class="locale_en_US current" lang="en-US">
+					<a href="https://informallogic.ca/index.php/informal_logic/user/setLocale/en_US?source=%2Findex.php%2Finformal_logic%2Farticle%2Fview%2F4335">
+						English
+					</a>
+				</li>
+							<li class="locale_fr_CA" lang="fr-CA">
+					<a href="https://informallogic.ca/index.php/informal_logic/user/setLocale/fr_CA?source=%2Findex.php%2Finformal_logic%2Farticle%2Fview%2F4335">
+						Français (Canada)
+					</a>
+				</li>
+					</ul>
+	</div>
+</div><!-- .block_language -->
+<div class="pkp_block block_information">
+	<h2 class="title">Information</h2>
+	<div class="content">
+		<ul>
+							<li>
+					<a href="https://informallogic.ca/index.php/informal_logic/information/readers">
+						For Readers
+					</a>
+				</li>
+										<li>
+					<a href="https://informallogic.ca/index.php/informal_logic/information/authors">
+						For Authors
+					</a>
+				</li>
+										<li>
+					<a href="https://informallogic.ca/index.php/informal_logic/information/librarians">
+						For Librarians
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+
+			</div><!-- pkp_sidebar.left -->
+			</div><!-- pkp_structure_content -->
+
+<div class="pkp_structure_footer_wrapper" role="contentinfo">
+	<a id="pkp_content_footer"></a>
+
+	<div class="pkp_structure_footer">
+
+		
+		<div class="pkp_brand_footer" role="complementary">
+			<a href="https://informallogic.ca/index.php/informal_logic/about/aboutThisPublishingSystem">
+				<img alt="More information about the publishing system, Platform and Workflow by OJS/PKP." src="https://ojs.uwindsor.ca/templates/images/ojs_brand.png">
+			</a>
+		</div>
+	</div>
+</div><!-- pkp_structure_footer_wrapper -->
+
+</div><!-- pkp_structure_page -->
+
+<script src="https://ojs.uwindsor.ca/lib/pkp/lib/vendor/components/jquery/jquery.min.js?v=3.3.0.21" type="text/javascript"></script><script src="https://ojs.uwindsor.ca/lib/pkp/lib/vendor/components/jqueryui/jquery-ui.min.js?v=3.3.0.21" type="text/javascript"></script><script src="https://ojs.uwindsor.ca/plugins/themes/default/js/lib/popper/popper.js?v=3.3.0.21" type="text/javascript"></script><script src="https://ojs.uwindsor.ca/plugins/themes/default/js/lib/bootstrap/util.js?v=3.3.0.21" type="text/javascript"></script><script src="https://ojs.uwindsor.ca/plugins/themes/default/js/lib/bootstrap/dropdown.js?v=3.3.0.21" type="text/javascript"></script><script src="https://ojs.uwindsor.ca/plugins/themes/default/js/main.js?v=3.3.0.21" type="text/javascript"></script><script type="text/javascript">
+(function (w, d, s, l, i) { w[l] = w[l] || []; var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
+j.src = 'https://www.googletagmanager.com/gtag/js?id=' + i + dl; f.parentNode.insertBefore(j, f); 
+function gtag(){dataLayer.push(arguments)}; gtag('js', new Date()); gtag('config', i); })
+(window, document, 'script', 'dataLayer', 'UA-3902554-1');
+</script><script src="https://ojs.uwindsor.ca/plugins/generic/pflPlugin/pfl/js/pfl.js?v=3.3.0.21" type="text/javascript"></script>
+
+<span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_id=https%3A%2F%2Finformallogic.ca%2Findex.php%2Finformal_logic%2Farticle%2Fview%2F4335&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.language=en_US&amp;rft.genre=article&amp;rft.title=Informal+Logic&amp;rft.jtitle=Informal+Logic&amp;rft.atitle=Formalizing+Informal+Logic&amp;rft.artnum=4335&amp;rft.stitle=&amp;rft.volume=35&amp;rft.issue=4&amp;rft.aulast=Walton&amp;rft.aufirst=Douglas&amp;rft.date=2015-12-11&amp;rft.au=Thomas+F.+Gordon&amp;rft_id=info%3Adoi%2F10.22329%2Fil.v35i4.4335&amp;rft.pages=508-538&amp;rft.issn=0824-2577&amp;rft.eissn=2293-734X"></span>
+
+</body>
+</html>

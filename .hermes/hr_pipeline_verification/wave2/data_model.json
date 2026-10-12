@@ -1,0 +1,174 @@
+{
+  "perspective": "Adversarial shared-model verification across Mayra intake, Laura HR, and Daisy Finance; primary interviews override derived diagrams.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "DM1",
+      "claim": "The durable unit of work must be an appointment assignment, not a student/person and not a spreadsheet row.",
+      "status": "corroborated",
+      "evidence": [
+        "HR App (1).docx:561-578 (multiple assignments create separate Oracle assignment numbers)",
+        "student_hiring_pipeline.md:43-45,123 (additional assignment; unit_of_work=assignment)",
+        "Call with Daisy Matos.docx:892-931 (active appointment monitoring)"
+      ],
+      "risk": "A person-centric row merges TA/RA or replacement assignments and destroys Oracle/audit lineage.",
+      "recommendation": "Use Assignment as the aggregate root; link it to Person, Request, offers, screening, Oracle records, funding plans, distributions, notes, attachments, and audit events."
+    },
+    {
+      "id": "DM2",
+      "claim": "Person/student identity is separate from appointment employment state and must support new hires, reappointments, and unresolved matching.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        "HR App (1).docx:395-427,569-578 (U-number, address, DOB, gender, phone; new hires require pending-worker data)",
+        "Call with Mayra Morfin (1).docx:151-181 (lookup by U-number or email; source possibly Banner but uncertain)",
+        "student_hiring_pipeline.md:40-42 (new-hire Banner detour; reappointment skips lookup)"
+      ],
+      "risk": "Using email/name as the key can select the wrong same-name student; assuming Banner integration invents an unproven source.",
+      "recommendation": "Model Person with internal person_id plus nullable external identifiers (U-number, employee/student ID, email), match evidence/source, and explicit unresolved-match state; keep sensitive demographics/access controlled."
+    },
+    {
+      "id": "DM3",
+      "claim": "Request and change request are distinct immutable business records; an edit must not overwrite the original appointment/request.",
+      "status": "confirmed",
+      "evidence": [
+        "HR App (1).docx:697-701,1045-1058 (spreadsheet overwrite loses audit trail and request evidence)",
+        "HR App (1).docx:780-851,1025-1063 (change request must flow to HR/Finance and may require new offer/Oracle amendment)",
+        "Call with Mayra Morfin (1).docx:214-226 (restricted overwrite/change access)"
+      ],
+      "risk": "A single mutable appointment row cannot represent renewal confirmation, late job-code/rate/hour changes, termination, or who requested/approved them.",
+      "recommendation": "Request has request_id, type, source/channel, requester, submitted_at, target assignment/person, payload snapshot, status, and supersedes/revision links. Change requests reference the prior assignment version and produce a new version/event rather than destructive mutation."
+    },
+    {
+      "id": "DM4",
+      "claim": "Appointment fields need typed temporal and employment attributes, with term/semester and effective dating.",
+      "status": "corroborated",
+      "evidence": [
+        "HR App (1).docx:68-78,468-475 (job code/title, supervisor, hours, salary, start/end, position number, FTE, degree level)",
+        "Call with Mayra Morfin (1).docx:44-52,64-86 (renewal versus new and funding confirmation)",
+        "Call with Daisy Matos.docx:983-1015 (hours-to-FTE calculation)"
+      ],
+      "risk": "Copying fall rows into spring without version/effective dates conflates unchanged and changed appointments.",
+      "recommendation": "Appointment stores assignment_id, person_id, supervisor_id, job_code_id, position_number, employment_type, hours, FTE, rate/salary, pay frequency, start/end, academic term, source request/version, and current lifecycle state; preserve calculated values with formula/rate-table version."
+    },
+    {
+      "id": "DM5",
+      "claim": "Job code/title is reference data, not free-text duplicated independently on every record.",
+      "status": "corroborated",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:139-146,575-589 (job-code list maintained by HR; code paired with title)",
+        "HR App (1).docx:342-377 (job-code-driven titles/rates with exceptions)"
+      ],
+      "risk": "Persisting only a display title loses HR code identity; persisting only a code prevents historical title/rate reconstruction.",
+      "recommendation": "Use JobCode reference with code, title, category, effective dates, rate/FTE rules, and source; snapshot selected code/title/rule version on each appointment."
+    },
+    {
+      "id": "DM6",
+      "claim": "Funding source/chartfield/account/grant/fund are related but not interchangeable concepts.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:444-462,601-606 (chartfield strings and funding-source titles; distributions visible to Finance)",
+        "Call with Daisy Matos.docx:214-279 (department accounts, active grants, startups, research/foundation funds; same-data versus distinct fund sets)",
+        "daisy_finance_stage.md:13,17-24 (account list, chartfield verification, funded decision, split distributions)"
+      ],
+      "risk": "Treating a chartfield string as an account or grant hides components, validity/funding state, and many-to-many appointment funding.",
+      "recommendation": "Model FundingSource/Account with typed kind, canonical key/components, owner/PI, source system, active/effective/expiration and funding status. Model Chartfield as a validated coding combination/reference to funding components, not merely a label."
+    },
+    {
+      "id": "DM7",
+      "claim": "Distribution is a versioned child of an appointment/pay period and must support multiple accounts and a 100% allocation invariant.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:83-120,167-189 (salary split across accounts; distribution by pay period)",
+        "Call with Daisy Matos.docx:364-379 (percent/amount allocation and 100% total)",
+        "daisy_finance_stage.md:23-26,74 (per-pay-period distributions and Oracle costing)"
+      ],
+      "risk": "Storing one chartfield on Appointment cannot represent split salary, stipends, changing pay periods, or historical costing.",
+      "recommendation": "DistributionPlan has plan_id, assignment_id, pay_period_id, basis amount, fringe/rate snapshot, status, and revision; DistributionLine has funding_source/chartfield_id, percent, amount, dates, and validation result. Enforce total allocation=100% (or explicit approved exception)."
+    },
+    {
+      "id": "DM8",
+      "claim": "Offer and screening are separate artifacts/gates with independent status histories and attachments.",
+      "status": "confirmed",
+      "evidence": [
+        "HR App (1).docx:78-89,217-235,523-548 (screening initiated/cleared; authority and student signing; DocuSign/download)",
+        "student_hiring_pipeline.md:20-30,48-53 (parallel screening/offer stages and signed+cleared gate)",
+        "HR App (1).docx:443-475 (offer-letter fields and job-code template)"
+      ],
+      "risk": "One generic status cannot express screening pending while offer is drafted, authority signature versus employee signature, or a reissued offer after change.",
+      "recommendation": "Offer has offer_id, assignment_version_id, template/version, signer roles, sent/signed/rejected timestamps, provider envelope/document IDs, and status. Screening has screening_id, type, provider/reference, initiated/cleared/failed timestamps, status, and evidence attachment. Gate derived from both, not stored as an ambiguous stage."
+    },
+    {
+      "id": "DM9",
+      "claim": "Oracle record is an external-system projection/reference, distinct from the internal appointment and from the HR approval queue.",
+      "status": "confirmed",
+      "evidence": [
+        "HR App (1).docx:561-578 (change/add assignment in Oracle; pending worker for new hires)",
+        "HR App (1).docx:120-130 (entered, approval queue, verified; records can disappear and require checking)",
+        "student_hiring_pipeline.md:28-31,40-45 (Oracle entry, queue, verification, multiple assignment records)"
+      ],
+      "risk": "Treating Oracle status as the canonical lifecycle loses attempted submissions, queue disappearance, re-entry, and reconciliation evidence.",
+      "recommendation": "OracleRecord has oracle_record_id/assignment_number, person/assignment linkage, record kind (worker/assignment/costing), submitted/approved/verified timestamps, external status, last_checked_at, source payload/hash, and reconciliation outcome. Keep internal lifecycle/status history separately."
+    },
+    {
+      "id": "DM10",
+      "claim": "Audit event, note, and attachment are separate but linkable evidence types.",
+      "status": "corroborated",
+      "evidence": [
+        "HR App (1).docx:744-775,1045-1058 (notes/action history and audit evidence requirement)",
+        "Call with Mayra Morfin (1).docx:188-196,227-229 (history/log and filtered actions)",
+        "Call with Daisy Matos.docx:551-585 (offer letter attachment needed by Finance)"
+      ],
+      "risk": "A free-text notes field cannot prove who changed a funding value, preserve source documents, or support audit filtering.",
+      "recommendation": "AuditEvent is append-only with event_id, actor, role, timestamp, entity/type/id, action, before/after or payload hash, correlation/request ID, and source. Note is authored narrative with visibility/classification. Attachment stores immutable blob metadata, document type, hash, source, version, and links to entity/event."
+    },
+    {
+      "id": "DM11",
+      "claim": "Lifecycle statuses must be scoped by concern, not collapsed into one shared status column.",
+      "status": "confirmed",
+      "evidence": [
+        "HR App (1).docx:78-130 (screening, offer/stage, Oracle state, new-hire check, verified)",
+        "daisy_finance_stage.md:26-31,101-106 (finance entry/done/active/ended uncertainty and unresolved labels)",
+        "HR App (1).docx:970-1002 (spring unchanged versus changed rows)"
+      ],
+      "risk": "The derived spreadsheet statuses (`drafted`, `sent`, `signed`, `entered`, `verified`, `check`, green/blue) mix workflow, external state, visual markers, and finance completion.",
+      "recommendation": "Use separate status domains: intake/request, screening, offer, Oracle/HR, preboarding, finance verification/costing, appointment lifecycle, and communication. Derive work queues from statuses plus ownership/deadlines; never encode color as state."
+    },
+    {
+      "id": "DM12",
+      "claim": "Shared model must enforce provenance, authorization, visibility, revision, and idempotent history across three pipelines.",
+      "status": "required_invariant",
+      "evidence": [
+        "HR App (1).docx:793-895,1087-1117 (restricted changes; student requests should route through Mayra; future form not current)",
+        "Call with Daisy Matos.docx:516-536 (sensitive Finance reconciliation access differs from HR/Mayra)",
+        "evidence_pack.md:15-17 (preserve uncertainty; no invented policy/integration/ownership)"
+      ],
+      "risk": "A shared database without field-level visibility or optimistic revision control can expose sensitive finance data and reintroduce destructive overwrites.",
+      "recommendation": "Every mutable aggregate has revision/version, actor and source provenance, effective dates, created/updated timestamps, and append-only audit. Enforce role/field visibility (Finance-sensitive data restricted), request ownership, optimistic concurrency, and idempotency keys for imports/external callbacks."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative canonical required-field list and field-level ownership/validation rules.",
+    "Stable identifiers and exact cross-system mappings for U-number, employee ID, Oracle assignment number, position number, request ID, and chartfield components.",
+    "No-match, duplicate-match, and identity-correction workflow; Banner/lookup-site authority is unconfirmed.",
+    "Exact request approval/authorization semantics for renewals, changes, terminations, and direct faculty-to-Laura/Finance exceptions.",
+    "Whether a change creates a new assignment/version, amends the same Oracle assignment, or can do either by change type.",
+    "Canonical status vocabulary and transition authority; Daisy's post-entry status was transcribed unclearly as 'page' and must not be modeled as paid without confirmation.",
+    "Exact Oracle/HR queue identifiers, disappearance/reconciliation semantics, retry policy, and who owns re-entry.",
+    "Screening provider, retention, failure/expiration/re-screening rules, and whether screening is required for every change/reappointment.",
+    "Offer signature authority rules, DocuSign envelope/document identifiers, rejection/void/resend behavior, and template versioning.",
+    "Pay-period/calendar schema, fringe-rate effective dating, FTE/rate formulas, rounding/tolerance, and treatment of exceptions.",
+    "Whether graduate-student appointments can have fringe, split distributions, stipends, or multiple funding lines; current evidence is mainly faculty examples.",
+    "Funding/chartfield canonical source (FAST, Box spreadsheet, or another system), component structure, balance/funding validation, and synchronization ownership.",
+    "Retention/classification/visibility policy for DOB, gender, address, phone, offer letters, screening evidence, and Finance reconciliation attachments.",
+    "Reminder/escalation schedules, deadlines, terminal states, and external communication provider identity."
+  ],
+  "source_coverage": [
+    "Primary interview: HR App (1).docx, especially lines 23-50, 68-130, 217-235, 395-427, 443-475, 523-578, 697-708, 744-775, 780-895, 970-1058, 1087-1117.",
+    "Primary interview: Call with Mayra Morfin (1).docx, especially lines 12-86, 127-181, 188-229, 248-269, 311-346, 421-462, 476-504, 575-606.",
+    "Primary interview: Call with Daisy Matos.docx, especially lines 34-57, 83-120, 127-189, 214-311, 364-462, 516-585, 597-681, 724-858, 886-1049, 1060-1098.",
+    "Derived artifacts cross-checked but not treated as authority: student_hiring_pipeline.md, mayra_student_hiring_flow.md, daisy_finance_stage.md.",
+    "Evidence boundary: evidence_pack.md:15-17 requires transcript primacy, exact citations, preserved uncertainty, and read-only verification.",
+    "Adversarial cross-check: wave1/mayra_intake.json confirms the mid-semester form-link claim is proposed/unverified and identifies unresolved identity, reminder, ownership, and change-routing questions."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/data_model.json"
+}

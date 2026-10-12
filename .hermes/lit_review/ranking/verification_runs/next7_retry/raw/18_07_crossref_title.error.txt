@@ -1,0 +1,1 @@
+URL: https://api.crossref.org/works?query.bibliographic=Formalizing%20Informal%20Logic%20Walton%20Gordon&rows=10\nERROR: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>\n

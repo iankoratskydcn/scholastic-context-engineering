@@ -1,0 +1,45 @@
+{
+  "retrieved_at": "2026-10-12",
+  "items": [
+    {
+      "key": "18_07_informal_logic_view",
+      "url": "https://informallogic.ca/index.php/informal_logic/article/view/4335",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    },
+    {
+      "key": "18_07_informal_logic_pdf",
+      "url": "https://informallogic.ca/index.php/informal_logic/article/download/4335/3711",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    },
+    {
+      "key": "18_07_crossref_title",
+      "url": "https://api.crossref.org/works?query.bibliographic=Formalizing%20Informal%20Logic%20Walton%20Gordon&rows=10",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    },
+    {
+      "key": "S24P01_doi",
+      "url": "https://doi.org/10.1007/978-3-642-15025-8_18",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    },
+    {
+      "key": "S24P01_crossref",
+      "url": "https://api.crossref.org/works/10.1007/978-3-642-15025-8_18",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    },
+    {
+      "key": "S24P01_shelah_pdf",
+      "url": "https://shelah.logic.at/files/95653/953.pdf",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    },
+    {
+      "key": "S24P01_dblp",
+      "url": "https://dblp.org/rec/conf/birthday/Hodges10",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    },
+    {
+      "key": "S24P01_springer",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-642-15025-8_18",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>"
+    }
+  ]
+}

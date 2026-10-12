@@ -1,0 +1,516 @@
+{
+  "run_date": "2026-10-12",
+  "selected": 21,
+  "results": [
+    {
+      "paper_id": "18_04",
+      "retained_citation": "Garcia & Simari (2004), “Defeasible Logic Programming: An Argumentative Approach,” Theory and Practice of Logic Programming 4(1–2), 95–138.",
+      "expected_title": "Defeasible Logic Programming: An Argumentative Approach",
+      "expected_authors": "Garcia & Simari",
+      "expected_year": 2004,
+      "expected_venue": "Theory and Practice of Logic Programming",
+      "source_url": "https://arxiv.org/pdf/cs/0302029",
+      "resolution": "resolved",
+      "final_url": "https://arxiv.org/pdf/cs/0302029",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/pdf/cs/0302029",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://arxiv.org/pdf/cs/0302029",
+          "content_type": "application/pdf",
+          "bytes": 486067
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/18_04.pdf",
+      "sha256": "fbf761a4df185228fb0754d4526e13d6ffe06e2ad22b20d36d2248ba9ccdde04",
+      "bytes": 486067,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "18_03",
+      "retained_citation": "Verheij (2003), “DefLog: On the Logical Interpretation of Prima Facie Justified Assumptions,” Journal of Logic and Computation 13(3), 319–346.",
+      "expected_title": "DefLog: On the Logical Interpretation of Prima Facie Justified Assumptions",
+      "expected_authors": "Verheij",
+      "expected_year": 2003,
+      "expected_venue": "Journal of Logic and Computation",
+      "source_url": "https://cris.maastrichtuniversity.nl/en/publications/deflog-on-the-logical-interpretation-of-prima-facie-justified-ass/",
+      "resolution": "blocked",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://cris.maastrichtuniversity.nl/en/publications/deflog-on-the-logical-interpretation-of-prima-facie-justified-ass/",
+          "status": "error",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+        }
+      ],
+      "status": "failed",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+    },
+    {
+      "paper_id": "18_02",
+      "retained_citation": "Nute (1994), “Defeasible Logic,” in Handbook of Logic in AI and Logic Programming, pp. 353–395.",
+      "expected_title": "Defeasible Logic",
+      "expected_authors": "Nute",
+      "expected_year": 1994,
+      "expected_venue": "Handbook of Logic in AI and Logic Programming",
+      "source_url": "https://academic.oup.com/book/53007/chapter-abstract/421965116",
+      "resolution": "blocked",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://academic.oup.com/book/53007/chapter-abstract/421965116",
+          "status": "error",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "status": "failed",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "paper_id": "S21P07",
+      "retained_citation": "Sazid et al. (2022), “A Unified Representation and a Decoupled Deep Learning Architecture for Argumentation Mining of Students’ Persuasive Essays”",
+      "expected_title": "A Unified Representation and a Decoupled Deep Learning Architecture for Argumentation Mining of Students’ Persuasive Essays",
+      "expected_authors": "Sazid et al.",
+      "expected_year": 2022,
+      "expected_venue": "Proceedings of the 9th Workshop on Argument Mining",
+      "source_url": "https://aclanthology.org/2022.argmining-1.6.pdf",
+      "resolution": "resolved",
+      "final_url": "https://aclanthology.org/2022.argmining-1.6.pdf",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/2022.argmining-1.6.pdf",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://aclanthology.org/2022.argmining-1.6.pdf",
+          "content_type": "application/pdf",
+          "bytes": 624579
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S21P07.pdf",
+      "sha256": "ee1a74ab2a9b86253456fe9cb11cda34a09d0bd51b463e461bd7c2a5317ea998",
+      "bytes": 624579,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "S24P02",
+      "retained_citation": "Hodges, “A Correctness Proof for al-Barakāt’s Logical Diagrams”",
+      "expected_title": "A Correctness Proof for al-Barakāt’s Logical Diagrams",
+      "expected_authors": "Hodges",
+      "expected_year": 2021,
+      "expected_venue": "The Review of Symbolic Logic",
+      "source_url": "https://www.cambridge.org/core/journals/review-of-symbolic-logic/article/abs/correctness-proof-for-albarakats-logical-diagrams/6345C259CB7CD88CF9753FF26001FB61",
+      "resolution": "resolved",
+      "final_url": "https://www.cambridge.org/core/journals/review-of-symbolic-logic/article/abs/correctness-proof-for-albarakats-logical-diagrams/6345C259CB7CD88CF9753FF26001FB61",
+      "retrieval_trail": [
+        {
+          "url": "https://www.cambridge.org/core/journals/review-of-symbolic-logic/article/abs/correctness-proof-for-albarakats-logical-diagrams/6345C259CB7CD88CF9753FF26001FB61",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://www.cambridge.org/core/journals/review-of-symbolic-logic/article/abs/correctness-proof-for-albarakats-logical-diagrams/6345C259CB7CD88CF9753FF26001FB61",
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 780584
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S24P02.html",
+      "sha256": "86263286f03553138f7defc138a815f23d9c0ce05b1a27606e4a36bdda8686dd",
+      "bytes": 780584,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "paper_id": "S24P01",
+      "retained_citation": "Hodges, “Ibn Sīnā on Analysis: 1. Proof Search. Or: Abstract State Machines as a Tool for History of Logic”",
+      "expected_title": "Ibn Sīnā on Analysis: 1. Proof Search. Or: Abstract State Machines as a Tool for History of Logic",
+      "expected_authors": "Hodges",
+      "expected_year": 2005,
+      "expected_venue": "Fields of Logic and Computation",
+      "source_url": "https://wilfridhodges.co.uk/arabic05.pdf",
+      "resolution": "blocked",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://wilfridhodges.co.uk/arabic05.pdf",
+          "status": "error",
+          "error": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1082)>"
+        }
+      ],
+      "status": "failed",
+      "error": "<urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1082)>"
+    },
+    {
+      "paper_id": "S21P09",
+      "retained_citation": "Walton (2016), “Some Artificial Intelligence Tools for Argument Evaluation: An Introduction”",
+      "expected_title": "Some Artificial Intelligence Tools for Argument Evaluation: An Introduction",
+      "expected_authors": "Walton",
+      "expected_year": 2016,
+      "expected_venue": "Argumentation",
+      "source_url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2851649_code1486039.pdf?abstractid=2851649&mirid=1",
+      "resolution": "blocked",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2851649_code1486039.pdf?abstractid=2851649&mirid=1",
+          "status": "error",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "status": "failed",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "paper_id": "18_14",
+      "retained_citation": "Lawrence & Reed (2019), “Argument Mining: A Survey,” Computational Linguistics 45(4), 765–818.",
+      "expected_title": "Argument Mining: A Survey",
+      "expected_authors": "Lawrence & Reed",
+      "expected_year": 2019,
+      "expected_venue": "Computational Linguistics",
+      "source_url": "https://aclanthology.org/J19-4006.pdf",
+      "resolution": "resolved",
+      "final_url": "https://aclanthology.org/J19-4006.pdf",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/J19-4006.pdf",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://aclanthology.org/J19-4006.pdf",
+          "content_type": "application/pdf",
+          "bytes": 953331
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/18_14.pdf",
+      "sha256": "d0853b7c27246b57777977f57d3fcc09a3e65a387e04bf638a0ab210bb0b03b7",
+      "bytes": 953331,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "S03P01",
+      "retained_citation": "Liu et al. (2024), “Lost in the Middle: How Language Models Use Long Contexts”",
+      "expected_title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "expected_authors": "Liu et al.",
+      "expected_year": 2023,
+      "expected_venue": "Transactions of the Association for Computational Linguistics",
+      "source_url": "https://arxiv.org/pdf/2307.03172",
+      "resolution": "resolved",
+      "final_url": "https://arxiv.org/pdf/2307.03172",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/pdf/2307.03172",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://arxiv.org/pdf/2307.03172",
+          "content_type": "application/pdf",
+          "bytes": 747542
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S03P01.pdf",
+      "sha256": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1",
+      "bytes": 747542,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "S09P05",
+      "retained_citation": "Lauscher et al. (2021), “Argument Mining for Scholarly Document Processing.”",
+      "expected_title": "Argument Mining for Scholarly Document Processing: Taking Stock and Looking Ahead",
+      "expected_authors": "Lauscher et al.",
+      "expected_year": 2021,
+      "expected_venue": "ACL Workshop on Scholarly Document Processing",
+      "source_url": "https://aclanthology.org/2021.sdp-1.7.pdf",
+      "resolution": "resolved",
+      "final_url": "https://aclanthology.org/2021.sdp-1.7.pdf",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/2021.sdp-1.7.pdf",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://aclanthology.org/2021.sdp-1.7.pdf",
+          "content_type": "application/pdf",
+          "bytes": 205476
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S09P05.pdf",
+      "sha256": "fba898d5082df5a4678f06fe7d0540f98ef2eba26e16e435d698e2f0865f1e89",
+      "bytes": 205476,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "S04P05",
+      "retained_citation": "Li, Dong, Lin, and Guerin (2023), “Compressing Context to Enhance Inference Efficiency of Large Language Models (Selective Context)”",
+      "expected_title": "Compressing Context to Enhance Inference Efficiency of Large Language Models",
+      "expected_authors": "Li et al.",
+      "expected_year": 2023,
+      "expected_venue": "Proceedings of EMNLP",
+      "source_url": "https://aclanthology.org/2023.emnlp-main.391.pdf",
+      "resolution": "resolved",
+      "final_url": "https://aclanthology.org/2023.emnlp-main.391.pdf",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/2023.emnlp-main.391.pdf",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://aclanthology.org/2023.emnlp-main.391.pdf",
+          "content_type": "application/pdf",
+          "bytes": 429663
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S04P05.pdf",
+      "sha256": "ae2221f1769cf78d81c587b21a8dd6a51a0561ddd05283a88baa7852e79f963f",
+      "bytes": 429663,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "S04P07",
+      "retained_citation": "Ge, Hu, Wang, Wang, Chen, and Wei (2023/ICLR 2024), “In-context Autoencoder for Context Compression in a Large Language Model (ICAE)”",
+      "expected_title": "In-context Autoencoder for Context Compression in a Large Language Model",
+      "expected_authors": "Ge et al.",
+      "expected_year": 2023,
+      "expected_venue": "ICLR 2024",
+      "source_url": "https://arxiv.org/pdf/2307.06945",
+      "resolution": "resolved",
+      "final_url": "https://arxiv.org/pdf/2307.06945",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/pdf/2307.06945",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://arxiv.org/pdf/2307.06945",
+          "content_type": "application/pdf",
+          "bytes": 1568003
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S04P07.pdf",
+      "sha256": "626e7f422e143620c510933d550ee90b7db615abbfffee50f384d805779841ea",
+      "bytes": 1568003,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "S24P08",
+      "retained_citation": "OpenITI, Open Islamicate Texts Initiative",
+      "expected_title": "Open Islamicate Texts Initiative",
+      "expected_authors": "OpenITI",
+      "expected_year": 2019,
+      "expected_venue": "Scholarly corpus/resource initiative",
+      "source_url": "https://alraqmiyyat.github.io/OpenITI",
+      "resolution": "resolved",
+      "final_url": "https://alraqmiyyat.github.io/OpenITI/",
+      "retrieval_trail": [
+        {
+          "url": "https://alraqmiyyat.github.io/OpenITI",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://alraqmiyyat.github.io/OpenITI/",
+          "content_type": "text/html; charset=utf-8",
+          "bytes": 49683
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S24P08.html",
+      "sha256": "5e9ef7ae51f414cf11708b5b8672c0b904da1e33891ad44958d0bb48f63f459a",
+      "bytes": 49683,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "paper_id": "16_03",
+      "retained_citation": "Glashoff (2005)",
+      "expected_title": "Aristotelian Syntax from a Computational–Combinatorial Point of View",
+      "expected_authors": "Glashoff",
+      "expected_year": 2005,
+      "expected_venue": "Journal of Logic and Computation",
+      "source_url": "https://academic.oup.com/logcom/article/15/6/949/1086849",
+      "resolution": "blocked",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://academic.oup.com/logcom/article/15/6/949/1086849",
+          "status": "error",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "status": "failed",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "paper_id": "S01P03",
+      "retained_citation": "Rawte et al. (2023), “The Troubling Emergence of Hallucination in Large Language Models — An Extensive Definition, Quantification, and Prescriptive Remediations”",
+      "expected_title": "The Troubling Emergence of Hallucination in Large Language Models",
+      "expected_authors": "Rawte et al.",
+      "expected_year": 2023,
+      "expected_venue": "Proceedings of EMNLP",
+      "source_url": "https://aclanthology.org/2023.emnlp-main.155.pdf",
+      "resolution": "resolved",
+      "final_url": "https://aclanthology.org/2023.emnlp-main.155.pdf",
+      "retrieval_trail": [
+        {
+          "url": "https://aclanthology.org/2023.emnlp-main.155.pdf",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://aclanthology.org/2023.emnlp-main.155.pdf",
+          "content_type": "application/pdf",
+          "bytes": 2426768
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S01P03.pdf",
+      "sha256": "6b7e305c92438b34e143d76b0f36bc619b6b68122c3717c91723d13f26ffda1f",
+      "bytes": 2426768,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "16_08",
+      "retained_citation": "El-Rouayheb (2010)",
+      "expected_title": "Relational Syllogisms and the History of Arabic Logic, 900–1900",
+      "expected_authors": "El-Rouayheb",
+      "expected_year": 2010,
+      "expected_venue": "Brill monograph",
+      "source_url": "https://doi.org/10.1163/ej.9789004180844.i-366",
+      "resolution": "blocked",
+      "final_url": "",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.1163/ej.9789004180844.i-366",
+          "status": "error",
+          "error": "HTTPError: HTTP Error 404: Not Found"
+        }
+      ],
+      "status": "failed",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "paper_id": "S22P01",
+      "retained_citation": "Maliszewski, “It takes a village to write a book: Mapping anonymous contributions in Stephen Langton’s *Quaestiones Theologiae” (2025)",
+      "expected_title": "It Takes a Village to Write a Book: Mapping Anonymous Contributions in Stephen Langton’s Quaestiones Theologiae",
+      "expected_authors": "Maliszewski",
+      "expected_year": 2025,
+      "expected_venue": "Cambridge Digital Humanities",
+      "source_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9A1A9C2B789EC1AD7A876F65F5D90CCC/S2977815825100043a.pdf/it_takes_a_village_to_write_a_book_mapping_anonymous_contributions_in_stephen_langtons_quaestiones_theologiae.pdf",
+      "resolution": "resolved",
+      "final_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9A1A9C2B789EC1AD7A876F65F5D90CCC/S2977815825100043a.pdf/it_takes_a_village_to_write_a_book_mapping_anonymous_contributions_in_stephen_langtons_quaestiones_theologiae.pdf",
+      "retrieval_trail": [
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9A1A9C2B789EC1AD7A876F65F5D90CCC/S2977815825100043a.pdf/it_takes_a_village_to_write_a_book_mapping_anonymous_contributions_in_stephen_langtons_quaestiones_theologiae.pdf",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9A1A9C2B789EC1AD7A876F65F5D90CCC/S2977815825100043a.pdf/it_takes_a_village_to_write_a_book_mapping_anonymous_contributions_in_stephen_langtons_quaestiones_theologiae.pdf",
+          "content_type": "application/pdf",
+          "bytes": 433692
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S22P01.pdf",
+      "sha256": "b0575dfec087cfde2deaa8b04f34d09c56eff48f8f328b97387d79f274a855ec",
+      "bytes": 433692,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "20_01",
+      "retained_citation": "Gao et al. (2023) — scientific abstracts, human detection, and fabricated data",
+      "expected_title": "Comparing scientific abstracts generated by ChatGPT to real abstracts with detectors and blinded human reviewers",
+      "expected_authors": "Gao et al.",
+      "expected_year": 2023,
+      "expected_venue": "npj Digital Medicine",
+      "source_url": "https://www.nature.com/articles/s41746-023-00819-6.pdf",
+      "resolution": "resolved",
+      "final_url": "https://www.nature.com/articles/s41746-023-00819-6.pdf?error=cookies_not_supported&code=aa86020c-5a0d-486c-aa8d-bcc018af44e4",
+      "retrieval_trail": [
+        {
+          "url": "https://www.nature.com/articles/s41746-023-00819-6.pdf",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://www.nature.com/articles/s41746-023-00819-6.pdf?error=cookies_not_supported&code=aa86020c-5a0d-486c-aa8d-bcc018af44e4",
+          "content_type": "application/pdf",
+          "bytes": 596758
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/20_01.pdf",
+      "sha256": "49e95025be10246bf1caf498ba530e27a6d9bdb3e9cf9fb401d130c2881d4681",
+      "bytes": 596758,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "S25P03",
+      "retained_citation": "Schwitzgebel, Schwitzgebel & Strasser (2023), “Creating a Large Language Model of a Philosopher”",
+      "expected_title": "Creating a Large Language Model of a Philosopher",
+      "expected_authors": "Schwitzgebel et al.",
+      "expected_year": 2023,
+      "expected_venue": "arXiv preprint",
+      "source_url": "https://arxiv.org/pdf/2302.01339",
+      "resolution": "resolved",
+      "final_url": "https://arxiv.org/pdf/2302.01339",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/pdf/2302.01339",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://arxiv.org/pdf/2302.01339",
+          "content_type": "application/pdf",
+          "bytes": 689757
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/S25P03.pdf",
+      "sha256": "d10ff1992ff1c95b380eff31ca684f581cc4af0412ecdd6756cc447290b59d85",
+      "bytes": 689757,
+      "content_type": "application/pdf"
+    },
+    {
+      "paper_id": "20_03",
+      "retained_citation": "Yeadon et al. (2024) — blinded academic marking of human versus GPT-4 physics essays",
+      "expected_title": "Evaluating AI and human authorship quality in academic writing through physics essays",
+      "expected_authors": "Yeadon et al.",
+      "expected_year": 2024,
+      "expected_venue": "European Journal of Physics",
+      "source_url": "https://doi.org/10.1088/1361-6404/ad669d",
+      "resolution": "resolved",
+      "final_url": "https://validate.perfdrive.com/fb803c746e9148689b3984a31fccd902/?ssa=10072bca-48c1-450c-82c1-1b27f10e59ff&ssb=42362200434&ssc=https%3A%2F%2Fiopscience.iop.org%2Farticle%2F10.1088%2F1361-6404%2Fad669d&ssi=6e1177ec-cnvj-45c1-b6b7-8f1a8c4b1cb2&ssk=botmanager_support@radware.com&ssm=99088386920184723104274450971475&ssn=5dc15127736fba80394ac0badb986ccffecbb356ca97-4aeb-49de-b52ca2&sso=793f7bcd-86ab9aafe6a52641c268cb1a6cb31409058efbfeebf99c2a&ssp=11394704361791729437179170664168282&ssq=15442158669568428034486695937876335610785&ssr=NDcuMTk3LjEyMC4xODQ=&sst=Mozilla/5.0%20scholarly-verification/1.0&ssu=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDBiMzU2Y2E5Ny00YWViLTQ5ZGUtYmJjZC04NmFiOWFhZmU2YTUxLTE3OTE3ODY2OTU2MDgwLTAwNWZmY2IzMDY3YzJjNWNmMzAxMCIsInJkIjoiaW9wLm9yZyIsInV6bXgiOiI3ZmMwMDA1Njc5ODFmZC02ZjBiLTQ4MjEtYmU0OS00YTAzNGY1OTdjZmUxLTE3OTE3ODY2OTU2MDgwLTAwOWFhZGU0NDUyNjk4NDYwNzQxMCJ9",
+      "retrieval_trail": [
+        {
+          "url": "https://doi.org/10.1088/1361-6404/ad669d",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://validate.perfdrive.com/fb803c746e9148689b3984a31fccd902/?ssa=10072bca-48c1-450c-82c1-1b27f10e59ff&ssb=42362200434&ssc=https%3A%2F%2Fiopscience.iop.org%2Farticle%2F10.1088%2F1361-6404%2Fad669d&ssi=6e1177ec-cnvj-45c1-b6b7-8f1a8c4b1cb2&ssk=botmanager_support@radware.com&ssm=99088386920184723104274450971475&ssn=5dc15127736fba80394ac0badb986ccffecbb356ca97-4aeb-49de-b52ca2&sso=793f7bcd-86ab9aafe6a52641c268cb1a6cb31409058efbfeebf99c2a&ssp=11394704361791729437179170664168282&ssq=15442158669568428034486695937876335610785&ssr=NDcuMTk3LjEyMC4xODQ=&sst=Mozilla/5.0%20scholarly-verification/1.0&ssu=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDBiMzU2Y2E5Ny00YWViLTQ5ZGUtYmJjZC04NmFiOWFhZmU2YTUxLTE3OTE3ODY2OTU2MDgwLTAwNWZmY2IzMDY3YzJjNWNmMzAxMCIsInJkIjoiaW9wLm9yZyIsInV6bXgiOiI3ZmMwMDA1Njc5ODFmZC02ZjBiLTQ4MjEtYmU0OS00YTAzNGY1OTdjZmUxLTE3OTE3ODY2OTU2MDgwLTAwOWFhZGU0NDUyNjk4NDYwNzQxMCJ9",
+          "content_type": "text/html; charset=UTF-8",
+          "bytes": 14371
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/20_03.html",
+      "sha256": "6f65c4d6815c1d59c7190ca68c07856b55eb9f9c51a1b02a4ef7423211265148",
+      "bytes": 14371,
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "paper_id": "15-04",
+      "retained_citation": "Millière and Buckner (2024), A Philosophical Introduction to Language Models—Part II",
+      "expected_title": "A Philosophical Introduction to Language Models—Part II: The Way Forward",
+      "expected_authors": "Millière & Buckner",
+      "expected_year": 2024,
+      "expected_venue": "arXiv preprint",
+      "source_url": "https://arxiv.org/pdf/2405.03207",
+      "resolution": "resolved",
+      "final_url": "https://arxiv.org/pdf/2405.03207",
+      "retrieval_trail": [
+        {
+          "url": "https://arxiv.org/pdf/2405.03207",
+          "status": "ok",
+          "http_status": 200,
+          "final_url": "https://arxiv.org/pdf/2405.03207",
+          "content_type": "application/pdf",
+          "bytes": 1500933
+        }
+      ],
+      "status": "downloaded",
+      "file": "evidence/15-04.pdf",
+      "sha256": "8489718949867b2c20dbbe18690c65d7c549a6df0bb201d5eb9636abacc2ff6d",
+      "bytes": 1500933,
+      "content_type": "application/pdf"
+    }
+  ]
+}

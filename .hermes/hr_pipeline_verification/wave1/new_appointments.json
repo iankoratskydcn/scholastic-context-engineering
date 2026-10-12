@@ -1,0 +1,106 @@
+{
+  "perspective": "Adversarial verification of new-student, mid-semester/OPS, and new-hire appointment entry paths, including field, lookup, lifecycle, deadline, and budget-gate proof.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "new-student-entry",
+      "claim": "The semester intake supports a distinct new-student branch: faculty provide the full appointment data, Mayra resolves missing identity/funding details, then enters the HR worksheet for Laura and Finance.",
+      "status": "confirmed_with_field_gap",
+      "evidence": [
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:44-52",
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:64-86",
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:188-196",
+        "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md:8-12",
+        "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md:48-57"
+      ],
+      "risk": "The transcript says new students require the full set of fields but never enumerates that set; an implementation could omit fields needed downstream.",
+      "recommendation": "Use the Laura worksheet/Oracle requirements as the minimum candidate schema, but obtain an authoritative field list from the actual intake/request artifact before treating the path as complete."
+    },
+    {
+      "id": "student-fields",
+      "claim": "The evidenced appointment row fields are name, email, U number, job code/name, supervisor, hours, salary, and start/end dates; Laura also enters position number, FTE, degree level, U number, job code, mail point/location, and offer-letter details.",
+      "status": "confirmed",
+      "evidence": [
+        "/Users/iankoratsky/.hermes/attachments/HR App (1).docx:68-78",
+        "/Users/iankoratsky/.hermes/attachments/HR App (1).docx:468-475",
+        "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md:17-20",
+        "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md:71-123"
+      ],
+      "risk": "The sources mix intake fields, offer-letter fields, and Oracle-entry fields; requiredness and ownership per field are not explicitly normalized.",
+      "recommendation": "Keep field provenance and requiredness separate for Mayra intake, Laura offer/pending-worker entry, and Daisy costing. Do not infer that every displayed field is required on the faculty form."
+    },
+    {
+      "id": "banner-and-lookup-dependencies",
+      "claim": "New hires/new students not yet in Oracle require Banner lookup for address, date of birth, gender, and phone when creating a pending worker; Mayra may also use a USF lookup site or Banner to resolve a student from U number, email, or name.",
+      "status": "confirmed_dependency_uncertain_source",
+      "evidence": [
+        "/Users/iankoratsky/.hermes/attachments/HR App (1).docx:405-427",
+        "/Users/iankoratsky/.hermes/attachments/HR App (1).docx:568-578",
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:151-181",
+        "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md:56-57"
+      ],
+      "risk": "The lookup website's ownership/backend is explicitly uncertain, and no evidence proves live Banner/API availability or failure behavior.",
+      "recommendation": "Model Banner/lookup as an external prerequisite with explicit not-found/manual-resolution handling; verify the authoritative integration and exact returned fields before automation."
+    },
+    {
+      "id": "new-hire-vs-reappointment",
+      "claim": "Reappointments reuse existing Oracle data and skip Banner/pending-worker entry; new hires require pending-worker creation, the additional personal fields, and pre-boarding before Laura can verify them.",
+      "status": "confirmed",
+      "evidence": [
+        "/Users/iankoratsky/.hermes/attachments/HR App (1).docx:120-130",
+        "/Users/iankoratsky/.hermes/attachments/HR App (1).docx:561-578",
+        "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md:40-43",
+        "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md:109-114"
+      ],
+      "risk": "The source labels the Oracle state as `check` for new hires and `verified` after pre-boarding, but does not establish a formal system invariant preventing a new hire from taking the reappointment path.",
+      "recommendation": "Require an explicit appointment/person classification and enforce the branch: existing Oracle worker/reappointment versus new pending worker; retain pre-boarding as a blocking gate for new hires."
+    },
+    {
+      "id": "mid-semester-ops",
+      "claim": "A professor may appoint an OPS student mid-semester outside the normal semester deadline; the proposed/currently described handling is a new appointment initiated through a form/template email and entering the same new-student path.",
+      "status": "confirmed_entry_concept_not_implementation",
+      "evidence": [
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:421-441",
+        "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md:18-20",
+        "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md:49-53",
+        "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md:85-89"
+      ],
+      "risk": "The transcript describes the form/template as a proposed workflow and does not prove it exists, is approved, or collects a complete OPS payload.",
+      "recommendation": "Treat the OPS path as a separate entry trigger converging on the new-student validation path; do not claim a functioning mid-semester form until its fields, routing, and downstream gate behavior are verified."
+    },
+    {
+      "id": "deadlines-and-budget-gates",
+      "claim": "A graduate-student appointment deadline is mentioned, but no exact deadline, enforcement rule, or approval gate is established; available evidence instead shows budget dependence for positions and Finance chartfield/funding verification before costing.",
+      "status": "partially_confirmed_missing_policy",
+      "evidence": [
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:421-429",
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:496-504",
+        "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx:443-462",
+        "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx:1022-1049",
+        "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md:17-27",
+        "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md:101-106"
+      ],
+      "risk": "No exact intake cutoff, exception approval, headcount authorization, or automated budget gate is evidenced. Treating the proposed budget-dependent position list as an approval mechanism would invent policy.",
+      "recommendation": "Leave deadline/budget policy unresolved. Capture dates and approval authority explicitly if required; enforce only the evidenced Finance checks: chartfield present/funded, distribution totals 100% when split, and costing by the applicable pay-period deadline."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative complete field list and requiredness for new-student and OPS forms.",
+    "Whether the mid-semester OPS form is implemented/approved or only proposed in the interview.",
+    "Exact graduate appointment deadline, exceptions, and owner of deadline enforcement.",
+    "Formal headcount/budget approval gate before Mayra intake; Mayra says positions depend on budgets, but no approval workflow is specified.",
+    "Authoritative Banner/USF lookup system, API availability, identity-match rules, and not-found handling.",
+    "Whether every new student is necessarily a new Oracle pending worker; the evidence supports the distinction but does not define the classification rule.",
+    "Exact Finance completion status after the in-progress green state; the derived artifact records transcript uncertainty about a status heard as `page`/possibly `paid`.",
+    "Whether OPS/mid-semester appointments follow the same foreign-principal, offer, pre-boarding, and Finance gates without exception."
+  ],
+  "source_coverage": [
+    {"source": "/Users/iankoratsky/.hermes/attachments/HR App (1).docx", "role": "primary Laura/HR transcript; new-hire, reappointment, Banner, Oracle, pre-boarding, fields", "covered_lines": "68-130, 405-427, 468-475, 561-578, 926-987"},
+    {"source": "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx", "role": "primary Mayra transcript; new versus renewal, lookup, OPS/mid-semester, budget dependence", "covered_lines": "44-86, 151-181, 188-221, 421-462, 496-504"},
+    {"source": "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx", "role": "primary Finance transcript; funding/chartfield verification, costing deadline, active monitoring", "covered_lines": "214-257, 454-474, 1022-1049"},
+    {"source": "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md", "role": "provisional derived Laura-stage pipeline and detours", "covered_lines": "17-45, 48-63, 71-124"},
+    {"source": "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md", "role": "provisional derived Mayra-stage branching and OPS entry", "covered_lines": "6-31, 47-89"},
+    {"source": "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md", "role": "provisional derived Finance-stage gates and open questions", "covered_lines": "15-31, 56-117"}
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/new_appointments.json"
+}

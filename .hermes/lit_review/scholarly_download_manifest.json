@@ -1,0 +1,3947 @@
+{
+  "scholarly_url_count": 394,
+  "downloaded": 346,
+  "failed": 48,
+  "results": [
+    {
+      "source_url": "https://aaai.org/papers/02901-k-bert-enabling-language-representation-with-knowledge-graph",
+      "fetched_url": "https://aaai.org/papers/02901-k-bert-enabling-language-representation-with-knowledge-graph/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 148914,
+      "path": "downloads/14ed7231f30bb734.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://academic.oup.com/book/53007/chapter-abstract/421965116",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://academic.oup.com/book/53007/chapter-abstract/421965116",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://academic.oup.com/book/6319",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://academic.oup.com/book/6319",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://academic.oup.com/logcom/article/15/6/949/1086849",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://academic.oup.com/logcom/article/15/6/949/1086849",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://aclanthology.org/2009.tal-2.5",
+      "fetched_url": "https://aclanthology.org/2009.tal-2.5/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 34683,
+      "path": "downloads/751793d3ff6b6d5c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2020.acl-main.173",
+      "fetched_url": "https://aclanthology.org/2020.acl-main.173/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42457,
+      "path": "downloads/9b88bc1467123adc.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2020.acl-main.173.pdf",
+      "fetched_url": "https://aclanthology.org/2020.acl-main.173.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 388798,
+      "path": "downloads/3a38cf1cd171ace0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.acl-long.102",
+      "fetched_url": "https://aclanthology.org/2021.acl-long.102/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43547,
+      "path": "downloads/dc220964adb21ff3.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.emnlp-main.303",
+      "fetched_url": "https://aclanthology.org/2021.emnlp-main.303/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42707,
+      "path": "downloads/f3fe34d5b54113e4.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.emnlp-main.62",
+      "fetched_url": "https://aclanthology.org/2021.emnlp-main.62/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43613,
+      "path": "downloads/eeaa3f7d6799aa5a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.findings-acl.317",
+      "fetched_url": "https://aclanthology.org/2021.findings-acl.317/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 36757,
+      "path": "downloads/641f7df2cf54a98e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.findings-acl.317.pdf",
+      "fetched_url": "https://aclanthology.org/2021.findings-acl.317.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 824135,
+      "path": "downloads/3dc3188e5bf806ed.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.naacl-main.45",
+      "fetched_url": "https://aclanthology.org/2021.naacl-main.45/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45665,
+      "path": "downloads/4df857edf62a19cf.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.sdp-1.7.pdf",
+      "fetched_url": "https://aclanthology.org/2021.sdp-1.7.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 205476,
+      "path": "downloads/785888e49c7dff07.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2021.starsem-1.6",
+      "fetched_url": "https://aclanthology.org/2021.starsem-1.6/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 40331,
+      "path": "downloads/c0695bd97b7408be.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.aacl-short.9",
+      "fetched_url": "https://aclanthology.org/2022.aacl-short.9/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42338,
+      "path": "downloads/1a7ebc6c39ff91ba.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.acl-long.77",
+      "fetched_url": "https://aclanthology.org/2022.acl-long.77/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43381,
+      "path": "downloads/49b58955c9d0ac90.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.argmining-1.6",
+      "fetched_url": "https://aclanthology.org/2022.argmining-1.6/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41882,
+      "path": "downloads/2ff331b43b8ea83a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.emnlp-main.132",
+      "fetched_url": "https://aclanthology.org/2022.emnlp-main.132/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44132,
+      "path": "downloads/2ce2b5af4424041a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.emnlp-main.560",
+      "fetched_url": "https://aclanthology.org/2022.emnlp-main.560/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42462,
+      "path": "downloads/e1d54ffc6b04b2d2.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.emnlp-main.560.pdf",
+      "fetched_url": "https://aclanthology.org/2022.emnlp-main.560.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 447088,
+      "path": "downloads/2335fa87ad0c3e5c.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.findings-acl.311",
+      "fetched_url": "https://aclanthology.org/2022.findings-acl.311/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44833,
+      "path": "downloads/0484ec057a1c311d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.findings-emnlp.532",
+      "fetched_url": "https://aclanthology.org/2022.findings-emnlp.532/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44516,
+      "path": "downloads/97744ae1062cbd18.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.findings-emnlp.532.pdf",
+      "fetched_url": "https://aclanthology.org/2022.findings-emnlp.532.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 847734,
+      "path": "downloads/9eed50121b392b27.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.inlg-main.25",
+      "fetched_url": "https://aclanthology.org/2022.inlg-main.25/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 35776,
+      "path": "downloads/14a2746047ed6d7a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.lrec-1.157.pdf",
+      "fetched_url": "https://aclanthology.org/2022.lrec-1.157.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 362196,
+      "path": "downloads/4f5e7bdc05fdaaf3.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2022.textgraphs-1.15",
+      "fetched_url": "https://aclanthology.org/2022.textgraphs-1.15/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42907,
+      "path": "downloads/75a93a18ab1897ee.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.acl-long.109",
+      "fetched_url": "https://aclanthology.org/2023.acl-long.109/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42891,
+      "path": "downloads/3b54bfd13748887a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.acl-long.309",
+      "fetched_url": "https://aclanthology.org/2023.acl-long.309/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44992,
+      "path": "downloads/003b73e6c75b40d8.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.alp-1.12",
+      "fetched_url": "https://aclanthology.org/2023.alp-1.12/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43677,
+      "path": "downloads/e38abc5d99092f0a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.alp-1.19.pdf",
+      "fetched_url": "https://aclanthology.org/2023.alp-1.19.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 881602,
+      "path": "downloads/2d8b07cb3b108ca5.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.1022",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.1022/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 39919,
+      "path": "downloads/233853127c71c91e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.155",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.155/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 50691,
+      "path": "downloads/90202180715b362b.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.155.pdf",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.155.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2426768,
+      "path": "downloads/a628d5574991cbbd.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.313",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.313/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 48201,
+      "path": "downloads/888268ac15be8ac7.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.684",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.684/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44461,
+      "path": "downloads/d6b3602f5670f23e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.684.pdf",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.684.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 383463,
+      "path": "downloads/8d9e5cc7fbc8df04.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.706",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.706/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 47177,
+      "path": "downloads/f2e0247cb443873f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.emnlp-main.825",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.825/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41958,
+      "path": "downloads/fac34c9a6b5f3bce.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.findings-acl.148",
+      "fetched_url": "https://aclanthology.org/2023.findings-acl.148/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45468,
+      "path": "downloads/98bfa20a80f7eee3.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.findings-acl.218",
+      "fetched_url": "https://aclanthology.org/2023.findings-acl.218/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44741,
+      "path": "downloads/9c67e601cb49bd6e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.findings-acl.321",
+      "fetched_url": "https://aclanthology.org/2023.findings-acl.321/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41621,
+      "path": "downloads/934bf29d1a9c9bc8.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.findings-emnlp.182",
+      "fetched_url": "https://aclanthology.org/2023.findings-emnlp.182/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43081,
+      "path": "downloads/9886f0a385256b45.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.findings-emnlp.248",
+      "fetched_url": "https://aclanthology.org/2023.findings-emnlp.248/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41546,
+      "path": "downloads/ab0020c16def0d67.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.findings-emnlp.263",
+      "fetched_url": "https://aclanthology.org/2023.findings-emnlp.263/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42647,
+      "path": "downloads/754afa991e877d52.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.naloma-1.1.pdf",
+      "fetched_url": "https://aclanthology.org/2023.naloma-1.1.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 413135,
+      "path": "downloads/a7b8690e01f68033.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2023.ranlp-1.10.pdf",
+      "fetched_url": "https://aclanthology.org/2023.ranlp-1.10.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 222764,
+      "path": "downloads/ecffbc1f7ed67eaf.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.172",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.172/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 49667,
+      "path": "downloads/1da854c3b039a746.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.240",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.240/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43556,
+      "path": "downloads/dcecf72225bdf0d1.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.240.pdf",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.240.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 906284,
+      "path": "downloads/b48ec39a3d5edb7d.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.341",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.341/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44153,
+      "path": "downloads/6f760a82dd68374a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.375",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.375/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44674,
+      "path": "downloads/1f9113a5819171ae.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.424",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.424/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43090,
+      "path": "downloads/7ebf83222867d772.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.556",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.556/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44624,
+      "path": "downloads/0e33043403b27eb8.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.558",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.558/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41359,
+      "path": "downloads/18a010a847dd74a1.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.72",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.72/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43735,
+      "path": "downloads/0925303aafe47b13.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.814",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.814/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 46521,
+      "path": "downloads/bd9343385dca1395.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.acl-long.91.pdf",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.91.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2389071,
+      "path": "downloads/ca073c8631cbaa1f.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.c3nlp-1.1",
+      "fetched_url": "https://aclanthology.org/2024.c3nlp-1.1/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45667,
+      "path": "downloads/208a3a25af660e92.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.1229.pdf",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.1229.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 385584,
+      "path": "downloads/1b7d140831064516.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.155",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.155/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43962,
+      "path": "downloads/37ec1ec5567b3a14.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.155.pdf",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.155.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 589929,
+      "path": "downloads/ce2a453e2637face.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.172",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.172/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43516,
+      "path": "downloads/0c49b3d80a5c7eee.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.172.pdf",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.172.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1256043,
+      "path": "downloads/a8ac21eaf2e8d1b3.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.375",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.375/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43242,
+      "path": "downloads/c03e85a5f6b60ca5.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.375.pdf",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.375.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 811176,
+      "path": "downloads/934a05aad971b658.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.725",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.725/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45960,
+      "path": "downloads/e7cd5df3c0d9e28b.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.730",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.730/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43924,
+      "path": "downloads/44afefb543dd3058.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.emnlp-main.730.pdf",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.730.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 274603,
+      "path": "downloads/081ac70ad2435e0e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-acl.376",
+      "fetched_url": "https://aclanthology.org/2024.findings-acl.376/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43072,
+      "path": "downloads/a224b5d4627778d4.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-acl.540.pdf",
+      "fetched_url": "https://aclanthology.org/2024.findings-acl.540.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 8013361,
+      "path": "downloads/be307a045fa78465.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-acl.890",
+      "fetched_url": "https://aclanthology.org/2024.findings-acl.890/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 46724,
+      "path": "downloads/116fb25d81572faa.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-emnlp.427",
+      "fetched_url": "https://aclanthology.org/2024.findings-emnlp.427/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42642,
+      "path": "downloads/f490057bc732db4a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-emnlp.685",
+      "fetched_url": "https://aclanthology.org/2024.findings-emnlp.685/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43723,
+      "path": "downloads/3a3326d23c48e9ac.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-emnlp.685.pdf",
+      "fetched_url": "https://aclanthology.org/2024.findings-emnlp.685.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1760927,
+      "path": "downloads/d827dfb63da61db7.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-naacl.175",
+      "fetched_url": "https://aclanthology.org/2024.findings-naacl.175/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44014,
+      "path": "downloads/2ea1b4d22e760cfd.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-naacl.192",
+      "fetched_url": "https://aclanthology.org/2024.findings-naacl.192/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43109,
+      "path": "downloads/eca10e6318ac41d4.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-naacl.192.pdf",
+      "fetched_url": "https://aclanthology.org/2024.findings-naacl.192.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1511596,
+      "path": "downloads/43bec7b110f38008.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.findings-naacl.254",
+      "fetched_url": "https://aclanthology.org/2024.findings-naacl.254/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44827,
+      "path": "downloads/c15caa5356347d6f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.lrec-main.1539",
+      "fetched_url": "https://aclanthology.org/2024.lrec-main.1539/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 46544,
+      "path": "downloads/cf6f978975c134a6.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.lrec-main.726",
+      "fetched_url": "https://aclanthology.org/2024.lrec-main.726/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44745,
+      "path": "downloads/42547d5e6ed3d0b5.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.lrec-main.726.pdf",
+      "fetched_url": "https://aclanthology.org/2024.lrec-main.726.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 7220633,
+      "path": "downloads/35e9b2ddf48cb43b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.naacl-long.22",
+      "fetched_url": "https://aclanthology.org/2024.naacl-long.22/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 46581,
+      "path": "downloads/6b50f4d29834aaa6.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.naacl-long.416",
+      "fetched_url": "https://aclanthology.org/2024.naacl-long.416/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 40276,
+      "path": "downloads/7b95283cd255bb8e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.nlp4science-1.10",
+      "fetched_url": "https://aclanthology.org/2024.nlp4science-1.10/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42845,
+      "path": "downloads/f7b086580cffc41d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2024.tacl-1.9",
+      "fetched_url": "https://aclanthology.org/2024.tacl-1.9/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 40889,
+      "path": "downloads/485e500bd8f8257f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.acl-long.1422",
+      "fetched_url": "https://aclanthology.org/2025.acl-long.1422/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43718,
+      "path": "downloads/c8a4457429e7b316.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.acl-long.368",
+      "fetched_url": "https://aclanthology.org/2025.acl-long.368/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 40922,
+      "path": "downloads/17003e351894f5e0.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.acl-long.380",
+      "fetched_url": "https://aclanthology.org/2025.acl-long.380/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 46065,
+      "path": "downloads/d5e8a1a957fcbf18.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.argmining-1.19",
+      "fetched_url": "https://aclanthology.org/2025.argmining-1.19/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44082,
+      "path": "downloads/a49ecd8eb1c01457.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.coling-main.268",
+      "fetched_url": "https://aclanthology.org/2025.coling-main.268/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 47728,
+      "path": "downloads/bd09daa2fc23b403.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.coling-main.442.pdf",
+      "fetched_url": "https://aclanthology.org/2025.coling-main.442.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 272815,
+      "path": "downloads/fcb6e50a14483f2d.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.coling-main.698",
+      "fetched_url": "https://aclanthology.org/2025.coling-main.698/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43268,
+      "path": "downloads/4ff951bda614f396.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.emnlp-main.1045",
+      "fetched_url": "https://aclanthology.org/2025.emnlp-main.1045/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 47134,
+      "path": "downloads/04b86604351ee78d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.emnlp-main.1180",
+      "fetched_url": "https://aclanthology.org/2025.emnlp-main.1180/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43759,
+      "path": "downloads/4f3981ebaa76bc15.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.emnlp-main.68",
+      "fetched_url": "https://aclanthology.org/2025.emnlp-main.68/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 47024,
+      "path": "downloads/17310ef6df4ed411.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-acl.1230",
+      "fetched_url": "https://aclanthology.org/2025.findings-acl.1230/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45897,
+      "path": "downloads/12d982705d014fae.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-acl.28",
+      "fetched_url": "https://aclanthology.org/2025.findings-acl.28/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 46822,
+      "path": "downloads/f1766d9e8627f89f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-acl.702",
+      "fetched_url": "https://aclanthology.org/2025.findings-acl.702/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41462,
+      "path": "downloads/80b9345365a63d52.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.1159",
+      "fetched_url": "https://aclanthology.org/2025.findings-emnlp.1159/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43491,
+      "path": "downloads/bd1978c84a66ddbc.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.44",
+      "fetched_url": "https://aclanthology.org/2025.findings-emnlp.44/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45530,
+      "path": "downloads/75aada9bfde0fd8b.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-naacl.232",
+      "fetched_url": "https://aclanthology.org/2025.findings-naacl.232/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42992,
+      "path": "downloads/6d3a15c9cbb9d372.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-naacl.384",
+      "fetched_url": "https://aclanthology.org/2025.findings-naacl.384/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41606,
+      "path": "downloads/532218e73975de84.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.findings-naacl.384.pdf",
+      "fetched_url": "https://aclanthology.org/2025.findings-naacl.384.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 4948310,
+      "path": "downloads/c060034874819a78.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.inlg-main.28",
+      "fetched_url": "https://aclanthology.org/2025.inlg-main.28/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42446,
+      "path": "downloads/afdec3383df21e7d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.naacl-long.449",
+      "fetched_url": "https://aclanthology.org/2025.naacl-long.449/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42537,
+      "path": "downloads/766a7970b0cac891.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.naacl-long.491",
+      "fetched_url": "https://aclanthology.org/2025.naacl-long.491/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44341,
+      "path": "downloads/4a44e22c98d1313a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.naacl-long.491.pdf",
+      "fetched_url": "https://aclanthology.org/2025.naacl-long.491.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 792576,
+      "path": "downloads/44681098c39c0ecf.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.trustnlp-main.37",
+      "fetched_url": "https://aclanthology.org/2025.trustnlp-main.37/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 49155,
+      "path": "downloads/cfa51efa3a0454bf.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2025.trustnlp-main.37.pdf",
+      "fetched_url": "https://aclanthology.org/2025.trustnlp-main.37.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 371965,
+      "path": "downloads/dcc4c962f767952e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2026.acl-long.2209",
+      "fetched_url": "https://aclanthology.org/2026.acl-long.2209/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44039,
+      "path": "downloads/5028d8a837533109.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/2026.acl-long.286",
+      "fetched_url": "https://aclanthology.org/2026.acl-long.286/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 48123,
+      "path": "downloads/d08b787ff3c8eebb.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/J17-3005",
+      "fetched_url": "https://aclanthology.org/J17-3005/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 36126,
+      "path": "downloads/8a2c1f35dc27d86a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/J19-4006",
+      "fetched_url": "https://aclanthology.org/J19-4006/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 35705,
+      "path": "downloads/89a6e6743717fcc1.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/J19-4006.pdf",
+      "fetched_url": "https://aclanthology.org/J19-4006.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 953331,
+      "path": "downloads/74f0aa8e510b43e4.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/P11-1099",
+      "fetched_url": "https://aclanthology.org/P11-1099/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 33726,
+      "path": "downloads/98edca48cba56866.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/P11-1099.pdf",
+      "fetched_url": "https://aclanthology.org/P11-1099.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 155521,
+      "path": "downloads/3fb54f6803247141.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/P19-1456.pdf",
+      "fetched_url": "https://aclanthology.org/P19-1456.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 414937,
+      "path": "downloads/3f80c3d9a62835ff.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/W12-2511.pdf",
+      "fetched_url": "https://aclanthology.org/W12-2511.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 461146,
+      "path": "downloads/dd1ca588a3d1e005.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/W15-0507",
+      "fetched_url": "https://aclanthology.org/W15-0507/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 34162,
+      "path": "downloads/54c628d24efb5d25.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/W15-0507.pdf",
+      "fetched_url": "https://aclanthology.org/W15-0507.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 303223,
+      "path": "downloads/313a60415a7251cb.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/W18-6004",
+      "fetched_url": "https://aclanthology.org/W18-6004/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 39929,
+      "path": "downloads/b36506a16360fc17.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/anthology-files/pdf/cl/2024.cl-2.10.pdf",
+      "fetched_url": "https://aclanthology.org/2024.cl-2.10.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 155153,
+      "path": "downloads/0c9f23a31ccc8052.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/anthology-files/pdf/findings/2024.findings-acl.826.pdf",
+      "fetched_url": "https://aclanthology.org/2024.findings-acl.826.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 560289,
+      "path": "downloads/c1d94c8b64e38c7b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://aclanthology.org/people/giovanni-da-san-martino",
+      "fetched_url": "https://aclanthology.org/people/giovanni-da-san-martino/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 187741,
+      "path": "downloads/fa5f112a6d946c32.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://aitp-conference.org/2022/abstract/AITP_2022_paper_32.pdf",
+      "fetched_url": "https://aitp-conference.org/2022/abstract/AITP_2022_paper_32.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 267673,
+      "path": "downloads/024d32ea29f02de3.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://alraqmiyyat.github.io/OpenITI",
+      "fetched_url": "https://alraqmiyyat.github.io/OpenITI/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 49683,
+      "path": "downloads/2a7e53ba0b03d2c2.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://ar5iv.labs.arxiv.org/html/1908.05453",
+      "fetched_url": "https://arxiv.org/pdf/1908.05453",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 384041,
+      "path": "downloads/1c76d2d4cbe13bba.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/1604.00266",
+      "fetched_url": "https://arxiv.org/pdf/1604.00266",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 768284,
+      "path": "downloads/c58ec2962503d34a.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/1712.02480",
+      "fetched_url": "https://arxiv.org/pdf/1712.02480",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 689035,
+      "path": "downloads/0e871276206310ba.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/1805.00899",
+      "fetched_url": "https://arxiv.org/pdf/1805.00899",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1315239,
+      "path": "downloads/61da2f8e311a2bbf.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/1904.09223",
+      "fetched_url": "https://arxiv.org/pdf/1904.09223",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 349085,
+      "path": "downloads/86252b1f5a3753ad.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/1905.09381",
+      "fetched_url": "https://arxiv.org/pdf/1905.09381",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1066386,
+      "path": "downloads/895b8109f6eb2677.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/1911.06136",
+      "fetched_url": "https://arxiv.org/pdf/1911.06136",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2218565,
+      "path": "downloads/cafad2cabb6fcbb4.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2002.05867",
+      "fetched_url": "https://arxiv.org/pdf/2002.05867",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1670950,
+      "path": "downloads/5d3e9b7f890b1b1e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2007.08124",
+      "fetched_url": "https://arxiv.org/pdf/2007.08124",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 611874,
+      "path": "downloads/329450fd1b2680c7.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2110.13692",
+      "fetched_url": "https://arxiv.org/pdf/2110.13692",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 944722,
+      "path": "downloads/7ebb7d3176436af5.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2201.08860",
+      "fetched_url": "https://arxiv.org/pdf/2201.08860",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 558721,
+      "path": "downloads/b4c5e53b9e8ad2f0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2201.11903",
+      "fetched_url": "https://arxiv.org/pdf/2201.11903",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 891773,
+      "path": "downloads/7d42a191f4b30946.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2202.03629",
+      "fetched_url": "https://arxiv.org/pdf/2202.03629",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 3996575,
+      "path": "downloads/e14f04f90d37edc9.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2206.04615",
+      "fetched_url": "https://arxiv.org/pdf/2206.04615",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 3874852,
+      "path": "downloads/11125731fea628f3.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2208.06133",
+      "fetched_url": "https://arxiv.org/pdf/2208.06133",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 3195783,
+      "path": "downloads/ec175b1f65c4787b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2208.14271",
+      "fetched_url": "https://arxiv.org/pdf/2208.14271",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1931632,
+      "path": "downloads/99c5ec1d32bae87a.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2209.00840",
+      "fetched_url": "https://arxiv.org/pdf/2209.00840",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 459171,
+      "path": "downloads/693ea5ef0c2f9b36.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2210.01240",
+      "fetched_url": "https://arxiv.org/pdf/2210.01240",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 817189,
+      "path": "downloads/d026a0a55620696e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2210.03629",
+      "fetched_url": "https://arxiv.org/pdf/2210.03629",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 633805,
+      "path": "downloads/7647307fe49844a0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2211.12588",
+      "fetched_url": "https://arxiv.org/pdf/2211.12588",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2997096,
+      "path": "downloads/26ce30ff5dabf5d6.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2212.03551",
+      "fetched_url": "https://arxiv.org/pdf/2212.03551",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 190160,
+      "path": "downloads/8926004c367c864b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2212.07425",
+      "fetched_url": "https://arxiv.org/pdf/2212.07425",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 937521,
+      "path": "downloads/d8461d53f2aa68ef.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2301.13379",
+      "fetched_url": "https://arxiv.org/pdf/2301.13379",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1386799,
+      "path": "downloads/9a292b410abf073c.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2302.01339",
+      "fetched_url": "https://arxiv.org/pdf/2302.01339",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 689757,
+      "path": "downloads/0f02b28f034b802f.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2303.04488",
+      "fetched_url": "https://arxiv.org/pdf/2303.04488",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1307127,
+      "path": "downloads/f0c6d762d8487ff8.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2304.00994",
+      "fetched_url": "https://arxiv.org/pdf/2304.00994",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 872129,
+      "path": "downloads/c67e40dc6f717732.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2304.15004",
+      "fetched_url": "https://arxiv.org/pdf/2304.15004",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1894670,
+      "path": "downloads/22db72cf2a806d3b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2305.04388",
+      "fetched_url": "https://arxiv.org/pdf/2305.04388",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 836076,
+      "path": "downloads/c3fcf6ef0f6869a7.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2305.10601",
+      "fetched_url": "https://arxiv.org/pdf/2305.10601",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 799685,
+      "path": "downloads/ba7b8013ee20dc8e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2305.12295",
+      "fetched_url": "https://arxiv.org/pdf/2305.12295",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 939384,
+      "path": "downloads/999344796992fb9f.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2305.14325",
+      "fetched_url": "https://arxiv.org/pdf/2305.14325",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1779875,
+      "path": "downloads/992190a4815d67ed.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2305.19118",
+      "fetched_url": "https://arxiv.org/pdf/2305.19118",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 769773,
+      "path": "downloads/8e94725877ffa4f5.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2306.09841",
+      "fetched_url": "https://arxiv.org/pdf/2306.09841",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 12539306,
+      "path": "downloads/ebe6fe2ebf8b2667.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2306.15626",
+      "fetched_url": "https://arxiv.org/pdf/2306.15626",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2967642,
+      "path": "downloads/fb22296c2acf6942.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2307.02477",
+      "fetched_url": "https://arxiv.org/pdf/2307.02477",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1639928,
+      "path": "downloads/80572343d19fb6ae.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2307.13702",
+      "fetched_url": "https://arxiv.org/pdf/2307.13702",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1091161,
+      "path": "downloads/edbf487f3cf39e76.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2309.17452",
+      "fetched_url": "https://arxiv.org/pdf/2309.17452",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1127603,
+      "path": "downloads/af64eddeb65c5b2c.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2310.03025",
+      "fetched_url": "https://arxiv.org/pdf/2310.03025",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 681530,
+      "path": "downloads/daffc41d946357fd.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2310.04408",
+      "fetched_url": "https://arxiv.org/pdf/2310.04408",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 764449,
+      "path": "downloads/e328bbedf98acbdd.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2310.04988",
+      "fetched_url": "https://arxiv.org/pdf/2310.04988",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2531097,
+      "path": "downloads/cdfc98ee61ced127.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2310.15164",
+      "fetched_url": "https://arxiv.org/pdf/2310.15164",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1027545,
+      "path": "downloads/6c37d5b898115054.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2311.00445",
+      "fetched_url": "https://arxiv.org/pdf/2311.00445",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 5941320,
+      "path": "downloads/4030bede53b8df3e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2311.05232",
+      "fetched_url": "https://arxiv.org/pdf/2311.05232",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1601655,
+      "path": "downloads/0b419ecc31348926.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2311.06158",
+      "fetched_url": "https://arxiv.org/pdf/2311.06158",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 433901,
+      "path": "downloads/d3fcb43ec77eb34f.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2311.08516",
+      "fetched_url": "https://arxiv.org/pdf/2311.08516",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 625162,
+      "path": "downloads/04d23b5e3ab4087a.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2311.14096",
+      "fetched_url": "https://arxiv.org/pdf/2311.14096",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 772234,
+      "path": "downloads/02d519bd405c94ec.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2312.06185",
+      "fetched_url": "https://arxiv.org/pdf/2312.06185",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1058944,
+      "path": "downloads/9c36b385fc2bcb56.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2401.01313",
+      "fetched_url": "https://arxiv.org/pdf/2401.01313",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 330584,
+      "path": "downloads/5ecee4eb7e22949a.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2401.07897",
+      "fetched_url": "https://arxiv.org/pdf/2401.07897",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 139635,
+      "path": "downloads/a46949b7236fe5bf.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2401.11817",
+      "fetched_url": "https://arxiv.org/pdf/2401.11817",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 811862,
+      "path": "downloads/651504ea7ab061f5.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2402.05519",
+      "fetched_url": "https://arxiv.org/pdf/2402.05519",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 547568,
+      "path": "downloads/2668c513756bbbf2.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2402.06782",
+      "fetched_url": "https://arxiv.org/pdf/2402.06782",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 4511882,
+      "path": "downloads/8b662fa972ffb9e4.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2404.06654",
+      "fetched_url": "https://arxiv.org/pdf/2404.06654",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 682955,
+      "path": "downloads/b802642c4cbbd1f2.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2404.08627",
+      "fetched_url": "https://arxiv.org/pdf/2404.08627",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 5328199,
+      "path": "downloads/749ed11e9324153f.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2404.12534",
+      "fetched_url": "https://arxiv.org/pdf/2404.12534",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 997718,
+      "path": "downloads/c4c24d9348d95dc1.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2405.01379",
+      "fetched_url": "https://arxiv.org/pdf/2405.01379",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1742558,
+      "path": "downloads/de1c6856c9ac8300.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2405.02079",
+      "fetched_url": "https://arxiv.org/pdf/2405.02079",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 4578673,
+      "path": "downloads/fc2f1e20fe4e5f1f.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2405.04655",
+      "fetched_url": "https://arxiv.org/pdf/2405.04655",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 888850,
+      "path": "downloads/337db10d2cac6d4e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2405.13015",
+      "fetched_url": "https://arxiv.org/pdf/2405.13015",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 425775,
+      "path": "downloads/cce33f2125d84235.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2405.13036",
+      "fetched_url": "https://arxiv.org/pdf/2405.13036",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 484129,
+      "path": "downloads/2e248cf09d1505c8.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2405.18915",
+      "fetched_url": "https://arxiv.org/pdf/2405.18915",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 884528,
+      "path": "downloads/9ef639d66ace6b4c.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2406.02106",
+      "fetched_url": "https://arxiv.org/pdf/2406.02106",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1087458,
+      "path": "downloads/d566dcb1c56b244e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2406.03181",
+      "fetched_url": "https://arxiv.org/pdf/2406.03181",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1108536,
+      "path": "downloads/5d681d0637b3868d.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2406.10625",
+      "fetched_url": "https://arxiv.org/pdf/2406.10625",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 945766,
+      "path": "downloads/9d3d3ae30d7a0610.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2407.00418",
+      "fetched_url": "https://arxiv.org/pdf/2407.00418",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 921246,
+      "path": "downloads/73396b4f0c65a9d1.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2407.02514",
+      "fetched_url": "https://arxiv.org/pdf/2407.02514",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 385055,
+      "path": "downloads/b58aa0adbb8011d1.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2408.03492",
+      "fetched_url": "https://arxiv.org/pdf/2408.03492",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 828574,
+      "path": "downloads/1c02c9f4cd3a6043.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2408.04403",
+      "fetched_url": "https://arxiv.org/pdf/2408.04403",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 591346,
+      "path": "downloads/4cddcf460c22256e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2410.12048",
+      "fetched_url": "https://arxiv.org/pdf/2410.12048",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 387892,
+      "path": "downloads/1500d54f87c6ec6f.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2411.06032",
+      "fetched_url": "https://arxiv.org/pdf/2411.06032",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2675765,
+      "path": "downloads/609e0e246538498a.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2412.03304",
+      "fetched_url": "https://arxiv.org/pdf/2412.03304",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 7733572,
+      "path": "downloads/95d4bbe7e2c5c910.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2501.13959",
+      "fetched_url": "https://arxiv.org/pdf/2501.13959",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1691390,
+      "path": "downloads/0c9a2a6ee0b9d6b0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2501.14917",
+      "fetched_url": "https://arxiv.org/pdf/2501.14917",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 799730,
+      "path": "downloads/900dbff5d9807eb0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2502.04352",
+      "fetched_url": "https://arxiv.org/pdf/2502.04352",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 288325,
+      "path": "downloads/418fa1128c42c2e2.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2503.08679",
+      "fetched_url": "https://arxiv.org/pdf/2503.08679",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 3416780,
+      "path": "downloads/39bef5270a1578bb.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2503.23363",
+      "fetched_url": "https://arxiv.org/pdf/2503.23363",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 4705613,
+      "path": "downloads/9831129bbe94b23e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2504.01127",
+      "fetched_url": "https://arxiv.org/pdf/2504.01127",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 3051053,
+      "path": "downloads/7e35efce9537b673.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2505.15554",
+      "fetched_url": "https://arxiv.org/pdf/2505.15554",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 275803,
+      "path": "downloads/20c909887f281df7.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2505.24630",
+      "fetched_url": "https://arxiv.org/pdf/2505.24630",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1351155,
+      "path": "downloads/821fa954d2e07f77.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2506.15355",
+      "fetched_url": "https://arxiv.org/pdf/2506.15355",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 7595475,
+      "path": "downloads/a1da91c511a7c4fe.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2508.12830",
+      "fetched_url": "https://arxiv.org/pdf/2508.12830",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 459692,
+      "path": "downloads/de460b19221e195e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2509.03345",
+      "fetched_url": "https://arxiv.org/pdf/2509.03345",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 528430,
+      "path": "downloads/f8f0cff872c37475.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2509.15739",
+      "fetched_url": "https://arxiv.org/pdf/2509.15739",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2318615,
+      "path": "downloads/a682c645ad4c537a.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2510.04040",
+      "fetched_url": "https://arxiv.org/pdf/2510.04040",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1488594,
+      "path": "downloads/406e8da5e55f3130.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2603.02858",
+      "fetched_url": "https://arxiv.org/pdf/2603.02858",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1344713,
+      "path": "downloads/9e7781c7fdbc6dbb.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2603.06428",
+      "fetched_url": "https://arxiv.org/pdf/2603.06428",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 448565,
+      "path": "downloads/849c5156d52a69f0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2603.22582",
+      "fetched_url": "https://arxiv.org/pdf/2603.22582",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 564589,
+      "path": "downloads/242923434acab604.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2605.12548",
+      "fetched_url": "https://arxiv.org/pdf/2605.12548",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 738590,
+      "path": "downloads/af19fe39704fd831.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2605.13137",
+      "fetched_url": "https://arxiv.org/pdf/2605.13137",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1114392,
+      "path": "downloads/326cbfb9b10cd3f7.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2606.16629",
+      "fetched_url": "https://arxiv.org/pdf/2606.16629",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 162387,
+      "path": "downloads/2845ca460d26c0ed.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2606.26698",
+      "fetched_url": "https://arxiv.org/pdf/2606.26698",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 334264,
+      "path": "downloads/d8cc24a6075af489.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/2608.27471",
+      "fetched_url": "https://arxiv.org/pdf/2608.27471",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 428279,
+      "path": "downloads/b40e3d926ae1549b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/abs/cs/0302029",
+      "fetched_url": "https://arxiv.org/abs/cs/0302029",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 40739,
+      "path": "downloads/b2a8443ff483204d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2308.09368",
+      "fetched_url": "https://arxiv.org/pdf/2308.09368",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2044643,
+      "path": "downloads/ec43748af4873a08.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2401.03454v1",
+      "fetched_url": "https://arxiv.org/pdf/2401.03454v1",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 577100,
+      "path": "downloads/8ab3c5d70ece54ce.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2401.03910v1",
+      "fetched_url": "https://arxiv.org/pdf/2401.03910v1",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1066034,
+      "path": "downloads/b60e667c67660466.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2401.17882v2",
+      "fetched_url": "https://arxiv.org/pdf/2401.17882v2",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1221447,
+      "path": "downloads/6c6847e722bccf78.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2402.11243",
+      "fetched_url": "https://arxiv.org/pdf/2402.11243",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 2956325,
+      "path": "downloads/ccca1ac3ec7e9d1b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2405.03207v1",
+      "fetched_url": "https://arxiv.org/pdf/2405.03207v1",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1500933,
+      "path": "downloads/69801196508ebf0e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2502.14767v2",
+      "fetched_url": "https://arxiv.org/pdf/2502.14767v2",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 512900,
+      "path": "downloads/3e6175cac222c9f4.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2506.07896v1",
+      "fetched_url": "https://arxiv.org/pdf/2506.07896v1",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 333685,
+      "path": "downloads/8af36afe841ec25d.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2508.12754v1",
+      "fetched_url": "https://arxiv.org/pdf/2508.12754v1",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 723377,
+      "path": "downloads/37b23069fdd6442b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/html/2508.12830v1",
+      "fetched_url": "https://arxiv.org/pdf/2508.12830v1",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 459692,
+      "path": "downloads/3d9c2e0c19b6d935.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2012.00209",
+      "fetched_url": "https://arxiv.org/pdf/2012.00209",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 364607,
+      "path": "downloads/6020f8f619b0b694.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2201.11903",
+      "fetched_url": "https://arxiv.org/pdf/2201.11903",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 891773,
+      "path": "downloads/52cc4c4f6cf36812.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2202.03629",
+      "fetched_url": "https://arxiv.org/pdf/2202.03629",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 3996575,
+      "path": "downloads/ce1261361041d2f3.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2208.14271",
+      "fetched_url": "https://arxiv.org/pdf/2208.14271",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1931632,
+      "path": "downloads/d3705cde9007a4b8.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2212.03551",
+      "fetched_url": "https://arxiv.org/pdf/2212.03551",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 190160,
+      "path": "downloads/8af30516f5713314.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2301.13379",
+      "fetched_url": "https://arxiv.org/pdf/2301.13379",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1386799,
+      "path": "downloads/6a081ac94d82b6d7.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2305.04388",
+      "fetched_url": "https://arxiv.org/pdf/2305.04388",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 836076,
+      "path": "downloads/2877bb0a22ceefa5.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2307.02477",
+      "fetched_url": "https://arxiv.org/pdf/2307.02477",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1639928,
+      "path": "downloads/b6193da45770ac2e.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2307.13702",
+      "fetched_url": "https://arxiv.org/pdf/2307.13702",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1091161,
+      "path": "downloads/9c48e56afa4e67b6.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2311.05232",
+      "fetched_url": "https://arxiv.org/pdf/2311.05232",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1601655,
+      "path": "downloads/2a4671cbe16daed9.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2401.01313",
+      "fetched_url": "https://arxiv.org/pdf/2401.01313",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 330584,
+      "path": "downloads/277e5a43342f1eef.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2401.11817",
+      "fetched_url": "https://arxiv.org/pdf/2401.11817",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 811862,
+      "path": "downloads/5f5b3f4d22655492.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2405.18915",
+      "fetched_url": "https://arxiv.org/pdf/2405.18915",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 884528,
+      "path": "downloads/dbd3b85677aa3ac0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2406.10625",
+      "fetched_url": "https://arxiv.org/pdf/2406.10625",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 945766,
+      "path": "downloads/b7a1c7f63777488c.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2503.08679",
+      "fetched_url": "https://arxiv.org/pdf/2503.08679",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 3416780,
+      "path": "downloads/33af4a3088ebc18b.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2510.04040",
+      "fetched_url": "https://arxiv.org/pdf/2510.04040",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1488594,
+      "path": "downloads/e2ee7cfb5a6416ef.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2603.22582",
+      "fetched_url": "https://arxiv.org/pdf/2603.22582",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 564589,
+      "path": "downloads/95013a2968536439.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://arxiv.org/pdf/2606.26698",
+      "fetched_url": "https://arxiv.org/pdf/2606.26698",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 334264,
+      "path": "downloads/7315ca3e9533bad9.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://books.openbookpublishers.com/10.11647/obp.0358.05.pdf",
+      "fetched_url": "https://books.openbookpublishers.com/10.11647/obp.0358.05.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1462256,
+      "path": "downloads/2dd816e441932ec6.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://brill.com/view/journals/ils/28/3/article-p234_234.xml?language=en",
+      "fetched_url": "https://brill.com/view/journals/ils/28/3/article-p234_234.xml?language=en",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 867720,
+      "path": "downloads/8cf2208327788fc9.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://ceur-ws.org/Vol-2989/long_paper20.pdf",
+      "fetched_url": "https://ceur-ws.org/Vol-2989/long_paper20.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 350536,
+      "path": "downloads/f7fc321ede0d4bac.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://ceur-ws.org/Vol-4166/paper1.pdf",
+      "fetched_url": "https://ceur-ws.org/Vol-4166/paper1.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1409913,
+      "path": "downloads/d8a298649a398871.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://compass.onlinelibrary.wiley.com/doi/10.1111/phc3.70095",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://compass.onlinelibrary.wiley.com/doi/10.1111/phc3.70095",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://cordis.europa.eu/project/id/771589",
+      "fetched_url": "https://cordis.europa.eu/project/id/771589",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 102763,
+      "path": "downloads/f75766ad331833c3.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://corpusthomisticum.org/wintroen.html",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://corpusthomisticum.org/wintroen.html",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'corpusthomisticum.org'. (_ssl.c:1082"
+        }
+      ]
+    },
+    {
+      "source_url": "https://cris.maastrichtuniversity.nl/en/publications/deflog-on-the-logical-interpretation-of-prima-facie-justified-ass",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://cris.maastrichtuniversity.nl/en/publications/deflog-on-the-logical-interpretation-of-prima-facie-justified-ass",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+        }
+      ]
+    },
+    {
+      "source_url": "https://cris.uni-muenster.de/portal/en/publication/99149560",
+      "fetched_url": "https://cris.uni-muenster.de/portal/en/publication/99149560",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27631,
+      "path": "downloads/21408d31adf3399d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://cs.uns.edu.ar/~grs/Publications/1992-SimariLoui-AIJ.pdf",
+      "fetched_url": "https://cs.uns.edu.ar/~grs/Publications/1992-SimariLoui-AIJ.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1593269,
+      "path": "downloads/7c779ea63293c9d6.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://digitalhumanities.cz/en/db/uniq-2",
+      "fetched_url": "https://digitalhumanities.cz/en/db/uniq-2/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 47073,
+      "path": "downloads/32b2ff4083bfab1a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://direct.mit.edu/coli/article/45/4/765/93362/Argument-Mining-A-Survey",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://direct.mit.edu/coli/article/45/4/765/93362/Argument-Mining-A-Survey",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://direct.mit.edu/coli/article/50/2/807/119144/The-Pitfalls-of-Defining-Hallucination",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://direct.mit.edu/coli/article/50/2/807/119144/The-Pitfalls-of-Defining-Hallucination",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1007/978-1-4020-5853-0",
+      "fetched_url": "https://link.springer.com/book/10.1007/978-1-4020-5853-0?error=cookies_not_supported&code=132982c2-271f-4746-be39-26367e08a4bc",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 266928,
+      "path": "downloads/122cf2982436447e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1007/s10503-020-09519-x",
+      "fetched_url": "https://link.springer.com/article/10.1007/s10503-020-09519-x?error=cookies_not_supported&code=911e0098-0cc9-4d03-808c-8ed0f4135464",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 522590,
+      "path": "downloads/684c876881437a05.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1007/s13347-024-00809-w",
+      "fetched_url": "https://link.springer.com/article/10.1007/s13347-024-00809-w?error=cookies_not_supported&code=380866ac-430d-422a-a414-9b8aea0e62bf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 450459,
+      "path": "downloads/e9a4e599e1cff221.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1016/j.dib.2024.111087",
+      "fetched_url": "https://linkinghub.elsevier.com/retrieve/pii/S2352340924010497",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 2714,
+      "path": "downloads/e9d518903a67ea55.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1016/j.jeap.2024.101432",
+      "fetched_url": "https://linkinghub.elsevier.com/retrieve/pii/S1475158524001000",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 2743,
+      "path": "downloads/0f55f3308dd07c2c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1017/chr.2025.10004",
+      "fetched_url": "https://www.cambridge.org/core/journals/computational-humanities-research/article/it-takes-a-village-to-write-a-book-mapping-anonymous-contributions-in-stephen-langtons-quaestiones-theologiae/9A1A9C2B789EC1AD7A876F65F5D90CCC",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1005491,
+      "path": "downloads/c45394256295b866.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1038/s41598-023-45644-9",
+      "fetched_url": "https://www.nature.com/articles/s41598-023-45644-9?error=cookies_not_supported&code=8b7874cf-86b0-49ba-80f8-3c4f4de582e7",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 377493,
+      "path": "downloads/809b7fa0a587c24c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1038/s41746-023-00819-6",
+      "fetched_url": "https://www.nature.com/articles/s41746-023-00819-6?error=cookies_not_supported&code=34476e57-54ba-40d8-acbf-bc86da96b020",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 320253,
+      "path": "downloads/1d6de72567f082d3.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1080/19462166.2015.1123772",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1080/19462166.2015.1123772",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1088/1361-6404/ad669d",
+      "fetched_url": "https://validate.perfdrive.com/fb803c746e9148689b3984a31fccd902/?ssa=fc7f99d6-f45f-4354-9104-51592cd12335&ssb=89266234746&ssc=https%3A%2F%2Fiopscience.iop.org%2Farticle%2F10.1088%2F1361-6404%2Fad669d&ssi=ea7417ca-cnvj-4560-933a-e0ce0294e2ad&ssk=botmanager_support@radware.com&ssm=86564858605320564109417134374032&ssn=8348971cef6af1adf43489b136c6639bb86d2f855c44-9928-4c8f-9476b6&sso=f64d6795-5064b5f71e01514931d6aa571b9c32284e322623273b25f8&ssp=87584242651791746615179175344940296&ssq=33584446485459839928764854214005725281645&ssr=OTcuMjIxLjc0LjE3MA==&sst=Mozilla/5.0%20scholarly-literature-collector/1.0&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2ZjMDAwZDQ3NTc4NDItOWM5OS00N2RkLWJhNmMtMmFhZDU0ZmQ1ODQ0MS0xNzkxNzY0ODU0MzQ4MC0wMDk2ZDYyYmRmMTEzY2UwZGIyMTAiLCJyZCI6ImlvcC5vcmciLCJfX3V6bWYiOiI3ZjkwMDAyZjg1NWM0NC05OTI4LTRjOGYtOTc5NS01MDY0YjVmNzFlMDExLTE3OTE3NjQ4NTQzNDgwLTAwNTQ3MDgzMjRmOWMzNzljYTgxMCJ9",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 14371,
+      "path": "downloads/6c338d13a57fdda1.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1093/acprof:oso/9780198240266.001.0001",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1093/acprof:oso/9780198240266.001.0001",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1093/logcom/exae032",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1093/logcom/exae032",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1093/logcom/exi048",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1093/logcom/exi048",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1093/oso/9780198876922",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1093/oso/9780198876922",
+          "error": "HTTPError: HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1109/TASLP.2023.3293046",
+      "fetched_url": "https://ieeexplore.ieee.org/document/10174688/",
+      "status": "downloaded",
+      "http_status": 202,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 0,
+      "path": "downloads/d65429b0aea5f17a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1136/ijgc-2023-005162",
+      "fetched_url": "https://linkinghub.elsevier.com/retrieve/pii/S1048891X24013884",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 2762,
+      "path": "downloads/dbdd8ac533802b7a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.1145/3571730",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1145/3571730",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1145/3703155",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1145/3703155",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1162/coli_a_00509",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1162/coli_a_00509",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1162/tacl_a_00394",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1162/tacl_a_00394",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1163/ej.9789004180844.i-366",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.1163/ej.9789004180844.i-366",
+          "error": "HTTPError: HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.1515/9783110599572-017",
+      "fetched_url": "https://www.degruyterbrill.com/document/doi/10.1515/9783110599572-017/html",
+      "status": "downloaded",
+      "http_status": 202,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 0,
+      "path": "downloads/ea9f203702caf01c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2020.acl-main.173",
+      "fetched_url": "https://aclanthology.org/2020.acl-main.173/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42457,
+      "path": "downloads/c6e5cf434003261c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2022.findings-acl.311",
+      "fetched_url": "https://aclanthology.org/2022.findings-acl.311/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44833,
+      "path": "downloads/df2f64b4d027212c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2022.inlg-main.25",
+      "fetched_url": "https://aclanthology.org/2022.inlg-main.25/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 35776,
+      "path": "downloads/7cbb8e53f475fd78.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2023.acl-long.109",
+      "fetched_url": "https://aclanthology.org/2023.acl-long.109/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42891,
+      "path": "downloads/8a1409d917c8808a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2023.emnlp-main.1022",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.1022/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 39919,
+      "path": "downloads/465c0e5576ada70f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2023.emnlp-main.155",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.155/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 50691,
+      "path": "downloads/90f5160c2518e853.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2023.emnlp-main.391",
+      "fetched_url": "https://aclanthology.org/2023.emnlp-main.391/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42767,
+      "path": "downloads/6138cc29ba1b3123.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2023.findings-acl.218",
+      "fetched_url": "https://aclanthology.org/2023.findings-acl.218/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44741,
+      "path": "downloads/b220cd2e0d35fe5c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2023.findings-emnlp.507",
+      "fetched_url": "https://aclanthology.org/2023.findings-emnlp.507/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43132,
+      "path": "downloads/43558792c266ea48.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.acl-long.552",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.552/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41758,
+      "path": "downloads/6b04b31dac3816fb.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.acl-long.72",
+      "fetched_url": "https://aclanthology.org/2024.acl-long.72/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43735,
+      "path": "downloads/a1a3049249590b0e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.emnlp-main.375",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.375/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43242,
+      "path": "downloads/8c37618d0ffa2539.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.emnlp-main.725",
+      "fetched_url": "https://aclanthology.org/2024.emnlp-main.725/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45960,
+      "path": "downloads/aacd874ef813d498.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.findings-acl.50",
+      "fetched_url": "https://aclanthology.org/2024.findings-acl.50/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 39525,
+      "path": "downloads/636cf1ca377f6519.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.findings-acl.974",
+      "fetched_url": "https://aclanthology.org/2024.findings-acl.974/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 47333,
+      "path": "downloads/04076e6a2e75db06.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.findings-emnlp.685",
+      "fetched_url": "https://aclanthology.org/2024.findings-emnlp.685/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43723,
+      "path": "downloads/02d43453ac7dde9f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2024.nlp4science-1.10",
+      "fetched_url": "https://aclanthology.org/2024.nlp4science-1.10/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42845,
+      "path": "downloads/baa11772bc1f10ad.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2025.emnlp-main.1045",
+      "fetched_url": "https://aclanthology.org/2025.emnlp-main.1045/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 47134,
+      "path": "downloads/422b821ad107a362.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2025.findings-acl.1230",
+      "fetched_url": "https://aclanthology.org/2025.findings-acl.1230/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45897,
+      "path": "downloads/81fc4bd2d15d72f6.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2025.findings-acl.192",
+      "fetched_url": "https://aclanthology.org/2025.findings-acl.192/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42893,
+      "path": "downloads/df6e09b8f8bcd350.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/2025.findings-acl.702",
+      "fetched_url": "https://aclanthology.org/2025.findings-acl.702/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41462,
+      "path": "downloads/5a6778a7eb67203a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.18653/v1/W19-4012",
+      "fetched_url": "https://aclanthology.org/W19-4012/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 38397,
+      "path": "downloads/235508c1a6c6260d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.2188/jea.JE20230030",
+      "fetched_url": "https://www.jstage.jst.go.jp/article/jea/33/7/33_JE20230030/_article",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 71479,
+      "path": "downloads/d4107111b2ba5e79.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.2478/jdis-2024-0013",
+      "fetched_url": "https://www.degruyterbrill.com/document/doi/10.2478/jdis-2024-0013/html",
+      "status": "downloaded",
+      "http_status": 202,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 0,
+      "path": "downloads/95efbd661891e86e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.3233/978-1-61499-686-6-379",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.3233/978-1-61499-686-6-379",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.3233/AAC-180038",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.3233/AAC-180038",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.3233/FAIA240329",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.3233/FAIA240329",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.3233/FAIA240919",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.3233/FAIA240919",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2012.13048",
+      "fetched_url": "https://arxiv.org/abs/2012.13048",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42593,
+      "path": "downloads/ab33ab287086536c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2210.03629",
+      "fetched_url": "https://arxiv.org/abs/2210.03629",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44231,
+      "path": "downloads/2efed78c86f400e9.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2211.10435",
+      "fetched_url": "https://arxiv.org/abs/2211.10435",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 44028,
+      "path": "downloads/f9b49d51bf289fcd.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2211.12588",
+      "fetched_url": "https://arxiv.org/abs/2211.12588",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 42646,
+      "path": "downloads/a8d1548c00ba1113.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2305.12295",
+      "fetched_url": "https://arxiv.org/abs/2305.12295",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41819,
+      "path": "downloads/781f274613271652.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2306.15626",
+      "fetched_url": "https://arxiv.org/abs/2306.15626",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 45617,
+      "path": "downloads/0cc125b0bd505aa5.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2307.07696",
+      "fetched_url": "https://arxiv.org/abs/2307.07696",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41204,
+      "path": "downloads/5c86b1ff0bcfdf56.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2309.17452",
+      "fetched_url": "https://arxiv.org/abs/2309.17452",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43208,
+      "path": "downloads/6de1103d712f18f1.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2310.15164",
+      "fetched_url": "https://arxiv.org/abs/2310.15164",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 46687,
+      "path": "downloads/5a87ad24bdbb2c9d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.48550/arXiv.2405.01379",
+      "fetched_url": "https://arxiv.org/abs/2405.01379",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41942,
+      "path": "downloads/202d354b35ea70d2.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.5281/zenodo.5599095",
+      "fetched_url": "https://zenodo.org/records/5599095",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 113883,
+      "path": "downloads/635f211d94c7efc4.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.5334/johd.97",
+      "fetched_url": "https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.97",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 679196,
+      "path": "downloads/9d2f39dbe56dbe29.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.5555/3491440.3491941",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.5555/3491440.3491941",
+          "error": "HTTPError: HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.5840/teachphil202451200",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.5840/teachphil202451200",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.6092/issn.2532-8816/8575",
+      "fetched_url": "https://umanisticadigitale.unibo.it/article/view/8575",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 32046,
+      "path": "downloads/52d89bf7da5ceffb.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://doi.org/10.7759/cureus.35179",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.7759/cureus.35179",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://doi.org/10.7759/cureus.39238",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://doi.org/10.7759/cureus.39238",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://eprints.soton.ac.uk/502110",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://eprints.soton.ac.uk/502110",
+          "error": "HTTPError: HTTP Error 401: Unauthorized"
+        }
+      ]
+    },
+    {
+      "source_url": "https://eprints.whiterose.ac.uk/id/eprint/212114",
+      "fetched_url": "https://eprints.whiterose.ac.uk/id/eprint/212114/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 39921,
+      "path": "downloads/55e5e150626af33b.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://faculty.ucr.edu/~eschwitz/SchwitzAbs/GPT3Dennett.htm",
+      "fetched_url": "https://faculty.ucr.edu/~eschwitz/SchwitzAbs/GPT3Dennett.htm",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=iso-8859-1",
+      "bytes": 3481,
+      "path": "downloads/8f1f24d9cdd46451.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://informallogic.ca/index.php/informal_logic/article/download/4335/3711",
+      "fetched_url": "https://informallogic.ca/index.php/informal_logic/article/download/4335/3711",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 9114822,
+      "path": "downloads/27d800ba601996bc.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://journals.sagepub.com/doi/10.3233/AAC-200543",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://journals.sagepub.com/doi/10.3233/AAC-200543",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663",
+      "fetched_url": "https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 87118,
+      "path": "downloads/3a1704f726111499.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://knowledge.uchicago.edu/records/g353y-5y272",
+      "fetched_url": "https://knowledge.uchicago.edu/records/g353y-5y272",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 121056,
+      "path": "downloads/3c66688a4cd7142c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://link.springer.com/article/10.1007/s10503-012-9266-7",
+      "fetched_url": "https://link.springer.com/article/10.1007/s10503-012-9266-7?error=cookies_not_supported&code=1934e0e5-7ce4-4268-b539-eceaeda235f0",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 438727,
+      "path": "downloads/e5c8ba3691357e1a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://mlanthology.org/icmlw/2024/geng2024icmlw-chatgpt",
+      "fetched_url": "https://mlanthology.org/icmlw/2024/geng2024icmlw-chatgpt/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 9662,
+      "path": "downloads/4fe8cae14174994e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://ojs.aaai.org/index.php/AAAI/article/download/39021/42983",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://ojs.aaai.org/index.php/AAAI/article/download/39021/42983",
+          "error": "RemoteDisconnected: Remote end closed connection without response"
+        }
+      ]
+    },
+    {
+      "source_url": "https://ojs.aaai.org/index.php/AAAI/article/view/10673/10532",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://ojs.aaai.org/index.php/AAAI/article/view/10673/10532",
+          "error": "RemoteDisconnected: Remote end closed connection without response"
+        }
+      ]
+    },
+    {
+      "source_url": "https://ojs.aaai.org/index.php/AAAI/article/view/29889",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29889",
+          "error": "RemoteDisconnected: Remote end closed connection without response"
+        }
+      ]
+    },
+    {
+      "source_url": "https://ojs.aaai.org/index.php/AAAI/article/view/39021",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://ojs.aaai.org/index.php/AAAI/article/view/39021",
+          "error": "RemoteDisconnected: Remote end closed connection without response"
+        }
+      ]
+    },
+    {
+      "source_url": "https://ojs.uwindsor.ca/index.php/informal_logic/article/view/4335",
+      "fetched_url": "https://ojs.uwindsor.ca/index.php/informal_logic/article/view/4335",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 21078,
+      "path": "downloads/fe2d92cf44e2b6a5.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://openhumanitiesdata.metajnl.com/collections/historyofideas",
+      "fetched_url": "https://openhumanitiesdata.metajnl.com/collections/historyofideas",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 408595,
+      "path": "downloads/1242dd0884e8f417.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://openreview.net/forum?id=FQMaePU0N4",
+      "fetched_url": "https://openreview.net/challenge?redirect=%2Fforum%3Fid%3DFQMaePU0N4",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 4787,
+      "path": "downloads/de8d7995de3b9010.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://openreview.net/pdf/ec313b0b95dba96e7bb145dc4a3b376cd9f4e8e1.pdf",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://openreview.net/pdf/ec313b0b95dba96e7bb145dc4a3b376cd9f4e8e1.pdf",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://openreview.net/pdf?id=0CfKpG94co",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://openreview.net/pdf?id=0CfKpG94co",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://openreview.net/pdf?id=iUGUc3HJ_3f",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://openreview.net/pdf?id=iUGUc3HJ_3f",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://openreview.net/pdf?id=mlJLVigNHp",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://openreview.net/pdf?id=mlJLVigNHp",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://openreview.net/pdf?id=omyNP89YW6",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://openreview.net/pdf?id=omyNP89YW6",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://openreview.net/pdf?id=r1xwKoR9Y7",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://openreview.net/pdf?id=r1xwKoR9Y7",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://ora.ox.ac.uk/objects/uuid:d06d32ab-8620-4984-858e-cce2a560c89f/files/rzk51vk546",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://ora.ox.ac.uk/objects/uuid:d06d32ab-8620-4984-858e-cce2a560c89f/files/rzk51vk546",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://papers.neurips.cc/paper_files/paper/2016/hash/f197002b9a0853eca5e046d9ca4663d5-Abstract.html",
+      "fetched_url": "https://papers.neurips.cc/paper_files/paper/2016/hash/f197002b9a0853eca5e046d9ca4663d5-Abstract.html",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 8991,
+      "path": "downloads/a9c35a653421d8a2.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://par.nsf.gov/servlets/purl/10527889",
+      "fetched_url": "https://par.nsf.gov/servlets/purl/10527889",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1366587,
+      "path": "downloads/47b4deb0b1ffdf9d.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://philpapers.org/archive/MACASI-11.pdf",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://philpapers.org/archive/MACASI-11.pdf",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://philpapers.org/rec/WALSAI-4",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://philpapers.org/rec/WALSAI-4",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10616290",
+      "fetched_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10616290/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 208676,
+      "path": "downloads/b44ead12244e9595.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9939079",
+      "fetched_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9939079/",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 107736,
+      "path": "downloads/a17024dae9325d86.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.iclr.cc/paper_files/paper/2024/file/ab5f5f22e3e09f4424592ffb06840ab0-Paper-Conference.pdf",
+      "fetched_url": "https://proceedings.iclr.cc/paper_files/paper/2024/file/ab5f5f22e3e09f4424592ffb06840ab0-Paper-Conference.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1125089,
+      "path": "downloads/ba7df26e63495eb0.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/ab5f5f22e3e09f4424592ffb06840ab0-Abstract-Conference.html",
+      "fetched_url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/ab5f5f22e3e09f4424592ffb06840ab0-Abstract-Conference.html",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 9861,
+      "path": "downloads/61f9f126c3a699d6.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.kr.org/2024/73/kr2024-0073-vasileiou-et-al.pdf",
+      "fetched_url": "https://proceedings.kr.org/2024/73/kr2024-0073-vasileiou-et-al.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 214973,
+      "path": "downloads/376cc19393ae7166.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.mlr.press/v202/gao23f.html",
+      "fetched_url": "https://proceedings.mlr.press/v202/gao23f.html",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 16932,
+      "path": "downloads/7d6e8b00e4035990.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.mlr.press/v267/luo25t.html",
+      "fetched_url": "https://proceedings.mlr.press/v267/luo25t.html",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 17254,
+      "path": "downloads/df9110eb2465d7c2.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.mlr.press/v267/modarressi25a.html",
+      "fetched_url": "https://proceedings.mlr.press/v267/modarressi25a.html",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 17865,
+      "path": "downloads/04d5ca8096ceb930.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.mlr.press/v306/kim26bw.html",
+      "fetched_url": "https://proceedings.mlr.press/v306/kim26bw.html",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 15777,
+      "path": "downloads/fa51fb0b1d296b54.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/ddd50f29fa472095515fa0df31749e6c-Paper-Conference.pdf",
+      "fetched_url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/ddd50f29fa472095515fa0df31749e6c-Paper-Conference.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 890431,
+      "path": "downloads/d359c9f87cf0876c.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/2721132",
+      "fetched_url": "https://pubmed.ncbi.nlm.nih.gov/2721132/",
+      "status": "downloaded",
+      "http_status": 203,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 5590,
+      "path": "downloads/29e8c897a21ac71a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/37337480",
+      "fetched_url": "https://pubmed.ncbi.nlm.nih.gov/37337480/",
+      "status": "downloaded",
+      "http_status": 203,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 5590,
+      "path": "downloads/e37c5c232c12defa.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/38627032",
+      "fetched_url": "https://pubmed.ncbi.nlm.nih.gov/38627032/",
+      "status": "downloaded",
+      "http_status": 203,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 5590,
+      "path": "downloads/272bf0bee470d784.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://sunypress.edu/Books/T/The-Character-of-Logic-in-India",
+      "fetched_url": "https://sunypress.edu/Books/T/The-Character-of-Logic-in-India",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 39680,
+      "path": "downloads/9f88c54e464f5385.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://web.mit.edu/irahwan/www/docs/argmas2006survey.pdf",
+      "fetched_url": "https://web.mit.edu/irahwan/www/docs/argmas2006survey.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 319019,
+      "path": "downloads/e1d095a470ddf5b6.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://wilfridhodges.co.uk/arabic05.pdf",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://wilfridhodges.co.uk/arabic05.pdf",
+          "error": "URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1082)>"
+        }
+      ]
+    },
+    {
+      "source_url": "https://www.ai.rug.nl/~verheij/publications/ai%26l2003.htm",
+      "fetched_url": "https://www.ai.rug.nl/~verheij/publications/ai%26l2003.htm",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 2076,
+      "path": "downloads/bfb7720a8d032b2f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.ai.rug.nl/~verheij/publications/toulmin2009.htm",
+      "fetched_url": "https://www.ai.rug.nl/~verheij/publications/toulmin2009.htm",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html",
+      "bytes": 2884,
+      "path": "downloads/b81e0e65a1296134.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.arabic-latin-corpus.philosophie.uni-wuerzburg.de",
+      "fetched_url": "https://www.arabic-latin-corpus.philosophie.uni-wuerzburg.de",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/xhtml+xml",
+      "bytes": 6252,
+      "path": "downloads/d8f75123679e4b0e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.arg.tech/people/chris/publications/2016/comma2016-schememining.pdf",
+      "fetched_url": "https://www.arg.tech/people/chris/publications/2016/comma2016-schememining.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 449661,
+      "path": "downloads/b8021c200cf4deb7.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.cambridge.org/core/books/cambridge-companion-to-medieval-logic",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://www.cambridge.org/core/books/cambridge-companion-to-medieval-logic",
+          "error": "HTTPError: HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "source_url": "https://www.cambridge.org/core/books/formal-languages-in-logic/7D1DD805F7B3C70A0C32F2F6A66BE3DD",
+      "fetched_url": "https://www.cambridge.org/core/books/formal-languages-in-logic/7D1DD805F7B3C70A0C32F2F6A66BE3DD",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 938402,
+      "path": "downloads/2fb586c72601d84e.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.cambridge.org/core/journals/review-of-symbolic-logic/article/abs/correctness-proof-for-albarakats-logical-diagrams/6345C259CB7CD88CF9753FF26001FB61",
+      "fetched_url": "https://www.cambridge.org/core/journals/review-of-symbolic-logic/article/abs/correctness-proof-for-albarakats-logical-diagrams/6345C259CB7CD88CF9753FF26001FB61",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 780580,
+      "path": "downloads/959185a45811ba8c.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9A1A9C2B789EC1AD7A876F65F5D90CCC/S2977815825100043a.pdf/it_takes_a_village_to_write_a_book_mapping_anonymous_contributions_in_stephen_langtons_quaestiones_theologiae.pdf",
+      "fetched_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9A1A9C2B789EC1AD7A876F65F5D90CCC/S2977815825100043a.pdf/it_takes_a_village_to_write_a_book_mapping_anonymous_contributions_in_stephen_langtons_quaestiones_theologiae.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 433692,
+      "path": "downloads/8b362585ffc2a2e8.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2021.645516/full",
+      "fetched_url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2021.645516/full",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 1189499,
+      "path": "downloads/bedd78fa0a412f86.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.iclr.cc/virtual/2021/poster/3225",
+      "fetched_url": "https://www.iclr.cc/virtual/2021/poster/3225",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 83245,
+      "path": "downloads/2eba2cc5dc63884f.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.ijcai.org/Proceedings/2020/537",
+      "fetched_url": "https://www.ijcai.org/Proceedings/2020/537",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 12838,
+      "path": "downloads/e3072b91ef84ec38.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.jstage.jst.go.jp/article/jea/33/7/33_JE20230030/_pdf",
+      "fetched_url": "https://www.jstage.jst.go.jp/article/jea/33/7/33_JE20230030/_pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf;charset=utf-8",
+      "bytes": 170164,
+      "path": "downloads/564e6a251961fdea.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.428.pdf",
+      "fetched_url": "https://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.428.pdf",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 521679,
+      "path": "downloads/2c06533a4d4a19e4.pdf",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.nature.com/articles/s41598-023-45644-9",
+      "fetched_url": "https://www.nature.com/articles/s41598-023-45644-9?error=cookies_not_supported&code=662afd6c-cd83-42c1-baf5-7c58c8add982",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 377489,
+      "path": "downloads/c29783f44103a7b9.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.nature.com/articles/s41599-025-04657-7",
+      "fetched_url": "https://www.nature.com/articles/s41599-025-04657-7?error=cookies_not_supported&code=05b36b9d-a108-4bf7-aa36-b6293e4ab924",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 529175,
+      "path": "downloads/095ad2fa22c4461a.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0053",
+      "fetched_url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0053",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 356015,
+      "path": "downloads/8c3344a43ce6258d.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://www.routledge.com/Indian-Logic-A-Reader/Ganeri/p/book/9780700712248",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://www.routledge.com/Indian-Logic-A-Reader/Ganeri/p/book/9780700712248",
+          "error": "HTTPError: HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "source_url": "https://www.sciencedirect.com/science/article/abs/pii/0010027784900350",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/0010027784900350",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S0004370207000677",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0004370207000677",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S0747717124000804",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0747717124000804",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S1475158524001000",
+      "status": "failed",
+      "tried": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S1475158524001000",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ]
+    },
+    {
+      "source_url": "https://zenodo.org/records/2552203",
+      "fetched_url": "https://zenodo.org/records/2552203",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 103187,
+      "path": "downloads/b2b2325ce59429a3.html",
+      "tried": []
+    },
+    {
+      "source_url": "https://zenodo.org/records/7510411",
+      "fetched_url": "https://zenodo.org/records/7510411",
+      "status": "downloaded",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 147678,
+      "path": "downloads/021b87d47e04b7f3.html",
+      "tried": []
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+paper_id,benchmark_name,block_reason,severity,required_resolution
+S05P05,ALCE,"Downloaded artifact is accessible, but the official artifact distribution does not state a dataset license and bundles retrieval data derived from multiple upstream corpora; code MIT alone does not establish reuse rights for all data.",blocking,"Obtain explicit dataset/data-component licensing and confirm permitted benchmark redistribution/use for ASQA, QAMPARI, ELI5, Wikipedia snapshot, and Sphere-derived retrieval files."

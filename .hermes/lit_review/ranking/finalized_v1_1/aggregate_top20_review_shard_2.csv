@@ -1,0 +1,11 @@
+paper_id,citation,category,aggregate_rank,aggregate_mean_score,identity_pass,identity_raw,identity_notes
+18_09,"Reisert, Inoue, Okazaki & Inui (2015), “A Computational Approach for Generating Toulmin Model Argumentation,” Proceedings of the 2nd Workshop on Argument Mining, pp. 45–55.",Toulmin model and defeasible/informal logic in computational settings,11,69.2,True,pass,
+18_02,"Nute (1994), “Defeasible Logic,” in Handbook of Logic in AI and Logic Programming, pp. 353–395.",Toulmin model and defeasible/informal logic in computational settings,12,68.76,False,False,inaccessible
+18_01,"Simari & Loui (1992), “A Mathematical Treatment of Defeasible Reasoning and Its Implementation,” Artificial Intelligence 53(2–3), 125–157.",Toulmin model and defeasible/informal logic in computational settings,13,68.72,True,True,
+18_08,"Verheij (2009), “The Toulmin Argument Model in Artificial Intelligence: Or, How Semi-Formal, Defeasible Argumentation Schemes Creep into Logic,” in Argumentation in Artificial Intelligence, pp. 219–238.",Toulmin model and defeasible/informal logic in computational settings,14,68.72,True,pass,
+S10P05,"Lawrence, Visser & Reed (2019), “An Online Annotation Assistant for Argument Schemes.”",Walton argumentation schemes in NLP,15,67.6,True,pass,
+S21P07,"Sazid et al. (2022), “A Unified Representation and a Decoupled Deep Learning Architecture for Argumentation Mining of Students’ Persuasive Essays”",21 Scholastic Method Ai Direct,16,67.32,True,True,content match
+S08P06,"Song, Yang & Anandkumar (2024), “Lean Copilot.”","LLMs with formal logic, theorem provers, and logic–LM hybrids",17,66.68,True,True,
+S10P04,"Green (2018), “Towards Mining Scientific Discourse Using Argumentation Schemes.”",Walton argumentation schemes in NLP,18,66.6,True,pass,
+18_13,"Atkinson & Bench-Capon (2021), “Argumentation Schemes in AI and Law,” Argument & Computation 12(2), 219–235.",Toulmin model and defeasible/informal logic in computational settings,19,66.04,True,pass,
+S24P02,"Hodges, “A Correctness Proof for al-Barakāt’s Logical Diagrams”",24 Islamic Comparative Scholastic Ai,20,65.08,True,True,content match

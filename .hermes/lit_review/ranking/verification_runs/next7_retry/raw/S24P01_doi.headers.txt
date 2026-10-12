@@ -1,0 +1,51 @@
+HTTP/2 302 
+date: Mon, 12 Oct 2026 06:42:04 GMT
+content-type: text/html;charset=utf-8
+location: http://link.springer.com/10.1007/978-3-642-15025-8_18
+server: cloudflare
+vary: Origin
+vary: Accept
+expires: Mon, 12 Oct 2026 07:05:57 GMT
+permissions-policy: interest-cohort=(),browsing-topics=()
+cf-cache-status: DYNAMIC
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=WUqeK6%2BwQ%2Fu%2F%2FYaNf8qONNu2KCW8%2F7LEFQ14PmlzzvhirJsiutMeGZT9B9%2Ft1t4x3Lr6dFanhhmZS632oqa8m2Ly6SJgq5z53m0nrxdepBFIdhtl4OCtGO0%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-ray: a4941f5a389fa545-MIA
+alt-svc: h3=":443"; ma=86400
+
+HTTP/1.1 301 Moved Permanently
+Connection: keep-alive
+Content-Length: 166
+via: 1.1 google, 1.1 varnish
+cache-control: public,max-age=600
+content-type: text/html
+x-vcap-request-id: 4c2b7fef-6538-4b9b-6db2-5ccb89200b10
+referrer-policy: no-referrer-when-downgrade
+server: Oscar Platform 0.1799.0
+location: https://link.springer.com/chapter/10.1007/978-3-642-15025-8_18
+Accept-Ranges: bytes
+Age: 0
+Date: Mon, 12 Oct 2026 06:42:04 GMT
+X-Served-By: cache-mia-kmia1760068-MIA, cache-mia-kmia1760053-MIA
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1791787325.662766,VS0,VE167
+Vary: x-forwarded-host, upgrade-insecure-requests, x-forwarded-proto
+alt-svc: h3=":443";ma=86400,h3-29=":443";ma=86400,h3-27=":443";ma=86400
+
+HTTP/2 200 
+set-cookie: _fs_ch_st_FSBmUei20MqUiJb9=ASV_fhSQt1kjvMYOso8J5R2XWS264j2sbb8z0X9brj5XUHNQ36_fGRrz5Qd8EUYOzmLNAYwJVWMd1eiusf3QuHa3rnK2CXCuPa-jYIcrOj3BwDzKWpW1naY9EKIj910NBIk_AoSs1n5C3levz2Sz-zeHrRFp6_9CrQL8LUoutURcONbFe5HPakeIZZVDq-rOhG__R_QscxcwK0qJ6alDXNqZA2K6ZxRy0pmtkgGHKWpkD03fxiZ8sz-phGJfKiqxCGH7Fp_qcAnAKd96m-wzusKtgZfgNEn-hDojKTIdLEQYsGNOOo4yzlA-45OKL21tS_OcNCY4S50Rh-k360VjjfNIPAUFcfkzq9LbrliCHZi68Nkd7amGYoybFdr72kAF4DNvNGtQmAVTlx_xKeU=; Max-Age=10; HttpOnly; Path=/
+content-type: text/html; charset=utf-8
+cache-control: private, no-store
+accept-ranges: bytes
+date: Mon, 12 Oct 2026 06:42:04 GMT
+via: 1.1 varnish
+x-served-by: cache-mia-kfll1870045-MIA, cache-mia-kmia1760052-MIA
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1791787325.972715,VS0,VE25
+vary: Accept-Encoding
+alt-svc: h3=":443";ma=86400,h3-29=":443";ma=86400,h3-27=":443";ma=86400
+content-length: 3038
+

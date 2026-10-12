@@ -1,0 +1,131 @@
+{
+  "perspective": "Adversarial verification of batch operations, reminders, scheduling, and deadline semantics across Mayra, Laura, Daisy, and derived pipeline artifacts.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "BS1",
+      "claim": "Faculty outreach is currently a bulk/manual email operation, with per-recipient responses and follow-up; no confirmed automated scheduler exists.",
+      "status": "confirmed_current_with_proposed_automation",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:12-20, 32-35 (Mayra sends collective email and receives replies)",
+        "Call with Mayra Morfin (1).docx:248-256 (Mayra chases non-responses)",
+        "Call with Mayra Morfin (1).docx:111-124 (Ian proposes date-triggered bulk renewal emails; Mayra accepts conceptually)",
+        "HR App (1).docx:1102-1117 (faculty form is future state; current process remains email-based)"
+      ],
+      "risk": "Treating a proposed scheduler or form as current policy could send unauthorized or mistimed messages and obscure unanswered faculty requests.",
+      "recommendation": "Model bulk outreach, reminder cadence, audience, sender, and activation as explicit configuration requiring approval; preserve current email workflow as the evidenced baseline."
+    },
+    {
+      "id": "BS2",
+      "claim": "Reminder cadence is not established as a policy. Mayra requests tracking/reminders, but no interval, maximum, escalation, or stop condition is confirmed.",
+      "status": "partially_confirmed_policy_gap",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:248-256 (requests chasing or a reminder for outstanding confirmations; no cadence)",
+        "Call with Mayra Morfin (1).docx:127-131 (describes chasing as current work)",
+        "HR App (1).docx:1110-1117 (faculty non-response requires chasing; no closure rule)",
+        "HR App (1).docx:281-297 (Laura uses escalating templates, but no fixed schedule is stated)",
+        "Call with Daisy Matos.docx:55-59 (Ian says 'repeat every three days'; this is Ian's proposed automation, not Daisy's reported policy)"
+      ],
+      "risk": "A three-day repeat could be incorrectly treated as approved business policy; indefinite reminders could create spam, duplicate outreach, or no auditable closure.",
+      "recommendation": "Record cadence, maximum attempts, escalation/owner, quiet periods, and terminal outcomes as unresolved policy decisions. Label 'every three days' proposed only."
+    },
+    {
+      "id": "BS3",
+      "claim": "Laura sends hiring-authority DocuSign requests in batches of approximately 20, not all at once; this is current practice, not a system guarantee.",
+      "status": "confirmed_current",
+      "evidence": [
+        "HR App (1).docx:244-260 (Laura sends about 20 to the hiring authority at a time; returned as one DocuSign; then sends to students)",
+        "HR App (1).docx:217-230 (sent/signed statuses are manually tracked and signed documents downloaded)",
+        "student_hiring_pipeline.md:24-26 (derived artifact records about-20 batching and signed-and-screening-cleared gate)"
+      ],
+      "risk": "The transcript does not define batch selection rules, partial failure handling, duplicate prevention, batch-level versus individual status, or whether the batch size is a hard limit.",
+      "recommendation": "Represent approximately 20 as an observed operating habit. Do not encode it as a hard policy without owner confirmation; retain per-document status and audit identity."
+    },
+    {
+      "id": "BS4",
+      "claim": "Foreign-principal screening is currently initiated manually per student, with bulk volume observed around 50 students; bulk screening automation is proposed/attempted, not proven.",
+      "status": "confirmed_current_with_unproven_automation",
+      "evidence": [
+        "HR App (1).docx:611-637 (Laura manually enters each student into the screening website; prior automation attempt was disrupted by a form change)",
+        "HR App (1).docx:669-682 (Laura says bulk periods can involve 50 students and manual submissions take time)",
+        "HR App (1).docx:78-87 (screening is a gate before offer issuance; Laura chases non-completers)",
+        "student_hiring_pipeline.md:62 (derived artifact summarizes manual web form per student and about 50 at a time)"
+      ],
+      "risk": "A bulk-screening feature could be mistaken for an available integration even though the external form changed and no successful integration is evidenced.",
+      "recommendation": "Treat screening submission as an external manual step unless a tested integration and ownership are separately proven. Keep one status/audit record per student."
+    },
+    {
+      "id": "BS5",
+      "claim": "Payroll proximity drives ad hoc chasing, but no exact deadline semantics are established for student signatures or screening.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "HR App (1).docx:251-260 (Laura chases unsigned students because payroll is approaching)",
+        "HR App (1).docx:281-297 (Laura uses scenario-specific escalation templates, including pay/access consequences and start-date changes)",
+        "HR App (1).docx:120-130 (Oracle approval can sit for weeks depending on effective date; Laura rechecks)",
+        "student_hiring_pipeline.md:29 (derived artifact correctly notes approval queue may take weeks, but does not establish a deadline policy)"
+      ],
+      "risk": "'Payroll approaching' is a trigger/context, not a defined SLA or cutoff. Automated reminders could promise or enforce deadlines not authorized by HR.",
+      "recommendation": "Track effective date, payroll-impact date, last action, and owner separately. Leave cutoff, escalation, and start-date-change rules open."
+    },
+    {
+      "id": "BS6",
+      "claim": "Finance uses pay periods and check dates to time costing, and costing must occur by a pay-period deadline; exact dates and deadline owner are not present in the interview evidence.",
+      "status": "confirmed_dependency_with_missing_semantics",
+      "evidence": [
+        "Call with Daisy Matos.docx:454-472 (Daisy consults an annually updated pay-period/check-date calendar and says costing must be changed in Oracle by the relevant time)",
+        "Call with Daisy Matos.docx:88-101 (distribution is calculated within the applicable biweekly pay period)",
+        "daisy_finance_stage.md:23-28 (derived artifact states per-pay-period 100% distribution and Oracle entry by deadline)",
+        "daisy_finance_stage.md:101-106 (exact Oracle deadline and entering owner remain open questions)"
+      ],
+      "risk": "A scheduler cannot safely infer due dates from check dates alone; pay-period boundaries, effective dates, lead time, holidays, corrections, and timezone/ownership are unspecified.",
+      "recommendation": "Use the authoritative annual payroll calendar as data, version it by year, and require explicit deadline calculation/ownership before automation."
+    },
+    {
+      "id": "BS7",
+      "claim": "The only explicit semester timing is approximate planning context, not a binding deadline: Mayra usually asks faculty around February for May-start work and Laura begins around March.",
+      "status": "confirmed_approximate_only",
+      "evidence": [
+        "HR App (1).docx:924-927 (Laura says Mayra usually asks around February; work reaches Laura around March for May start)",
+        "Call with Mayra Morfin (1).docx:421-441 (Mayra says graduate students usually have a deadline; no date or rule is supplied)",
+        "HR App (1).docx:914-918 (September is discussed as a project timeline, not an operational processing deadline)"
+      ],
+      "risk": "Turning approximate interview timing into hard scheduled outreach could create false deadline compliance and miss exceptions such as mid-semester OPS appointments.",
+      "recommendation": "Store semester timing as planning guidance only. Require a term-specific, owner-approved deadline and exception path before scheduled bulk sends."
+    },
+    {
+      "id": "BS8",
+      "claim": "The derived artifacts overstate automation/currentness by presenting a mid-semester form-link path and reminder loops as confirmed, while primary interviews describe them as proposed or unspecified.",
+      "status": "contradiction_found",
+      "evidence": [
+        "mayra_student_hiring_flow.md:48-49, 67, 114 (marks mid-semester form link as confirmed/current)",
+        "Call with Mayra Morfin (1).docx:427-441 (Mayra asks whether a form could exist; Ian proposes adding a form-link step)",
+        "HR App (1).docx:1102-1117 (Laura says faculty form is future state and current practice remains email-based)",
+        "daisy_finance_stage.md:18-32 and 101-106 (derived loops/deadlines include unresolved semantics)",
+        "Call with Daisy Matos.docx:55-59 (three-day repeat is proposed by Ian)"
+      ],
+      "risk": "Downstream design or implementation could encode proposed automation as approved policy and silently change who is contacted, when, and under what deadline.",
+      "recommendation": "Reclassify form-link, three-day reminders, bulk scheduler, and exact deadline behavior as proposed/unresolved unless a later owner decision or live implementation proves them."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Approved reminder cadence, maximum attempts, escalation path, quiet hours, and closure status.",
+    "Whether reminders are sent by Mayra, Laura, a generic mailbox, or another approved sender.",
+    "Selection rules and idempotency for faculty, screening, and DocuSign batches; whether approximately 20 is a soft practice or hard limit.",
+    "Bulk-screening integration ownership and behavior after the external form changes.",
+    "Exact semester deadlines for faculty submissions, new hires, mid-semester OPS appointments, and change requests.",
+    "Authoritative payroll calendar source, annual versioning, lead time, timezone, and exact Oracle costing deadline.",
+    "Meaning of Daisy's post-entry row status (transcribed as 'page', probably 'paid') and its deadline semantics.",
+    "Handling of partial batch success, duplicate sends, bounced messages, withdrawn appointments, and late responses.",
+    "Whether automated scheduling is approved policy or only Ian's proposed future-state automation."
+  ],
+  "source_coverage": [
+    "Primary: HR App (1).docx, exact lines 68-130, 217-260, 281-297, 523-548, 611-637, 669-682, 914-918, 924-927, 970-987, 1102-1117.",
+    "Primary: Call with Mayra Morfin (1).docx, exact lines 12-20, 44-86, 111-124, 127-131, 248-256, 421-441.",
+    "Primary: Call with Daisy Matos.docx, exact lines 55-59, 88-101, 454-472, 1027-1049.",
+    "Derived cross-check: student_hiring_pipeline.md, sections Main path, Loops/detours, Pain points and gaps.",
+    "Derived cross-check: mayra_student_hiring_flow.md, sections Summary, Detours and loops, nodes/edges for adhoc_hire and chase.",
+    "Derived cross-check: daisy_finance_stage.md, Step-by-step and Open questions sections.",
+    "Primary interview transcripts were treated as authoritative; derived artifacts were challenged where they promoted proposals or assumptions to confirmed behavior."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/batch_scheduling.json"
+}

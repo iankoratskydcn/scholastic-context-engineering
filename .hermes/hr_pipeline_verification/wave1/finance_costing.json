@@ -1,0 +1,109 @@
+{
+  "perspective": "Adversarial Finance verification of distribution, fringe, FTE, pay-period, Oracle-deadline, and configuration-year claims",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "distribution-001",
+      "claim": "Multiple-account distributions must be calculated per pay period and total 100%; the cited example is 90% ENG plus 10% grant.",
+      "status": "confirmed_with_scope_caveat",
+      "evidence": [
+        "Call with Daisy Matos.docx:167-183 — Daisy says the distribution must add to 100% during the stipend pay period and gives 90% ENG + 10% grant.",
+        "daisy_finance_stage.md:23-25 — summary states per-pay-period distributions must total 100%."
+      ],
+      "risk": "The arithmetic example is internally valid (90 + 10 = 100), but no worked grad-student example or validation rule for rounding, overlapping periods, zero/negative percentages, or amount-vs-percent entry is provided.",
+      "recommendation": "Implement per-pay-period validation with exact 100% total, bounded nonnegative percentages, explicit rounding policy, and period-overlap checks; test with a grad-student case separately."
+    },
+    {
+      "id": "fringe-001",
+      "claim": "Fringe is lookup-driven and changes by configuration year; 35.5% faculty and 42% administrative are cited values.",
+      "status": "confirmed_for_cited_examples_only",
+      "evidence": [
+        "Call with Daisy Matos.docx:412-426 — Daisy identifies the 2627 fringe rate example as 35.5% for faculty and changes it to 42% for administrative.",
+        "Call with Daisy Matos.docx:426-450 — Daisy requests annual changeability; Ian proposes editable/importable configuration.",
+        "daisy_finance_stage.md:23-26 — summary records the rates as examples and says the lookup changes yearly."
+      ],
+      "risk": "These rates are explicitly a faculty/administrative example, not a verified graduate-student fringe policy. Applying them globally could miscost student appointments.",
+      "recommendation": "Key rates by effective configuration year, worker/job category, and possibly appointment type; require an effective date and prevent silent retroactive recalculation. Obtain authoritative grad-student fringe rates before implementation."
+    },
+    {
+      "id": "fte-001",
+      "claim": "FTE is derived from hours; 10 hours maps to 0.25 FTE and 20 hours maps to 0.50 FTE.",
+      "status": "confirmed_examples_incomplete_formula",
+      "evidence": [
+        "Call with Daisy Matos.docx:983-985 — Daisy states the HR FTE chart maps 10 hours to 0.25 and 20 hours to 0.5 and says the formula is in the chart.",
+        "Call with Daisy Matos.docx:1007-1015 — Daisy says the worksheet has hours but no formula and asks for automatic FTE calculation."
+      ],
+      "risk": "The examples imply hours/40, but the transcript does not explicitly establish the denominator, rounding, maximum hours, or whether FTE is weekly, appointment-period, or job-code-specific. Do not elevate the inferred formula to policy.",
+      "recommendation": "Use the authoritative HR FTE chart as the source; capture denominator, valid range, precision, and job-category exceptions. Label hours/40 as an inference until the chart is inspected."
+    },
+    {
+      "id": "pay-period-001",
+      "claim": "Pay periods and check dates are required inputs, and the calendar is updated annually.",
+      "status": "confirmed_need_not_values",
+      "evidence": [
+        "Call with Daisy Matos.docx:454-462 — Daisy says she consults the HR/payroll tab for pay periods and check dates and that it is updated every year.",
+        "daisy_finance_stage.md:23-26 — summary places the calendar in distribution and Oracle costing."
+      ],
+      "risk": "No actual pay-period dates, check dates, calendar version, fiscal-year boundary, or handling for appointments spanning periods is present; calculations cannot be independently recomputed from the transcript.",
+      "recommendation": "Require a versioned effective-dated payroll calendar with exact period start/end and check dates; validate that every costing/distribution period resolves to one calendar row."
+    },
+    {
+      "id": "oracle-deadline-001",
+      "claim": "Costing must be entered in Oracle by a pay-period deadline, and the deadline matters for RSA checks.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:470-482 — Daisy says RSA checks require costing changes in Oracle by a stated but unspecified time.",
+        "daisy_finance_stage.md:26-27 — summary says enter costing by the pay-period deadline."
+      ],
+      "risk": "The transcript does not state the deadline date/time, timezone, owner, cutoff rule, exception path, or whether the cutoff is period-specific. A system cannot safely enforce a deadline from this evidence alone.",
+      "recommendation": "Obtain the authoritative deadline schedule and ownership; model deadlines as effective-dated calendar data rather than a single hard-coded cutoff."
+    },
+    {
+      "id": "configuration-year-001",
+      "claim": "At least fringe rates and pay-period/check-date calendars change by year and must be configurable.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:426-450 — annual fringe-rate change and editable/importable configuration are explicitly discussed.",
+        "Call with Daisy Matos.docx:454-468 — pay periods/check dates are updated every year and should be available in the system."
+      ],
+      "risk": "The evidence does not define whether configuration is academic year, fiscal year, calendar year, or payroll year, nor effective-date precedence when a record crosses years.",
+      "recommendation": "Store configuration with explicit year label plus effective start/end dates, audit history, importer validation, and a rule for cross-year appointments."
+    },
+    {
+      "id": "population-001",
+      "claim": "The costing examples prove the Finance rules for graduate-student appointments.",
+      "status": "not_proven",
+      "evidence": [
+        "daisy_finance_stage.md:8-11 — explicitly says Daisy supports faculty/staff, Mayra supports grad students, and Daisy's worked examples were faculty, not students.",
+        "Call with Daisy Matos.docx:83-101 — Michelle King stipend example is presented as a faculty/department account distribution.",
+        "Call with Daisy Matos.docx:167-183 — Dr. Casanova stipend and 90/10 distribution example.",
+        "Call with Daisy Matos.docx:412-426 — fringe examples are faculty and administrative categories.",
+        "Call with Daisy Matos.docx:983-1015 — FTE examples are described as HR/Laura calculations, but no student-specific costing example is worked."
+      ],
+      "risk": "A finance implementation based only on these examples may apply faculty/staff stipend, fringe, or distribution assumptions to graduate students without evidence.",
+      "recommendation": "Keep faculty/staff examples labeled as such; obtain and verify at least one graduate-student appointment covering salary, FTE, fringe applicability, chartfield, split distribution, pay period, and Oracle cutoff."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Exact pay-period start/end dates and check dates for the relevant configuration year.",
+    "Exact Oracle costing deadline(s), timezone, owner, and late-entry handling.",
+    "Authoritative graduate-student fringe policy/rates and whether fringe applies to each student appointment type.",
+    "Authoritative FTE formula denominator, precision, valid range, and exceptions by job code/category.",
+    "Rounding and validation rules for percentage distributions and salary/fringe amounts.",
+    "Effective-date/year semantics for appointments spanning configuration-year changes.",
+    "Whether the 90/10 distribution and 35.5%/42% fringe values are illustrative only or current policy values.",
+    "Exact post-entry worksheet status: transcript says 'page'; derived artifact says probably 'paid', so status is unresolved."
+  ],
+  "source_coverage": [
+    "evidence_pack.md:3-17 — authoritative-source list and verification rules reviewed.",
+    "Call with Daisy Matos.docx:83-189 — distribution context and worked 90/10 faculty stipend example reviewed.",
+    "Call with Daisy Matos.docx:412-482 — fringe configuration, annual changes, pay periods/check dates, and Oracle deadline context reviewed.",
+    "Call with Daisy Matos.docx:983-1049 — FTE examples and Finance worksheet workflow reviewed.",
+    "Call with Mayra Morfin (1).docx:443-462 — chartfield/distribution context and Finance ownership reviewed.",
+    "HR App (1).docx:369-377 — graduate-student hours/rate distinctions and faculty/undergraduate examples reviewed.",
+    "daisy_finance_stage.md:6-28, 101-117 — derived Finance summary and open questions reviewed.",
+    "student_hiring_pipeline.md:15-16, 31, 123 — cross-pipeline handoff to Daisy/costing reviewed.",
+    "mayra_student_hiring_flow.md:8-12, 56-61, 78-80 — Mayra's chartfield and Finance handoff context reviewed."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/finance_costing.json"
+}

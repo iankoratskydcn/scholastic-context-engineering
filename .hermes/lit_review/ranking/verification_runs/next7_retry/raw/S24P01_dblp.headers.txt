@@ -1,0 +1,7 @@
+HTTP/2 200 
+cache-control: no-store
+content-type: text/html; charset=utf-8
+set-cookie: dblp_org-auth-8702d140=; Path=/; Domain=dblp.org; Expires=Mon, 12 Oct 2026 06:41:07 GMT; Max-Age=0; Secure; SameSite=None; Partitioned
+set-cookie: dblp_org-cookie-verification-8702d140=01a12ed8-e0ca-74b6-8e02-e5cdf6142232; Path=/; Domain=dblp.org; Expires=Mon, 12 Oct 2026 07:12:07 GMT; Secure; SameSite=None; Partitioned
+date: Mon, 12 Oct 2026 06:42:07 GMT
+

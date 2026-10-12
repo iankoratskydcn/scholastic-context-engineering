@@ -1,0 +1,1 @@
+URL: https://api.crossref.org/works/10.1007/978-3-642-15025-8_18\nERROR: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>\n

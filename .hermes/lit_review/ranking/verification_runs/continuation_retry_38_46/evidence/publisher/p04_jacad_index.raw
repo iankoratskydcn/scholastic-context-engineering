@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html> 
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="generator" content="RocketCake">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="15no1_html.css?h=d357251c">
+</head>
+<body>
+<div class="textstyle1">
+<span class="textstyle2"><br/></span>  </div>
+<div class="textstyle3">
+<img src="rc_images/logoja140x75.png" width="140" height="68" id="img_221c6a2f" alt="" title="" />  </div>
+<div class="textstyle1">
+<div id="menu_cc76a48"><div  class="menuholder1"><a href="javascript:void(0);" tabindex="-1" aria-label="&#8801;" >
+	<div id="menuentry_41b92b8e"  class="menustyle1 menu_cc76a48_mainMenuEntry mobileEntry">
+		<div class="menuentry_text1">
+  <span class="textstyle4">&#8801;</span>
+		</div>
+	</div>
+</a>
+<a href="index.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_56056c67"  class="menustyle2 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle5">Welcome</span>
+		</div>
+	</div>
+</a>
+<a href="volumes.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_601aa4ff"  class="menustyle3 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle5">Volumes</span>
+		</div>
+	</div>
+</a>
+<a href="fields.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_12b10353"  class="menustyle4 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle5">Fields</span>
+		</div>
+	</div>
+</a>
+<a href="submissions.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_b3f86bb"  class="menustyle5 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle5">Submissions</span>
+		</div>
+	</div>
+</a>
+<a href="javascript:void(0);" tabindex="-1" aria-label="" >
+	<div id="menuentry_4f37411b"  class="menustyle6 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text3">
+		</div>
+	</div>
+</a>
+<a href="about.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_6dc55ba2"  class="menustyle7 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle5">About</span>
+		</div>
+	</div>
+</a>
+<a href="editors.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_62dbe108"  class="menustyle8 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle5">Editors</span>
+		</div>
+	</div>
+</a>
+<a href="mailto:samuelfeigenbaum@googlemail.com" target="_blank" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_465b3dd6"  class="menustyle9 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle5">Contact</span>
+		</div>
+	</div>
+</a>
+<a href="javascript:void(0);" tabindex="-1" aria-label="" >
+	<div id="menuentry_3776e64f"  class="menustyle10 menu_cc76a48_mainMenuEntry normalEntry">
+		<div class="menuentry_text3">
+		</div>
+	</div>
+</a>
+
+	<script type="text/javascript" src="rc_images/wsp_menu.js"></script>
+	<script type="text/javascript">
+		var js_menu_cc76a48= new wsp_menu('menu_cc76a48', 'menu_cc76a48', 10, null, true, {generateAriaLabels: true, setUsefulTabIndices: true, closeWhenMouseOut: false} );
+
+		js_menu_cc76a48.createMenuForItem('menuentry_41b92b8e', ["  <span class=\"textstyle5\">Welcome</span> ", 'index.html', '',
+		                                   "  <span class=\"textstyle5\">Volumes</span> ", 'volumes.html', '',
+		                                   "  <span class=\"textstyle5\">Fields</span> ", 'fields.html', '',
+		                                   "  <span class=\"textstyle5\">Submissions</span> ", 'submissions.html', '',
+		                                   "  <span class=\"textstyle5\"></span> ", 'javascript:void(0);', '',
+		                                   "  <span class=\"textstyle5\">About</span> ", 'about.html', '',
+		                                   "  <span class=\"textstyle5\">Editors</span> ", 'editors.html', '',
+		                                   "  <span class=\"textstyle5\">Contact</span> ", 'mailto:samuelfeigenbaum@googlemail.com', '_blank',
+		                                   "  <span class=\"textstyle5\"></span> ", 'javascript:void(0);', '']
+		                                   , true);
+		js_menu_cc76a48.createMenuForItem('menuentry_56056c67', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_601aa4ff', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_12b10353', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_b3f86bb', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_4f37411b', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_6dc55ba2', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_62dbe108', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_465b3dd6', []);
+		js_menu_cc76a48.createMenuForItem('menuentry_3776e64f', []);
+
+	</script>
+</div></div><div id="container_4910413c"><div id="container_4910413c_padding" ></div></div><div id="container_2c197513"><div id="container_2c197513_padding" ><div class="textstyle1"><div  id="placeh_673596fa" >
+  <div class="textstyle1">
+<div id="container_5f610a27"><div id="container_5f610a27_padding" ><div class="textstyle3">    <span class="textstyle6">VOLUMES</span>
+</div>
+</div></div><div id="container_2b1a1ed5"><div id="container_2b1a1ed5_padding" ></div></div><span class="textstyle2"><br/></span><div id="container_1ba78b38"><div id="container_1ba78b38_padding" ><div class="textstyle1"><div id="container_43bea7ff"><div id="container_43bea7ff_padding" ><div class="textstyle1"></div>
+<div class="textstyle3"><span class="textstyle7">FEATURED FIELDS</span><span class="textstyle8"><br/><br/></span><span class="textstyle9">Theoretical Computer Science<br/>Philosophy of Mathematics</span><span class="textstyle8"><br/><br/><br/></span><span class="textstyle7">EDITOR IN CHIEF</span><span class="textstyle8"> <br/><br/></span><span class="textstyle9">S. Feigenbaum</span><span class="textstyle8"><br/></span><span class="textstyle10">Foundation of Science</span><span class="textstyle8"><br/><br/><br/></span><span class="textstyle7"><a href="editors.html" class="wsp31e85d79">EDITORS</a></span></div>
+<div class="textstyle1"><span class="textstyle7"><br/><br/><br/></span></div>
+<div class="textstyle3"><span class="textstyle11">VOLUME 15, No. 1, July 20 2026<br/><br/><br/></span><a href="volumes.html"><img src="rc_images/covervol15_1.png" width="211" height="299" id="img_2b3cddcc" alt="" title="" border="0" /></a><span class="textstyle11"><br/></span><span class="textstyle11"><br/><br/><br/><br/><br/></span></div>
+<div style="clear:both"></div></div></div><div id="container_47b8a20e"><div id="container_47b8a20e_padding" ><div class="textstyle1"></div>
+</div></div><div id="container_37d1cedc"><div id="container_37d1cedc_padding" ><div class="textstyle1"></div>
+<div class="textstyle3"><span class="textstyle12">VOLUME 15, No. 1, July 20 2026</span><span class="textstyle13"><br/><br/>ISSN 2161-3338 (online)</span><span class="textstyle14"><br/><br/></span><span class="textstyle15"><a href="rc_images/journalacademicavol15_1_july20.pdf" target="_blank" class="wsp31e85d79">Download Now</a></span><span class="textstyle14"><br/><br/><br/></span></div>
+<div class="textstyle1"><span class="textstyle16">Elnaser Abdelwahab</span><span class="textstyle13"><br/></span><span class="textstyle17">Computational Extraction of Legal Causes via al-&#7778;abr wa al-Taqsim:<br/>A Set-Theoretic Formalization for Closed Fiqh Chapters</span><span class="textstyle13"><br/></span><span class="textstyle16">pp. 003-018<br/><br/></span></div>
+<div class="textstyle3"><span class="textstyle15"><a href="rc_images/abdelwahab_3_18_15_1.pdf" target="_blank" class="wsp31e85d79">Download Now</a></span></div>
+<div class="textstyle1"><span class="textstyle16"><br/><br/>Karim Daghbouche</span><span class="textstyle13"><br/></span><span class="textstyle17">Cantor, Axiomatic Set Theory, and the Articulation of Multiplicity:<br/>A Note on Metric Abstraction and Zero-Dimensional Continua</span><span class="textstyle13"><br/></span><span class="textstyle16">pp. 019-025</span><span class="textstyle13"><br/><br/></span></div>
+<div class="textstyle3"><span class="textstyle15"><a href="rc_images/daghbouche_19_25_15_1.pdf" target="_blank" class="wsp31e85d79">Download Now</a></span></div>
+<div class="textstyle1"><span class="textstyle16"><br/><br/></span></div>
+</div></div></div>
+<div style="clear:both"></div></div></div>    </div>
+</div>
+</div>
+<div style="clear:both"></div></div></div><div id="container_4308f378"><div id="container_4308f378_padding" ></div></div><div id="container_6b1d15ae"><div id="container_6b1d15ae_padding" ><div class="textstyle1"><div id="container_b9b6ebc"><div id="container_b9b6ebc_padding" ><div class="textstyle1"><div id="container_7e8b9751"><div id="container_7e8b9751_padding" ><div class="textstyle1">  <span class="textstyle9"><br/><br/> </span>
+<span class="textstyle9"><a href="1no1.html" class="wsp31e85d79">1, NO. 1, May 6 2011</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="2no3.html" class="wsp31e85d79">2, NO. 3, September 29 2012</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="3no2.html" class="wsp31e85d79"> 3, NO. 2, August 11 2013</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="4no3.html" class="wsp31e85d79">4, NO. 3, August 27 2014</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="5no2.html" class="wsp31e85d79">5, NO. 2, December 31 2015</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="6no3.html" class="wsp31e85d79"> 6, NO. 3, September 15 2016</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="8no1.html" class="wsp31e85d79"> 8, NO. 1, October 13 2018</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="11no1.html" class="wsp31e85d79">11, NO. 1, June 20 2022</a></span><span class="textstyle2"><br/></span><span class="textstyle9"><a href="13no2.html" class="wsp31e85d79">13, NO. 2, February 15 2024</a></span></div>
+</div></div><div id="container_2d8bd6d7"><div id="container_2d8bd6d7_padding" ><div class="textstyle1"></div>
+<div class="textstyle3">  <span class="textstyle7">VOLUMES</span>
+</div>
+<div class="textstyle1">  <span class="textstyle9"> <br/> </span>
+<span class="textstyle9"><a href="2no1.html" class="wsp31e85d79">2, NO. 1, May 6 2012</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="2no4.html" class="wsp31e85d79">2, NO. 4, December 31 2012</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="4no1.html" class="wsp31e85d79">4, NO. 1, April 8 2014</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="4no4.html" class="wsp31e85d79"> 4, NO. 4, December 31 2014</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="6no1.html" class="wsp31e85d79"> 6, NO. 1, February 15 2016</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="6no4.html" class="wsp31e85d79">6, NO. 4, December 31 2016</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="9no1.html" class="wsp31e85d79">9, NO. 1, September 8 2020</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="12no1.html" class="wsp31e85d79">12, NO. 1, October 29 2023</a></span><span class="textstyle2"><br/></span><span class="textstyle9"><a href="14no1.html" class="wsp31e85d79">14, NO. 1, March 21 2025</a></span><span class="textstyle2"><br/></span></div>
+</div></div><div id="container_5fc9201c"><div id="container_5fc9201c_padding" ><div class="textstyle1">  <span class="textstyle9"><br/><br/></span>
+<span class="textstyle9"><a href="2no2.html" class="wsp31e85d79"> 2, NO. 2, June 29 2012</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="3no1.html" class="wsp31e85d79">3, NO. 1, March 31 2013</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="4no2.html" class="wsp31e85d79">4, NO. 2, May 16 2014</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="5no1.html" class="wsp31e85d79"> 5, NO. 1, November 14 2015</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="6no2.html" class="wsp31e85d79">6, NO. 2, July 1 2016</a></span><span class="textstyle9"><br/> </span><span class="textstyle9"><a href="7no1.html" class="wsp31e85d79">7, NO. 1, April 6 2017</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="10no1.html" class="wsp31e85d79">10, NO. 1, December 31 2021</a></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="13no1.html" class="wsp31e85d79">13, NO. 1, February 9 2024</a></span><span class="textstyle2"><br/></span><span class="textstyle9"><a href="15no1.html" class="wsp31e85d79">15, NO. 1, July 20 2026</a></span><span class="textstyle2"><br/></span></div>
+</div></div></div>
+<div style="clear:both"></div></div></div></div>
+<div style="clear:both"></div></div></div><div id="container_2f149517"><div id="container_2f149517_padding" ></div></div><div id="container_13db29ab"><div id="container_13db29ab_padding" ><div class="textstyle3"><span class="textstyle18">Copyright &#169; Journal Academica Foundation 2011-2026 <br/>All Rights Waived. Reprint and use freely, in any manner desired, even without naming the source.<br/></span><span class="textstyle18"><a href="imprint.html" class="wsp31e85d79">Imprint &amp; Privacy</a></span></div>
+</div></div>  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "input_rows": 322,
+  "removed_nonpaper_rows": [
+    {
+      "paper_id": "S24P18",
+      "category_num": "24",
+      "category": "24 Islamic Comparative Scholastic Ai",
+      "paper_order": "18",
+      "citation": "Verification and project-level finding",
+      "benchmark_status": "not_benchmark",
+      "benchmark_name": "",
+      "benchmark_type": "",
+      "evidence": "Verification/project-level finding, not a paper benchmark. Source artifact: summaries/24_islamic_comparative_scholastic_ai_summaries.md",
+      "confidence": "high"
+    }
+  ],
+  "output_rows": 321,
+  "qa_sequence_issues": [],
+  "counts_by_status": {
+    "not_benchmark": 122,
+    "evaluates_existing_benchmark_only": 102,
+    "introduces_benchmark": 47,
+    "uncertain": 2,
+    "introduces_dataset_or_corpus_used_as_benchmark": 33,
+    "introduces_evaluation_task_or_metric_only": 15
+  }
+}

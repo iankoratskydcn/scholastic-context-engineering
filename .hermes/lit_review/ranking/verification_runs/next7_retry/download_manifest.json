@@ -1,0 +1,24 @@
+{
+  "run_dir": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/verification_runs/next7_retry",
+  "retrieved_at": "2026-10-12",
+  "items": [
+    {
+      "paper_id": "18_07",
+      "evidence_file": "evidence/18_07.pdf",
+      "sha256": "2a3ec88b9e36c0a9f68b41d487815aed703f03c1b04a676bb0489dcdeaac3c08",
+      "size_bytes": 9114822,
+      "content_type": "application/pdf",
+      "final_url": "https://informallogic.ca/index.php/informal_logic/article/download/4335/3711",
+      "retrieval_method": "curl -k -L (TLS verification disabled due local CA failure; raw headers/body preserved)"
+    },
+    {
+      "paper_id": "S24P01",
+      "evidence_file": "evidence/S24P01.pdf",
+      "sha256": "9ad65a93bd860931da60b2effd61c5c91f7f1c330aa76c34dbe7604c57cd2afd",
+      "size_bytes": 7928133,
+      "content_type": "application/pdf",
+      "final_url": "https://shelah.logic.at/files/95653/953.pdf",
+      "retrieval_method": "curl -k -L (TLS verification disabled due local CA failure; raw headers/body preserved)"
+    }
+  ]
+}

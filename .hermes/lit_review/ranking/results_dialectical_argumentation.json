@@ -1,0 +1,99 @@
+{
+  "reviewer_slug": "dialectical_argumentation",
+  "viewpoint": "Dialectical and argumentation evaluation",
+  "rows": 80,
+  "top10": [
+    {
+      "rank": 1,
+      "paper_id": "S09P08",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 98
+    },
+    {
+      "rank": 2,
+      "paper_id": "S25P13",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 98
+    },
+    {
+      "rank": 3,
+      "paper_id": "S25P14",
+      "benchmark_name": "argument-scheme evaluation set (annotated/generated enthymemes)",
+      "score": 95
+    },
+    {
+      "rank": 4,
+      "paper_id": "S23P12",
+      "benchmark_name": "741-topic argument-tree corpus",
+      "score": 92
+    },
+    {
+      "rank": 5,
+      "paper_id": "S10P07",
+      "benchmark_name": "US2016G1tvWALTON corpus",
+      "score": 91
+    },
+    {
+      "rank": 6,
+      "paper_id": "S10P09",
+      "benchmark_name": "EthiX",
+      "score": 90
+    },
+    {
+      "rank": 7,
+      "paper_id": "18_10",
+      "benchmark_name": "Deep argumentative structures corpus",
+      "score": 88
+    },
+    {
+      "rank": 8,
+      "paper_id": "11-04",
+      "benchmark_name": "ElecDeb60To16 extension",
+      "score": 87
+    },
+    {
+      "rank": 9,
+      "paper_id": "11-05",
+      "benchmark_name": "LOGICOM",
+      "score": 86
+    },
+    {
+      "rank": 10,
+      "paper_id": "S10P08",
+      "benchmark_name": "NLAS-multi",
+      "score": 84
+    }
+  ],
+  "distinctions": {
+    "regulated_dialogue": "No benchmark in supplied 80 fully instantiates a scholastic quaestio/disputatio state machine; S23P04/S23P05 and related debate resources are generic structured-debate analogues.",
+    "argumentation_direct": "S09P08,S25P13,S25P14,S10P07,S10P09,18_10,11-04,18_11",
+    "synthetic_logic": "S07P01,12-03,12-04,12-05,12-07,12-08,12-11,12-12,12-15 are formal or synthetic controls, not authentic debate benchmarks.",
+    "generic_debate": "S23P04,S23P05,11-05 test structured or multi-round debate/persuasion but lack regulated move legality and per-objection reply obligations."
+  },
+  "score_range": [
+    25,
+    98
+  ],
+  "category_counts": {
+    "2": 3,
+    "3": 6,
+    "5": 3,
+    "6": 2,
+    "7": 2,
+    "8": 3,
+    "9": 1,
+    "10": 4,
+    "11": 6,
+    "12": 9,
+    "14": 1,
+    "15": 4,
+    "17": 13,
+    "18": 2,
+    "19": 8,
+    "22": 3,
+    "23": 3,
+    "24": 4,
+    "25": 3
+  },
+  "status": "complete"
+}

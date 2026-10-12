@@ -1,0 +1,31 @@
+{
+  "reviewer_slug": "battery_complementarity",
+  "rows": 80,
+  "minimal_core_unique_families": 10,
+  "optional_extensions": [
+    "MARS",
+    "FAITHCOT-BENCH",
+    "RULER"
+  ],
+  "duplicate_families": {
+    "QT-SCHEMES": [
+      "S09P08",
+      "S25P13"
+    ],
+    "ProofWriter": [
+      "S07P01",
+      "12-04"
+    ],
+    "LeanDojo": [
+      "14-08",
+      "S07P08",
+      "S08P04"
+    ]
+  },
+  "files": [
+    "benchmark_review_battery_complementarity_category.csv",
+    "benchmark_review_battery_complementarity_global.csv",
+    "benchmark_review_battery_complementarity_notes.md"
+  ],
+  "status": "complete"
+}

@@ -6,3 +6,7 @@ build/
 *.egg-info/
 
 .worktrees/
+
+# Large benchmark archives are reproducible via scripts/download_large_artifacts.py.
+.hermes/lit_review/ranking/benchmark_verification/core_shard_a/artifacts/LongPiBench_data.zip
+.hermes/lit_review/ranking/benchmark_verification/core_shard_b/raw/ALCE-data.tar

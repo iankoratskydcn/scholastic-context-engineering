@@ -1,0 +1,195 @@
+{
+  "run_dir": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/verification_runs/20261012_shard1",
+  "retrieved_at": "2026-10-12",
+  "items": [
+    {
+      "paper_id": "S21P02",
+      "evidence_file": "evidence/S21P02.html",
+      "sha256": "6604b8db45b2275d83242fab42890225c5a127ce5ff4c371bcb3b1032bc72107",
+      "size_bytes": 44132,
+      "content_type": "text/html",
+      "final_url": "https://arxiv.org/abs/2405.02079",
+      "retrieval_trail_json": "[{\"url\": \"https://arxiv.org/abs/2405.02079\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://arxiv.org/abs/2405.02079\"}]"
+    },
+    {
+      "paper_id": "18_05",
+      "evidence_file": "evidence/18_05.html",
+      "sha256": "fc5be68c3290973f1df24dc28a0875578d6e29fb5f30283b51342cd228944396",
+      "size_bytes": 2076,
+      "content_type": "text/html",
+      "final_url": "https://www.ai.rug.nl/~verheij/publications/ai&l2003.htm",
+      "retrieval_trail_json": "[{\"url\": \"https://www.ai.rug.nl/~verheij/publications/ai&l2003.htm\", \"status_code\": 200, \"content_type\": \"text/html\", \"location\": \"https://www.ai.rug.nl/~verheij/publications/ai&l2003.htm\"}]"
+    },
+    {
+      "paper_id": "S21P06",
+      "evidence_file": "evidence/S21P06.html",
+      "sha256": "321f07fbf1a85baea693d2b4aac5bb134883a9990918b413a2f7b4fd98a26a49",
+      "size_bytes": 42338,
+      "content_type": "text/html",
+      "final_url": "https://aclanthology.org/2022.aacl-short.9/",
+      "retrieval_trail_json": "[{\"url\": \"https://aclanthology.org/2022.aacl-short.9/\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://aclanthology.org/2022.aacl-short.9/\"}]"
+    },
+    {
+      "paper_id": "18_01",
+      "evidence_file": "evidence/18_01.pdf",
+      "sha256": "abff36b7526337676a08f7439d381a87515412c96b060f432a504bfffe318857",
+      "size_bytes": 1593269,
+      "content_type": "application/pdf",
+      "final_url": "https://cs.uns.edu.ar/~grs/Publications/1992-SimariLoui-AIJ.pdf",
+      "retrieval_trail_json": "[{\"url\": \"https://cs.uns.edu.ar/~grs/Publications/1992-SimariLoui-AIJ.pdf\", \"status_code\": 200, \"content_type\": \"application/pdf\", \"location\": \"https://cs.uns.edu.ar/~grs/Publications/1992-SimariLoui-AIJ.pdf\"}]"
+    },
+    {
+      "paper_id": "S08P06",
+      "evidence_file": "evidence/S08P06.html",
+      "sha256": "4e710230fc1a42310b1778cef7ea265d520cff2358f0209c8d5e7cd0d84a1b82",
+      "size_bytes": 43382,
+      "content_type": "text/html",
+      "final_url": "https://arxiv.org/abs/2404.12534",
+      "retrieval_trail_json": "[{\"url\": \"https://arxiv.org/abs/2404.12534\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://arxiv.org/abs/2404.12534\"}]"
+    },
+    {
+      "paper_id": "S23P03",
+      "evidence_file": "evidence/S23P03.html",
+      "sha256": "a0a14baab4a1d06b3452f989362326338fe5cdb01bdae54e7e73808398b4c850",
+      "size_bytes": 282441,
+      "content_type": "text/html",
+      "final_url": "https://arxiv.org/html/2401.03454v1",
+      "retrieval_trail_json": "[{\"url\": \"https://arxiv.org/html/2401.03454v1\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://arxiv.org/html/2401.03454v1\"}]"
+    },
+    {
+      "paper_id": "S04P03",
+      "evidence_file": "evidence/S04P03.html",
+      "sha256": "7def733eea3a89fc144bdf7374053649133b02869737e06c449fd2d5d5d7851f",
+      "size_bytes": 49952,
+      "content_type": "text/html",
+      "final_url": "https://aclanthology.org/2024.findings-acl.57/",
+      "retrieval_trail_json": "[{\"url\": \"https://aclanthology.org/2024.findings-acl.57/\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://aclanthology.org/2024.findings-acl.57/\"}]"
+    },
+    {
+      "paper_id": "S02P03",
+      "evidence_file": "evidence/S02P03.html",
+      "sha256": "a114449a8531b9feae2bf90a371e5ba5dcc0f549446fd724596b41bd0f642ed8",
+      "size_bytes": 49155,
+      "content_type": "text/html",
+      "final_url": "https://aclanthology.org/2025.trustnlp-main.37/",
+      "retrieval_trail_json": "[{\"url\": \"https://aclanthology.org/2025.trustnlp-main.37/\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://aclanthology.org/2025.trustnlp-main.37/\"}]"
+    },
+    {
+      "paper_id": "S04P04",
+      "evidence_file": "evidence/S04P04.html",
+      "sha256": "e26555d62084275efa38a80888748726c6eebb141cb73d62188d6b7f60d960ff",
+      "size_bytes": 42232,
+      "content_type": "text/html",
+      "final_url": "https://arxiv.org/abs/2310.04408",
+      "retrieval_trail_json": "[{\"url\": \"https://arxiv.org/abs/2310.04408\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://arxiv.org/abs/2310.04408\"}]"
+    },
+    {
+      "paper_id": "S03P07",
+      "evidence_file": "evidence/S03P07.html",
+      "sha256": "f2d384140aa8d03a504f88de0f657b102d8d6ede2d05b5a234be9292316f4628",
+      "size_bytes": 46724,
+      "content_type": "text/html",
+      "final_url": "https://aclanthology.org/2024.findings-acl.890/",
+      "retrieval_trail_json": "[{\"url\": \"https://aclanthology.org/2024.findings-acl.890/\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://aclanthology.org/2024.findings-acl.890/\"}]"
+    },
+    {
+      "paper_id": "S04P12",
+      "evidence_file": "evidence/S04P12.html",
+      "sha256": "c2569d87f39c04e69b8ca20ccfcb5757dc773892ca2214539390784efb6d00d0",
+      "size_bytes": 39525,
+      "content_type": "text/html",
+      "final_url": "https://aclanthology.org/2024.findings-acl.50/",
+      "retrieval_trail_json": "[{\"url\": \"https://aclanthology.org/2024.findings-acl.50/\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://aclanthology.org/2024.findings-acl.50/\"}]"
+    },
+    {
+      "paper_id": "S03P02",
+      "evidence_file": "evidence/S03P02.html",
+      "sha256": "a4a20c1f1dc5896fc6138bf9e8986c74dd188c29920f4bac66c845bc28cf3b93",
+      "size_bytes": 43613,
+      "content_type": "text/html",
+      "final_url": "https://aclanthology.org/2021.emnlp-main.62/",
+      "retrieval_trail_json": "[{\"url\": \"https://aclanthology.org/2021.emnlp-main.62/\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://aclanthology.org/2021.emnlp-main.62/\"}]"
+    },
+    {
+      "paper_id": "S22P13",
+      "evidence_file": "evidence/S22P13.html",
+      "sha256": "419e98cfa4f509e24700caf4fa5e356f7afb1b865de5b897f07d522bb38f6baa",
+      "size_bytes": 54633,
+      "content_type": "text/html",
+      "final_url": "https://digitalhumanities.cz/en/db/uniq-2/",
+      "retrieval_trail_json": "[{\"url\": \"https://digitalhumanities.cz/en/db/uniq-2/\", \"status_code\": 200, \"content_type\": \"text/html; charset=UTF-8\", \"location\": \"https://digitalhumanities.cz/en/db/uniq-2/\"}]"
+    },
+    {
+      "paper_id": "S22P11",
+      "evidence_file": "evidence/S22P11.html",
+      "sha256": "d6f0d71728e4744a6a6be23ccaadd3c102afd366abf4433e38cb12f9f28002d2",
+      "size_bytes": 42777,
+      "content_type": "text/html",
+      "final_url": "https://debate-erc.com/corpus/",
+      "retrieval_trail_json": "[{\"url\": \"https://debate-erc.com/corpus/\", \"status_code\": 200, \"content_type\": \"text/html; charset=UTF-8\", \"location\": \"https://debate-erc.com/corpus/\"}]"
+    },
+    {
+      "paper_id": "16_06",
+      "evidence_file": "evidence/16_06.html",
+      "sha256": "04f110b4cd2daf7654f3006005395b269b0887f746b0a40896eae8ea03a7f5f2",
+      "size_bytes": 707308,
+      "content_type": "text/html",
+      "final_url": "https://www.cambridge.org/core/books/abs/cambridge-companion-to-medieval-logic/frontmatter/90B806867E65585809C37DBE09390BC7",
+      "retrieval_trail_json": "[{\"url\": \"https://www.cambridge.org/core/books/abs/cambridge-companion-to-medieval-logic/frontmatter/90B806867E65585809C37DBE09390BC7\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://www.cambridge.org/core/books/abs/cambridge-companion-to-medieval-logic/frontmatter/90B806867E65585809C37DBE09390BC7\"}]"
+    },
+    {
+      "paper_id": "S01P01",
+      "evidence_file": "evidence/S01P01.html",
+      "sha256": "b5b2339468e8af0e09d01ccdf0cb8c4a7b79098cfe8b3287c8be13e62afd310e",
+      "size_bytes": 42457,
+      "content_type": "text/html",
+      "final_url": "https://aclanthology.org/2020.acl-main.173/",
+      "retrieval_trail_json": "[{\"url\": \"https://aclanthology.org/2020.acl-main.173/\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://aclanthology.org/2020.acl-main.173/\"}]"
+    },
+    {
+      "paper_id": "S01P08",
+      "evidence_file": "evidence/S01P08.html",
+      "sha256": "233e89224eedc8a7604cec69d89ec1c1509716d941cdb55da8c016149ab3d60a",
+      "size_bytes": 38425,
+      "content_type": "text/html",
+      "final_url": "https://arxiv.org/abs/2401.07897",
+      "retrieval_trail_json": "[{\"url\": \"https://arxiv.org/abs/2401.07897\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://arxiv.org/abs/2401.07897\"}]"
+    },
+    {
+      "paper_id": "20_10",
+      "evidence_file": "evidence/20_10.pdf",
+      "sha256": "f17aff07c48774946a491a508a9c1be7d5e9298810e2dd4ca2e61afe02d26e15",
+      "size_bytes": 535101,
+      "content_type": "application/pdf",
+      "final_url": "https://assets.cureus.com/uploads/editorial/pdf/138667/20230219-28928-6kcyip.pdf",
+      "retrieval_trail_json": "[{\"url\": \"https://www.cureus.com/articles/138667-artificial-hallucinations-in-chatgpt-implications-in-scientific-writing.pdf\", \"status_code\": 200, \"content_type\": \"application/pdf\", \"location\": \"https://assets.cureus.com/uploads/editorial/pdf/138667/20230219-28928-6kcyip.pdf\"}]"
+    },
+    {
+      "paper_id": "20_02",
+      "evidence_file": "evidence/20_02.html",
+      "sha256": "1a1bd121b89d3da8c0a52c09dc3ceb0fc527f81bae5ed1db6dfac2e7a0ac926c",
+      "size_bytes": 377493,
+      "content_type": "text/html",
+      "final_url": "https://www.nature.com/articles/s41598-023-45644-9?error=cookies_not_supported&code=a39da5cb-2ebe-476b-ac32-4ec7fc29643f",
+      "retrieval_trail_json": "[{\"url\": \"https://doi.org/10.1038/s41598-023-45644-9\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://www.nature.com/articles/s41598-023-45644-9?error=cookies_not_supported&code=a39da5cb-2ebe-476b-ac32-4ec7fc29643f\"}]"
+    },
+    {
+      "paper_id": "20_08",
+      "evidence_file": "evidence/20_08.html",
+      "sha256": "1f5428582dad0eb32d25820b130a7cf8d845a3844e728c316edf5edbe4b67896",
+      "size_bytes": 27700,
+      "content_type": "text/html",
+      "final_url": "https://cris.uni-muenster.de/portal/de/publication/99149560",
+      "retrieval_trail_json": "[{\"url\": \"https://cris.uni-muenster.de/portal/de/publication/99149560\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://cris.uni-muenster.de/portal/de/publication/99149560\"}]"
+    },
+    {
+      "paper_id": "15-03",
+      "evidence_file": "evidence/15-03.html",
+      "sha256": "2f077742175b424611bc34ba15cfcd636248a50dae57ae2eff1068d42156084c",
+      "size_bytes": 281485,
+      "content_type": "text/html",
+      "final_url": "https://arxiv.org/html/2401.03910v1",
+      "retrieval_trail_json": "[{\"url\": \"https://arxiv.org/html/2401.03910v1\", \"status_code\": 200, \"content_type\": \"text/html; charset=utf-8\", \"location\": \"https://arxiv.org/html/2401.03910v1\"}]"
+    }
+  ]
+}

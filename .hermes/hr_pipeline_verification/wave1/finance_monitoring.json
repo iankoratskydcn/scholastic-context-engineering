@@ -1,0 +1,96 @@
+{
+  "perspective": "Adversarial verification of Finance active-appointment monitoring, reconciliation/projection, stale-record handling, termination, upstream confirmation loops, and reporting/query needs.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "FM-01",
+      "claim": "Finance needs an active-appointment summary spanning legacy action tabs, including appointments created in prior semesters.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:885-905 — Daisy describes manually querying active appointments across action tabs and needing to determine which prior-semester appointments remain active.",
+        "Call with Daisy Matos.docx:920-931 — Daisy describes checking highlighted records with Mayra/Laura and requests a summary of all active appointments.",
+        "daisy_finance_stage.md:28-31 — derived flow records ongoing active review and stale/ended decision."
+      ],
+      "risk": "A summary that only filters current-semester rows or relies on manually maintained action-tab membership can omit active appointments or retain obsolete ones.",
+      "recommendation": "Define the authoritative active predicate and include appointment/assignment identity, start/end dates, semester, current status, supervisor/PI, and source-system reference; prove prior-semester and duplicate-assignment cases."
+    },
+    {
+      "id": "FM-02",
+      "claim": "Finance reconciles appointment costing against account data and projects payroll and expenses.",
+      "status": "confirmed_with_scope_gap",
+      "evidence": [
+        "Call with Daisy Matos.docx:571-585 — startup reconciliation tracks multi-year budget, projected payroll, projected expenses, and requires HR information.",
+        "Call with Daisy Matos.docx:214-257 — Box account list contains departmental accounts, grants, and accounts by PI; some accounts require cleanup and are ending soon.",
+        "daisy_finance_stage.md:23-28 — distributions must total 100%, fringe rates change annually, costing uses pay-period deadlines, and ongoing monitoring reconciles/projects payroll and expenses."
+      ],
+      "risk": "The evidence does not establish reconciliation frequency, variance thresholds, authoritative source between Box/FAST/worksheet/Oracle, or whether projections are persisted with period/version provenance.",
+      "recommendation": "Specify source precedence, reconciliation grain, period/effective-date rules, tolerance/exception states, versioned inputs, and read-back proof from Oracle or the designated authority."
+    },
+    {
+      "id": "FM-03",
+      "claim": "Uncertain stale records are sent upstream for faculty confirmation before monitoring resumes.",
+      "status": "confirmed_but_criteria_missing",
+      "evidence": [
+        "Call with Daisy Matos.docx:912-931 — Daisy questions whether prior-semester appointments were superseded or extended; Mayra/Laura confirm some, while another requires faculty contact.",
+        "daisy_finance_stage.md:29-31 and 49-53 — derived flow records stale/ended decision, upstream confirmation loop, and termination branch."
+      ],
+      "risk": "No operational definition of stale is evidenced: date expiry, missing payroll activity, supersession, unconfirmed extension, and funding expiration may produce different outcomes.",
+      "recommendation": "Define stale triggers, evidence required for confirmation, owner/SLA, pending-confirmation status, escalation, and protection against treating an unresolved record as inactive."
+    },
+    {
+      "id": "FM-04",
+      "claim": "Ended appointments are terminated in the worksheet and removed from the active summary.",
+      "status": "confirmed_but_side_effects_unproven",
+      "evidence": [
+        "Call with Daisy Matos.docx:898-905 — Daisy says she terminates people and the termination removes them from the active summary.",
+        "Call with Laura Hemphill.docx:1045-1058 and 1087-1096 — Laura describes prior mistaken hiring/ending and says student termination requests should flow through Mayra into the tracked system.",
+        "daisy_finance_stage.md:30-31 and 51-53 — derived flow records ended → terminate in worksheet."
+      ],
+      "risk": "Removal from a summary is not proof that Oracle costing, payroll, funding distributions, effective dates, historical visibility, or audit evidence are updated correctly; hard deletion could destroy required history.",
+      "recommendation": "Use an auditable termination event/status with effective date, requester, confirmer, reason, affected assignment, downstream-sync result, and preserved historical reporting; verify idempotent repeat termination."
+    },
+    {
+      "id": "FM-05",
+      "claim": "Reporting/query needs include active-appointment filtering, exports, and ad hoc institutional reports.",
+      "status": "confirmed_need; contract_unresolved",
+      "evidence": [
+        "Call with Mayra Morfin.docx:502-504 and 530-542 — Mayra uses filtering by job code/type/professor; Ian proposes filtering active appointments, exports, and appointment reports.",
+        "Call with Daisy Matos.docx:606-620 and 727-731 — Daisy needs reports for provost requests and wants a shared HR/Finance data view.",
+        "Call with Daisy Matos.docx:778-807 and 840-850 — Daisy describes editable FAS queries and recurring requests for workforce, tenure/promotion, and expenditure data.",
+        "daisy_finance_stage.md:101-106 — derived artifact preserves unresolved reporting/source questions."
+      ],
+      "risk": "Requested reports mix operational appointment data with HR, tenure/promotion, payroll, and expenditure data; no field-level contract, access boundary, freshness guarantee, or authoritative query source is established.",
+      "recommendation": "Define named reports and filters, row-level permissions, export semantics, snapshot timestamp, source lineage, and separate operational versus institutional-reporting contracts."
+    },
+    {
+      "id": "FM-06",
+      "claim": "Funding remediation has a verified upstream loop: missing or unfunded chartfields are corrected and re-verified before costing.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Daisy Matos.docx:1035-1049 — Finance checks chartfields, verifies with faculty, changes chartfields when money is unavailable, and records completion date/initials.",
+        "daisy_finance_stage.md:17-26 and 37-47 — derived flow records missing/no-money branches, worksheet update, re-verification, distribution totaling 100%, and Oracle entry by deadline.",
+        "Call with Mayra Morfin.docx:79-86 and 443-462 — Mayra requires faculty confirmation for renewals because funding/chartfields can change and Daisy's team checks distributions."
+      ],
+      "risk": "The evidence does not prove atomicity between worksheet edits, distribution recalculation, Oracle costing, and completion marking; partial updates could make the active summary disagree with financial reality.",
+      "recommendation": "Require immutable before/after values, actor/time/source, recalculation proof, validation that distributions total 100%, and a durable exception state until Oracle read-back succeeds."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative definition and lifecycle of active, stale, superseded, extended, ended, and terminated.",
+    "Whether appointment identity is per student, assignment, or Oracle record; Laura's transcript says one student can have multiple assignments (HR App (1).docx:561-563).",
+    "Termination effective date, downstream Oracle/payroll actions, historical retention, permissions, and idempotency.",
+    "Reconciliation source precedence among appointment worksheet, Box files, FAST, Oracle, and any future database; Daisy says the finance data is sensitive and currently split across systems (Call with Daisy Matos.docx:516-524, 599-626).",
+    "Exact completion status after Finance entry; the derived artifact preserves the transcript ambiguity ('page', probably 'paid') at daisy_finance_stage.md:27 and 101-106.",
+    "Report schemas, freshness/SLA, row-level access, export meaning, and whether institutional reports are snapshots or live queries.",
+    "The Daisy transcript's concrete worked examples are faculty/staff financial cases, while the derived artifact scopes the segment to student hiring; applicability to graduate-student appointments is not fully confirmed (daisy_finance_stage.md:6-13)."
+  ],
+  "source_coverage": [
+    "Primary: /Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx — active summary, prior-semester status checks, termination/removal, chartfield verification, reconciliation/projection, reporting/query needs.",
+    "Primary: /Users/iankoratsky/.hermes/attachments/HR App (1).docx — audit/history need, change and termination routing, assignment granularity, upstream workflow.",
+    "Primary: /Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx — renewal confirmation, chartfield-change risk, filtering/reporting needs, role boundaries.",
+    "Derived: /Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md — provisional Finance flow and explicit open questions.",
+    "Derived: /Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md — provisional cross-stage pipeline and audit/change-loop context.",
+    "Derived: /Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md — provisional Mayra flow and source-boundary caveats."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/finance_monitoring.json"
+}

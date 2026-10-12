@@ -1,0 +1,127 @@
+{
+  "perspective": [
+    "Adversarial completeness review of the combined Mayra intake, Laura HR, and Daisy Finance pipelines.",
+    "Coverage tested from faculty request through intake, screening, offer, Oracle approval/verification, costing, monitoring, and termination, including external actors and cross-segment joins."
+  ],
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "C1",
+      "claim": "The three actor segments and the normal Mayra -> Laura -> Daisy path are represented.",
+      "status": "partially_supported",
+      "evidence": ["student_hiring_pipeline.md:17-31", "HR App (1).docx:46-50", "HR App (1).docx:120-130", "Call with Daisy Matos.docx:1027-1049"],
+      "risk": "The artifacts show conceptual ordering but no explicit handoff acceptance, ownership transfer, required payload, or rejection/rework contract.",
+      "recommendation": "Add typed handoff states for intake-to-HR and HR-to-Finance, with required fields, owner, timestamp, and return reasons."
+    },
+    {
+      "id": "C2",
+      "claim": "Faculty request intake is complete from request through worksheet entry.",
+      "status": "omitted_tasks",
+      "evidence": ["Call with Mayra Morfin (1).docx:12-35", "Call with Mayra Morfin (1).docx:248-267", "Call with Mayra Morfin (1).docx:484-504", "HR App (1).docx:1092-1117"],
+      "risk": "Upstream open-position/budget/headcount context, request-channel triage, and direct-to-Laura/Daisy misroutes are not modeled as tasks or entry branches.",
+      "recommendation": "Add open-position/budget readiness, intake-channel normalization, and misrouted-request forwarding/closure before the Mayra record."
+    },
+    {
+      "id": "C3",
+      "claim": "Faculty and student response loops are represented adequately.",
+      "status": "incomplete",
+      "evidence": ["mayra_student_hiring_flow.md:14-21", "HR App (1).docx:252-297", "Call with Mayra Morfin (1).docx:248-267"],
+      "risk": "No deadline, escalation owner, maximum attempts, closure/cancellation, consent/notice, or final non-response disposition is specified for faculty, screening, offer, or preboarding reminders.",
+      "recommendation": "Make reminder journeys explicit per actor and stage, including stop, escalate, cancel, and overdue outcomes."
+    },
+    {
+      "id": "C4",
+      "claim": "Identity and appointment data resolution is covered.",
+      "status": "omitted_tasks",
+      "evidence": ["Call with Mayra Morfin (1).docx:151-181", "HR App (1).docx:1046-1052", "HR App (1).docx:568-578"],
+      "risk": "No-match, ambiguous duplicate-name, wrong-student correction, and identity revalidation tasks are absent; the audit example proves this is operationally material.",
+      "recommendation": "Add identity-match decision states, duplicate review, correction, and immutable source identity before downstream processing."
+    },
+    {
+      "id": "C5",
+      "claim": "Laura's HR stage is represented through Oracle verification.",
+      "status": "pass_with_caveats",
+      "evidence": ["student_hiring_pipeline.md:19-31", "HR App (1).docx:78-130", "HR App (1).docx:561-587"],
+      "risk": "New-hire pending-worker creation, Banner lookup, preboarding, start-date changes, reappointment/additional-assignment distinctions, approval-queue disappearance, and Oracle re-entry are present only as partial detours; rejection, correction, expiry, and duplicate assignment behavior are absent.",
+      "recommendation": "Split reappointment, new-hire, additional-assignment, and change/reappointment subflows with explicit failure and reconciliation states."
+    },
+    {
+      "id": "C6",
+      "claim": "The unified graph's change-request join is valid: change request -> Mayra worksheet -> Laura -> Finance.",
+      "status": "unsupported_join",
+      "evidence": ["student_hiring_pipeline.md:43-45, 96-114", "HR App (1).docx:779-894", "HR App (1).docx:1023-1052", "Call with Mayra Morfin (1).docx:214-226"],
+      "risk": "Requests may arrive directly to Laura or Daisy; Mayra may be absent; some changes require a new letter, screening, Oracle amendment, and Finance re-costing, while others may be informational. The graph assumes one route and one loop.",
+      "recommendation": "Model change-request classification, routing, approval/acknowledgement, impacted-stage reset, and direct-channel reconciliation separately."
+    },
+    {
+      "id": "C7",
+      "claim": "The mid-semester OPS form is a supported intake entry point.",
+      "status": "contradicted",
+      "evidence": ["mayra_student_hiring_flow.md:18-20, 47-50, 63-80", "Call with Mayra Morfin (1).docx:421-441", "HR App (1).docx:1102-1117"],
+      "risk": "The derived graph marks the form link as confirmed, but the transcript records it as a proposed future mechanism while current practice remains email-based.",
+      "recommendation": "Mark the form link proposal-only; retain email intake as current behavior until implementation evidence exists."
+    },
+    {
+      "id": "C8",
+      "claim": "Finance costing is complete from chartfield verification through Oracle entry.",
+      "status": "incomplete",
+      "evidence": ["daisy_finance_stage.md:15-31", "Call with Daisy Matos.docx:83-189", "Call with Daisy Matos.docx:413-472", "Call with Daisy Matos.docx:1027-1049"],
+      "risk": "The model omits account-list/grant maintenance, access separation, faculty/PI confirmation evidence, funding replacement approval, exact status vocabulary, ownership of Oracle entry, and correction/audit semantics.",
+      "recommendation": "Add finance configuration, verification evidence, funding remediation, costing submission, read-back, correction, and audit states."
+    },
+    {
+      "id": "C9",
+      "claim": "The Finance stage applies directly to the student pipeline.",
+      "status": "unsupported_join",
+      "evidence": ["daisy_finance_stage.md:6-13", "Call with Daisy Matos.docx:83-189", "Call with Daisy Matos.docx:868-875", "Call with Daisy Matos.docx:1027-1049"],
+      "risk": "Daisy's worked examples are faculty/staff stipends and grants; the transcript does not fully prove that every student appointment follows the same distribution/fringe path.",
+      "recommendation": "Parameterize Finance by appointment class and prove the student-specific costing, fringe, split, and Oracle rules before merging the paths."
+    },
+    {
+      "id": "C10",
+      "claim": "Monitoring and termination are covered as the Finance terminal lifecycle.",
+      "status": "partially_supported",
+      "evidence": ["daisy_finance_stage.md:27-31", "Call with Daisy Matos.docx:885-937", "Call with Daisy Matos.docx:1027-1049"],
+      "risk": "The unified student_hiring graph terminates at costing and omits ongoing active-appointment review, stale confirmation, termination authority, effective date, Oracle/payroll termination, notification, and post-termination reconciliation.",
+      "recommendation": "Extend the unified graph beyond costing through monitoring, stale/ended decision, authorized termination, system read-back, and closure."
+    },
+    {
+      "id": "C11",
+      "claim": "All external actors and systems are represented.",
+      "status": "incomplete",
+      "evidence": ["student_hiring_pipeline.md:6-15, 71-123", "HR App (1).docx:611-663", "HR App (1).docx:568-587", "Call with Daisy Matos.docx:214-257, 294-336"],
+      "risk": "Faculty/PI, student, hiring authority, HR approver, screening provider, DocuSign, Banner/identity lookup, Oracle, Box, FAST, payroll calendar, and email are not all modeled with interface boundaries, failure signals, or evidence ownership.",
+      "recommendation": "Add explicit external-system nodes and inbound/outbound evidence contracts; distinguish observed integrations from proposals."
+    },
+    {
+      "id": "C12",
+      "claim": "Concurrent multi-user editing and auditability are covered.",
+      "status": "incomplete",
+      "evidence": ["HR App (1).docx:95-109, 179-186", "HR App (1).docx:697-708", "Call with Mayra Morfin (1).docx:214-229, 339-352"],
+      "risk": "Laura and an HR colleague edit concurrently, while role-specific edit rights and immutable history are only proposed; overwrite, conflict, version, and authorization semantics are absent.",
+      "recommendation": "Add actor-scoped permissions, optimistic conflict handling, append-only request/change history, and field-level provenance."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Upstream open positions, headcount authorization, and budget readiness before faculty intake.",
+    "Canonical intake schema, validation ownership, duplicate identity handling, and no-match disposition.",
+    "Direct-to-Laura/Daisy request routing and reconciliation with Mayra's queue.",
+    "Handoff contracts and return/rework semantics at Mayra -> Laura and Laura -> Finance.",
+    "Screening, DocuSign, preboarding, Oracle approval, and reminder failure/expiry/cancellation states.",
+    "Change-request classification and whether each change resets screening, offer, Oracle, costing, or only notes.",
+    "Student-specific Finance applicability for fringe, distributions, split costing, and account verification.",
+    "Exact Finance status after costing, Oracle read-back, correction ownership, and audit evidence.",
+    "Termination authority, effective dates, Oracle/payroll action, notifications, and post-termination closure.",
+    "Role permissions, concurrent edits, immutable history, and external-system integration boundaries.",
+    "Mid-semester OPS form is future-state/proposal-only, not confirmed current behavior."
+  ],
+  "source_coverage": [
+    {"source": "HR App (1).docx", "role": "primary Laura interview", "coverage": "Faculty-to-Laura boundary, spreadsheet fields, screening, offer/signature gates, Oracle, new hires, preboarding, changes, audit/history, direct misroutes; lines 46-50, 68-130, 215-313, 523-587, 779-894, 1023-1117."},
+    {"source": "Call with Mayra Morfin (1).docx", "role": "primary Mayra interview", "coverage": "Faculty intake, renewal/new branches, confirmation, chasing, identity resolution, roles, permissions, new-appointment proposal, chartfields, reporting; lines 12-86, 151-181, 188-229, 248-267, 421-462, 484-504."},
+    {"source": "Call with Daisy Matos.docx", "role": "primary Daisy interview", "coverage": "Finance verification, funding remediation, distributions, fringe/FTE/pay periods, account sources/access, active monitoring, stale confirmation, termination marking; lines 83-189, 214-336, 413-472, 516-620, 868-1049."},
+    {"source": "student_hiring_pipeline.md", "role": "provisional combined/Laura-derived artifact", "coverage": "Actor list, main graph, loops/detours, statuses, external nodes, but terminal stops at costing and several joins are assumed; lines 6-15, 17-69, 71-123."},
+    {"source": "mayra_student_hiring_flow.md", "role": "provisional Mayra-derived artifact", "coverage": "Intake graph, renewal/new branches, chasing, identity resolution, change/defaulted-account detours; mid-semester form is contradicted; lines 6-31, 47-80."},
+    {"source": "daisy_finance_stage.md", "role": "provisional Daisy-derived artifact", "coverage": "Finance costing, funding loops, distributions, monitoring, stale/ended branch, termination; student applicability and Oracle closure remain partly unresolved; lines 15-31, 56-117."}
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave3/completeness.json"
+}

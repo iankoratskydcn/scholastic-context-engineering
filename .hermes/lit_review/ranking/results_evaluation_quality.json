@@ -1,0 +1,99 @@
+{
+  "input_rows": 80,
+  "output_rows": 80,
+  "reviewer_slug": "evaluation_quality",
+  "viewpoint": "evaluation quality and diagnostic rigor",
+  "category_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/benchmark_review_evaluation_quality_category.csv",
+  "global_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/benchmark_review_evaluation_quality_global.csv",
+  "top_global": [
+    {
+      "rank": 1,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 95
+    },
+    {
+      "rank": 2,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 95
+    },
+    {
+      "rank": 3,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 93
+    },
+    {
+      "rank": 4,
+      "paper_id": "12-03",
+      "benchmark_name": "RuleTaker",
+      "score": 91
+    },
+    {
+      "rank": 5,
+      "paper_id": "S03P08",
+      "benchmark_name": "RULER",
+      "score": 90
+    },
+    {
+      "rank": 6,
+      "paper_id": "12-05",
+      "benchmark_name": "LogicNLI",
+      "score": 90
+    },
+    {
+      "rank": 7,
+      "paper_id": "S03P05",
+      "benchmark_name": "LongBench",
+      "score": 88
+    },
+    {
+      "rank": 8,
+      "paper_id": "S05P05",
+      "benchmark_name": "ALCE",
+      "score": 88
+    },
+    {
+      "rank": 9,
+      "paper_id": "S05P08",
+      "benchmark_name": "RAGTruth",
+      "score": 87
+    },
+    {
+      "rank": 10,
+      "paper_id": "S05P09",
+      "benchmark_name": "MultiHop-RAG",
+      "score": 86
+    }
+  ],
+  "score_range": [
+    57,
+    95
+  ],
+  "qa": {
+    "missing_global_ranks": [],
+    "duplicate_paper_ids": 0,
+    "category_rows": {
+      "2": 3,
+      "3": 6,
+      "5": 3,
+      "6": 2,
+      "7": 2,
+      "8": 3,
+      "9": 1,
+      "10": 4,
+      "11": 6,
+      "12": 9,
+      "14": 1,
+      "15": 4,
+      "17": 13,
+      "18": 2,
+      "19": 8,
+      "22": 3,
+      "23": 3,
+      "24": 4,
+      "25": 3
+    }
+  }
+}

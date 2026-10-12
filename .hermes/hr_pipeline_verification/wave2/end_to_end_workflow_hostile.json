@@ -1,0 +1,122 @@
+{
+  "perspective": "Hostile end-to-end workflow verification against all three primary interviews; derived Markdown treated as provisional.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "E2E-01",
+      "claim": "The unified flow is Mayra intake -> Laura processing -> Daisy costing, with costing as the terminal stage.",
+      "status": "contradicted",
+      "evidence": ["Mayra transcript lines 44-86 describes renewal confirmation and funding-source confirmation before downstream work, but does not establish ordering beyond preparing data for Laura and Daisy.", "Laura transcript lines 123-130 says Daisy filters verified appointments, supporting a Laura-to-Daisy handoff for that path.", "Daisy transcript lines 899-931 shows Finance continuously monitors prior active appointments and sends uncertainty upstream for confirmation; lines 1035-1049 shows Finance can update chartfields and mark work in the worksheet."],
+      "risk": "A single linear terminal workflow loses ongoing monitoring, upstream loopbacks, and Finance-owned updates.",
+      "recommendation": "Model intake, onboarding, costing, and active-appointment monitoring as linked subflows with explicit handoff and loopback edges, not one terminal chain."
+    },
+    {
+      "id": "E2E-02",
+      "claim": "Every appointment starts with a faculty request entering through Mayra.",
+      "status": "contradicted",
+      "evidence": ["Laura transcript lines 46-50 states faculty/staff bonuses or similar actions can be sent directly to Laura and skip Mayra.", "Laura transcript lines 1087-1096 says student requests should go through Mayra, but people in practice email Laura or Daisy directly."],
+      "risk": "The workflow would misclassify direct HR/finance requests and fail to represent the operational intake reality.",
+      "recommendation": "Keep distinct entry points for student intake, direct HR actions, and misrouted requests; record routing/triage rather than pretending all requests share one origin."
+    },
+    {
+      "id": "E2E-03",
+      "claim": "Renewals can be auto-approved or treated as unchanged by default.",
+      "status": "contradicted",
+      "evidence": ["Mayra transcript lines 64-86 explicitly says renewals require faculty confirmation every time because chartfields may change and defaulting must be attributable.", "Laura transcript lines 963-987 says spring copy-over leaves unchanged rows alone but highlighted changes re-enter the process."],
+      "risk": "Silent renewal or defaulted funding can create incorrect costing and audit exposure.",
+      "recommendation": "Make faculty confirmation a required renewal gate; distinguish confirmed-no-change from changed and non-responsive."
+    },
+    {
+      "id": "E2E-04",
+      "claim": "The process requires a generic approval stage before changes are applied.",
+      "status": "contradicted",
+      "evidence": ["Laura transcript lines 1059-1081 says there is not really an approval for ordinary student hiring; Mayra's upstream approvals already cover hiring numbers.", "Laura transcript lines 1062-1067 distinguishes request/change execution from approval."],
+      "risk": "An invented approval gate would block legitimate work and misstate authority.",
+      "recommendation": "Separate faculty confirmation, HR execution, hiring-authority signature, Oracle HR approval, and Finance verification; do not collapse them into one approval concept."
+    },
+    {
+      "id": "E2E-05",
+      "claim": "After Laura enters Oracle, the next meaningful state is verification, then Finance costing.",
+      "status": "incomplete_and_wrong_for_new_hires",
+      "evidence": ["Laura transcript lines 121-130 and 569-587: new hires become pending workers, require Banner demographic data and pre-boarding, and only then can be verified.", "Laura transcript lines 561-578 distinguishes reappointments from new-worker creation and assignment-specific Oracle paths."],
+      "risk": "New hires could be marked ready for Finance before pre-boarding and pending-worker requirements are complete.",
+      "recommendation": "Branch explicitly by reappointment versus new hire, and by additional assignment; place pre-boarding and pending-worker verification before the verified-to-Finance handoff."
+    },
+    {
+      "id": "E2E-06",
+      "claim": "Offer-letter preparation is a simple sequential step before signature.",
+      "status": "wrong_ordering",
+      "evidence": ["Laura transcript lines 78-88 and 523-542: foreign-principal screening is initiated first; letter drafting occurs in parallel; hiring-authority signature and screening clearance are both required before sending to the student.", "Laura transcript lines 617-637 shows screening initiation is a separate manual external form."],
+      "risk": "A sequential model either delays drafting unnecessarily or permits student signing before the required dual gate.",
+      "recommendation": "Represent parallel screening and drafting, then an explicit gate requiring hiring-authority signature plus cleared screening before student DocuSign."
+    },
+    {
+      "id": "E2E-07",
+      "claim": "A change request is just an overwrite that returns the record to the beginning.",
+      "status": "contradicted",
+      "evidence": ["Laura transcript lines 779-880: changes to job code, hours, rate, funding, or termination require a request, visibility to the relevant teams, a new offer letter where applicable, and Oracle amendment; the desired behavior is history-preserving.", "Laura transcript lines 1023-1058 identifies funding visibility and audit history as part of the change workflow.", "Mayra transcript lines 214-226 says late edits need restricted overwrite rights."],
+      "risk": "Overwriting destroys the prior appointment state and cannot support audit, reissue, or team-specific work.",
+      "recommendation": "Treat changes as versioned requests linked to an existing assignment, with typed change categories, permissions, affected-team handoffs, and preserved before/after history."
+    },
+    {
+      "id": "E2E-08",
+      "claim": "Finance only verifies a chartfield and then costs the appointment.",
+      "status": "incomplete",
+      "evidence": ["Daisy transcript lines 83-189: Finance may calculate multi-account distributions per pay period, not merely validate a single chartfield.", "Daisy transcript lines 413-468: fringe rates and pay-period calendars are year-sensitive configuration inputs.", "Daisy transcript lines 899-931: Finance monitors active appointments and resolves stale/uncertain status upstream."],
+      "risk": "The workflow omits distribution math, changing reference data, deadlines, and post-costing lifecycle work.",
+      "recommendation": "Make Finance a subworkflow with funded-account remediation, distribution/FTE/fringe calculation, Oracle costing deadline, completion evidence, and ongoing active-status monitoring."
+    },
+    {
+      "id": "E2E-09",
+      "claim": "The three teams can share all information freely while only edit permissions differ.",
+      "status": "unsupported_and_risky",
+      "evidence": ["Daisy transcript lines 516-524 says Finance reconciliation data is sensitive and Mayra/Laura do not have access; separate Box sharing may be needed.", "Daisy transcript lines 529-539 agrees on selective editing but does not establish universal read access."],
+      "risk": "Universal visibility conflicts with the stated sensitivity boundary and could expose finance or personnel data.",
+      "recommendation": "Define field- and artifact-level visibility separately from edit rights; treat Finance reconciliation and HR documents as restricted projections or attachments."
+    },
+    {
+      "id": "E2E-10",
+      "claim": "External communications and reminders are optional automation around the core pipeline.",
+      "status": "understated",
+      "evidence": ["Mayra transcript lines 12-35 and 248-267: email collection, non-response chasing, sent timestamps, and outstanding status are core intake work.", "Laura transcript lines 252-313: screening, signature, and pre-boarding reminders are operational gates and payroll-sensitive.", "Daisy transcript lines 42-75: Finance also requests missing funding information from faculty."],
+      "risk": "Without communication ownership, deadlines, sent/response evidence, and escalation state, the workflow cannot reproduce the actual process.",
+      "recommendation": "Model communications as first-class activities linked to the request/assignment, with recipient, template/context, sent time, response, retries, and escalation outcome."
+    },
+    {
+      "id": "E2E-11",
+      "claim": "The workflow's unit is one student appointment.",
+      "status": "wrong_granularity",
+      "evidence": ["Laura transcript lines 561-563 and 562-578: one student can have multiple Oracle assignments with separate assignment records.", "Laura transcript lines 786-851: changes may affect one assignment's job code, hours, rate, or funding without replacing the person's whole employment history."],
+      "risk": "Student-level identity would conflate assignments, signatures, costing, and change history.",
+      "recommendation": "Use person as identity and assignment/appointment as the operational unit; attach documents, statuses, costing, and change requests to the assignment."
+    },
+    {
+      "id": "E2E-12",
+      "claim": "All unresolved workflow details can be inferred from the interviews into one implementation-ready state machine.",
+      "status": "blocked",
+      "evidence": ["Mayra transcript lines 151-159 says the student lookup site's ownership/backing is uncertain.", "Daisy transcript lines 294-320 says FAST may contain chartfield data but integration requires other teams; lines 597-625 leaves system boundaries and ownership unresolved.", "Daisy transcript lines 1019-1049 leaves exact Finance completion status unclear.", "Laura transcript lines 1110-1117 says faculty forms are future state, not current policy."],
+      "risk": "Invented integrations, statuses, or ownership would turn provisional design ideas into false process claims.",
+      "recommendation": "Keep source-confirmed behavior separate from proposals; mark integrations, status vocabularies, faculty-form adoption, and ownership as unresolved until confirmed."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative owner and exact trigger for the Finance handoff; Laura's verified filter is clear, but Daisy's broader monitoring and update loop is not a single handoff.",
+    "Exact Finance completion status after Oracle costing; Daisy's transcript sounds like 'paid'/'page' but does not establish the literal value.",
+    "Whether graduate-student appointments receive fringe, multi-account distributions, or the same Finance treatment as faculty/staff examples.",
+    "How duplicate names, unmatched student identities, and missing U-number/email are resolved and audited.",
+    "Who owns open-position/headcount setup and how budget-dependent vacancies trigger Mayra's collection work.",
+    "Exact permissions and visibility by field, document, attachment, and team; universal read access is not supported.",
+    "Whether change requests require any formal approval beyond existing hiring-authority/HR/Finance checks; interviews explicitly reject a generic approval stage.",
+    "Retention and linkage rules for offer letters, screening evidence, pre-boarding evidence, Oracle records, and Finance reconciliation artifacts."
+  ],
+  "source_coverage": [
+    {"source": "/Users/iankoratsky/.hermes/attachments/HR App (1).docx", "coverage": "Laura's intake boundary, screening/drafting/signature ordering, Oracle/new-hire branches, approval queue, verification, changes, audit history, direct-entry exceptions; transcript lines 46-58, 69-136, 252-313, 523-587, 779-880, 963-1117."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx", "coverage": "Renewal/new branching, mandatory faculty confirmation, non-response chasing, identity resolution, restricted edits, open-position context, chartfield collection and uncertainty; transcript lines 12-86, 127-181, 188-226, 248-269, 421-462, 484-504."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx", "coverage": "Finance verification/remediation, distributions, fringe/FTE/pay-period inputs, sensitivity boundaries, Oracle costing, active monitoring, termination and upstream confirmation; transcript lines 42-75, 83-189, 413-468, 516-625, 899-1049."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md", "coverage": "Provisional combined Laura-centered graph; used to identify claims requiring adversarial checking, not treated as primary authority."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md", "coverage": "Provisional Mayra graph and explicit assumptions about Laura/Daisy ordering; assumptions challenged above."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md", "coverage": "Provisional Finance graph; used to enumerate Finance loops, unresolved statuses, and open questions, while checking every material claim against Daisy's transcript."
+    }
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/end_to_end_workflow_hostile.json"
+}

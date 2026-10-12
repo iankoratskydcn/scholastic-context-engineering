@@ -1,0 +1,120 @@
+{
+  "reviewer_slug": "argument_mining_coverage",
+  "viewpoint": "span/component detection, relation extraction, scheme classification, implicit premises, claim/evidence linking, structured graph outputs",
+  "benchmark_universe": "benchmark_studies.csv",
+  "rows": 80,
+  "scoring_note": "Task fit outranks dataset size. Direct annotated argument components/relations/schemes and graph structure score highest; synthetic proof and grounding benchmarks are complementary diagnostics, not substitutes for authentic argument mining.",
+  "top_15": [
+    {
+      "rank": 1,
+      "paper_id": "S09P08",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 98
+    },
+    {
+      "rank": 2,
+      "paper_id": "S25P13",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 98
+    },
+    {
+      "rank": 3,
+      "paper_id": "S10P07",
+      "benchmark_name": "US2016G1tvWALTON corpus",
+      "score": 96
+    },
+    {
+      "rank": 4,
+      "paper_id": "S10P09",
+      "benchmark_name": "EthiX",
+      "score": 95
+    },
+    {
+      "rank": 5,
+      "paper_id": "11-04",
+      "benchmark_name": "ElecDeb60To16 extension",
+      "score": 94
+    },
+    {
+      "rank": 6,
+      "paper_id": "18_11",
+      "benchmark_name": "implicit-reasoning causal-link materials",
+      "score": 93
+    },
+    {
+      "rank": 7,
+      "paper_id": "S23P12",
+      "benchmark_name": "741-topic argument-tree corpus",
+      "score": 93
+    },
+    {
+      "rank": 8,
+      "paper_id": "18_10",
+      "benchmark_name": "Deep argumentative structures corpus",
+      "score": 92
+    },
+    {
+      "rank": 9,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 91
+    },
+    {
+      "rank": 10,
+      "paper_id": "S25P14",
+      "benchmark_name": "argument-scheme evaluation set (annotated/generated enthymemes)",
+      "score": 91
+    },
+    {
+      "rank": 11,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 90
+    },
+    {
+      "rank": 12,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 90
+    },
+    {
+      "rank": 13,
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score": 89
+    },
+    {
+      "rank": 14,
+      "paper_id": "S07P08",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 88
+    },
+    {
+      "rank": 15,
+      "paper_id": "S08P04",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 88
+    }
+  ],
+  "category_counts": {
+    "2": 3,
+    "3": 6,
+    "5": 3,
+    "6": 2,
+    "7": 2,
+    "8": 3,
+    "9": 1,
+    "10": 4,
+    "11": 6,
+    "12": 9,
+    "14": 1,
+    "15": 4,
+    "17": 13,
+    "18": 2,
+    "19": 8,
+    "22": 3,
+    "23": 3,
+    "24": 4,
+    "25": 3
+  }
+}

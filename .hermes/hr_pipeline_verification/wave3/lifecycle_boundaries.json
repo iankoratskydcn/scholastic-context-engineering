@@ -1,0 +1,151 @@
+{
+  "perspective": "Adversarial lifecycle-boundary verification across Mayra intake, Laura/HR processing, Oracle assignment records, and Daisy/Finance monitoring.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "LB-01",
+      "claim": "An open position is an authorized staffing need or slot, not an appointment, request, employee, or assignment.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:238-267 — discussion distinguishes positions/roles to fill from requests and tracks faculty non-response.",
+        "Call with Mayra Morfin (1).docx:311-323 — Mayra's work includes tracking open positions and asking supervisors whether positions should be renewed.",
+        "Call with Mayra Morfin (1).docx:496-504 — positions depend on budgets and are not a fixed appointment list."
+      ],
+      "risk": "Treating an open position as a person or appointment would create phantom hires, lose headcount/budget context, and conflate demand with execution.",
+      "recommendation": "Keep position identity, supervisor, job code/type, budget/headcount context, and open/filled/closed state separate from person/request/appointment records."
+    },
+    {
+      "id": "LB-02",
+      "claim": "A request is an intake or amendment event; it is not proof that a position exists, an appointment is approved, employment is active, or a termination occurred.",
+      "status": "confirmed_with_routing_caveat",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:12-20,44-52 — faculty email requests are collected before Mayra enters worksheet data.",
+        "HR App (1).docx:792-805,1087-1096 — direct faculty requests occur, but intended student-request intake is through Mayra; Laura acts from the tracked worksheet.",
+        "change_requests.json:18-27,95-105 — prior verification separates requester, Mayra intake, and downstream executor; derived D4 routing is too strong."
+      ],
+      "risk": "A request-to-status shortcut could cause unapproved changes, duplicate appointments, or premature termination.",
+      "recommendation": "Persist request type, requester, submitter, target position/appointment/assignment, requested values, receipt time, and disposition separately from execution state."
+    },
+    {
+      "id": "LB-03",
+      "claim": "An appointment is a time-bounded employment arrangement with terms; it is not identical to a student/person, Oracle assignment row, or current active employment.",
+      "status": "confirmed_with_identity_caveat",
+      "evidence": [
+        "HR App (1).docx:68-78 — appointment terms include job code/name, supervisor, hours, salary, and start/end dates.",
+        "HR App (1).docx:561-563 — appointment changes and separate assignments are distinct Oracle operations.",
+        "HR App (1).docx:962-987 — spring changes can require a new process while unchanged rows need no Laura action."
+      ],
+      "risk": "A person-level row cannot represent multiple concurrent assignments, separate effective periods, or changed terms without collapsing history.",
+      "recommendation": "Use separate person, appointment-term, and assignment identities with effective dates and revision links."
+    },
+    {
+      "id": "LB-04",
+      "claim": "An assignment is the Oracle-level work unit; one student can have multiple assignments, and an added assignment creates a second assignment number.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "HR App (1).docx:561-563 — Laura distinguishes changing an assignment from adding a separate assignment record/number.",
+        "oracle_hr.json:6-15 — prior verification identifies assignment identity as distinct from student identity.",
+        "student_hiring_pipeline.md:43-46,123 — derived artifact records additional assignments and assignment-level unit of work."
+      ],
+      "risk": "Using student identity as the lifecycle key can merge TA/RA or other concurrent work and apply changes or termination to the wrong record.",
+      "recommendation": "Make assignment ID/Oracle assignment number mandatory for assignment-scoped changes, costing, verification, and termination."
+    },
+    {
+      "id": "LB-05",
+      "claim": "Screening, authority signature, student signature, Oracle entry, HR verification, and Finance costing are workflow gates/events; none alone proves active employment.",
+      "status": "confirmed",
+      "evidence": [
+        "HR App (1).docx:78-89,523-548 — screening, drafted/signed offer, student DocuSign, and Oracle entry are separate steps.",
+        "HR App (1).docx:120-130 — entered records can wait in approval, disappear, require checking, and only then become verified; new hires also require pre-boarding.",
+        "HR App (1).docx:121-130 and Daisy Matos.docx:1022-1049 — verified is a handoff to Finance work, not a stated employment-active declaration."
+      ],
+      "risk": "Conflating verified, signed, costed, or paid with active employment can expose people who never started, miss pending approvals, or retain ended appointments as active.",
+      "recommendation": "Maintain independent states for screening, signatures, Oracle submission/approval/verification, pre-boarding, employment-active, and costing. Define the authoritative active predicate before reporting."
+    },
+    {
+      "id": "LB-06",
+      "claim": "Reappointment/renewal is a new term decision using prior data as a proposal; it is not automatic continuation and not the same as adding a new assignment.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:44-52,64-86 — prior-semester data is shown for confirmation/editing; chartfields may change and automatic renewal is rejected.",
+        "HR App (1).docx:962-987 — copied spring rows can remain unchanged or require a new change process.",
+        "renewals.json:5-50 — prior verification preserves copied snapshot, confirmation, and changed-row semantics."
+      ],
+      "risk": "Auto-renewing or treating a copied row as active approval can carry stale funding, hours, rates, or dates into a new term.",
+      "recommendation": "Create a distinct reappointment/renewal request and next-term appointment revision linked to the prior term; record confirmation, edit, outstanding, and no-renewal outcomes."
+    },
+    {
+      "id": "LB-07",
+      "claim": "A change is an amendment/revision to an existing appointment or assignment, not an in-place overwrite and not automatically a new person or new position.",
+      "status": "confirmed_with_unresolved_rules",
+      "evidence": [
+        "HR App (1).docx:780-851 — completed TA/RA terms may change; Laura needs a new offer letter and Oracle amendment.",
+        "HR App (1).docx:1023-1053 — funding changes must be visible to Finance and request history retained for audit.",
+        "change_requests.json:5-16,31-52,81-105 — prior verification rejects silent overwrite and generic approval assumptions."
+      ],
+      "risk": "Mutating the current row destroys before/after terms and can desynchronize offer, Oracle, Finance, and audit records.",
+      "recommendation": "Represent amendment request, proposed revision, effective date, authorization/confirmation, downstream execution, and superseded prior values separately. Leave screening/signature re-run rules owner-defined."
+    },
+    {
+      "id": "LB-08",
+      "claim": "Termination is a requested and executed lifecycle transition with an effective date; removing an item from an active summary is not deletion of the historical appointment.",
+      "status": "confirmed_with_role_and_authority_gaps",
+      "evidence": [
+        "HR App (1).docx:1045-1058,1087-1096 — student termination should be submitted through Mayra and retained as a request/history item.",
+        "Call with Daisy Matos.docx:892-905 — Finance terminates ended records in its worksheet and they disappear from the active summary.",
+        "finance_monitoring.json:41-50 and change_requests.json:54-65 — prior verification distinguishes summary removal from durable termination and requires preserved history."
+      ],
+      "risk": "A delete or unrestricted status edit can hide an active assignment, erase effective-date/audit evidence, or fail to update Oracle/payroll/costing.",
+      "recommendation": "Use termination_requested, confirmed/authorized, effective, executed, and downstream-reconciled states; preserve the appointment/assignment historically and define executor/authority."
+    },
+    {
+      "id": "LB-09",
+      "claim": "Historical record is an append-only or otherwise preserved account of requests, terms, changes, signatures, verification, costing, and termination; it is not the current-state row.",
+      "status": "directly_confirmed_need; implementation_unproven",
+      "evidence": [
+        "HR App (1).docx:696-701 — spreadsheet overwrites lose the original request and audit trail.",
+        "HR App (1).docx:1045-1058 — audit evidence was difficult to recover; one-place request history is required.",
+        "Call with Mayra Morfin (1).docx:188-196 and Daisy Matos.docx:1035-1049 — change history, notes, status, date, and initials are requested/used.",
+        "change_requests.json:81-92 — prior verification recommends field-level before/after audit events."
+      ],
+      "risk": "A mutable current-state record cannot prove what was requested, approved, executed, superseded, or terminated at a past time.",
+      "recommendation": "Keep immutable event/history records linked to current projections; never reconstruct history from the latest appointment row or summary filter."
+    },
+    {
+      "id": "LB-10",
+      "claim": "The unified workflow currently conflates lifecycle axes in its derived summaries, especially request/position ownership, verified/active employment, and termination/history.",
+      "status": "contradiction_found",
+      "evidence": [
+        "mayra_student_hiring_flow.md:47-80 — marks the mid-semester form-link path confirmed despite the transcript describing it as proposed; assumes Laura-before-Daisy ordering.",
+        "student_hiring_pipeline.md:43-46,97-114 — models change as a single loop and uses verified as the terminal handoff to costing without a separate employment-active state.",
+        "finance_accounts.json:84-95 — broad-read proposal conflicts with Finance sensitivity boundary; finance source authority and completion state remain unresolved.",
+        "finance_monitoring.json:78-85 — active, stale, superseded, extended, ended, and terminated are explicitly unresolved."
+      ],
+      "risk": "A single status field or unified linear state machine will permit invalid transitions and inaccurate active-appointment reports.",
+      "recommendation": "Replace one-dimensional status with typed linked entities plus independent state dimensions: position, request, appointment term, assignment, HR workflow, employment activity, finance costing, termination, and history."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative definition of open/filled/closed position and headcount or budget authorization.",
+    "Canonical appointment identity and whether effective-dated Oracle records are the authority.",
+    "Authoritative active-employment predicate, including start-date, pre-boarding, approval, end-date, leave, supersession, and payroll conditions.",
+    "Whether reappointment creates a new appointment version, a new assignment, or an effective-dated Oracle change; confirmation/no-response deadlines are unspecified.",
+    "Change-specific rules for repeated screening, hiring-authority signature, student signature, Finance re-verification, and assignment/version creation.",
+    "Termination authority, confirmer, effective date, Oracle/payroll/costing actions, and idempotent repeat behavior.",
+    "Whether historical records must be technically immutable/append-only, retention duration, and permitted corrections.",
+    "Exact post-Oracle and post-Finance states; `verified`, `costed`, the Daisy status heard as `page`/possibly `paid`, and `active` are not interchangeable.",
+    "Role/field-level visibility and edit permissions, especially sensitive Finance data versus cross-team operational views.",
+    "Whether the mid-semester OPS form and any automated integrations are current behavior or future design."
+  ],
+  "source_coverage": [
+    "Primary transcript: /Users/iankoratsky/.hermes/attachments/HR App (1).docx, read in full; lines 68-130, 561-587, 696-708, 780-851, 962-987, 1023-1117 used.",
+    "Primary transcript: /Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx, read in full; lines 12-20, 44-86, 188-221, 238-267, 311-323, 421-462, 496-504 used.",
+    "Primary transcript: /Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx, read in full; lines 516-539, 885-931, 1022-1049 used.",
+    "Derived source: /Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md, read in full; lines 17-63, 71-124 used as provisional synthesis.",
+    "Derived source: /Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md, read in full; lines 8-31, 47-90 used as provisional synthesis.",
+    "Derived source: /Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md, read in full; lines 15-31, 56-117 used as provisional synthesis.",
+    "Evidence index: .hermes/hr_pipeline_verification/evidence_pack.md, lines 3-33 and 35-46.",
+    "Prior verification artifacts: .hermes/hr_pipeline_verification/wave1/*.json, independently read and used only as prior findings, not authority."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave3/lifecycle_boundaries.json"
+}

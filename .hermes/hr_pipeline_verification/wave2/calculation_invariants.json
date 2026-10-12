@@ -1,0 +1,135 @@
+{
+  "perspective": "Adversarial verification of numeric formulas, configuration tables, and calculation invariants across the HR/Finance evidence pack.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "calc-001",
+      "claim": "A split distribution must total 100% per pay period; the worked example is 90% ENG plus 10% grant.",
+      "status": "confirmed_arithmetic_scope_limited",
+      "evidence": [
+        "Call with Daisy Matos.docx:167-183 — 90% ENG and 10% grant are described for the stipend pay period.",
+        "Call with Daisy Matos.docx:87-101 — distributions are calculated within biweekly pay periods.",
+        "daisy_finance_stage.md:23-25 — derived rule says percentages must total 100%."
+      ],
+      "verification": "90 + 10 = 100; no evidence establishes tolerance, decimal precision, duplicate-account handling, zero/negative bounds, or amount-versus-percent reconciliation.",
+      "risk": "A validator could accept invalid or ambiguous rows, or apply one period's split to another.",
+      "recommendation": "Require effective-dated pay-period rows, nonnegative bounded percentages, deterministic rounding, unique account lines, and exact-total validation after rounding."
+    },
+    {
+      "id": "calc-002",
+      "claim": "FTE is calculated from hours; 10 hours maps to 0.25 and 20 hours maps to 0.50.",
+      "status": "examples_confirmed_formula_not_proven",
+      "evidence": [
+        "Call with Daisy Matos.docx:983-985 — 10 hours = 0.25 FTE and 20 hours = 0.5 FTE; Daisy says the formula is in an HR chart.",
+        "Call with Daisy Matos.docx:1007-1015 — worksheet contains hours but no FTE formula and Daisy requests automatic calculation.",
+        "finance_costing.json:29-37 — prior verification correctly identifies denominator, precision, range, and category as unresolved."
+      ],
+      "verification": "The examples are consistent with hours/40, but the denominator 40 is an inference, not stated policy; no rounding, max-hours, period basis, or job-code exception is evidenced.",
+      "risk": "Encoding hours/40 globally may miscalculate categories or violate the authoritative HR chart.",
+      "recommendation": "Do not promote hours/40 to a policy invariant until the HR FTE chart is obtained and checked; store source/version, denominator, precision, and valid range."
+    },
+    {
+      "id": "calc-003",
+      "claim": "Salary can be derived from FTE/hours using a confirmed formula.",
+      "status": "not_proven",
+      "evidence": [
+        "Call with Daisy Matos.docx:983-985 — Daisy references an HR FTE chart and says it shows a formula, but the formula text/table is not present in the evidence pack.",
+        "HR App (1).docx:68-78 — hours and salary appear as worksheet inputs/formula-related fields, but no salary equation is stated.",
+        "HR App (1).docx:468-475 — offer-letter fields include salary, biweekly salary, FTE, degree level, and job data, without a numeric derivation rule.",
+        "HR App (1).docx:369-377 — student rates vary by job, degree level, faculty funding, and minimum-wage constraints."
+      ],
+      "verification": "No authoritative annual-to-biweekly, hourly-to-period, FTE-to-salary, proration, rounding, or minimum-rate formula can be recomputed from the supplied sources.",
+      "risk": "A guessed salary formula could produce incorrect offer letters, Oracle values, or costing.",
+      "recommendation": "Block formula implementation pending the actual HR chart/rate tables and explicit rules for worker category, degree level, hours, dates, pay frequency, proration, and rounding."
+    },
+    {
+      "id": "config-001",
+      "claim": "Fringe rates are lookup-driven and configurable by year/category; 35.5% faculty and 42% administrative are current usable values.",
+      "status": "examples_confirmed_policy_scope_unproven",
+      "evidence": [
+        "Call with Daisy Matos.docx:412-426 — Daisy gives 35.5% for faculty and 42% for administrative and demonstrates category lookup behavior.",
+        "Call with Daisy Matos.docx:426-450 — annual edit/import capability is requested/proposed.",
+        "finance_costing.json:17-27 — prior verification limits these rates to cited examples and warns against applying them to students."
+      ],
+      "verification": "The percentages are internally plausible examples, but no complete table, effective dates, source/version, or student applicability is provided.",
+      "risk": "Applying faculty/admin rates to graduate students or to a later configuration year could miscost appointments.",
+      "recommendation": "Key rates by effective date/year, worker category, and appointment/job type; require import validation, non-overlap, and explicit retroactivity behavior."
+    },
+    {
+      "id": "config-002",
+      "claim": "Pay-period start/end dates and check dates are available configuration inputs and can support deadline enforcement.",
+      "status": "need_confirmed_values_missing",
+      "evidence": [
+        "Call with Daisy Matos.docx:454-472 — Daisy says she consults an annually updated tab for pay periods and check dates and needs costing changed in Oracle by the relevant time.",
+        "daisy_finance_stage.md:25-27, 101-106 — derived artifact places the calendar in costing and lists exact dates/deadline as open questions."
+      ],
+      "verification": "No actual calendar rows, year semantics, timezone, deadline values, or cross-period appointment rule are present; no dates can be independently checked.",
+      "risk": "A system could assign the wrong pay period or accept costing after a real cutoff.",
+      "recommendation": "Require a versioned calendar with period ID, start/end, check date, cutoff timestamp/timezone, fiscal/academic-year labels, and spanning-period behavior."
+    },
+    {
+      "id": "funding-001",
+      "claim": "Account funding is a gate: missing or unfunded chartfields require faculty contact, account correction, worksheet update, and re-verification before costing.",
+      "status": "confirmed_with_terminal-state_gap",
+      "evidence": [
+        "Call with Daisy Matos.docx:42-44 — missing account information is requested from faculty.",
+        "Call with Daisy Matos.docx:1028-1049 — Finance verifies chartfield/funding, changes it when money is unavailable, then records completion/date/initials.",
+        "daisy_finance_stage.md:17-22, 37-47 — derived flow models missing/no-money loopback before distribution and Oracle entry.",
+        "finance_accounts.json:31-41 — prior verification confirms the loop but notes no-response/no-valid-account terminal rule."
+      ],
+      "verification": "The loop invariant is supported; atomicity between update, recalculation, Oracle costing, and completion marking is not proven.",
+      "risk": "Partial updates can leave worksheet, distribution, active-summary, and Oracle states inconsistent.",
+      "recommendation": "Preserve prior values and immutable events; require funding validation and recalculation before completion; define bounded exception/escalation states."
+    },
+    {
+      "id": "population-001",
+      "claim": "The demonstrated fringe, FTE, distribution, and funding formulas apply equally to students and faculty/staff.",
+      "status": "contradiction_found",
+      "evidence": [
+        "daisy_finance_stage.md:8-13 — Daisy supports faculty/staff; her worked examples are faculty, not students.",
+        "Call with Daisy Matos.docx:83-101, 167-183 — Michelle King and Dr. Casanova stipend/distribution examples are faculty/department cases.",
+        "Call with Daisy Matos.docx:412-426 — fringe examples are faculty and administrative categories.",
+        "HR App (1).docx:369-377 — student rates vary by TA/RA/job code, degree level, funding, and minimum-wage constraints.",
+        "finance_costing.json:73-84 — prior verification states graduate-student applicability is not proven."
+      ],
+      "verification": "Faculty/staff examples cannot establish student formulas or fringe policy; the source set explicitly leaves student applicability open.",
+      "risk": "Globalizing faculty rules could produce incorrect student salary, fringe, or distribution calculations.",
+      "recommendation": "Separate rule tables and invariants by population/job category; obtain at least one authoritative graduate-student worked case before implementation."
+    },
+    {
+      "id": "config-003",
+      "claim": "Configuration tables can be safely overwritten annually by CSV/Excel import.",
+      "status": "proposal_only_and_unsafe_without_invariants",
+      "evidence": [
+        "Call with Daisy Matos.docx:426-450 — Ian proposes editable/importable configuration for fringe rates.",
+        "Call with Mayra Morfin (1).docx:443-467 — CSV/Excel tables for chartfields and job codes are proposed.",
+        "Call with Daisy Matos.docx:454-468 — pay-period/check-date data is updated annually."
+      ],
+      "verification": "The interviews support the need for configurable tables, not overwrite semantics, schema validation, effective dating, rollback, or referential checks.",
+      "risk": "A bad import could silently alter historical calculations or invalidate account/job-code references.",
+      "recommendation": "Use versioned, effective-dated imports with schema/type/range/non-overlap/referential validation, dry-run diff, audit history, and rollback; never silently rewrite prior periods."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Actual HR FTE chart and complete salary formula/table.",
+    "Authoritative student fringe applicability and rates by job/worker category.",
+    "Exact pay-period start/end/check-date rows and Oracle cutoff timestamps/timezone.",
+    "FTE denominator, rounding precision, valid range, maximum hours, and job-code exceptions.",
+    "Salary proration rules for partial periods and appointments spanning pay/configuration years.",
+    "Distribution rounding/tolerance, duplicate-account rules, zero/negative bounds, and amount-vs-percent semantics.",
+    "Authoritative source and effective-date precedence among Box, FAST, worksheet, Oracle, and future tables.",
+    "No-response/no-valid-account terminal state and atomicity/read-back requirements.",
+    "Whether 35.5%, 42%, 90%, and 10% are illustrative examples or current policy values."
+  ],
+  "source_coverage": [
+    "Primary: /Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx — full 1128 lines read; numeric examples, distributions, fringe, pay periods, funding, and monitoring.",
+    "Primary: /Users/iankoratsky/.hermes/attachments/HR App (1).docx — full 1158 lines read; salary/FTE fields, student rate variation, Oracle/offer workflow.",
+    "Primary: /Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx — full 650 lines read; chartfield/job-code configuration and student intake distinctions.",
+    "Derived: /Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md — full 117 lines read; provisional finance formulas/configuration and open questions.",
+    "Derived: /Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md — full 153 lines read; provisional HR-to-Finance handoff and student unit-of-work context.",
+    "Derived: /Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md — full 128 lines read; provisional student intake/chartfield context.",
+    "Prior verification: .hermes/hr_pipeline_verification/wave1/finance_costing.json, finance_accounts.json, finance_monitoring.json, new_appointments.json, renewals.json reviewed for existing caveats and contradictions.",
+    "Evidence pack: .hermes/hr_pipeline_verification/evidence_pack.md:3-17, 19-33, 35-46 reviewed."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/calculation_invariants.json"
+}

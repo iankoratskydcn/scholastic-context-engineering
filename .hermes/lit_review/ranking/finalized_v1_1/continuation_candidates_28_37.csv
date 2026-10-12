@@ -1,0 +1,11 @@
+paper_id,citation,category,aggregate_rank,aggregate_mean_score,prior_identity_pass
+S21P09,"Walton (2016), “Some Artificial Intelligence Tools for Argument Evaluation: An Introduction”",21 Scholastic Method Ai Direct,28,61.96,False
+S04P03,"Pan et al. (2024), “LLMLingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression”","Context Engineering, Context Compression, Prompt Compression",29,61.56,True
+S02P02,"Yuan et al. (2024), “Whispers that Shake Foundations: Analyzing and Mitigating False Premise Hallucinations in Large Language Models”",hallucination in logical/deductive reasoning,30,61.24,True
+S04P02,"Jiang et al. (2023/ACL 2024), “LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression”","Context Engineering, Context Compression, Prompt Compression",31,61.08,True
+18_14,"Lawrence & Reed (2019), “Argument Mining: A Survey,” Computational Linguistics 45(4), 765–818.",Toulmin model and defeasible/informal logic in computational settings,32,61.04,True
+S02P03,"Varshney et al. (2025), “Investigating and Addressing Hallucinations of LLMs in Tasks Involving Negation”",hallucination in logical/deductive reasoning,33,60.8,True
+S02P04,"McKenna et al. (2023), “Sources of Hallucination by Large Language Models on Inference Tasks”",hallucination in logical/deductive reasoning,34,60.56,True
+S04P01,"Jiang, Wu, Lin, Yang, and Qiu (2023), “LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models”","Context Engineering, Context Compression, Prompt Compression",35,60.56,True
+S03P01,"Liu et al. (2024), “Lost in the Middle: How Language Models Use Long Contexts”","long-context degradation, lost in the middle, and context rot",36,60.12,False
+S04P04,"Xu, Shi, and Choi (2023/ICLR 2024), “RECOMP: Improving Retrieval-Augmented LMs with Compression and Selective Augmentation”","Context Engineering, Context Compression, Prompt Compression",37,60.08,True

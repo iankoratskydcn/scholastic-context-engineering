@@ -1,0 +1,98 @@
+[
+  {
+    "name": "LICENSE",
+    "path": "LICENSE",
+    "sha": "782f05cab7fbd9316e2a6f745e9ea122b6f7f38b",
+    "size": 1067,
+    "url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/LICENSE?ref=main",
+    "html_url": "https://github.com/MLGroupJLU/Premise_Critique/blob/main/LICENSE",
+    "git_url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/blobs/782f05cab7fbd9316e2a6f745e9ea122b6f7f38b",
+    "download_url": "https://raw.githubusercontent.com/MLGroupJLU/Premise_Critique/main/LICENSE",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/LICENSE?ref=main",
+      "git": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/blobs/782f05cab7fbd9316e2a6f745e9ea122b6f7f38b",
+      "html": "https://github.com/MLGroupJLU/Premise_Critique/blob/main/LICENSE"
+    }
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "2e731b2655fa0b1de7da751c2703ab85e469e808",
+    "size": 8132,
+    "url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/README.md?ref=main",
+    "html_url": "https://github.com/MLGroupJLU/Premise_Critique/blob/main/README.md",
+    "git_url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/blobs/2e731b2655fa0b1de7da751c2703ab85e469e808",
+    "download_url": "https://raw.githubusercontent.com/MLGroupJLU/Premise_Critique/main/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/README.md?ref=main",
+      "git": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/blobs/2e731b2655fa0b1de7da751c2703ab85e469e808",
+      "html": "https://github.com/MLGroupJLU/Premise_Critique/blob/main/README.md"
+    }
+  },
+  {
+    "name": "evaluation",
+    "path": "evaluation",
+    "sha": "975528f46e8d2c2032a170094a6438336cd6503b",
+    "size": 0,
+    "url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/evaluation?ref=main",
+    "html_url": "https://github.com/MLGroupJLU/Premise_Critique/tree/main/evaluation",
+    "git_url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/trees/975528f46e8d2c2032a170094a6438336cd6503b",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/evaluation?ref=main",
+      "git": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/trees/975528f46e8d2c2032a170094a6438336cd6503b",
+      "html": "https://github.com/MLGroupJLU/Premise_Critique/tree/main/evaluation"
+    }
+  },
+  {
+    "name": "models",
+    "path": "models",
+    "sha": "7bfb0c46768368ca1701a79d31162f9cf1f70e58",
+    "size": 0,
+    "url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/models?ref=main",
+    "html_url": "https://github.com/MLGroupJLU/Premise_Critique/tree/main/models",
+    "git_url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/trees/7bfb0c46768368ca1701a79d31162f9cf1f70e58",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/models?ref=main",
+      "git": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/trees/7bfb0c46768368ca1701a79d31162f9cf1f70e58",
+      "html": "https://github.com/MLGroupJLU/Premise_Critique/tree/main/models"
+    }
+  },
+  {
+    "name": "requirements.txt",
+    "path": "requirements.txt",
+    "sha": "e39fb1e2f836715f53646b9974aa08ea6ab36e2d",
+    "size": 158,
+    "url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/requirements.txt?ref=main",
+    "html_url": "https://github.com/MLGroupJLU/Premise_Critique/blob/main/requirements.txt",
+    "git_url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/blobs/e39fb1e2f836715f53646b9974aa08ea6ab36e2d",
+    "download_url": "https://raw.githubusercontent.com/MLGroupJLU/Premise_Critique/main/requirements.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/requirements.txt?ref=main",
+      "git": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/blobs/e39fb1e2f836715f53646b9974aa08ea6ab36e2d",
+      "html": "https://github.com/MLGroupJLU/Premise_Critique/blob/main/requirements.txt"
+    }
+  },
+  {
+    "name": "resources",
+    "path": "resources",
+    "sha": "66b8e0e9c04ac9fd4e95e00e2ad5d45df3ab465f",
+    "size": 0,
+    "url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/resources?ref=main",
+    "html_url": "https://github.com/MLGroupJLU/Premise_Critique/tree/main/resources",
+    "git_url": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/trees/66b8e0e9c04ac9fd4e95e00e2ad5d45df3ab465f",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/contents/resources?ref=main",
+      "git": "https://api.github.com/repos/MLGroupJLU/Premise_Critique/git/trees/66b8e0e9c04ac9fd4e95e00e2ad5d45df3ab465f",
+      "html": "https://github.com/MLGroupJLU/Premise_Critique/tree/main/resources"
+    }
+  }
+]

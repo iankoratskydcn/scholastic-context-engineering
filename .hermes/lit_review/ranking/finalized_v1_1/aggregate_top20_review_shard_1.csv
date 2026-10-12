@@ -1,0 +1,11 @@
+paper_id,citation,category,aggregate_rank,aggregate_mean_score,identity_pass,identity_raw,identity_notes
+S21P02,"Freedman et al. (2025), “Argumentative Large Language Models for Explainable and Contestable Claim Verification”",21 Scholastic Method Ai Direct,1,80.2,True,True,
+S21P05,"Alfano et al. (2026), “LLM-based Argument Mining meets Argumentation and Description Logics: a Unified Framework for Reasoning about Debates”",21 Scholastic Method Ai Direct,2,78.48,True,pass,
+18_06,"Gordon, Prakken & Walton (2007), “The Carneades Model of Argument and Burden of Proof,” Artificial Intelligence 171(10–15), 875–896.",Toulmin model and defeasible/informal logic in computational settings,3,73.04,True,pass,
+18_04,"Garcia & Simari (2004), “Defeasible Logic Programming: An Argumentative Approach,” Theory and Practice of Logic Programming 4(1–2), 95–138.",Toulmin model and defeasible/informal logic in computational settings,4,72.32,True,True,content match
+18_05,"Verheij (2003), “Dialectical Argumentation with Argumentation Schemes: An Approach to Legal Logic,” Artificial Intelligence and Law 11(1–2), 167–195.",Toulmin model and defeasible/informal logic in computational settings,5,71.56,True,True,
+S10P10,"Trajano et al. (2024), “Translating Natural Language Arguments to Computational Arguments Using LLMs.”",Walton argumentation schemes in NLP,6,70.84,True,pass,
+S23P01,"Uckelman (2013), “Medieval Disputationes de obligationibus as Formal Dialogue Systems”",23 Disputatio Dialectical Ai,7,70.64,True,pass,
+18_03,"Verheij (2003), “DefLog: On the Logical Interpretation of Prima Facie Justified Assumptions,” Journal of Logic and Computation 13(3), 319–346.",Toulmin model and defeasible/informal logic in computational settings,8,70.28,False,False,inaccessible
+S21P06,"Mitsuda, Higashinaka, and Saito (2022), “Combining Argumentation Structure and Language Model for Generating Natural Argumentative Dialogue”",21 Scholastic Method Ai Direct,9,70.08,True,True,
+S21P10,"Shi et al. (2026), “Tackling the Root of Misinformation by Teaching Laypeople about Logical Fallacies via Socratic Questioning and Critical Argumentation”",21 Scholastic Method Ai Direct,10,69.32,True,pass,

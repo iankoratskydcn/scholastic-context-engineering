@@ -1,0 +1,99 @@
+{
+  "input_rows": 80,
+  "output_rows": 80,
+  "reviewer_slug": "downstream_reasoning_eval",
+  "viewpoint": "downstream inspectable LLM reasoning evaluation",
+  "category_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/benchmark_review_downstream_reasoning_eval_category.csv",
+  "global_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/benchmark_review_downstream_reasoning_eval_global.csv",
+  "top_global": [
+    {
+      "rank": 1,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 90
+    },
+    {
+      "rank": 2,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 90
+    },
+    {
+      "rank": 3,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 89
+    },
+    {
+      "rank": 4,
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score": 87
+    },
+    {
+      "rank": 5,
+      "paper_id": "S08P04",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 84
+    },
+    {
+      "rank": 6,
+      "paper_id": "12-05",
+      "benchmark_name": "LogicNLI",
+      "score": 83
+    },
+    {
+      "rank": 7,
+      "paper_id": "S08P05",
+      "benchmark_name": "Isabelle proof-state/relevant-premise pairs",
+      "score": 82
+    },
+    {
+      "rank": 8,
+      "paper_id": "S07P08",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 81
+    },
+    {
+      "rank": 9,
+      "paper_id": "S25P13",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 80
+    },
+    {
+      "rank": 10,
+      "paper_id": "11-04",
+      "benchmark_name": "ElecDeb60To16 extension",
+      "score": 78
+    }
+  ],
+  "score_range": [
+    24,
+    90
+  ],
+  "qa": {
+    "missing_global_ranks": [],
+    "duplicate_paper_ids": 0,
+    "category_rows": {
+      "2": 3,
+      "3": 6,
+      "5": 3,
+      "6": 2,
+      "7": 2,
+      "8": 3,
+      "9": 1,
+      "10": 4,
+      "11": 6,
+      "12": 9,
+      "14": 1,
+      "15": 4,
+      "17": 13,
+      "18": 2,
+      "19": 8,
+      "22": 3,
+      "23": 3,
+      "24": 4,
+      "25": 3
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "reviewer_slug": "cross_tradition",
+  "viewpoint": "Cross-tradition and historical-logical coverage: Aristotelian, medieval, Islamic, Jewish, Nyaya, Mohist, comparative, and culturally situated reasoning; penalize generic logic that erases distinctions.",
+  "rows": 80,
+  "top10": [
+    {
+      "rank": 1,
+      "paper_id": "S25P12",
+      "benchmark_name": "MARS",
+      "score": 94
+    },
+    {
+      "rank": 2,
+      "paper_id": "S22P04",
+      "benchmark_name": "Index Thomisticus Treebank",
+      "score": 93
+    },
+    {
+      "rank": 3,
+      "paper_id": "S24P09",
+      "benchmark_name": "OpenITI-derived Classical Arabic corpus",
+      "score": 91
+    },
+    {
+      "rank": 4,
+      "paper_id": "S24P10",
+      "benchmark_name": "Quranic Arabic PropBank",
+      "score": 89
+    },
+    {
+      "rank": 5,
+      "paper_id": "S24P11",
+      "benchmark_name": "Quran–Hadith Classical Arabic dataset",
+      "score": 88
+    },
+    {
+      "rank": 6,
+      "paper_id": "S24P12",
+      "benchmark_name": "HAQA and QUQA",
+      "score": 86
+    },
+    {
+      "rank": 7,
+      "paper_id": "17_15",
+      "benchmark_name": "SANSKRITI",
+      "score": 85
+    },
+    {
+      "rank": 8,
+      "paper_id": "15-02",
+      "benchmark_name": "InterIDEAS",
+      "score": 84
+    },
+    {
+      "rank": 9,
+      "paper_id": "17_13",
+      "benchmark_name": "Arab-culture commonsense dataset",
+      "score": 84
+    },
+    {
+      "rank": 10,
+      "paper_id": "17_14",
+      "benchmark_name": "DRISHTIKON",
+      "score": 83
+    }
+  ],
+  "distinctions": {
+    "direct_historical_or_culturally_situated": [
+      "S25P12",
+      "S22P04",
+      "S24P09",
+      "S24P10",
+      "S24P11",
+      "S24P12",
+      "17_13",
+      "17_14",
+      "17_15",
+      "15-02",
+      "S22P02",
+      "S22P08"
+    ],
+    "comparative_cultural_controls": [
+      "17_03",
+      "17_04",
+      "17_07",
+      "17_08",
+      "17_09",
+      "17_10",
+      "17_11",
+      "17_12"
+    ],
+    "generic_argumentation_adaptable_but_flattening_risk": [
+      "S25P13",
+      "S09P08",
+      "S25P14",
+      "S10P07",
+      "S10P08",
+      "S10P09",
+      "S23P12"
+    ],
+    "generic_formal_logic_penalized": [
+      "S07P01",
+      "S07P08",
+      "S08P04",
+      "S08P05",
+      "S08P07",
+      "12-03",
+      "12-04",
+      "12-05",
+      "12-06",
+      "12-07",
+      "12-08",
+      "12-11",
+      "12-12",
+      "12-15"
+    ],
+    "no_direct_named_school_coverage": [
+      "Jewish",
+      "Nyaya",
+      "Mohist"
+    ]
+  },
+  "score_range": [
+    12,
+    94
+  ],
+  "category_counts": {
+    "2": 3,
+    "3": 6,
+    "5": 3,
+    "6": 2,
+    "7": 2,
+    "8": 3,
+    "9": 1,
+    "10": 4,
+    "11": 6,
+    "12": 9,
+    "14": 1,
+    "15": 4,
+    "17": 13,
+    "18": 2,
+    "19": 8,
+    "22": 3,
+    "23": 3,
+    "24": 4,
+    "25": 3
+  },
+  "status": "complete"
+}

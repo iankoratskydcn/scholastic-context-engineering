@@ -1,0 +1,1 @@
+URL: https://informallogic.ca/index.php/informal_logic/article/view/4335\nERROR: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1077)>\n

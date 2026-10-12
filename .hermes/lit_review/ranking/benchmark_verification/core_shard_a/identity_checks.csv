@@ -1,0 +1,5 @@
+paper_id,candidate,identity_status,identity_evidence,identity_verdict
+S09P08,QT-SCHEMES,pass,"raw/qt_schemes_acl.html.txt lines 3-4, 34-43; artifacts/QT-SCHEMES/README.md lines 1-20","Exact title/authors/ACL ID/DOI match; paper explicitly names QT-Schemes and 441 arguments/24 schemes."
+S23P12,741-topic argument-tree corpus,fail,"raw/741_acl.html.txt lines 3-4, 33-41","Citation mismatch: matrix names Peldszus & Stede, while authoritative ACL record P19-1456 names Durmus, Ladhak & Cardie. Correct corpus description is supported, candidate identity is not."
+S03P10,LongPiBench,pass,"raw/longpibench_arxiv.html lines 20-41, 119-120; artifacts/LongPiBench_thunlp/README.md lines 1-19","Exact title and LongPiBench name match arXiv record; official repository README describes same benchmark and links data release."
+S02P07,PCBench,pass,"raw/pcbench_arxiv.html lines 20-41, 119-120; artifacts/Premise_Critique/README.md lines 1-19, 39-62; raw/pcbench_hf_api.json","Exact title/authors and PCBench name match arXiv/official project/dataset metadata."

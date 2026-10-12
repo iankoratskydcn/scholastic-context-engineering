@@ -1,0 +1,153 @@
+{
+  "perspective": "Adversarial verification of audit trail, immutable history, auditor evidence, notes, dates/initials, attachments, and source-of-truth claims across all interview transcripts and derived artifacts.",
+  "verdict": "blocked",
+  "findings": [
+    {
+      "id": "A1",
+      "claim": "The current spreadsheet can overwrite a prior appointment request and lose the original request, creating a material audit-trail gap.",
+      "status": "confirmed_defect",
+      "evidence": [
+        "HR App (1).docx:697-701",
+        "student_hiring_pipeline.md:56-60"
+      ],
+      "risk": "The system cannot reconstruct what was requested, when it changed, or which values were replaced.",
+      "recommendation": "Store each request/change as an append-only versioned record linked to the assignment; retain prior values, actor, timestamp, reason, and resulting state."
+    },
+    {
+      "id": "A2",
+      "claim": "A centralized history of requests, changes, and termination instructions is required to produce evidence for auditors.",
+      "status": "confirmed_requirement",
+      "evidence": [
+        "HR App (1).docx:1045-1058",
+        "HR App (1).docx:1087-1096",
+        "Call with Mayra Morfin (1).docx:188-196"
+      ],
+      "risk": "The interviews establish the need for history but do not define retention, export, legal hold, correction, or deletion rules.",
+      "recommendation": "Define an auditor-readable event/history contract before implementation, including retention, export, and correction/supersession semantics."
+    },
+    {
+      "id": "A3",
+      "claim": "Notes and action tracking are needed per appointment/change, beyond a single mutable note field.",
+      "status": "confirmed_requirement_with_proposal_only",
+      "evidence": [
+        "HR App (1).docx:752-774",
+        "HR App (1).docx:1024-1039",
+        "student_hiring_pipeline.md:48-54"
+      ],
+      "risk": "The current column G and action notes are mutable; the proposed separate notes/action log was not implemented or specified as immutable.",
+      "recommendation": "Separate immutable action events from editable current annotations; preserve author, timestamp, category, and links to the affected request/version."
+    },
+    {
+      "id": "A4",
+      "claim": "Dates and initials are already used for some workflow evidence, but not proven for every state transition.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "HR App (1).docx:78-80",
+        "Call with Daisy Matos.docx:1042-1049",
+        "daisy_finance_stage.md:26-31, 74-80"
+      ],
+      "risk": "Laura records screening initiation/date and Daisy records completion date/initials, but the corpus does not prove actor/timestamp capture for requests, approvals, edits, reminders, attachments, or reversals across the full pipeline.",
+      "recommendation": "Require server-recorded actor, timestamp, action type, prior/new values, and source context for every auditable mutation; do not rely on spreadsheet colors or user-entered initials alone."
+    },
+    {
+      "id": "A5",
+      "claim": "Offer letters are evidence-bearing attachments: Laura downloads signed DocuSign files, Oracle entries include the offer letter, and Finance needs access to the offer letter data.",
+      "status": "confirmed_with_control_gaps",
+      "evidence": [
+        "HR App (1).docx:228-235",
+        "HR App (1).docx:585-587",
+        "Call with Daisy Matos.docx:551-560"
+      ],
+      "risk": "No authoritative attachment store, version identity, upload/download audit, integrity check, access policy, retention period, or supersession link is defined.",
+      "recommendation": "Treat attachments as immutable evidence objects with stable IDs, content hash, source/provider metadata, version/supersession links, access audit, and role-scoped visibility."
+    },
+    {
+      "id": "A6",
+      "claim": "Change overwrites must be restricted, but the exact authorization and approval model is unresolved.",
+      "status": "partially_confirmed_and_ambiguous",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:214-226",
+        "HR App (1).docx:836-901",
+        "mayra_student_hiring_flow.md:18-21, 57-60"
+      ],
+      "risk": "Mayra requests restricted overwrite access; Ian proposes gated changes, while Laura explicitly says there is not really an approval for ordinary student hiring. Treating every change as approved, or allowing unrestricted edits, would both misrepresent the evidence.",
+      "recommendation": "Model request, authorization, execution, and downstream acknowledgement as distinct events; obtain owner policy for which changes require approval and who may execute them."
+    },
+    {
+      "id": "A7",
+      "claim": "The corpus does not establish one source of truth for appointment state, finance data, change history, or audit evidence.",
+      "status": "blocked_by_ambiguity",
+      "evidence": [
+        "HR App (1).docx:120-130",
+        "HR App (1).docx:697-701",
+        "Call with Daisy Matos.docx:214-257",
+        "Call with Daisy Matos.docx:516-536",
+        "daisy_finance_stage.md:6-14, 23-31"
+      ],
+      "risk": "The workflow spans the shared appointment worksheet, Oracle, Box spreadsheets, FAST, email/Teams, and possibly a future app. A future app cannot be called authoritative without field-level ownership and reconciliation rules.",
+      "recommendation": "Create a source-of-truth matrix per field and artifact: owner, write path, read mirrors, revision, reconciliation, and failure behavior. Preserve Oracle/Box/FAST authority claims only where explicitly verified."
+    },
+    {
+      "id": "A8",
+      "claim": "The derived artifacts correctly identify the overwrite/audit problem but overstate normalized history, status, and evidence semantics as if they were implemented controls.",
+      "status": "derived_artifacts_are_provisional",
+      "evidence": [
+        "student_hiring_pipeline.md:48-63, 71-124",
+        "mayra_student_hiring_flow.md:33-35, 57-80",
+        "daisy_finance_stage.md:26-31, 56-107",
+        "evidence_pack.md:15-17"
+      ],
+      "risk": "The Markdown graphs define status fields and transitions but do not prove append-only history, immutable attachments, complete evidence capture, or source authority.",
+      "recommendation": "Keep transcript evidence primary; label all normalized status/history/attachment behavior as provisional until backed by an implemented contract and end-to-end tests."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Append-only versus editable history, including whether administrators can delete or amend events.",
+    "Immutable event schema: actor identity, trusted timestamp, prior/new values, reason, assignment/version ID, and correlation/request ID.",
+    "Retention, export, legal-hold, redaction, and auditor access requirements.",
+    "Exact change-request routing, authorization, approval, rejection, cancellation, and supersession semantics.",
+    "Attachment source of truth, immutable versioning, hashes/integrity, access logging, retention, and visibility across HR and Finance.",
+    "Field-level source-of-truth ownership across worksheet, Oracle, Box, FAST, email/Teams, and any future app.",
+    "Whether dates and initials are user-entered display markers or backed by trusted system audit events.",
+    "Whether notes are annotations that may be edited or evidence records that must remain immutable.",
+    "How to reconcile an audit record when Oracle, the worksheet, or Finance files disagree."
+  ],
+  "source_coverage": [
+    {
+      "source": "HR App (1).docx",
+      "role": "primary Laura interview",
+      "coverage": "Overwrite/audit defect, lost Teams evidence, centralized request history, notes/actions, screening date, signed-document handling, Oracle attachment, and proposed permissions; lines 78-80, 228-235, 585-587, 697-701, 752-774, 836-901, 1024-1058, 1087-1096."
+    },
+    {
+      "source": "Call with Mayra Morfin (1).docx",
+      "role": "primary Mayra interview",
+      "coverage": "Need for change history/notes, restricted editing, and current email-driven intake; lines 188-196, 214-226, 421-441."
+    },
+    {
+      "source": "Call with Daisy Matos.docx",
+      "role": "primary Daisy interview",
+      "coverage": "Date/initial marking, finance attachments, sensitive Box reconciliation data, and multi-system authority ambiguity; lines 551-560, 516-536, 1042-1049, 214-257."
+    },
+    {
+      "source": "student_hiring_pipeline.md",
+      "role": "provisional derived artifact",
+      "coverage": "Current status columns, notes, overwrite gap, attachments, and normalized graph; lines 48-63, 71-124."
+    },
+    {
+      "source": "mayra_student_hiring_flow.md",
+      "role": "provisional derived artifact",
+      "coverage": "Restricted overwrite claim, change loop, and confirmation record; lines 18-21, 57-80."
+    },
+    {
+      "source": "daisy_finance_stage.md",
+      "role": "provisional derived artifact",
+      "coverage": "Finance date/initials, worksheet status, Box/FAST context, and open source/retention questions; lines 6-14, 23-31, 56-107."
+    },
+    {
+      "source": "evidence_pack.md",
+      "role": "verification boundary",
+      "coverage": "Primary-versus-derived evidence rule and required distinctions; lines 3-17, 27-33."
+    }
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/audit_history.json"
+}

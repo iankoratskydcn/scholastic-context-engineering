@@ -1,0 +1,108 @@
+{
+  "perspective": "Adversarial MVP-boundary verification against all three interview transcripts and derived pipeline artifacts; separates current appointment workflow from proposed expansion.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "S1",
+      "claim": "Appointments are the defensible MVP center of gravity.",
+      "status": "evidenced_need",
+      "evidence": [
+        "HR App (1).docx:46-50, 68-136, 523-548",
+        "Call with Mayra Morfin (1).docx:12-86, 188-221",
+        "Call with Daisy Matos.docx:1022-1049",
+        "student_hiring_pipeline.md:17-31"
+      ],
+      "risk": "Do not expand the MVP into every HR/finance process merely because the appointment record is shared.",
+      "recommendation": "Keep the MVP to appointment intake/renewal confirmation, handoff, status/work queue, notes/history, change requests, and the minimum finance verification needed to process appointments."
+    },
+    {
+      "id": "S2",
+      "claim": "A current active-appointments view is an evidenced MVP need, not optional reporting polish.",
+      "status": "evidenced_need",
+      "evidence": [
+        "Call with Daisy Matos.docx:892-931, 1022-1049",
+        "daisy_finance_stage.md:28-31, 77-80",
+        "Call with Mayra Morfin (1).docx:503-539"
+      ],
+      "risk": "Active/ended semantics and source-of-truth rules remain underspecified; a dashboard without lifecycle rules could misstate payroll activity.",
+      "recommendation": "Include a read-oriented active-appointment summary with explicit active, stale/needs-confirmation, and ended/terminated states; preserve the upstream confirmation loop rather than inventing automatic termination."
+    },
+    {
+      "id": "S3",
+      "claim": "Tenure/promotion tracking is a later expansion, not an MVP requirement.",
+      "status": "proposed_future",
+      "evidence": [
+        "Call with Daisy Matos.docx:544-681, 840-862",
+        "Call with Daisy Matos.docx:1060-1098"
+      ],
+      "risk": "The need for occasional provost reports is real, but the interviews do not establish a current appointment-processing dependency, owner workflow, permissions, or authoritative data source.",
+      "recommendation": "Exclude committee/process management and tenure/promotion workflows from MVP. At most, reserve a future extension point for read-only employment-history fields after ownership and source authority are defined."
+    },
+    {
+      "id": "S4",
+      "claim": "Grant/chartfield work is split: appointment-linked account verification is current; full grant management is future expansion.",
+      "status": "evidenced_need_with_future_boundary",
+      "evidence": [
+        "Call with Daisy Matos.docx:214-311, 364-450, 1022-1049",
+        "Call with Mayra Morfin (1).docx:444-462, 595-606",
+        "daisy_finance_stage.md:17-28, 67-80"
+      ],
+      "risk": "Treating active grants, startups, projections, expenses, and grant lifecycle management as MVP would turn a required appointment costing check into a separate finance product.",
+      "recommendation": "MVP may capture/verify chartfields, detect missing or unfunded accounts, support corrected funding, and pass costing inputs downstream. Defer grant inventory, grant budgets, reconciliation, projections, expenses, and grant creation/management."
+    },
+    {
+      "id": "S5",
+      "claim": "Data warehouse/reporting is future architecture; targeted appointment queries and exports are the only evidenced near-term reporting need.",
+      "status": "proposed_future",
+      "evidence": [
+        "Call with Daisy Matos.docx:727-810, 840-862",
+        "Call with Daisy Matos.docx:1060-1098",
+        "Call with Mayra Morfin (1).docx:531-542"
+      ],
+      "risk": "A warehouse would add integration, governance, and authority decisions not established by the interviews; current FAST/Oracle/Box sources are not reconciled into one authoritative model.",
+      "recommendation": "Defer a data warehouse and broad BI/reporting layer. Support only MVP list views, filters, active-appointment summaries, and CSV/Excel export over appointment data, with source limitations stated."
+    },
+    {
+      "id": "S6",
+      "claim": "Faculty forms are not the current intake workflow; they are a future-state proposal and the mid-semester form path is not evidenced as current.",
+      "status": "proposed_future",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:12-35, 422-442",
+        "HR App (1).docx:1100-1117",
+        "mayra_student_hiring_flow.md:48-50, 61, 87-89",
+        "student_hiring_pipeline.md:56-64"
+      ],
+      "risk": "Building faculty self-service forms as the MVP would contradict the explicit current practice: Mayra still emails faculty and is concerned they will not complete a form.",
+      "recommendation": "MVP should let Mayra record and manage email-originated requests. Treat prefilled faculty forms, Qualtrics links, and enforced form-only intake as later experiments requiring adoption and ownership proof."
+    },
+    {
+      "id": "S7",
+      "claim": "Automation is an evidenced need only where it removes repeated current steps; broad workflow automation is expansion and possible scope creep.",
+      "status": "evidenced_need_with_scope_boundary",
+      "evidence": [
+        "HR App (1).docx:611-673, 744-760, 931-1002",
+        "Call with Mayra Morfin (1).docx:95-124, 248-267, 372-388",
+        "Call with Daisy Matos.docx:38-59"
+      ],
+      "risk": "Automated emails, screening submission, offer-letter generation, Banner/FAST/Oracle integration, scheduled journeys, and automatic approvals introduce external-system, permissions, failure, and policy dependencies.",
+      "recommendation": "MVP automation should be bounded to templates/drafts, reminders with human confirmation, prefill/calculations, and status tracking. Defer unattended sends, auto-renewal, automatic approvals, end-to-end external submissions, and autonomous lifecycle decisions."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative appointment lifecycle and active/ended definition across Oracle, worksheet, and finance summary.",
+    "Whether chartfield verification and costing are in the MVP write path or only a read/handoff surface.",
+    "Exact permissions and approval semantics for appointment changes and termination requests.",
+    "Canonical source and integration authority for Banner, Oracle, FAST, Box, Dataverse, and any warehouse.",
+    "Reminder cadence, escalation, and human approval requirements for automated email actions.",
+    "Adoption decision and owner for any future faculty self-service form.",
+    "Whether targeted exports must satisfy audit/reporting requirements beyond the appointment workflow."
+  ],
+  "source_coverage": [
+    "Primary transcript: HR App (1).docx, especially lines 46-50, 68-136, 523-548, 611-708, 744-760, 931-1117.",
+    "Primary transcript: Call with Mayra Morfin (1).docx, especially lines 12-86, 95-124, 188-221, 248-267, 422-462, 503-606.",
+    "Primary transcript: Call with Daisy Matos.docx, especially lines 214-311, 364-450, 544-681, 727-862, 892-1049, 1060-1098.",
+    "Derived artifacts reviewed: student_hiring_pipeline.md, mayra_student_hiring_flow.md, daisy_finance_stage.md; transcript evidence controls classification where they conflict.",
+    "Wave-1 cross-check reviewed: wave1/mayra_intake.json, including its contradiction on the mid-semester form link."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave3/mvp_scope.json"
+}

@@ -1,0 +1,53 @@
+HTTP/2 307 
+content-type: text/plain; charset=utf-8
+content-length: 255
+date: Mon, 12 Oct 2026 07:07:27 GMT
+location: /api/resolve-cache/datasets/ALIENS232/PCBench/ee88f23b306d69a61ed30b92c66d11ed9061183d/dataset.jsonl?%2Fdatasets%2FALIENS232%2FPCBench%2Fresolve%2Fmain%2Fdataset.jsonl=&etag=%2237fad4f80357ac44132d1848ef4ed7344de1a2f0%22
+x-powered-by: huggingface-moon
+x-request-id: Root=1-6acc872f-469c7b0b3dba242820286c29
+ratelimit: "resolvers";r=2997;t=169
+ratelimit-policy: "fixed window";"resolvers";q=3000;w=300
+cross-origin-opener-policy: same-origin
+referrer-policy: strict-origin-when-cross-origin
+access-control-max-age: 86400
+access-control-allow-origin: https://huggingface.co
+vary: Origin, Accept
+access-control-expose-headers: X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash
+x-repo-commit: ee88f23b306d69a61ed30b92c66d11ed9061183d
+accept-ranges: bytes
+x-hf-warning: unauthenticated; Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+x-linked-etag: "37fad4f80357ac44132d1848ef4ed7344de1a2f0"
+x-cache: Miss from cloudfront
+via: 1.1 9300b60c5107b2aad2c2e39c499e23be.cloudfront.net (CloudFront)
+x-amz-cf-pop: MIA50-P2
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: SKyU93wguaa2DfNsW9mu2V3mqInecwfCeUk4UzVLJ_0268EvlUhwSg==
+strict-transport-security: max-age=31536000
+
+HTTP/2 200 
+content-type: text/plain; charset=utf-8
+content-length: 4719320
+date: Fri, 09 Oct 2026 22:44:45 GMT
+etag: "37fad4f80357ac44132d1848ef4ed7344de1a2f0"
+x-powered-by: huggingface-moon
+x-request-id: Root=1-6ac96e5d-48edafe84eee0a6416c67a7f
+ratelimit: "resolvers";r=2875;t=152
+ratelimit-policy: "fixed window";"resolvers";q=3000;w=300
+cross-origin-opener-policy: same-origin
+referrer-policy: strict-origin-when-cross-origin
+access-control-max-age: 86400
+access-control-allow-origin: https://huggingface.co
+access-control-expose-headers: X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash
+x-repo-commit: ee88f23b306d69a61ed30b92c66d11ed9061183d
+accept-ranges: bytes
+content-disposition: inline; filename*=UTF-8''dataset.jsonl; filename="dataset.jsonl";
+content-security-policy: default-src 'none'; sandbox
+vary: Origin
+x-cache: Hit from cloudfront
+via: 1.1 9300b60c5107b2aad2c2e39c499e23be.cloudfront.net (CloudFront)
+x-amz-cf-pop: MIA50-P2
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: l3BNMEO-fW3TCPVRXJn7QmjQmeQq7ox4apPp95wvwrinzZn30tEPXg==
+age: 202962
+strict-transport-security: max-age=31536000
+

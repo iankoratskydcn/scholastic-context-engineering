@@ -1,0 +1,110 @@
+{
+  "reviewer_slug": "ablation_intervention",
+  "viewpoint": "ablation and intervention design usefulness for context transformation and downstream outcomes",
+  "input": "benchmark_studies.csv",
+  "rows": 80,
+  "category_count": 19,
+  "top_global": [
+    {
+      "rank": 1,
+      "paper_id": "S03P10",
+      "benchmark_name": "LongPiBench",
+      "score": 98
+    },
+    {
+      "rank": 2,
+      "paper_id": "S03P09",
+      "benchmark_name": "NoLiMa",
+      "score": 96
+    },
+    {
+      "rank": 3,
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score": 96
+    },
+    {
+      "rank": 4,
+      "paper_id": "S03P08",
+      "benchmark_name": "RULER",
+      "score": 95
+    },
+    {
+      "rank": 5,
+      "paper_id": "S05P05",
+      "benchmark_name": "ALCE",
+      "score": 94
+    },
+    {
+      "rank": 6,
+      "paper_id": "S07P08",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 94
+    },
+    {
+      "rank": 7,
+      "paper_id": "S08P04",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 94
+    },
+    {
+      "rank": 8,
+      "paper_id": "S05P09",
+      "benchmark_name": "MultiHop-RAG",
+      "score": 93
+    },
+    {
+      "rank": 9,
+      "paper_id": "S08P05",
+      "benchmark_name": "Isabelle proof-state/relevant-premise pairs",
+      "score": 93
+    },
+    {
+      "rank": 10,
+      "paper_id": "S03P05",
+      "benchmark_name": "LongBench",
+      "score": 90
+    },
+    {
+      "rank": 11,
+      "paper_id": "S03P06",
+      "benchmark_name": "∞Bench",
+      "score": 89
+    },
+    {
+      "rank": 12,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 89
+    },
+    {
+      "rank": 13,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 89
+    },
+    {
+      "rank": 14,
+      "paper_id": "11-08",
+      "benchmark_name": "MISSCI PLUS",
+      "score": 88
+    },
+    {
+      "rank": 15,
+      "paper_id": "S05P08",
+      "benchmark_name": "RAGTruth",
+      "score": 85
+    }
+  ],
+  "distinctions": [
+    "raw versus classified/skeletonized/compressed context",
+    "distractor removal versus proof-relevant selection",
+    "provenance retention versus downstream task outcome",
+    "direct intervention benchmark versus adjacent diagnostic"
+  ],
+  "files": [
+    "benchmark_review_ablation_intervention_category.csv",
+    "benchmark_review_ablation_intervention_global.csv",
+    "benchmark_review_ablation_intervention_notes.md"
+  ]
+}

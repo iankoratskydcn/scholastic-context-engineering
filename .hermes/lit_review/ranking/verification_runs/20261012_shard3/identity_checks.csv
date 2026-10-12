@@ -1,0 +1,23 @@
+paper_id,title_match,authors_match,year_match,venue_match,identifier_match,overall,evidence_file,extracted_title,extracted_authors,extracted_year,extracted_venue,token_hits
+18_06,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/18_06.html,,,,,4
+S23P01,pass,not machine-resolved,pass,not machine-resolved,pass,pass,evidence/S23P01.html,Medieval Disputationes de obligationibus as Formal Dialogue Systems,,2013/05,,7
+18_09,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/18_09.html,,,,,11
+S10P05,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S10P05.html,,,,,8
+18_13,pass,pass,pass,pass,pass,pass,evidence/18_13.json,Argumentation schemes in AI and Law,Atkinson; Bench-Capon,2021,Argument &amp; Computation,6
+S10P02,pass,pass,pass,pass,pass,pass,evidence/S10P02.json,A classification system for argumentation schemes,Walton; Macagno,2015,Argument &amp; Computation,4
+S02P09,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S02P09.html,,,,,13
+S04P02,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S04P02.html,,,,,10
+S04P01,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S04P01.html,,,,,7
+S09P04,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S09P04.html,,,,,5
+S02P08,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S02P08.html,Investigating the Robustness of Deductive Reasoning with Large Language Models,,,,5
+S22P14,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S22P14.html,,,,,9
+S22P07,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S22P07.html,The Index Thomisticus Treebank as Linked Data in the LiLa Knowledge Base,,,,12
+S22P09,fail,not machine-resolved,not machine-resolved,not machine-resolved,not_applicable,fail,evidence/S22P09.html,,,,,1
+16_02,blocked,blocked,blocked,blocked,blocked,blocked,,,,,,
+16_01,blocked,blocked,blocked,blocked,blocked,blocked,,,,,,
+S22P12,pass,not machine-resolved,not machine-resolved,not machine-resolved,not_applicable,pass,evidence/S22P12.html,,,,,4
+20_11,fail,not machine-resolved,not machine-resolved,not machine-resolved,not_applicable,pass,evidence/20_11.html,,,,,0
+S22P15,pass,not machine-resolved,not machine-resolved,not machine-resolved,not_applicable,pass,evidence/S22P15.html,,,,,7
+S21P01,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/S21P01.html,Scholastic: Graphical Human-Al Collaboration for Inductive and Interpretive Text Analysis,,,,8
+20_09,pass,not machine-resolved,not machine-resolved,not machine-resolved,pass,pass,evidence/20_09.html,Creating a Large Language Model of a Philosopher,,,,2
+20_13,pass,not machine-resolved,pass,not machine-resolved,pass,pass,evidence/20_13.html,Should I Use ChatGPT to Write My Papers?,,2024/12,,8

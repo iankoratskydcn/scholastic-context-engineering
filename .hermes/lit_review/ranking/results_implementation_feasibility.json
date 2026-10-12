@@ -1,0 +1,101 @@
+{
+  "reviewer_slug": "implementation_feasibility",
+  "viewpoint": "benchmark implementation and access feasibility",
+  "source": "benchmark_studies.csv",
+  "protocol": "benchmark_ranking_protocol.md v1.0",
+  "rows": 80,
+  "scoring": "0-100 solo feasibility: artifact/access certainty, license clarity, machine-readable format, tooling, compute, annotation burden, reproducible metrics, controlled-experiment ease. Scientific relevance is not scored.",
+  "access_rule": "Paper availability does not imply benchmark artifact availability. Missing explicit artifact/license evidence is penalized and reported as unverified.",
+  "category_count": 19,
+  "score_min": 55,
+  "score_max": 95,
+  "top10": [
+    {
+      "global_rank": 1,
+      "paper_id": "12-03",
+      "benchmark_name": "RuleTaker",
+      "score_0_100": 95
+    },
+    {
+      "global_rank": 2,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 94
+    },
+    {
+      "global_rank": 3,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 94
+    },
+    {
+      "global_rank": 4,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score_0_100": 92
+    },
+    {
+      "global_rank": 5,
+      "paper_id": "17_01",
+      "benchmark_name": "LogiQA",
+      "score_0_100": 91
+    },
+    {
+      "global_rank": 6,
+      "paper_id": "12-11",
+      "benchmark_name": "SylloBase",
+      "score_0_100": 90
+    },
+    {
+      "global_rank": 7,
+      "paper_id": "S02P05",
+      "benchmark_name": "FalseQA",
+      "score_0_100": 89
+    },
+    {
+      "global_rank": 8,
+      "paper_id": "S05P08",
+      "benchmark_name": "RAGTruth",
+      "score_0_100": 88
+    },
+    {
+      "global_rank": 9,
+      "paper_id": "S05P05",
+      "benchmark_name": "ALCE",
+      "score_0_100": 87
+    },
+    {
+      "global_rank": 10,
+      "paper_id": "S05P09",
+      "benchmark_name": "MultiHop-RAG",
+      "score_0_100": 87
+    }
+  ],
+  "counts_by_category": {
+    "2": 3,
+    "3": 6,
+    "5": 3,
+    "6": 2,
+    "7": 2,
+    "8": 3,
+    "9": 1,
+    "10": 4,
+    "11": 6,
+    "12": 9,
+    "14": 1,
+    "15": 4,
+    "17": 13,
+    "18": 2,
+    "19": 8,
+    "22": 3,
+    "23": 3,
+    "24": 4,
+    "25": 3
+  },
+  "validation": {
+    "all_source_rows_covered": true,
+    "global_ranks": true,
+    "category_ranks_contiguous": true,
+    "duplicate_paper_ids": false
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "perspective": "Adversarial cross-source verification of Mayra, Laura, Daisy, and derived Markdown; primary transcripts outrank summaries and proposals.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "C1",
+      "claim": "Mid-semester OPS intake is an existing form-link workflow.",
+      "status": "direct_contradiction__derived_artifact_overstates_proposal",
+      "classification": "current_vs_proposed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:421-441: Mayra asks whether a form could exist; Ian proposes a template/Qualtrics link and says it would be a normal new appointment.",
+        "HR App (1).docx:1102-1117: Laura says faculty email remains current; form is future state because Mayra doubts faculty will use it.",
+        "mayra_student_hiring_flow.md:49-53: labels 'Mayra sends a form link' confirmed current behavior."
+      ],
+      "risk": "Treating an unapproved proposal as a live entry point would create false implementation and ownership assumptions.",
+      "recommendation": "Classify current entry as email-based; retain OPS form as proposed/unverified and separately verify fields, routing, approval, and downstream gates."
+    },
+    {
+      "id": "C2",
+      "claim": "Mayra-to-Laura-to-Daisy is the established mandatory ordering.",
+      "status": "partially_confirmed__authority_gap_not_full_contradiction",
+      "classification": "ordering_and_handoff",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:44-52: Mayra starts the spreadsheet for Laura and Daisy's team; she does not state order.",
+        "HR App (1).docx:120-130: Laura says HR verification precedes Daisy costing.",
+        "Call with Daisy Matos.docx:1027-1049: Daisy says Mayra generally enters grad-student chartfields, Finance verifies/changes them, then marks the row after entry.",
+        "mayra_student_hiring_flow.md:25-26,90: explicitly calls Laura-before-Daisy order an assumption; student_hiring_pipeline.md:17-31 presents it as the main path."
+      ],
+      "risk": "Exceptions, direct faculty/staff actions, changes, and Finance remediation may not follow the normal path.",
+      "recommendation": "Model the sequence as normal-path behavior, not universal authority; define exception edges and the authoritative handoff condition."
+    },
+    {
+      "id": "C3",
+      "claim": "Mayra owns chartfield entry versus Finance owning chartfield entry.",
+      "status": "apparent_conflict__shared_responsibility_unresolved",
+      "classification": "ownership_overlap",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:443-462: Mayra enters chartfields to get records started; Daisy's team performs further chartfield work and sees distributions.",
+        "Call with Daisy Matos.docx:1027-1037: Mayra usually puts the chartfield in for graduate students; Finance checks it with faculty/PI and changes it if needed.",
+        "daisy_finance_stage.md:17-26: Finance receives chartfield/salary, verifies funding, updates the worksheet, and costs in Oracle.",
+        "HR App (1).docx:68-78: Laura describes chartfield information as part of the downstream worksheet/Finance fields, without assigning entry ownership."
+      ],
+      "risk": "A system could permit conflicting writers or fail to distinguish proposed/default chartfield from Finance-verified chartfield.",
+      "recommendation": "Separate fields/states: Mayra proposed or collected chartfield; Finance verified/approved-for-costing chartfield; Finance remediation/change authority."
+    },
+    {
+      "id": "C4",
+      "claim": "Finance and HR share the same sensitive reconciliation data, or the app should expose everything to everyone.",
+      "status": "direct_authority_conflict__current_access_vs_design_proposal",
+      "classification": "visibility_and_authority",
+      "evidence": [
+        "Call with Daisy Matos.docx:516-524: Finance reconciliation is sensitive; Finance has access while Mayra and Laura do not.",
+        "Call with Mayra Morfin (1).docx:214-229,339-352: Mayra supports restricted editing and viewing Laura's status without Oracle edit access.",
+        "Call with Daisy Matos.docx:529-539: Ian proposes everybody can see everything while only some can edit; this is a design proposal, not current policy.",
+        "daisy_finance_stage.md:11-13: records current Finance-only access as context."
+      ],
+      "risk": "Implementing global visibility would violate the only explicit sensitivity/access evidence.",
+      "recommendation": "Treat Daisy's current access boundary as the minimum security constraint; define field-level visibility and edit authority before implementation."
+    },
+    {
+      "id": "C5",
+      "claim": "An approval gate exists for student appointments and changes.",
+      "status": "authority_conflict__approval_semantics_unproven",
+      "classification": "approval_and_governance",
+      "evidence": [
+        "HR App (1).docx:120-123,561-587: Oracle entries go to an HR approval queue; Laura verifies after approval/persistence checks.",
+        "HR App (1).docx:1062-1081: Laura says student hiring numbers are approved upstream with Dr. Sarkar, but 'there's not really an approval as such' for the operational request.",
+        "HR App (1).docx:887-901: Ian proposes gated change approval/permissions; Laura agrees only as future/advanced behavior.",
+        "student_hiring_pipeline.md:24-30,91: derived artifact formalizes hiring-authority signature and HR approval queue as pipeline gates."
+      ],
+      "risk": "The summary conflates upstream headcount authorization, offer-letter signature, Oracle approval, and app-level change approval.",
+      "recommendation": "Keep four concepts distinct: budget/headcount authorization, hiring-authority signature, Oracle HR queue approval, and app change approval. Mark app-level approval as unconfirmed."
+    },
+    {
+      "id": "C6",
+      "claim": "Faculty/staff are outside the system scope because this is a student-hiring pipeline.",
+      "status": "scope_conflict__context_vs_stated_expansion",
+      "classification": "scope_and_population",
+      "evidence": [
+        "HR App (1).docx:46-50: faculty/staff actions such as bonuses can go directly to Laura and bypass Mayra; student appointments are the majority.",
+        "Call with Daisy Matos.docx:814-824: Daisy supports faculty and staff while Mayra supports graduate students.",
+        "Call with Daisy Matos.docx:869-875: Ian states current focus includes faculty, staff, and student assistants.",
+        "student_hiring_pipeline.md:46: labels faculty/staff as a bypass and 'not a student path'; daisy_finance_stage.md:11 limits worked examples to faculty/staff and warns they do not prove student rules."
+      ],
+      "risk": "A student-only model may omit real faculty/staff paths; a unified model may incorrectly apply student gates and Finance formulas to faculty/staff.",
+      "recommendation": "Declare population per workflow: student appointments, faculty/staff direct HR actions, and Finance faculty/staff costing. Do not generalize rules across populations without evidence."
+    },
+    {
+      "id": "C7",
+      "claim": "Finance completion status after Oracle costing is known and can be modeled as paid/page.",
+      "status": "unresolved_conflict__transcription_and_derived_summary",
+      "classification": "status_semantics",
+      "evidence": [
+        "Call with Daisy Matos.docx:1035-1049: Daisy says the row is green during work, then changes it to a term transcribed as 'page', with date and initials.",
+        "daisy_finance_stage.md:26-27,101-103: records status as unclear ('page', probably 'paid').",
+        "finance_costing.json:87-95: explicitly leaves post-entry status unresolved."
+      ],
+      "risk": "A guessed terminal status can misrepresent completion, payment, or merely page/entry state.",
+      "recommendation": "Do not normalize the status; obtain the worksheet value or replay the recording and define whether it means Oracle entered, paid, page-reviewed, or another state."
+    },
+    {
+      "id": "C8",
+      "claim": "Finance's faculty examples establish graduate-student costing rules.",
+      "status": "not_a_direct_contradiction__unsupported_generalization",
+      "classification": "population_transfer",
+      "evidence": [
+        "Call with Daisy Matos.docx:83-189,412-426: worked examples are faculty stipends/distributions and faculty/administrative fringe rates.",
+        "Call with Daisy Matos.docx:983-1015: FTE examples are HR-chart examples; no student-specific costing policy is established.",
+        "daisy_finance_stage.md:8-12,101-106 and finance_costing.json:73-84: explicitly warn that faculty/staff examples do not prove graduate-student rules."
+      ],
+      "risk": "Applying fringe, split distributions, or FTE assumptions globally could miscost graduate appointments.",
+      "recommendation": "Keep examples population-labeled; require authoritative student-specific salary, FTE, fringe, distribution, and deadline rules."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative current-vs-future status, fields, routing, and approval for the mid-semester OPS form.",
+    "Whether Laura verification is a prerequisite for every Finance action or only the normal student appointment path.",
+    "Field-level authority for chartfield proposal, verification, correction, and final costing use.",
+    "Role-based visibility for sensitive Finance reconciliation, offer letters, personal data, and shared worksheet fields.",
+    "Whether any app-level approval exists beyond upstream headcount authorization, hiring-authority signature, and Oracle HR queue approval.",
+    "Explicit population scope and separate rules for graduate students, faculty, staff, undergraduates, and stipends.",
+    "Exact Finance terminal status after Oracle costing; transcript term is unclear.",
+    "Whether Finance's account confirmation is mandatory for every row or triggered only by missing/suspicious funding.",
+    "Exact exception ordering for changes, terminations, stale appointments, direct faculty/staff actions, and missing funding."
+  ],
+  "source_coverage": [
+    "Primary transcript: Call with Mayra Morfin (1).docx, lines 12-14,44-86,151-181,188-221,421-462,496-504.",
+    "Primary transcript: HR App (1).docx, lines 46-50,68-89,120-130,523-548,561-587,887-901,1022-1117.",
+    "Primary transcript: Call with Daisy Matos.docx, lines 83-189,214-312,516-560,598-681,814-875,898-937,983-1049.",
+    "Derived artifacts: student_hiring_pipeline.md, mayra_student_hiring_flow.md, daisy_finance_stage.md; treated as provisional and compared against transcripts.",
+    "Prior verification artifacts: wave1/mayra_intake.json, wave1/laura_screening_offers.json, wave1/finance_costing.json, wave1/new_appointments.json; used as corroboration, not authority."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave3/cross_source_contradictions.json"
+}

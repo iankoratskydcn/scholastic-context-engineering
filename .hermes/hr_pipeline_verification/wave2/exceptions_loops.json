@@ -1,0 +1,124 @@
+{
+  "perspective": "Adversarial verification of exception, loop, and recovery behavior across Mayra intake, Laura HR processing, and Daisy finance monitoring.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "E1",
+      "claim": "Nonresponse is chased, but the evidence does not define a bounded retry, escalation, closure, or terminal exception state.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:248-256 — Mayra says she chases non-responsive faculty and needs tracking/reminders.",
+        "HR App (1).docx:86-89 — Laura chases students who have not completed foreign-principal screening.",
+        "HR App (1).docx:252-260 — Laura filters unsigned offers and emails students near payroll.",
+        "HR App (1).docx:282-297 — escalating reminder language exists, including possible pay/access consequences and start-date change for incomplete preboarding."
+      ],
+      "risk": "An unbounded loop can leave appointments indefinitely open or produce repeated reminders without ownership, deadline, or escalation audit.",
+      "recommendation": "Represent attempt timestamps, reminder count, next action, owner, deadline, escalation, and explicit unresolved/closed outcomes; do not infer a fixed cadence or automatic termination."
+    },
+    {
+      "id": "E2",
+      "claim": "Missing identity/details are manually resolved, but no-match or conflicting-match recovery is specified.",
+      "status": "blocked",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:151-181 — identity can be matched by USF ID or email; faculty may provide only name/email and Mayra hunts for the record via an uncertain lookup source.",
+        "HR App (1).docx:569-578 — new hires require Banner lookup for address, date of birth, gender, and phone before pending-worker entry.",
+        "Call with Mayra Morfin (1).docx:188-196 — Mayra identifies history/logging as important, but no unresolved-match state is described."
+      ],
+      "risk": "Proceeding after a weak, missing, or ambiguous match permits wrong-person processing; stopping behavior and rework ownership are undefined.",
+      "recommendation": "Require exact identity-match status, conflict/duplicate hold, unresolved-details queue, evidence source, and authorized resolution before worksheet creation or downstream handoff."
+    },
+    {
+      "id": "E3",
+      "claim": "Missing or unfunded accounts loop through faculty contact, update, and re-verification.",
+      "status": "corroborated_with_caveat",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:444-462 — faculty may not know chartfield strings; Daisy's team must check and use distributions.",
+        "Call with Daisy Matos.docx:1027-1037 — Finance checks the chartfield, verifies with faculty, and if there is no money changes the chartfield after discussion; Daisy says the finance team monitors/updates the worksheet.",
+        "Call with Daisy Matos.docx:42-57 — automated repeated outreach is discussed as a proposed capability, not current behavior."
+      ],
+      "risk": "The evidence supports rework but not a bounded retry, funding-decision authority, or stop state when faculty cannot provide a funded account.",
+      "recommendation": "Track missing-versus-unfunded reason, outreach, proposed replacement account, validation result, effective date, and unresolved escalation; preserve prior chartfields rather than overwrite them."
+    },
+    {
+      "id": "E4",
+      "claim": "Oracle records can disappear while awaiting approval; Laura rechecks and verifies, but the derived recovery says re-enter without direct transcript support.",
+      "status": "contradiction_found",
+      "evidence": [
+        "HR App (1).docx:120-130 — entries can remain in HR approval for weeks and have a history of disappearing; Laura checks that they remain and are correct, then marks verified; new hires additionally require preboarding.",
+        "student_hiring_pipeline.md:39 — derived artifact states Laura re-enters a vanished record.",
+        "student_hiring_pipeline.md:109-111 — graph encodes a record-vanished loop from HR queue back to Oracle entry."
+      ],
+      "risk": "Re-entry may duplicate an appointment or assignment if the record is delayed rather than truly absent; the source does not define an idempotent lookup or duplicate-prevention rule.",
+      "recommendation": "Separate missing, delayed, rejected, and changed records; require authoritative Oracle lookup and duplicate check before re-entry, with a documented recovery owner and audit event."
+    },
+    {
+      "id": "E5",
+      "claim": "New-hire preboarding is a gate before verification, with chasing and possible start-date change, but no terminal noncompletion path is defined.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        "HR App (1).docx:128-130 — new hires are pending workers in `check`, require preboarding, and move to verified after completion.",
+        "HR App (1).docx:282-297 — Laura emails students who have not preboarded and may change the start date if they are not in Tampa.",
+        "HR App (1).docx:569-578 — pending-worker entry requires additional personal details and then follows appointment entry/approval steps."
+      ],
+      "risk": "A student who never preboards, lacks required details, or cannot meet the start date has no evidenced cancel/hold/return-to-request state.",
+      "recommendation": "Model preboarding status separately from Oracle status; record attempts, deadline, start-date decision, hold/cancel outcome, and whether downstream costing is prohibited until verified."
+    },
+    {
+      "id": "E6",
+      "claim": "Late changes return to processing, but the evidence contradicts a generic approval-loop model and does not define one canonical change owner.",
+      "status": "contradiction_found",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:214-221 — late job-code changes occur after Laura's onboarding/offer work; Mayra says restricted users should overwrite.",
+        "HR App (1).docx:780-859 — Laura describes changes to hours/job code/rate after completion; a new offer letter and Oracle amendment are required.",
+        "HR App (1).docx:1045-1058 — an incorrect appointment was ended and the missing message history impaired audit evidence.",
+        "HR App (1).docx:1062-1081 — Laura explicitly says there is not really an approval for the normal student hiring request.",
+        "student_hiring_pipeline.md:43-44, 98-99 — derived artifact models change requests as request/approval/change and loops them through Mayra's row."
+      ],
+      "risk": "A guessed approval gate can block legitimate changes or imply authority that the interviews reject; row overwrite destroys prior values and obscures effective-date sequencing.",
+      "recommendation": "Use typed change categories (job code, hours, rate, funding, termination), preserve immutable revisions, route by actual owner, and require explicit reprocessing gates only where evidence supports them."
+    },
+    {
+      "id": "E7",
+      "claim": "Stale active appointments are rechecked upstream; ended appointments are terminated and removed from the active summary.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        "Call with Daisy Matos.docx:892-931 — Daisy builds a summary of active appointments, asks Mayra/Laura about stale or extended records, and receives confirmation or follows up with faculty.",
+        "Call with Daisy Matos.docx:1022-1049 — Finance verifies chartfields, updates them, and records date/initials after entry.",
+        "Call with Daisy Matos.docx:899-900 — terminated appointments are removed from the active summary."
+      ],
+      "risk": "The process does not define a review cadence, authoritative end-date rule, termination approval, or whether removal is reversible; stale records can remain active while awaiting reply.",
+      "recommendation": "Track last-confirmed date, expected end date, stale reason, upstream inquiry, response, termination effective date, and reversible/inactive states; do not equate disappearance from a summary with deletion."
+    },
+    {
+      "id": "E8",
+      "claim": "An incorrect-person/duplicate-name incident occurred; recovery was termination, but preventive identity controls and a complete audit trail were absent.",
+      "status": "confirmed_defect",
+      "evidence": [
+        "HR App (1).docx:1045-1052 — two students with the same name were mixed up, the wrong student was hired, the appointment was ended, and the original Teams evidence could not be found.",
+        "Call with Mayra Morfin (1).docx:151-181 — identity lookup can use USF ID or email, but faculty may supply only a name/email and the lookup system/source is uncertain.",
+        "HR App (1).docx:697-701 — spreadsheet overwrites lose the request trail; Laura identifies audit-history loss as a problem."
+      ],
+      "risk": "Name-based or ambiguous matching can create unauthorized employment/payroll consequences; termination after the fact is not prevention and missing evidence impairs audit/remediation.",
+      "recommendation": "Make U-number or authoritative email identity mandatory before downstream processing, block ambiguous matches, require second-person confirmation for duplicate candidates, and append immutable request/change/termination history."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Retry limits, reminder cadence, escalation owner, and closure outcomes for faculty/student nonresponse.",
+    "No-match, multiple-match, and missing-detail states for identity and Banner/lookup recovery.",
+    "Idempotent Oracle recovery semantics when a queued record appears to vanish.",
+    "Preboarding deadline, cancellation/hold behavior, and start-date authority for noncompletion.",
+    "Canonical routing and authority for late job-code, hours, rate, funding, and termination changes.",
+    "Whether change requests require approval, and which changes require a new offer/screening versus an Oracle amendment only.",
+    "Finance review cadence and authoritative stale/end-date/termination semantics.",
+    "Duplicate identity prevention, conflict resolution, and second-person verification policy."
+  ],
+  "source_coverage": [
+    "Primary: HR App (1).docx, exact lines 68-89, 120-130, 252-297, 523-548, 569-578, 780-859, 970-987, 1025-1058, 1062-1117.",
+    "Primary: Call with Mayra Morfin (1).docx, exact lines 64-86, 151-181, 188-221, 248-267, 421-462.",
+    "Primary: Call with Daisy Matos.docx, exact lines 42-57, 892-931, 1022-1049.",
+    "Derived cross-check: student_hiring_pipeline.md, exact lines 17-63, 97-114; used to identify unsupported re-entry and approval-loop claims.",
+    "Derived cross-check: mayra_student_hiring_flow.md, exact lines 14-31, 63-80; used to identify missing-match and late-change gaps.",
+    "Derived cross-check: daisy_finance_stage.md, exact lines 15-31, 82-106; treated as provisional where the transcript is less specific."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/exceptions_loops.json"
+}

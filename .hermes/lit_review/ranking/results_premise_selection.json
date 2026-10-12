@@ -1,0 +1,109 @@
+{
+  "reviewer_slug": "premise_selection",
+  "viewpoint": "premise selection, proof-relevant retrieval, and minimal sufficient context",
+  "input": "benchmark_studies.csv",
+  "rows": 80,
+  "category_count": 19,
+  "top_global": [
+    {
+      "rank": 1,
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score": 100
+    },
+    {
+      "rank": 2,
+      "paper_id": "S08P05",
+      "benchmark_name": "Isabelle proof-state/relevant-premise pairs",
+      "score": 97
+    },
+    {
+      "rank": 3,
+      "paper_id": "S07P08",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 95
+    },
+    {
+      "rank": 4,
+      "paper_id": "S08P04",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 95
+    },
+    {
+      "rank": 5,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 90
+    },
+    {
+      "rank": 6,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 90
+    },
+    {
+      "rank": 7,
+      "paper_id": "S05P09",
+      "benchmark_name": "MultiHop-RAG",
+      "score": 86
+    },
+    {
+      "rank": 8,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 84
+    },
+    {
+      "rank": 9,
+      "paper_id": "S05P05",
+      "benchmark_name": "ALCE",
+      "score": 82
+    },
+    {
+      "rank": 10,
+      "paper_id": "S05P08",
+      "benchmark_name": "RAGTruth",
+      "score": 76
+    },
+    {
+      "rank": 11,
+      "paper_id": "S03P10",
+      "benchmark_name": "LongPiBench",
+      "score": 70
+    },
+    {
+      "rank": 12,
+      "paper_id": "12-03",
+      "benchmark_name": "RuleTaker",
+      "score": 68
+    },
+    {
+      "rank": 13,
+      "paper_id": "S03P09",
+      "benchmark_name": "NoLiMa",
+      "score": 67
+    },
+    {
+      "rank": 14,
+      "paper_id": "12-07",
+      "benchmark_name": "PrOntoQA",
+      "score": 66
+    },
+    {
+      "rank": 15,
+      "paper_id": "S03P08",
+      "benchmark_name": "RULER",
+      "score": 64
+    }
+  ],
+  "distinctions": [
+    "formal-library premise retrieval vs natural-language evidence selection",
+    "necessary/sufficient/redundant facts and distractor control vs generic answer accuracy",
+    "synthetic proof dependency controls vs authentic scholarly provenance"
+  ],
+  "files": [
+    "benchmark_review_premise_selection_category.csv",
+    "benchmark_review_premise_selection_global.csv",
+    "benchmark_review_premise_selection_notes.md"
+  ]
+}

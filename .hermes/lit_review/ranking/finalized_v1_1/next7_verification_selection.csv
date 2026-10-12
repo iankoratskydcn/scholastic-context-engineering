@@ -1,0 +1,8 @@
+paper_id,citation,category,aggregate_rank,aggregate_mean_score
+18_07,"Walton & Gordon (2011), “Formalizing Informal Logic,” Informal Logic 31(1).",Toulmin model and defeasible/informal logic in computational settings,21,65
+S21P08,"Macagno (2021), “Argumentation Schemes in AI: A Literature Review. Introduction to the Special Issue”",21 Scholastic Method Ai Direct,22,65
+S10P02,"Walton & Macagno (2015), “A Classification System for Argumentation Schemes.”",Walton argumentation schemes in NLP,23,64.28
+S24P01,"Hodges, “Ibn Sīnā on Analysis: 1. Proof Search. Or: Abstract State Machines as a Tool for History of Logic”",24 Islamic Comparative Scholastic Ai,24,63.84
+S23P03,"Castagna, Kökciyan, Sassoon, Parsons & Sklar (2024), “Computational Argumentation-based Chatbots: a Survey”",23 Disputatio Dialectical Ai,25,63.4
+S23P02,"Maudet, Parsons & Rahwan (2007), “Argumentation in Multi-Agent Systems: Context and Recent Developments”",23 Disputatio Dialectical Ai,26,62.28
+S02P09,"Mi et al. (2026), “Logical Consistency as a Bridge: Improving LLM Hallucination Detection via Label Constraint Modeling between Responses and Self-Judgments”",hallucination in logical/deductive reasoning,27,62.24

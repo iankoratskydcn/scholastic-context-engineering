@@ -1,0 +1,3808 @@
+{
+  "counts": {
+    "scholarly_primary_or_publisher": 357,
+    "scholarly_corpus_or_primary_text_resource": 2,
+    "exclude_non_scholarly_or_discovery": 77,
+    "scholarly_or_institutional_resource": 20,
+    "scholarly_repository_or_institutional": 15,
+    "review_manually": 1
+  },
+  "urls": [
+    {
+      "url": "https://aaai.org/papers/02901-k-bert-enabling-language-representation-with-knowledge-graph",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "aaai.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://academic.oup.com/book/53007/chapter-abstract/421965116",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "academic.oup.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://academic.oup.com/book/6319",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "academic.oup.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://academic.oup.com/logcom/article/15/6/949/1086849",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "academic.oup.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2009.tal-2.5",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2020.acl-main.173",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2020.acl-main.173.pdf",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.acl-long.102",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.emnlp-main.303",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.emnlp-main.62",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.findings-acl.317",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.findings-acl.317.pdf",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.naacl-main.45",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.sdp-1.7.pdf",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2021.starsem-1.6",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.aacl-short.9",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.acl-long.77",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.argmining-1.6",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.emnlp-main.132",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.emnlp-main.560",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.emnlp-main.560.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.findings-acl.311",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.findings-emnlp.532",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.findings-emnlp.532.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.inlg-main.25",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.lrec-1.157.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2022.textgraphs-1.15",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.acl-long.109",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.acl-long.309",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.alp-1.12",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.alp-1.19.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.1022",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.155",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.155.pdf",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.313",
+      "agent_files": [
+        "07_neurosymbolic.md",
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.684",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.684.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.706",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main.825",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.findings-acl.148",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.findings-acl.218",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.findings-acl.321",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.findings-emnlp.182",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.findings-emnlp.248",
+      "agent_files": [
+        "07_neurosymbolic.md",
+        "08_logic_theorem_provers.md",
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.findings-emnlp.263",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.naloma-1.1.pdf",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2023.ranlp-1.10.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.172",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.240",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.240.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.341",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.375",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.424",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.556",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.558",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.72",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.814",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.91.pdf",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.c3nlp-1.1",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.1229.pdf",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.155",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.155.pdf",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.172",
+      "agent_files": [
+        "07_neurosymbolic.md",
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.172.pdf",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.375",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.375.pdf",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.725",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.730",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.emnlp-main.730.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-acl.376",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-acl.540.pdf",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-acl.890",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-emnlp.427",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-emnlp.685",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-emnlp.685.pdf",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-naacl.175",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-naacl.192",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-naacl.192.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-naacl.254",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.lrec-main.1539",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.lrec-main.726",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.lrec-main.726.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.naacl-long.22",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.naacl-long.416",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.nlp4science-1.10",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2024.tacl-1.9",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.acl-long.1422",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.acl-long.368",
+      "agent_files": [
+        "09_argument_mining.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.acl-long.380",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.argmining-1.19",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.coling-main.268",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.coling-main.442.pdf",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.coling-main.698",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.emnlp-main.1045",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.emnlp-main.1180",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.emnlp-main.68",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-acl.1230",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-acl.28",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-acl.702",
+      "agent_files": [
+        "09_argument_mining.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-emnlp.1159",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-emnlp.44",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-naacl.232",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-naacl.384",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.findings-naacl.384.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.inlg-main.28",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.naacl-long.449",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.naacl-long.491",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.naacl-long.491.pdf",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.trustnlp-main.37",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2025.trustnlp-main.37.pdf",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2026.acl-long.2209",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/2026.acl-long.286",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/J17-3005",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/J19-4006",
+      "agent_files": [
+        "09_argument_mining.md",
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/J19-4006.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/P11-1099",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/P11-1099.pdf",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/P19-1456.pdf",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/W12-2511.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/W15-0507",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/W15-0507.pdf",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/W18-6004",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/anthology-files/pdf/cl/2024.cl-2.10.pdf",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/anthology-files/pdf/findings/2024.findings-acl.826.pdf",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aclanthology.org/people/giovanni-da-san-martino",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "aclanthology.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://aitp-conference.org/2022/abstract/AITP_2022_paper_32.pdf",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "aitp-conference.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://alraqmiyyat.github.io/OpenITI",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "alraqmiyyat.github.io",
+      "category": "scholarly_corpus_or_primary_text_resource"
+    },
+    {
+      "url": "https://ar5iv.labs.arxiv.org/html/1908.05453",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "ar5iv.labs.arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/1604.00266",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/1712.02480",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/1805.00899",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/1904.09223",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/1905.09381",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/1911.06136",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2002.05867",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2007.08124",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2110.13692",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2201.08860",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2201.11903",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2202.03629",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2206.04615",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2208.06133",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2208.14271",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2209.00840",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2210.01240",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2210.03629",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2211.12588",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2212.03551",
+      "agent_files": [
+        "06_cot_faithfulness.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2212.07425",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2301.13379",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2302.01339",
+      "agent_files": [
+        "15_llm_philosophy.md",
+        "20_ai_academic_writing.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2303.04488",
+      "agent_files": [
+        "08_logic_theorem_provers.md",
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2304.00994",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2304.15004",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.04388",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.10601",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.12295",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.14325",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.19118",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2306.09841",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2306.15626",
+      "agent_files": [
+        "07_neurosymbolic.md",
+        "08_logic_theorem_provers.md",
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2307.02477",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2307.13702",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2309.17452",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.03025",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.04408",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.04988",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.15164",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.00445",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.05232",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.06158",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.08516",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.14096",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2312.06185",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2401.01313",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2401.07897",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2401.11817",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2402.05519",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2402.06782",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.06654",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.08627",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.12534",
+      "agent_files": [
+        "08_logic_theorem_provers.md",
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.01379",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.02079",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.04655",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.13015",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.13036",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.18915",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.02106",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.03181",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.10625",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2407.00418",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2407.02514",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2408.03492",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2408.04403",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2410.12048",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2411.06032",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2412.03304",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2501.13959",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2501.14917",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2502.04352",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.08679",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.23363",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2504.01127",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.15554",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.24630",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2506.15355",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2508.12830",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2509.03345",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2509.15739",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.04040",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.02858",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.06428",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.22582",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.12548",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.13137",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.16629",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.26698",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.27471",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/abs/cs/0302029",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2308.09368",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2401.03454v1",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2401.03910v1",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2401.17882v2",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2402.11243",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2405.03207v1",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2502.14767v2",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2506.07896v1",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2508.12754v1",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/html/2508.12830v1",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2012.00209",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2201.11903",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2202.03629",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2208.14271",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2212.03551",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2301.13379",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2305.04388",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2307.02477",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2307.13702",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2311.05232",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2401.01313",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2401.11817",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2405.18915",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2406.10625",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2503.08679",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2510.04040",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2603.22582",
+      "agent_files": [
+        "06_cot_faithfulness.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2606.26698",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "arxiv.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://books.openbookpublishers.com/10.11647/obp.0358.05.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "books.openbookpublishers.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://brill.com/view/journals/ils/28/3/article-p234_234.xml?language=en",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "brill.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://ceur-ws.org/Vol-2989/long_paper20.pdf",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "ceur-ws.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://ceur-ws.org/Vol-4166/paper1.pdf",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "ceur-ws.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://compass.onlinelibrary.wiley.com/doi/10.1111/phc3.70095",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "compass.onlinelibrary.wiley.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://conceptsinmotion.org/e-ideas",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "conceptsinmotion.org",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://cordis.europa.eu/project/id/771589",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "cordis.europa.eu",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://corpusthomisticum.org/wintroen.html",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "corpusthomisticum.org",
+      "category": "scholarly_corpus_or_primary_text_resource"
+    },
+    {
+      "url": "https://cris.maastrichtuniversity.nl/en/publications/deflog-on-the-logical-interpretation-of-prima-facie-justified-ass",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "cris.maastrichtuniversity.nl",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://cris.uni-muenster.de/portal/en/publication/99149560",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "cris.uni-muenster.de",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://cs.uns.edu.ar/~grs/Publications/1992-SimariLoui-AIJ.pdf",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "cs.uns.edu.ar",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://debate-erc.com",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "debate-erc.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://debate-erc.com/corpus",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "debate-erc.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://digitalhumanities.cz/en/db/uniq-2",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "digitalhumanities.cz",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://direct.mit.edu/coli/article/45/4/765/93362/Argument-Mining-A-Survey",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "direct.mit.edu",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://direct.mit.edu/coli/article/50/2/807/119144/The-Pitfalls-of-Defining-Hallucination",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "direct.mit.edu",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1007/978-1-4020-5853-0",
+      "agent_files": [
+        "16_historical_logics.md",
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1007/s10503-020-09519-x",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1007/s13347-024-00809-w",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1016/j.dib.2024.111087",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1016/j.jeap.2024.101432",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1017/chr.2025.10004",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1038/s41598-023-45644-9",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1038/s41746-023-00819-6",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1080/19462166.2015.1123772",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1088/1361-6404/ad669d",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1093/acprof:oso/9780198240266.001.0001",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1093/logcom/exae032",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1093/logcom/exi048",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1093/oso/9780198876922",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1109/TASLP.2023.3293046",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1136/ijgc-2023-005162",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1145/3571730",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1145/3703155",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1162/coli_a_00509",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1162/tacl_a_00394",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1163/ej.9789004180844.i-366",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.1515/9783110599572-017",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2020.acl-main.173",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2022.findings-acl.311",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2022.inlg-main.25",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2023.acl-long.109",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2023.emnlp-main.1022",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2023.emnlp-main.155",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2023.emnlp-main.391",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2023.findings-acl.218",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2023.findings-emnlp.507",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.acl-long.552",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.acl-long.72",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.emnlp-main.375",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.emnlp-main.725",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.findings-acl.50",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.findings-acl.974",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.findings-emnlp.685",
+      "agent_files": [
+        "01_hallucination_surveys.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2024.nlp4science-1.10",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2025.emnlp-main.1045",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2025.findings-acl.1230",
+      "agent_files": [
+        "19_abduction_analogy.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2025.findings-acl.192",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/2025.findings-acl.702",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.18653/v1/W19-4012",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.2188/jea.JE20230030",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.2478/jdis-2024-0013",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.3233/978-1-61499-686-6-379",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.3233/AAC-180038",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.3233/FAIA240329",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.3233/FAIA240919",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2012.13048",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2210.03629",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2211.10435",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2211.12588",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2305.12295",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2306.15626",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2307.07696",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2309.17452",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2310.15164",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2405.01379",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.5281/zenodo.5599095",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.5334/johd.97",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.5555/3491440.3491941",
+      "agent_files": [
+        "17_cross_cultural_logic.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.5840/teachphil202451200",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.6092/issn.2532-8816/8575",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.7759/cureus.35179",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://doi.org/10.7759/cureus.39238",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "doi.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://eprints.soton.ac.uk/502110",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "eprints.soton.ac.uk",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://eprints.whiterose.ac.uk/id/eprint/212114",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "eprints.whiterose.ac.uk",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://faculty.ucr.edu/~eschwitz/SchwitzAbs/GPT3Dennett.htm",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "faculty.ucr.edu",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://github.com/UKPLab/naacl2025-missciplus",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "github.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://github.com/google/BIG-bench",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "github.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://github.com/kmineshima/abduction-syllogism-llm",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "github.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://informallogic.ca/index.php/informal_logic/article/download/4335/3711",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "informallogic.ca",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://jacad.eth.limo/rc_images/abdelwahab_3_18_15_1.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "jacad.eth.limo",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://journals.sagepub.com/doi/10.3233/AAC-200543",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "journals.sagepub.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11663",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "journals.ub.uni-koeln.de",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://knowledge.uchicago.edu/records/g353y-5y272",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "knowledge.uchicago.edu",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://link.springer.com/article/10.1007/s10503-012-9266-7",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "link.springer.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://mlanthology.org/icmlw/2024/geng2024icmlw-chatgpt",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "mlanthology.org",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/download/39021/42983",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "ojs.aaai.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/10673/10532",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "ojs.aaai.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29889",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "ojs.aaai.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/39021",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "ojs.aaai.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://ojs.uwindsor.ca/index.php/informal_logic/article/view/4335",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "ojs.uwindsor.ca",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://openhumanitiesdata.metajnl.com/collections/historyofideas",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "openhumanitiesdata.metajnl.com",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://openreview.net/forum?id=FQMaePU0N4",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "openreview.net",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://openreview.net/pdf/ec313b0b95dba96e7bb145dc4a3b376cd9f4e8e1.pdf",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "openreview.net",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://openreview.net/pdf?id=0CfKpG94co",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "openreview.net",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://openreview.net/pdf?id=iUGUc3HJ_3f",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "openreview.net",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://openreview.net/pdf?id=mlJLVigNHp",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "openreview.net",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://openreview.net/pdf?id=omyNP89YW6",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "openreview.net",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://openreview.net/pdf?id=r1xwKoR9Y7",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "openreview.net",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://ora.ox.ac.uk/objects/uuid:d06d32ab-8620-4984-858e-cce2a560c89f/files/rzk51vk546",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "ora.ox.ac.uk",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://papers.neurips.cc/paper_files/paper/2016/hash/f197002b9a0853eca5e046d9ca4663d5-Abstract.html",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "papers.neurips.cc",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://par.nsf.gov/servlets/purl/10527889",
+      "agent_files": [
+        "11_fallacy_detection.md"
+      ],
+      "domain": "par.nsf.gov",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://philpapers.org/archive/MACASI-11.pdf",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "philpapers.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://philpapers.org/rec/WALSAI-4",
+      "agent_files": [
+        "21_scholastic_method_ai_direct.md"
+      ],
+      "domain": "philpapers.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10616290",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "pmc.ncbi.nlm.nih.gov",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9939079",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "pmc.ncbi.nlm.nih.gov",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2024/file/ab5f5f22e3e09f4424592ffb06840ab0-Paper-Conference.pdf",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "proceedings.iclr.cc",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/ab5f5f22e3e09f4424592ffb06840ab0-Abstract-Conference.html",
+      "agent_files": [
+        "08_logic_theorem_provers.md"
+      ],
+      "domain": "proceedings.iclr.cc",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.kr.org/2024/73/kr2024-0073-vasileiou-et-al.pdf",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "proceedings.kr.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v202/gao23f.html",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "proceedings.mlr.press",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v267/luo25t.html",
+      "agent_files": [
+        "13_knowledge_graphs.md"
+      ],
+      "domain": "proceedings.mlr.press",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v267/modarressi25a.html",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "proceedings.mlr.press",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v306/kim26bw.html",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "proceedings.mlr.press",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/ddd50f29fa472095515fa0df31749e6c-Paper-Conference.pdf",
+      "agent_files": [
+        "02_logic_hallucination.md"
+      ],
+      "domain": "proceedings.neurips.cc",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2721132",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37337480",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38627032",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22A+classification+system+for+argumentation+schemes%22",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22A+comparative+genre+analysis+of+AI-generated+and+scholar-written+abstracts%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22A+large-scale+comparison+of+human-written+versus+ChatGPT-generated+essays%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22AI+Safety+via+Debate%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Adapting+Language+Models+to+Compress+Contexts%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22An+Online+Annotation+Assistant+for+Argument+Schemes%22",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Annotating+Argument+Schemes%22+Visser+Lawrence+Reed",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Are+Emergent+Abilities+of+Large+Language+Models+a+Mirage%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Argument+Mining%3A+A+Survey%22+Lawrence+Reed",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Argument+Mining+Using+Argumentation+Scheme+Structures%22",
+      "agent_files": [
+        "09_argument_mining.md",
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Argument+Mining+for+Scholarly+Document+Processing%22",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Argument+Mining+with+Fine-Tuned+Large+Language+Models%22+Mushtaq+Cabessa",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Artificial+Hallucinations+in+ChatGPT%3A+Implications+in+Scientific+Writing%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Association+of+reviewer+experience+with+discriminating+human-written+versus+ChatGPT-written+abstracts%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Can+ChatGPT+Be+Considered+an+Author+of+a+Medical+Article%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Can+ChatGPT+evaluate+research+quality%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Can+LLMs+Judge+Debates%3F+Evaluating+Non-Linear+Reasoning+via+Argumentation+Theory+Semantics%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Can+Large+Language+Models+Understand+Argument+Schemes%22",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Can+Large+Language+Models+Understand+Argument+Schemes%3F%22",
+      "agent_files": [
+        "09_argument_mining.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22ChatEval%3A+Towards+Better+LLM-based+Evaluators+through+Multi-Agent+Debate%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22ChatGPT+and+the+Writing+of+Philosophical+Essays%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Classifying+Argumentative+Relations+Using+Logical+Mechanisms+and+Argumentation+Schemes%22",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Classifying+Arguments+by+Scheme%22+Feng+Hirst",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Classifying+arguments+by+scheme%22+Feng+Hirst",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Comparing+scientific+abstracts+generated+by+ChatGPT+to+real+abstracts%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Compressed+Context+Memory+for+Online+Language+Model+Interaction%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Creating+a+Large+Language+Model+of+a+Philosopher%22",
+      "agent_files": [
+        "20_ai_academic_writing.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Discursive+Socratic+Questioning%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Encouraging+Divergent+Thinking+in+Large+Language+Models+through+Multi-Agent+Debate%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22EthiX%22+%22Argument+Scheme+Classification%22",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Evaluating+AI+and+human+authorship+quality+in+academic+writing+through+physics+essays%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22FRVA%3A+Fact-Retrieval+and+Verification+Augmented+Entailment+Tree+Generation%22",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22High+Rates+of+Fabricated+and+Inaccurate+References+in+ChatGPT-Generated+Medical+Content%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Improving+Factuality+and+Reasoning+in+Language+Models+through+Multiagent+Debate%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Improving+Multi-Agent+Debate+with+Sparse+Communication+Topology%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22In-context+Autoencoder+for+Context+Compression+in+a+Large+Language+Model%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Is+ChatGPT+Transforming+Academics%27+Writing+Style%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22LLMLingua%3A+Compressing+Prompts+for+Accelerated+Inference+of+Large+Language+Models%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22LLMLingua-2%3A+Data+Distillation+for+Efficient+and+Faithful+Task-Agnostic+Prompt+Compression%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Learning+to+Compress+Prompts+with+Gist+Tokens%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22LongLLMLingua%3A+Accelerating+and+Enhancing+LLMs+in+Long+Context+Scenarios+via+Prompt+Compression%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22MARS%3A+Benchmarking+the+Metaphysical+Reasoning+Abilities%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Mining+Complex+Patterns+of+Argumentative+Reasoning+in+Natural+Language+Dialogue%22",
+      "agent_files": [
+        "09_argument_mining.md",
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Multi-Class+versus+Means-End%22+argument+patterns",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22NLAS-multi%22+argumentation+schemes",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Parsing+Argumentation+Structures+in+Persuasive+Essays%22",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22PlatoLM%3A+Teaching+LLMs+in+Multi-Round+Dialogue+via+a+User+Simulator%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22RECOMP%3A+Improving+Retrieval-Augmented+LMs+with+Compression+and+Selective+Augmentation%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Retrieval+Augmented+Fact+Verification+by+Synthesizing+Contrastive+Arguments%22",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22SelfCP%3A+Compressing+Over-Limit+Prompt+via+the+Frozen+Large+Language+Model+Itself%22",
+      "agent_files": [
+        "04_context_compression.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Should+I+Use+ChatGPT+to+Write+My+Papers%22",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22SocREval%3A+Large+Language+Models+with+the+Socratic+Method%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Talking+About+Large+Language+Models%22",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Towards+mining+scientific+discourse+using+argumentation+schemes%22",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Translating+Natural+Language+Arguments+to+Computational+Arguments+Using+LLMs%22",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=%22Tree+of+Thoughts%22+deliberate+problem+solving",
+      "agent_files": [
+        "25_ai_philosophy_dialectical_methods.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=Coupling+Large+Language+Models+with+Logic+Programming+for+Robust+and+General+Reasoning",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=LINC+Neurosymbolic+Approach+Logical+Reasoning+First-Order+Logic+Provers",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=LeanDojo+Theorem+Proving+with+Retrieval-Augmented+Language+Models",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=Logic-LM+Empowering+Large+Language+Models+with+Symbolic+Solvers",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=PAL+Program-aided+Language+Models",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=Program+of+Thoughts+Prompting+Disentangling+Computation+from+Reasoning",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=ProofWriter+Generating+Implications+Proofs+Abductive+Statements",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=ReAct+Synergizing+Reasoning+and+Acting+in+Language+Models",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=ToRA+Tool-Integrated+Reasoning+Agent+Mathematical+Problem+Solving",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=Verification+and+Refinement+of+Natural+Language+Explanations+through+LLM-Symbolic+Theorem+Proving",
+      "agent_files": [
+        "07_neurosymbolic.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://scholar.google.com/scholar?q=Walton+argumentation+schemes+NLP+argument+scheme+classification",
+      "agent_files": [
+        "10_walton_schemes_nlp.md"
+      ],
+      "domain": "scholar.google.com",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://search.worldcat.org/title/ancient-logic-and-its-modern-interpretations/oclc/1020378",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "search.worldcat.org",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://search.worldcat.org/title/later-mohist-logic-ethics-and-science/oclc/4495009",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "search.worldcat.org",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://stim.qom.ac.ir/article_3085.html?lang=en",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "stim.qom.ac.ir",
+      "category": "exclude_non_scholarly_or_discovery"
+    },
+    {
+      "url": "https://sunypress.edu/Books/T/The-Character-of-Logic-in-India",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "sunypress.edu",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://web.mit.edu/irahwan/www/docs/argmas2006survey.pdf",
+      "agent_files": [
+        "23_disputatio_dialectical_ai.md"
+      ],
+      "domain": "web.mit.edu",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://wilfridhodges.co.uk/arabic05.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "wilfridhodges.co.uk",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.ai.rug.nl/~verheij/publications/ai%26l2003.htm",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "ai.rug.nl",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.ai.rug.nl/~verheij/publications/toulmin2009.htm",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "ai.rug.nl",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.arabic-latin-corpus.philosophie.uni-wuerzburg.de",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "arabic-latin-corpus.philosophie.uni-wuerzburg.de",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.arg.tech/people/chris/publications/2016/comma2016-schememining.pdf",
+      "agent_files": [
+        "09_argument_mining.md"
+      ],
+      "domain": "arg.tech",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.cambridge.org/core/books/cambridge-companion-to-medieval-logic",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "cambridge.org",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.cambridge.org/core/books/formal-languages-in-logic/7D1DD805F7B3C70A0C32F2F6A66BE3DD",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "cambridge.org",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.cambridge.org/core/journals/review-of-symbolic-logic/article/abs/correctness-proof-for-albarakats-logical-diagrams/6345C259CB7CD88CF9753FF26001FB61",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "cambridge.org",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9A1A9C2B789EC1AD7A876F65F5D90CCC/S2977815825100043a.pdf/it_takes_a_village_to_write_a_book_mapping_anonymous_contributions_in_stephen_langtons_quaestiones_theologiae.pdf",
+      "agent_files": [
+        "24_islamic_comparative_scholastic_ai.md"
+      ],
+      "domain": "cambridge.org",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2021.645516/full",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "frontiersin.org",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://www.iclr.cc/virtual/2021/poster/3225",
+      "agent_files": [
+        "03_context_degradation.md"
+      ],
+      "domain": "iclr.cc",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.ijcai.org/Proceedings/2020/537",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "ijcai.org",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.international-journal-of-gynecological-cancer.com/article/S1048-891X%2824%2901388-4/fulltext",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "international-journal-of-gynecological-cancer.com",
+      "category": "review_manually"
+    },
+    {
+      "url": "https://www.jstage.jst.go.jp/article/jea/33/7/33_JE20230030/_pdf",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "jstage.jst.go.jp",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.428.pdf",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "lrec-conf.org",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41598-023-45644-9",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "nature.com",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41599-025-04657-7",
+      "agent_files": [
+        "15_llm_philosophy.md"
+      ],
+      "domain": "nature.com",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0053",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "perseus.tufts.edu",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.routledge.com/Indian-Logic-A-Reader/Ganeri/p/book/9780700712248",
+      "agent_files": [
+        "16_historical_logics.md"
+      ],
+      "domain": "routledge.com",
+      "category": "scholarly_primary_or_publisher"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/0010027784900350",
+      "agent_files": [
+        "12_deductive_benchmarks.md"
+      ],
+      "domain": "sciencedirect.com",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S0004370207000677",
+      "agent_files": [
+        "18_toulmin_defeasible.md"
+      ],
+      "domain": "sciencedirect.com",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S0747717124000804",
+      "agent_files": [
+        "14_premise_context_selection.md"
+      ],
+      "domain": "sciencedirect.com",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S1475158524001000",
+      "agent_files": [
+        "20_ai_academic_writing.md"
+      ],
+      "domain": "sciencedirect.com",
+      "category": "scholarly_or_institutional_resource"
+    },
+    {
+      "url": "https://zenodo.org/records/2552203",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "zenodo.org",
+      "category": "scholarly_repository_or_institutional"
+    },
+    {
+      "url": "https://zenodo.org/records/7510411",
+      "agent_files": [
+        "22_scholastic_digital_humanities_ai.md"
+      ],
+      "domain": "zenodo.org",
+      "category": "scholarly_repository_or_institutional"
+    }
+  ]
+}

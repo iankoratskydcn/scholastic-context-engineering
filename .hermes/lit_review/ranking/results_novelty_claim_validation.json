@@ -1,0 +1,112 @@
+{
+  "reviewer_slug": "novelty_claim_validation",
+  "viewpoint": "novelty threat and claim validation",
+  "input": "benchmark_studies.csv",
+  "rows": 80,
+  "global_rank_rule": "score descending; ties by numeric category_num, numeric paper_order, literal paper_id",
+  "category_rank_rule": "contiguous within category; score descending; ties by paper_order then paper_id",
+  "top_15": [
+    {
+      "global_rank": 1,
+      "paper_id": "S02P07",
+      "benchmark_name": "PCBench",
+      "score_0_100": 100
+    },
+    {
+      "global_rank": 2,
+      "paper_id": "S02P05",
+      "benchmark_name": "FalseQA",
+      "score_0_100": 98
+    },
+    {
+      "global_rank": 3,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 97
+    },
+    {
+      "global_rank": 4,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 97
+    },
+    {
+      "global_rank": 5,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score_0_100": 96
+    },
+    {
+      "global_rank": 6,
+      "paper_id": "12-05",
+      "benchmark_name": "LogicNLI",
+      "score_0_100": 95
+    },
+    {
+      "global_rank": 7,
+      "paper_id": "S05P08",
+      "benchmark_name": "RAGTruth",
+      "score_0_100": 94
+    },
+    {
+      "global_rank": 8,
+      "paper_id": "S05P05",
+      "benchmark_name": "ALCE",
+      "score_0_100": 93
+    },
+    {
+      "global_rank": 9,
+      "paper_id": "S05P09",
+      "benchmark_name": "MultiHop-RAG",
+      "score_0_100": 92
+    },
+    {
+      "global_rank": 10,
+      "paper_id": "S06P11",
+      "benchmark_name": "FAITHCOT-BENCH / FINE-COT",
+      "score_0_100": 92
+    },
+    {
+      "global_rank": 11,
+      "paper_id": "S03P10",
+      "benchmark_name": "LongPiBench",
+      "score_0_100": 91
+    },
+    {
+      "global_rank": 12,
+      "paper_id": "11-08",
+      "benchmark_name": "MISSCI PLUS",
+      "score_0_100": 91
+    },
+    {
+      "global_rank": 13,
+      "paper_id": "S03P08",
+      "benchmark_name": "RULER",
+      "score_0_100": 90
+    },
+    {
+      "global_rank": 14,
+      "paper_id": "S03P09",
+      "benchmark_name": "NoLiMa",
+      "score_0_100": 89
+    },
+    {
+      "global_rank": 15,
+      "paper_id": "S09P08",
+      "benchmark_name": "QT-SCHEMES",
+      "score_0_100": 89
+    }
+  ],
+  "score_bands": {
+    "90_100": 13,
+    "80_89": 25,
+    "70_79": 15,
+    "below_70": 27
+  },
+  "notes": [
+    "High scores favor benchmarks that can falsify integrated architecture claims, expose evidence/proof/context regressions, and separate genuine reasoning from prompt or model effects.",
+    "Synthetic formal benchmarks remain high when executable labels/oracles provide strong causal diagnosis; authenticity and cross-tradition fit are treated separately.",
+    "Upstream scholarly NLP resources score lower unless they directly expose dependency/provenance failures relevant to downstream claim validation.",
+    "Duplicate benchmark records are retained as separate immutable studies per protocol."
+  ]
+}

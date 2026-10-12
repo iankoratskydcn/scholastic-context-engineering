@@ -1,0 +1,152 @@
+{
+  "perspective": "Adversarial cross-pipeline verification of handoffs, ownership, status authority, permissions, visibility, external actors, and approval/order claims using all three transcripts as primary evidence and Markdown artifacts as provisional summaries.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "H1",
+      "claim": "Mayra -> Laura is a confirmed operational handoff for student appointments.",
+      "status": "confirmed",
+      "evidence": [
+        "Laura transcript lines 46-50: Mayra receives faculty requests, enters the spreadsheet, and it then comes to Laura to process.",
+        "Laura transcript lines 69-80: Mayra enters request fields; Laura adds missing fields and begins screening/workflow.",
+        "Mayra transcript lines 44-52: Mayra starts the request and collects fields required for Laura and Daisy."
+      ],
+      "risk": "The shared spreadsheet is the practical transport, but no authoritative handoff event, acceptance state, or exception contract is confirmed.",
+      "recommendation": "Model submission as a handoff with explicit received/returned states; do not infer acceptance from row creation."
+    },
+    {
+      "id": "H2",
+      "claim": "Laura -> Finance/Daisy is confirmed for records Laura verifies in Oracle, but only the downstream costing trigger is established.",
+      "status": "confirmed_with_scope_limit",
+      "evidence": [
+        "Laura transcript lines 120-130: after Laura verifies the Oracle record, Daisy can filter verified items and perform costing.",
+        "Daisy transcript lines 1028-1049: Finance checks chartfields, resolves funding issues, updates the worksheet, and marks its work with status/date/initials."
+      ],
+      "risk": "The evidence does not establish that every Laura-managed appointment enters Finance, who formally accepts the handoff, or whether Finance status is authoritative outside the worksheet.",
+      "recommendation": "Define a verified-to-finance handoff contract scoped by appointment/assignment."
+    },
+    {
+      "id": "H3",
+      "claim": "Finance can hand work back upstream for funding and activity clarification; Finance also performs termination-side updates, but final authority is unresolved.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Daisy transcript lines 1028-1049: Finance verifies chartfields, discusses missing funds, changes chartfields, and rechecks them.",
+        "Daisy transcript lines 892-922: Finance maintains an active summary, terminates entries it identifies as ended, and asks Mayra/Laura to confirm uncertain appointments.",
+        "Laura transcript lines 1087-1096: student termination requests should flow through Mayra to Laura; Laura acts from the spreadsheet."
+      ],
+      "risk": "Finance worksheet edits and Laura Oracle changes overlap; canonical termination/status authority is not stated.",
+      "recommendation": "Assign separate authority for HR lifecycle, Finance costing lifecycle, and cross-team confirmation."
+    },
+    {
+      "id": "H4",
+      "claim": "External actors are pipeline participants: faculty provide/confirm requests and funding, students complete screening/signing/preboarding, hiring authorities sign, and an HR approver controls the Oracle queue.",
+      "status": "confirmed",
+      "evidence": [
+        "Mayra transcript lines 12-35 and 44-52: faculty provide renewal/new-appointment information; Mayra chases nonresponses.",
+        "Laura transcript lines 78-89 and 252-260: students complete screening and sign DocuSign offers; Laura chases them.",
+        "Laura transcript lines 87-89 and 541-548: Chanel/Dr. Sarkar sign hiring-authority letters.",
+        "Laura transcript lines 120-130: Oracle entries wait in an HR approval queue before verification/costing."
+      ],
+      "risk": "External completion events and queue outcomes are represented as statuses, but their source/reconciliation mechanisms are unspecified.",
+      "recommendation": "Treat external actors and Oracle approval as boundary events with provenance and reconciliation."
+    },
+    {
+      "id": "H5",
+      "claim": "Status fields are operational coordination markers, not proven authoritative state machines.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Laura transcript lines 78-80, 85-103, 114-130: Laura filters and changes screening, stage, Oracle, check, and verified fields.",
+        "Laura transcript lines 95-109: Laura and an HR colleague both work the sheet; initials and blue highlighting are local tracking.",
+        "Mayra transcript lines 337-352: Mayra says Laura should change Laura statuses; Mayra should view them because she lacks Oracle access.",
+        "Daisy transcript lines 1035-1049: Finance uses green/in-progress and a later unclear status with date and initials."
+      ],
+      "risk": "Multiple editors, personal colors, and the unclear Finance terminal status weaken authority claims.",
+      "recommendation": "Do not treat colors, initials, or free-form statuses as authority; resolve Finance terminal status before implementation."
+    },
+    {
+      "id": "H6",
+      "claim": "Permissions and visibility are unresolved; current sensitive-data practice conflicts with proposed universal visibility.",
+      "status": "contradiction_found",
+      "evidence": [
+        "Daisy transcript lines 516-524: Finance reconciliation data is sensitive; Mayra and Laura do not have access.",
+        "Daisy transcript lines 529-536: Ian proposes everybody can see everything while only some can edit; Daisy agrees to the proposal.",
+        "Laura transcript lines 887-901: Ian proposes role-gated changes with broad view access and defers advanced permissions."
+      ],
+      "risk": "The broad-visibility proposal is not approved policy and would expose finance-sensitive data if implemented literally.",
+      "recommendation": "Preserve least-privilege visibility; require explicit owner approval for cross-domain views and masking."
+    },
+    {
+      "id": "H7",
+      "claim": "Laura-before-Daisy is supported for the verified-to-costing path, but generic approval/order claims are assumptions or overstatements.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Laura transcript lines 122-130: Daisy acts after Laura verifies the Oracle appointment.",
+        "Laura transcript lines 1062-1082: Laura says there is not really an approval for student-hiring changes; Mayra headcount is already approved with Dr. Sarkar.",
+        "Mayra transcript lines 444-462: Mayra enters chartfields to get started; Daisy performs substantive chartfield/distribution work.",
+        "Mayra artifact lines 23-31 and 90: Laura-before-Daisy and related order details are explicitly open/assumed."
+      ],
+      "risk": "A universal approval gate would conflate headcount approval, hiring-authority signature, Oracle HR approval, Laura verification, and Finance checks.",
+      "recommendation": "Represent those gates separately and preserve the assumed label where evidence is second-hand."
+    },
+    {
+      "id": "H8",
+      "claim": "Change requests are a cross-pipeline loop with confirmed audit need, but requester, approver, and executor vary by change type.",
+      "status": "confirmed_with_ambiguity",
+      "evidence": [
+        "Laura transcript lines 780-805 and 851-860: post-completion changes require a new offer letter and Oracle amendment.",
+        "Laura transcript lines 1025-1058: funding changes need Daisy visibility and auditable history.",
+        "Laura transcript lines 1087-1096: student requests should route through Mayra to Laura, although faculty bypass occurs.",
+        "Mayra transcript lines 214-226: late job-code changes require restricted overwrite access."
+      ],
+      "risk": "Job-code, funding, termination, and faculty/staff changes have different owners and effects; one generic loop is unsafe.",
+      "recommendation": "Use typed change-request classes with requester, affected assignment, reviewers, executor, downstream reprocessing, and immutable before/after values."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "No authoritative system or formal acceptance event is identified for worksheet handoffs.",
+    "Exact Finance completion status is unclear in Daisy transcript lines 1042-1049 (\"page\" may be transcription error); do not normalize it to \"paid\".",
+    "Canonical authority for termination, active/inactive status, and Finance edits versus Laura Oracle changes is unresolved.",
+    "Whether Finance costing applies to every student appointment or primarily faculty/staff/stipend cases is unresolved; Daisy examples are faculty-focused (Daisy transcript lines 83-101, 126-189).",
+    "Permission policy is unresolved: Finance sensitivity conflicts with proposed broad read visibility.",
+    "Oracle HR approval is distinct from business/headcount approval; owner and transition semantics are unspecified.",
+    "External-event provenance, reconciliation, retry, and stale-status handling are undefined."
+  ],
+  "source_coverage": [
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/HR App (1).docx",
+      "coverage": "Read complete transcript, lines 1-1158",
+      "role": "Primary Laura/HR evidence."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx",
+      "coverage": "Read complete transcript, lines 1-650",
+      "role": "Primary Mayra evidence."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx",
+      "coverage": "Read complete transcript, lines 1-1128",
+      "role": "Primary Finance evidence."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md",
+      "coverage": "Read complete artifact, lines 1-153",
+      "role": "Provisional cross-pipeline summary checked against transcripts."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md",
+      "coverage": "Read complete artifact, lines 1-128",
+      "role": "Provisional Mayra flow; assumptions challenged."
+    },
+    {
+      "source": "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md",
+      "coverage": "Read complete artifact, lines 1-117",
+      "role": "Provisional Finance flow; uncertainties retained."
+    },
+    {
+      "source": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/evidence_pack.md",
+      "coverage": "Read complete evidence pack, lines 1-46",
+      "role": "Verification rules and output contract."
+    }
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/cross_pipeline_handoffs.json"
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "file": "evidence/S21P09.pdf",
+    "url": "https://uwindsor.scholaris.ca/bitstreams/c44a704c-99c0-4ded-a16e-457a72b52440/download",
+    "status_code": 200,
+    "content_type": "application/pdf",
+    "final_url": "https://uwindsor.scholaris.ca/server/api/core/bitstreams/c44a704c-99c0-4ded-a16e-457a72b52440/content",
+    "sha256": "62ec077e9c7fccf43d6e037e2d26cbc5b5469eb3bf6dde2778d11dfbb88f3008",
+    "size_bytes": 560831
+  },
+  {
+    "file": "evidence/S21P09_doi.html",
+    "url": "https://doi.org/10.1007/s10503-015-9387-x",
+    "status_code": 200,
+    "content_type": "text/html",
+    "final_url": "https://link.springer.com/article/10.1007/s10503-015-9387-x?error=cookies_not_supported&code=65f7c2e9-1ef7-4c6a-8168-0336d8be3ddd",
+    "sha256": "fb85b2b844dc2094b948e2d32b7a2cab5a1f6e377cccee2f24a7551a7f74a17c",
+    "size_bytes": 308948
+  },
+  {
+    "file": "evidence/S03P01.html",
+    "url": "https://aclanthology.org/2024.tacl-1.9/",
+    "status_code": 200,
+    "content_type": "text/html",
+    "final_url": "https://aclanthology.org/2024.tacl-1.9/",
+    "sha256": "a546a9add71fa432e6e448a944dc87e4384995ce29c3385d0aade6439d8021b1",
+    "size_bytes": 40889
+  },
+  {
+    "file": "evidence/S03P01.pdf",
+    "url": "https://aclanthology.org/2024.tacl-1.9.pdf",
+    "status_code": 200,
+    "content_type": "application/pdf",
+    "final_url": "https://aclanthology.org/2024.tacl-1.9.pdf",
+    "sha256": "f37f6fabe0fe0d8c73b67579cd115dbf14e282cfb7b7af655ae8109638402c9b",
+    "size_bytes": 2609413
+  },
+  {
+    "file": "evidence/S03P01_arxiv.html",
+    "url": "https://arxiv.org/abs/2307.03172",
+    "status_code": 200,
+    "content_type": "text/html",
+    "final_url": "https://arxiv.org/abs/2307.03172",
+    "sha256": "af63ac4b31d2d47748f3ad62081349ff820ca488c577888c8b0289545915c275",
+    "size_bytes": 41931
+  },
+  {
+    "file": "evidence/S21P09_crossref.json",
+    "url": "https://api.crossref.org/works?query.title=Some+Artificial+Intelligence+Tools+for+Argument+Evaluation%3A+An+Introduction&rows=5",
+    "status_code": 200,
+    "content_type": "application/json",
+    "final_url": "https://api.crossref.org/works?query.title=Some+Artificial+Intelligence+Tools+for+Argument+Evaluation%3A+An+Introduction&rows=5",
+    "sha256": "4e8736a83780966bf20c89422cd9e296aa882aee09ba2a5c3ffc364dbce10cce",
+    "size_bytes": 39889
+  },
+  {
+    "file": "evidence/S03P01_crossref.json",
+    "url": "https://api.crossref.org/works?query.title=Lost+in+the+Middle%3A+How+Language+Models+Use+Long+Contexts&rows=5",
+    "status_code": 200,
+    "content_type": "application/json",
+    "final_url": "https://api.crossref.org/works?query.title=Lost+in+the+Middle%3A+How+Language+Models+Use+Long+Contexts&rows=5",
+    "sha256": "104f6361d94a7a8f483faf836b66270468a1fa5d54953ba88b21fe1b51008f79",
+    "size_bytes": 33908
+  }
+]

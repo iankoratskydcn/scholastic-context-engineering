@@ -1,0 +1,62 @@
+{
+  "retrieved_at": "2026-10-12",
+  "tls_verification": "disabled with curl -k due local CA failure; recorded as limitation",
+  "items": [
+    {
+      "body": "18_07_crossref_title.body",
+      "size_bytes": 56426,
+      "sha256": "f9b4d558afc3d837eb4d8db5715cc9c76a3805dce0193dc31852932726b7bc82",
+      "header_status": "HTTP/2 200",
+      "content_type": "application/json"
+    },
+    {
+      "body": "18_07_informal_logic_pdf.body",
+      "size_bytes": 9114822,
+      "sha256": "2a3ec88b9e36c0a9f68b41d487815aed703f03c1b04a676bb0489dcdeaac3c08",
+      "header_status": "HTTP/1.1 200 OK",
+      "content_type": "application/pdf"
+    },
+    {
+      "body": "18_07_informal_logic_view.body",
+      "size_bytes": 21094,
+      "sha256": "f784d9d5a729a4dbfd0091bbd5447d55f516f86a326863b5cb0bd80536dc2d23",
+      "header_status": "HTTP/1.1 200 OK",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "body": "S24P01_crossref.body",
+      "size_bytes": 10102,
+      "sha256": "27bf3d0d16112ab6bd0ad3111dee291d18d502ca80928c8111abe527ce456f32",
+      "header_status": "HTTP/2 200",
+      "content_type": "application/json"
+    },
+    {
+      "body": "S24P01_dblp.body",
+      "size_bytes": 7464,
+      "sha256": "7b54ea1f0525f2d62f1eef8bbaf37b90f8b875e6950da2c07e62e2099085248e",
+      "header_status": "HTTP/2 200",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "body": "S24P01_doi.body",
+      "size_bytes": 3038,
+      "sha256": "32ed63159c77e21ee19ca1b9aa3213ccf0218eb59539560b132a8e68ef0e18ea",
+      "header_status": "HTTP/2 200",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "body": "S24P01_shelah_pdf.body",
+      "size_bytes": 7928133,
+      "sha256": "9ad65a93bd860931da60b2effd61c5c91f7f1c330aa76c34dbe7604c57cd2afd",
+      "header_status": "HTTP/2 200",
+      "content_type": "application/pdf"
+    },
+    {
+      "body": "S24P01_springer.body",
+      "size_bytes": 3038,
+      "sha256": "32ed63159c77e21ee19ca1b9aa3213ccf0218eb59539560b132a8e68ef0e18ea",
+      "header_status": "HTTP/2 200",
+      "content_type": "text/html; charset=utf-8"
+    }
+  ]
+}

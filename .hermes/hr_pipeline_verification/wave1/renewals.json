@@ -1,0 +1,110 @@
+{
+  "perspective": "Adversarial verification of renewal, reappointment, and semester-rollover semantics against all three interview transcripts and all three derived Markdown artifacts.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "renewal-no-automatic-renewal",
+      "claim": "Renewal/reappointment is not automatic. Faculty must confirm or edit the proposed appointment each cycle, especially chartfield/funding data.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:79-86 — chartfield may change; Mayra says they do not want automatic renewals and need faculty confirmation.",
+        "Call with Mayra Morfin (1).docx:44-52 — prior-semester data is sent as a snippet and faculty are asked for changes; new appointments require the full fields.",
+        "mayra_student_hiring_flow.md:8-12, 50-53 — derived summary matches the transcript, but remains provisional."
+      ],
+      "risk": "A default-copy or silent renewal could carry forward an invalid funding source and misassign responsibility to Finance.",
+      "recommendation": "Model renewal as an explicit faculty-confirmation event with confirmed, edited, and outstanding states; never treat copied data as approval."
+    },
+    {
+      "id": "prior-semester-snippet",
+      "claim": "The renewal input is a prior-semester snippet, not a new blank request; faculty review the copied values and can edit them.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:44-46 — Mayra uses the previous semester spreadsheet and sends a snippet asking whether students are renewing and for changes.",
+        "mayra_student_hiring_flow.md:51-53 — renewal_snippet followed by faculty_confirm."
+      ],
+      "risk": "Treating the snippet as authoritative would hide changed job codes, hours, rates, or chartfields.",
+      "recommendation": "Persist both the prior-semester snapshot and the faculty-confirmed next-semester values."
+    },
+    {
+      "id": "reappointment-oracle-path",
+      "claim": "Reappointments use existing Oracle person data; the new-hire Banner/pending-worker path is a distinct branch.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "HR App (1).docx:568-578 — Laura says reappointments already have the information in Oracle; new hires require pending-worker entry, Banner address lookup, DOB, gender, and phone.",
+        "HR App (1).docx:412-421 — Laura contrasts reappointment address retrieval from Oracle with new-student lookup in Banner.",
+        "student_hiring_pipeline.md:40-42 — D1/D2 new-hire detour and D3 reappointment skip."
+      ],
+      "risk": "Applying new-hire collection requirements to reappointments creates unnecessary work; applying the reappointment shortcut to new hires omits required identity data.",
+      "recommendation": "Branch explicitly on appointment/person status and retain the branch decision in the record."
+    },
+    {
+      "id": "spring-copy-over",
+      "claim": "For spring, Mayra copies fall data into the spring tab; unchanged rows remain done/no-action, while highlighted changed rows require processing.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "HR App (1).docx:962-978 — most appointments span nine months; Mayra copies data to the spring tab, highlights changes, and unchanged rows stay blue with no Laura action.",
+        "HR App (1).docx:986-987 — changed spring assignments require the process, including foreign-principal, letter, and entry/change work.",
+        "student_hiring_pipeline.md:43-45 — D5 records the copy-over and highlighted-change behavior."
+      ],
+      "risk": "A bulk spring rollover that reprocesses every copied row creates needless work; one that processes none misses changed assignments.",
+      "recommendation": "Implement row-level no-change versus changed classification; only changed rows create a new work item, while preserving the copied prior-semester values."
+    },
+    {
+      "id": "changed-row-semantics",
+      "claim": "A post-completion change is not an in-place silent edit: it requires a tracked request, a new/revised offer-letter step, and an Oracle amendment; Finance may need revised funding data.",
+      "status": "corroborated_cross_interview",
+      "evidence": [
+        "HR App (1).docx:780-851 — Laura describes changing completed TA/RA appointments; she needs a new offer letter and Oracle amendment, with Mayra as the intake path.",
+        "HR App (1).docx:1023-1053 — changed job/funding data must be visible to Daisy/Jamie and the request history must be retained for audit.",
+        "Call with Mayra Morfin (1).docx:214-226 — late job-code changes occur after onboarding and overwrite must be restricted.",
+        "daisy_finance_stage.md:19-24, 37-46 — funding problems loop through update and re-verification."
+      ],
+      "risk": "Overwriting the current row destroys audit history and can leave HR, Oracle, and Finance out of sync.",
+      "recommendation": "Represent changes as linked revisions/requests with requester, confirmation/approval state, effective semester, and downstream completion state."
+    },
+    {
+      "id": "finance-reverification",
+      "claim": "Finance verifies chartfields and may require a new account or changed chartfield; the appointment is not financially complete merely because HR copied or confirmed the row.",
+      "status": "directly_confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:444-462 — chartfields may be prefilled, but Finance checks distributions and account use.",
+        "Call with Daisy Matos.docx:1022-1049 — Finance verifies chartfield, discusses changes when funds are unavailable, updates the worksheet, and records completion/date/initials.",
+        "daisy_finance_stage.md:17-31, 67-80 — derived finance loop and active-monitoring semantics."
+      ],
+      "risk": "Treating faculty confirmation as sufficient financial validation can propagate stale or unfunded chartfields.",
+      "recommendation": "Keep faculty confirmation and Finance verification as separate lifecycle events."
+    },
+    {
+      "id": "derived-summary-overreach",
+      "claim": "The derived artifacts are broadly accurate but overstate or normalize several points that are only proposals or assumptions.",
+      "status": "caveat",
+      "evidence": [
+        "mayra_student_hiring_flow.md:10 — 'confirmation is required every time' is directionally supported, but the transcript does not define the exact confirmation protocol or deadline.",
+        "mayra_student_hiring_flow.md:25-31 and 76-80 — Laura/Daisy ordering and some late-change/default-account edges are explicitly marked assumed or second-hand, so they must not be treated as primary authority.",
+        "student_hiring_pipeline.md:43-45 and 97-114 — 'only highlighted rows re-enter the pipeline' is a useful derived interpretation, but the transcript says changed rows require action rather than defining a formal pipeline reset.",
+        "daisy_finance_stage.md:26-31 and 101-106 — exact post-entry status is unresolved ('page', probably 'paid'), and the grad-student/fringe/summer applicability remains open.",
+        "Call with Mayra Morfin (1).docx:116-124 — 'auto-approve for most' is Ian's proposal, not confirmed policy."
+      ],
+      "risk": "A summary-level state machine could accidentally turn design proposals, assumptions, or unclear labels into enforced policy.",
+      "recommendation": "Keep transcript evidence, corroborated behavior, derived interpretation, and design proposal in separate fields; do not implement 'auto-approve', exact statuses, or full reset semantics without owner confirmation."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Whether a faculty confirmation is required for every copied row, including unchanged rows, or whether unchanged rows are implicitly accepted after a defined deadline.",
+    "Exact system status/state names for renewal confirmation, changed-row processing, Finance completion, and the unclear Daisy status ('page', probably 'paid').",
+    "Whether changed spring rows always repeat foreign-principal screening or only the offer-letter/Oracle amendment path; Laura describes the whole process but does not specify exceptions.",
+    "Whether a faculty-confirmed chartfield is a hard prerequisite before Finance verification or merely an input to Finance review.",
+    "What happens when faculty never respond: deadline, escalation, non-renewal, or carry-forward behavior is not defined.",
+    "Whether renewal is per student, per assignment, or per supervisor request in the data model; the Laura transcript confirms one student can have multiple Oracle assignments, but does not define renewal identity rules."
+  ],
+  "source_coverage": [
+    "HR App (1).docx: read in full, 1-1158.",
+    "Call with Mayra Morfin (1).docx: read in full, 1-650.",
+    "Call with Daisy Matos.docx: read in full, 1-1128.",
+    "student_hiring_pipeline.md: read in full, 1-153.",
+    "mayra_student_hiring_flow.md: read in full, 1-128.",
+    "daisy_finance_stage.md: read in full, 1-117.",
+    "evidence_pack.md: read in full, 1-46."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/renewals.json"
+}

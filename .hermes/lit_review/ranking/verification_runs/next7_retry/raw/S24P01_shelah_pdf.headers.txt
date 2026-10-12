@@ -1,0 +1,13 @@
+HTTP/2 200 
+server: nginx
+date: Mon, 12 Oct 2026 06:42:05 GMT
+content-type: application/pdf
+content-length: 7928133
+x-frame-options: SAMEORIGIN
+vary: Cookie
+x-xss-protection: 1; mode=block
+strict-transport-security: max-age=31536000
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: default-src 'self'; object-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://sentry.on.ep3.at; report-uri https://sentry.on.ep3.at/api/10/csp-report/?sentry_key=9faed8909631466786b9e3f966e0883e&sentry_release=c4003d49efa2148f3e07b8e882d31d66ac908142;
+x-content-type-options: nosniff
+

@@ -1,0 +1,106 @@
+{
+  "perspective": "Adversarial verification of the unified status/state model across Mayra intake, Laura/HR processing, and Daisy/Finance costing.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "SM-001",
+      "claim": "The evidence supports three separate Laura status dimensions, not one unified linear status: foreign-principal screening (Column C), workflow/stage (Column F), and Oracle/preboarding state (Column E).",
+      "status": "confirmed",
+      "evidence": ["HR App (1).docx lines 78-80, 86-90", "HR App (1).docx lines 115-130", "student_hiring_pipeline.md sections 'Main path' and 'Status values (spreadsheet)'"],
+      "risk": "A single status field would erase parallelism and can falsely imply that Oracle entry, screening, offer-signing, and preboarding are the same state.",
+      "recommendation": "Keep independent fields/state machines and expose a derived view only when its derivation is explicit."
+    },
+    {
+      "id": "SM-002",
+      "claim": "The exact observed Column F values are drafted, sent to hiring authority, sent to employee, and ready; 'signed' is not directly confirmed as the sheet value.",
+      "status": "contradiction_found",
+      "evidence": ["HR App (1).docx lines 78-80", "HR App (1).docx lines 87-89", "HR App (1).docx lines 217-224", "HR App (1).docx lines 541-548", "student_hiring_pipeline.md lines 48-51"],
+      "risk": "The derived model normalizes 'ready' to 'signed / ready to enter', inventing a status value and potentially treating signing as the same event as readiness.",
+      "recommendation": "Preserve 'ready' literally unless the spreadsheet option list proves a separate 'signed' value; model signing evidence separately from the stage label."
+    },
+    {
+      "id": "SM-003",
+      "claim": "Column E has observed options 'to do', 'entered', 'verified', and 'checked'/'check'; 'check' is the new-hire preboarding state, not a general Oracle approval state.",
+      "status": "confirmed_with_label_ambiguity",
+      "evidence": ["HR App (1).docx lines 115-130", "student_hiring_pipeline.md lines 48-55"],
+      "risk": "Using 'check' and 'checked' interchangeably makes exact-state queries and migration unsafe.",
+      "recommendation": "Record the literal source label plus a normalized meaning; confirm whether the actual option is 'check' or 'checked'."
+    },
+    {
+      "id": "SM-004",
+      "claim": "Blue is a visual completion marker used by Laura after Oracle entry, not proof of terminal completion or verification.",
+      "status": "contradiction_found",
+      "evidence": ["HR App (1).docx lines 101-115", "HR App (1).docx lines 121-130", "student_hiring_pipeline.md lines 48-55"],
+      "risk": "Treating blue as 'done' can route records to Finance before Laura's later verification and can hide records still awaiting HR approval.",
+      "recommendation": "Store color as presentation metadata only; derive readiness from explicit Column E/F and screening states."
+    },
+    {
+      "id": "SM-005",
+      "claim": "'Entered' means Laura entered/submitted the Oracle record and it can remain in an HR approval queue; it does not mean approved or verified.",
+      "status": "confirmed",
+      "evidence": ["HR App (1).docx lines 101-130", "student_hiring_pipeline.md lines 27-31"],
+      "risk": "A unified model that maps entered directly to approved, active, or finance-ready creates an invalid transition.",
+      "recommendation": "Represent Oracle submission, approval-queue presence, and Laura verification as distinct facts/states."
+    },
+    {
+      "id": "SM-006",
+      "claim": "The change-request loop back to a fresh Mayra intake is not established and is too strong as represented in the derived graph.",
+      "status": "contradiction_found",
+      "evidence": ["HR App (1).docx lines 779-805", "HR App (1).docx lines 835-880", "HR App (1).docx lines 986-1003", "mayra_student_hiring_flow.md lines 19-21 and 75-80"],
+      "risk": "A change to job code, hours, rate, funding, or termination may be incorrectly re-run through initial intake, duplicating work or losing the original appointment identity/history.",
+      "recommendation": "Model change requests as a versioned amendment linked to the existing assignment; route to the affected owners without assuming a full restart."
+    },
+    {
+      "id": "SM-007",
+      "claim": "The Daisy post-costing status is unresolved: the transcript says 'page' after entry, while the derived artifact guesses 'paid'. No exact status vocabulary is confirmed.",
+      "status": "ambiguous",
+      "evidence": ["Call with Daisy Matos.docx lines 1028-1049", "daisy_finance_stage.md lines 23-31 and 101-117"],
+      "risk": "Guessing 'paid' could falsely assert payroll completion; 'page' may be a transcription error or a distinct local label.",
+      "recommendation": "Preserve the literal token 'page' with an unresolved flag; do not normalize to 'paid' until the worksheet or Daisy confirms it."
+    },
+    {
+      "id": "SM-008",
+      "claim": "Daisy directly confirms the finance visual/status convention: green while working, then the unresolved post-entry label, with date and entrant initials; no concrete timestamp or initials example is observed.",
+      "status": "confirmed_with_missing_values",
+      "evidence": ["Call with Daisy Matos.docx lines 1028-1049", "daisy_finance_stage.md lines 26-31"],
+      "risk": "A design may incorrectly treat color, date, or initials as a system-generated event timestamp or as an Oracle state.",
+      "recommendation": "Store color, literal status, business date, and actor initials as separate audit attributes; do not fabricate timestamps/initials."
+    },
+    {
+      "id": "SM-009",
+      "claim": "Daisy's finance flow is not a simple terminal stage: missing/unfunded chartfields loop through faculty contact, worksheet update, and re-verification; stale appointments loop upstream for confirmation; ended appointments are terminated.",
+      "status": "confirmed",
+      "evidence": ["Call with Daisy Matos.docx lines 214-257", "Call with Daisy Matos.docx lines 891-931", "Call with Daisy Matos.docx lines 1028-1049", "daisy_finance_stage.md lines 15-31"],
+      "risk": "A monotonic Mayra→Laura→Daisy status ladder cannot represent remediation or ongoing active-appointment monitoring.",
+      "recommendation": "Use assignment lifecycle plus independent finance-work states and explicit loopback/termination events."
+    },
+    {
+      "id": "SM-010",
+      "claim": "The proposed unified workflow includes design assumptions that are not interview-confirmed, especially global edit/view permissions, automated transitions, and a single shared database/state model.",
+      "status": "unconfirmed_design_proposal",
+      "evidence": ["Call with Mayra Morfin.docx lines 337-362", "Call with Daisy Matos.docx lines 529-562", "Call with Daisy Matos.docx lines 766-774", "student_hiring_pipeline.md lines 71-123"],
+      "risk": "Design proposals may be mistaken for current policy or authoritative transitions.",
+      "recommendation": "Label proposed behavior separately from observed status; require owner confirmation before enforcing transitions or permissions."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Exact Column F option list, especially whether the literal value is 'ready' or 'signed'.",
+    "Exact Column E option spelling: 'check' versus 'checked'.",
+    "Meaning and spelling of Daisy's post-entry status: transcript says 'page'; 'paid' is only an inference.",
+    "Whether Daisy's post-entry status means Oracle costing entered, payroll paid, or another local milestone.",
+    "Actual timestamps and initials for status changes; interviews describe recording date/initials but provide no concrete values.",
+    "Whether Oracle HR approval is observable as a distinct status/event or only inferred from later verification.",
+    "Whether change requests require screening/offer rework by change type; no universal transition rule is confirmed.",
+    "Whether finance costing applies identically to graduate-student appointments; Daisy's worked examples were faculty/staff-focused.",
+    "Canonical assignment identity/version semantics when one student has multiple assignments or later amendments."
+  ],
+  "source_coverage": [
+    "HR App (1).docx, Laura Hemphill interview, read lines 1-1158; primary evidence for Column C/F/E, colors, Oracle queue, verification, and change requests.",
+    "Call with Mayra Morfin (1).docx, read lines 1-650; primary evidence for intake, renewal/new branching, confirmation, permissions concerns, and late changes.",
+    "Call with Daisy Matos.docx, read lines 1-1128; primary evidence for finance verification, loops, active monitoring, colors, date/initials, and ambiguous post-entry label.",
+    "student_hiring_pipeline.md, read lines 1-153; provisional unified Laura-centered model challenged against transcript evidence.",
+    "mayra_student_hiring_flow.md, read lines 1-128; provisional Mayra model challenged against interview scope and inferred handoffs.",
+    "daisy_finance_stage.md, read lines 1-117; provisional finance model challenged, especially status spelling and terminal-state assumptions."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/status_model.json"
+}

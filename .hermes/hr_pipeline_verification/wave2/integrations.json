@@ -1,0 +1,121 @@
+{
+  "perspective": "Adversarial verification of named system boundaries and integration claims across the HR/student-hiring interviews and derived artifacts; current manual use is separated from proposed automation, and unsupported access/API assumptions are flagged.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "int-01",
+      "claim": "The shared appointment spreadsheet is the current operational handoff among Mayra, Laura, and Daisy/Finance.",
+      "status": "confirmed_with_caveat",
+      "evidence": ["HR App (1).docx:46-50", "HR App (1).docx:68-80", "Call with Daisy Matos.docx:126-140", "Call with Daisy Matos.docx:1022-1049", "student_hiring_pipeline.md:17-31"],
+      "risk": "Rows are overwritten, multiple assignments can be collapsed, formulas and color markers are informal, and no authoritative revision/history contract is established.",
+      "recommendation": "Treat the spreadsheet as a current working source only; define record/assignment identity, import/export semantics, revision history, and conflict handling before replacing or synchronizing it."
+    },
+    {
+      "id": "int-02",
+      "claim": "Excel/CSV upload/download is a requested or proposed feature for open positions, chartfields, configuration, and reports; no implemented integration is evidenced.",
+      "status": "proposal_only",
+      "evidence": ["Call with Mayra Morfin (1).docx:357-362", "Call with Mayra Morfin (1).docx:444-467", "Call with Mayra Morfin (1).docx:531-540", "Call with Daisy Matos.docx:432-450"],
+      "risk": "Assuming arbitrary workbook compatibility would import formulas, stale values, hidden sheets, or malformed identifiers without validation.",
+      "recommendation": "Use explicit versioned templates, schema validation, dry-run/error reports, row-level provenance, and never treat an upload as authoritative without reconciliation."
+    },
+    {
+      "id": "int-03",
+      "claim": "Box is confirmed as the location of Daisy's sensitive reconciliation/account files; read/write automation through Box is only proposed.",
+      "status": "confirmed_with_unsupported_automation_assumption",
+      "evidence": ["Call with Daisy Matos.docx:343-357", "Call with Daisy Matos.docx:516-524", "Call with Daisy Matos.docx:512-524", "daisy_finance_stage.md:11-13, 77-80"],
+      "risk": "The interviews do not establish Box API/connector availability, folder permissions, file locking, versioning, or whether Box or FAST is authoritative.",
+      "recommendation": "Verify tenant/connector permissions, exact folder/file ownership, concurrency/version behavior, and data classification before any Box read/write automation."
+    },
+    {
+      "id": "int-04",
+      "claim": "FAST is a related finance data source that may contain grant/chartfield information, but the access path and authority are unverified.",
+      "status": "partially_confirmed",
+      "evidence": ["Call with Daisy Matos.docx:294-311", "Call with Daisy Matos.docx:733-801", "daisy_finance_stage.md:13, 67-76"],
+      "risk": "Daisy explicitly says Matt/Eric would need to help and that a manual spreadsheet may be used until automation; no API, query, extract, identity, freshness, or reconciliation proof exists.",
+      "recommendation": "Mark FAST integration unknown until an authorized query/export path and field-level mapping are demonstrated against a real account record."
+    },
+    {
+      "id": "int-05",
+      "claim": "Banner is manually used by Laura for new-hire address, date of birth, gender, and phone data; direct application lookup is proposed, not confirmed.",
+      "status": "confirmed_manual_unknown_automation",
+      "evidence": ["HR App (1).docx:405-427", "HR App (1).docx:568-578", "Call with Mayra Morfin (1).docx:151-181", "student_hiring_pipeline.md:40-42"],
+      "risk": "A U-number/email lookup, prefill, or bulk retrieval would cross sensitive identity-data and authorization boundaries; the Mayra lookup site is not even confirmed to be Banner-backed.",
+      "recommendation": "Require approved Banner access, field minimization, identity matching/error handling, audit logging, and explicit user confirmation before prefill or persistence."
+    },
+    {
+      "id": "int-06",
+      "claim": "Oracle is confirmed as the manual system for assignment changes, pending workers, offer-letter attachment, approvals, costing, and verification; automated Oracle integration is not evidenced.",
+      "status": "confirmed_manual_unknown_automation",
+      "evidence": ["HR App (1).docx:561-587", "HR App (1).docx:120-130", "Call with Daisy Matos.docx:167-189", "Call with Daisy Matos.docx:454-472", "student_hiring_pipeline.md:28-31, 40-45"],
+      "risk": "Oracle records can remain queued for weeks or disappear; copying data into an app without authoritative read-back could create duplicate or false-verified appointments.",
+      "recommendation": "Keep Oracle as the authority for assignment/approval/costing state unless explicitly replaced; prove read-back by assignment number, attachment, dates, salary, approval state, and idempotency before automating writes."
+    },
+    {
+      "id": "int-07",
+      "claim": "DocuSign is confirmed as the manual delivery/signature channel for hiring-authority and student signatures; API creation/status synchronization is not confirmed.",
+      "status": "confirmed_manual_unknown_automation",
+      "evidence": ["HR App (1).docx:87-89", "HR App (1).docx:215-235", "HR App (1).docx:243-260", "student_hiring_pipeline.md:24-29, 50-51"],
+      "risk": "Sent/signed spreadsheet statuses do not prove envelope identity, recipient completion, decline, expiry, correction, void, or supersession.",
+      "recommendation": "Do not infer DocuSign integration from status labels; verify envelope API permissions, webhook/read-back behavior, immutable envelope IDs, and all non-success states."
+    },
+    {
+      "id": "int-08",
+      "claim": "The foreign-principal screening web form is a confirmed manual external boundary; prefilled links or automated submission are proposals and previously encountered form drift.",
+      "status": "confirmed_manual_proposal_only_automation",
+      "evidence": ["HR App (1).docx:78-87", "HR App (1).docx:611-624", "HR App (1).docx:617-663", "student_hiring_pipeline.md:20-23, 62"],
+      "risk": "The form changed while Eric's automation was being developed; query-string prefill does not prove supported submission, completion callbacks, identity binding, or evidence retention.",
+      "recommendation": "Treat the form as an external human-completed gate; verify current provider contract, supported prefill, completion evidence, rejection/resubmission, and change detection before automation."
+    },
+    {
+      "id": "int-09",
+      "claim": "The offer letter is a manually completed Adobe form/template with dropdown-driven job-code content; automatic filling is a proposal.",
+      "status": "confirmed_manual_proposal_only_automation",
+      "evidence": ["HR App (1).docx:430-475", "HR App (1).docx:486-511", "student_hiring_pipeline.md:63"],
+      "risk": "The template is updated on the HR site, and the transcript does not establish stable field names, PDF form semantics, version pinning, signing integrity, or whether generated output is accepted by Oracle/DocuSign.",
+      "recommendation": "Version and inspect the authoritative template, map fields explicitly, validate generated PDFs visually and semantically, and retain the exact artifact used for signature and Oracle entry."
+    },
+    {
+      "id": "int-10",
+      "claim": "Power Apps is confirmed only as the prototype/demo surface; production data connectivity and deployment are not established.",
+      "status": "prototype_only",
+      "evidence": ["HR App (1).docx:7-21", "HR App (1).docx:138-169", "Call with Daisy Matos.docx:23-32", "Call with Daisy Matos.docx:1060-1084"],
+      "risk": "The demo includes hallucinated/sample data and controls that do not yet perform the described workflow; UI affordances could be mistaken for durable functionality.",
+      "recommendation": "Require a real-environment composition test covering identity, roles, persistence, external calls, failure mapping, and reload/restart behavior before claiming app integration."
+    },
+    {
+      "id": "int-11",
+      "claim": "Dataverse access is explicitly pending; Power Automate and Power BI connections are future/proposed work, not confirmed integrations.",
+      "status": "unknown_proposed",
+      "evidence": ["Call with Mayra Morfin (1).docx:399-406", "Call with Mayra Morfin (1).docx:54-62", "Call with Mayra Morfin (1).docx:132-135", "Call with Daisy Matos.docx:294-332", "Call with Daisy Matos.docx:325-339", "Call with Daisy Matos.docx:758-774", "Call with Daisy Matos.docx:840-858"],
+      "risk": "The statements assume future database access, Power Automate spreadsheet connectivity, and Power BI/data-warehouse support without tenant, licensing, connector, schema, identity, refresh, or governance proof.",
+      "recommendation": "Mark all three as unimplemented until IT grants access and a minimal end-to-end read/write or read-only proof is exercised; do not build a second source of truth while authority remains unresolved."
+    },
+    {
+      "id": "int-12",
+      "claim": "The proposed universal read-access model conflicts with the confirmed sensitivity and least-privilege boundary for Finance reconciliation data.",
+      "status": "contradiction_found",
+      "evidence": ["Call with Daisy Matos.docx:516-524", "Call with Daisy Matos.docx:529-539", "Call with Mayra Morfin (1).docx:209-226", "Call with Mayra Morfin (1).docx:340-352", "daisy_finance_stage.md:11-13"],
+      "risk": "A system that lets everyone see everything could expose sensitive finance/reconciliation data and allow users to infer authority from visibility; field-level scope and audit policy are absent.",
+      "recommendation": "Block implementation of universal visibility. Define role/record/field permissions, separate view from edit authority, enforce them at the backend and Box boundary, and audit access."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "No source proves live API/connector access, credentials, licensing, tenant configuration, or production deployment for any named integration.",
+    "System-of-record authority is unresolved among the appointment spreadsheet, Box files, FAST, Banner, Oracle, and any future Dataverse projection.",
+    "No field-level data classification, retention, masking, authorization, or audit policy is established for identity, payroll, finance, offer-letter, or screening data.",
+    "No idempotency, retry, timeout, reconciliation, read-back, or partial-failure semantics are defined for external writes.",
+    "The proposed Power Apps/Dataverse/Power Automate/Power BI architecture is design discussion only; the demo contains nonfunctional/sample behavior.",
+    "External form/template drift is known for the foreign-principal form and possible for the Adobe offer template; version pinning and change detection are missing.",
+    "DocuSign, Oracle, Banner, FAST, and Box exception states and authoritative identifiers are not specified.",
+    "Finance examples are primarily faculty/staff; student-specific fringe, distributions, and costing rules remain unresolved."
+  ],
+  "source_coverage": [
+    {"source": "/Users/iankoratsky/.hermes/attachments/HR App (1).docx", "role": "primary Laura interview", "coverage": "Full transcript read; spreadsheet, Banner, Oracle, DocuSign, foreign-principal form, Adobe template, Power Apps prototype, workflow and access claims."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/Call with Mayra Morfin (1).docx", "role": "primary Mayra interview", "coverage": "Full transcript read; spreadsheet intake, lookup uncertainty, Excel/CSV proposals, Power Apps/Dataverse/Power BI/automation proposals, role boundaries."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/Call with Daisy Matos.docx", "role": "primary Daisy interview", "coverage": "Full transcript read; Box, FAST, spreadsheet, Oracle costing, Power Automate, Power BI/data warehouse, access sensitivity, and prototype claims."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/student_hiring_pipeline.md", "role": "provisional derived artifact", "coverage": "Read in full; used only to cross-check normalized states, systems, and stated gaps."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/mayra_student_hiring_flow.md", "role": "provisional derived artifact", "coverage": "Read in full; used to distinguish Mayra-confirmed behavior from second-hand Laura/Daisy and proposal content."},
+    {"source": "/Users/iankoratsky/.hermes/attachments/daisy_finance_stage.md", "role": "provisional derived artifact", "coverage": "Read in full; used to cross-check Box/FAST/Oracle/accounting flow and explicit open questions."}
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave2/integrations.json"
+}

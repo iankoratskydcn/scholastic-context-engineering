@@ -1,0 +1,1 @@
+URL: https://api.crossref.org/works?query.bibliographic=Formalizing%20Informal%20Logic%20Walton%20Gordon&rows=10

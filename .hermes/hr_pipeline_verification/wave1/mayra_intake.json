@@ -1,0 +1,94 @@
+{
+  "perspective": "Adversarial verification of Mayra's faculty-intake and appointment-start workflow against Mayra, Laura, Daisy, and derived artifacts.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "M1",
+      "claim": "Mayra initiates intake by emailing faculty a required-field request; faculty reply by email.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:12-20",
+        "Call with Mayra Morfin (1).docx:32-35"
+      ],
+      "risk": "Mayra's transcript does not enumerate the canonical field list.",
+      "recommendation": "Treat the exact field schema as corroborated by Laura, not as fully specified by Mayra alone: HR App (1).docx:68-78."
+    },
+    {
+      "id": "M2",
+      "claim": "Renewals and new appointments branch differently; renewals use prior-semester data but still require explicit faculty confirmation because funding/chartfields can change.",
+      "status": "confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:44-52",
+        "Call with Mayra Morfin (1).docx:64-86"
+      ],
+      "risk": "Silent automatic renewal would violate Mayra's stated control requirement.",
+      "recommendation": "Require a recorded confirm/edit response for every renewal; do not auto-renew solely from prior data."
+    },
+    {
+      "id": "M3",
+      "claim": "Mayra chases non-responsive faculty after the intake request.",
+      "status": "corroborated",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:248-256",
+        "Call with Mayra Morfin (1).docx:127-131",
+        "HR App (1).docx:1110-1117"
+      ],
+      "risk": "No confirmed stop condition, escalation policy, or deadline appears in the interviews.",
+      "recommendation": "Track sent time, reminders, and unresolved status; leave escalation/closure policy open."
+    },
+    {
+      "id": "M4",
+      "claim": "Mayra resolves missing identity and funding details, then starts the HR worksheet record for downstream processing.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:151-181",
+        "Call with Mayra Morfin (1).docx:444-462",
+        "Call with Mayra Morfin (1).docx:44-52",
+        "HR App (1).docx:68-78",
+        "HR App (1).docx:523-542"
+      ],
+      "risk": "Mayra says the lookup site may be Banner-backed but is not certain: Call with Mayra Morfin (1).docx:151-160. The source does not define a failure path when no match is found.",
+      "recommendation": "Preserve identity-source uncertainty and require an explicit unresolved-match state; do not invent a Banner integration."
+    },
+    {
+      "id": "M5",
+      "claim": "A mid-semester OPS appointment currently enters through a form link and follows the new-student path.",
+      "status": "contradicted_or_misclassified",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:421-441",
+        "HR App (1).docx:1102-1117"
+      ],
+      "risk": "The derived artifact `mayra_student_hiring_flow.md:49` marks 'Mayra sends a form link' as confirmed current behavior, but the transcript records Mayra asking whether such a form could exist and Ian proposing it. Current practice remains email-based; the form is future-state/design evidence.",
+      "recommendation": "Reclassify the mid-semester form-link node as proposed/unverified. Record current entry as Mayra collecting the same appointment information through the existing faculty-email workflow."
+    },
+    {
+      "id": "M6",
+      "claim": "The worksheet is the handoff boundary to Laura, followed by downstream Finance work after HR processing.",
+      "status": "corroborated_with_order_caveat",
+      "evidence": [
+        "HR App (1).docx:68-78",
+        "HR App (1).docx:523-548",
+        "HR App (1).docx:120-130",
+        "Call with Daisy Matos.docx:1027-1049"
+      ],
+      "risk": "Mayra's own interview says the data supports Laura and Daisy but does not establish ordering; Laura and Daisy corroborate Laura-before-Finance for the normal path.",
+      "recommendation": "Model Mayra → Laura → Daisy as the normal path, while retaining exceptions for changes, missing funding, and unresolved appointment activity."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Canonical required-field list as an authoritative schema.",
+    "No-match behavior when U-number/email identity lookup fails.",
+    "Whether Mayra or another role owns final validation before worksheet submission.",
+    "Reminder cadence, escalation, and closure when faculty never respond.",
+    "Current versus future-state status of the mid-semester OPS form workflow.",
+    "Exact change-request routing and approval semantics after Laura has processed an appointment."
+  ],
+  "source_coverage": [
+    "Primary: Call with Mayra Morfin (1).docx, exact lines 12-52, 64-86, 127-181, 188-221, 248-256, 421-462.",
+    "Cross-check: HR App (1).docx, exact lines 68-78, 120-130, 523-548, 1102-1117.",
+    "Cross-check: Call with Daisy Matos.docx, exact lines 1027-1049.",
+    "Derived artifact reviewed: student_hiring_pipeline.md and mayra_student_hiring_flow.md; artifact claims were not treated as primary evidence.",
+    "Derived finance context reviewed: daisy_finance_stage.md; no direct contradiction to Mayra intake beyond downstream ownership/order caveats."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/mayra_intake.json"
+}

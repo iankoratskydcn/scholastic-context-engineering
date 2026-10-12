@@ -1,0 +1,3 @@
+# Benchmark classification notes: categories 16–20
+
+Read the five supplied source artifacts for categories 16–20. Category names and paper order are preserved exactly. Classification uses only the supplied artifacts; no external web search was used. `introduces_benchmark` is reserved for an explicitly named benchmark, `introduces_dataset_or_corpus_used_as_benchmark` for a released dataset/corpus used as an evaluation resource, and `introduces_evaluation_task_or_metric_only` for a new evaluation protocol/metric without a clear benchmark release. Rows: 72. Benchmark-producing rows (all `introduces_*` statuses): 28.

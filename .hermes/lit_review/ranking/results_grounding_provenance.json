@@ -1,0 +1,137 @@
+{
+  "reviewer_slug": "grounding_provenance",
+  "rows": 80,
+  "perspective": "grounding, evidence retrieval, citation support, multi-hop support, provenance traceability",
+  "distinctions": {
+    "retrieval_citation": 7,
+    "argument_proof": 29,
+    "generic_qa_corpus": 44
+  },
+  "top20": [
+    {
+      "global_rank": 1,
+      "paper_id": "S05P05",
+      "benchmark_name": "ALCE",
+      "score_0_100": 98
+    },
+    {
+      "global_rank": 2,
+      "paper_id": "11-08",
+      "benchmark_name": "MISSCI PLUS",
+      "score_0_100": 96
+    },
+    {
+      "global_rank": 3,
+      "paper_id": "S05P09",
+      "benchmark_name": "MultiHop-RAG",
+      "score_0_100": 95
+    },
+    {
+      "global_rank": 4,
+      "paper_id": "S05P08",
+      "benchmark_name": "RAGTruth",
+      "score_0_100": 91
+    },
+    {
+      "global_rank": 5,
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score_0_100": 90
+    },
+    {
+      "global_rank": 6,
+      "paper_id": "S07P08",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score_0_100": 89
+    },
+    {
+      "global_rank": 7,
+      "paper_id": "11-06",
+      "benchmark_name": "MISSCI",
+      "score_0_100": 88
+    },
+    {
+      "global_rank": 8,
+      "paper_id": "S08P05",
+      "benchmark_name": "Isabelle proof-state/relevant-premise pairs",
+      "score_0_100": 84
+    },
+    {
+      "global_rank": 9,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score_0_100": 84
+    },
+    {
+      "global_rank": 10,
+      "paper_id": "11-04",
+      "benchmark_name": "ElecDeb60To16 extension",
+      "score_0_100": 83
+    },
+    {
+      "global_rank": 11,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 82
+    },
+    {
+      "global_rank": 12,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score_0_100": 81
+    },
+    {
+      "global_rank": 13,
+      "paper_id": "S09P08",
+      "benchmark_name": "QT-SCHEMES",
+      "score_0_100": 80
+    },
+    {
+      "global_rank": 14,
+      "paper_id": "S25P13",
+      "benchmark_name": "QT-SCHEMES",
+      "score_0_100": 80
+    },
+    {
+      "global_rank": 15,
+      "paper_id": "S03P09",
+      "benchmark_name": "NoLiMa",
+      "score_0_100": 78
+    },
+    {
+      "global_rank": 16,
+      "paper_id": "S06P11",
+      "benchmark_name": "FAITHCOT-BENCH / FINE-COT",
+      "score_0_100": 78
+    },
+    {
+      "global_rank": 17,
+      "paper_id": "S10P07",
+      "benchmark_name": "US2016G1tvWALTON corpus",
+      "score_0_100": 78
+    },
+    {
+      "global_rank": 18,
+      "paper_id": "11-01",
+      "benchmark_name": "LOGIC; LOGIC_CLIMATE",
+      "score_0_100": 78
+    },
+    {
+      "global_rank": 19,
+      "paper_id": "11-05",
+      "benchmark_name": "LOGICOM",
+      "score_0_100": 78
+    },
+    {
+      "global_rank": 20,
+      "paper_id": "11-12",
+      "benchmark_name": "SMARTYPAT-BENCH",
+      "score_0_100": 78
+    }
+  ],
+  "validation": {
+    "all_rows_from_benchmark_studies": true,
+    "category_ranks_contiguous": true,
+    "global_ranks_contiguous": true
+  }
+}

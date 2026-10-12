@@ -1,0 +1,642 @@
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 1
+Copyright©2026 Journal Academica Foundation. All rights reserved.
+With perpetual, non-exclusive license to distribute for arxiv.org
+Originally received June 14, 2026; Revised: June 17, 2026; Accepted June 26, 2026; published July 20,
+2026
+JAcad(NY)15,1:3–18 (16 pages) – Theoretical Computer Science – permalink:
+https://jacad.eth.link/rc_images/abdelwahab_3_18_15_1.pdf
+Computational Extraction of Legal Causes via
+al-S. abr wa al-Taqsim
+A Set-Theoretic Formalization for Closed Fiqh Chapters
+Elnaser Abdelwahab *
+makmad.org e.V.
+Hannover (Germany)
+ABSTRACT
+This paper presents a set-theoretic formalization of the classical usuli method of al-S.abr
+wa al-Taqsim (Examination and Division) for extracting legal causes (‘‘ilal) within closed
+chapters of jurisprudence. A computational algorithm is introduced that extracts minimal
+operational rules from a truth table of juristic verdicts. The principal result is that, given
+a complete truth table for a closed chapter, the algorithm computes the minimal structural
+generators of the ruling and eliminates all logically redundant attributes. The resulting
+structures constitute admissible candidate causes for subsequent juristic evaluation.
+Keywords:Islamic jurisprudence, Usul al-Fiqh, al-S .abr wa al-Taqsim, legal causation,
+candidate‘illah, closed chapters, truth tables, Boolean minimization, complete induction,
+computational fiqh
+1. Introduction
+Traditional inference in Islamic jurisprudence (fiqh) often proceeds through case-based rea-
+soning, textual interpretation, analogical extension, and forms of induction that are not
+usually exhaustive. In addition to this, and due in part to the influence of important fiqh
+scholars such as al-Ghazali and Averroes, juristic rulings were also reached using classical
+deductive Aristotelian and Avicennian logic [4]. Toward the end of his life, al-Ghazali explic-
+itly stressed the importance of deductive logic-based reasoning, treating logic as a general
+introduction to the sciences and as a condition for trustworthy scientific inquiry [5].
+The present paper studies a restricted setting in which both analogical and deductive rea-
+soning mechanisms can be represented by a finite conceptual model. For the purposes of
+1*Corresponding author: elnaser@hotmail.com
+arXiv:2607.25605v1  [cs.AI]  28 Jul 2026
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 2
+the formal model, we consider a school-relative corpus of legal source material and fiqh-
+ontological definitions as fixed. Relative to such a fixed corpus, the paper asks whether a
+given chapter can be represented by a finite set of legally operative concepts and a complete
+ruling function over those concepts.
+If the relevant source corpus, ontology vocabulary, and operative legal rules are treated as
+fixed relative to a given school, a further question arises: where does the apparent open-
+endedness of fiqh application come from? How can a finite ontological structure govern
+indefinitely many concrete cases?
+The answer is twofold. First, the open-ended application of a legal rule emerges from the
+contexts in which that rule is applied to concrete world situations. Second, the premises
+of a legal rule, although fixed within the model, may apply to indefinitely many situations
+because the categories used in the sources are abstract. For example, in the chapter of
+Tahara (purification), many real-world situations may fall under the abstract concept of
+an “excuse” (‘‘Udhr), which serves as a premise for the rule of Tayammum. While keeping
+the rule fixed and binding its premises to this abstract notion, one can map indefinitely
+many concrete situations to it. We call the structured set of such abstract legally operative
+notions for a given fiqh chapter theOntological Concepts Tree (OCT).
+This leads to the epistemological distinction between Avicennian/Aristotelian Logic and
+Fiqhi Qiyas, which governs how the OCT operates:
+•Avicennian/Aristotelian Logicrelies on deductive syllogisms where the middle
+term is an ontological cause. The connection between premise and conclusion is one
+of strict necessity; if the cause is present, the effect must physically follow. The rule
+A⇒Badmits no exceptions (monotonic).
+•Fiqhi Qiyasrelies on analogical reasoning where the middle term is a teleologi-
+cal/legal cause (‘‘Illah). The connection yields probabilistic knowledge and operates
+as a default rule; the Lawgiver may suspend the ruling due to a competing legal ob-
+jective or preventative (Mani’). Thus,A⇒Bis non-monotonic: the presence of a
+preventativeMcan yieldA∧M⇒¬B.
+To formalize this system computationally and logically, we must introduce strict method-
+ological assumptions. The most critical is theSchool-Relative Approach. We do not
+treat the OCT as a subject of philosophical dispute or semantic fuzziness. Instead, we
+adopt theClosed-World Assumption (CWA): the OCT is strictly bounded by the syn-
+tactic and semantic definitions explicitly laid out in the primary reference text (Matnor
+Mukhtasar) of a specific school of thought (Madhhab). By anchoring the OCT to a specific
+school’s text, the relevant meanings are treated as fixed relative to the selected school text.
+A Fiqh chapter for which the school-relative OCT is constant is defined as aClosed Chap-
+ter. Under this assumption, the combinatorics behind the chapter, even when exhaustive,
+yield a finite, constant state space. Because the number of OCT nodes (n) and the valid
+preventatives (M) are strictly finite and bounded by the text, the total number of possible
+states is2 n.
+This has two methodological consequences.
+1.Shift to Complete Induction: For a closed chapter, we can transition the mode
+of Fiqh inference from incomplete induction to complete induction. The finite state
+space allows for the exhaustive construction of a truth table over the OCT. The non-
+monotonicity of Fiqhi Qiyas can be represented as bounded defeasibility within this
+table (where rows containing preventatives override default rows).
+2.Structural Comparison of Madhhabs: By formalizing the OCTs and their respec-
+tive inference rules on a chapter-by-chapter basis, we gain a rigorous, practical method
+2
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 3
+for comparing different schools of thought. Instead of comparing only isolated rulings
+or relying solely on informal semantic comparison, we can computationally compare
+the structural logic of different Madhhabs: we can map the differences in their OCTs,
+analyze how different schools define preventatives (M), and identify where their truth
+tables diverge.
+In summary, the Closed Chapter Assumption does not claim to capture the infinite meta-
+physical essence of the law; rather, it rigorously models the internal logic of a Madhhab as
+it stands. This makes systematic structural comparison across legal schools more explicit.
+Some of the practical benefits of this approach are that it simplifies the extraction of legal
+causes (‘‘ilal), a task among the central tasks of Usul al-Fiqh. This paper does not at-
+tempt to prove ontological fiqh-causation. Rather, it formalizes the structural extraction of
+candidate causes from a complete operational model represented as a truth table.
+The present paper should also be read as a domain-specific continuation of earlier work
+on logically complete ontology-level computation, where ontological term systems, decision
+components, inductive components, deductive components, and rational response compo-
+nents were proposed for relational database systems [1]. Here, the same general idea is
+specialized to closed fiqh chapters: the ontology is not a database ontology, but a school-
+relative Ontological Concepts Tree (OCT), and the response component is not a database
+query response, but the extraction of structurally admissible candidate‘ilal.
+The framework presented here is a modelling framework: it applies when the relevant chap-
+ter can be projected, as an approximation, into a finite, school-relative concept vocabulary
+and a complete ruling table over that vocabulary.
+2. Foundational Assumptions
+2.1 Conceptual Representation of Juristic Reality
+The present framework is based upon the observation that fiqh does not operate directly
+upon physical objects, but rather upon legally operative concepts abstracted from those
+objects. A juristic ruling is therefore determined not by the physical identity of a case, but
+by the conceptual attributes recognized as legally relevant within the chapter.
+Axiom 1(Conceptual Representation Principle).LetΩdenote the set of all real-world
+cases and letV={v 1,v 2,...,v n}denote the set of legally operative concepts of a fiqh
+chapter. There exists a mappingϕ: Ω→{0,1} n such that every ruling depends exclusively
+uponϕ(ω)for eachω∈Ω, and not upon any additional physical characteristics of the case.
+The mappingϕmay be viewed as an Ontological Concepts Tree (OCT) encoding that
+transforms infinitely many real-world situations into a finite conceptual representation.
+2.2 Conceptual Finiteness
+The existence of a finite concept vocabulary immediately induces a finite legal state space.
+Theorem 2(Conceptual Finiteness).IfV={v 1,v 2,...,v n}is finite, then the legal state
+space is finite.
+Proof.By Axiom 1, every legal case is represented by a valuation of the variables inV.
+Since each variable is binary, the number of distinct represented legal states is at most
+|{0,1} n|= 2 n. Becausen<∞, the quantity2 n is finite. Therefore the legal state space is
+finite.
+3
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 4
+The significance of this theorem is that it separates the apparent infinity of real-world in-
+stances from the finite conceptual structure upon which juristic reasoning actually operates.
+2.3 Physical and Conceptual Closure
+The present framework does not require the physical world itself to be finite. Instead it
+requires only the stability of the legally operative conceptual vocabulary.
+Definition3(PhysicalClosure).A domain is physically closed iff no new real-world entities
+can ever arise.
+Definition 4(Conceptual Closure).A domain is conceptually closed iff no future legally
+operative concept exists outside the concept setV.
+Remark 5.Physical closure is generally impossible. Conceptual closure may nevertheless
+hold because infinitely many future cases can often be represented using a fixed conceptual
+vocabulary.
+2.4 Closed Chapters
+The notion of a Closed Chapter is the foundational assumption underlying the remainder
+of the paper.
+Definition 6(Closed Chapter).A fiqh chapter is said to be closed iff:
+1. its legally operative concepts are represented by a finite setV={v1,v 2,...,v n};
+2. every future case admits a representationϕ(ω)∈{0,1} n;
+3. no future legally operative concept exists outside the setV.
+A Closed Chapter therefore represents a conceptually complete operational model of the
+chapter under investigation.
+2.5 Operational Closure and Conceptual Stability
+The purpose of closure is not to make a metaphysical claim about reality. Rather, clo-
+sure serves as an operational criterion governing whether the conceptual vocabulary of the
+chapter remains sufficient.
+Principle 7(Conceptual Stability).A chapter may be treated as operationally closed when-
+ever all newly encountered cases can be represented using the existing concept setV.
+Under this principle, the appearance of a new physical object or circumstance does not
+invalidate closure provided that the object can be expressed through already existing legally
+operative concepts.
+2.6 Preservation and Failure of Closure
+The following theorem characterizes when closure remains valid.
+Theorem 8(Closure Preservation).LetCbe a Closed Chapter with concept setV. Suppose
+a new caseωis encountered. Ifϕ(ω)∈{0,1} n, then the chapter remains closed.
+Proof.Sinceϕ(ω)is expressible using the existing concept setV, no new legally operative
+concept has been introduced. Therefore the conceptual vocabulary remains unchanged.
+Hence closure is preserved.
+4
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 5
+The converse theorem identifies the precise failure condition of the framework.
+Theorem 9(Closure Failure).LetCbe a Closed Chapter with concept setV. Suppose a
+newly encountered case requires a conceptx /∈V. Then the Closed Chapter Assumption is
+false.
+Proof.The existence ofx /∈Vcontradicts Condition (3) of the Closed Chapter definition.
+Therefore the chapter is not closed.
+This theorem provides a falsification criterion for the framework: whenever a genuinely
+new legally operative concept is discovered, the chapter must be re-opened and the model
+reconstructed.
+2.7 Complete Induction over Closed Chapters
+The principal consequence of closure is that it transforms juristic analysis from incomplete
+induction into complete induction.
+Corollary 10(Complete Induction over a Closed Chapter).If a chapter is closed, then
+exhaustive enumeration of all legal states is possible.
+Proof.By Theorem 2, the represented legal state space contains at most2n distinct states.
+Since this quantity is finite, every state can be enumerated. Therefore complete induction
+over the chapter is possible.
+Consequently, the logical foundation of the present framework is the following chain:
+Conceptual Representation⇒Conceptual Finiteness
+⇒Closed Chapter⇒Finite State Space
+⇒Complete Induction.
+All subsequent algorithms and correctness proofs depend upon this foundational sequence.
+2.8 Modular Decomposition and Hierarchical Truth Tables
+The Closed Chapter Assumption guarantees that each chapter’s legally operative concept
+setVis finite and fixed. However, a complex chapter such asH. ajj(pilgrimage) may involve
+dozens of potentially relevant concepts if flattened into a single truth table. This would
+lead to a largenand a combinatorial state space of2n rows—still finite, but impractical to
+construct manually.
+This hierarchical separation between lower-level factual representation and higher-level on-
+tological/legal response is analogous to the earlier distinction between database-level and
+ontology-level processing in logically complete relational systems [1].
+Fortunately, fiqh chapters aremodular by design. A higher-level chapter does not operate
+directly on the atomic concepts of its sub-chapters; instead, it relies on theoutcome rulings
+of those sub-chapters as atomic inputs. For example:
+•TheH. ajjchapterusestherulingofT .ah¯ ara(purification)asasinglebinarycondition:
+“Is the pilgrim in a valid state of purity (t.¯ ahir)?”
+•TheS .al¯ ahchapter similarly uses “t.¯ ahir” as a condition, but S.al¯ ah itself may be a
+sub-chapter of H.ajj (e.g., the prayer oft.aw¯ af).
+5
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 6
+This modular structure allows us to apply adivide-and-conquerstrategy:
+1. For each atomic closed sub-chapter (e.g., T.ah¯ ara), construct its complete truth table
+over its own small variable setVsub.
+2. Compute the ruling functionhsub from that table using the algorithm of Section 3.
+3. Treath sub as asingle binary variablein the truth table of the higher-level chapter.
+The combinatorial complexity is thus bounded by the size of the largestatomictruth table,
+not by the total number of atomic concepts across all sub-chapters.
+2.8.1 Concrete Example: Two-Level Hierarchy (T.ah¯ ara→S.al¯ ah)
+Let the atomic chapterT.ah¯ ara(purification for prayer) have the following binary variables
+(as in the Tayammum appendix):
+Variable Description Values
+h Person has minor impurity (h.adath) 1 =impure,0 =pure
+w Water available 1 =available,0 =lacking
+u Valid excuse (‘udhr) for tayammum 1 =excused,0 =not excused
+t Prayer time entered 1 =entered,0 =not entered
+d Valid dust (s.a‘¯ ıd) available 1 =available,0 =not available
+The complete truth table for T.ah¯ ara has25 = 32rows. Running the algorithm on this table
+yields the minimal structural form:
+ht.ah¯ ara= (h∧t∧d)| {z }
+shur¯ ut.
+∧(¬w∨u)| {z }
+candidate ‘illah
+Now consider the higher-level chapterS.al¯ ah(the ritual prayer). The S.al¯ ah chapter does
+not need to expand the five internal variables of T.ah¯ ara. Instead, it uses a single input
+P=h t.ah¯ ara(1 if purification permits prayer, 0 otherwise). Additional local variables for
+S.al¯ ah might be:
+Variable Description Values
+n Intention (niyyah) present 1 =present,0 =absent
+q Facing theqibla 1 =facing,0 =not facing
+c Covering the‘awrah 1 =covered,0 =not covered
+The truth table for S.al¯ ah therefore has21+3 = 16rows, not2 5+3 = 256. The modular
+decomposition reduces the state space by a factor of 16 in this case.
+2.8.2 Recursive Application to Deeper Hierarchies
+The same pattern applies recursively. The output of the S.al¯ ah chapter,hs.al¯ ah, becomes a
+single binary variable in theH. ajjtruth table. Suppose H.ajj adds two local variables (e.g.,
+ih.r¯ amproperly entered,sa‘ybetween S.af¯ a and Marwa completed). Then the H.ajj truth
+table has only21+2 = 8rows, as summarised below:
+6
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 7
+Level Chapter Local variables Sub-chapter inputs Total rows
+1 T.ah¯ ara 5 0 25 = 32
+2 S.al¯ ah 3 1 23+1 = 16
+3 H.ajj 2 1 22+1 = 8
+Total computational work= processing 32 rows (T.ah¯ ara) + 16 rows (S.al¯ ah) + 8 rows
+(H.ajj) = 56 rows. In contrast, a flattened single-table approach with all5 + 3 + 2 =
+10atomic variables would require2 10 = 1024rows and a search space of3 10 = 59,049
+combinations—still feasible for a computer, but significantly larger and harder for a human
+jurist to populate.
+2.8.3 Implications for the Framework
+1.Tractability:The effectivenat any level of the hierarchy is the number ofsub-
+chapter outputsplus the fewlocal variablesat that level. Since each sub-chapter
+is itself closed and small, the overall system remains computationally practical, and
+theO(1)complexity result applies to each atomic table individually.
+2.Reusability:Once an atomic chapter (e.g., T.ah¯ ara) is fully tabulated and its mini-
+mal structure extracted, the resulting binary variable can be reused across all higher
+chapters (S.al¯ ah, H.ajj, S.awm, etc.). This eliminates redundant work.
+3.Comparative madhhab analysis:Modular decomposition allows researchers to
+compare madhhabs at each level independently. For example, two schools may agree
+on the T.ah¯ ara truth table but differ on the S.al¯ ah truth table; the algorithm can
+identify where their rulings diverge.
+4.Practical construction of truth tables:A team of jurists can populate atomic
+tables once, validate them against primary sources, and then compose them into larger
+tables without revisiting lower-level details. This turns the construction of chapter-
+level models into a finite and auditable formalization task, while leaving interpretive
+and doctrinal validation to qualified juristic scholarship.
+2.8.4 Remark on Non-Modular Dependencies
+Occasionally, a higher chapter may depend on a sub-chapter’sinternal variablesrather
+than its final ruling—for example, when the ruling of S.al¯ ah depends not only on whether
+T.ah¯ ara is valid, but onwhyit is valid (e.g., tayammum vs. water). In such cases, the sub-
+chapter’s output must be refined into multiple binary flags (e.g.,Pwater andP tayammum).
+The modular decomposition remains valid, but the interface between chapters becomes a
+small vector of outputs instead of a single bit. The number of such flags is still bounded
+by the sub-chapter’s number of minimal positive rules, which is itself bounded by the small
+nsub. Therefore, the combinatorial explosion remains contained.
+3. Algorithm
+We model the jurist’s decision space as a Boolean truth table over the variable setVof a
+closed chapter. LetV={v 1,v 2,...,v n}be the set of binary decision variables andhbe the
+binary ruling variable. The algorithm operates in three distinct phases: Rule Extraction,
+Rule Shortening, and Usul Deduction.
+7
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 8
+Algorithm 1ExtractRules(U, V)
+Require:Universe of rowsU, Variable setV
+Ensure:Set of valid rulesR
+1:R←∅
+2:foreach subsetP⊂Vof sizejdo
+3:foreach valuationwof variables inPdo
+4:H w←{h(s)|s∈U,smatchesw}
+5:if|H w|= 1then
+6:R←R∪{(w⇒h w)}
+7:end if
+8:end for
+9:end for
+10:returnR
+Algorithm 2ShortenRules(R)
+Require:Set of valid rulesR
+Ensure:Set of minimal rulesM
+1:M←R
+2:foreachR j∈Rdo
+3:foreachR k∈Mdo
+4:ifR k⊂R j andR k implies same ruling asRj then
+5:RemoveR j fromM
+6:end if
+7:end for
+8:end for
+9:returnM
+Algorithm 3DeduceUsul(M+, M-)
+Require:Positive minimal rulesM +, Negative minimal rulesM−
+Ensure:ShurutS, ‘Illah setI, Mawani’W
+1:S← T
+R∈M +R
+2:I←∅
+3:foreachR i∈M + do
+4:I i←R i\S
+5:ifI i̸=∅then
+6:I←I∪{I i}
+7:else▷Heuristic
+8:I trigger←S\{v∈S|vis framework variable}
+9:I←I∪{I trigger}
+10:S←S\I trigger
+11:end if
+12:end for
+13:W←∅
+14:I flat←S
+Ik∈IIk ▷Flatten set of candidate causes into literal set
+15:foreachR j∈M− do
+16:ifR j̸⊆Inv(S)∪Inv(I flat)then
+17:W←W∪{R j}
+18:end if
+19:end for
+20:returnS,I,W
+8
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 9
+LetUdenote the universe of rows of the truth table.
+3.1 Rule Extraction
+Generate all rulesR⇒hthat hold universally withinU.
+3.2 Rule Minimization
+Remove every rule that possesses a strictly smaller valid subrule. The remaining set is
+denotedM.
+3.3 Usuli Deduction
+LetM + be the positive minimal rules andM− the negative minimal rules. Compute:
+S=
+\
+R∈M +
+R
+Then for eachRi∈M + computeI i =R i\S. The setSrepresents candidate conditions,
+while theI i represent candidate causes.
+4. Formal Axiomatization
+Axiom 11(Shart).A variable is a Shart iff it is necessary for the ruling.
+Axiom 12(Structural Causal Correspondence).Within a Closed Chapter, every minimal
+positive rule corresponds to one admissible causal pathway in the jurist’s operational model.
+The role of the algorithm is to identify minimal structural generators of the ruling rather
+than independently establish ontological fiqh-causation.
+Definition 13(Candidate ‘Illah).For a minimal positive ruleR i, the Candidate ‘Illah is
+Ii =R i\S.
+Definition 14(Inverse Literal).For a literalx, Inv(x) =¬x. For a setA, Inv(A) ={¬x:
+x∈A}.
+5. Correctness Results
+Theorem 15(Correctness of Shart Extraction).The algorithm correctly identifies all and
+only the Shurut.
+Proof.The algorithm computesS= T
+R∈M +R. A variable belongs toSiff it appears in
+every positive minimal rule. Therefore it is necessary for every occurrence of the ruling.
+Conversely, every necessary condition must appear in every positive rule. HenceSis exactly
+the set of Shurut.
+Theorem 16(Correctness of Branch-Factor Extraction).For every minimal ruleR i, the
+algorithm correctly extractsIi =R i\S.
+Proof.SinceS= T
+R∈M +R,Scontains precisely the universal components of all positive
+rules. RemovingSfromR i leaves exactly the branch-specific component. ThusIi =R i\S
+is correctly extracted.
+Corollary 17.Under the Structural Causal Correspondence Axiom, eachIi is an admissible
+Candidate ‘Illah.
+9
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 10
+Theorem 18(Structural Classification of Negative Rules (Mani’)).LetI flat = S
+iIi. A
+negative ruleR j is classified as absence-based if
+Rj⊆Inv(S)∪Inv(I flat).
+If this inclusion fails, thenRj contains at least one literal not accounted for by the absence
+of an extracted condition or candidate cause. Such a literal is classified by the formal model
+as a candidate Mani’.
+Proof.IfR j ⊆Inv(S)∪Inv(I flat), then the negative rule is explained within the formal
+model by the absence of an extracted condition or candidate cause. If this inclusion fails,
+thenR j contains at least one literal outside Inv(S)∪Inv(Iflat). Such a literal is not accounted
+for by mere absence of the extracted Shurut or candidate ‘Ilal. Therefore the formal model
+classifies it as a candidate Mani’.
+Heuristic Principle 19(Recovery of the Candidate ‘Illah Qasirah).When|M+|= 1, the
+intersection operation yieldsS=R 1, and thereforeR1\S=∅. In this special case, external
+semantic knowledge supplied by the jurist is required to distinguish framework variables
+from triggering variables. This procedure is heuristic and is not derivable from the truth
+table alone.
+6. Legitimacy of the Candidate ‘Illah
+Definition 20(False Flag).A false flag is a variable that co-occurs with the ruling but is
+logically redundant.
+Theorem 21(Elimination of Logically Redundant Literals).No Candidate ‘Illah extracted
+from a minimal rule can contain a false flag.
+Proof.Assume a Candidate ‘Illah contains a redundant attribute. Then there exists a
+smaller ruleR′⊂R i that still implies the ruling. This contradicts the minimality ofRi.
+Therefore no extracted Candidate ‘Illah contains a false flag.
+7. Co-Extensiveness
+Definition 22(Global Candidate ‘Illah).LetI 1,...,I m be all Candidate ‘Ilal extracted
+from the positive minimal rulesR1,...,R m∈M +. DefineI ∗ =I 1∨I 2∨···∨I m. The
+formulaI ∗ is called the Global Candidate ‘Illah.
+Theorem23(StructuralDecompositionandCo-Extensiveness).Assume thatM + ={R 1,...,R m}
+is the complete set of positive minimal rules covering the positive region of the ruling function
+h. LetS= T
+Ri∈M +Ri denote the extracted Shurut, and letIi =R i\Sbe the branch-specific
+component of each positive minimal rule. IfI∗ =I 1∨I 2∨···∨I m, then the ruling function
+admits the structural decompositionh=S∧I ∗. Consequently,h⇐⇒(S∧I ∗).
+Proof.By the definition ofSas the intersection of all positive minimal rules, we haveS⊆Ri
+for everyRi∈M +. By the definitionIi =R i\S, each positive minimal rule decomposes as
+Ri =S∧I i. SinceM + is assumed to be the complete set of positive minimal rules covering
+the positive region ofh, the ruling function is represented byh=R 1∨R 2∨···∨R m.
+SubstitutingR i =S∧I i givesh= (S∧I 1)∨(S∧I 2)∨···∨(S∧I m). By distributivity of
+conjunction over disjunction, this becomesh=S∧(I 1∨I 2∨···∨I m). By Definition 22,
+we haveI∗ =I 1∨I 2∨···∨I m. Thereforeh=S∧I ∗. Henceh⇐⇒(S∧I ∗).
+10
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 11
+8. Structural Soundness
+Theorem 24(Structural Soundness).Given: (1) a Closed Chapter, (2) a complete variable
+setV, and (3) a complete truth table, the algorithm computes exactly the subset-minimal
+implicating partial valuations for the ruling functionh.
+Proof.Algorithm 1 enumerates all valid implicating rules. Algorithm 2 removes every non-
+minimal rule. The remaining setMis exactly the set of subset-minimal implicating partial
+valuations forh. All subsequent classifications are computed from this set.
+9. Semantic Boundary
+The algorithm establishes structural legitimacy but not semantic suitability (munasabah).
+If irrelevant variables are supplied, the algorithm will correctly identify their structural role
+within the truth table, but cannot determine whether they reflect the objectives of the
+Lawgiver. That responsibility remains with the faqih.
+10. Computational Complexity and Tractability
+A rigorous analysis of the algorithm’s complexity requires distinguishing between the gen-
+eral computational complexity of exhaustive rule extraction and the resource constraints
+imposed by the Closed Chapter Assumption. We demonstrate that while the algorithm
+performs a task that is classically exponential in the number of variables, a fixed closed
+chapter yields a bounded finite computation whose upper bound depends only on the size
+of that chapter’s concept set.
+Theorem 25(Bounded Resource Consumption for a Fixed Closed Chapter).For any fixed
+closed chapter with a fixed concept set of sizek, the algorithmic pipeline has a constant
+upper bound depending only onk.
+Remark 26.This is not a polynomial-time claim in an unbounded variable parametern;
+rather, it is a bounded-domain claim relative to a fixed closed chapter.
+Proof.UnliketheQuine-McCluskeyalgorithm, whichiterativelycombinesadjacentminterms
+bottom-up, Algorithm 1 operates top-down via exhaustive subset-valuation projection. The
+mechanism proceeds as follows:
+1. Generate all possible subsetss⊂Vof the variable set.
+2. For a given subsetsof sizej, generate all2 j possible valuationswof the variables in
+s.
+3. Project the valuationwonto the truth tableU. If all rows matching the valuationw
+yield a uniform ruling (i.e., the projection reduces to a single value), then deduce the
+ruler: (w⇒h w).
+4. Accumulate all such valid rules into the rule setR.
+Algorithm 2 subsequently minimizes this set by removing any rule strictly subsumed by a
+smaller valid rule. The resulting setMis mathematically equivalent to the set of prime
+implicants of the ruling function [2, 3], though derived via a different algorithmic pathway.
+To determine the complexity, we evaluate the number of subset-valuation combinations
+Algorithm 1 must project. For a variable set of sizen, the total number of valuations
+11
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 12
+evaluated across all subsets is:
+nX
+j=0
+n
+j
+
+2j = (1 + 2)n = 3n.
+This operation is classically exponential with respect to the number of variables,n. Ifn
+were unbounded, the algorithm would require exponential resources.
+However, by the Closed Chapter Assumption, the legally operative concept setVis finite
+and fixed for a given Madhhab. Therefore, the number of variables is strictly bounded such
+thatn=kfor some constantk>0.
+Becausenis a fixed constantkfor the chapter under investigation, we can establish strict
+constant upper bounds for all parameters in the algorithm:
+1. The number of subset-valuation combinations evaluated by Algorithm 1 is exactly3k.
+For each combination, projecting and checking for a uniform ruling requires at most
+O(n)operations. Thus, the runtime of Algorithm 1 isO(3k·k) =O(1).
+2. ThenumberofrulesgeneratedbyAlgorithm1ism=|R|. SinceAlgorithm1generates
+at most one rule per evaluated valuation,m≤3k.
+3. The number of minimal rules output by Algorithm 2 isp=|M +|+|M −|. Since
+Algorithm 2 only removes rules fromRto formM, it follows thatp≤m≤3 k.
+Substituting these bounded parameters into the complexity of the remaining algorithms:
+•Algorithm 2 runs inO(m 2·k)≤O((3 k)2·k) =O(9 k·k) =O(1).
+•Algorithm 3 runs inO(p·k)≤O(3 k·k) =O(1).
+Since all parameters governing the loops and operations across all three algorithms depend
+exclusively on the constantk, relative to variation outside the fixed chapter, the total time
+complexity of the pipeline is bounded by a constant depending only onk. Thus, for a fixed
+closed chapter, the top-down projection of all variable subsets is bounded by a constant
+depending only on that chapter’s fixed concept set.
+Remark 27(Relation to Quine-McCluskey Minimization).While Algorithm 1 and Algo-
+rithm 2 jointly compute the set of prime implicants—mathematically equivalent to the output
+of the Quine-McCluskey algorithm—the top-down subset-valuation projection method is bet-
+ter suited for the formalization of Fiqh. Quine-McCluskey is not by itself tailored to the
+present juristic task for three reasons:
+1.Multi-Valued Rulings (Ah.k¯ am):Quine-McCluskey is strictly designed for binary
+Boolean functions (h∈{0,1}). In Fiqh, the ruling variablehoften takes on multiple
+discrete values (e.g., W¯ ajib, Mand¯ ub, Mub¯ ah., Makr¯ uh, H. ar¯ am). Algorithm 1 naturally
+extracts rules for any uniform ruling category by simply checking if the projectionHw
+contains a single value, regardless of the cardinality of the ruling set.
+2.Symmetric Extraction of Maw¯ ani’ (Preventatives):Quine-McCluskey is opti-
+mized to minimize the positive cover (the “ON-set”) using “don’t-care” states to simplify
+the circuit. Fiqh admits no “don’t-care” states; the negative space must be explicitly
+analyzed to extract Maw¯ ani’ (independent preventatives). Algorithm 1 symmetrically
+extracts both positive (M+) and negative (M−) minimal rules, which is a strict pre-
+requisite for the Usul¯ ı deduction of Maw¯ ani’ in Algorithm 3.
+12
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 13
+3.Preservation of Causal Pathways:Quine-McCluskey combines minterms bottom-
+up, which optimizes circuit logic but obscures the distinct causal pathways (t.uruq al-
+‘illah). The top-down projection of Algorithm 1 preserves the disjunctive normal form
+structure necessary to separate the Shur¯ ut. (S) from the branch-specific ’Ilal (Ii), di-
+rectly mapping the output to the epistemic structure of al-S.abr wa al-Taqsim.
+Remark 28.The significance of the preceding bounded-resource theorem is that it cleanly
+separates the theoretical limits of Boolean logic from the operational reality of Fiqh. In
+digital circuit design,ncan grow infinitely (e.g.,n >50), rendering exhaustive subset
+projection computationally intractable. In Fiqh, the Closed Chapter Assumption ensuresn
+remains small and strictly bounded by the text of the Madhhab (typicallyn≤10for a single
+legal chapter). The epistemological closure of the chapter mathematically guarantees the
+computational tractability of the algorithm.
+11. Conclusion
+Given a complete truth table for a Closed Chapter, the algorithm computes the minimal
+structural generators of the ruling, eliminates all logically redundant attributes, and pro-
+duces formally admissible candidate‘ilal. This is illustrated in the appendix through a
+reduced version of the OCT for the Tahara chapter of the Shafi’i school. The algorithm
+therefore constitutes a rigorous computational analogue of al-S.abr wa al-Taqsim, while
+leaving semantic validation to juristic expertise.
+A natural question concerns the range of applicability of the present framework. The frame-
+work does not claim that every chapter of fiqh is necessarily a Closed Chapter, nor that the
+complete conceptual vocabulary of every legal domain has already been discovered. Rather,
+it establishes that whenever a chapter can be represented as a conceptually closed opera-
+tional model—namely, when all legally operative concepts have been identified and all future
+cases can be expressed using that fixed conceptual vocabulary—the method ofal-S.abr wa
+al-Taqsimadmits an exact computational formalization through complete induction over
+a finite state space. The validity of the mathematical results therefore depends not upon
+the universal truth of the Closed Chapter Assumption, but upon its satisfaction within the
+specific chapter under investigation. Consequently, the framework should be understood
+as a conditional theory: if conceptual closure holds, then the extraction of structurally ad-
+missible candidate causes reduces to the computation of subset-minimal implicating partial
+valuations of the corresponding ruling function.
+13
+໳ඃ൬
+഑෮
+ﺍ
+ﺍ٪צ
+ሙሊ
+ﺍ݄ﺍﺍ٪۟יﺍﺍﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍﺩ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍﺩ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭﻭﺍﺍ
+໩ ૯ેໞﺍﺩ܇שٓﻭﺭ ﻭﺍﺍ
+໩ ૯ેໞﺍﺩ܇שٓﻭﺭ ﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍﺩ૯ેໞ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍﺩ૯ેໞ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍﺩ܇שٓﻭﺭ ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍﺩ܇שٓﻭﺭ ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍﺩ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍﺩ૯ેໞﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭﻭﺍﺍ
+໩ ૯ેໞﺍﺩ܇שٓﻭﺭ ﻭﺍﺍ
+Ծ๚ﺍﺩ܇שٓﻭﺭ ﻭﺍﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍሙᇬ૯ેໞ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍﺩ૯ેໞ٩׍٨ٔﺍ ﺍ
+Ծ๚ﺍﺩ૯ેໞ٩׍٨ٔﺍ ﺍ
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 14
+14
+ﺍ݄ﺍﺍ٪۟יﺍﺍﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍሙᇬ܇שٓﻭﺭ٩׍٨ٔﺍ ﺍ
+໩ ૯ેໞﺍﺩ܇שٓﻭﺭ ٩׍٨ٔﺍ ﺍ
+Ծ๚ﺍﺩ܇שٓﻭﺭ ٩׍٨ٔﺍ ﺍ
+ﺍ٪צ
+ﺃﻭ
+1
+2
+Ծऺ௰Ծ֋
+1
+ሙᇬ ) .2
+3
+4
+ﺍ٪צ
+ﺍ1
+•ﺍ 
+•ﺍ 
+•ﺩ 
+]
+ﺍ2
+ؗשٔﺩﺕݝܦﻕﺍ۹ש 
+•٩׍٨ٔﺍ 
+•܇שٓﻭﺭ 
+]
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 15
+15
+ﺍ3
+•ﺍ 
+•ﺍ 
+•ﺍ 
+•ﺍ 
+]
+ﺍ4
+জগ •
+]
+ﺍ
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 16
+16
+J.Acad. (N.Y.)15,1:3–18 2026 (16 pages) Abdelwahab, N. 17
+Statements and Declarations
+Competing Interests
+The authors have no competing interests to declare.
+References
+[1] Elnasereldinellah Mahmoud Elsayed Abdelwahab. Method for creating an efficient,
+logically complete, ontological level in the extended relational database concept. U.S.
+Patent Application Publication US 2020/0242150 A1, published July 30, 2020.
+[2] Willard Van Orman Quine. The problem of simplifying truth functions.The American
+Mathematical Monthly, 59(8):521–531, 1952.
+[3] Edward J. McCluskey. Minimization of boolean functions.The Bell System Technical
+Journal, 35(6):1417–1444, 1956.
+[4] Tony Street and Nadja Germann. Arabic and Islamic philosophy of language and
+logic. In Edward N. Zalta, editor,The Stanford Encyclopedia of Philosophy, Spring
+2021 edition.
+[5] Abu Hamid al-Ghazali.Al-Mustasfa min ‘Ilm al-Usul. 1322 AH edition.
+17

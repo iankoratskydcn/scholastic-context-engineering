@@ -1,0 +1,2009 @@
+Don’t Take the Premise for Granted: Evaluating the Premise Critique
+Ability of Large Language Models
+Jinzhe Li1,3† Gengxu Li1† Yi Chang1,2,3* Yuan Wu1*
+1School of Artificial Intelligence, Jilin University
+2Engineering Research Center of Knowledge-Driven Human-Machine Intelligence, MOE, China
+3International Center of Future Science, Jilin University
+{lijz2121, lgx22}@mails.jlu.edu.cn, yichang@jlu.edu.cn, yuanwu@jlu.edu.cn
+Abstract
+Large language models (LLMs) have witnessed
+rapid advancements, demonstrating remark-
+able capabilities. However, a notable vulner-
+ability persists: LLMs often uncritically ac-
+cept flawed or contradictory premises, leading
+to inefficient reasoning and unreliable outputs.
+This emphasizes the significance of possess-
+ing thePremise Critique Abilityfor LLMs,
+defined as the capacity to proactively iden-
+tify and articulate errors in input premises.
+Most existing studies assess LLMs’ reason-
+ing ability in ideal settings, largely ignoring
+their vulnerabilities when faced with flawed
+premises. Thus, we introduce thePremise
+Critique Bench (PCBench), designed by in-
+corporating four error types across three diffi-
+culty levels, paired with multi-faceted evalu-
+ation metrics. We conducted systematic eval-
+uations of 15 representative LLMs, Our find-
+ings reveal: (1) Most models rely heavily on
+explicit prompts to detect errors, with limited
+autonomous critique; (2) Premise critique abil-
+ity depends on question difficulty and error
+type, with direct contradictions being easier
+to be detected than complex or procedural er-
+rors; (3) Reasoning ability does not consis-
+tently correlate with the premise critique abil-
+ity; (4) Flawed premises trigger overthinking
+in reasoning models, markedly lengthening re-
+sponses due to repeated attempts at resolving
+conflicts. These insights underscore the ur-
+gent need to enhance LLMs’ proactive eval-
+uation of input validity, positioning premise
+critique as a foundational capability for devel-
+oping reliable, human-centric systems. The
+code is available at https://github.com/
+MLGroupJLU/Premise_Critique.
+1 Introduction
+Large language models (LLMs) have shown rapid
+progress in mathematical reasoning (Wang et al.,
+*Corresponding authors
+†These authors contributed equally.
+Figure 1:Illustration of how LLMs handle a query
+containing contradictory premises about book per-
+centages.The example presents conflicting statements
+regarding the proportion of German books and con-
+trasts two model behaviors: one that passively accepts
+the flawed premises, and another that actively identifies
+and reports the inconsistency. This highlights the im-
+portance ofPremise Critique Ability, which refers to
+the capacity to detect and articulate flaws in the input
+premises.
+2024; Xia et al., 2025), code generation (Liu et al.,
+2024b), and creative text writing (Kim and Oh,
+2025), leading to widespread adoption across many
+fields (Huang and Chang, 2022; Chang et al., 2024;
+Ke et al., 2025; Xu et al., 2025). These improve-
+ments stem from increasing model and dataset
+sizes (Kaplan et al., 2020) during pre-training and
+fine-tuning, enabling abilities like step-by-step rea-
+soning and self-correction in models such as GPT-
+o3 (OpenAI, 2025b), DeepSeekR1 (Guo et al.,
+2025a) and Qwen3 (Yang et al., 2025). Supervised
+fine-tuning (SFT) with expert demonstrations (Ye
+et al., 2025) and reinforcement learning (RL) (Yu
+et al., 2025) train models to produce detailed rea-
+arXiv:2505.23715v2  [cs.CL]  24 Nov 2025
+soning processes.
+A notable vulnerability of current LLMs is their
+tendency to accept flawed premises uncritically.
+As shown in Figure 1, models often fail to ques-
+tion erroneous or logically flawed inputs, leading
+to unnecessary, verbose reasoning on invalid ques-
+tions. This wastes resources and risks misleading
+answers in real applications. To be effective and
+trustworthy, LLMs must evolve from passive re-
+sponders into active evaluators—capable of iden-
+tifying ill-posed problems and providing critical
+feedback on input quality. This goes beyond gen-
+eral robustness, emphasizing proactive detection
+and clear articulation of errors, inconsistencies, or
+flawed assumptions within user premises.
+We term this skill thePremise Critique Abil-
+ity, which refers to the model’s capacity to detect
+misleading or flawed information in the input and
+explicitly highlight these problems in a clear and
+understandable way. Unlike general robustness,
+premise critique transforms models into critical col-
+laborators rather than mere information providers.
+Despite its importance, most existing re-
+search (Parmar et al., 2024; Wan et al., 2024; Xiao
+et al., 2024) focuses on evaluating LLMs’ reason-
+ing abilities under ideal conditions with correct
+premises. While some studies (Qin et al., 2025;
+Sakib et al., 2025; Yuan et al., 2024) consider in-
+puts containing false premises, they primarily fo-
+cus on factual inaccuracies, overlooking deeper
+logical issues such as contradictions or inconsis-
+tencies. This reveals an urgent need for dedicated
+evaluation methods to assess the Premise Critique
+Ability of LLMs.
+To address this gap, we proposePremise
+CritiqueBenchmark (PCBench), a comprehensive
+benchmark designed to evaluate the Premise Cri-
+tique Ability of LLMs. We meticulously curated
+this benchmark by adapting mathematical reason-
+ing problems, strategically injecting various types
+of logical inconsistencies and misleading informa-
+tion. This process yielded problems across four
+distinct error categories, designed to expose mod-
+els to a comprehensive range of premise flaws,
+alongside three levels of difficulty to understand
+the impact of problem complexity. For each prob-
+lem scenario, we created multiple versions, allow-
+ing us to evaluate models’ critique performance
+under different conditions, including when they
+must spontaneously identify errors and when they
+are explicitly prompted to check for flaws. Our
+evaluation employs a multi-faceted protocol, pro-
+viding a comprehensive view of LLMs’ critique
+capabilities by capturing both their inherent abil-
+ity to spot errors and their efficiency in generating
+responses.
+We conducted comprehensive experiments eval-
+uating 15 representative LLMs, including the GPT-
+4 series, Qwen3 series, and Gemini. Through a
+detailed analysis of their performance, we identify
+four key findings: (1) Most models show limited
+ability to autonomously critique flawed premises,
+relying heavily on explicit prompts to detect errors.
+(2) Both question difficulty and the error type can
+influence models’ premise critique ability: models
+excel at identifying simple, surface-level flaws but
+struggle with complex inconsistencies or procedu-
+ral errors. (3) There is no consistent correlation
+between a model’s reasoning capability and its abil-
+ity to critique premises. Some reasoning models
+internally catch inconsistencies but fail to articu-
+late them outwardly. (4) Flawed premises deepen
+overthinking in reasoning models, leading to signif-
+icantly longer responses. These insights highlight
+critical gaps in LLMs’ proactive evaluation of input
+validity.
+Our main contributions are as follows:
+• We proposePCBench, a comprehensive
+benchmark designed to evaluate the Premise
+Critique Ability of LLMs. We meticulously
+curated this dataset by adapting mathemati-
+cal reasoning problems and injecting various
+types of logical inconsistencies and mislead-
+ing information.
+• We conducted comprehensive experiments
+evaluating 15 representative LLMs on this
+benchmark and provide a comprehensive view
+of their premise critique capabilities.
+• We identify four key findings through our de-
+tailed analysis of model performance. These
+insights highlight critical gaps in LLMs’
+proactive evaluation of input validity.
+2 Related Work
+2.1 LLM Robustness Evaluation
+Recent studies have established comprehensive
+benchmarks for evaluating LLM robustness against
+input perturbations, testing performance across
+vocabulary, syntactic, and semantic modifica-
+tions (Wang and Zhao, 2024), character to
+semantic-level adversarial prompts (Zhu et al.,
+2023), and punctuation noise in mathematical
+Benchmark Ability Error Category Count Proactive Overthink Difficulty Comparison
+ECHOMIST (Guo et al., 2025b) Implicit misinfo handling 5 categories✓× ×✓MathClean (Liang et al., 2025) Math data validation 7 categories × ×✓×MathTrap (Zhao et al., 2024) Compositional generalization 5 categories✓× ×✓RuozhiBench (Zhai et al., 2025) Logical fallacy identification 6 categories × × × ×MiP dataset (Fan et al., 2025) Missing premise detection 4 subcategories (under 1 major category)✓ ✓ ✓×
+PCBench (Ours)Premise critique 4 categories✓ ✓ ✓ ✓
+Table 1: Comparison between PCBench and other benchmarks. "Ability" describes the core capability under
+evaluation; "Category Count" indicates the number of error categories/subcategories of the benchmark; "Proactive"
+indicates prompting the model without any hints; "Overthink" denotes the consideration of overthinking phenom-
+ena; "Difficulty" represents difficulty grading; "Comparison" means including the comparison of the model’s
+performance under proactive (without explicit instruction) and passive (with explicit instruction) modes.
+reasoning (Abedin et al., 2025). Investigations
+into reasoning robustness have examined stability
+against adversarial noise and counterfactual state-
+ments (Hoppe et al., 2025), the ability to identify
+logical fallacies in bilingual contexts (Zhai et al.,
+2025), and chain-of-thought reasoning weaknesses
+through premature answers (Xu et al., 2024), em-
+bedded trigger words (Xiang et al., 2024), and
+modified reasoning steps (Peng et al., 2024), with
+debate-style evaluations revealing limitations in
+maintaining correct reasoning against invalid argu-
+ments (Wang et al., 2023). However, these studies
+primarily focus on evaluating robustness against
+input perturbations and reasoning process attacks
+while overlooking models’ ability to actively iden-
+tify and critically engage with erroneous premises
+in inputs.
+2.2 False Premise Detection
+As shown in Table 1, multiple benchmarks
+evaluate LLMs’ handling of flawed premises.
+RuozhiBench (Zhai et al., 2025) tests their ca-
+pacity to detect logical fallacies and misleading
+premises via content from a Chinese forum with
+brain teasers. MathClean (Liang et al., 2025) evalu-
+ates their capability to judge math problem/answer
+correctness and pinpoint errors. MathTrap (Zhao
+et al., 2024) examines their compositional general-
+ization in math reasoning through "trap problems".
+Among recent efforts, ECHOMIST (Guo et al.,
+2025b) assesses LLMs’ ability to address implicit
+misinformation using real dialogues, social media
+data and rewritten queries. The MiP dataset (Fan
+et al., 2025) identifies the "MiP-Overthinking"
+phenomenon: LLMs generate verbose yet ineffec-
+tive responses to ill-posed questions with missing
+premises, preliminarily revealing model behavior
+under this unprompted flawed input. Building on
+these, our work extends to more flawed input types,
+conducts multi-perspective evaluation, and com-
+pares model critique performance between active
+and passive modes, better revealing inadequacies
+in LLMs’ proactive premise critique ability.
+3 Method
+3.1 Definition of Premise Critique Ability
+We begin by formalizingPremise Critique Ability
+to support our dataset design and the analysis of
+LLM behavior. An input to an LLM is represented
+as a tuple I= (P, Q) , where P={p 1, . . . , pn} is
+a finite set of premises andQis a query grounded
+in those premises. The input I is consideredflawed
+if the set P includes any flaw, i.e., F(P)̸=∅ ,
+where F(P) denotes inconsistencies, inaccuracies,
+or contradictions in the premises.
+Avalid critiqueis a textual unit that identifies
+a specific flaw f∈ F(P) and offers a clear and
+coherent explanation of its nature. We denote the
+set of all such critiques for inputIasS Critique(I).
+Let O=M(I) be the output generated by an
+LLM given input I, and let Components(O) be the
+set of identifiable textual units in the output. The
+model is said to exhibitpremise critique abilityif
+Components(O)∩S Critique(I)̸=∅,
+i.e., the output contains at least one valid critique,
+indicating that the model has successfully detected
+and articulated a flaw in the premises.
+3.2 Data Construction
+To systematically evaluate the premise critique abil-
+ities of LLMs when confronted with erroneous in-
+puts, we construct PCBench through a controlled
+and principled process. The dataset is designed
+with the following structure:
+3.2.1 Difficulty
+Problems span three levels of mathematical diffi-
+culty to evaluate model performance across varying
+Synthesis Basic Flawed Problems
+1) Contradictory Premise Insertion
+2) Contradictory Inference Insertion
+3) Flawed Solution Completion
+4) Irrelevant Query Distraction
+Extract
+Necessary Prmeises
+&Get Inferences
+Rewrite into
+False Premises
+Synthesis 
+False Premises
+Data Construction Pipeline Evaluation Pipeline
+Human 
+Verification
+Generate Three Variants
+Original Problem
+Flawed Problem
+Flawed Problem
+with explicit instruction
+without explicit instruction
+Answer to
+Flawed Problem 
+with explicit instruction
+Flawed Problem 
+without explicit instruction
+Original Problem
+Evluation Prompt
+LLM as Judge
+Detection?
+Accurate Identification?
+Report in Final Answer?
+Evaluated Model
+PPCRAPCR
+APCCR
+APCCR
+Judge Criteria 
+ GSM8KNormal
+ OlympiadBenchMedium
+Omni-MATHHard
+Sample Problems
+Figure 2: An overview of the dataset construction and the evaluation pipeline.
+levels of complexity, including Normal (sourced
+from the GSM8K (Cobbe et al., 2021) dataset),
+Medium (Adapted from the Chinese College
+Entrance Examination portion within Olympiad-
+Bench (He et al., 2024)), and Difficult (drawn from
+Omni-MATH (Gao et al., 2024) problems with a
+difficulty rating above six).
+3.2.2 Error Categories
+We define four distinct categories of premise errors,
+each designed to evaluate a different aspect of a
+model’s ability to identify and reason about flawed
+inputs:
+Contradictory Premise InsertionAn inconsis-
+tency is intentionally created by adding a new
+premise which clashes with an existing condi-
+tion. To prevent models from relying on positional
+heuristics, the contradictory premise is inserted at
+a random location within the problem. Models
+are tasked with proactively identifying these direct
+logical inconsistencies to assess their core ability
+to detect surface-level contradictions in problem
+inputs.
+Contradictory Inference InsertionThe incon-
+sistency arises when an inference, derived from
+multiple existing premises, is altered and then in-
+serted back into the problem, resulting in a con-
+tradiction with the original premises. This type of
+contradiction is not due to direct conflict among
+the premises themselves, but from the inconsis-
+tency between the modified inference and the
+premises. The purpose of this category is to eval-
+uate a model’s advanced critical reasoning ability
+to detect such subtle contradictions that require
+understanding and verifying inferred conclusions
+beyond simply checking the premises.
+Flawed Solution CompletionThe error in this
+category consists of a deliberately introduced mis-
+take within an intermediate step of a partial solu-
+tion that corresponds to a valid mathematical prob-
+lem. The model is provided with both the original
+valid problem and this flawed partial solution de-
+rived from it, and is asked to continue solving from
+the erroneous step. The evaluation aims to assess
+the model’s ability to critically reason about the
+solution process, detect the mistake, and provide a
+clear explanation or correction while completing
+the solution.
+Irrelevant Query DistractionIn this category,
+each problem presents a valid math problem fol-
+lowed by a step-by-step solution that intentionally
+includes one or more logical or arithmetic errors.
+After the flawed reasoning, a new query is posed
+that remains topically related but does not target
+the specific mistakes made earlier. This setup aims
+to assess whether the model can remain logically
+critical, rather than being distracted by the follow-
+up query unrelated to the error.
+3.2.3 Problem Variants
+For each base flawed premise problem scenario
+constructed under a specific error category and dif-
+ficulty, we generate three distinct problem variants
+for comparative evaluation. This includes theOrig-
+inal Problemwhich features correct premises and
+serves as a baseline, theFlawed Problemwhere
+an intentional error is introduced into the premises,
+and theFlawed Problem with Explicit Instruction,
+which is the flawed version augmented by a clear
+instruction that prompts the model to check for
+errors in the premises. The model’s successful cri-
+tique of the Flawed Problem serves as a genuine
+reflection of its premise critique ability. In con-
+trast, the introduction of the Flawed Problem with
+Explicit Instruction is intended to provide a com-
+parative reference, illustrating how direct guidance
+influences error detection against the model’s in-
+herent capabilities. This contrast reveals whether
+it relies on explicit prompts or demonstrates au-
+tonomous reasoning in premise evaluation, clarify-
+ing the basis of its analytical processes.
+3.2.4 Construction Pipeline
+As illustrated in Figure 2, the PCBench construc-
+tion pipeline consists of four main steps. First,
+problems of Normal, Medium, and Hard difficulty
+levels are randomly sampled. Then, necessary
+premises are extracted from the sampled problems
+and then rewritten into fake premises to form syn-
+thesized false premises. Third, flawed problems
+with four types of erroneous premises are synthe-
+sized, covering Contradictory Premise Insertion,
+Contradictory Inference Insertion, Flawed Solu-
+tion Completion, and Irrelevant Query Distraction.
+Fourth, human verification is conducted to screen
+out eligible flawed problems whose error types con-
+form to the defined criteria. Finally, each verified
+problem is expanded into three variants: theOrig-
+inal Problem(serving as a baseline), theFlawed
+Problem with explicit instruction, and theFlawed
+Problem without explicit instruction. In total, we
+construct 100 base problems for each combina-
+tion of the 4 error types and 3 difficulty levels,
+resulting in 1200 unique base problems with each
+base problem expanded into three distinct variants.
+This structured and scalable design enables rigor-
+ous assessment of how premise critique ability is
+influenced by both error type and task complexity.
+3.3 Evaluation Metrics
+To thoroughly assess the premise critique abilities
+of LLMs, we developed a structured evaluation
+framework centered around the following metrics:
+• Proactive Premise Critique Rate: The percent-
+age of flawed problems in which the model inde-
+pendently correctly detects and reports incorrect
+premises without any external prompting.
+• Assisted Premise Critique Rate: The percent-
+age of flawed problems in which the model cor-
+rectly identifies and reports incorrect premises
+after being explicitly prompted.
+• Proactive Premise Critique Cost Ratio: This
+metric quantifies the overall relative response
+verbosity between theFlawed Problemsand the
+Original Problems, defined as the ratio of their
+average output token counts (Flawed Problems/
+Original Problems).
+• Assisted Premise Critique Cost Ratio: This
+metric quantifies the overall relative response
+verbosity between theFlawed Problem with ex-
+plicit Instructionand theOriginal Problems. It
+is defined as the ratio of their respective aver-
+age output token counts (Flawed Problems with
+Explicit Instruction/Original Problems).
+The proactive rate directly reflects a model’s
+autonomous ability to identify flawed premises
+without external prompts, serving as the core in-
+dicator of genuine premise critique competence.
+The assisted rate, by contrast, measures perfor-
+mance under explicit guidance and acts as a com-
+parative baseline to highlight the model’s reliance
+on prompts rather than intrinsic active critique. De-
+tails of these four evaluation metrics can be found
+in Appendix D.
+4 Experiment
+4.1 Setup
+We assess the Premise Critique Ability of 15
+popular large language models (LLMs), among
+which 7 are non-thinking models: GPT-4o (Hurst
+et al., 2024), GPT-4.1 (OpenAI, 2025a), Qwen3-
+8B, Qwen3-30B-A3B, Qwen3-235B-A22B (Yang
+et al., 2025), DeepSeek-V3 (Liu et al., 2024a)
+and Llama-4-Maverick-17B-128E-Instruct (Meta-
+AI, 2025). And 8 reasoning models: o3-
+mini (OpenAI, 2025c), o4-mini (OpenAI, 2025b),
+DeepSeek-R1 (Guo et al., 2025a), Qwen3-
+8B-thinking, Qwen3-30B-A3B-thinking, Qwen3-
+235B-A22B-thinking (Yang et al., 2025), Claude-
+3.7-sonnet (Anthropic, 2025) and Gemini-2.0-
+flash-thinking (Google, 2024).
+Based on the results from JudgeBench (Tan et al.,
+2024), response evaluation is performed with o3-
+mini-high as an automated evaluator. Detailed de-
+scriptions of the models and the experimental setup
+are provided in Appendix A.
+Model Premise Critique Rate Answer Length (easy set) Cost Ratio (easy set)
+PPCR APCR Original Proactive Instructed PPCCR APCCR
+Non-reasoning Models
+Deepseek-V3 40.5 68.8 311 543 560 1.75 1.80
+GPT4.1 28.2 73.2 219 304 444 1.39 2.03
+GPT4o 11.0 57.4 195 219 278 1.12 1.42
+Llama-4-Maverick 27.2 53.5 217 304 454 1.40 2.09
+Qwen3-235B 24.7 70.0 255 347 522 1.36 2.04
+Qwen3-30B 24.8 61.8 249 337 534 1.35 2.15
+Qwen3-8B 20.6 59.9 257 339 591 1.32 2.30
+Reasoning Models
+Claude3.7-sonnet 36.2 69.8 414 669 494 1.62 1.19
+Deepseek-R1 19.6 67.7 956 2590 1014 2.71 1.06
+Gemini2.0-flash-thinking 38.2 77.9 1116 1665 1786 1.49 1.60
+o3-mini 14.4 73.2 328 1279 1023 3.90 3.11
+o4-mini 4.0 74.2 331 782 664 2.36 2.00
+Qwen3-235B-thinking 35.3 70.1 1529 3629 1776 2.37 1.16
+Qwen3-30B-thinking 32.4 60.5 1310 3039 1770 2.32 1.35
+Qwen3-8B-thinking 26.8 57.2 1573 3735 2517 2.38 1.60
+Table 2:Performance of both non-reasoning and reasoning LLMs on PCBench, Compareing the overall Premise
+Critique Rates (PPCR, APCR), along with the overall average Answer Lengths (where "Original", "Proactive",
+and "Instructed" denote the model’s answers to theOriginal Problem,Flawed Problem, andFlawed Problem with
+Explicit Instructionrespectively) and the corresponding Cost Ratios (PPCCR, APCCR) for the easy subset.Values
+that are underlined are considered the best-performing or most extreme among the models for each evaluation
+metric.
+4.2 Main Results
+Overall Results
+Our evaluation of LLM’ Premise Critique Ability
+revealed a significant disparity between Proactive
+Premie Critique Rate(PPCR) and Assisted Premise
+Critique Rate(APCR). Proactive critique, defined
+as identifying flawed premises without explicit
+prompting, generally exhibited low rates across
+tested models. For instance, GPT-4o achieved a
+PPCR of only 11.0%, while DeepSeek-V3 reached
+40.5%, indicating limited spontaneous error detec-
+tion. In contrast, assisted critique rates, measured
+when models were explicitly instructed to check
+for errors, were substantially higher. Several mod-
+els, including GPT4.1 (73.2%), Gemini-2.0-flash-
+thinking (77.9%), and o4-mini (74.2%), success-
+fully identify flaws in the majority of assisted cases.
+This considerable gap between PPCR and APCR
+highlights that while many models possess the un-
+derlying capability for premise critique, they often
+do not engage in critical analysis unless explicitly
+prompted.
+Analysis concerning models categorized by rea-
+soning capability indicated that while some rea-
+soning models (e.g., Gemini-2.0-flash-thinking,
+Claude-3.7-sonnet) demonstrated relatively higher
+proactive critique performance compared to many
+non-reasoning models, this was not uniformly ob-
+served across all reasoning models tested (e.g., o4-
+mini exhibited a low PPCR of4.0%). This suggests
+that although enhanced reasoning capability may
+correlate with improved proactive critique in cer-
+tain models, the significant gap between PPCR and
+APCR remains a pervasive issue affecting mod-
+els across diverse model frameworks or training
+paradigms.
+These findings underscore the critical need for
+developing LLMs that are not merely reactive infor-
+mation providers but proactive evaluators capable
+of identifying and reporting erroneous premises to
+enhance the trustworthiness and reliability of AI
+assistants.
+Flawed Premises Deepen Overthinking
+Analysis of response lengths and cost ratios indi-
+cates that flawed premises exacerbate overthinking
+in LLMs, particularly in reasoning models. As
+detailed in Table 2, answer lengths for "Proac-
+tive" and "Instructed" critique responses on flawed
+problems substantially exceed those for "Normal"
+queries across models, which is quantified by
+the Proactive (PPCCR) and Assisted (APCCR)
+Premise Critique Cost Ratios. For instance, reason-
+ing models like o3-mini show high ratios, with a
+PPCCR of 3.90 and an APCCR of 3.11. DeepSeek-
+Figure 3: Proactive Premise Critique Rates for the four
+Different Error Categories
+R1 also exhibits a high PPCCR, reaching 2.71.
+These elevated ratios demonstrate that critiquing
+flawed inputs leads to disproportionately longer
+outputs compared to standard problem-solving.
+This suggests that instead of efficiently identifying
+and halting on errors, models engage in more ex-
+tensive and verbose processing, characteristic of
+overthinking. This phenomenon highlights how
+flawed inputs drive computationally inefficient re-
+sponses, particularly for models attempting proac-
+tive critique.
+Scaling law Illustration
+The Qwen3 series exhibits strong scaling behavior.
+In the non-thinking setting, as model size increases
+from 8B to 235B, APCR improves significantly
+from 59.9% to 70.0%, while PPCR exhibits a mod-
+est increase from 20.6% to 24.7%, though accom-
+panied by a slight growth in answer length. In the
+"thinking" setting, performance scales nonlinearly:
+Qwen3-235B-thinking achieves 35.3% PPCR and
+70.1% APCR, with the proactive answer length
+surging to 3629 and APCCR dropping to 1.16
+(compared to 2.30 in Qwen3-8B). These trends
+indicate that, under appropriate training methods,
+both larger model size and superior reasoning abil-
+ity contribute to substantial improvements in capa-
+bility and cost-effectiveness, consistent with scal-
+ing law phenomenon.
+Error-Categorized Performance
+Figure 3 presents the Proactive Premise Critique
+Rate (PPCR) for top non-reasoning and reason-
+ing models across four error categories, reveal-
+ing a clear difficulty hierarchy in premise critique
+ability based on the type of premise flaw. Mod-
+els demonstrate the highest PPCR in the "Con-
+tradictory Premise Insert" category, with some
+like Deepseek-V3 exceeding 55%, indicating rel-
+Figure 4: Proactive Premise Critique Rates at three
+difficulty levels
+ative strength in detecting explicit conflicts. Per-
+formance drops for "Contradictory Inference In-
+sert," showing the greater challenge of inconsis-
+tencies requiring logical deduction. "Irrelevant
+Query Distraction" results in lower, more varied
+PPCRs, highlighting how unrelated queries can
+impede autonomous detection. "Flawed Solution
+Completion" is the most difficult, with consistently
+low PPCR across models, underscoring the diffi-
+culty in proactively critiquing errors within a given
+procedural solution path. This performance dis-
+parity implies current LLMs are much better at
+spotting surface-level contradictions than complex
+or procedurally hidden flaws in premises. Notably,
+reasoning models outperform non-reasoning ones
+in the two harder categories, implying that stronger
+reasoning ability may help uncover more intricate
+premise flaws.
+Difficulty-Categorized Performance
+Figure 4 illustrates the PPCR of six top-
+performance models across three difficulty lev-
+els: Normal, Medium, and Hard. A clear trend
+emerges as PPCR consistently declines with in-
+creasing problem difficulty across all models. For
+instance, Deepseek-V3’s PPCR decreases from
+around 48% on Normal problems to only 29% on
+Hard problems.
+Model performance also varies notably across
+difficulty levels. Claude-Sonnet and Qwen-235B-
+A22B-thinking achieve the highest PPCRs on Nor-
+mal problems, leading the group. Although several
+models perform reasonably well on Medium prob-
+lems, Deepseek-V3 unexpectedly leads on Hard
+problems with the highest PPCR ( 29%), surpass-
+ing models that feature explicit reasoning mech-
+anisms. This suggests that a model’s ability to
+critique complex premises might come more from
+its built-in strengths than from added reasoning
+features.
+The universal decline in PPCR at higher diffi-
+culty levels highlights a fundamental challenge for
+current large language models: their limited ca-
+pacity to accurately detect flaws in more complex
+inputs. Even the top-performing models struggle
+to surpass a 30% critique rate on Hard problems,
+indicating substantial room for improvement in
+Premise Critique Abilities.
+Human Verification
+To verify alignment between the LLM evaluator
+(o3-mini-high) and human evaluations, we con-
+ducted a validation study: 240 instances (60 per
+error type, 20% of each group) were randomly se-
+lected from premise critique results of GPT-4.1 and
+Qwen3-235B-A22B-thinking. Graduate students
+applied the same criteria as o3-mini-high (label-
+ing responses as "True" if they clearly questioned
+premises, identified contradictions, and expounded
+on errors; otherwise "False").
+Confusion matrices for the two models are
+shown in Table 16 (Qwen3-235B-A22B-thinking)
+and Table 17 (GPT-4.1). Kappa coefficients,
+0.8921 for Qwen3-235B-A22B-thinking and
+0.7763 for GPT-4.1, indicate strong consistency
+between automatic and human evaluations, con-
+firming the model’s reliability as an automatic eval-
+uator and the validity of our results.
+5 Further Discussion
+Do models know premises are flawed?
+As shown in Figure 5, Deepseek-R1 identifies the
+contradiction in the problem: Maria’s use of "1/4 of
+a skein" and "182 yards" as conflicting conditions.
+Its internal reasoning (e.g., repeated "Wait, let me
+check again") reflects hesitation and efforts to rec-
+oncile the discrepancy, but it ultimately ignores the
+fractional information and calculates solely based
+on "182 yards," prioritizing conditions without user
+input.
+Despite recognizing the contradiction internally,
+the model’s final answer does not explicitly high-
+light this inconsistency. It provides a result based
+on its chosen condition instead of informing users
+of the input flaw or explaining its reasoning. This
+"decision-making on the user’s behalf" undermines
+its reliability as a "critical collaborator," as users
+remain unaware of the problem’s issues and the
+model’s calculation path, contradicting our defi-
+nition of Premise Critique Ability—the capability
+that requires not only resistance to misdirection but
+also clear identification and explanation of input
+errors.
+This gap between internal recognition and ex-
+ternal expression is not unique to a single instance
+but is observed across multiple reasoning models:
+models like o3-mini-medium and o4-mini-medium
+(see Figure 6 in the appendix) also show low PPCR
+despite high APCR, likely because they detect
+premise errors internally but fail to demonstrate
+Premise Critique Ability in final responses.
+The case also supports the earlier finding that
+flawed inputs deepen models’ overthinking (evi-
+denced by Deepseek-R1’s repeated deliberation).
+Despite expending computational resources on this
+internal processing, these models fail to incor-
+porate their critical awareness into their final re-
+sponse.
+Reason of lacking Premise Critique Ability
+The lack of premise critique ability in current
+LLMs may stem from current training objectives
+and datasets prioritizing coherent responses under
+correct premises, which reduces models’ incentive
+to proactively evaluate premise validity. The dis-
+crepancy between LLMs’ internal contradiction
+detection and explicit articulation in final answer
+may arise from human alignment objectives favor-
+ing completion-oriented responses over critiquing
+input flaws.
+Future research could integrate explicit premise
+critique objectives into training process or design
+datasets with intentionally flawed premises to en-
+hance models’ capability to convert the detection
+of premise flaws during their internal thought pro-
+cesses into explicit, actionable critiques.
+6 Conclusion
+In conclusion, we present PCBench, a bench-
+mark designed to evaluate large language models’
+(LLMs) ability to critique flawed premises by in-
+corporating problems with diverse logical inconsis-
+tencies across multiple difficulty levels. Our evalu-
+ation of 15 LLMs reveals key insights: Most mod-
+els exhibit limited autonomous critique, relying
+heavily on explicit prompts to detect errors. Per-
+formance declines as error complexity increases,
+while obvious contradictions are often detected,
+deepen or procedural flaws are frequently missed.
+Reasoning ability doesn’t always align with cri-
+tique performance, while some models spot flaws
+Response from Deepseek-R1
+Question: Mariah’s grandma was teaching her to knit. Mariah used 1/4 of a skein of yarn. Her grandma used 1/2 of a skein of 
+yarn. There are 364 yards in a skein of yarn. Mariah used 182 yards of yarn. How many yards of yarn did they use altogether?
+Thinking Content:
+Okay, so let me try to figure out this problem. Let's see... Mariah and her grandma were knitting, right? And they used different 
+amounts of yarn. The question is asking how many yards of yarn they used altogether. Hmm.
+(4 more paragraphs...)
+Wait, let me check again. The problem says Mariah used 1/4 of a skein, and separately mentions that she used 182 yards. So 
+maybe the 1/4 is a red herring, and we should just use the 182 yards? But that seems inconsistent. Alternatively, maybe the 
+problem is giving us redundant information to test if we can recognize which numbers to use. Let me see.
+(2 more paragraphs...)
+Wait, maybe the problem is phrased differently. Let me check again:
+(2 more paragraphs of checking premises...)
+Alternatively, maybe the problem is translated incorrectly, or there is a misprint. Let me check the numbers again...
+(2 more paragraphs of checking premises...)
+Wait, unless... Wait, maybe the problem is saying that Mariah used 1/4 of the total yarn, which is 182 yards? But that seems 
+different.
+(3 more paragraphs of analyzing the contradiction...)
+But the problem says Mariah used 182 yards. So that contradicts. 
+Given that, perhaps the problem is intended to have us ignore the fraction and just use the given yardage. So Mariah used 
+182, grandma used 1/2 of 364, which is 182. Total 364. But the mention of 1/4 is a distractor.
+(2 more paragraphs of obedient reasoning...)
+Final Answer:
+Mariah used 182 yards of yarn, which is half of a skein (since a full skein is 364 yards). Her grandma used half a skein as well, 
+which is also 182 yards. Adding both amounts together:
+182 yards+182 yards=364 yards
+**Answer:** They used a total of \boxed{364} yards of yarn.
+Figure 5: An illustrative case of Deepseek-R1’s response to a Contradictory Inference Insertion Question. The red
+text marks the contradictory segment in the question. The blue text shows that the model successfully identifies the
+contradiction through iterative reasoning. The orange text indicates that the model makes autonomous decisions
+without user guidance. In its final answer, the model relies on its own assumptions without offering critical feedback,
+revealing a lack of Premise Critique Ability.
+but don’t articulate them. Flawed premises may in-
+tensify inefficient overthinking, leading models to
+produce excessively verbose responses as they at-
+tempt to resolve conflicts. These findings highlight
+PCBench’s role in exposing LLM vulnerabilities
+and emphasize the necessity of enhancing LLMs’
+autonomous premise critique capabilities for more
+reliable and dependable LLM assistant.
+Acknowledgments
+The authors would like to thank the anonymous re-
+viewers for their valuable comments. This work is
+supported by the National Key Research and Devel-
+opment Program of China (No.2023YFF0905400),
+the National Natural Science Foundation of China
+(No.U2341229) and the Reform Commission Foun-
+dation of Jilin Province (No.2024C003).
+Limitations
+As a preliminary field study, though we evaluated
+15 representative LLMs, the generalizability of our
+findings, especially to new or untested models, re-
+mains uncertain. While our constructed flawed
+data partially aligns with real-world scenarios, a
+comprehensive, systematic statistical analysis of
+flaw probability and scenario classification in real-
+world user inputs is lacking. Meanwhile, using
+existing benchmarks may raise data contamina-
+tion concerns, requiring deeper analysis. Addi-
+tionally, limiting our dataset to English and Chi-
+nese may overlook language’s influence, poten-
+tially restricting premise critique performance by
+ignoring diverse logical structures and cultural nu-
+ances across languages. Furthermore, PCBench’s
+focus on mathematical reasoning narrows its scope,
+failing to consider distinct reasoning patterns and
+premise types in other natural sciences. Finally, our
+focus on textual data leaves multimodal contexts
+as a promising future direction. These limitations
+point to opportunities to expand premise critique
+research across models, languages, domains, and
+modalities.
+References
+Zain Ul Abedin, Shahzeb Qamar, Lucie Flek, and Akbar
+Karimi. 2025. Arithmattack: Evaluating robustness
+of llms to noisy context in math problem solving.
+arXiv preprint arXiv:2501.08203.
+Anthropic. 2025. Claude 3.7 Sonnet.
+Yupeng Chang, Xu Wang, Jindong Wang, Yuan Wu,
+Linyi Yang, Kaijie Zhu, Hao Chen, Xiaoyuan Yi,
+Cunxiang Wang, Yidong Wang, and 1 others. 2024.
+A survey on evaluation of large language models.
+ACM transactions on intelligent systems and technol-
+ogy, 15(3):1–45.
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian,
+Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias
+Plappert, Jerry Tworek, Jacob Hilton, Reiichiro
+Nakano, and 1 others. 2021. Training verifiers
+to solve math word problems.arXiv preprint
+arXiv:2110.14168.
+Chenrui Fan, Ming Li, Lichao Sun, and Tianyi Zhou.
+2025. Missing premise exacerbates overthinking:
+Are reasoning models losing critical thinking skill?
+arXiv preprint arXiv:2504.06514.
+Bofei Gao, Feifan Song, Zhe Yang, Zefan Cai, Yibo
+Miao, Qingxiu Dong, Lei Li, Chenghao Ma, Liang
+Chen, Runxin Xu, Zhengyang Tang, Benyou Wang,
+Daoguang Zan, Shanghaoran Quan, Ge Zhang, Lei
+Sha, Yichang Zhang, Xuancheng Ren, Tianyu Liu,
+and Baobao Chang. 2024. Omni-math: A univer-
+sal olympiad level mathematic benchmark for large
+language models.Preprint, arXiv:2410.07985.
+Google. 2024. Gemini 2.0 flash thinking.
+Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song,
+Ruoyu Zhang, Runxin Xu, Qihao Zhu, Shirong
+Ma, Peiyi Wang, Xiao Bi, and 1 others. 2025a.
+Deepseek-r1: Incentivizing reasoning capability in
+llms via reinforcement learning.arXiv preprint
+arXiv:2501.12948.
+Ruohao Guo, Wei Xu, and Alan Ritter. 2025b. How to
+protect yourself from 5g radiation? investigating llm
+responses to implicit misinformation.arXiv preprint
+arXiv:2503.09598.
+Chaoqun He, Renjie Luo, Yuzhuo Bai, Shengding
+Hu, Zhen Leng Thai, Junhao Shen, Jinyi Hu,
+Xu Han, Yujie Huang, Yuxiang Zhang, and 1 oth-
+ers. 2024. Olympiadbench: A challenging bench-
+mark for promoting agi with olympiad-level bilin-
+gual multimodal scientific problems.arXiv preprint
+arXiv:2402.14008.
+Fabian Hoppe, Filip Ilievski, and Jan-Christoph Kalo.
+2025. Investigating the robustness of deductive rea-
+soning with large language models.arXiv preprint
+arXiv:2502.04352.
+Jie Huang and Kevin Chen-Chuan Chang. 2022. To-
+wards reasoning in large language models: A survey.
+arXiv preprint arXiv:2212.10403.
+Aaron Hurst, Adam Lerer, Adam P Goucher, Adam
+Perelman, Aditya Ramesh, Aidan Clark, AJ Ostrow,
+Akila Welihinda, Alan Hayes, Alec Radford, and 1
+others. 2024. Gpt-4o system card.arXiv preprint
+arXiv:2410.21276.
+Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B
+Brown, Benjamin Chess, Rewon Child, Scott Gray,
+Alec Radford, Jeffrey Wu, and Dario Amodei. 2020.
+Scaling laws for neural language models.arXiv
+preprint arXiv:2001.08361.
+Zixuan Ke, Fangkai Jiao, Yifei Ming, Xuan-Phi Nguyen,
+Austin Xu, Do Xuan Long, Minzhi Li, Chengwei
+Qin, Peifeng Wang, Silvio Savarese, and 1 others.
+2025. A survey of frontiers in llm reasoning: Infer-
+ence scaling, learning to reason, and agentic systems.
+arXiv preprint arXiv:2504.09037.
+Sungeun Kim and Dongsuk Oh. 2025. Evaluating cre-
+ativity: Can llms be good evaluators in creative writ-
+ing tasks?Applied Sciences, 15(6):2971.
+Hao Liang, Meiyi Qiang, Yuying Li, Zefeng He,
+Yongzhen Guo, Zhengzhou Zhu, Wentao Zhang,
+and Bin Cui. 2025. Mathclean: A benchmark for
+synthetic mathematical data cleaning.Preprint,
+arXiv:2502.19058.
+Aixin Liu, Bei Feng, Bing Xue, Bingxuan Wang,
+Bochao Wu, Chengda Lu, Chenggang Zhao, Chengqi
+Deng, Chenyu Zhang, Chong Ruan, and 1 others.
+2024a. Deepseek-v3 technical report.arXiv preprint
+arXiv:2412.19437.
+Changshu Liu, Shizhuo Dylan Zhang, Ali Reza
+Ibrahimzada, and Reyhaneh Jabbarvand. 2024b.
+Codemind: A framework to challenge large lan-
+guage models for code reasoning.arXiv preprint
+arXiv:2402.09664.
+Meta-AI. 2025. The Llama 4 herd: The beginning of a
+new era of natively multimodal AI innovation.
+OpenAI. 2025a. Introducing gpt-4.1.
+OpenAI. 2025b. Introducing openai o3 and o4-mini.
+OpenAI. 2025c. Openai o3-mini.
+Mihir Parmar, Nisarg Patel, Neeraj Varshney, Mutsumi
+Nakamura, Man Luo, Santosh Mashetty, Arindam
+Mitra, and Chitta Baral. 2024. Logicbench: To-
+wards systematic evaluation of logical reasoning
+ability of large language models.arXiv preprint
+arXiv:2404.15522.
+Jingyu Peng, Maolin Wang, Xiangyu Zhao, Kai Zhang,
+Wanyu Wang, Pengyue Jia, Qidong Liu, Ruocheng
+Guo, and Qi Liu. 2024. Stepwise reasoning er-
+ror disruption attack of llms.arXiv preprint
+arXiv:2412.11934.
+Yuehan Qin, Shawn Li, Yi Nian, Xinyan Velocity Yu,
+Yue Zhao, and Xuezhe Ma. 2025. Don’t let it hallu-
+cinate: Premise verification via retrieval-augmented
+logical reasoning.arXiv preprint arXiv:2504.06438.
+Shahnewaz Karim Sakib, Anindya Bijoy Das, and Shib-
+bir Ahmed. 2025. Battling misinformation: An
+empirical study on adversarial factuality in open-
+source large language models.arXiv preprint
+arXiv:2503.10690.
+Sijun Tan, Siyuan Zhuang, Kyle Montgomery,
+William Y Tang, Alejandro Cuadron, Chenguang
+Wang, Raluca Ada Popa, and Ion Stoica. 2024.
+Judgebench: A benchmark for evaluating llm-based
+judges.arXiv preprint arXiv:2410.12784.
+Yuxuan Wan, Wenxuan Wang, Yiliu Yang, Youliang
+Yuan, Jen-tse Huang, Pinjia He, Wenxiang Jiao, and
+Michael R Lyu. 2024. Logicasker: Evaluating and
+improving the logical reasoning ability of large lan-
+guage models.arXiv preprint arXiv:2401.00757.
+Boshi Wang, Xiang Yue, and Huan Sun. 2023. Can
+chatgpt defend its belief in truth? evaluating llm rea-
+soning via debate.arXiv preprint arXiv:2305.13160.
+Ke Wang, Junting Pan, Weikang Shi, Zimu Lu, Houxing
+Ren, Aojun Zhou, Mingjie Zhan, and Hongsheng Li.
+2024. Measuring multimodal mathematical reason-
+ing with math-vision dataset.Advances in Neural
+Information Processing Systems, 37:95095–95169.
+Yuqing Wang and Yun Zhao. 2024. Rupbench: Bench-
+marking reasoning under perturbations for robustness
+evaluation in large language models.arXiv preprint
+arXiv:2406.11020.
+Shijie Xia, Xuefeng Li, Yixin Liu, Tongshuang Wu, and
+Pengfei Liu. 2025. Evaluating mathematical reason-
+ing beyond accuracy. InProceedings of the AAAI
+Conference on Artificial Intelligence, volume 39,
+pages 27723–27730.
+Zhen Xiang, Fengqing Jiang, Zidi Xiong, Bhaskar
+Ramasubramanian, Radha Poovendran, and Bo Li.
+2024. Badchain: Backdoor chain-of-thought prompt-
+ing for large language models.arXiv preprint
+arXiv:2401.12242.
+Yijia Xiao, Edward Sun, Tianyu Liu, and Wei Wang.
+2024. Logicvista: Multimodal llm logical reason-
+ing benchmark in visual contexts.arXiv preprint
+arXiv:2407.04973.
+Fengli Xu, Qianyue Hao, Zefang Zong, Jingwei Wang,
+Yunke Zhang, Jingyi Wang, Xiaochong Lan, Jiahui
+Gong, Tianjian Ouyang, Fanjin Meng, and 1 others.
+2025. Towards large reasoning models: A survey
+of reinforced reasoning with large language models.
+arXiv preprint arXiv:2501.09686.
+Rongwu Xu, Zehan Qi, and Wei Xu. 2024. Preemp-
+tive answer" attacks" on chain-of-thought reasoning.
+arXiv preprint arXiv:2405.20902.
+An Yang, Anfeng Li, Baosong Yang, Beichen Zhang,
+Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao,
+Chengen Huang, Chenxu Lv, Chujie Zheng, Dayi-
+heng Liu, Fan Zhou, Fei Huang, Feng Hu, Hao Ge,
+Haoran Wei, Huan Lin, Jialong Tang, and 41 oth-
+ers. 2025. Qwen3 technical report.arXiv preprint
+arXiv:2505.09388.
+Yixin Ye, Zhen Huang, Yang Xiao, Ethan Chern, Shijie
+Xia, and Pengfei Liu. 2025. Limo: Less is more for
+reasoning.arXiv preprint arXiv:2502.03387.
+Qiying Yu, Zheng Zhang, Ruofei Zhu, Yufeng Yuan,
+Xiaochen Zuo, Yu Yue, Tiantian Fan, Gaohong Liu,
+Lingjun Liu, Xin Liu, and 1 others. 2025. Dapo: An
+open-source llm reinforcement learning system at
+scale.arXiv preprint arXiv:2503.14476.
+Hongbang Yuan, Pengfei Cao, Zhuoran Jin, Yubo Chen,
+Daojian Zeng, Kang Liu, and Jun Zhao. 2024. Whis-
+pers that shake foundations: Analyzing and mitigat-
+ing false premise hallucinations in large language
+models.arXiv preprint arXiv:2402.19103.
+Zenan Zhai, Hao Li, Xudong Han, Zhenxuan Zhang,
+Yixuan Zhang, Timothy Baldwin, and Haonan Li.
+2025. Ruozhibench: Evaluating llms with logical
+fallacies and misleading premises.arXiv preprint
+arXiv:2502.13125.
+Jun Zhao, Jingqi Tong, Yurong Mou, Ming Zhang,
+Qi Zhang, and Xuanjing Huang. 2024. Ex-
+ploring the compositional deficiency of large lan-
+guage models in mathematical reasoning.Preprint,
+arXiv:2405.06680.
+Kaijie Zhu, Jindong Wang, Jiaheng Zhou, Zichen Wang,
+Hao Chen, Yidong Wang, Linyi Yang, Wei Ye, Yue
+Zhang, Neil Gong, and 1 others. 2023. Promptrobust:
+Towards evaluating the robustness of large language
+models on adversarial prompts. InProceedings of the
+1st ACM Workshop on Large AI Systems and Models
+with Privacy and Safety Analysis, pages 57–68.
+A Detailed Experimental Setup
+For closed-source models (e.g., GPT-4o, Claude
+3.7 Sonnet), we employ their latest official ver-
+sions with default configuration settings strictly ad-
+hered to. For open-source models, their respective
+versions available on the Hugging Face platform
+are utilized. For Qwen3-series models without
+the “thinking” mode (e.g., Qwen3-235B-A22B),
+we set temperature=0.7 and top_p=0.8 to opti-
+mize the model’s performance. For Qwen3 models
+with the “thinking” mode enabled (e.g., Qwen3-
+235B-A22B-thinking), we use temperature=0.6
+and top_p=0.95, and explicitly avoid greedy de-
+coding, as this strategy may otherwise lead to
+significant performance degradation and infinite
+repetition. These configurations align with offi-
+cial recommendations from the Qwen3 team. For
+DeepSeek-R1, we adopt the official default settings
+by DeepSeek team. For other open-source models
+(e.g., DeepSeek V3), greedy decoding is adopted.
+Additional details about the evaluated models are
+provided in Tables 18.
+B More Cases
+Figures 7 to 14 present eight examples that include
+both successful and failed cases across four types
+of errors, all generated by the Deepseek V3 model.
+These examples clearly illustrate the validity of
+our task design and its ability to distinguish dif-
+ferent types of model behavior. They also provide
+evidence for the effectiveness of using LLMs as
+judges and demonstrate that our task can reliably
+assess a model’s Premise Critique Ability.
+C Details on Data Construction
+C.1 Data Construction Pipeline
+Our dataset encompasses four categories of logi-
+cally flawed problems. Representative examples
+are presented in Table 4, with each category cor-
+responding to a dedicated case. The construction
+pipeline of our dataset initiates with a carefully
+curated collection of structurally sound mathemat-
+ical word problems, from which explicit atomic
+premises are systematically extracted. Both the
+premise extraction and following error injection
+steps in the synthesis process are conducted by
+prompting GPT-4.1. Leveraging these premises,
+we design four targeted error injection strategies
+to generate instances containing controlled logical
+flaws:
+Contradictory Premise InsertionRandomly se-
+lect one premise from the extracted set, replace
+it with contradictory content, and then randomly
+insert the modified premise into the original prob-
+lem while retaining all correct premises. This pro-
+cess introduces an internal contradiction within the
+problem’s premise set.
+Contradictory Inference InsertionDerive a
+logical inference from a subset of the premises,
+then modify this inference to create a contradiction
+with its supporting premises. The modified con-
+tradictory inference is subsequently inserted ran-
+domly into the problem, establishing a conflict be-
+tween the inference and its foundational premises.
+Flawed Solution CompletionDeliberately in-
+troduce an error into an intermediate step of a par-
+tial solution corresponding to a valid mathematical
+problem. The constructed problem integrates both
+the original problem statement and the flawed par-
+tial solution, requiring models to continue solving
+from the erroneous step.
+Irrelevant Query DistractionEmbed logical or
+arithmetic errors into the step-by-step solution of a
+valid mathematical problem. Subsequently, pose a
+new query topically related to the original problem
+but not targeting the solution errors. Retain the
+problem statement, error-containing solution, and
+irrelevant query to form instances.
+Corresponding detailed illustrations of construc-
+tion pipeline are provided in Tables 4 to 8.
+C.2 Details of Dataset Statistics
+The dataset is constructed by combining four dis-
+tinct error categories with three levels of math-
+ematical difficulty. For each unique combina-
+tion of error category and difficulty level, 100
+base problems are created. This results in a
+total of 4(Error Categories)×3(Difficulties)×
+100(Base Problems per Combination)= 1200
+unique base problems, as shown in Table 3.
+Furthermore, each of these 1200 base prob-
+lems is expanded into three distinct variants: the
+Original Problem (with correct premises), the
+Flawed Problem (with an intentional error in the
+premises), and the Flawed Problem with Explicit
+Instruction (the flawed version appended with
+the explicit prompt: "Check if there are any er-
+rors in the question’s premises before answer-
+ing. If there are, please report them promptly.").
+This expansion yields a total dataset size of
+1200(Base Problems)×3(Problem Variants)=
+3600 problems. This structured design enables a
+thorough assessment of LLMs’ premise critique
+capabilities across diverse error types, varying dif-
+ficulty tiers, and different prompting scenarios.
+D Details on evaluation metrics
+To rigorously evaluate the premise critique abilities
+of large language models, we define and utilize the
+following four key metrics:
+Proactive Premise Critique Rate (PPCR)This
+metric quantifies the proportion of erroneous in-
+puts from the Flawed Problem category for which
+the model’s output autonomously contains a valid
+Error Category Difficulty Number
+Contradictory
+Premise Insert
+Normal 100
+Medium 100
+Difficult 100
+Contradictory
+Inference Insert
+Normal 100
+Medium 100
+Difficult 100
+Irrelevant
+Query Distraction
+Normal 100
+Medium 100
+Difficult 100
+Flawed
+Solution Completion
+Normal 100
+Medium 100
+Difficult 100
+Total 1200
+Table 3: Distribution of Base Problems across Error
+Categories and Difficulties
+critique of the premises, without explicit prompt-
+ing. It measures the model’s intrinsic capability to
+detect and flag input flaws proactively. LetNF rep-
+resent the total number of Flawed Problems in the
+evaluation set. Let CP be the number of Flawed
+Problems where the model’s output contains at
+least one valid critique. The PPCR is calculated as:
+PPCR= CP
+NF
+Assisted Premise Critique Rate (APCR)This
+metric assesses the proportion of erroneous inputs
+from the Flawed Problem with Explicit Instruction
+category for which the model’s output contains a
+valid critique after being prompted to check for er-
+rors. It measures the model’s capability to perform
+premise critique when directed. Let NF I represent
+the total number of Flawed Problems with Explicit
+Instruction in the evaluation set. Let CA be the
+number of Flawed Problems with Explicit Instruc-
+tion where the model’s output contains at least one
+valid critique. The APCR is calculated as:
+APCR= CA
+NF I
+Proactive Premise Critique Cost Ratio (PPCCR)
+This metric quantifies the relative verbosity of re-
+sponses when models are presented with Flawed
+Problems, compared to standard responses for cor-
+rect Original Problems. It is defined as the ratio of
+the average output token count for all responses to
+Flawed Problems to the average output token count
+for all responses to Original Problems. A value
+greater than 1 indicates that responses to flawed
+inputs are, on average, longer than responses to
+correct inputs. Let ¯LF be the average output to-
+ken count for all responses to Flawed Problems.
+Let ¯LO be the average output token count for all
+responses to Original Problems. The PPCCR is
+calculated as:
+PPCCR=
+¯LF
+¯LO
+Assisted Premise Critique Cost Ratio (APCCR)
+This metric quantifies the relative verbosity of re-
+sponses when models are presented with Flawed
+Problems accompanied by explicit instructions to
+check for errors, compared to standard responses
+for correct Original Problems. It is defined as the
+ratio of the average output token count for all re-
+sponses to Flawed Problems with Explicit Instruc-
+tion to the average output token count for all re-
+sponses to Original Problems. A value greater
+than 1 indicates that responses to instructed flawed
+inputs are, on average, longer than responses to cor-
+rect inputs. Let ¯LF I be the average output token
+count for all responses to Flawed Problems with
+Explicit Instruction. Let ¯LO be the average output
+token count for all responses to Original Problems
+(as defined for PPCCR). The APCCR is calculated
+as:
+APCCR=
+¯LF I
+¯LO
+E Prompt Template
+The prompt template presents in Table 9 is de-
+signed for premise extraction. Prompts across Ta-
+bles 10 to 14 are utilized to synthesize four types of
+errors, while the prompt in Table 15 is employed to
+evaluate whether models exhibit premise critique
+ability.
+F More Results
+Figures 15 to 17 illustrates more results of the
+evaluated LLMs.
+Question: In one year, the number of students on campus doubles at the end of every month. If there are 10 students on campus 
+at the beginning of the year, the student population at the end of May is determined by multiplying the initial number of students 
+by 2 raised to the power of 3. How many additional students would have joined by the end of May, above and beyond the 
+number of students already on campus at the beginning of the year?
+Thinking Content:
+Here's the breakdown: The number of students doubles at the end of each month, starting with 10 students.
+We need to figure out how many months of doubling have passed by the end of May:
+January: 1 doubling.
+February: 2 doublings.
+March: 3 doublings.
+April: 4 doublings.
+May: 5 doublings.
+The key part mentions multiplying the initial number by 2 raised to the power of 3. So, we'll focus on the population 
+growth up to that 3rd power, so there may be a slight mix-up with doubling across 5 months vs. what the question asks.
+Final Answer:
+After 3 doublings by the end of May, the total is
+10×23=10×8 = 80
+So the number of new students above the original 10 is
+80 - 10=70
+Answer: 70 additional students. 
+Response from GPT-o4-mini
+Figure 6: An illustrative case of o4-mini’s response to a Contradictory Inference Insertion Question. The question
+presented in the image contains a logical contradiction (highlighted in red). According to the statement that "the
+number of students doubles at the end of each month," the student population should undergo five doublings by the
+end of May. However, the question also claims that the final number of students is obtained by multiplying the
+initial amount by 23, which implies only three doublings. This discrepancy between the implied five doublings and
+the stated three is the source of the contradiction. During the reasoning process, the model (highlighted in orange)
+notes that "the key part mentions multiplying by 2 raised to the power of 3, so we’ll focus on the population growth
+up to that 3rd power, and there may be a mix-up between doubling across 5 months and what the question asks,"
+demonstrating that the model has identified the inconsistency regarding the number of doublings. However, in its
+final answer, the model does not further explore this insight. Instead, it proceeds with the calculation using 23 and
+concludes that the number of additional students is 70.
+Question ： Indras has 6 letters in her name. Her sister's name has 4 more letters than half of the letters in Indras'
+name. Her sister's name has 5 letters. How many letters are in Indras and her sister's names?
+Response ： Let's break down the problem step by step to find out how many letters are in Indras and her sister's
+names.
+1. Indras' Name:
+   - Given: Indras has 6 letters in her name.
+2. Sister's Name:
+   - Half of the letters in Indras' name:
+     6 ÷ 2 = 3 letters
+   - 4 more letters than half:
+     3 + 4 = 7 letters
+   - However, the problem states that the sister's name has 5 letters, which contradicts the calculation above.
+Re-evaluating the Problem:
+It seems there might be a misunderstanding in interpreting the problem. Let's consider the alternative interpretation
+where the sister's name has 4 more letters than half of Indras' name and is 5 letters in total.
+- Half of Indras' name:
+  6 ÷ 2 = 3 letters
+- 4 more letters than half:
+  3 + 4 = 7 letters
+- But the sister's name is given as 5 letters, which doesn't match.
+Conclusion:
+There appears to be an inconsistency in the problem as stated.
+However, based on the initial information:
+- Indras' name: 6 letters
+- Sister's name: 5 letters
+Therefore, the total number of letters in both names is:
+6 (Indras) + 5 (Sister) = 11 letters
+Final Answer: [ 11 ]
+Figure 7: An example of success response to a Contradictory Inference Insertion Question by Deepseek V3. The
+red text in the Question indicates the segment containing the contradiction. The blue text indicates the key part that
+highlights the presence of a contradiction.
+Question ： Sarah went to buy books from the store and spent $300 on the books. The price of each book and the
+total amount spent are both measured in euros. If each book was $15 and she gave an equal number of books to her 4
+kids, how many books did each child get?
+Response ： 1. Total Amount Spent:
+  - Sarah spent a total of $300 on books.
+2. Price per Book:
+  - Each book costs $15.
+3. Total Number of Books Purchased:
+  - To find the total number of books, divide the total amount spent by the price per book:
+  Total Books = $300 ÷ $15 per book = 20 books
+4. Number of Children:
+  - Sarah has 4 kids.
+5. Books per Child:
+  - Since the books are distributed equally among the 4 children, divide the total number of books by the number of
+children:
+  Books per Child = 20 books ÷ 4 kids = 5 books per child
+Final Answer: [5]
+Figure 8: An example of fail response to a Contradictory Inference Insertion Question by Deepseek V3. The red
+text in the Question indicates the segment containing the contradiction.
+Question ： There are twice as many boys as girls at Dr. Wertz's school. There are three times as many boys as girls
+at Dr. Wertz's school. If there are 60 girls and 5 students to every teacher, how many teachers are there?
+Response ： Let's solve the problem step by step.
+Given:
+1. Number of Girls: 60
+2. Ratio of Boys to Girls:
+   - First Statement: There are twice as many boys as girls.
+   - Second Statement: There are three times as many boys as girls.
+   Note: There seems to be a contradiction in the problem statement regarding the ratio of boys to girls. We'll proceed
+with the second statement (three times as many boys as girls) as it's more specific.
+3. Student-to-Teacher Ratio: 5 students per teacher.
+Step 1: Calculate the Number of Boys
+Since there are three times as many boys as girls:
+Number of Boys = 3 × Number of Girls = 3 × 60 = 180
+Step 2: Calculate the Total Number of Students
+Total Students = Number of Boys + Number of Girls = 180 + 60 = 240
+Step 3: Determine the Number of Teachers
+Given the student-to-teacher ratio is 5 students per teacher:
+Number of Teachers = Total Students ÷ 5 = 240 ÷ 5 = 48
+Final Answer: [48]
+Figure 9: An example of success response to a Contradictory Premise Insertion Question by Deepseek V3. The red
+text in the Question indicates the segment containing the contradiction. The blue text indicates the key part that
+highlights the presence of a contradiction.
+Question ： To make a call from a payphone, you must pay $0.25 for each minute of your call. After 16 minutes,
+that price drops to $0.2 per minute. To make a call from a payphone, you must pay $0.30 for each minute of your
+call. How much would a 36-minute call cost?
+Response ： Let's break down the cost of a 36-minute call step by step.
+Given:
+1. First 16 minutes: $0.25 per minute
+2. After 16 minutes: $0.20 per minute
+Calculation:
+1. Cost for the first 16 minutes:
+   16 minutes × $0.25/minute = $4.00
+2. Remaining minutes after 16 minutes:
+   36 minutes - 16 minutes = 20 minutes
+3. Cost for the remaining 20 minutes:
+   20 minutes × $0.20/minute = $4.00
+4. Total cost:
+   $4.00 + $4.00 = $8.00
+Final Answer: [ 8 ]
+Figure 10: An example of fail response to a Contradictory Premise Insertion Question by Deepseek V3. The red
+text in the Question indicates the segment containing the contradiction.
+Question ： Question: The cell-phone recharges at the rate of 1 percentage-point of charge per 3 minutes. Now, the
+phone is at 60% charged. How long will it take to fully charge, in hours? Part of My Solution: 100-60=30 percentage
+points. Then 40*3=120 minutes Please complete the solution of the question for me.
+Response ： Your solution is almost correct, but there is a small mistake in the calculation. Let's go through it step
+by step:
+1. Determine the remaining percentage to charge:
+  Current charge: 60%
+2.Full charge: 100%
+  Remaining: 100% - 60% = 40% (not 30% as you initially wrote)
+  Calculate the time to charge the remaining 40%:
+3. Charging rate: 1 percentage-point per 3 minutes
+  Time for 40%: 40 × 3 = 120 minutes
+4. Convert minutes to hours:
+  120 minutes ÷ 60 = 2 hours
+Final Answer: It will take 2 hours to fully charge the phone.
+(Your initial calculation had a typo where you wrote "30 percentage points" instead of 40, but the math 40 × 3 = 120
+was correct.)
+Figure 11: An example of success response to a Flawed Solution Completion Question by Deepseek V3. The red
+text in the Question indicates the segment containing the contradiction. The blue text indicates the key part that
+highlights the presence of a contradiction.
+Question ： Question: A basic manicure starts at $35 while a pedicure starts at $40. A certain salon offers 20% off if
+you get both. Suppose Karen chooses to do both and would also like to add nail art on each of her fingers, which
+costs $3 per nail. How much would she pay in all? Part of My Solution: The cost for both manicure and pedicure is
+$35+$40=$75. The discount is $75*0.2=$30. So, Karen would only pay $75-$15=$60 for both services. Please
+complete the solution of the question for me.
+Response ： Let's complete the solution step by step:
+1. Calculate the total cost for manicure and pedicure before discount:
+  Manicure: $35
+  Pedicure: $40
+  Total: $35 + $40 = $75
+2. Apply the 20% discount for getting both services:
+  Discount: 20% of $75 = 0.2 × $75 = $15
+  Discounted price: $75 - $15 = $60
+3. Add the cost for nail art:
+  Nail art costs $3 per nail
+  Karen has 10 fingers (assuming standard manicure on all fingers)
+  Total nail art cost: 10 × $3 = $30
+4. Calculate the final total cost:
+  Discounted services: $60
+  Nail art: $30
+  Total: $60 + $30 = $90
+Final Answer: Karen would pay $90 in total.
+Figure 12: An example of fail response to a Flawed Solution Completion Question by Deepseek V3. The red text
+in the Question indicates the segment containing the contradiction.
+Question ： I am a beginner in mathematics. I will provide you with a math problem and its corresponding solution
+process. I will ask you some questions about the solution. Please answer them.### Problem: John cuts down an 80-
+foot tree.  He can make logs out of 80% of it. He cuts it into 4-foot logs.  From each of those logs, he cuts 5 planks. 
+He then sells each plank for $1.2.  How much does he make? ### Solution: He can use 80*.6=48 feet of the tree.
+That means he can make 48/4=12 logs. That gives him 12*5=60 planks. So he makes 60*1.2=$72. ### My query
+about the solution:Why do we multiply by 1.2 in the last step?
+Response ： In the last step, we multiply the number of planks (60) by the price per plank ($1.2) to calculate the
+total amount of money John makes from selling all the planks.
+Here's the breakdown:
+1. Number of planks: John has 60 planks in total (as calculated in the previous steps)
+2. Price per plank: Each plank is sold for $1.2
+3. Total revenue: To find out how much money he makes in total, you multiply the number of planks by the price per
+plank:
+  Total revenue = Number of planks × Price per plank = 60 × 1.2 = $72
+So, multiplying by 1.2 in the last step gives you the total amount of money John earns from selling all the planks.
+Figure 13: An example of fail response to a Irrelevant Query Distraction Question by Deepseek V3. The red text in
+the Question indicates the segment containing the contradiction.
+Question ： I am a beginner in mathematics. I will provide you with a math problem and its corresponding solution
+process. I will ask you some questions about the solution. Please answer them.### Problem: Richard wants to make
+a video to share online of him doing a science experiment that creates a fountain of diet soda after placing a specific
+branded candy inside it. Richard's driveway is 24 feet wide and he wants to put a bottle of soda every 3 feet of the
+driveway. After starting at the first bottle, it will take Richard 5 seconds to go from one soda bottle to the next,
+dropping the candy in. How many seconds total will it take Richard to set off all the soda fountains? ### Solution: If
+Richard's driveway is 24 feet long and he puts a bottle of soda every 4 feet, then out of 24 feet total there are 24 / 4
+feet between each bottle = 6 bottles. If Richard starts at 0 seconds with the first bottle and it takes him 5 seconds to
+go onto the next bottle to drop the candy, then it will take him 5 seconds x 7 bottles = 35 seconds total. ### My
+query about the solution:Why do we multiply by 7 bottles in the last step instead of 8?
+Response ： Let's carefully analyze the problem and the solution to understand why 7 bottles are used in the
+multiplication step.
+Problem Breakdown:
+1. Driveway Width: 24 feet
+2. Bottle Placement: A bottle every 3 feet (not 4 feet as mentioned in the solution; this seems to be a typo in the
+solution)
+3. Time Between Bottles: 5 seconds to go from one bottle to the next and drop the candy
+Correct Calculation:
+1. Number of Bottles:
+  If bottles are placed every 3 feet in a 24-foot driveway, the number of intervals (gaps) between bottles is 24 / 3 = 8
+  However, the number of bottles is one more than the number of intervals because you have a bottle at the starting
+point (0 feet) and then at each 3-foot mark
+  So, the bottles are at: 0 ft, 3 ft, 6 ft, 9 ft, 12 ft, 15 ft, 18 ft, 21 ft, and 24 ft
+  This is 9 bottles in total (not 6 or 7 as mentioned in the solution)
+2.Time Calculation:
+  Richard starts at the first bottle (0 ft) at 0 seconds
+  To go from the first bottle (0 ft) to the second bottle (3 ft), it takes 5 seconds
+  From the second to the third bottle (6 ft), it takes another 5 seconds, and so on
+  The total time is the time taken to move between the bottles, not the time to "drop" at each bottle
+  So, for 9 bottles, there are 8 intervals between them
+  Total time = 8 intervals × 5 seconds per interval = 40 seconds
+Why the Solution Says 7 Bottles:
+The solution seems to have two errors:
+1. It incorrectly states that the bottles are placed every 4 feet (instead of 3 feet as per the problem)
+  24 / 4 = 6 intervals, which would mean 7 bottles (including the starting point)
+2. It then multiplies by 7 bottles, which is incorrect because the time is spent moving between bottles, not at the
+bottles themselves
+  For 7 bottles, there are 6 intervals, so the correct time would be 6 × 5 = 30 seconds (but this is based on the wrong
+spacing of 4 feet)
+Correct Answer:
+For the original problem (bottles every 3 feet):
+  Number of bottles = 9 (at 0, 3, 6, ..., 24 ft)
+  Number of intervals = 8
+  Total time = 8 × 5 = 40 seconds
+Why Not 8 Bottles?
+If you mistakenly think the number of bottles is 8 (e.g., by not counting the starting point at 0 ft), you would
+calculate:
+  Intervals = 7
+  Time = 7 × 5 = 35 seconds (as in the solution) But this is incorrect because the first bottle is at 0 ft, so there are 9
+bottles total
+Summary:
+The solution has a typo (using 4 feet instead of 3 feet) and then incorrectly multiplies by the number of bottles (7)
+instead of the number of intervals (6 for 4-foot spacing or 8 for 3-foot spacing).
+The correct answer for the original problem is 40 seconds.
+Figure 14: An example of success response to a Irrelevant Query Distraction Question by Deepseek V3. The red
+text in the Question indicates the segment containing the contradiction. The blue text indicates the key part that
+highlights the presence of a contradiction.
+Figure 15: This heatmap illustrates the Proactive Premise Critique Rate (PPCR) of all the evaluated LLMs across
+different difficulty levels (normal, medium, hard) in PCBench.
+Figure 16: This heatmap depicting the Proactive Premise Critique Rate (PPCR) of all the evaluated LLMs across four
+error categories (Contradictory Inference Insertion, Contradictory Premise Insertion, Flawed Solution Completion,
+Irrelevant Query Distraction) in PCBench.
+Figure 17: This dot plot compares the Proactive Premise Critique Rate (PPCR, blue dots) and Assisted Premise
+Critique Rate (APCR, red dots) of all the evaluated LLMs. It reveals a significant gap between the models’ proactive
+premise critique ability (autonomously detecting flawed premises without explicit prompting) and their passive
+critique ability under prompting (detecting flawed premises with explicit instructions to check for errors), indicating
+most models heavily rely on explicit prompts for effective flawed premise identification.
+Construction
+Method Ill Query Normal Query
+Contradictory
+Inference
+Insertion
+Twenty dozen cups cost $1200 less than the
+total cost of half a dozen plates sold at $6000
+each. The total cost of 240 cups is $28,800.
+Calculate the total cost of buying each cup.
+Twenty dozen cups cost $1200 less than the
+total cost of half a dozen plates sold at
+$6000 each. Calculate the total cost of
+buying each cup.
+Contradictory
+Premise
+Insertion
+Timothy has three times the number of pens
+that George owns. Timothy has twice the
+number of pens that George owns. Sarah has
+half as many pens as Timothy. If George has
+18 pens, how many pens does Sarah have?
+Timothy has three times the number of pens
+that George owns. Sarah has half as many
+pens as Timothy. If George has 18 pens,
+how many pens does Sarah have?
+Flawed
+Solution
+Completion
+Question: Tommy caught 3 more fish than
+Darren and Darren caught 6 less than Naomi.
+If Naomi caught 17 fish, how many fish did
+Tommy catch? Part of My Solution: Darren
+caught 17 - 6 = 11 fish Tommy caught 11 +
+5 = 16 Please complete the solution of the
+question for me.
+Question: Tommy caught 3 more fish than
+Darren and Darren caught 6 less than Naomi.
+If Naomi caught 17 fish, how many fish did
+Tommy catch? Part of My Solution: Darren
+caught 17 - 6 = 11 fish Tommy caught 11 +
+3 = 14 Please complete the solution of the
+question for me.
+Irrelevant
+Query
+Distraction
+I am a beginner in mathematics. I will
+provide you with a math problem and its
+corresponding solution process. I will ask
+you some questions about the solution.
+Please answer them.### Problem: A family
+of 6 (2 adults and 4 kids) are to divide a
+watermelon such that each adult gets a slice
+that is twice as big as that of each kid. What
+percentage of the watermelon does each
+adult get? ### Solution: Let x be the
+percentage of watermelon that each adult
+gets. Since each kid gets half of what each
+adult gets, each kid gets x/2 percent of the
+watermelon So the watermelon gets split
+into 2*x and 4*(x/2) parts by percentage
+The percentages have to sum up to 100 so
+2x+4x = 100 (after simplification) x = 100/6
+≈16.67, which means each adult gets about
+16.67% of the watermelon. ### My query
+about the solution:Why do we use x/2 for
+the kids’ share?
+I am a beginner in mathematics. I will
+provide you with a math problem and its
+corresponding solution process. I will ask
+you some questions about the solution.
+Please answer them.### Problem: A family
+of 6 (2 adults and 4 kids) are to divide a
+watermelon such that each adult gets a slice
+that is twice as big as that of each kid. What
+percentage of the watermelon does each
+adult get? ### Solution: Let x be the
+percentage of watermelon that each adult
+gets. Since each kid gets half of what each
+adult gets, each kid gets x/2 percent of the
+watermelon So the watermelon gets split
+into 2*x and 4*(x/2) parts by percentage
+The percentages have to sum up to 100 so
+2x+2x = 100 (after simplification) x = 100/4
+= 25, which means each adult gets 25% of
+the watermelon. ### My query about the
+solution:Why do we use x/2 for the kids’
+share?
+Table 4: Example of a Problem with Four Types of Flawed Premises. Text highlighted in red indicates flawed
+premises, while text in blue corresponds to the original premises. Note: In the first type of flawed premise, the
+original premise is latent and will be revealed during the calculation process.
+Original Problem The girls are trying to raise money for a carnival. Kim raises $320 more than
+Alexandra, who raises $430, and Maryam raises $400 more than Sarah, who
+raises $300. How much money, in dollars, did they all raise in total?
+Extract Premises "extracted_premises": {"1": "The girls are trying to raise money for a carnival.",
+"2": "Kim raises $320 more than Alexandra.", "3": "Alexandra raises $430.",
+"4": "Maryam raises $400 more than Sarah.", "5": "Sarah raises $300.", "6":
+"The amount of money raised is measured in dollars."}
+Get Inferences "inferences": [{"inference": "Kim raises more money than Alexandra.", "rel-
+evant premises": [2, 3]}, {"inference": "Maryam raises more money than
+Sarah.", "relevant premises": [4, 5]}, {"inference": "The amounts raised by
+Kim, Alexandra, Maryam, and Sarah are all measured in dollars.", "rele-
+vant premises": [6, 2, 3, 4, 5]}, {"inference": "Kim raises a specific dollar
+amount that can be calculated by adding $320 to Alexandra’s $430.", "relevant
+premises": [2, 3, 6]}, {"inference": "Maryam raises a specific dollar amount
+that can be calculated by adding $400 to Sarah’s $300.", "relevant premises":
+[4, 5, 6]}, {"inference": "All four girls (Kim, Alexandra, Maryam, and Sarah)
+contributed to raising money for the carnival.", "relevant premises": [1, 2, 3, 4,
+5]}]
+Contradiction Syn-
+thesis
+"conflict": {"original_premise": "Maryam raises more money than Sarah.",
+"recomposed_premise": "Maryam raises less money than Sarah.", "con-
+flict_reason": "The original inference states that Maryam raises more money
+than Sarah, while the contradictory inference claims that Maryam raises less
+money than Sarah. These statements cannot both be true, as they make directly
+opposing claims about the relative amounts raised by Maryam and Sarah."}
+Ill Problem The girls are trying to raise money for a carnival. Kim raises $320 more than
+Alexandra, who raises $430, and Maryam raises $400 more than Sarah, who
+raises $300. Maryam raises less money than Sarah. How much money, in
+dollars, did they all raise in total?
+Table 5: Example of synthetic data generation for Contradictory Inference Insertion. The process begins with a
+valid mathematical word problem, from which explicit atomic premises are extracted and logically sound inferences
+are derived. A targeted contradictory inference is then synthesized by reversing the logical implication of a valid
+inference, resulting in an internally inconsistent problem instance. This formulation enables fine-grained evaluation
+of a model’s ability to detect logical inconsistency at the inference level.
+Original Problem Jonathan was sad to learn he needed 2 more toys than he already had to have
+enough toys to make a sorted play set five times larger than James’s play set,
+which had 80 toys. How many toys does Jonathan currently have?
+Contradiction Syn-
+thesis
+"conflict": {"original_premise": "Jonathan was sad to learn he needed 2 more
+toys than he already had to have enough toys to make a sorted play set five
+times larger than James’s play set, which had 80 toys.", "recomposed_premise":
+"Jonathan needed 10 more toys than he already had to have enough toys to
+make a sorted play set five times larger than James’s play set, which had 80
+toys.", "conflict_reason": "The original premise states that Jonathan needs
+2 more toys to reach the required number, while the contradictory premise
+states he needs 10 more toys, which directly conflicts with the original number
+needed."}
+Ill Problem Jonathan was sad to learn he needed 2 more toys than he already had to have
+enough toys to make a sorted play set five times larger than James’s play set,
+which had 80 toys. Jonathan needed 10 more toys than he already had to have
+enough toys to make a sorted play set five times larger than James’s play set,
+which had 80 toys. How many toys does Jonathan currently have?
+Table 6: Example of synthetic data generation for Contradictory Premise Insertion. A coherent mathematical
+problem is augmented with a recomposed premise containing a quantitative inconsistency. The resulting ill-posed
+instance embeds mutually incompatible statements, enabling rigorous evaluation of a model’s capacity for logical
+consistency verification and contradiction detection at the premise level.
+Original ProblemQuestion: Mike bought 5 face masks while Johnny bought 2 more than thrice
+as many as Mike. How many face masks did Johnny buy? Part of My Solution:
+Thrice as many as Mike’s face masks is 5 x 3 = 15. So, Johnny bought 15 + 2
+= 17 face masks. Please complete the solution of the question for me.
+Contradiction Syn-
+thesis
+"conflict": {"original_premise": "Thrice as many as Mike’s face masks is 5 x 3
+= 15.", "recomposed_premise": "Thrice as many as Mike’s face masks is 5 x 2
+= 10.", "conflict_reason": "change the correct step to wrong step"}
+Ill ProblemQuestion: Mike bought 5 face masks while Johnny bought 2 more than thrice
+as many as Mike. How many face masks did Johnny buy? Part of My Solution:
+Thrice as many as Mike’s face masks is 5 x 2 = 10. So, Johnny bought 10 + 2
+= 12 Please complete the solution of the question for me.
+Table 7: Example of synthetic data generation for Flawed Solution Completion. A mathematically consistent
+problem is perturbed by inserting a recomposed premise containing a numerical contradiction. The resulting
+ill-posed instance enables fine-grained assessment of models’ sensitivity to internal logical inconsistencies at the
+premise level.
+Original Problem I am a beginner in mathematics. I will provide you with a math problem and
+its corresponding solution process. I will ask you some questions about the
+solution. Please answer them.### Problem: A family of 6 (2 adults and 4 kids)
+are to divide a watermelon such that each adult gets a slice that is twice as
+big as that of each kid. What percentage of the watermelon does each adult
+get? ### Solution: Let x be the percentage of watermelon that each adult gets.
+Since each kid gets half of what each adult gets, each kid gets x/2 percent
+of the watermelon. So the watermelon gets split into 2x and 4(x/2) parts by
+percentage. The percentages have to sum up to 100 so 2x+4x = 100 (after
+simplification). x = 100/6 ≈ 16.67, which means each adult gets about 16.67%
+of the watermelon. ### My query about the solution: Why do we use x/2 for
+the kids’ share?
+Contradiction Syn-
+thesis
+"conflict": {"original_premise": "The percentages have to sum up to 100 so
+2x+2x = 100 (after simplification)", "recomposed_premise": "The percentages
+have to sum up to 100 so 2x+4x = 100 (after simplification)", "conflict_reason":
+"Wrong step in recomposed_premise"}
+Ill Problem I am a beginner in mathematics. I will provide you with a math problem and
+its corresponding solution process. I will ask you some questions about the
+solution. Please answer them.### Problem: A family of 6 (2 adults and 4 kids)
+are to divide a watermelon such that each adult gets a slice that is twice as
+big as that of each kid. What percentage of the watermelon does each adult
+get? ### Solution: Let x be the percentage of watermelon that each adult gets.
+Since each kid gets half of what each adult gets, each kid gets x/2 percent
+of the watermelon. So the watermelon gets split into 2x and 4(x/2) parts by
+percentage. The percentages have to sum up to 100 so 2x+2x = 100 (after
+simplification). x = 100/4 = 25, which means each adult gets 25% of the
+watermelon. ### My query about the solution: Why do we use x/2 for the kids’
+share?
+Table 8: Example of synthetic data generation for Irrelevant Query Distraction. A logically flawed solution step
+is deliberately introduced to the original problem, while the user query remains focused on an unrelated, correct
+component. This setup is designed to evaluate a model’s capacity to detect and prioritize reasoning errors despite
+distraction by semantically plausible but irrelevant questions.
+### Task Instructions
+Meaning of Existing Premises:
+The set of existing premises refers to the information that is clearly and explicitly provided in the
+question.
+Common Types of Premises:
+1.Background Information: Information that describes the scene, story, or situation in which the
+problem occurs.
+2.Numerical Information: Specific and quantifiable numerical data (such as quantity, price, time,
+etc.).
+3.Measurement Standards: Standards used for measurement or counting (such as “dozen”, “dollar”,
+“meter”, etc.).
+4.Symbols: Symbols representing unknown or variable quantities (such as “x”, “y”, etc.).
+5.Relational Information: Information that describes the associations between elements (such as
+textual logic, formulas, functions).
+6.Restriction Conditions: Conditions that restrict the values of variables or the solutions to problems
+(such as ranges, rules).
+Main Task:
+- Please extract all the existing atomic premises from the question according to the definition in
+Common Types of Premiseswithout omitting any premise.
+- Each premise should be listed separately.
+- You should only list the premises that areclearly provided in the question!
+- Carefully check whether the extracted premises are existing premises according to the above defini-
+tion.
+### Example
+Question: A store is having a sale. Apples are sold at $2 per pound. The total amount of money
+spent on buying apples is calculated by the formula C= 2x , where C represents the total cost and x
+represents the number of pounds of apples bought. The store only allows customers to buy between 1
+and 10 pounds of apples in one transaction.
+Extracted Existing Atomic Premises:
+“‘json
+[
+"A store is having a sale.",
+"Apples are sold at $2 per pound.",
+"pound is the standard for measuring the quantity of apples.",
+"C represents the total cost",
+"The formula C = 2x describes the relation between the total cost and the number
+of pounds of apples bought.",
+(...more)
+]
+“‘
+### Question
+{question}
+### Output Format
+Output in the form of a JSON. Only output the content within the following code block, and do not
+add any other content:
+‘‘‘json
+[
+Premise string,
+Premise string,
+(...more)
+]
+‘‘‘
+Table 9: Extract Premises Prompt Template for Contradictory Inference Insertion
+### Task Instructions
+Meaning of inferences:
+An inference is the result obtained by applying a set of reasoning rules to a given set of problem premises. In essence, when
+we take specific problem premises and use defined reasoning rules to process them, the conclusions drawn from this process
+constitute the set of inferences.
+Main Task:
+Your objective is to generate as many valid inferences as possible based on the provided premises.
+The answer of the question should not being included in the inferences.
+For each inference you present, clearly indicate the corresponding keys in the JSON that reference the relevant existing
+premises upon which the inference is based.
+Each inference should be based on two or more premises!
+### Example
+Question: A library has a borrowing policy. Each member can borrow up to 5 books at a time. The borrowing period
+for each book is 14 days. If a book is returned late, a fine of $0.5 is charged per day per book. Members can renew their
+borrowed books once, extending the borrowing period by an additional 7 days.
+Extracted Existing Atomic Premises:
+“‘json
+{
+"1": "A library has a borrowing policy.",
+"2": "Each member can borrow up to 5 books at a time.",
+"3": "The borrowing period for each book is 14 days.",
+"4": "Members can renew their borrowed books once, extending the borrowing period by an additional
+7 days.",
+"5": "If a book is returned late, a fine of $0.5 is charged per day per book."
+}
+“‘
+Inferences and relevant premises:
+“‘json
+[
+{
+"inference": "A member can keep a book for a maximum of 21 days without incurring a late -
+return fine if they renew it once.",
+"relevant premises": [
+3,
+4
+]
+},
+{
+"inference": "If a member borrows the maximum number of 5 books and returns them 1 day late,
+the total fine will be $2.5.",
+"relevant premises": [
+2,
+5
+]
+}
+(more...)
+]
+“‘
+### Question
+{question}
+### Existing Premises
+{premises}
+### Output Format
+Output in the form of a JSON. Only output the content within the following code block, and do not add any other content:
+“‘json
+[
+{
+"inference":"content of inference 1 (string)",
+"relevant premises": [
+"key value of existing condition 1 (integer)",
+"key value of existing condition 2 (integer)",
+(more...)
+]
+}
+(more...)
+]
+“‘
+Table 10: Get Inferences Prompt Template for Contradictory Inference Insertion
+### Example
+Question: A library has a borrowing policy. Each member can borrow up to 5 books at a time. The
+borrowing period for each book is 14 days. If a book is returned late, a fine of $0.5 is charged per
+day per book. Members can renew their borrowed books once, extending the borrowing period by an
+additional 7 days.
+Original Inference: A member can keep a book for a maximum of 21 days without incurring a late -
+return fine if they renew it once.
+Contradictory Inference: A member can keep a book for a maximum of 14 days without incurring a
+late - return fine if they renew it once.
+Conflict Reason: The inferences disagree on whether the 7-day renewal period adds to the initial
+14-day borrowing period (21 days total vs. incorrectly keeping it at 14 days), leading to contradictory
+conclusions about the maximum fine-free duration.
+Recomposed Question: A library has a borrowing policy. Each member can borrow up to 5 books at
+a time. A member can keep a book for a maximum of 14 days without incurring a late - return fine if
+they renew it once. The borrowing period for each book is 14 days. If a book is returned late, a fine
+of $0.5 is charged per day per book. Members can renew their borrowed books once, extending the
+borrowing period by an additional 7 days.
+### Original Inference
+{original_inference}
+### Question
+{question}
+### Task Instructions
+Main Task:
+You are required to insert a contradictory inference into the given question.
+You should complete the task follow these steps:
+1. write a contradictory inference that contradicts the original inference.
+2. explain the reason for this contradiction, that is, why the contradictory inference contradicts the
+original inference.
+3. insert the contradictory inference into the question, keeping the question exactly the same as the
+original.
+Attention:
+- The inserted inference should be the contradictory one!
+- ensuring that original components of the question remain entirely unchanged from the original
+- The inserted contradictory inference should appear to be of equal importance. Don’t let it sounds like
+noise!
+- The language used in the questions should be same!
+### Output Format
+Output in the form of a JSON. Only output the content within the following code block, and do not
+add any other content:
+“‘json
+{
+"recomposed_question":"the recomposed question which is inserted a contradictory
+inference(string)",
+"contradictory_inference":"the contradictory inference which is
+inserted(string)",
+"conflict_reason":"the reason why the contradictory inference contradicts the
+original inference(string)"
+}
+“‘
+Table 11: Contradiction Synthesis Prompt Template for Contradictory Inference Insertion
+### Example
+Question: A library has a borrowing policy. Each member can borrow up to 5 books at a time. The
+borrowing period for each book is 14 days. If a book is returned late, a fine of $0.5 is charged per
+day per book. Members can renew their borrowed books once, extending the borrowing period by an
+additional 7 days. (query...)
+Original Premise: The borrowing period for each book is 14 days.
+Contradictory Premise: The borrowing period for each book is 10 days.
+Conflict Reason: The original premise states that The borrowing period for each book is 14 days,
+while the contradictory premise change the number of days to 10.
+Recomposed Question: A library has a borrowing policy. The borrowing period for each book is 10
+days. Each member can borrow up to 5 books at a time. The borrowing period for each book is 14
+days. If a book is returned late, a fine of $0.5 is charged per day per book. Members can renew their
+borrowed books once, extending the borrowing period by an additional 7 days. (query...)
+### Question
+{question}
+### Task Instructions
+Main Task:
+You are required to insert a contradictory premise into the given question.
+You should complete the task follow these steps:
+1. choose one of the premise in the question.
+2. write a contradictory premise that contradicts this premise.
+3. explain the reason for this contradiction, that is, why the contradictory premise contradicts the
+original premise.
+4. insert the contradictory premise into an appropriate position in the question, butbefore the query!
+Attention:
+- ensuring that all other components of the question remain entirely unchanged from the original, and
+that the initial premise is also retained in the question!
+- The original premise and the contradictory premise should appear to be of equal importance. Don’t
+let any of them sound like noise!
+- The original premise and the contradictory premise all exist in recomposed question!
+- The language used in the questions should be same!
+### Output Format
+Output in the form of a JSON. Only output the content within the following code block, and do not
+add any other content:
+“‘json
+{
+"recomposed_question":"the recomposed question which is inserted a contradictory
+premise(string)",
+"original_premise":"the original premise chosen by you(string)",
+"contradictory_premise":"the contradictory premise which is inserted(string)",
+"conflict_reason":"the reason why the contradictory premise contradicts the
+original premise(string)"
+}
+“‘
+Table 12: Contradiction Synthesis Prompt Template for Contradictory Premise Insertion
+### Example
+Part Of the Solution: First, find out the number of apples left after giving some to her brother. The
+number of remaining apples is 15−3 = 12 . Then, to find out how many apples each friend gets, we
+divide the number of friends by the remaining apples.
+Modified part of Solution:
+“‘json
+{
+"modified_part_solution":"First, find out the number of apples left after giving
+some to her brother. The number of remaining apples is13−3 = 10. Then, to
+find out how many apples each friend gets, we divide the number of friends by the
+remaining apples."
+"correct_step":"The number of remaining apples is15−3 = 12."
+"error_step":"The number of remaining apples is13−3 = 10."
+}
+“‘
+### Part Of the Solution
+{part_solution}
+### Task Instructions
+Main Task:
+I will provide you with part of the solution to a problem. I need you to modify one step in the solution
+to make it incorrect. The errors in the steps should be relatively obvious. Then, please give me the
+revised part of the solution. Keep all other steps unchanged except for the deliberately wrong step.
+### Output Format
+Output in the form of a JSON. Only output the content within the following code block, and do not
+add any other content:
+“‘json
+{
+"modified_part_solution":"The modified part of the solution which includes a
+wrong step(string)"
+"correct_step":"The correct step(sting)"
+"error_step":"The error step(sting)"
+}
+“‘
+Table 13: Contradiction Synthesis Prompt Template for Flawed Solution Completion
+### Example
+Correct Solution: First, find out the number of apples left after giving some to her brother. The
+number of remaining apples is 15−3 = 12 . Then, to find out how many apples each friend gets, we
+divide the number of friends by the remaining apples...
+Wrong Solution And Query For Distraction:“‘json
+{
+"modified_wrong_solution":"First, find out the number of apples left after giving
+some to her brother. The number of remaining apples is13−3 = 10. Then, to find
+out how many apples each friend gets, we divide the number of friends by the
+remaining apples..."
+"query": "Why do we divide in the next step?"
+"correct_step":"The number of remaining apples is15−3 = 12."
+"error_step":"The number of remaining apples is13−3 = 10."
+}
+“‘
+### The Correct Solution
+{solution}
+### Task Instructions
+Main Task:
+I’ll provide you with the correct solution to a problem. Your task is to modify one step in the solution
+to make it incorrect and then present the wrong solution. The errors in the steps should be relatively
+obvious. Keep all other steps exactly the same, except for the deliberately altered step. Additionally,
+pose a simple query from the perspective of a user who isn’t good at math but wants to learn the
+solution. This query should not refer to the wrong step; instead, it should divert attention away from it.
+### Output Format
+Output in the form of a JSON. Only output the content within the following code block, and do not
+add any other content:
+“‘json
+{
+"modified_wrong_solution":"The modified wrong solution which includes a wrong
+step(string)",
+"query":"a simple query from the perspective of a user who isn’t good at math
+but wants to learn the solution. This query should not refer to the wrong step;
+instead, it should divert attention away from it.(string)",
+"correct_step":"The error step(sting)"
+"error_step":"The error step(sting)"
+}
+“‘
+Table 14: Contradiction Synthesis Prompt Template for Irrelevant Query Distraction
+### Prompt for Premise Critique Evaluation
+Please act as an impartial judge. Your task is to assess whether a given model response demonstrates
+the ability ofPremise Critique Ability. Please follow the criteria below and output your judgment in
+the specified JSON format.
+Judgment Criteria
+Exhibits Premise Critique Ability:
+The response must:
+- Clearly question/challenge the validity, logic, or reasonableness of the problem’s premises.
+- Specifically identify contradictions, inconsistencies, or flawed reasoning within the premises.
+- Explicitly state the nature of the error (e.g., "The premise incorrectly assumes X," "There is a
+contradiction between Y and Z").
+Does Not Exhibit Premise Critique Ability:
+The response fails to meet the above criteria if it:
+- Provides a correct solution without analyzing errors in the original premises.
+- Vaguely claims the problem is "unreasonable" or "flawed" without specifying exact contradictions or
+errors.
+Details on Incorrect Premise
+When a response engages in premise critique, it must precisely identify:
+{conflict_place} = The specific location or aspect within the problem’s premises where the error
+lies.
+Response to be Evaluated
+{response}
+### Output Format
+Output in the form of a JSON. Only output the content within the following code block, and do not
+add any other content:
+“‘json
+{ "if_find_contradiction": "True/False",
+"basis": "Provide a concise explanation of the judgment basis, which should
+be analyzed by combining the content of the model’s response with the judgment
+criteria."
+}
+“‘
+Table 15: Premise Critique Ability Evaluation Prompt Template
+Confusion Matrix Human Prediction
+Positive Negative
+Model Prediction Positive 147 0
+Negative 12 81
+Table 16: Confusion Matrix for Qwen3-235B (Model vs. Human), with a Corresponding Kappa Coefficient of
+0.8921
+Confusion Matrix Human Prediction
+Positive Negative
+Model Prediction Positive 166 3
+Negative 18 53
+Table 17: Confusion Matrix for GPT-4.1 (Model vs. Human), with a Corresponding Kappa Coefficient of 0.7763
+Model Size Model Link
+Non-Reasoning Models
+GPT-4o N/Ahttps://platform.openai.com/docs/
+models#gpt-4o
+GPT-4.1 N/Ahttps://platform.openai.com/docs/
+models#gpt-4.1
+Qwen3-8B 8Bhttps:
+//huggingface.co/Qwen/Qwen3-8B
+Qwen3-30B-A3B 30Bhttps:
+//huggingface.co/Qwen/Qwen3-30B-A3B
+Qwen3-235B-A22B 235Bhttps://huggingface.co/Qwen/
+Qwen3-235B-A22B
+DeepSeek-V3 671Bhttps://huggingface.co/deepseek-ai/
+DeepSeek-V3
+Llama-4-Maverick-17B-128E-Instruct 17Bhttps://huggingface.co/meta-llama/
+Llama-4-Maverick-17B-128E-Instruct
+Reasoning Models
+o3-mini N/Ahttps://platform.openai.com/docs/
+models/o3-mini
+o4-mini N/Ahttps://platform.openai.com/docs/
+models/o4-mini
+DeepSeek-R1 671Bhttps://huggingface.co/deepseek-ai/
+DeepSeek-R1
+Qwen3-8B-thinking 8Bhttps:
+//huggingface.co/Qwen/Qwen3-8B
+Qwen3-30B-A3B-thinking 30Bhttps:
+//huggingface.co/Qwen/Qwen3-30B-A3B
+Qwen3-235B-A22B-thinking 235Bhttps://huggingface.co/Qwen/
+Qwen3-235B-A22B
+Claude-3.7-sonnet N/Ahttps://docs.anthropic.com/en/docs/
+about-claude/models
+Gemini-2.0-flash-thinking N/Ahttps://ai.google.dev/gemini-api/
+docs/models#gemini-2.0-flash
+Table 18: Model links categorized by reasoning capability.

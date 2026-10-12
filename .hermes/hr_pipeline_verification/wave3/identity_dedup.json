@@ -1,0 +1,96 @@
+{
+  "perspective": "Adversarial verification of student identity resolution, duplicate detection, and assignment identity across the three interviews and derived workflow artifacts.",
+  "verdict": "contradiction_found",
+  "findings": [
+    {
+      "id": "ID1",
+      "claim": "Name alone is unsafe for student resolution and has caused a wrong-person hire.",
+      "status": "confirmed_incident",
+      "evidence": [
+        "HR App (1).docx:1045-1052"
+      ],
+      "risk": "Two students with the same name were mixed up, the wrong student was hired, and the appointment later had to be ended; the audit evidence was difficult to recover because the request lived in Teams/email.",
+      "recommendation": "Block identity resolution on name-only matches. Require a unique institutional identifier plus a second corroborating attribute, show competing matches, and retain the submitted request and resolution evidence immutably."
+    },
+    {
+      "id": "ID2",
+      "claim": "U-number or email can be used to locate a student record, but the authoritative source and no-match/ambiguous-match behavior are not established.",
+      "status": "partially_confirmed",
+      "evidence": [
+        "Call with Mayra Morfin (1).docx:151-181",
+        "mayra_student_hiring_flow.md:30-31"
+      ],
+      "risk": "Mayra says either USF ID or email can match a student record, but is unsure whether the lookup site is Banner-backed. Faculty may provide only a name or email, and no evidence defines uniqueness checks, stale identifiers, conflict handling, or escalation when no exact match exists.",
+      "recommendation": "Treat U-number as the preferred immutable person key when verified; normalize email only for lookup, never as sole proof without source validation. Define exact-match, no-match, multi-match, stale-record, and manual-review states before downstream entry."
+    },
+    {
+      "id": "ID3",
+      "claim": "Duplicate detection must distinguish duplicate people from legitimate multiple assignments.",
+      "status": "confirmed_with_caveat",
+      "evidence": [
+        "HR App (1).docx:561-563",
+        "student_hiring_pipeline.md:43-46",
+        "student_hiring_pipeline.md:123"
+      ],
+      "risk": "Oracle creates a second assignment number when an existing student receives another assignment, such as TA plus RA. Deduplicating by person would incorrectly collapse valid work; deduplicating by assignment without a stable person key could create duplicate people or misattach an assignment.",
+      "recommendation": "Use separate keys: person_id/U-number for the individual and assignment_id/Oracle assignment number for the unit of work. Enforce uniqueness on assignment identity within its authoritative system while allowing many assignments per person."
+    },
+    {
+      "id": "ID4",
+      "claim": "The current spreadsheet row is not a safe identity or history key for reappointments, changes, or duplicate detection.",
+      "status": "confirmed_defect",
+      "evidence": [
+        "HR App (1).docx:697-699",
+        "HR App (1).docx:780-787",
+        "HR App (1).docx:1045-1052",
+        "student_hiring_pipeline.md:56-60"
+      ],
+      "risk": "Later change requests overwrite the one-row representation, losing the original request and making it difficult to distinguish amendment, reappointment, duplicate submission, and new assignment. This also weakens auditability of identity decisions.",
+      "recommendation": "Model an append-only request/event history linked to person_id and assignment_id, with explicit supersedes/amends relationships; never overwrite the prior identity or assignment evidence."
+    },
+    {
+      "id": "ID5",
+      "claim": "Identity fields are copied across intake, HR, Oracle, and Finance, but cross-system reconciliation rules are not proven.",
+      "status": "unproven",
+      "evidence": [
+        "HR App (1).docx:68-78",
+        "HR App (1).docx:468-475",
+        "HR App (1).docx:575-578",
+        "Call with Daisy Matos.docx:1027-1049"
+      ],
+      "risk": "The workflow uses name, email, U-number, address, date of birth, phone, job/assignment data, and Oracle records, yet the interviews do not define which system owns person identity, how mismatches are detected, or whether Finance updates are tied to the same assignment rather than merely a spreadsheet row.",
+      "recommendation": "Define a canonical person record and authoritative assignment reference before integration. Require read-back reconciliation of identifier, name, assignment number, dates, job code, and funding before each handoff; quarantine mismatches."
+    },
+    {
+      "id": "ID6",
+      "claim": "The derived artifacts correctly state assignment-level processing but overstate identity resolution and duplicate safety.",
+      "status": "partially_supported",
+      "evidence": [
+        "student_hiring_pipeline.md:43-46",
+        "student_hiring_pipeline.md:67-69",
+        "mayra_student_hiring_flow.md:85-90"
+      ],
+      "risk": "The artifacts identify multiple assignments and open the U-number/email no-match question, but they do not encode the wrong-person incident as a hard gate or specify duplicate/multi-match behavior.",
+      "recommendation": "Keep assignment-as-unit-of-work, but revise the model to make identity resolution a blocking step with explicit evidence, ambiguity states, duplicate candidate review, and incident/audit linkage."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Authoritative person key and system of record for U-number, email, and Oracle identity.",
+    "Whether the lookup service enforces unique U-number/email matches and how stale or reused email addresses are handled.",
+    "No-match, multi-match, conflicting-attribute, and manual-review behavior.",
+    "Exact duplicate definition across renewal, reappointment, change request, and additional assignment.",
+    "Authoritative assignment key and mapping between spreadsheet rows, Oracle assignment numbers, DocuSign artifacts, and Finance costing records.",
+    "Whether a changed job code/hours/funding creates a new assignment, an amendment, or a superseding version.",
+    "Required second-factor attributes and human approval before a person is submitted downstream.",
+    "Retention and retrieval requirements for identity-resolution evidence after a wrong-person incident."
+  ],
+  "source_coverage": [
+    "Primary: HR App (1).docx, exact lines 68-78, 468-475, 561-578, 697-699, 780-787, 1045-1052.",
+    "Primary: Call with Mayra Morfin (1).docx, exact lines 151-181; identity lookup and missing-detail resolution.",
+    "Primary: Call with Daisy Matos.docx, exact lines 1027-1049; downstream worksheet/Finance identity linkage.",
+    "Derived: student_hiring_pipeline.md, exact lines 43-46, 56-60, 67-69, 123; assignment unit and open identity questions.",
+    "Derived: mayra_student_hiring_flow.md, exact lines 30-31, 85-90; unresolved-match and identity-model caveats.",
+    "Evidence pack reviewed: .hermes/hr_pipeline_verification/evidence_pack.md; interview transcripts treated as primary and derived Markdown as provisional."
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave3/identity_dedup.json"
+}

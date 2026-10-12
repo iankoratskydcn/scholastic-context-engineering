@@ -1,0 +1,107 @@
+{
+  "reviewer_slug": "scholarly_text_fit",
+  "viewpoint": "Scholarly and philosophical text authenticity",
+  "benchmark_universe": "benchmark_studies.csv",
+  "rows": 80,
+  "scoring_definition": [
+    "authentic scholarly/philosophical source text",
+    "source provenance and traceability",
+    "preservation of historical/tradition distinctions",
+    "argument/dialectical structure",
+    "adaptation burden penalty",
+    "synthetic or generic QA penalty"
+  ],
+  "top_15": [
+    {
+      "rank": 1,
+      "paper_id": "S22P04",
+      "benchmark_name": "Index Thomisticus Treebank",
+      "score": 100
+    },
+    {
+      "rank": 2,
+      "paper_id": "S24P10",
+      "benchmark_name": "Quranic Arabic PropBank",
+      "score": 98
+    },
+    {
+      "rank": 3,
+      "paper_id": "S24P11",
+      "benchmark_name": "Quran–Hadith Classical Arabic dataset",
+      "score": 97
+    },
+    {
+      "rank": 4,
+      "paper_id": "S22P08",
+      "benchmark_name": "eFontes Medieval Latin corpus",
+      "score": 96
+    },
+    {
+      "rank": 5,
+      "paper_id": "S22P02",
+      "benchmark_name": "CREMMA Medii Aevi",
+      "score": 95
+    },
+    {
+      "rank": 6,
+      "paper_id": "S24P09",
+      "benchmark_name": "OpenITI-derived Classical Arabic corpus",
+      "score": 94
+    },
+    {
+      "rank": 7,
+      "paper_id": "15-02",
+      "benchmark_name": "InterIDEAS",
+      "score": 93
+    },
+    {
+      "rank": 8,
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 92
+    },
+    {
+      "rank": 9,
+      "paper_id": "S10P07",
+      "benchmark_name": "US2016G1tvWALTON corpus",
+      "score": 91
+    },
+    {
+      "rank": 10,
+      "paper_id": "S23P12",
+      "benchmark_name": "741-topic argument-tree corpus",
+      "score": 90
+    },
+    {
+      "rank": 11,
+      "paper_id": "18_10",
+      "benchmark_name": "Deep argumentative structures corpus",
+      "score": 89
+    },
+    {
+      "rank": 12,
+      "paper_id": "18_11",
+      "benchmark_name": "implicit-reasoning causal-link materials",
+      "score": 88
+    },
+    {
+      "rank": 13,
+      "paper_id": "S23P04",
+      "benchmark_name": "tree-structured debate corpus",
+      "score": 87
+    },
+    {
+      "rank": 14,
+      "paper_id": "S09P08",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 86
+    },
+    {
+      "rank": 15,
+      "paper_id": "S25P13",
+      "benchmark_name": "QT-SCHEMES",
+      "score": 85
+    }
+  ],
+  "notes": "Scores rank text authenticity perspective, not general benchmark prestige. Authentic Medieval Latin, Classical Arabic, Quran/Hadith, philosophical, and manually annotated argument corpora lead; formal rule worlds and generic QA remain controls."
+}

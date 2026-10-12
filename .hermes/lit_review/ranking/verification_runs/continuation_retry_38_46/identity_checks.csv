@@ -1,0 +1,5 @@
+paper_id,rank,title_match,author_match,date_match,venue_match,identifier_match,artifact_identity_match,result,confidence,rationale
+S24P04,38,exact,corrected_single_author,exact,exact_journal_issue,arxiv_id_exact,not_applicable,pass,high,"arXiv title/author/date and J.Acad. volume/pages/permalink all point to the same 2026 paper; candidate's et al. form was not retained."
+S04P05,44,exact,exact,exact,exact,exact_doi,exact_repository,pass,high,"ACL Anthology, Crossref, PDF, and GitHub repository agree on title, four-author order, EMNLP 2023 venue, pages, and DOI."
+S24P03,45,exact,exact,exact_journal_reference,exact,arxiv_doi_exact,not_applicable,pass,high,"arXiv record identifies the exact three authors and title and gives the 2014 J.Acad.(N.Y.) 4(2):52-87 journal reference."
+S24P15,46,exact,exact,exact,exact,exact_doi,not_applicable,pass,high,"University of Qom publisher HTML and PDF agree on title, authors, DOI, 2024 publication, volume 10 issue 4, and pages 7-38."

@@ -1,0 +1,27 @@
+{
+  "retrieval_date_utc": "2026-10-12T06:47:37Z",
+  "scope": ["S24P04", "S04P05", "S24P03", "S24P15"],
+  "files": [
+    {"paper_id":"S24P04","kind":"publisher/author PDF","url":"https://jacad.eth.limo/rc_images/abdelwahab_3_18_15_1.pdf","local":"evidence/authors/p04_source_pdf.raw","http_status":200,"bytes":293216},
+    {"paper_id":"S24P04","kind":"arXiv abstract","url":"https://arxiv.org/abs/2607.25605","local":"evidence/publisher/p04_arxiv_abs.raw","http_status":200,"bytes":40761},
+    {"paper_id":"S24P04","kind":"arXiv PDF","url":"https://arxiv.org/pdf/2607.25605","local":"evidence/publisher/p04_arxiv_pdf.raw","http_status":200,"bytes":491340},
+    {"paper_id":"S24P04","kind":"J.Acad. issue page","url":"https://jacad.eth.limo/15no1.html","local":"evidence/publisher/p04_jacad_index.raw","http_status":200,"bytes":13743},
+    {"paper_id":"S24P03","kind":"arXiv abstract","url":"https://arxiv.org/abs/1604.00266","local":"evidence/publisher/p03_arxiv_abs.raw","http_status":200,"bytes":42063},
+    {"paper_id":"S24P03","kind":"arXiv PDF","url":"https://arxiv.org/pdf/1604.00266","local":"evidence/publisher/p03_arxiv_pdf.raw","http_status":200,"bytes":768284},
+    {"paper_id":"S24P15","kind":"publisher HTML","url":"https://stim.qom.ac.ir/article_3085.html?lang=en","local":"evidence/publisher/p15_publisher.raw","http_status":200,"bytes":63478},
+    {"paper_id":"S24P15","kind":"publisher PDF","url":"https://stim.qom.ac.ir/article_3085_eb510ea9b34e97376870d8ccc0216d10.pdf","local":"evidence/publisher/p15_pdf.raw","http_status":200,"bytes":4123360},
+    {"paper_id":"S04P05","kind":"ACL Anthology metadata","url":"https://aclanthology.org/2023.emnlp-main.391/","local":"evidence/publisher/p04_acl.raw","http_status":200,"bytes":42767},
+    {"paper_id":"S04P05","kind":"ACL PDF","url":"https://aclanthology.org/2023.emnlp-main.391.pdf","local":"evidence/publisher/p04_acl_pdf.raw","http_status":200,"bytes":429663},
+    {"paper_id":"S04P05","kind":"Crossref query","url":"https://api.crossref.org/works?query.bibliographic=Compressing%20Context%20to%20Enhance%20Inference%20Efficiency%20of%20Large%20Language%20Models&rows=10","local":"evidence/crossref/S04P05.json","http_status":200,"bytes":42797},
+    {"paper_id":"S04P05","kind":"GitHub repository API","url":"https://api.github.com/repos/liyucheng09/Selective_Context","local":"evidence/repositories/p05_repo_api.raw","http_status":200,"bytes":5677},
+    {"paper_id":"S04P05","kind":"GitHub repository contents","url":"https://api.github.com/repos/liyucheng09/Selective_Context/contents","local":"evidence/repositories/p05_contents.raw","http_status":200,"bytes":11102},
+    {"paper_id":"S04P05","kind":"GitHub README","url":"https://raw.githubusercontent.com/liyucheng09/Selective_Context/main/readme.md","local":"evidence/repositories/p05_readme.raw","http_status":200,"bytes":4964},
+    {"paper_id":"S04P05","kind":"GitHub implementation","url":"https://raw.githubusercontent.com/liyucheng09/Selective_Context/main/selective_context.py","local":"evidence/repositories/p05_selective_context.raw","http_status":200,"bytes":14034}
+  ],
+  "failed_or_nonmatching_attempts": [
+    {"paper_id":"S24P04","attempt":"Crossref bibliographic query","result":"200 response but no matching exact work in bounded top results; retained arXiv/J.Acad. identity instead"},
+    {"paper_id":"S24P15","attempt":"Crossref bibliographic query","result":"HTTP 429; publisher DOI metadata independently verified exact identity"},
+    {"paper_id":"S24P04","attempt":"GitHub repository search","result":"empty repository search response; no artifact identified"},
+    {"paper_id":"S04P05","attempt":"raw README at /README.md","result":"404; repository contents identified lowercase readme.md and fetched it"}
+  ]
+}

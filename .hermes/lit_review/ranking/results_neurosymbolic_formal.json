@@ -1,0 +1,65 @@
+{
+  "reviewer_slug": "neuro_symbolic_formal",
+  "viewpoint": "neuro-symbolic and formal-proof compatibility",
+  "input": "benchmark_studies.csv",
+  "rows": 80,
+  "category_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/benchmark_review_neurosymbolic_formal_category.csv",
+  "global_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/lit_review/ranking/benchmark_review_neurosymbolic_formal_global.csv",
+  "top10": [
+    {
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 96
+    },
+    {
+      "paper_id": "S08P04",
+      "benchmark_name": "LeanDojo dataset/benchmark",
+      "score": 96
+    },
+    {
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 96
+    },
+    {
+      "paper_id": "14-08",
+      "benchmark_name": "LeanDojo/ReProver",
+      "score": 96
+    },
+    {
+      "paper_id": "S08P05",
+      "benchmark_name": "Isabelle proof-state/relevant-premise pairs",
+      "score": 92
+    },
+    {
+      "paper_id": "12-06",
+      "benchmark_name": "FOLIO",
+      "score": 90
+    },
+    {
+      "paper_id": "S08P07",
+      "benchmark_name": "MALLS",
+      "score": 88
+    },
+    {
+      "paper_id": "12-05",
+      "benchmark_name": "LogicNLI",
+      "score": 84
+    },
+    {
+      "paper_id": "12-03",
+      "benchmark_name": "RuleTaker",
+      "score": 82
+    },
+    {
+      "paper_id": "12-07",
+      "benchmark_name": "PrOntoQA",
+      "score": 78
+    }
+  ],
+  "validation": {
+    "all_80": true,
+    "global_ranks": true,
+    "category_contiguous": true
+  }
+}

@@ -1,0 +1,11 @@
+paper_id,citation,category,aggregate_rank,aggregate_mean_score,prior_identity_pass
+S24P04,"Abdelwahab et al., “Computational Extraction of Legal Causes via al-Ṣabr wa al-Taqsīm: A Set-Theoretic Formalization for Closed Fiqh Chapters”",24 Islamic Comparative Scholastic Ai,38,58.96,False
+S09P04,"Lawrence & Reed (2020), “Argument Mining: A Survey.”","Argument mining, argument components, and scheme classification",39,58.88,True
+S09P05,"Lauscher et al. (2021), “Argument Mining for Scholarly Document Processing.”","Argument mining, argument components, and scheme classification",40,58.84,True
+S03P07,"Hsieh et al. (2024), “Found in the middle: Calibrating Positional Attention Bias Improves Long Context Utilization”","long-context degradation, lost in the middle, and context rot",41,58.2,True
+S04P10,"Xu et al. (2024), “Concise and Precise Context Compression for Tool-Using Language Models”","Context Engineering, Context Compression, Prompt Compression",42,57.92,True
+S02P08,"Peskov et al. (2025), “Investigating the Robustness of Deductive Reasoning with Large Language Models”",hallucination in logical/deductive reasoning,43,57.52,True
+S04P05,"Li, Dong, Lin, and Guerin (2023), “Compressing Context to Enhance Inference Efficiency of Large Language Models (Selective Context)”","Context Engineering, Context Compression, Prompt Compression",44,56.84,False
+S24P03,"Abdelwahab, Daghbouche, and Shannan, “The Algorithm of Islamic Jurisprudence (Fiqh) with Validation of an Entscheidungsproblem”",24 Islamic Comparative Scholastic Ai,45,56.4,False
+S24P15,"Mirarab and DarestaniFarahani, “Explainable Large Language Model for Islamic and Humanities Sciences Based on Knowledge Graphs”",24 Islamic Comparative Scholastic Ai,46,55.56,False
+S04P12,"(Findings of ACL 2024), “Effective In-Context Example Selection through Data Compression”","Context Engineering, Context Compression, Prompt Compression",47,55.24,True

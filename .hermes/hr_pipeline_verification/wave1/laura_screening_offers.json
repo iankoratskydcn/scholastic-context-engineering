@@ -1,0 +1,97 @@
+{
+  "perspective": "Adversarial verification of Laura's screening, offer-letter, signature, gate, student DocuSign, and reminder workflow against all three transcripts and derived Markdown artifacts; observed behavior is separated from proposed automation.",
+  "verdict": "pass_with_caveats",
+  "findings": [
+    {
+      "id": "L1",
+      "claim": "Foreign-principal screening is Laura's first hiring step; she initiates it, records initiation/date, and cannot issue the offer letter until screening clears.",
+      "status": "observed_confirmed",
+      "evidence": ["HR App (1).docx:78-80", "HR App (1).docx:85-87", "HR App (1).docx:523-533"],
+      "risk": "The exact external screening system, completion signal, and failure/expiry semantics are unspecified.",
+      "recommendation": "Model screening as an explicit external state with initiated, cleared, outstanding, and exception states; do not infer automatic clearance."
+    },
+    {
+      "id": "L2",
+      "claim": "Offer-letter drafting runs in parallel while screening is pending.",
+      "status": "observed_confirmed",
+      "evidence": ["HR App (1).docx:78-80", "HR App (1).docx:529-533"],
+      "risk": "The transcript supports drafting during screening, but not whether a draft may be sent to the hiring authority before clearance or whether draft contents are revalidated after screening.",
+      "recommendation": "Allow draft preparation in parallel; retain an explicit send-to-authority transition and revalidation point."
+    },
+    {
+      "id": "L3",
+      "claim": "Hiring-authority signature precedes student delivery; Chanel or Dr. Sarkar signs depending on the hire, commonly in batches.",
+      "status": "observed_confirmed",
+      "evidence": ["HR App (1).docx:87-89", "HR App (1).docx:243-245", "HR App (1).docx:531-533"],
+      "risk": "The authoritative signer-selection rule and delegation/substitution behavior are not defined; batch size is practice, not policy.",
+      "recommendation": "Record signer identity and signed artifact per assignment; treat batching as an operational option, not a state transition."
+    },
+    {
+      "id": "L4",
+      "claim": "The gate for sending an offer to the student is both hiring-authority signature and cleared foreign-principal screening.",
+      "status": "observed_confirmed",
+      "evidence": ["HR App (1).docx:87-89", "HR App (1).docx:529-542"],
+      "risk": "The transcripts establish the sequence but do not specify behavior for one condition satisfied while the other remains pending, rejection, resubmission, or a changed letter after signature.",
+      "recommendation": "Enforce a conjunctive gate; block student DocuSign until both states are independently recorded and preserve the blocked reason."
+    },
+    {
+      "id": "L5",
+      "claim": "After the gate, Laura sends the offer to the student through DocuSign, marks it sent, then marks it signed when returned; signed offers become ready for Oracle entry.",
+      "status": "observed_confirmed",
+      "evidence": ["HR App (1).docx:88-89", "HR App (1).docx:215-223", "HR App (1).docx:228-235", "HR App (1).docx:541-548"],
+      "risk": "No transcript evidence defines declined, expired, corrected, voided, duplicate, or partially signed DocuSign outcomes.",
+      "recommendation": "Keep sent, signed, declined, expired, voided, and superseded distinct; never treat a sent envelope as student acceptance."
+    },
+    {
+      "id": "L6",
+      "claim": "Laura manually reminds students who have not completed screening or signed DocuSign, using escalating context-sensitive email templates; reminders are especially used near payroll.",
+      "status": "observed_confirmed",
+      "evidence": ["HR App (1).docx:85-87", "HR App (1).docx:251-260", "HR App (1).docx:265-297"],
+      "risk": "Cadence, stop conditions, sender authority, escalation ownership, and reminder audit requirements are not specified.",
+      "recommendation": "Automate only as an opt-in reminder loop with per-recipient history, bounded cadence, stop-on-completion, and human approval for escalatory language."
+    },
+    {
+      "id": "L7",
+      "claim": "Proposed automation includes prefilled forms, email templates, bulk sends, filtering/status views, and possibly automated foreign-principal initiation; these are proposals, not observed current behavior.",
+      "status": "proposal_only",
+      "evidence": ["HR App (1).docx:611-624", "HR App (1).docx:653-663", "HR App (1).docx:266-313", "Mayra transcript:95-99", "Mayra transcript:111-124", "Daisy transcript:55-59"],
+      "risk": "Derived artifacts can be misread as implemented automation; external integrations and permissions are not proven.",
+      "recommendation": "Label these as design proposals until tested end-to-end against the live screening, DocuSign, email, and HR systems."
+    },
+    {
+      "id": "L8",
+      "claim": "The derived Laura pipeline is directionally consistent with the primary interview, but it overstates the gate as a formalized system invariant and should not be treated as implementation evidence.",
+      "status": "corroborated_with_caveat",
+      "evidence": ["student_hiring_pipeline.md:17-31", "student_hiring_pipeline.md:33-53", "student_hiring_pipeline.md:71-124", "HR App (1).docx:78-130"],
+      "risk": "The Markdown status graph adds normalized states and edges not explicitly implemented or fully specified in the interview.",
+      "recommendation": "Use the Markdown as a provisional workflow model; retain transcript citations as authority and flag unresolved exception semantics."
+    },
+    {
+      "id": "L9",
+      "claim": "Mayra and Daisy corroborate the surrounding handoffs and reminder-oriented work, but neither independently proves Laura's detailed screening/signature sequence.",
+      "status": "corroborated_boundary_only",
+      "evidence": ["Call with Mayra Morfin (1).docx:44-62", "Call with Mayra Morfin (1).docx:214-226", "Call with Mayra Morfin (1).docx:248-267", "Call with Daisy Matos.docx:30-59", "Call with Daisy Matos.docx:1022-1049"],
+      "risk": "Cross-interview references are second-hand for Laura's internal steps and cannot resolve Laura-specific ambiguities.",
+      "recommendation": "Use Laura's interview for the detailed HR sequence; use Mayra/Daisy only for handoff, access, and downstream corroboration."
+    }
+  ],
+  "missing_or_ambiguous": [
+    "Exact foreign-principal screening provider, status vocabulary, rejection/resubmission behavior, and evidence retention.",
+    "Whether the hiring authority receives/signs the letter before screening clears in every case; transcript strongly implies yes but does not state a formal rule.",
+    "Signer-selection authority, delegation, substitutions, and what happens when the authority declines or requests edits.",
+    "DocuSign decline, expiry, correction, duplicate-envelope, supersession, and partial-signature handling.",
+    "Reminder cadence, maximum attempts, escalation thresholds, sender identity, consent/notice requirements, and stop conditions.",
+    "Whether screening or DocuSign automation is actually connected to the proposed app; all automation references are design proposals.",
+    "The HR colleague's exact ownership and concurrency controls when both Laura and the colleague update records."
+  ],
+  "source_coverage": [
+    {"source": "HR App (1).docx", "role": "primary Laura interview", "coverage": "Detailed screening, parallel drafting, authority signature, student DocuSign, reminder loops, and status tracking; lines 78-89, 215-297, 523-548, 611-624."},
+    {"source": "Call with Mayra Morfin (1).docx", "role": "primary Mayra interview; cross-check only", "coverage": "Handoff into Laura's stage and reminder/chasing context; lines 44-62, 214-226, 248-267."},
+    {"source": "Call with Daisy Matos.docx", "role": "primary Daisy interview; cross-check only", "coverage": "Downstream appointment handoff and status/access context; lines 30-59, 1022-1049."},
+    {"source": "student_hiring_pipeline.md", "role": "provisional derived artifact", "coverage": "Normalized Laura pipeline, statuses, gate, loops, and detours; lines 17-63 and 71-124."},
+    {"source": "mayra_student_hiring_flow.md", "role": "provisional derived artifact", "coverage": "Mayra-to-Laura handoff and reminder context; lines 8-31 and 47-80."},
+    {"source": "daisy_finance_stage.md", "role": "provisional derived artifact", "coverage": "Downstream finance handoff only; lines 15-31 and 56-107."
+    }
+  ],
+  "output_path": "/Users/iankoratsky/Documents/GitHub/scholastic-context-engineering/.hermes/hr_pipeline_verification/wave1/laura_screening_offers.json"
+}

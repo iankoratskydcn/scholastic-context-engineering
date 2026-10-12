@@ -1,0 +1,133 @@
+{
+  "reviewer_slug": "abduction_analogy_induction",
+  "viewpoint": "Abductive, analogical, and inductive reasoning coverage",
+  "benchmark_universe": "benchmark_studies.csv",
+  "rows": 80,
+  "diagnostic_definition": [
+    "best-explanation/hypothesis selection",
+    "analogy mapping and transfer",
+    "inductive generalization from examples/evidence",
+    "counterfactual and defeasible inference",
+    "separation of reasoning structure from answer accuracy"
+  ],
+  "top_15": [
+    {
+      "rank": 1,
+      "paper_id": "12-15",
+      "benchmark_name": "abductive syllogism dataset",
+      "score": 97
+    },
+    {
+      "rank": 2,
+      "paper_id": "S07P01",
+      "benchmark_name": "ProofWriter",
+      "score": 96
+    },
+    {
+      "rank": 3,
+      "paper_id": "12-04",
+      "benchmark_name": "ProofWriter",
+      "score": 96
+    },
+    {
+      "rank": 4,
+      "paper_id": "19_04",
+      "benchmark_name": "InAbHyD",
+      "score": 95
+    },
+    {
+      "rank": 5,
+      "paper_id": "19_02",
+      "benchmark_name": "",
+      "score": 92
+    },
+    {
+      "rank": 6,
+      "paper_id": "19_06",
+      "benchmark_name": "E-KAR",
+      "score": 91
+    },
+    {
+      "rank": 7,
+      "paper_id": "19_15",
+      "benchmark_name": "complex-analogy benchmark",
+      "score": 90
+    },
+    {
+      "rank": 8,
+      "paper_id": "19_12",
+      "benchmark_name": "AnaloBench",
+      "score": 89
+    },
+    {
+      "rank": 9,
+      "paper_id": "19_10",
+      "benchmark_name": "StoryAnalogy",
+      "score": 88
+    },
+    {
+      "rank": 10,
+      "paper_id": "19_14",
+      "benchmark_name": "KnowledgePrompts 15K proportional-analogy dataset",
+      "score": 87
+    },
+    {
+      "rank": 11,
+      "paper_id": "S06P06",
+      "benchmark_name": "Counterfactual reasoning task suite",
+      "score": 86
+    },
+    {
+      "rank": 12,
+      "paper_id": "S25P12",
+      "benchmark_name": "MARS",
+      "score": 85
+    },
+    {
+      "rank": 13,
+      "paper_id": "19_09",
+      "benchmark_name": "ANALOGICAL",
+      "score": 84
+    },
+    {
+      "rank": 14,
+      "paper_id": "S23P05",
+      "benchmark_name": "Tree-of-Debate scientific comparison set",
+      "score": 83
+    },
+    {
+      "rank": 15,
+      "paper_id": "S23P12",
+      "benchmark_name": "741-topic argument-tree corpus",
+      "score": 82
+    }
+  ],
+  "interpretation": "Highest scores require explicit hypotheses, rationales, relation mappings, proof/derivation controls, counterfactual variation, or evidence aggregation. Generic QA, retrieval, cultural knowledge, and preprocessing benchmarks are capped when reasoning structure is not observable.",
+  "category_counts": {
+    "2": 3,
+    "3": 6,
+    "5": 3,
+    "6": 2,
+    "7": 2,
+    "8": 3,
+    "9": 1,
+    "10": 4,
+    "11": 6,
+    "12": 9,
+    "14": 1,
+    "15": 4,
+    "17": 13,
+    "18": 2,
+    "19": 8,
+    "22": 3,
+    "23": 3,
+    "24": 4,
+    "25": 3
+  },
+  "validation": {
+    "expected_rows": 80,
+    "actual_rows": 80,
+    "missing_paper_ids": [],
+    "duplicate_paper_ids": 0
+  }
+}
